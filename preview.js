@@ -130,5 +130,94 @@
     let svg = renderPreview(layout, {title}).replace(/var\((--pv-[a-z-]+)\)/g, (m, k) => vars[k] || '#000');
     return svg.replace('<svg ', '<svg width="1280" height="800" ');
   }
-  global.Preview = { renderPreview, renderStandalone, W, H, STICKY };
+  // ---------- version remplie : même géométrie ×3 (960×600), stickies avec le texte de l'exemple ----------
+  const FW = 960, FH = 600, FP = 24;
+  const wrap = (text, maxChars) => { const words = String(text).split(' '), lines = []; let cur = ''; for(const w of words){ if((cur + ' ' + w).trim().length > maxChars && cur){ lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); } if(cur) lines.push(cur); return lines.slice(0, 4); };
+  function fBox(x, y, w, h, opts = {}){ return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="10" fill="${opts.fill || 'var(--pv-fill)'}" stroke="${opts.stroke || 'var(--pv-line)'}" stroke-width="1.5"/>`; }
+  function fLabel(x, y, text, opts = {}){ return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${opts.size || 15}" font-weight="${opts.weight || 700}" text-anchor="${opts.anchor || 'start'}" fill="${opts.fill || 'var(--pv-ink)'}" font-family="Public Sans, system-ui, sans-serif">${esc(text)}</text>`; }
+  // dispose des stickies texte dans une région (x,y,w,h) ; renvoie le svg
+  function fStickies(x, y, w, h, items, seed){
+    if(!items || !items.length) return '';
+    const cols = Math.max(1, Math.floor((w - 8) / 118)), sw = Math.min(112, (w - 8 - (cols - 1) * 6) / cols), chars = Math.max(10, Math.floor(sw / 5.6));
+    let out = '', cx = x + 4, cy = y + 4, rowH = 0, r = rnd(seed);
+    items.forEach((it, i) => {
+      const lines = wrap(it, chars), sh = lines.length * 13 + 12;
+      if(cx + sw > x + w + 1){ cx = x + 4; cy += rowH + 6; rowH = 0; }
+      if(cy + sh > y + h + 2) return;
+      const rot = ((r() - .5) * 3).toFixed(1), col = STICKY[(seed + i) % STICKY.length];
+      out += `<g transform="rotate(${rot} ${cx + sw/2} ${cy + sh/2})"><rect x="${cx}" y="${cy}" width="${sw}" height="${sh}" rx="2" fill="${col}" style="filter:drop-shadow(0 1px 1px rgba(20,30,60,.2))"/>${lines.map((l, k) => `<text x="${cx + 7}" y="${cy + 15 + k * 13}" font-size="10.5" fill="#1A2236" font-family="Public Sans, system-ui, sans-serif">${esc(l)}</text>`).join('')}</g>`;
+      cx += sw + 6; rowH = Math.max(rowH, sh);
+    });
+    return out;
+  }
+  const byLabel = (blocks, label) => { const b = (blocks || []).find(b => b.t === label); return b ? b.items : []; };
+  const FR = {};
+  FR.columns = ({cols}, ex) => {
+    const gap = 14, cw = (FW - 2*FP - gap*(cols.length - 1)) / cols.length; let out = '';
+    cols.forEach((c, i) => { const x = FP + i*(cw + gap); out += fBox(x, FP, cw, FH - 2*FP) + fLabel(x + 12, FP + 26, c.t) + `<line x1="${x}" y1="${FP + 38}" x2="${x + cw}" y2="${FP + 38}" stroke="var(--pv-line)" stroke-width="1.5"/>` + fStickies(x + 4, FP + 46, cw - 8, FH - 2*FP - 52, byLabel(ex, c.t), i + 1); });
+    return out;
+  };
+  FR.quadrant = ({x, y, cells, footer}, ex) => {
+    const fh = footer ? 90 : 0, ax = x[0] || x[1] ? 26 : 0, ay = y[0] || y[1] ? 26 : 0;
+    const gx = FP + ay, gy = FP, gw = FW - 2*FP - ay, gh = FH - 2*FP - ax - fh, hw = gw/2, hh = gh/2;
+    let out = fBox(gx, gy, gw, gh) + `<line x1="${gx+hw}" y1="${gy}" x2="${gx+hw}" y2="${gy+gh}" stroke="var(--pv-line)" stroke-width="1.5"/><line x1="${gx}" y1="${gy+hh}" x2="${gx+gw}" y2="${gy+hh}" stroke="var(--pv-line)" stroke-width="1.5"/>`;
+    const pos = [[gx, gy],[gx+hw, gy],[gx, gy+hh],[gx+hw, gy+hh]];
+    cells.forEach((c, i) => { out += fLabel(pos[i][0] + 12, pos[i][1] + 24, c, {size:14}) + fStickies(pos[i][0] + 8, pos[i][1] + 34, hw - 16, hh - 40, byLabel(ex, c), i + 3); });
+    if(ax) out += fLabel(gx + 4, FH - FP - fh - 6, x[0], {size:12, weight:500, fill:'var(--pv-muted)'}) + fLabel(gx + gw - 4, FH - FP - fh - 6, x[1], {size:12, weight:500, anchor:'end', fill:'var(--pv-muted)'});
+    if(ay) out += `<text transform="translate(${FP + 14} ${gy + gh - 4}) rotate(-90)" font-size="12" font-weight="500" fill="var(--pv-muted)" font-family="Public Sans, system-ui, sans-serif">${esc(y[0])}</text><text transform="translate(${FP + 14} ${gy + 4}) rotate(-90)" text-anchor="end" font-size="12" font-weight="500" fill="var(--pv-muted)" font-family="Public Sans, system-ui, sans-serif">${esc(y[1])}</text>`;
+    if(footer){ const fw = (gw - 14)/2; footer.forEach((f, i) => { const fx = gx + i*(fw + 14), fy = gy + gh + 10; out += fBox(fx, fy, fw, fh - 10) + fLabel(fx + 12, fy + 22, f, {size:14}) + fStickies(fx + 8, fy + 30, fw - 16, fh - 44, byLabel(ex, f), i + 9); }); }
+    return out;
+  };
+  FR.canvas = ({cols, rows, blocks}, ex) => {
+    const gap = 10, cw = (FW - 2*FP - gap*(cols - 1)) / cols, rh = (FH - 2*FP - gap*(rows - 1)) / rows; let out = '';
+    blocks.forEach((b, i) => { const w = b.w || 1, h = b.h || 1, x = FP + b.c*(cw + gap), y = FP + b.r*(rh + gap), bw = w*cw + (w - 1)*gap, bh = h*rh + (h - 1)*gap;
+      const tl = wrap(b.t, Math.floor((bw - 20) / 8.5)).slice(0, 2);
+      out += fBox(x, y, bw, bh) + tl.map((l, k) => fLabel(x + 10, y + 20 + k * 16, l, {size:13})).join('') + fStickies(x + 6, y + 14 + tl.length * 16 + 6, bw - 12, bh - 24 - tl.length * 16, byLabel(ex, b.t), i + 7); });
+    return out;
+  };
+  FR.grid = ({rows, cols}, ex) => {
+    const hasRowHead = rows.some(r => r), hasColHead = cols.some(c => c), lw = hasRowHead ? 150 : 0, th = hasColHead ? 34 : 0;
+    const gx = FP + lw, gy = FP + th, gw = FW - 2*FP - lw, gh = FH - 2*FP - th, cw = gw / cols.length, rh = gh / rows.length;
+    let out = fBox(gx, gy, gw, gh, {fill:'none'});
+    cols.forEach((c, i) => { if(i) out += `<line x1="${gx + i*cw}" y1="${FP}" x2="${gx + i*cw}" y2="${FH - FP}" stroke="var(--pv-line)" stroke-width="1.5"/>`; if(c) out += fLabel(gx + i*cw + cw/2, FP + 22, c, {size:13, anchor:'middle'}); });
+    rows.forEach((r, j) => { if(j) out += `<line x1="${FP}" y1="${gy + j*rh}" x2="${FW - FP}" y2="${gy + j*rh}" stroke="var(--pv-line)" stroke-width="1.5"/>`; if(r) wrap(r, 18).slice(0, 2).forEach((l, k) => { out += fLabel(FP + 6, gy + j*rh + 22 + k * 15, l, {size:12.5}); }); });
+    if(hasRowHead){
+      rows.forEach((r, j) => { const items = byLabel(ex, r); const perCol = cols.map(() => []); const rest = [];
+        items.forEach(it => { const m = it.match(/^([^:]{1,40}):\s*(.+)$/); const ci = m ? cols.findIndex(c => c && c.toLowerCase() === m[1].trim().toLowerCase()) : -1; if(ci >= 0) perCol[ci].push(m[2]); else rest.push(it); });
+        let spill = 0; cols.forEach((c, i) => { const its = perCol[i].length ? perCol[i] : (rest.length && i >= cols.length - Math.ceil(rest.length / 1) ? [] : []); out += fStickies(gx + i*cw + 2, gy + j*rh + 4, cw - 4, rh - 8, perCol[i], j * 7 + i); });
+        if(rest.length){ let i = 0; rest.forEach((it, k) => { while(perCol[i] && perCol[i].length && i < cols.length - 1) i++; out += fStickies(gx + i*cw + 2, gy + j*rh + 4, cw - 4, rh - 8, [it], j * 7 + i + k); i = (i + 1) % cols.length; }); }
+      });
+    } else {
+      cols.forEach((c, i) => { const items = byLabel(ex, c); rows.forEach((r, j) => { const slice = items.filter((_, k) => k % rows.length === j); out += fStickies(gx + i*cw + 2, gy + j*rh + 4, cw - 4, rh - 8, slice, i * 3 + j); }); });
+    }
+    return out;
+  };
+  FR.tree = ({levels}, ex) => {
+    const lw = (FW - 2*FP) / levels.length; let out = '', prev = [];
+    levels.forEach((lv, li) => { const x = FP + li*lw + 8, w = lw - 24, items = byLabel(ex, lv.t); const n = Math.max(items.length, 1), gap = (FH - 2*FP - 30) / n, ys = [];
+      out += fLabel(x, FP + 16, lv.t, {size:13, fill:'var(--pv-muted)', weight:600});
+      for(let i = 0; i < n; i++){ const lines = wrap(items[i] || '', Math.floor((w - 16) / 6.2)).slice(0, 3), nh = Math.max(30, lines.length * 13 + 14), y = FP + 30 + gap*i + gap/2 - nh/2; ys.push(y + nh/2);
+        out += fBox(x, y, w, nh, {fill: li === 0 ? 'var(--pv-accent-soft)' : 'var(--pv-fill)'}) + lines.map((l, k) => `<text x="${x + 8}" y="${y + 18 + k * 13}" font-size="11" fill="var(--pv-ink)" font-family="Public Sans, system-ui, sans-serif">${esc(l)}</text>`).join('');
+        if(prev.length){ const py = prev[Math.floor(i * prev.length / n)]; out += `<path d="M${(x - 16).toFixed(1)} ${py.toFixed(1)} C${(x - 6).toFixed(1)} ${py.toFixed(1)} ${(x - 10).toFixed(1)} ${(y + nh/2).toFixed(1)} ${x.toFixed(1)} ${(y + nh/2).toFixed(1)}" fill="none" stroke="var(--pv-line)" stroke-width="1.5"/>`; }
+      }
+      prev = ys; });
+    return out;
+  };
+  FR.flow = ({steps, branch}, ex) => {
+    const n = steps.length, gap = 30, sw = (FW - 2*FP - gap*(n - 1)) / n, sh = 64, y = 60; let out = '';
+    steps.forEach((s, i) => { const x = FP + i*(sw + gap), isQ = /\?$/.test(s);
+      out += isQ ? `<path d="M${x+sw/2} ${y} L${x+sw} ${y+sh/2} L${x+sw/2} ${y+sh} L${x} ${y+sh/2} Z" fill="var(--pv-fill)" stroke="var(--pv-line)" stroke-width="1.5"/>` : fBox(x, y, sw, sh);
+      const parts = s.split(' · '); if(parts.length > 1){ out += fLabel(x + sw/2, y + 26, parts[0], {size:11, anchor:'middle', fill:'var(--pv-muted)', weight:500}) + fLabel(x + sw/2, y + 44, parts[1], {size:13, anchor:'middle'}); } else out += fLabel(x + sw/2, y + sh/2 + 5, s, {size:13, anchor:'middle'});
+      if(i < n - 1) out += `<path d="M${x+sw+4} ${y+sh/2} L${x+sw+gap-4} ${y+sh/2}" stroke="var(--pv-ink)" stroke-width="1.5" marker-end="url(#pv-arrow)"/>`;
+      out += fStickies(x, y + sh + 14, sw, FH - y - sh - 40 - (branch ? 110 : 0), byLabel(ex, s), i + 2);
+    });
+    if(branch){ const bx = FP, by = FH - FP - 100; out += fBox(bx, by, FW - 2*FP, 100, {fill:'var(--pv-warn-soft)'}) + fLabel(bx + 12, by + 22, branch, {size:13}) + fStickies(bx + 8, by + 30, FW - 2*FP - 16, 66, byLabel(ex, branch), 20); }
+    return out;
+  };
+  function renderFilled(layout, blocks, opts = {}){
+    const body = (FR[layout.kind] || (() => ''))(layout, blocks);
+    const cls = opts.class ? ` class="${opts.class}"` : '';
+    return `<svg${cls} viewBox="0 0 ${FW} ${FH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(opts.title || 'Example')}"><defs><marker id="pv-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L6 3L0 6z" fill="var(--pv-ink)"/></marker></defs><rect width="${FW}" height="${FH}" rx="12" fill="var(--pv-bg)"/>${body}</svg>`;
+  }
+  global.Preview = { renderPreview, renderStandalone, renderFilled, W, H, STICKY };
 })(typeof window !== 'undefined' ? window : (typeof module !== 'undefined' ? module.exports : this));

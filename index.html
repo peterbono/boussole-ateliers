@@ -265,16 +265,18 @@ body:has(dialog[open]){overflow:hidden}
 .agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
 .agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
 .agenda b{color:var(--ink);font-weight:600}
-.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec,.ex{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
-.ex-intro{font-size:12.5px;margin:-4px 0 8px}
-.ex-context{font-size:14px;color:var(--ink-2);margin:0 0 12px;line-height:1.45}
-.ex-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;padding:12px;border-radius:12px;background:var(--pv-fill);border:1px solid var(--line)}
-.ex-block{background:var(--pv-bg);border:1px solid var(--pv-line);border-radius:8px;padding:8px 8px 6px;min-width:0}
-.ex-title{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:.01em}
-.ex-items{display:flex;flex-wrap:wrap;gap:6px}
-.sticky{font-size:12px;line-height:1.3;color:#1A2236;background:var(--c);padding:6px 8px;border-radius:3px;box-shadow:0 1px 2px rgba(20,30,60,.15);max-width:100%;transform:rotate(-.4deg)}
-.sticky:nth-child(even){transform:rotate(.5deg)}
-.ex-take{margin-top:12px;padding:10px 12px;border-left:0;border-radius:10px;background:var(--surface-2)}
+.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.pv-seg{margin-bottom:10px}
+.zoom-btn{display:block;width:100%;cursor:zoom-in;border-radius:10px}
+.zoom-btn svg{display:block;width:100%;height:auto}
+dialog.zoom{position:fixed;inset:0;width:100vw;height:100%;max-width:100vw;max-height:100%;border:0;padding:0;margin:0;background:rgba(10,14,28,.92);transform:none;transition:none;cursor:zoom-out}
+dialog.zoom::backdrop{background:transparent}
+#zoom-content{height:100%;display:flex;flex-direction:column;gap:12px;padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box}
+.zoom-head{display:flex;align-items:center;gap:12px;color:#B4BCCF;font-size:13px}
+#zoom-content svg{flex:1;min-height:0;width:100%;height:100%;max-height:calc(100% - 40px);border-radius:12px}
+.ex-intro{font-size:12.5px;margin:8px 0 0}
+.ex-context{font-size:14px;color:var(--ink-2);margin:10px 0 0;line-height:1.45}
+.ex-take{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
 .ex-take b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin-bottom:4px}
 .ex-take p{margin:0;font-size:14px;color:var(--ink);line-height:1.45}
 .dep-group{margin-bottom:10px}
@@ -391,6 +393,7 @@ dialog.run::backdrop{background:var(--bg)}
 
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
 <dialog id="run" class="run" aria-label="Run mode"><div id="run-content"></div></dialog>
+<dialog id="zoom" class="zoom" aria-label="Zoom"><div id="zoom-content"></div></dialog>
 
 <script src="data.js"></script>
 <script src="i18n/en.js"></script>
@@ -774,44 +777,12 @@ const pageUrl = t => (lang === 'fr' ? '/fr/ateliers/' : '/workshops/') + t.id + 
 let EX = null, exPromise = null;
 function loadEx(){ if(EX) return Promise.resolve(EX); if(!exPromise) exPromise = fetch('content/examples.json').then(r => r.ok ? r.json() : {}).then(j => (EX = j)).catch(() => (EX = {})); return exPromise; }
 const STICKY = ['#FFE58F','#B7EB8F','#91D5FF','#FFADD2','#D3ADF7','#FFD591'];
-function exampleHtml(t){
-  const u = UI(), e = EX && EX[t.id] && EX[t.id][lang]; if(!e) return '';
-  let k = 0;
-  return `<section class="ex" id="sec-example">
-    <h3>${esc(u.example)}</h3>
-    <p class="muted ex-intro">${esc(u.exampleIntro)}</p>
-    <p class="ex-context">${esc(e.context)}</p>
-    <div class="ex-board">${e.blocks.map(b => `<div class="ex-block"><div class="ex-title">${esc(b.t)}</div><div class="ex-items">${b.items.map(it => `<div class="sticky" style="--c:${STICKY[k++ % STICKY.length]}">${esc(it)}</div>`).join('')}</div></div>`).join('')}</div>
-    <div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div>
-  </section>`;
-}
-const prepState = {
-  get(id){ return store.get('prep:' + id, []); },
-  set(id, arr){ store.set('prep:' + id, arr); },
-};
-function howToHtml(t){
-  const u = UI(), c = RUN && RUN[t.id] && RUN[t.id][lang]; if(!c) return '';
-  const ph = byId(PHASES, t.phase), done = prepState.get(t.id);
-  const bar = c.agenda.map((a, i) => `<span style="flex:${a.min};--i:${i}" title="${esc(a.t)} · ${a.min} ${esc(u.minutes)}"></span>`).join('');
-  return `
-    <section class="prep" id="sec-prep" style="--h:var(${ph.h})">
-      <h3>${esc(u.prep)}</h3>
-      <ul class="checklist">${c.prep.map((p, i) => `<li><label><input type="checkbox" data-prep="${t.id}" data-i="${i}" ${done[i] ? 'checked' : ''}><span>${esc(p)}</span></label></li>`).join('')}</ul>
-    </section>
-    <section class="agenda-sec" id="sec-agenda" style="--h:var(${ph.h})">
-      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span><button type="button" class="btn small run-btn" data-run="${t.id}">${ICON.play}${esc(u.run)}</button></h3>
-      <div class="timebar" aria-hidden="true">${bar}</div>
-      <ol class="timeline">${c.agenda.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
-    </section>
-    <section class="pitfalls-sec" id="sec-pitfalls">
-      <h3>${esc(u.pitfalls)}</h3>
-      <div class="pitfalls">${c.pitfalls.map(p => `<div class="pitfall">${ICON.warn}<p>${esc(p)}</p></div>`).join('')}</div>
-    </section>
-    <section class="next-sec" id="sec-next" style="--h:var(${ph.h})">
-      <h3>${esc(u.nextStep)}</h3>
-      <div class="next-card"><p>${esc(c.next)}</p>${feedsHtml(t)}</div>
-      ${c.source ? `<p class="muted src">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
-    </section>`;
+function previewBlock(t, filled){
+  const u = UI(), x = tx(t), e = EX && EX[t.id] && EX[t.id][lang];
+  const seg = e ? `<div class="seg pv-seg"><button type="button" aria-pressed="${!filled}" data-pv="empty">${esc(u.pvEmpty)}</button><button type="button" aria-pressed="${!!filled}" data-pv="filled">${esc(u.pvFilled)}</button></div>` : '';
+  const svg = filled && e ? `<button type="button" class="zoom-btn" data-zoom="${t.id}" title="${esc(u.zoom)}">${Preview.renderFilled(LAYOUTS[t.id], e.blocks, {class:'pv', title:u.pvFilled})}</button>` : Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)});
+  const note = filled && e ? `<p class="ex-context">${esc(e.context)}</p><div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div><p class="muted ex-intro">${esc(u.exampleIntro)}</p>` : '';
+  return `${seg}${svg}${note}`;
 }
 function wchip(q, kind){
   const ph = byId(PHASES, q.phase);
@@ -837,13 +808,13 @@ function openPreview(id){
   const t = byId(T, id); if(!t) return;
   const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
   track('open_workshop', {id});
-  const nav = [['sec-overview', u.navOverview], ['sec-example', u.example], ['sec-before', u.before], ['sec-prep', u.prep], ['sec-agenda', u.agenda], ['sec-pitfalls', u.pitfalls], ['sec-next', u.nextStep]];
+  const nav = [['sec-overview', u.navOverview], ['sec-before', u.before], ['sec-prep', u.prep], ['sec-agenda', u.agenda], ['sec-pitfalls', u.pitfalls], ['sec-next', u.nextStep]];
   document.getElementById('dlg-content').innerHTML = `
     <div class="dlg-head" style="--h:var(${ph.h})">
       <div class="dlg-head-row"><span class="chip">${esc(L.phases[ph.id])}</span><button class="close" type="button" data-close aria-label="${esc(u.close)}">${ICON.x}</button></div>
       <nav class="dlg-nav" aria-label="Sections">${nav.map(([id, n]) => `<a href="#${id}" data-jump="${id}">${esc(n)}</a>`).join('')}</nav>
     </div>
-    <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)})}</div>
+    <div class="dlg-pv" id="dlg-pv" data-id="${t.id}">${previewBlock(t, false)}</div>
     <div class="dlg-body" style="--h:var(${ph.h})">
       <section id="sec-overview">
         <h2 id="dlg-title">${esc(x.name)}</h2>
@@ -852,7 +823,6 @@ function openPreview(id){
         ${metaHtml(t)}
         ${actionsHtml(t, false)}
       </section>
-      <div id="ex-slot"></div>
       ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
@@ -860,9 +830,13 @@ function openPreview(id){
     </div>`;
   dlg.showModal(); document.getElementById('dlg-content').scrollTop = 0;
   loadRun().then(() => { const slot = document.getElementById('howto-slot'); if(slot) slot.innerHTML = howToHtml(t); });
-  loadEx().then(() => { const slot = document.getElementById('ex-slot'); if(slot) slot.innerHTML = exampleHtml(t); });
+  loadEx().then(() => { const pvEl = document.getElementById('dlg-pv'); if(pvEl && pvEl.dataset.id === t.id) pvEl.innerHTML = previewBlock(t, false); });
 }
+const zoomDlg = document.getElementById('zoom');
+zoomDlg.addEventListener('click', () => zoomDlg.close());
 dlg.addEventListener('click', e => {
+  const z = e.target.closest('[data-zoom]'); if(z){ const t = byId(T, z.dataset.zoom), ex = EX[t.id][lang]; document.getElementById('zoom-content').innerHTML = `<div class="zoom-head"><span class="chip" style="--h:var(${byId(PHASES, t.phase).h})">${esc(tx(t).name)}</span><span class="muted">${esc(UI().pvFilled)} · ${esc(UI().zoomClose)}</span></div>${Preview.renderFilled(LAYOUTS[t.id], ex.blocks, {class:'pv', title:UI().pvFilled})}`; zoomDlg.showModal(); return; }
+  const pv = e.target.closest('[data-pv]'); if(pv){ const el = document.getElementById('dlg-pv'), t = byId(T, el.dataset.id); el.innerHTML = previewBlock(t, pv.dataset.pv === 'filled'); if(pv.dataset.pv === 'filled') track('view_example', {id:t.id}); return; }
   const j = e.target.closest('[data-jump]'); if(j){ e.preventDefault(); const el = document.getElementById(j.dataset.jump); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); return; }
   const h = e.target.closest('[data-helpful]'); if(!h) return;
   const id = document.querySelector('#dlg-title') && document.querySelector('#dlg-title').textContent;

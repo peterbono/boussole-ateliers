@@ -89,10 +89,9 @@ function workshopPage(lang, t){
 <p class="hint">${esc(u.figjamHint)}${FIGJAM.community ? ` <a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a>` : ''}</p>`;
   const ex = EX[t.id] && EX[t.id][lang];
   if(ex){
-    const STICKY = ['#FFE58F','#B7EB8F','#91D5FF','#FFADD2','#D3ADF7','#FFD591']; let k = 0;
-    html += `<section><h2>${esc(u.example)}</h2><p class="muted" style="font-size:13px;margin:0 0 8px">${esc(u.exampleIntro)}</p><p style="color:var(--ink-2);margin:0 0 12px">${esc(ex.context)}</p>
-<div class="ex-board">${ex.blocks.map(b => `<div class="ex-block"><div class="ex-title">${esc(b.t)}</div><div class="ex-items">${b.items.map(it => `<div class="sticky" style="--c:${STICKY[k++ % STICKY.length]}">${esc(it)}</div>`).join('')}</div></div>`).join('')}</div>
-<div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(ex.takeaway)}</p></div></section>`;
+    html += `<section><h2>${esc(u.pvFilled)}</h2><p style="color:var(--ink-2);margin:0 0 12px">${esc(ex.context)}</p>
+<div class="pv-box">${Preview.renderFilled(LAYOUTS[lang][t.id], ex.blocks, {class:'pv', title:u.pvFilled})}</div>
+<div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(ex.takeaway)}</p></div><p class="muted" style="font-size:13px;margin:8px 0 0">${esc(u.exampleIntro)}</p></section>`;
   }
   if(run){
     html += `<section><h2>${esc(u.howTo)}</h2>
