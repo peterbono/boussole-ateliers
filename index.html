@@ -88,6 +88,20 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .opts.stack{flex-direction:column}
 .opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
 .opts.stack .opt small{font-size:12px;opacity:.75}
+.acc{padding:0}
+.acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:14px 18px;border-radius:16px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-2)}
+.acc[open] summary{border-radius:16px 16px 0 0;border-bottom:1px solid var(--line)}
+.acc .val{grid-column:1;font-size:14px;color:var(--ink);font-weight:500}
+.acc .chev{grid-column:2;grid-row:1/3;align-self:center;width:16px;height:16px;color:var(--ink-3);transition:transform .15s}
+.acc[open] .chev{transform:rotate(180deg)}
+.acc .opts,.acc .checks{padding:12px 14px 14px}
+.checks{display:flex;flex-direction:column;gap:2px}
+.check{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--ink-2)}
+.check:hover{background:var(--surface-2);color:var(--ink)}
+.check input{width:16px;height:16px;margin:0;flex:none}
+.check input:checked + span{color:var(--ink);font-weight:500}
 .reset{align-self:flex-start;font-size:13px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px}
 
 /* résultat */
@@ -199,10 +213,10 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
   <section class="view" id="view-orient" role="tabpanel">
     <div class="orient">
       <aside class="side">
-        <div class="panel q"><div class="q-label">Stade du produit</div><div class="opts stack" data-q="stage"></div></div>
+        <details class="panel q acc" id="acc-stage"><summary><span class="q-label">Stade du produit</span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div></details>
         <div class="panel q"><div class="q-label">Taille produit + tech</div><div class="opts" data-q="team"></div></div>
-        <div class="panel q"><div class="q-label">Déclencheur</div><div class="opts stack" data-q="trigger"></div></div>
-        <div class="panel q"><div class="q-label">Ce qui manque <span style="font-weight:400;color:var(--ink-3)">(plusieurs choix)</span></div><div class="opts" data-q="goals"></div></div>
+        <details class="panel q acc" id="acc-trigger"><summary><span class="q-label">Déclencheur</span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
+        <details class="panel q acc" id="acc-goals"><summary><span class="q-label">Ce qui manque</span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
         <div class="panel q"><div class="q-label">Horizon</div><div class="opts" data-q="horizon"></div></div>
         <button class="reset" id="reset">Réinitialiser</button>
       </aside>
@@ -292,13 +306,23 @@ function renderQuestions(){
       return `<button class="opt" type="button" aria-pressed="${on}" data-q="${q}" data-id="${o.id}">${esc(o.name)}${stack && o.hint ? `<small>${esc(o.hint)}</small>` : ''}</button>`;
     }).join('');
   };
-  mk('stage', STAGES, false, true); mk('team', TEAMS, false, false); mk('trigger', TRIGGERS, false, true); mk('goals', GOALS, true, false); mk('horizon', HORIZONS, false, false);
+  mk('stage', STAGES, false, true); mk('team', TEAMS, false, false); mk('trigger', TRIGGERS, false, true); mk('horizon', HORIZONS, false, false);
+  document.querySelector('[data-q="goals"]').innerHTML = GOALS.map(g => `<label class="check"><input type="checkbox" id="goal-${g.id}" data-goal="${g.id}" ${ans.goals.includes(g.id) ? 'checked' : ''}><span>${esc(g.name)}</span></label>`).join('');
+  document.querySelector('[data-val="stage"]').textContent = byId(STAGES, ans.stage).name;
+  document.querySelector('[data-val="trigger"]').textContent = byId(TRIGGERS, ans.trigger).name;
+  const gs = ans.goals.map(id => byId(GOALS, id).name);
+  document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
 }
 document.querySelector('.side').addEventListener('click', e => {
   const b = e.target.closest('.opt'); if(!b) return;
-  const q = b.dataset.q, id = b.dataset.id;
-  if(q === 'goals'){ const i = ans.goals.indexOf(id); if(i >= 0){ if(ans.goals.length > 1) ans.goals.splice(i, 1); } else ans.goals.push(id); }
-  else ans[q] = id;
+  ans[b.dataset.q] = b.dataset.id;
+  store.set('answers', ans); renderQuestions(); renderResult();
+  const acc = b.closest('details'); if(acc) acc.open = false;
+});
+document.querySelector('.side').addEventListener('change', e => {
+  const c = e.target.closest('[data-goal]'); if(!c) return;
+  const id = c.dataset.goal, i = ans.goals.indexOf(id);
+  if(c.checked){ if(i < 0) ans.goals.push(id); } else if(ans.goals.length > 1) ans.goals.splice(i, 1); else { c.checked = true; return; }
   store.set('answers', ans); renderQuestions(); renderResult();
 });
 document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); store.set('answers', ans); renderQuestions(); renderResult(); });
