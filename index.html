@@ -784,6 +784,34 @@ function previewBlock(t, filled){
   const note = filled && e ? `<p class="ex-context">${esc(e.context)}</p><div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div><p class="muted ex-intro">${esc(u.exampleIntro)}</p>` : '';
   return `${seg}${svg}${note}`;
 }
+const prepState = {
+  get(id){ return store.get('prep:' + id, []); },
+  set(id, arr){ store.set('prep:' + id, arr); },
+};
+function howToHtml(t){
+  const u = UI(), c = RUN && RUN[t.id] && RUN[t.id][lang]; if(!c) return '';
+  const ph = byId(PHASES, t.phase), done = prepState.get(t.id);
+  const bar = c.agenda.map((a, i) => `<span style="flex:${a.min};--i:${i}" title="${esc(a.t)} · ${a.min} ${esc(u.minutes)}"></span>`).join('');
+  return `
+    <section class="prep" id="sec-prep" style="--h:var(${ph.h})">
+      <h3>${esc(u.prep)}</h3>
+      <ul class="checklist">${c.prep.map((p, i) => `<li><label><input type="checkbox" data-prep="${t.id}" data-i="${i}" ${done[i] ? 'checked' : ''}><span>${esc(p)}</span></label></li>`).join('')}</ul>
+    </section>
+    <section class="agenda-sec" id="sec-agenda" style="--h:var(${ph.h})">
+      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span><button type="button" class="btn small run-btn" data-run="${t.id}">${ICON.play}${esc(u.run)}</button></h3>
+      <div class="timebar" aria-hidden="true">${bar}</div>
+      <ol class="timeline">${c.agenda.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
+    </section>
+    <section class="pitfalls-sec" id="sec-pitfalls">
+      <h3>${esc(u.pitfalls)}</h3>
+      <div class="pitfalls">${c.pitfalls.map(p => `<div class="pitfall">${ICON.warn}<p>${esc(p)}</p></div>`).join('')}</div>
+    </section>
+    <section class="next-sec" id="sec-next" style="--h:var(${ph.h})">
+      <h3>${esc(u.nextStep)}</h3>
+      <div class="next-card"><p>${esc(c.next)}</p>${feedsHtml(t)}</div>
+      ${c.source ? `<p class="muted src">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
+    </section>`;
+}
 function wchip(q, kind){
   const ph = byId(PHASES, q.phase);
   return `<button type="button" class="wchip ${kind || ''}" data-open="${q.id}" style="--h:var(${ph.h})" title="${esc(tx(q).out)}"><i></i>${esc(tx(q).name)}</button>`;
