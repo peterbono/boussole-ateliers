@@ -229,7 +229,6 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
-.plan-url{font-size:12px;word-break:break-all;margin:12px 0 0}
 .flow-wrap{margin-top:18px;overflow-x:auto}
 .flow-wrap h4.k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:0 0 8px}
 .flow{display:block;width:100%;height:auto}
@@ -414,8 +413,6 @@ const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.co
 const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
-  link:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-1 1"/><path d="M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l1-1"/></svg>',
-  print:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V2h8v4M4 12H2V7h12v5h-2"/><rect x="4" y="10" width="8" height="4"/></svg>',
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
@@ -550,7 +547,6 @@ function renderResult(){
     </div>
     <div class="result-bar">
       <div class="seg" id="view-seg"><button type="button" aria-pressed="${view === 'steps'}" data-view="steps">${esc(u.viewSteps)}</button><button type="button" aria-pressed="${view === 'plan'}" data-view="plan">${esc(u.viewPlan)}</button></div>
-      <div class="actions"><button class="btn small" type="button" id="copy-link">${ICON.link}${esc(u.copyLink)}</button><button class="btn small" type="button" id="print">${ICON.print}${esc(u.print)}</button></div>
     </div>`;
   if(view === 'plan'){
     html += planHtml(pick, total);
@@ -640,13 +636,10 @@ function planHtml(pick, total){
     ${flowHtml(pick, planSlots(pick))}
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
-    <p class="muted plan-url">${esc(location.href.split('?')[0])}?${new URL(location.href).searchParams.toString()}</p>
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
-  if(e.target.closest('#copy-link')){ const href = syncUrl(); navigator.clipboard && navigator.clipboard.writeText(href).then(() => { const b = document.getElementById('copy-link'); b.textContent = UI().copied; track('copy_link', {stage:ans.stage, trigger:ans.trigger}); }).catch(() => {}); return; }
-  if(e.target.closest('#print')){ window.print(); }
 });
 
 /* ---------- matrice ---------- */
@@ -740,7 +733,6 @@ function openPreview(id){
       <p class="why" style="margin:0"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
       ${metaHtml(t)}
       ${actionsHtml(t, false)}
-      <p class="hint">${esc(u.figjamHint)} ${FIGJAM.community ? `<a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a> · ` : ''}<a href="${pageUrl(t)}">${esc(u.permalink)}</a></p>
       ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
