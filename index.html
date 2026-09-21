@@ -605,7 +605,7 @@ function openPreview(id){
       <p class="why" style="margin:0"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
       ${metaHtml(t)}
       ${actionsHtml(t, false)}
-      <p class="hint">${esc(u.figjamHint)} <a href="${pageUrl(t)}">${esc(u.permalink)}</a></p>
+      <p class="hint">${esc(u.figjamHint)} ${FIGJAM.community ? `<a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a> · ` : ''}<a href="${pageUrl(t)}">${esc(u.permalink)}</a></p>
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
     </div>`;

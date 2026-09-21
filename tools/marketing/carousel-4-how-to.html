@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F2F4F8;--surface:#fff;--surface-2:#E9EDF3;--line:#D6DCE6;--ink:#1A2236;--ink-2:#4A5570;--ink-3:#5F6A85;--accent:#1F4FE0;
+--pv-bg:#FFFFFF;--pv-fill:#F6F7FA;--pv-line:#C9D0DC;--pv-ink:#1A2236;--pv-muted:#6B7590;--pv-accent:#1F4FE0;--pv-accent-soft:#E4EAFC;--pv-warn-soft:#FCE4DA}
+*{box-sizing:border-box}html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0;line-height:1.05;letter-spacing:-.025em}
+.slide{position:relative;width:1920px;height:1080px;padding:96px 120px;display:flex;flex-direction:column}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.pv{display:block;width:100%;height:auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 2px 4px rgba(20,30,60,.05),0 30px 60px -30px rgba(20,30,60,.25);overflow:hidden}
+.chip{display:inline-flex;padding:6px 16px;border-radius:999px;font-size:20px;font-weight:600;background:hsl(var(--h) 75% 90%);color:hsl(var(--h) 45% 28%)}
+.url{position:absolute;left:120px;bottom:64px;font-family:"IBM Plex Mono",monospace;font-size:24px;color:var(--ink-3)}
+.brand{position:absolute;right:120px;bottom:64px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:28px;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:14px;background:var(--accent);color:#fff;font-weight:600;font-size:24px}
+.mono{font-family:"IBM Plex Mono",monospace}
+</style></head><body><div class="slide">
+  <div class="eyebrow">Every workshop comes with a how-to</div>
+  <h2 style="font-size:72px;font-weight:800;margin-top:12px">Preparation, timed agenda, pitfalls</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;align-items:start">
+    <div class="card" style="padding:26px 30px">
+      <span class="chip" style="--h:92">Alignment & delivery</span>
+      <h3 style="font-size:40px;font-weight:700;margin-top:12px">Pre-mortem</h3>
+      <div class="eyebrow" style="font-size:16px;margin:18px 0 6px">Agenda · 1 h</div>
+      <div style="display:grid;grid-template-columns:90px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--line);font-size:18px"><span class="mono" style="color:var(--ink-3)">5 min</span><div><b>Set the scene</b><div style="color:var(--ink-2);margin-top:2px;line-height:1.35">Say it exactly like this: 'It is six months from now. The project failed badly. Not delayed, failed.' Do not soften it.</div></div></div><div style="display:grid;grid-template-columns:90px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--line);font-size:18px"><span class="mono" style="color:var(--ink-3)">10 min</span><div><b>Write the causes</b><div style="color:var(--ink-2);margin-top:2px;line-height:1.35">Everyone writes, in silence, one cause per sticky. Push for volume: at least 5 per person. Nobody speaks.</div></div></div><div style="display:grid;grid-template-columns:90px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--line);font-size:18px"><span class="mono" style="color:var(--ink-3)">15 min</span><div><b>Read around the room</b><div style="color:var(--ink-2);margin-top:2px;line-height:1.35">Go around, one sticky per person per turn, until all are on the board. No comment, no defense, no 'that would never happen'.</div></div></div><div style="display:grid;grid-template-columns:90px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--line);font-size:18px"><span class="mono" style="color:var(--ink-3)">15 min</span><div><b>Group and vote</b><div style="color:var(--ink-2);margin-top:2px;line-height:1.35">Cluster similar causes. Each person gets 3 dots for the causes they find most likely. Take the top 5.</div></div></div><div style="display:grid;grid-template-columns:90px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--line);font-size:18px"><span class="mono" style="color:var(--ink-3)">15 min</span><div><b>Mitigate</b><div style="color:var(--ink-2);margin-top:2px;line-height:1.35">For each of the top 5: what do we change in the plan this week? One action, one owner, one date. Write it in the Mitigations column.</div></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div class="card" style="padding:30px"><div class="eyebrow" style="font-size:16px;margin-bottom:12px">Before</div><ul style="margin:0;padding-left:22px;font-size:21px;color:var(--ink-2);line-height:1.45"><li style="margin:6px 0">The whole project team plus the sponsor. The sponsor must stay for the full hour, not just the opening.</li><li style="margin:6px 0">Send the project plan, or the one-page brief, 2 days before. Everyone must know what is supposed to happen.</li><li style="margin:6px 0">Prepare three columns on the board: Causes of failure, Grouping, Mitigations. Sticky notes ready, one color for everyone.</li></ul></div>
+      <div class="card" style="padding:30px"><div class="eyebrow" style="font-size:16px;margin-bottom:12px">Pitfalls</div><ul style="margin:0;padding-left:22px;font-size:21px;color:var(--ink-2);line-height:1.45"><li style="margin:6px 0">Do not run it without the sponsor. The most useful causes are the ones only the sponsor can fix, and they need to hear them said.</li><li style="margin:6px 0">Stop anyone who argues against a cause during the read-around. The exercise works because nobody is allowed to defend the plan yet.</li><li style="margin:6px 0">Do not leave with 12 mitigations. Five with owners beat twelve without.</li></ul></div>
+    </div>
+  </div>
+  <div class="url">boussole-ateliers.vercel.app</div><div class="brand">Workshop Compass</div>
+</div></body></html>

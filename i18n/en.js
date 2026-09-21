@@ -17,7 +17,7 @@ const I18N_EN = {
     whyStep:'Why this step', prereq:'Prerequisites this plan skips', prereqHint:(a, b)=>`${a} usually feeds ${b}. Run it first, or make sure that input already exists.`,
     viewSteps:'Steps', viewPlan:'Plan', planTitle:'Plan to share', slotSession:'Session', slotDay:(n)=>`Day ${n}`, slotWeek:(n)=>`Week ${n}`, slotWhen:'When', slotWhat:'Workshop', copyLink:'Copy link', copied:'Link copied', print:'Print / PDF', total:'Total',
     howTo:'How to run it', prep:'Before', agenda:'Agenda', pitfalls:'Pitfalls', nextStep:'Afterwards', source:'Source', minutes:'min', loading:'Loading…',
-    helpful:'Was this useful?', yes:'Yes', no:'No', thanks:'Thanks, noted.', permalink:'Workshop page', backToApp:'Back to the compass', openApp:'Find the right sequence', allWorkshops:'All workshops',
+    helpful:'Was this useful?', yes:'Yes', no:'No', thanks:'Thanks, noted.', communityLink:'Get the file on Figma Community', permalink:'Workshop page', backToApp:'Back to the compass', openApp:'Find the right sequence', allWorkshops:'All workshops',
   },
   stages:{
     idee:    {name:'Idea / pre-product',  short:'Idea',       hint:'Nothing is built yet, we are looking for the right problem'},

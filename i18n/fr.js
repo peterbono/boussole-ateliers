@@ -17,7 +17,7 @@ const I18N_FR = {
     whyStep:'Pourquoi cette étape', prereq:'Prérequis que ce plan saute', prereqHint:(a, b)=>`${a} alimente normalement ${b}. Fais-le avant, ou assure-toi que cet input existe déjà.`,
     viewSteps:'Étapes', viewPlan:'Plan', planTitle:'Plan à partager', slotSession:'Session', slotDay:(n)=>`Jour ${n}`, slotWeek:(n)=>`Semaine ${n}`, slotWhen:'Quand', slotWhat:'Atelier', copyLink:'Copier le lien', copied:'Lien copié', print:'Imprimer / PDF', total:'Total',
     howTo:'Comment l\'animer', prep:'Avant', agenda:'Déroulé', pitfalls:'Pièges', nextStep:'Ensuite', source:'Source', minutes:'min', loading:'Chargement…',
-    helpful:'C\'était utile ?', yes:'Oui', no:'Non', thanks:'Merci, c\'est noté.', permalink:'Page de l\'atelier', backToApp:'Retour à la boussole', openApp:'Trouver la bonne séquence', allWorkshops:'Tous les ateliers',
+    helpful:'C\'était utile ?', yes:'Oui', no:'Non', thanks:'Merci, c\'est noté.', communityLink:'Récupérer le fichier sur Figma Community', permalink:'Page de l\'atelier', backToApp:'Retour à la boussole', openApp:'Trouver la bonne séquence', allWorkshops:'Tous les ateliers',
   },
   stages:{
     idee: {name:'Idée / pré-produit', short:'Idée', hint:'Rien n\'est construit, on cherche le bon problème'},

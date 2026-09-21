@@ -82,7 +82,7 @@ function workshopPage(lang, t){
 <dl class="meta"><div><dt>${esc(u.dur)}</dt><dd>${fmtDur(t.dur, u, lang)}</dd></div><div><dt>${esc(u.who)}</dt><dd>${esc(x.who)}</dd></div><div><dt>${esc(u.out)}</dt><dd>${esc(x.out)}</dd></div><div><dt>${esc(u.filterStage)}</dt><dd>${stages}</dd></div></dl>
 <div class="pv-box">${Preview.renderPreview(LAYOUTS[lang][t.id], {class:'pv', title:u.preview(x.name)})}</div>
 <div class="cta">${fj ? `<a class="btn primary" href="${fj}" target="_blank" rel="noopener">${esc(u.openFigjam)}</a>` : ''}<a class="btn" href="/?open=${t.id}${lang === 'fr' ? '&lang=fr' : ''}">${esc(u.openApp)}</a></div>
-<p class="hint">${esc(u.figjamHint)}</p>`;
+<p class="hint">${esc(u.figjamHint)}${FIGJAM.community ? ` <a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a>` : ''}</p>`;
   if(run){
     html += `<section><h2>${esc(u.howTo)}</h2>
 <h3 class="k">${esc(u.prep)}</h3><ul>${run.prep.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
@@ -120,7 +120,7 @@ for(const lang of ['en','fr']){
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>${SITE}/</loc></url>\n${urls.map(u => `<url><loc>${SITE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 const L = I18N.en;
-let llms = `# ${L.title}\n\n> Pick your product stage and what is blocking: get the sequence of product workshops to run, a preview of each template, a how-to and a FigJam board. Free, English and French.\n\nApp: ${SITE}/\n\n## Workshops by phase\n\n`;
+let llms = `# ${L.title}\n\n> Pick your product stage and what is blocking: get the sequence of product workshops to run, a preview of each template, a how-to and a FigJam board. Free, English and French.\n\nApp: ${SITE}/\nFigJam file (Figma Community): ${FIGJAM.community}\n\n## Workshops by phase\n\n`;
 for(const ph of PHASES){ llms += `### ${L.phases[ph.id]}\n\n`; for(const t of T.filter(t => t.phase === ph.id)){ const x = L.templates[t.id]; llms += `- [${x.name}](${SITE}${pageUrl('en', t.id)}): ${x.desc} Duration ${fmtDur(t.dur, L.ui, 'en')}. ${x.why}\n`; } llms += '\n'; }
 llms += `## Stages\n\n${STAGES.map(s => `- ${L.stages[s.id].name}: ${L.stages[s.id].hint}`).join('\n')}\n\n## French version\n\n${SITE}${base.fr}\n`;
 fs.writeFileSync(path.join(dist, 'llms.txt'), llms);
