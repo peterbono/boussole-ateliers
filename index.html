@@ -167,7 +167,7 @@ table.list{border-collapse:collapse;width:100%;min-width:960px;font-size:13.5px;
 .list td.stages{color:var(--ink-3);min-width:150px}
 .list td.stages b{color:var(--ink);font-weight:600}
 .list td .actions{justify-content:flex-end}
-.list .chip{white-space:nowrap}
+.list .chip{white-space:normal;display:inline-block;line-height:1.25;text-align:left;padding:4px 10px}
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
 .filters .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px}
@@ -269,6 +269,7 @@ body:has(dialog[open]){overflow:hidden}
 .deps ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
 .deps li{display:grid;grid-template-columns:minmax(140px,45%) 1fr;gap:10px;align-items:baseline;font-size:13.5px;color:var(--ink-2);padding:6px 0;border-bottom:1px dashed var(--line)}
 .deps li:last-child{border-bottom:0}
+.deps ul.anyof{border-left:2px solid var(--line);padding-left:10px}
 .deps li button{text-align:left;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:3px}
 .deps li button:hover{text-decoration-color:var(--accent);color:var(--accent)}
 .helpful{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
@@ -460,18 +461,23 @@ function recommend(a){
     if(x.t.triggers.includes(a.trigger)) r.push(u.reasons.trigger);
     const g = x.t.goals.filter(g => a.goals.includes(g)).map(g => L.goals[g].toLowerCase());
     if(g.length) r.push(u.reasons.goals(g.join(', ')));
-    const feeds = pick.slice(i + 1).find(y => (CHAIN[y.t.id] || {inputs:[]}).inputs.includes(x.t.id));
+    const feeds = pick.slice(i + 1).find(y => chainInputs(y.t.id).includes(x.t.id));
     if(feeds) r.push(u.reasons.feeds(tx(feeds.t).name));
-    const builds = pick.slice(0, i).find(y => (CHAIN[x.t.id] || {inputs:[]}).inputs.includes(y.t.id));
+    const builds = pick.slice(0, i).find(y => chainInputs(x.t.id).includes(y.t.id));
     if(builds && !feeds) r.push(u.reasons.builds(tx(builds.t).name));
     x.reasons = r;
   });
-  // prérequis sautés : un input pertinent à ce stade, absent du plan, pour un atelier retenu
+  // prérequis sautés : un "needs" absent du plan, ou un groupe "anyOf" dont aucun membre n'est dans le plan
   const prereqs = [];
+  const ok = t => t && t.fit[si] >= 1 && !(t.minTeam && team < t.minTeam);
   pick.forEach(x => {
-    const ins = (CHAIN[x.t.id] || {inputs:[]}).inputs.filter(id => !ids.includes(id));
-    const best = ins.map(id => byId(T, id)).filter(t => t && t.fit[si] >= 2 && !(t.minTeam && team < t.minTeam)).sort((p, q) => q.fit[si] - p.fit[si])[0];
-    if(best && !prereqs.some(p => p.from.id === best.id)) prereqs.push({from: best, to: x.t});
+    const c = CHAIN[x.t.id] || {};
+    (c.needs || []).forEach(id => { if(ids.includes(id)) return; const t = byId(T, id); if(ok(t) && !prereqs.some(p => p.from.id === id)) prereqs.push({from: t, to: x.t}); });
+    (c.anyOf || []).forEach(group => {
+      if(group.some(id => ids.includes(id))) return;
+      const best = group.map(id => byId(T, id)).filter(ok).sort((p, q) => q.fit[si] - p.fit[si])[0];
+      if(best && !prereqs.some(p => p.from.id === best.id)) prereqs.push({from: best, to: x.t});
+    });
   });
   return {pick, scored, prereqs: prereqs.slice(0, 3)};
 }
@@ -594,7 +600,7 @@ function flowHtml(pick, slots){
   const rows = [...prereqs.map(p => ({t:p.from, missing:true})), ...pick.map(x => ({t:x.t}))];
   const idx = {}; rows.forEach((r, i) => { idx[r.t.id] = i; });
   const edges = [];
-  rows.forEach((r, i) => { if(r.missing) return; (CHAIN[r.t.id] || {inputs:[]}).inputs.forEach(src => { const j = idx[src]; if(j !== undefined && j < i) edges.push([j, i]); }); });
+  rows.forEach((r, i) => { if(r.missing) return; chainInputs(r.t.id).forEach(src => { const j = idx[src]; if(j !== undefined && j < i) edges.push([j, i]); }); });
   if(!edges.length) return '';
   const RH = 46, R = 9, LW = 11, lanes = Math.min(7, Math.max(...edges.map(([a, b]) => b - a)));
   const G = 34 + lanes * LW, cx = G - 16, H = rows.length * RH;
@@ -706,7 +712,7 @@ function renderLibrary(){
   list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
   document.getElementById('count').textContent = list.length + ' / ' + T.length;
   if(lib.mode === 'list'){
-    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:20%"><col style="width:14%"><col style="width:16%"><col style="width:7%"><col style="width:14%"><col style="width:18%"><col style="width:11%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
+    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:20%"><col style="width:17%"><col style="width:15%"><col style="width:7%"><col style="width:13%"><col style="width:17%"><col style="width:11%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
     return;
   }
   document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(u.empty)}</div>`;
@@ -729,13 +735,18 @@ function howToHtml(t){
   </section>`;
 }
 function depsHtml(t){
-  const u = UI();
-  const ins = (CHAIN[t.id] || {inputs:[]}).inputs.map(id => byId(T, id)).filter(Boolean);
-  const outs = T.filter(q => (CHAIN[q.id] || {inputs:[]}).inputs.includes(t.id));
+  const u = UI(), c = CHAIN[t.id] || {};
+  const get = ids => (ids || []).map(id => byId(T, id)).filter(Boolean);
+  const needs = get(c.needs), anyOf = (c.anyOf || []).map(get).filter(g => g.length), helps = get(c.helps);
+  const outs = T.filter(q => chainInputs(q.id).includes(t.id));
   const row = q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(tx(q).out)}</span></li>`;
+  const any = anyOf.map(g => `<h4>${esc(u.needsAnyOf)}</h4><ul class="anyof">${g.map(row).join('')}</ul>`).join('');
   return `<section class="deps">
     <h3>${esc(u.before)}</h3>
-    ${ins.length ? `<h4>${esc(u.needsFrom)}</h4><ul>${ins.map(row).join('')}</ul>` : `<p class="muted">${esc(u.noDeps)}</p>`}
+    ${needs.length ? `<h4>${esc(u.needsRequired)}</h4><ul>${needs.map(row).join('')}</ul>` : ''}
+    ${any}
+    ${helps.length ? `<h4>${esc(u.needsHelpful)}</h4><ul>${helps.map(row).join('')}</ul>` : ''}
+    ${!needs.length && !anyOf.length && !helps.length ? `<p class="muted">${esc(u.noDeps)}</p>` : ''}
     ${outs.length ? `<h4>${esc(u.feedsInto)}</h4><ul>${outs.map(q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(L.phases[q.phase])}</span></li>`).join('')}</ul>` : ''}
   </section>`;
 }

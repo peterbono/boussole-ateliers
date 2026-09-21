@@ -3,7 +3,7 @@
 const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..'), dist = path.join(root, 'dist');
 const { T, PHASES, STAGES, FIGJAM } = require(path.join(root, 'data.js'));
-const { CHAIN } = require(path.join(root, 'chain.js'));
+const { CHAIN, chainInputs } = require(path.join(root, 'chain.js'));
 const { SOURCES } = require(path.join(root, 'sources.js'));
 const I18N = { en: require(path.join(root, 'i18n/en.js')).I18N, fr: require(path.join(root, 'i18n/fr.js')).I18N };
 const LAYOUTS = { en: require(path.join(root, 'layouts.en.js')).LAYOUTS, fr: require(path.join(root, 'layouts.fr.js')).LAYOUTS };
@@ -67,9 +67,9 @@ function workshopPage(lang, t){
   const desc = `${x.desc} ${x.why}`.slice(0, 300);
   const fj = figjamUrl(t);
   const stages = STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(L.stages[s.id].short)}</b>` : esc(L.stages[s.id].short)) : null).filter(Boolean).join(' · ');
-  const inputs = (CHAIN[t.id] || {inputs:[]}).inputs.map(id => T.find(q => q.id === id)).filter(Boolean);
-  const outputs = T.filter(q => (CHAIN[q.id] || {inputs:[]}).inputs.includes(t.id));
-  const related = [...inputs.map(q => ({q, k:u.reasons.builds ? (lang === 'en' ? 'Input' : 'Input') : ''})), ...outputs.map(q => ({q, k: lang === 'en' ? 'Feeds' : 'Alimente'}))];
+  const c = CHAIN[t.id] || {}, get = ids => (ids || []).map(id => T.find(q => q.id === id)).filter(Boolean);
+  const outputs = T.filter(q => chainInputs(q.id).includes(t.id));
+  const related = [...get(c.needs).map(q => ({q, k:u.needsRequired})), ...(c.anyOf || []).flatMap(g => get(g).map(q => ({q, k:u.needsAnyOf}))), ...get(c.helps).map(q => ({q, k:u.needsHelpful})), ...outputs.map(q => ({q, k: lang === 'en' ? 'Feeds' : 'Alimente'}))];
   const ld = {'@context':'https://schema.org', '@type':'HowTo', name:x.name, description:x.desc, inLanguage:lang, totalTime:`PT${Math.round(t.dur*60)}M`, url:SITE + url};
   if(run) ld.step = run.agenda.map((a, i) => ({'@type':'HowToStep', position:i + 1, name:a.t, text:a.d}));
   const extra = `<link rel="alternate" hreflang="${alt}" href="${SITE}${altUrl}"><link rel="alternate" hreflang="${lang}" href="${SITE}${url}"><link rel="alternate" hreflang="x-default" href="${SITE}${pageUrl('en', t.id)}">\n<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`;
