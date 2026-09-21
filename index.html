@@ -230,6 +230,16 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
 .plan-url{font-size:12px;word-break:break-all;margin:12px 0 0}
+.gantt{display:flex;flex-direction:column;min-width:520px}
+.g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
+.g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.g-phase{padding:10px 0 4px}
+.g-row{min-height:46px;padding:0 0 8px;border-bottom:1px dashed var(--line);background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / var(--n) - 1px),var(--line) calc(100% / var(--n) - 1px),var(--line) calc(100% / var(--n)))}
+.g-bar{display:flex;flex-direction:column;justify-content:center;gap:1px;min-height:40px;padding:5px 9px;border-radius:8px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));border:1px solid hsl(var(--h) 40% calc(var(--chip-l) - 10%));font-size:12px;line-height:1.2;overflow:hidden;transition:transform .12s,box-shadow .12s}
+.g-bar b{font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.g-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.8}
+.g-bar:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+@media print{.g-bar{box-shadow:none}}
 .howto{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .howto h3{font-size:16px}
 .howto h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
@@ -550,18 +560,41 @@ function renderResult(){
 
 /* ---------- plan (roadmap partageable) ---------- */
 function planSlots(pick){
-  // demi : une session ; semaine : un atelier par jour ; programme : répartition sur 6 à 8 semaines, ~1 atelier par semaine, les longs prennent leur place
+  // demi : une session ; semaine : un atelier par jour ; programme : ~1 atelier par semaine, les longs (design sprint, PI) prennent 2 semaines
   const u = UI();
-  if(ans.horizon === 'demi') return pick.map(x => ({label:u.slotSession, x}));
-  if(ans.horizon === 'semaine') return pick.map((x, i) => ({label:u.slotDay(i + 1), x}));
-  let week = 1; return pick.map(x => { const slot = {label:u.slotWeek(week), x}; week += x.t.dur >= 14 ? 2 : 1; return slot; });
+  if(ans.horizon === 'demi') return pick.map((x, i) => ({label:u.slotSession, x, start:i, span:1}));
+  if(ans.horizon === 'semaine') return pick.map((x, i) => ({label:u.slotDay(i + 1), x, start:i, span:1}));
+  // programme : on remplit chaque semaine jusqu'à ~6 h de facilitation ; un atelier de 2 jours ou plus occupe 2 semaines seul
+  let week = 0, used = 0; return pick.map(x => {
+    const d = x.t.dur;
+    if(d >= 14){ if(used > 0){ week++; used = 0; } const slot = {label:u.slotWeek(week + 1), x, start:week, span:2}; week += 2; used = 0; return slot; }
+    if(used > 0 && used + d > 6){ week++; used = 0; }
+    const slot = {label:u.slotWeek(week + 1), x, start:week, span:1}; used += d; return slot;
+  });
+}
+function ganttHtml(slots){
+  const u = UI();
+  const n = slots.reduce((m, s) => Math.max(m, s.start + s.span), 0);
+  const cols = Array.from({length:n}, (_, i) => ans.horizon === 'demi' ? `${u.slotSession} ${i + 1}` : ans.horizon === 'semaine' ? u.slotDay(i + 1) : u.slotWeek(i + 1));
+  const phases = PHASES.filter(p => slots.some(s => s.x.t.phase === p.id));
+  let html = `<div class="gantt" style="--n:${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
+  phases.forEach(p => {
+    html += `<div class="g-phase" style="--h:var(${p.h})"><span class="chip">${esc(L.phases[p.id])}</span></div><div class="g-row" style="--h:var(${p.h})">`;
+    slots.filter(s => s.x.t.phase === p.id).forEach(s => {
+      const x = tx(s.x.t);
+      html += `<button type="button" class="g-bar" style="grid-column:${s.start + 1} / span ${s.span}" data-open="${s.x.t.id}" title="${esc(x.name)} · ${fmtDur(s.x.t.dur)}"><b>${esc(x.name)}</b><small>${fmtDur(s.x.t.dur)}</small></button>`;
+    });
+    html += `</div>`;
+  });
+  return html + `</div>`;
 }
 function planHtml(pick, total){
   const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
   const rows = planSlots(pick).map((s, i) => { const x = tx(s.x.t); return `<tr><td class="mono">${esc(s.label)}</td><td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[s.x.t.phase])}</span></td><td class="mono">${fmtDur(s.x.t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`; }).join('');
   return `<section class="plan">
     <div class="plan-head"><h3>${esc(u.planTitle)}</h3><p class="muted">${esc(st.name)} · ${esc(tr.name)} · ${esc(L.horizons[ans.horizon])}</p></div>
-    <div class="plan-wrap"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
+    <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
+    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
     <p class="muted plan-url">${esc(location.href.split('?')[0])}?${new URL(location.href).searchParams.toString()}</p>
   </section>`;
