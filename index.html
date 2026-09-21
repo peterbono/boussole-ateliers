@@ -155,8 +155,10 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* liste */
 .list-wrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-table.list{border-collapse:collapse;width:100%;min-width:960px;font-size:13.5px;table-layout:fixed}
-.list td:nth-child(4),.list td:last-child{white-space:nowrap}
+table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px;table-layout:fixed}
+.list td:nth-child(4){white-space:nowrap}
+.list td:last-child{padding-left:6px;padding-right:10px}
+.list td:last-child .btn{white-space:nowrap}
 .list th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface-2)}
 .list td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle;color:var(--ink-2)}
 .list tr:last-child td{border-bottom:0}
@@ -653,7 +655,7 @@ function renderLibrary(){
   list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
   document.getElementById('count').textContent = list.length + ' / ' + T.length;
   if(lib.mode === 'list'){
-    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:20%"><col style="width:17%"><col style="width:15%"><col style="width:7%"><col style="width:13%"><col style="width:17%"><col style="width:11%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
+    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:19%"><col style="width:16%"><col style="width:14%"><col style="width:6%"><col style="width:13%"><col style="width:17%"><col style="width:15%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
     return;
   }
   document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(u.empty)}</div>`;
