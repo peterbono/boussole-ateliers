@@ -105,6 +105,13 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .check:hover{background:var(--surface-2);color:var(--ink)}
 .check input{width:16px;height:16px;margin:0;flex:none;accent-color:var(--ink)}
 .check input:checked + span{color:var(--ink);font-weight:500}
+.diag{padding:0 14px 14px}
+.diag-toggle{font-size:13px;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.diag-body{display:flex;flex-direction:column;gap:14px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.diag-q{display:flex;flex-direction:column;gap:6px}
+.diag-q .t{font-size:13.5px;font-weight:600;color:var(--ink)}
+.diag-res{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:13px;color:var(--ink-2)}
+.diag-res b{color:var(--ink)}
 .reset{align-self:flex-start;font-size:13px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px}
 
 /* résultat */
@@ -261,7 +268,7 @@ body:has(dialog[open]){overflow:hidden}
   <section class="view" id="view-orient" role="tabpanel">
     <div class="orient">
       <aside class="side">
-        <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div></details>
+        <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
         <details class="panel q acc" id="acc-goals"><summary><span class="q-label" data-ui="q.goals"></span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
@@ -322,6 +329,43 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
   if(p.get('goals')){ const g = p.get('goals').split(',').filter(v => ok(GOALS, v)); if(g.length) ans.goals = g; }
 })();
 let view = store.get('view', 'steps');
+let diag = store.get('diag', {open:false, a:[null,null,null,null,null,null]});
+function diagnose(a){
+  // score par stade à partir des 6 réponses (index 0..2), puis équipe et manques déduits
+  const sc = {idee:0, prepmf:0, postpmf:0, scale:0, mature:0};
+  const [use, ret, teams, q, legacy, road] = a;
+  if(use === 0){ sc.idee += 4; } if(use === 1){ sc.prepmf += 3; sc.postpmf += 1; } if(use === 2){ sc.postpmf += 1; sc.scale += 1; sc.mature += 2; }
+  if(ret === 0){ sc.idee += 1; sc.prepmf += 2; } if(ret === 1){ sc.prepmf += 2; sc.postpmf += 1; } if(ret === 2){ sc.postpmf += 3; sc.scale += 1; sc.mature += 1; }
+  if(teams === 0){ sc.prepmf += 1; sc.postpmf += 2; } if(teams === 1){ sc.scale += 3; } if(teams === 2){ sc.scale += 2; sc.mature += 2; }
+  if(legacy === 1){ sc.mature += 1; } if(legacy === 2){ sc.mature += 3; }
+  if(road === 0){ sc.idee += 1; sc.prepmf += 1; } if(road === 1){ sc.postpmf += 1; } if(road === 2){ sc.scale += 2; sc.mature += 1; }
+  const answered = a.filter(v => v !== null).length;
+  if(!answered) return null;
+  const stage = Object.entries(sc).sort((x, y) => y[1] - x[1])[0][0];
+  const team = teams === null ? null : ['s','m','l'][teams];
+  const goals = [];
+  if(q === 0){ goals.push('users','ideas'); } if(q === 2){ goals.push('process','align'); } if(q === 1){ goals.push('prio'); }
+  if(road === 2) goals.push('align'); if(ret === 0 || ret === 1) goals.push('measure'); if(legacy === 2) goals.push('design');
+  return {stage, team, goals:[...new Set(goals)], answered};
+}
+function renderDiag(){
+  const d = UI().diag, body = document.getElementById('diag-body');
+  document.getElementById('diag-toggle').textContent = diag.open ? d.close : d.open;
+  body.hidden = !diag.open;
+  if(!diag.open) return;
+  const r = diagnose(diag.a);
+  body.innerHTML = d.q.map((q, i) => `<div class="diag-q"><div class="t">${esc(q.t)}</div><div class="opts">${q.o.map((o, j) => `<button class="opt" type="button" aria-pressed="${diag.a[i] === j}" data-diag="${i}" data-v="${j}">${esc(o)}</button>`).join('')}</div></div>`).join('')
+    + `<div class="diag-res"><span>${esc(d.suggested)} : <b>${r ? esc(L.stages[r.stage].name) : '…'}</b></span><span class="muted">${esc(d.apply)}</span></div>`;
+}
+document.getElementById('diag').addEventListener('click', e => {
+  if(e.target.closest('#diag-toggle')){ diag.open = !diag.open; store.set('diag', diag); renderDiag(); return; }
+  const b = e.target.closest('[data-diag]'); if(!b) return;
+  const i = +b.dataset.diag, v = +b.dataset.v;
+  diag.a[i] = diag.a[i] === v ? null : v; store.set('diag', diag);
+  const r = diagnose(diag.a);
+  if(r){ ans.stage = r.stage; if(r.team) ans.team = r.team; if(diag.a[3] !== null && r.goals.length) ans.goals = r.goals; saveAns(); }
+  renderDiag(); renderQuestions(); renderResult();
+});
 function syncUrl(){
   const url = new URL(location.href);
   ['stage','team','trigger','horizon'].forEach(k => url.searchParams.set(k, ans[k]));
@@ -434,7 +478,7 @@ function renderQuestions(){
   document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
 }
 document.querySelector('.side').addEventListener('click', e => {
-  const b = e.target.closest('.opt'); if(!b) return;
+  const b = e.target.closest('.opt'); if(!b || !b.dataset.q) return;
   ans[b.dataset.q] = b.dataset.id;
   saveAns(); renderQuestions(); renderResult();
   const acc = b.closest('details'); if(acc) acc.open = false;
@@ -647,7 +691,7 @@ document.querySelector('.lang').addEventListener('click', e => {
 });
 
 /* ---------- boot ---------- */
-function renderAll(){ applyStatic(); renderQuestions(); renderResult(); renderMatrix(); renderFilters(); renderLibrary(); }
+function renderAll(){ applyStatic(); renderQuestions(); renderDiag(); renderResult(); renderMatrix(); renderFilters(); renderLibrary(); }
 renderAll();
 const savedTab = store.get('tab', 'orient');
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
