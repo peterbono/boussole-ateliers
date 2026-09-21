@@ -154,10 +154,11 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 .cell button{text-align:left;color:var(--ink-2);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .12s}
 .cell button:hover{color:var(--ink);text-decoration-color:var(--line-strong)}
 .cell button.strong{color:var(--ink);font-weight:600}
-.legend{font-size:13.5px;color:var(--ink-3);gap:16px}
+.legend{font-size:13.5px;color:var(--ink-2);gap:16px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
 .legend b{color:var(--ink);font-weight:700}
-.legend .opt-like{color:var(--ink-2)}
-.legend .muted{color:var(--ink-3);font-style:italic}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.dot.ink{background:var(--ink)}.dot.grey{background:var(--ink-3)}
 
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
@@ -228,7 +229,7 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
   </section>
 
   <section class="view" id="view-matrix" role="tabpanel" hidden>
-    <div class="toolbar legend"><span>Pour chaque stade :</span><span><b>Atelier à proposer en priorité</b></span><span class="opt-like">Atelier utile selon la situation</span><span class="muted">Absent = pas adapté à ce stade</span></div>
+    <div class="toolbar legend"><span>Pour chaque stade :</span><span><i class="dot ink"></i><b>Atelier à proposer en priorité</b></span><span><i class="dot grey"></i>Atelier utile selon la situation</span></div>
     <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
   </section>
 
