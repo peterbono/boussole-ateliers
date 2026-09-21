@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boussole Ateliers</title>
+<meta name="description" content="Choisis le stade produit et ce qui bloque : tu obtiens la séquence d'ateliers à proposer, l'aperçu de chaque template et son fichier FigJam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F2F4F8; --surface:#FFFFFF; --surface-2:#E9EDF3; --line:#D6DCE6; --line-strong:#B9C2D0;
+  --ink:#1A2236; --ink-2:#4A5570; --ink-3:#5F6A85;
+  --accent:#1F4FE0; --accent-ink:#FFFFFF; --accent-soft:#E4EAFC;
+  --chip-l:90%; --chip-s:75%; --chip-text-l:28%;
+  --shadow:0 1px 2px rgba(20,30,60,.06), 0 8px 24px -12px rgba(20,30,60,.18);
+  --h-cadrage:258; --h-strategie:222; --h-research:168; --h-ideation:46; --h-prio:22; --h-conception:335; --h-alignement:92; --h-mesure:200;
+  --pv-bg:#FFFFFF; --pv-fill:#F6F7FA; --pv-line:#C9D0DC; --pv-ink:#1A2236; --pv-muted:#6B7590; --pv-accent:#1F4FE0; --pv-accent-soft:#E4EAFC; --pv-warn-soft:#FCE4DA;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111624; --surface:#1A2133; --surface-2:#222B40; --line:#2E3850; --line-strong:#3E4A66;
+    --ink:#EDF0F7; --ink-2:#B4BCCF; --ink-3:#8E99B5;
+    --accent:#7C9BFF; --accent-ink:#0E1424; --accent-soft:#26304D;
+    --chip-l:24%; --chip-s:35%; --chip-text-l:82%;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    --pv-bg:#151B2B; --pv-fill:#1F2739; --pv-line:#3A4560; --pv-ink:#E6EAF3; --pv-muted:#8E99B5; --pv-accent:#7C9BFF; --pv-accent-soft:#26304D; --pv-warn-soft:#46261C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111624; --surface:#1A2133; --surface-2:#222B40; --line:#2E3850; --line-strong:#3E4A66;
+  --ink:#EDF0F7; --ink-2:#B4BCCF; --ink-3:#8E99B5;
+  --accent:#7C9BFF; --accent-ink:#0E1424; --accent-soft:#26304D;
+  --chip-l:24%; --chip-s:35%; --chip-text-l:82%;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  --pv-bg:#151B2B; --pv-fill:#1F2739; --pv-line:#3A4560; --pv-ink:#E6EAF3; --pv-muted:#8E99B5; --pv-accent:#7C9BFF; --pv-accent-soft:#26304D; --pv-warn-soft:#46261C;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+::selection{background:var(--accent);color:var(--accent-ink)}
+html{accent-color:var(--accent)}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;text-wrap:balance;margin:0;line-height:1.15}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:20px 60px}
+svg.pv{display:block;width:100%;height:auto;border-radius:6px}
+
+/* header */
+.hdr{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.hdr h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+.hdr p{margin:6px 0 0;color:var(--ink-2);max-width:56ch}
+.tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:12px}
+.tabs button{padding:8px 14px;border-radius:9px;color:var(--ink-2);font-weight:600;font-size:14px}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.view[hidden]{display:none}
+
+/* boutons */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;text-decoration:none;transition:background .12s,border-color .12s}
+.btn:hover{border-color:var(--line-strong);background:var(--surface-2)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+.btn svg{width:14px;height:14px;flex:none}
+.btn.small{padding:5px 9px;font-size:12px}
+
+/* layout orienter */
+.orient{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
+@media (max-width:860px){.orient{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.side{position:sticky;top:env(safe-area-inset-top,0px);display:flex;flex-direction:column;gap:20px;max-height:100vh;overflow:auto}
+@media (max-width:860px){.side{position:static;max-height:none}}
+.q{display:flex;flex-direction:column;gap:8px}
+.q-label{display:flex;align-items:baseline;gap:6px;font-size:13px;color:var(--ink-2);font-weight:600}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13.5px;line-height:1.2;color:var(--ink-2);transition:background .12s,border-color .12s}
+.opt:hover{border-color:var(--line-strong);color:var(--ink)}
+.opt:active{transform:translateY(1px)}
+.opt[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.opts.stack{flex-direction:column}
+.opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.opts.stack .opt small{font-size:12px;opacity:.75}
+.reset{align-self:flex-start;font-size:13px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px}
+
+/* résultat */
+.summary{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;margin-bottom:18px}
+.summary h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.015em}
+.summary p{margin:4px 0 0;color:var(--ink-2)}
+.stats{display:flex;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:500}
+.steps{display:flex;flex-direction:column;position:relative}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px;position:relative;padding-bottom:18px}
+.step::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.step:last-child::before{display:none}
+.step .num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;background:var(--surface);border:2px solid var(--ink);color:var(--ink);font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px 20px}
+@media (max-width:700px){.card{grid-template-columns:1fr}}
+.card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.01em;flex:1 1 auto;min-width:200px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
+.why{margin:0 0 12px;color:var(--ink);max-width:70ch}
+.why b{font-weight:600}
+.desc{margin:0 0 12px;color:var(--ink-2);max-width:70ch}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 18px;padding-top:12px;border-top:1px dashed var(--line);margin:0}
+.meta div{font-size:13.5px;color:var(--ink-2)}
+.meta dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.meta dd{margin:0;color:var(--ink)}
+.side-pv{display:flex;flex-direction:column;gap:8px}
+.side-pv button.pvbtn{display:block;border-radius:8px;border:1px solid var(--line);overflow:hidden;transition:border-color .12s}
+.side-pv button.pvbtn:hover{border-color:var(--accent)}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+.phase-break{display:flex;align-items:center;gap:10px;margin:6px 0 14px 58px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.phase-break::after{content:"";flex:1;height:1px;background:var(--line)}
+.aside{margin-top:26px;padding:16px 18px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.aside h3{font-size:15px;margin-bottom:8px}
+.aside ul{margin:0;padding-left:18px;color:var(--ink-2)}
+.aside li{margin:3px 0}
+.aside li button{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+/* matrice */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
+.seg{display:inline-flex;background:var(--surface-2);padding:3px;border-radius:9px;gap:2px}
+.seg button{padding:5px 11px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.matrix-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
+.matrix th,.matrix td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
+.matrix th{background:var(--surface-2);font-weight:600;font-size:14px;position:sticky;top:0}
+.matrix th small{display:block;font-weight:400;color:var(--ink-3);font-size:12px;margin-top:2px}
+.matrix td:first-child,.matrix th:first-child{position:sticky;left:0;background:var(--surface-2);z-index:1;min-width:150px}
+.matrix td:last-child,.matrix th:last-child{border-right:0}
+.matrix tr:last-child td{border-bottom:0}
+.cell{display:flex;flex-direction:column;gap:4px}
+.cell button{text-align:left;color:var(--ink-2);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .12s}
+.cell button:hover{color:var(--ink);text-decoration-color:var(--line-strong)}
+.cell button.strong{color:var(--ink);font-weight:600}
+.matrix-note{margin:14px 0 0;color:var(--ink-2);font-size:14px}
+.phase-section{margin-top:26px}
+.phase-section h3{font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.phase-section h3::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* bibliothèque et cards */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.filters .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;min-width:220px}
+.search input{border:0;background:none;font:inherit;color:var(--ink);width:100%;outline:none}
+.search input::placeholder{color:var(--ink-3)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:18px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.tcard .pvbtn{display:block;border-radius:8px;border:1px solid var(--line);overflow:hidden;transition:border-color .12s}
+.tcard .pvbtn:hover{border-color:var(--accent)}
+.tcard h3{font-size:16px;font-weight:700}
+.tcard p{margin:0;color:var(--ink-2);font-size:13.5px}
+.tcard .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tcard .fit{display:flex;gap:3px;margin-left:auto}
+.fit i{width:8px;height:8px;border-radius:2px;background:var(--line);display:block}
+.fit i.f1{background:hsl(var(--h) 50% 70%)}.fit i.f2{background:hsl(var(--h) 60% 55%)}.fit i.f3{background:hsl(var(--h) 70% 42%)}
+.tcard .actions{margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+.empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
+
+/* dialog aperçu */
+dialog{border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--ink);max-width:min(960px,calc(100vw - 32px));width:100%;box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(10,14,28,.55)}
+.dlg{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,1fr);gap:0}
+@media (max-width:760px){.dlg{grid-template-columns:1fr}}
+.dlg-pv{padding:20px;background:var(--surface-2);border-radius:18px 0 0 18px}
+@media (max-width:760px){.dlg-pv{border-radius:18px 18px 0 0}}
+.dlg-pv svg{border:1px solid var(--line);background:var(--pv-bg)}
+.dlg-body{padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.dlg-body h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.dlg-body .close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line)}
+.dlg-body .close:hover{background:var(--surface-2)}
+.dlg-body .meta{border-top:1px dashed var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.hint{font-size:13px;color:var(--ink-3);margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <div>
+      <h1>Boussole Ateliers</h1>
+      <p>Choisis le stade de l'entreprise et ce qui bloque : tu obtiens la séquence d'ateliers à proposer, l'aperçu de chaque template et son board FigJam prêt à dupliquer.</p>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Vues">
+      <button role="tab" aria-selected="true" data-tab="orient">Orienter</button>
+      <button role="tab" aria-selected="false" data-tab="matrix">Matrice</button>
+      <button role="tab" aria-selected="false" data-tab="library">Bibliothèque</button>
+    </nav>
+  </header>
+
+  <section class="view" id="view-orient" role="tabpanel">
+    <div class="orient">
+      <aside class="side">
+        <div class="panel q"><div class="q-label">Stade du produit</div><div class="opts stack" data-q="stage"></div></div>
+        <div class="panel q"><div class="q-label">Taille produit + tech</div><div class="opts" data-q="team"></div></div>
+        <div class="panel q"><div class="q-label">Déclencheur</div><div class="opts stack" data-q="trigger"></div></div>
+        <div class="panel q"><div class="q-label">Ce qui manque <span style="font-weight:400;color:var(--ink-3)">(plusieurs choix)</span></div><div class="opts" data-q="goals"></div></div>
+        <div class="panel q"><div class="q-label">Horizon</div><div class="opts" data-q="horizon"></div></div>
+        <button class="reset" id="reset">Réinitialiser</button>
+      </aside>
+      <main id="result"></main>
+    </div>
+  </section>
+
+  <section class="view" id="view-matrix" role="tabpanel" hidden>
+    <div class="toolbar">
+      <div class="seg" id="matrix-mode"><button aria-pressed="true" data-mode="table">Tableau</button><button aria-pressed="false" data-mode="cards">Cards</button></div>
+      <div class="seg" id="matrix-stage" hidden></div>
+    </div>
+    <div id="matrix-table" class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+    <p class="matrix-note" id="matrix-note">Gras = template central à ce stade. Normal = utile selon le contexte. Une case vide veut dire : ne propose pas cet atelier là, il arrive trop tôt ou trop tard. Clique un nom pour l'aperçu.</p>
+    <div id="matrix-cards" hidden></div>
+  </section>
+
+  <section class="view" id="view-library" role="tabpanel" hidden>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="library"></div>
+  </section>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="layouts.js"></script>
+<script src="preview.js"></script>
+<script>
+/* ---------- utilitaires ---------- */
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('boussole:'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('boussole:'+k, JSON.stringify(v)); }catch(e){} },
+};
+const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine'};
+let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
+let lib = {phase:'all', stage:'all', q:''};
+let matrixMode = 'table', matrixStage = 'postpmf';
+
+const byId = (arr, id) => arr.find(x => x.id === id);
+const phaseIdx = id => PHASES.findIndex(p => p.id === id);
+const stageIdx = id => STAGES.findIndex(s => s.id === id);
+const fmtDur = h => h >= 7 ? (Math.round(h/7) + ' j') : (h < 1 ? Math.round(h*60) + ' min' : (h % 1 ? h.toFixed(1).replace('.', ',') : h) + ' h');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:'Aperçu ' + t.name});
+const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
+const ICON = {
+  figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
+  copy:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V4a1 1 0 0 1 1-1h7"/></svg>',
+  eye:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg>',
+  x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+};
+function actionsHtml(t, small){
+  const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
+  const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}Ouvrir dans FigJam</a>`
+                 : `<span class="${cls} primary" aria-disabled="true" title="Le fichier FigJam arrive">${ICON.figjam}FigJam bientôt</span>`;
+  return `<div class="actions">${fj}<button class="${cls}" type="button" data-copy="png" data-id="${t.id}">${ICON.copy}Copier l'image</button><button class="${cls}" type="button" data-copy="svg" data-id="${t.id}">${ICON.copy}SVG</button></div>`;
+}
+let toastT;
+function toast(msg){ const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 1800); }
+
+/* ---------- moteur ---------- */
+function recommend(a){
+  const si = stageIdx(a.stage);
+  const team = byId(TEAMS, a.team).size;
+  const cap = byId(HORIZONS, a.horizon).cap;
+  const scored = T.map(t => {
+    const fit = t.fit[si];
+    if(fit === 0) return null;
+    if(t.minTeam && team < t.minTeam) return null;
+    let s = fit * 3;
+    const gm = t.goals.filter(g => a.goals.includes(g)).length;
+    s += Math.min(gm, 2) * 2;
+    if(t.triggers.includes(a.trigger)) s += 3;
+    if(a.horizon === 'demi' && t.dur > 4) s -= 6;
+    if(a.horizon === 'semaine' && t.dur > 8) s -= 3;
+    return {t, s, fit};
+  }).filter(Boolean);
+  scored.sort((x, y) => y.s - x.s || phaseIdx(x.t.phase) - phaseIdx(y.t.phase));
+  const min = a.horizon === 'programme' ? 8 : 9;
+  let pick = [];
+  if(a.horizon === 'programme'){
+    PHASES.forEach(p => { const best = scored.find(x => x.t.phase === p.id && x.s >= min); if(best) pick.push(best); });
+    scored.forEach(x => { if(pick.length < cap && !pick.includes(x) && x.s >= min) pick.push(x); });
+  } else pick = scored.filter(x => x.s >= min).slice(0, cap);
+  if(pick.length === 0) pick = scored.slice(0, Math.min(cap, 3));
+  pick.sort((x, y) => phaseIdx(x.t.phase) - phaseIdx(y.t.phase) || y.s - x.s);
+  return {pick, scored};
+}
+
+/* ---------- questionnaire ---------- */
+function renderQuestions(){
+  const mk = (q, list, multi, stack) => {
+    document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
+      const on = multi ? ans[q].includes(o.id) : ans[q] === o.id;
+      return `<button class="opt" type="button" aria-pressed="${on}" data-q="${q}" data-id="${o.id}">${esc(o.name)}${stack && o.hint ? `<small>${esc(o.hint)}</small>` : ''}</button>`;
+    }).join('');
+  };
+  mk('stage', STAGES, false, true); mk('team', TEAMS, false, false); mk('trigger', TRIGGERS, false, true); mk('goals', GOALS, true, false); mk('horizon', HORIZONS, false, false);
+}
+document.querySelector('.side').addEventListener('click', e => {
+  const b = e.target.closest('.opt'); if(!b) return;
+  const q = b.dataset.q, id = b.dataset.id;
+  if(q === 'goals'){ const i = ans.goals.indexOf(id); if(i >= 0){ if(ans.goals.length > 1) ans.goals.splice(i, 1); } else ans.goals.push(id); }
+  else ans[q] = id;
+  store.set('answers', ans); renderQuestions(); renderResult();
+});
+document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); store.set('answers', ans); renderQuestions(); renderResult(); });
+
+/* ---------- parcours ---------- */
+function stepCard(t, n){
+  const ph = byId(PHASES, t.phase);
+  return `<article class="step">
+    <div class="num">${n}</div>
+    <div class="card" style="--h:var(${ph.h})">
+      <div>
+        <div class="card-top"><h3>${esc(t.name)}</h3><span class="chip">${esc(ph.name)}</span></div>
+        <p class="why"><b>Pourquoi maintenant.</b> ${esc(t.why)}</p>
+        <p class="desc">${esc(t.desc)}</p>
+        <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
+      </div>
+      <div class="side-pv">
+        <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
+        ${actionsHtml(t, true)}
+      </div>
+    </div>
+  </article>`;
+}
+function renderResult(){
+  const {pick, scored} = recommend(ans);
+  const st = byId(STAGES, ans.stage), tr = byId(TRIGGERS, ans.trigger), hz = byId(HORIZONS, ans.horizon);
+  const total = pick.reduce((s, x) => s + x.t.dur, 0);
+  let html = `<div class="summary">
+      <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
+      <p>${pick.length} atelier${pick.length > 1 ? 's' : ''} dans l'ordre, pour ${esc(hz.name.toLowerCase())}. Chaque board s'ouvre dans FigJam, à dupliquer dans ton espace.</p></div>
+      <div class="stats"><span>Temps facilité <b>${fmtDur(total)}</b></span><span>Phases <b>${new Set(pick.map(x => x.t.phase)).size}</b></span></div>
+    </div><div class="steps">`;
+  let lastPhase = null;
+  pick.forEach((x, i) => {
+    if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(byId(PHASES, x.t.phase).name)}</div>`; lastPhase = x.t.phase; }
+    html += stepCard(x.t, i + 1);
+  });
+  html += '</div>';
+  const si = stageIdx(ans.stage);
+  const next = scored.filter(x => !pick.includes(x)).slice(0, 4);
+  const skip = T.filter(t => t.fit[si] === 0).slice(0, 6);
+  html += `<div class="aside">`;
+  if(next.length) html += `<h3>Si tu as plus de temps, ensuite</h3><ul>${next.map(x => `<li><button type="button" data-open="${x.t.id}">${esc(x.t.name)}</button></li>`).join('')}</ul>`;
+  if(skip.length) html += `<h3 style="margin-top:14px">À ne pas proposer à ce stade</h3><p style="margin:0 0 6px;color:var(--ink-2);font-size:14px">${si <= 1 ? 'Trop tôt' : 'Dépassé'} pour "${esc(st.short)}" :</p><ul>${skip.map(t => `<li>${esc(t.name)}</li>`).join('')}</ul>`;
+  html += `</div>`;
+  document.getElementById('result').innerHTML = html;
+}
+
+/* ---------- matrice ---------- */
+function renderMatrix(){
+  let html = `<thead><tr><th>Phase</th>${STAGES.map(s => `<th>${esc(s.short)}<small>${esc(s.hint)}</small></th>`).join('')}</tr></thead><tbody>`;
+  PHASES.forEach(p => {
+    html += `<tr><td style="--h:var(${p.h})"><span class="chip">${esc(p.name)}</span></td>`;
+    STAGES.forEach((s, si) => {
+      const items = T.filter(t => t.phase === p.id && t.fit[si] >= 2).sort((a, b) => b.fit[si] - a.fit[si]);
+      html += `<td><div class="cell">${items.map(t => `<button type="button" class="${t.fit[si] === 3 ? 'strong' : ''}" data-open="${t.id}">${esc(t.name)}</button>`).join('')}</div></td>`;
+    });
+    html += '</tr>';
+  });
+  document.getElementById('matrix').innerHTML = html + '</tbody>';
+}
+function tcard(t, si){
+  const ph = byId(PHASES, t.phase);
+  return `<div class="tcard" style="--h:var(${ph.h})">
+    <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
+    <div class="row"><span class="chip">${esc(ph.name)}</span><span class="fit" title="Pertinence par stade : ${STAGES.map((s, i) => s.short + ' ' + t.fit[i]).join(', ')}">${t.fit.map(f => `<i class="f${f}"></i>`).join('')}</span></div>
+    <h3>${esc(t.name)}</h3>
+    <p>${esc(t.desc)}</p>
+    <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(t.who)}</p>
+    ${actionsHtml(t, true)}
+  </div>`;
+}
+function renderMatrixCards(){
+  const si = stageIdx(matrixStage);
+  let html = '';
+  PHASES.forEach(p => {
+    const items = T.filter(t => t.phase === p.id && t.fit[si] >= 2).sort((a, b) => b.fit[si] - a.fit[si]);
+    if(!items.length) return;
+    html += `<section class="phase-section" style="--h:var(${p.h})"><h3><span class="chip">${esc(p.name)}</span></h3><div class="grid" style="margin-top:0">${items.map(t => tcard(t, si)).join('')}</div></section>`;
+  });
+  document.getElementById('matrix-cards').innerHTML = html;
+}
+function renderMatrixStageSeg(){
+  document.getElementById('matrix-stage').innerHTML = STAGES.map(s => `<button type="button" aria-pressed="${matrixStage === s.id}" data-stage="${s.id}">${esc(s.short)}</button>`).join('');
+}
+document.getElementById('matrix-mode').addEventListener('click', e => {
+  const b = e.target.closest('[data-mode]'); if(!b) return;
+  matrixMode = b.dataset.mode; store.set('matrixMode', matrixMode);
+  document.querySelectorAll('#matrix-mode button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const cards = matrixMode === 'cards';
+  document.getElementById('matrix-table').hidden = cards; document.getElementById('matrix-note').hidden = cards;
+  document.getElementById('matrix-cards').hidden = !cards; document.getElementById('matrix-stage').hidden = !cards;
+  if(cards) renderMatrixCards();
+});
+document.getElementById('matrix-stage').addEventListener('click', e => {
+  const b = e.target.closest('[data-stage]'); if(!b) return;
+  matrixStage = b.dataset.stage; store.set('matrixStage', matrixStage); renderMatrixStageSeg(); renderMatrixCards();
+});
+
+/* ---------- bibliothèque ---------- */
+function renderFilters(){
+  const btn = (k, id, name) => `<button class="opt" type="button" aria-pressed="${lib[k] === id}" data-k="${k}" data-id="${id}">${esc(name)}</button>`;
+  document.getElementById('filters').innerHTML =
+    `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="Chercher un atelier" value="${esc(lib.q)}" aria-label="Chercher un atelier"></label>`
+    + '<span class="sep"></span>' + btn('phase', 'all', 'Toutes les phases') + PHASES.map(p => btn('phase', p.id, p.name)).join('')
+    + '<span class="sep"></span>' + btn('stage', 'all', 'Tous stades') + STAGES.map(s => btn('stage', s.id, s.short)).join('')
+    + `<span class="count" id="count"></span>`;
+}
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('.opt'); if(!b) return;
+  lib[b.dataset.k] = b.dataset.id; renderFilters(); renderLibrary(); document.getElementById('lib-q').blur();
+});
+document.getElementById('filters').addEventListener('input', e => { if(e.target.id === 'lib-q'){ lib.q = e.target.value; renderLibrary(); } });
+function renderLibrary(){
+  const si = lib.stage === 'all' ? -1 : stageIdx(lib.stage);
+  const q = lib.q.trim().toLowerCase();
+  const list = T.filter(t => (lib.phase === 'all' || t.phase === lib.phase) && (si < 0 || t.fit[si] >= 2)
+    && (!q || (t.name + ' ' + t.desc + ' ' + t.out).toLowerCase().includes(q)));
+  list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
+  document.getElementById('count').textContent = list.length + ' / ' + T.length;
+  document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || '<div class="empty">Aucun atelier ne correspond. Élargis les filtres ou change le mot-clé.</div>';
+}
+
+/* ---------- aperçu (dialog) ---------- */
+const dlg = document.getElementById('dlg');
+function openPreview(id){
+  const t = byId(T, id); if(!t) return;
+  const ph = byId(PHASES, t.phase);
+  document.getElementById('dlg-content').innerHTML = `
+    <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:'Aperçu ' + t.name})}</div>
+    <div class="dlg-body" style="--h:var(${ph.h})">
+      <button class="close" type="button" data-close aria-label="Fermer">${ICON.x}</button>
+      <span class="chip" style="align-self:flex-start">${esc(ph.name)}</span>
+      <h2 id="dlg-title">${esc(t.name)}</h2>
+      <p class="desc" style="margin:0">${esc(t.desc)}</p>
+      <p class="why" style="margin:0"><b>Quand.</b> ${esc(t.why)}</p>
+      <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
+      ${actionsHtml(t, false)}
+      <p class="hint">${figjamUrl(t) ? 'Dans FigJam : Fichier → Dupliquer dans tes brouillons, puis garde la section de cet atelier.' : 'En attendant le fichier FigJam : "Copier l\'image" colle le board dans FigJam, "SVG" colle des vecteurs dans Figma.'}</p>
+    </div>`;
+  dlg.showModal();
+}
+dlg.addEventListener('click', e => { if(e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
+
+/* ---------- copier ---------- */
+async function copyTemplate(id, mode){
+  const t = byId(T, id); const svg = Preview.renderStandalone(LAYOUTS[id], t.name);
+  try{
+    if(mode === 'png' && navigator.clipboard && window.ClipboardItem){
+      const blob = await svgToPng(svg, 1280, 800);
+      await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+      toast('Image copiée : colle-la dans FigJam (Cmd+V)'); return;
+    }
+    await navigator.clipboard.writeText(svg);
+    toast(mode === 'png' ? 'SVG copié (image non supportée ici)' : 'SVG copié : colle-le dans Figma');
+  }catch(err){ toast('Copie impossible dans ce navigateur'); }
+}
+function svgToPng(svg, w, h){
+  return new Promise((res, rej) => {
+    const img = new Image(); const url = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
+    img.onload = () => { const c = document.createElement('canvas'); c.width = w * 2; c.height = h * 2; const ctx = c.getContext('2d'); ctx.scale(2, 2); ctx.drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url); c.toBlob(b => b ? res(b) : rej(new Error('png')), 'image/png'); };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('svg')); };
+    img.src = url;
+  });
+}
+
+/* ---------- délégation globale ---------- */
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]'); if(o){ openPreview(o.dataset.open); return; }
+  const c = e.target.closest('[data-copy]'); if(c){ copyTemplate(c.dataset.id, c.dataset.copy); }
+});
+
+/* ---------- onglets ---------- */
+document.querySelector('.tabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-tab]'); if(!b) return;
+  document.querySelectorAll('.tabs [role=tab]').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('.view').forEach(v => v.hidden = v.id !== 'view-' + b.dataset.tab);
+  store.set('tab', b.dataset.tab);
+});
+
+/* ---------- boot ---------- */
+renderQuestions(); renderResult(); renderMatrix(); renderMatrixStageSeg(); renderFilters(); renderLibrary();
+matrixStage = store.get('matrixStage', ans.stage); renderMatrixStageSeg();
+if(store.get('matrixMode', 'table') === 'cards') document.querySelector('#matrix-mode [data-mode="cards"]').click();
+const savedTab = store.get('tab', 'orient');
+if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
+</script>
+</body>
+</html>
