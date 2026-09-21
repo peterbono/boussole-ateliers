@@ -144,8 +144,11 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
-.filters .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px}
-.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;min-width:220px}
+.select{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 6px 0 12px;height:36px;font-size:13.5px;color:var(--ink-3)}
+.select select{border:0;background:transparent;font:inherit;font-weight:600;color:var(--ink);padding:6px 4px;outline:none;max-width:240px;cursor:pointer}
+.select:focus-within{border-color:var(--accent)}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;height:36px;min-width:220px}
+.search:focus-within{border-color:var(--accent)}
 .search input{border:0;background:none;font:inherit;color:var(--ink);width:100%;outline:none}
 .search input::placeholder{color:var(--ink-3)}
 .count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);margin-left:auto}
@@ -376,16 +379,16 @@ function tcard(t, si){
 }
 /* ---------- bibliothèque ---------- */
 function renderFilters(){
-  const btn = (k, id, name) => `<button class="opt" type="button" aria-pressed="${lib[k] === id}" data-k="${k}" data-id="${id}">${esc(name)}</button>`;
+  const opt = (id, name, cur) => `<option value="${id}"${cur === id ? ' selected' : ''}>${esc(name)}</option>`;
   document.getElementById('filters').innerHTML =
     `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="Chercher un atelier" value="${esc(lib.q)}" aria-label="Chercher un atelier"></label>`
-    + '<span class="sep"></span>' + btn('phase', 'all', 'Toutes les phases') + PHASES.map(p => btn('phase', p.id, p.name)).join('')
-    + '<span class="sep"></span>' + btn('stage', 'all', 'Tous stades') + STAGES.map(s => btn('stage', s.id, s.short)).join('')
+    + `<label class="select"><span>Phase</span><select id="lib-phase">${opt('all', 'Toutes', lib.phase)}${PHASES.map(p => opt(p.id, p.name, lib.phase)).join('')}</select></label>`
+    + `<label class="select"><span>Stade</span><select id="lib-stage">${opt('all', 'Tous', lib.stage)}${STAGES.map(s => opt(s.id, s.name, lib.stage)).join('')}</select></label>`
     + `<span class="count" id="count"></span>`;
 }
-document.getElementById('filters').addEventListener('click', e => {
-  const b = e.target.closest('.opt'); if(!b) return;
-  lib[b.dataset.k] = b.dataset.id; renderFilters(); renderLibrary(); document.getElementById('lib-q').blur();
+document.getElementById('filters').addEventListener('change', e => {
+  if(e.target.id === 'lib-phase'){ lib.phase = e.target.value; renderLibrary(); }
+  if(e.target.id === 'lib-stage'){ lib.stage = e.target.value; renderLibrary(); }
 });
 document.getElementById('filters').addEventListener('input', e => { if(e.target.id === 'lib-q'){ lib.q = e.target.value; renderLibrary(); } });
 function renderLibrary(){
