@@ -22,7 +22,7 @@ const I18N_FR = {
         {t:'Y a-t-il des parties du produit que personne n\'ose toucher ?', o:['Non','Quelques-unes','Beaucoup']},
         {t:'D\'où vient la roadmap ?', o:['De la tête d\'une personne','D\'un backlog partagé','De plusieurs équipes qui négocient']},
       ]},
-    before:'Avant de commencer', needsRequired:'Indispensable', needsAnyOf:'Un seul suffit', needsHelpful:'Utile, pas bloquant', feedsInto:'Ton livrable alimente', flowTitle:'Dépendances dans ce plan', notInPlan:'hors plan', noDeps:'Cet atelier n\'a pas de prérequis : il peut ouvrir une séquence.',
+    before:'Avant de commencer', needsRequired:'Indispensable', needsAnyOf:'Un seul suffit', needsHelpful:'Utile, pas bloquant', feedsInto:'Ton livrable alimente', noDeps:'Cet atelier n\'a pas de prérequis : il peut ouvrir une séquence.',
     reasons:{core:(s)=>`Central en ${s}`, fit:(s)=>`Utile en ${s}`, trigger:'Répond à ton déclencheur', goals:(g)=>`Couvre ${g}`, feeds:(n)=>`Alimente ${n}`, builds:(n)=>`S\'appuie sur ${n}`},
     whyStep:'Pourquoi cette étape', prereq:'Prérequis que ce plan saute', prereqHint:(a, b)=>`${a} alimente normalement ${b}. Fais-le avant, ou assure-toi que cet input existe déjà.`,
     viewSteps:'Étapes', viewPlan:'Plan', planTitle:'Plan à partager', slotSession:'Session', slotDay:(n)=>`Jour ${n}`, slotWeek:(n)=>`Semaine ${n}`, slotWhen:'Quand', slotWhat:'Atelier', copyLink:'Copier le lien', copied:'Lien copié', print:'Imprimer / PDF', total:'Total',
