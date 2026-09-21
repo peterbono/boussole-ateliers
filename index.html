@@ -191,8 +191,7 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .tcard p{margin:0;color:var(--ink-2);font-size:13.5px}
 .tcard .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .stags{display:flex;flex-wrap:wrap;gap:4px}
-.stag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;color:var(--ink-3);border:1px solid var(--line);background:transparent}
-.stag.core{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.stag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;color:var(--bg);background:var(--ink)}
 .tcard .actions{margin-top:auto;padding-top:6px}
 .tcard .actions .btn{width:100%;justify-content:center;padding:10px 12px;font-size:13.5px}
 .empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
@@ -450,7 +449,7 @@ const ICON = {
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
-const stageTags = t => `<span class="stags">${STAGES.map((s, i) => t.fit[i] >= 2 ? `<span class="stag${t.fit[i] === 3 ? ' core' : ''}">${esc(L.stages[s.id].short)}</span>` : '').join('')}</span>`;
+const stageTags = t => `<span class="stags">${STAGES.map((s, i) => t.fit[i] === 3 ? `<span class="stag">${esc(L.stages[s.id].short)}</span>` : '').join('')}</span>`;
 function actionsHtml(t, small){
   const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
   const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}${esc(UI().openFigjam)}</a>`
