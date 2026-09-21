@@ -1,0 +1,650 @@
+{
+  "impact-effort": {
+    "en": {
+      "prep": [
+        "Invite the PM and the tech lead only. More than 4 people and the debate about effort never ends.",
+        "Send the list of candidate items the day before, one line each. Nobody should discover an item during the session.",
+        "Put every item on the board as a sticky before the session, stacked outside the matrix. Draw the two axes and label the four quadrants."
+      ],
+      "agenda": [
+        {"t": "Frame", "min": 5, "d": "Say what impact means today (one metric, one goal) and what effort means (person-weeks, not lines of code). Write both definitions next to the axes."},
+        {"t": "Silent placement", "min": 15, "d": "Each person drags every sticky to where they think it belongs, in silence. Duplicate the stickies with a color per person if you want to see the spread."},
+        {"t": "Resolve the gaps", "min": 25, "d": "Only discuss the items where placements differ by more than one quadrant. Two minutes per item, the tech lead has the last word on effort, the PM on impact."},
+        {"t": "Cut and commit", "min": 10, "d": "Delete the Avoid quadrant out loud. Number the quick wins in the order you will ship them. Name one owner for the top big bet."},
+        {"t": "Close", "min": 5, "d": "Screenshot the board and write the three decisions in the channel before people leave the call."}
+      ],
+      "pitfalls": [
+        "Do not let effort become a tech-only estimate. Ask what it costs design, support and legal too, or half your quick wins are not quick.",
+        "Put a hard cap of 25 items. Beyond that, run a first pass by theme, then one matrix per theme.",
+        "Refuse to place an item in the middle of the board. Force a quadrant: the center is where undecided things go to die."
+      ],
+      "next": "The quick wins go straight into the next sprint, the big bets get a RICE score or a one-page PRD before anyone commits. Re-run the matrix each quarter, not each week.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le PM et le tech lead, pas plus. Au-delà de 4 personnes, le débat sur l'effort ne s'arrête jamais.",
+        "Envoie la liste des sujets candidats la veille, une ligne par sujet. Personne ne doit découvrir un item en séance.",
+        "Pose chaque sujet en sticky sur le board avant la session, empilés hors de la matrice. Trace les deux axes et nomme les quatre quadrants."
+      ],
+      "agenda": [
+        {"t": "Cadrer", "min": 5, "d": "Dis ce que veut dire impact aujourd'hui (une métrique, un objectif) et ce que veut dire effort (des semaines-personnes, pas des lignes de code). Écris les deux définitions à côté des axes."},
+        {"t": "Placement silencieux", "min": 15, "d": "Chacun déplace chaque sticky là où il pense qu'il va, en silence. Duplique les stickies avec une couleur par personne si tu veux voir les écarts."},
+        {"t": "Traiter les écarts", "min": 25, "d": "Ne discute que les sujets où les placements diffèrent de plus d'un quadrant. Deux minutes par sujet, le tech lead tranche l'effort, le PM tranche l'impact."},
+        {"t": "Couper et s'engager", "min": 10, "d": "Supprime le quadrant À éviter à voix haute. Numérote les quick wins dans l'ordre où tu les livreras. Nomme un responsable pour le gros pari en tête."},
+        {"t": "Clôturer", "min": 5, "d": "Capture le board et écris les trois décisions dans le canal avant que les gens quittent l'appel."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas l'effort devenir une estimation purement tech. Demande ce que ça coûte au design, au support et au juridique, sinon la moitié de tes quick wins ne sont pas rapides.",
+        "Impose un plafond de 25 sujets. Au-delà, fais une première passe par thème, puis une matrice par thème.",
+        "Refuse de placer un sujet au centre du board. Force un quadrant : le centre, c'est là où meurent les sujets indécis."
+      ],
+      "next": "Les quick wins partent directement dans le prochain sprint, les gros paris reçoivent un score RICE ou un PRD d'une page avant tout engagement. Refais la matrice chaque trimestre, pas chaque semaine.",
+      "source": ""
+    }
+  },
+  "rice": {
+    "en": {
+      "prep": [
+        "Invite the PM, the tech lead and someone from data. Data is there to challenge Reach numbers, not to watch.",
+        "Pre-fill the table with the initiatives and a Reach figure sourced from analytics for each one. Reach guessed live is the number one cause of bad scores.",
+        "Write the scales on the board before starting: Impact 3 / 2 / 1 / 0.5 / 0.25, Confidence 100 / 80 / 50 %, Effort in person-months."
+      ],
+      "agenda": [
+        {"t": "Align on the scales", "min": 10, "d": "Read the scales aloud and pick one initiative everyone knows as the reference: 'this one is Impact 2, Effort 1'. Every other score is relative to it."},
+        {"t": "Reach", "min": 20, "d": "Go down the list. For each initiative, data confirms or corrects the number of users touched per quarter. Write the source next to the figure."},
+        {"t": "Impact and Confidence", "min": 40, "d": "PM proposes, the table challenges. Confidence drops to 50 % whenever nobody can cite evidence. Do not let anyone put 100 % on an idea nobody tested."},
+        {"t": "Effort", "min": 30, "d": "Tech lead estimates in person-months including design and QA. Round to the nearest 0.5. If two initiatives get the same effort, ask which one they would rather build first and why."},
+        {"t": "Compute and read", "min": 15, "d": "Fill the Score column. Read the top 5 aloud and ask: does this order surprise anyone? If yes, check the inputs, not the formula."},
+        {"t": "Decide", "min": 5, "d": "Freeze the top 5 for the quarter. Note which scores relied on a Confidence below 80 % and plan the experiment that would raise it."}
+      ],
+      "pitfalls": [
+        "Do not tune the scores until the order matches what the loudest person wanted. If the table needs tuning, the scales were unclear: fix the scales.",
+        "Keep Reach as a count of users, never a percentage. Percentages hide the fact that 40 % of a small segment is nothing.",
+        "Score in one session and stop. RICE is a conversation starter, not a spreadsheet you polish for a week."
+      ],
+      "next": "The top 5 feed the roadmap or the Now column of a Now / Next / Later. Anything scored with low Confidence goes to an experiment board before it gets built.",
+      "source": "Intercom"
+    },
+    "fr": {
+      "prep": [
+        "Invite le PM, le tech lead et quelqu'un de la data. La data est là pour challenger les chiffres de Reach, pas pour regarder.",
+        "Pré-remplis le tableau avec les initiatives et un chiffre de Reach sourcé dans l'analytics pour chacune. Un Reach deviné en séance, c'est la première cause de mauvais scores.",
+        "Écris les échelles sur le board avant de commencer : Impact 3 / 2 / 1 / 0,5 / 0,25, Confiance 100 / 80 / 50 %, Effort en mois-personne."
+      ],
+      "agenda": [
+        {"t": "Aligner les échelles", "min": 10, "d": "Lis les échelles à voix haute et choisis une initiative que tout le monde connaît comme référence : 'celle-là, c'est Impact 2, Effort 1'. Tous les autres scores sont relatifs à elle."},
+        {"t": "Reach", "min": 20, "d": "Descends la liste. Pour chaque initiative, la data confirme ou corrige le nombre d'utilisateurs touchés par trimestre. Écris la source à côté du chiffre."},
+        {"t": "Impact et Confiance", "min": 40, "d": "Le PM propose, la table challenge. La confiance tombe à 50 % dès que personne ne peut citer une preuve. Ne laisse personne mettre 100 % sur une idée que personne n'a testée."},
+        {"t": "Effort", "min": 30, "d": "Le tech lead estime en mois-personne, design et QA compris. Arrondis au 0,5 le plus proche. Si deux initiatives ont le même effort, demande laquelle ils construiraient en premier et pourquoi."},
+        {"t": "Calculer et lire", "min": 15, "d": "Remplis la colonne Score. Lis le top 5 à voix haute et demande : cet ordre surprend quelqu'un ? Si oui, vérifie les entrées, pas la formule."},
+        {"t": "Décider", "min": 5, "d": "Gèle le top 5 pour le trimestre. Note quels scores reposent sur une confiance sous 80 % et planifie l'expérience qui la ferait monter."}
+      ],
+      "pitfalls": [
+        "N'ajuste pas les scores jusqu'à ce que l'ordre colle à ce que voulait la personne la plus bruyante. Si la table a besoin d'ajustements, les échelles n'étaient pas claires : corrige les échelles.",
+        "Garde le Reach en nombre d'utilisateurs, jamais en pourcentage. Les pourcentages cachent que 40 % d'un petit segment, ce n'est rien.",
+        "Score en une session et arrête. RICE est un déclencheur de conversation, pas un tableur que tu peaufines pendant une semaine."
+      ],
+      "next": "Le top 5 alimente la roadmap ou la colonne Now d'un Now / Next / Later. Tout ce qui a été scoré avec une confiance faible passe par un experiment board avant d'être construit.",
+      "source": "Intercom"
+    }
+  },
+  "moscow": {
+    "en": {
+      "prep": [
+        "Invite the product lead and the sponsor or client who signs off the scope. Without the person who can say Won't, the session is theater.",
+        "Send the goal of the release and the deadline the day before. MoSCoW without a fixed date is just a wish list.",
+        "Pre-fill the board with every requested item as a sticky in an Unsorted column. Write a one-line definition under each of the four headers."
+      ],
+      "agenda": [
+        {"t": "Fix the frame", "min": 10, "d": "Read the release goal and the date. Agree that Must means 'without it, we do not ship', not 'the sponsor really wants it'. Write that sentence on the board."},
+        {"t": "First sort", "min": 25, "d": "The sponsor places every item, thinking aloud. Product only asks one question per item: 'what happens if this is missing on launch day?'"},
+        {"t": "Cap the Musts", "min": 25, "d": "Count the Musts. If they exceed 60 % of the estimated capacity, go through them one by one and ask which two could become Should without breaking the goal. Repeat until you are under."},
+        {"t": "Name the Won'ts", "min": 15, "d": "Move the leftovers to Won't explicitly, with 'not this release' written on each. Silence here creates resentment later."},
+        {"t": "Lock", "min": 10, "d": "Read the Must column aloud as the definition of the release. Sponsor confirms in writing in the channel before the session ends."},
+        {"t": "Close", "min": 5, "d": "Freeze the board. Any change from now on goes through a written request, not a hallway conversation."}
+      ],
+      "pitfalls": [
+        "Never let Must exceed 60 % of capacity. The whole method exists to protect the buffer for surprises.",
+        "Do not sort features by who asked for them. Sort by what breaks the goal if it is missing.",
+        "Do not leave Won't empty. An empty Won't column means nobody made a decision."
+      ],
+      "next": "The Must list becomes the release scope in the story map or the sprint backlog. Should and Could go to the Next column of the roadmap. Revisit after the first demo, not before.",
+      "source": "Dai Clegg"
+    },
+    "fr": {
+      "prep": [
+        "Invite le lead produit et le sponsor ou le client qui valide le périmètre. Sans la personne qui peut dire Won't, la séance est du théâtre.",
+        "Envoie l'objectif de la version et la date limite la veille. Un MoSCoW sans date fixe est une liste de souhaits.",
+        "Pré-remplis le board avec chaque demande en sticky dans une colonne Non trié. Écris une définition d'une ligne sous chacun des quatre en-têtes."
+      ],
+      "agenda": [
+        {"t": "Poser le cadre", "min": 10, "d": "Lis l'objectif de la version et la date. Accorde-toi sur le fait que Must veut dire 'sans ça, on ne livre pas', pas 'le sponsor y tient vraiment'. Écris cette phrase sur le board."},
+        {"t": "Premier tri", "min": 25, "d": "Le sponsor place chaque item en pensant à voix haute. Le produit ne pose qu'une question par item : 'que se passe-t-il si ça manque le jour du lancement ?'"},
+        {"t": "Plafonner les Must", "min": 25, "d": "Compte les Must. S'ils dépassent 60 % de la capacité estimée, reprends-les un par un et demande lesquels deux pourraient devenir Should sans casser l'objectif. Répète jusqu'à passer sous la barre."},
+        {"t": "Nommer les Won't", "min": 15, "d": "Déplace les restes vers Won't explicitement, avec 'pas cette version' écrit sur chacun. Le silence ici crée du ressentiment plus tard."},
+        {"t": "Verrouiller", "min": 10, "d": "Lis la colonne Must à voix haute comme définition de la version. Le sponsor confirme par écrit dans le canal avant la fin de la séance."},
+        {"t": "Clôturer", "min": 5, "d": "Gèle le board. Tout changement passe désormais par une demande écrite, pas par une conversation de couloir."}
+      ],
+      "pitfalls": [
+        "Ne laisse jamais les Must dépasser 60 % de la capacité. Toute la méthode existe pour protéger la marge face aux surprises.",
+        "Ne trie pas les fonctionnalités selon qui les a demandées. Trie selon ce qui casse l'objectif si ça manque.",
+        "Ne laisse pas Won't vide. Une colonne Won't vide veut dire que personne n'a pris de décision."
+      ],
+      "next": "La liste Must devient le périmètre de la version dans le story map ou le backlog de sprint. Should et Could vont dans la colonne Next de la roadmap. Revois le tout après la première démo, pas avant.",
+      "source": "Dai Clegg"
+    }
+  },
+  "storymap": {
+    "en": {
+      "prep": [
+        "Invite the whole delivery team plus one person who talks to users every week (support, sales, research). Eight people max.",
+        "Send the persona and the goal of the product in one paragraph the day before. The map starts from a user, not from a feature list.",
+        "Prepare the board with an empty backbone row at the top and three horizontal release lines below it. Stack blank stickies in two colors: one for activities, one for stories."
+      ],
+      "agenda": [
+        {"t": "Tell the story", "min": 15, "d": "One person narrates what the user does from the first contact to the moment they get value, in the past tense, as if it already worked. Everyone else listens and writes activities on stickies, one verb each."},
+        {"t": "Build the backbone", "min": 30, "d": "Line the activities up left to right in the order the user lives them. Merge duplicates. Read the row aloud: if it does not sound like a day in the user's life, reorder."},
+        {"t": "Break down", "min": 50, "d": "Under each activity, write the stories that make it possible, most essential at the top. Pairs work on two activities each, then rotate. No estimates yet."},
+        {"t": "Walk the map", "min": 20, "d": "Walk left to right and ask at each column: 'what is the smallest thing here that lets the user get to the next step?' Move everything else down."},
+        {"t": "Slice the releases", "min": 40, "d": "Draw the first line: what crosses every column with the minimum. That is release 1. Argue only about stories that sit on the line. Then draw the second and third lines."},
+        {"t": "Name and sanity check", "min": 20, "d": "Give each slice a name in user terms. Ask the tech lead if slice 1 is under six weeks. If not, go back to the line."},
+        {"t": "Close", "min": 5, "d": "Photograph the board and assign someone to turn slice 1 into backlog items by tomorrow."}
+      ],
+      "pitfalls": [
+        "Do not start from the backlog. If you import existing tickets, you get a feature list with a story map skin on it.",
+        "Never let a release slice skip a column. A release that stops before the user gets value is not a release, it is a demo.",
+        "Keep the backbone under 12 activities. More than that and you are mapping a company, not a product."
+      ],
+      "next": "Slice 1 becomes the sprint backlog, in column order. The map stays on the wall and gets updated after each release. Pair it with a user flow to design the screens of slice 1.",
+      "source": "Jeff Patton"
+    },
+    "fr": {
+      "prep": [
+        "Invite toute l'équipe de delivery plus une personne qui parle aux utilisateurs chaque semaine (support, ventes, research). Huit personnes max.",
+        "Envoie le persona et l'objectif du produit en un paragraphe la veille. La carte part d'un utilisateur, pas d'une liste de fonctionnalités.",
+        "Prépare le board avec une ligne backbone vide en haut et trois lignes horizontales de release en dessous. Empile des stickies vierges en deux couleurs : une pour les activités, une pour les stories."
+      ],
+      "agenda": [
+        {"t": "Raconter l'histoire", "min": 15, "d": "Une personne raconte ce que fait l'utilisateur du premier contact jusqu'au moment où il obtient de la valeur, au passé, comme si ça marchait déjà. Les autres écoutent et écrivent des activités sur des stickies, un verbe par sticky."},
+        {"t": "Construire le backbone", "min": 30, "d": "Aligne les activités de gauche à droite dans l'ordre où l'utilisateur les vit. Fusionne les doublons. Lis la ligne à voix haute : si ça ne sonne pas comme une journée de l'utilisateur, réordonne."},
+        {"t": "Décomposer", "min": 50, "d": "Sous chaque activité, écris les stories qui la rendent possible, la plus essentielle en haut. Des binômes travaillent sur deux activités chacun, puis tournent. Pas d'estimation pour l'instant."},
+        {"t": "Parcourir la carte", "min": 20, "d": "Parcours de gauche à droite et demande à chaque colonne : 'quelle est la plus petite chose ici qui permet à l'utilisateur de passer à l'étape suivante ?' Descends tout le reste."},
+        {"t": "Découper les releases", "min": 40, "d": "Trace la première ligne : ce qui traverse toutes les colonnes avec le minimum. C'est la release 1. Ne débats que des stories posées sur la ligne. Puis trace la deuxième et la troisième."},
+        {"t": "Nommer et vérifier", "min": 20, "d": "Donne un nom à chaque tranche en langage utilisateur. Demande au tech lead si la tranche 1 tient en moins de six semaines. Sinon, retourne à la ligne."},
+        {"t": "Clôturer", "min": 5, "d": "Photographie le board et désigne quelqu'un pour transformer la tranche 1 en items de backlog d'ici demain."}
+      ],
+      "pitfalls": [
+        "Ne pars pas du backlog. Si tu importes les tickets existants, tu obtiens une liste de fonctionnalités déguisée en story map.",
+        "Ne laisse jamais une tranche de release sauter une colonne. Une release qui s'arrête avant que l'utilisateur obtienne de la valeur n'est pas une release, c'est une démo.",
+        "Garde le backbone sous 12 activités. Au-delà, tu cartographies une entreprise, pas un produit."
+      ],
+      "next": "La tranche 1 devient le backlog de sprint, dans l'ordre des colonnes. La carte reste au mur et se met à jour après chaque release. Associe-la à un user flow pour concevoir les écrans de la tranche 1.",
+      "source": "Jeff Patton"
+    }
+  },
+  "roadmap": {
+    "en": {
+      "prep": [
+        "Invite the product lead and the leads of each team that will build or depend on the work. No more than 8 people.",
+        "Send the quarterly objectives or OKRs the day before. A roadmap without objectives in the left column is a list of promises.",
+        "Pre-fill the board: one row per objective, one column per quarter, and the initiatives already committed as stickies in the right cell."
+      ],
+      "agenda": [
+        {"t": "Read the objectives", "min": 10, "d": "Read each row header aloud and check everyone agrees it is still the right objective. Delete or merge before placing anything."},
+        {"t": "Place the candidates", "min": 30, "d": "Each lead places their initiatives in the row of the objective they serve. An initiative that serves no row goes to a parking lot on the side, visibly."},
+        {"t": "Check the load", "min": 25, "d": "Count the stickies per quarter per team. If a column is more than twice the next one, move things right. Say the number aloud: 'that is 7 initiatives for a team of 5'."},
+        {"t": "Set the confidence", "min": 25, "d": "Mark each initiative High, Medium or Low confidence based on whether discovery is done. Anything Low in the current quarter is a red flag: either do the discovery now or move it."},
+        {"t": "Read it back", "min": 20, "d": "One person tells the roadmap as a story, quarter by quarter, to the group. Every 'and then we also' is an initiative to cut."},
+        {"t": "Close", "min": 10, "d": "Agree on the sharing format (one image, one paragraph per objective) and the review date. Nothing on the board is a commitment beyond the current quarter."}
+      ],
+      "pitfalls": [
+        "Never put dates finer than the quarter on a roadmap that leaves the team. Precision you cannot keep destroys trust faster than vagueness.",
+        "Do not fill every cell. Empty cells in the later quarters are the honest representation of what you do not know yet.",
+        "Do not let the parking lot disappear. Send it with the roadmap so people see what was explicitly not chosen."
+      ],
+      "next": "The current quarter column feeds sprint planning. The roadmap is shared with stakeholders as an image with the confidence levels visible, and reviewed at the end of each quarter, right after the metrics review.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le lead produit et les leads de chaque équipe qui va construire ou dépendre du travail. Pas plus de 8 personnes.",
+        "Envoie les objectifs du trimestre ou les OKR la veille. Une roadmap sans objectifs dans la colonne de gauche est une liste de promesses.",
+        "Pré-remplis le board : une ligne par objectif, une colonne par trimestre, et les initiatives déjà engagées en stickies dans la bonne case."
+      ],
+      "agenda": [
+        {"t": "Relire les objectifs", "min": 10, "d": "Lis chaque en-tête de ligne à voix haute et vérifie que tout le monde est d'accord que c'est toujours le bon objectif. Supprime ou fusionne avant de placer quoi que ce soit."},
+        {"t": "Placer les candidats", "min": 30, "d": "Chaque lead place ses initiatives dans la ligne de l'objectif qu'elles servent. Une initiative qui ne sert aucune ligne va dans un parking sur le côté, visible."},
+        {"t": "Vérifier la charge", "min": 25, "d": "Compte les stickies par trimestre et par équipe. Si une colonne fait plus du double de la suivante, décale vers la droite. Dis le chiffre à voix haute : 'ça fait 7 initiatives pour une équipe de 5'."},
+        {"t": "Poser la confiance", "min": 25, "d": "Marque chaque initiative en confiance Haute, Moyenne ou Basse selon que la discovery est faite ou non. Tout ce qui est Bas dans le trimestre en cours est un signal rouge : soit tu fais la discovery maintenant, soit tu décales."},
+        {"t": "Relire", "min": 20, "d": "Une personne raconte la roadmap comme une histoire, trimestre par trimestre, au groupe. Chaque 'et puis on fait aussi' est une initiative à couper."},
+        {"t": "Clôturer", "min": 10, "d": "Accorde-toi sur le format de partage (une image, un paragraphe par objectif) et la date de revue. Rien sur le board n'est un engagement au-delà du trimestre en cours."}
+      ],
+      "pitfalls": [
+        "Ne mets jamais de dates plus fines que le trimestre sur une roadmap qui sort de l'équipe. Une précision que tu ne peux pas tenir détruit la confiance plus vite que le flou.",
+        "Ne remplis pas toutes les cases. Les cases vides des trimestres lointains sont la représentation honnête de ce que tu ne sais pas encore.",
+        "Ne laisse pas le parking disparaître. Envoie-le avec la roadmap pour que les gens voient ce qui n'a explicitement pas été choisi."
+      ],
+      "next": "La colonne du trimestre en cours alimente le sprint planning. La roadmap est partagée aux parties prenantes en image avec les niveaux de confiance visibles, et revue à la fin de chaque trimestre, juste après la revue métriques.",
+      "source": ""
+    }
+  },
+  "nnl": {
+    "en": {
+      "prep": [
+        "Invite the product lead and the team leads. Five people is ideal, eight is the ceiling.",
+        "Send the list of initiatives under discussion the day before, plus the one goal the next three months serve.",
+        "Prepare three columns on the board with a one-line definition under each: Now = started or starting this month, Next = when something in Now finishes, Later = we believe in it, no date."
+      ],
+      "agenda": [
+        {"t": "Frame", "min": 10, "d": "Read the goal and the column definitions. Say explicitly that Later has no date and that this is the point of the format."},
+        {"t": "Fill Now", "min": 20, "d": "Only what is in progress or has a team assigned this month. If Now has more items than the team has people, something is lying."},
+        {"t": "Fill Next", "min": 25, "d": "Place candidates in order top to bottom. For each one ask: 'what has to finish in Now for this to start?' Write the answer on the sticky."},
+        {"t": "Fill Later", "min": 15, "d": "Everything else you still believe in. No order inside the column. Anything nobody defends in one sentence goes off the board."},
+        {"t": "Read and lock", "min": 15, "d": "Read the three columns aloud as a paragraph. Screenshot it. Agree that the board is re-read every two weeks and that moving something into Now requires moving something out."},
+        {"t": "Close", "min": 5, "d": "Post the image in the channel with the date and the goal on top."}
+      ],
+      "pitfalls": [
+        "Do not put dates on Next or Later to reassure a stakeholder. The moment you do, you have a roadmap with worse formatting.",
+        "Keep Now short. Three to five items for a single team. The column is a commitment, not a backlog.",
+        "Do not order Later. Ordering it creates fake precision about things you have not researched."
+      ],
+      "next": "Now feeds sprint planning directly. Next items get their discovery started (assumption mapping or research plan) so they are ready when a slot opens. Re-read the board every two weeks in the team sync.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le lead produit et les leads d'équipe. Cinq personnes c'est idéal, huit c'est le plafond.",
+        "Envoie la liste des initiatives en discussion la veille, plus l'objectif unique que servent les trois prochains mois.",
+        "Prépare trois colonnes sur le board avec une définition d'une ligne sous chacune : Now = démarré ou démarre ce mois-ci, Next = quand quelque chose de Now se termine, Later = on y croit, pas de date."
+      ],
+      "agenda": [
+        {"t": "Cadrer", "min": 10, "d": "Lis l'objectif et les définitions des colonnes. Dis explicitement que Later n'a pas de date et que c'est tout l'intérêt du format."},
+        {"t": "Remplir Now", "min": 20, "d": "Uniquement ce qui est en cours ou a une équipe assignée ce mois-ci. Si Now a plus d'items que l'équipe n'a de personnes, quelque chose ment."},
+        {"t": "Remplir Next", "min": 25, "d": "Place les candidats dans l'ordre de haut en bas. Pour chacun demande : 'qu'est-ce qui doit se terminer dans Now pour que ça démarre ?' Écris la réponse sur le sticky."},
+        {"t": "Remplir Later", "min": 15, "d": "Tout ce en quoi tu crois encore. Pas d'ordre dans la colonne. Ce que personne ne défend en une phrase sort du board."},
+        {"t": "Relire et verrouiller", "min": 15, "d": "Lis les trois colonnes à voix haute comme un paragraphe. Capture-le. Accorde-toi sur une relecture du board toutes les deux semaines et sur le fait que faire entrer quelque chose dans Now impose d'en sortir quelque chose."},
+        {"t": "Clôturer", "min": 5, "d": "Poste l'image dans le canal avec la date et l'objectif en haut."}
+      ],
+      "pitfalls": [
+        "Ne mets pas de dates sur Next ou Later pour rassurer une partie prenante. Dès que tu le fais, tu as une roadmap moins bien présentée.",
+        "Garde Now court. Trois à cinq items pour une seule équipe. La colonne est un engagement, pas un backlog.",
+        "N'ordonne pas Later. L'ordonner crée une fausse précision sur des sujets que tu n'as pas étudiés."
+      ],
+      "next": "Now alimente directement le sprint planning. Les items de Next lancent leur discovery (assumption mapping ou plan de recherche) pour être prêts quand une place se libère. Relis le board toutes les deux semaines en synchro d'équipe.",
+      "source": ""
+    }
+  },
+  "decision": {
+    "en": {
+      "prep": [
+        "Invite the person who signs the decision and two or three experts who know the options. Never more than six.",
+        "Send the two or three options with a one-page description of each two days before. Nobody discovers an option in the session.",
+        "Pre-fill the board with the options as rows and a blank column set. Do not pre-fill the criteria: they are the first thing to agree on."
+      ],
+      "agenda": [
+        {"t": "Fix the criteria", "min": 20, "d": "Brainstorm criteria for 5 minutes in silence, then merge to a maximum of five. Read each one as a question: 'how well does this option do X?'"},
+        {"t": "Weight them", "min": 15, "d": "Give each criterion a weight of 3, 2 or 1. Only one criterion can be a 3. If two people want different 3s, the decision owner picks."},
+        {"t": "Score in silence", "min": 15, "d": "Everyone scores each option on each criterion from 1 to 5 on their own copy. Silence prevents anchoring on the first voice."},
+        {"t": "Compare and argue", "min": 25, "d": "Reveal the scores. Discuss only the cells where the spread is 2 points or more. The expert closest to the topic explains, then everyone re-scores that cell."},
+        {"t": "Compute and decide", "min": 10, "d": "Sum the weighted scores. If the top two are within 10 %, the decision owner chooses and says why on the board. The matrix informs, it does not decide."},
+        {"t": "Close", "min": 5, "d": "Write the decision, the date and the losing options with one line on why not. That paragraph is the deliverable."}
+      ],
+      "pitfalls": [
+        "Do not add a criterion after scoring started because your favorite option is losing. Freeze the columns before the first score.",
+        "Do not use the matrix to sort a backlog of 20 items. It is for two or three structural options, once.",
+        "Do not hide behind the number. If the winning option feels wrong to the decision owner, the criteria were wrong: say it and fix them, do not adjust scores."
+      ],
+      "next": "The decision paragraph goes into a DACI or the project channel with the matrix as an attachment. If the chosen option is a build, it gets a one-page PRD next.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite la personne qui signe la décision et deux ou trois experts qui connaissent les options. Jamais plus de six.",
+        "Envoie les deux ou trois options avec une description d'une page de chacune deux jours avant. Personne ne découvre une option en séance.",
+        "Pré-remplis le board avec les options en lignes et un jeu de colonnes vides. Ne pré-remplis pas les critères : c'est la première chose sur laquelle s'accorder."
+      ],
+      "agenda": [
+        {"t": "Fixer les critères", "min": 20, "d": "Brainstorm de critères pendant 5 minutes en silence, puis fusion jusqu'à cinq maximum. Lis chacun comme une question : 'à quel point cette option fait bien X ?'"},
+        {"t": "Les pondérer", "min": 15, "d": "Donne à chaque critère un poids de 3, 2 ou 1. Un seul critère peut être un 3. Si deux personnes veulent des 3 différents, le décideur tranche."},
+        {"t": "Noter en silence", "min": 15, "d": "Chacun note chaque option sur chaque critère de 1 à 5 sur sa propre copie. Le silence évite l'ancrage sur la première voix."},
+        {"t": "Comparer et débattre", "min": 25, "d": "Révèle les notes. Ne discute que les cases où l'écart est de 2 points ou plus. L'expert le plus proche du sujet explique, puis tout le monde renote cette case."},
+        {"t": "Calculer et décider", "min": 10, "d": "Somme les notes pondérées. Si les deux premières sont à moins de 10 % l'une de l'autre, le décideur choisit et dit pourquoi sur le board. La matrice informe, elle ne décide pas."},
+        {"t": "Clôturer", "min": 5, "d": "Écris la décision, la date et les options perdantes avec une ligne sur le pourquoi. Ce paragraphe est le livrable."}
+      ],
+      "pitfalls": [
+        "N'ajoute pas un critère après le début de la notation parce que ton option préférée est en train de perdre. Gèle les colonnes avant la première note.",
+        "N'utilise pas la matrice pour trier un backlog de 20 items. Elle sert pour deux ou trois options structurantes, une fois.",
+        "Ne te cache pas derrière le chiffre. Si l'option gagnante semble fausse au décideur, les critères étaient faux : dis-le et corrige-les, n'ajuste pas les notes."
+      ],
+      "next": "Le paragraphe de décision va dans un DACI ou le canal du projet avec la matrice en pièce jointe. Si l'option retenue est une construction, elle reçoit ensuite un PRD d'une page.",
+      "source": ""
+    }
+  },
+  "wsjf": {
+    "en": {
+      "prep": [
+        "Invite the product managers of the train and one or two architects. Business owners join for the value column only if they can stay the whole session.",
+        "Send the candidate features with a one-line benefit hypothesis each, two days before. No hypothesis, no seat at the table.",
+        "Pre-fill the rows and write the Fibonacci scale (1, 2, 3, 5, 8, 13, 20) at the top of each column. Pick the smallest feature as the reference 1 for every column."
+      ],
+      "agenda": [
+        {"t": "Calibrate", "min": 15, "d": "Read the four definitions aloud: Business value, Time criticality, Risk reduction or opportunity enablement, Job size. Place the reference feature at 1 in every column so everyone scores relative to it."},
+        {"t": "Score value", "min": 25, "d": "Relative estimation, poker style: everyone shows a Fibonacci card at once. Discuss only when the spread is more than two steps. Business owners have the final say."},
+        {"t": "Score time criticality", "min": 20, "d": "Ask for each feature: 'what do we lose per month of delay?' If the answer is 'nothing specific', it is a 1, whatever the stakeholder says."},
+        {"t": "Score risk reduction", "min": 15, "d": "Ask: 'what does this unblock or de-risk?' Platform work usually scores high here and low on value. That is the point of the column."},
+        {"t": "Score job size", "min": 25, "d": "Architects estimate relative size across all teams involved, not just the one asking. Split anything scored 20 before it goes further."},
+        {"t": "Compute and read", "min": 15, "d": "Fill the WSJF column (sum of the first three divided by size). Read the top 10 aloud. Check that at least one enabler made it: if not, revisit risk reduction scores."},
+        {"t": "Close", "min": 5, "d": "Freeze the order for the PI. Note the features whose rank depends on a single high score and flag them for review at the next planning."}
+      ],
+      "pitfalls": [
+        "Do not estimate size in absolute days. The whole formula only works with relative numbers on the same scale for every column.",
+        "Do not let a feature scored 20 in size stay on the board. Split it: big things always lose to medium things in WSJF, which is intended, but only if the medium things are real.",
+        "Do not re-score between plannings to fix an order somebody dislikes. The cost of delay changes only when the market or the date changes."
+      ],
+      "next": "The ordered list is the program backlog that goes into PI Planning. Enablers ranked high go to the architects first so teams can plan around them. Re-score at the next PI boundary, not before.",
+      "source": "Donald Reinertsen / SAFe"
+    },
+    "fr": {
+      "prep": [
+        "Invite les product managers du train et un ou deux architectes. Les business owners rejoignent pour la colonne valeur seulement s'ils peuvent rester toute la session.",
+        "Envoie les features candidates avec une hypothèse de bénéfice en une ligne pour chacune, deux jours avant. Pas d'hypothèse, pas de place à la table.",
+        "Pré-remplis les lignes et écris l'échelle de Fibonacci (1, 2, 3, 5, 8, 13, 20) en haut de chaque colonne. Choisis la plus petite feature comme référence 1 pour chaque colonne."
+      ],
+      "agenda": [
+        {"t": "Calibrer", "min": 15, "d": "Lis les quatre définitions à voix haute : Valeur business, Urgence, Réduction de risque ou ouverture d'opportunité, Taille du travail. Place la feature de référence à 1 dans chaque colonne pour que tout le monde note par rapport à elle."},
+        {"t": "Noter la valeur", "min": 25, "d": "Estimation relative façon poker : tout le monde montre une carte Fibonacci en même temps. Discute seulement quand l'écart dépasse deux crans. Les business owners ont le dernier mot."},
+        {"t": "Noter l'urgence", "min": 20, "d": "Demande pour chaque feature : 'qu'est-ce qu'on perd par mois de retard ?' Si la réponse est 'rien de précis', c'est un 1, quoi qu'en dise la partie prenante."},
+        {"t": "Noter la réduction de risque", "min": 15, "d": "Demande : 'qu'est-ce que ça débloque ou dérisque ?' Le travail plateforme score en général haut ici et bas en valeur. C'est tout l'intérêt de la colonne."},
+        {"t": "Noter la taille", "min": 25, "d": "Les architectes estiment la taille relative sur toutes les équipes impliquées, pas seulement celle qui demande. Découpe tout ce qui est noté 20 avant d'aller plus loin."},
+        {"t": "Calculer et lire", "min": 15, "d": "Remplis la colonne WSJF (somme des trois premières divisée par la taille). Lis le top 10 à voix haute. Vérifie qu'au moins un enabler s'y trouve : sinon, revois les notes de réduction de risque."},
+        {"t": "Clôturer", "min": 5, "d": "Gèle l'ordre pour le PI. Note les features dont le rang dépend d'une seule note haute et signale-les pour revue au prochain planning."}
+      ],
+      "pitfalls": [
+        "N'estime pas la taille en jours absolus. Toute la formule ne fonctionne qu'avec des nombres relatifs sur la même échelle pour chaque colonne.",
+        "Ne laisse pas une feature notée 20 en taille rester sur le board. Découpe-la : les gros sujets perdent toujours face aux moyens en WSJF, c'est voulu, mais seulement si les moyens sont réels.",
+        "Ne renote pas entre deux plannings pour corriger un ordre qui déplaît. Le coût du délai ne change que si le marché ou la date change."
+      ],
+      "next": "La liste ordonnée est le backlog programme qui entre en PI Planning. Les enablers bien classés vont d'abord aux architectes pour que les équipes planifient autour. Renote à la frontière du PI suivant, pas avant.",
+      "source": "Donald Reinertsen / SAFe"
+    }
+  },
+  "sprintplan": {
+    "en": {
+      "prep": [
+        "Invite the whole delivery team and the product owner. Stakeholders do not attend; they had the review for that.",
+        "Refine the top of the backlog two days before so every candidate story has acceptance criteria. Planning is not the place to write them.",
+        "Write the team capacity on the board before the session: days available minus leave, on-call and known meetings."
+      ],
+      "agenda": [
+        {"t": "State the goal", "min": 15, "d": "Product owner proposes one sentence: 'at the end of the sprint, the user can X'. The team rewrites it until everyone can repeat it without reading. Write it at the top."},
+        {"t": "Confirm capacity", "min": 10, "d": "Each person confirms their days. Subtract 20 % for the unexpected before anyone touches a story. Write the final number big."},
+        {"t": "Pull stories", "min": 45, "d": "Pull from the top of the backlog one story at a time. For each, the team reads the acceptance criteria and says yes, no, or 'not ready'. 'Not ready' goes back, no exceptions."},
+        {"t": "Break down", "min": 35, "d": "Split each pulled story into tasks under a day. If a story has more than eight tasks, it is too big: split the story, not the sprint."},
+        {"t": "Check against the goal", "min": 10, "d": "Read the pulled list against the goal. Anything that does not serve the goal is a candidate to drop if the sprint gets tight. Mark it."},
+        {"t": "Commit", "min": 5, "d": "Ask each person, by name, 'can we do this?' A silent nod is not a yes. Freeze the sprint when everyone has said it out loud."}
+      ],
+      "pitfalls": [
+        "Do not plan to 100 % of capacity. Teams that fill the sprint deliver less than teams that leave a fifth free.",
+        "Do not let a story in without acceptance criteria because 'we will figure it out'. That story is the one that spills over.",
+        "Do not write the sprint goal after pulling the stories. A goal written to fit the list is a summary, not a goal."
+      ],
+      "next": "The sprint board goes live with the goal pinned on top. Mid-sprint, the goal is the tie-breaker for any scope question. At the end, the retro asks whether the goal was met, not how many points were done.",
+      "source": "Scrum Guide"
+    },
+    "fr": {
+      "prep": [
+        "Invite toute l'équipe de delivery et le product owner. Les parties prenantes ne viennent pas ; elles ont eu la review pour ça.",
+        "Affine le haut du backlog deux jours avant pour que chaque story candidate ait des critères d'acceptation. Le planning n'est pas le lieu pour les écrire.",
+        "Écris la capacité de l'équipe sur le board avant la séance : jours disponibles moins congés, astreintes et réunions connues."
+      ],
+      "agenda": [
+        {"t": "Poser l'objectif", "min": 15, "d": "Le product owner propose une phrase : 'à la fin du sprint, l'utilisateur peut X'. L'équipe la réécrit jusqu'à ce que tout le monde puisse la répéter sans la lire. Écris-la en haut."},
+        {"t": "Confirmer la capacité", "min": 10, "d": "Chacun confirme ses jours. Retire 20 % pour l'imprévu avant que quiconque touche une story. Écris le chiffre final en grand."},
+        {"t": "Tirer les stories", "min": 45, "d": "Tire du haut du backlog une story à la fois. Pour chacune, l'équipe lit les critères d'acceptation et dit oui, non, ou 'pas prête'. 'Pas prête' retourne au backlog, sans exception."},
+        {"t": "Découper", "min": 35, "d": "Découpe chaque story tirée en tâches de moins d'un jour. Si une story a plus de huit tâches, elle est trop grosse : découpe la story, pas le sprint."},
+        {"t": "Vérifier contre l'objectif", "min": 10, "d": "Relis la liste tirée face à l'objectif. Tout ce qui ne sert pas l'objectif est candidat à sortir si le sprint se tend. Marque-le."},
+        {"t": "S'engager", "min": 5, "d": "Demande à chaque personne, par son prénom, 'on peut faire ça ?' Un hochement de tête silencieux n'est pas un oui. Gèle le sprint quand tout le monde l'a dit à voix haute."}
+      ],
+      "pitfalls": [
+        "Ne planifie pas à 100 % de la capacité. Les équipes qui remplissent le sprint livrent moins que celles qui laissent un cinquième libre.",
+        "Ne laisse pas entrer une story sans critères d'acceptation parce qu''on verra en route'. C'est cette story qui déborde.",
+        "N'écris pas l'objectif du sprint après avoir tiré les stories. Un objectif écrit pour coller à la liste est un résumé, pas un objectif."
+      ],
+      "next": "Le board de sprint démarre avec l'objectif épinglé en haut. En milieu de sprint, l'objectif tranche toute question de périmètre. À la fin, la rétro demande si l'objectif est atteint, pas combien de points ont été faits.",
+      "source": "Scrum Guide"
+    }
+  },
+  "sitemap": {
+    "en": {
+      "prep": [
+        "Invite the designer, the PM and one person who handles support tickets. Support knows where users get lost.",
+        "Export the current navigation as a list and the top 30 pages by traffic, with their bounce rate. Send both the day before.",
+        "Pre-fill the board with the current tree on the left, greyed out, and an empty space on the right for the target tree."
+      ],
+      "agenda": [
+        {"t": "Read the current tree", "min": 15, "d": "Walk the existing structure top to bottom. Mark in red every node support mentions in tickets and every page with a bounce above 70 %."},
+        {"t": "List the jobs", "min": 20, "d": "Each person writes the five things users come to do, one per sticky, in the user's words. Merge to a list of 6 to 10 jobs."},
+        {"t": "Card sort", "min": 35, "d": "Write every page as a card. In pairs, group the cards by job without looking at the current tree. Compare the two groupings and keep what both pairs did the same."},
+        {"t": "Draw the target tree", "min": 30, "d": "Build the new hierarchy from the groups: top level = jobs, second level = pages. No node deeper than three levels. Name each node with a verb or a plain noun, no marketing labels."},
+        {"t": "Test with a task", "min": 15, "d": "Give the support person three real tickets and ask them to point where the answer lives in the new tree. Every hesitation is a node to rename or move."},
+        {"t": "Close", "min": 5, "d": "Mark the pages to merge, the pages to delete and the redirects needed. That list is the deliverable, not the drawing."}
+      ],
+      "pitfalls": [
+        "Do not mirror the org chart. Users do not know which team owns a page and should never need to.",
+        "Do not keep a section because it exists. Every node in the target tree must map to a job from the list or go.",
+        "Do not go deeper than three levels. If you need a fourth, the second level is wrong."
+      ],
+      "next": "The target tree and the redirect list go to the tech lead for the migration plan. The designer uses the tree as the skeleton for low-fidelity wireframes of the top-level pages.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le designer, le PM et une personne qui traite les tickets support. Le support sait où les utilisateurs se perdent.",
+        "Exporte la navigation actuelle en liste et les 30 pages les plus visitées avec leur taux de rebond. Envoie les deux la veille.",
+        "Pré-remplis le board avec l'arbre actuel à gauche, grisé, et un espace vide à droite pour l'arbre cible."
+      ],
+      "agenda": [
+        {"t": "Lire l'arbre actuel", "min": 15, "d": "Parcours la structure existante de haut en bas. Marque en rouge chaque nœud que le support cite dans les tickets et chaque page avec un rebond au-dessus de 70 %."},
+        {"t": "Lister les jobs", "min": 20, "d": "Chacun écrit les cinq choses que les utilisateurs viennent faire, une par sticky, avec les mots de l'utilisateur. Fusionne jusqu'à une liste de 6 à 10 jobs."},
+        {"t": "Tri de cartes", "min": 35, "d": "Écris chaque page sur une carte. En binômes, groupe les cartes par job sans regarder l'arbre actuel. Compare les deux regroupements et garde ce que les deux binômes ont fait pareil."},
+        {"t": "Dessiner l'arbre cible", "min": 30, "d": "Construis la nouvelle hiérarchie à partir des groupes : premier niveau = jobs, deuxième niveau = pages. Aucun nœud au-delà de trois niveaux. Nomme chaque nœud avec un verbe ou un nom simple, pas de libellé marketing."},
+        {"t": "Tester avec une tâche", "min": 15, "d": "Donne trois tickets réels à la personne du support et demande-lui de pointer où vit la réponse dans le nouvel arbre. Chaque hésitation est un nœud à renommer ou déplacer."},
+        {"t": "Clôturer", "min": 5, "d": "Marque les pages à fusionner, les pages à supprimer et les redirections nécessaires. Cette liste est le livrable, pas le dessin."}
+      ],
+      "pitfalls": [
+        "Ne reproduis pas l'organigramme. Les utilisateurs ne savent pas quelle équipe possède une page et ne devraient jamais avoir besoin de le savoir.",
+        "Ne garde pas une section parce qu'elle existe. Chaque nœud de l'arbre cible doit correspondre à un job de la liste ou disparaître.",
+        "Ne descends pas sous trois niveaux. Si tu as besoin d'un quatrième, le deuxième niveau est faux."
+      ],
+      "next": "L'arbre cible et la liste de redirections vont au tech lead pour le plan de migration. Le designer utilise l'arbre comme squelette des wireframes basse fidélité des pages de premier niveau.",
+      "source": ""
+    }
+  },
+  "wireframes": {
+    "en": {
+      "prep": [
+        "Invite the designer, the PM and the tech lead. Three people, one screen each on the board, no observers.",
+        "Send the user flow or story map slice being designed the day before, plus the list of screens it needs. Wireframing without a flow produces pretty orphan screens.",
+        "Prepare one empty frame per screen on the board, labeled with the step it serves. Keep a strict grey palette: no color, no logo, no real typography."
+      ],
+      "agenda": [
+        {"t": "Walk the flow", "min": 15, "d": "Read the flow step by step and confirm the screen list. Write on each frame the one thing the user must do on that screen. If you cannot write it, the screen does not exist."},
+        {"t": "Solo sketch, round one", "min": 30, "d": "Each person sketches every screen alone with boxes and lines only. Ten minutes per screen. Words in the boxes, no icons."},
+        {"t": "Compare", "min": 30, "d": "Put the three versions of each screen side by side. For each screen, name what the versions agree on (keep it) and the one difference worth discussing. Two minutes per difference, then vote."},
+        {"t": "Converge, round two", "min": 45, "d": "The designer redraws each screen from the winning elements while the other two watch and challenge. Add the empty state and the error state for every screen with a form or a list."},
+        {"t": "Content pass", "min": 35, "d": "Replace every 'Lorem' and every 'Button' with the real words. Real labels reveal half of the layout problems. The PM writes, the designer adjusts."},
+        {"t": "Tech check", "min": 20, "d": "Tech lead marks anything that costs more than a day or needs data the product does not have. Those marks go into the estimate, not into a redesign."},
+        {"t": "Close", "min": 5, "d": "Number the screens in flow order and export. The board is now the reference for the sprint; visual design starts from it, not from scratch."}
+      ],
+      "pitfalls": [
+        "Do not open the design system during wireframing. The moment a real button appears, the conversation shifts from logic to style.",
+        "Do not skip the empty and error states. They are the half of the screens developers actually ask about.",
+        "Do not wireframe a screen nobody can describe in one sentence. Go back to the flow instead."
+      ],
+      "next": "The numbered wireframes go to visual design and into the sprint as the definition of each story. Test them with three users before high fidelity if the flow is new; skip the test if it is a redesign of a known step.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le designer, le PM et le tech lead. Trois personnes, un écran chacun sur le board, pas d'observateurs.",
+        "Envoie le user flow ou la tranche de story map concernée la veille, plus la liste des écrans nécessaires. Wireframer sans flow produit de jolis écrans orphelins.",
+        "Prépare un cadre vide par écran sur le board, étiqueté avec l'étape qu'il sert. Palette strictement grise : pas de couleur, pas de logo, pas de vraie typographie."
+      ],
+      "agenda": [
+        {"t": "Parcourir le flow", "min": 15, "d": "Lis le flow étape par étape et confirme la liste des écrans. Écris sur chaque cadre la seule chose que l'utilisateur doit faire sur cet écran. Si tu ne peux pas l'écrire, l'écran n'existe pas."},
+        {"t": "Croquis solo, premier tour", "min": 30, "d": "Chacun dessine tous les écrans seul avec des boîtes et des traits uniquement. Dix minutes par écran. Des mots dans les boîtes, pas d'icônes."},
+        {"t": "Comparer", "min": 30, "d": "Mets les trois versions de chaque écran côte à côte. Pour chaque écran, nomme ce sur quoi les versions s'accordent (à garder) et la seule différence qui mérite discussion. Deux minutes par différence, puis vote."},
+        {"t": "Converger, deuxième tour", "min": 45, "d": "Le designer redessine chaque écran à partir des éléments gagnants pendant que les deux autres regardent et challengent. Ajoute l'état vide et l'état d'erreur pour chaque écran avec un formulaire ou une liste."},
+        {"t": "Passe contenu", "min": 35, "d": "Remplace chaque 'Lorem' et chaque 'Bouton' par les vrais mots. Les vrais libellés révèlent la moitié des problèmes de mise en page. Le PM écrit, le designer ajuste."},
+        {"t": "Vérification tech", "min": 20, "d": "Le tech lead marque tout ce qui coûte plus d'un jour ou nécessite des données que le produit n'a pas. Ces marques vont dans l'estimation, pas dans une refonte."},
+        {"t": "Clôturer", "min": 5, "d": "Numérote les écrans dans l'ordre du flow et exporte. Le board est maintenant la référence pour le sprint ; le design visuel part de là, pas de zéro."}
+      ],
+      "pitfalls": [
+        "N'ouvre pas le design system pendant le wireframing. Dès qu'un vrai bouton apparaît, la conversation glisse de la logique au style.",
+        "Ne saute pas les états vides et les états d'erreur. C'est la moitié des écrans sur lesquels les développeurs posent vraiment des questions.",
+        "Ne wireframe pas un écran que personne ne peut décrire en une phrase. Retourne au flow à la place."
+      ],
+      "next": "Les wireframes numérotés partent en design visuel et dans le sprint comme définition de chaque story. Teste-les avec trois utilisateurs avant la haute fidélité si le flow est nouveau ; saute le test si c'est la refonte d'une étape connue.",
+      "source": ""
+    }
+  },
+  "userflow": {
+    "en": {
+      "prep": [
+        "Invite the designer and the tech lead. Add the PM if the flow touches business rules (pricing, permissions, eligibility).",
+        "Send the entry point and the success state in one sentence each, the day before: 'the user arrives from X, the flow succeeds when Y'.",
+        "Prepare the board with the entry shape on the far left, the success shape on the far right, and a stock of three shapes: rectangle for screen, diamond for decision, red rectangle for error."
+      ],
+      "agenda": [
+        {"t": "Fix the ends", "min": 10, "d": "Confirm the entry and the success state. Ask 'how does the user know they succeeded?' and write the answer in the success shape. If nobody can answer, stop and fix that first."},
+        {"t": "Happy path", "min": 25, "d": "Draw the shortest path from entry to success, screen by screen. One rectangle per screen, one verb on each arrow. No decisions yet: the happy path has no forks."},
+        {"t": "Decisions", "min": 25, "d": "Walk the happy path and at each screen ask 'what can the user choose or fail here?' Add a diamond for every real fork. Write the question inside the diamond, the answers on the arrows."},
+        {"t": "Errors and empty states", "min": 30, "d": "For every diamond, draw the No branch to its end: an error screen, a retry, or a dead end. For every list or dashboard, add the empty state. This is where the tech lead earns their seat."},
+        {"t": "Data check", "min": 20, "d": "Tech lead marks on each screen what data it needs and where it comes from. Any screen needing data the product does not have gets a red flag and an owner."},
+        {"t": "Count and close", "min": 10, "d": "Count the screens and the error branches. Read the count aloud: that is the real size of the story. Number the screens in flow order and export."}
+      ],
+      "pitfalls": [
+        "Do not draw the happy path and stop. A flow with no red rectangles has not been thought through, and the developers will find the branches in the sprint.",
+        "Do not put more than one question in a diamond. 'Is the user logged in and has a plan?' is two diamonds.",
+        "Do not describe screens in the flow. A rectangle says what the screen is for, wireframes say what is on it."
+      ],
+      "next": "The flow becomes the screen list for the wireframes and the acceptance criteria for the story. Every diamond turns into a test case. Pin the flow next to the story map slice it belongs to.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite le designer et le tech lead. Ajoute le PM si le flow touche des règles métier (tarification, permissions, éligibilité).",
+        "Envoie le point d'entrée et l'état de succès en une phrase chacun, la veille : 'l'utilisateur arrive de X, le flow réussit quand Y'.",
+        "Prépare le board avec la forme d'entrée tout à gauche, la forme de succès tout à droite, et un stock de trois formes : rectangle pour écran, losange pour décision, rectangle rouge pour erreur."
+      ],
+      "agenda": [
+        {"t": "Fixer les extrémités", "min": 10, "d": "Confirme l'entrée et l'état de succès. Demande 'comment l'utilisateur sait qu'il a réussi ?' et écris la réponse dans la forme de succès. Si personne ne peut répondre, arrête et règle ça d'abord."},
+        {"t": "Chemin nominal", "min": 25, "d": "Dessine le chemin le plus court de l'entrée au succès, écran par écran. Un rectangle par écran, un verbe sur chaque flèche. Pas de décision pour l'instant : le chemin nominal n'a pas d'embranchement."},
+        {"t": "Décisions", "min": 25, "d": "Parcours le chemin nominal et à chaque écran demande 'que peut choisir ou rater l'utilisateur ici ?' Ajoute un losange pour chaque vraie bifurcation. Écris la question dans le losange, les réponses sur les flèches."},
+        {"t": "Erreurs et états vides", "min": 30, "d": "Pour chaque losange, dessine la branche Non jusqu'au bout : un écran d'erreur, une nouvelle tentative, ou une impasse. Pour chaque liste ou tableau de bord, ajoute l'état vide. C'est là que le tech lead justifie sa présence."},
+        {"t": "Vérification des données", "min": 20, "d": "Le tech lead marque sur chaque écran les données nécessaires et d'où elles viennent. Tout écran qui a besoin de données que le produit n'a pas reçoit un drapeau rouge et un responsable."},
+        {"t": "Compter et clôturer", "min": 10, "d": "Compte les écrans et les branches d'erreur. Dis le chiffre à voix haute : c'est la vraie taille de la story. Numérote les écrans dans l'ordre du flow et exporte."}
+      ],
+      "pitfalls": [
+        "Ne dessine pas le chemin nominal et arrête-toi là. Un flow sans rectangle rouge n'a pas été pensé jusqu'au bout, et les développeurs trouveront les branches en plein sprint.",
+        "Ne mets pas plus d'une question dans un losange. 'L'utilisateur est-il connecté et a-t-il un abonnement ?' fait deux losanges.",
+        "Ne décris pas les écrans dans le flow. Un rectangle dit à quoi sert l'écran, les wireframes disent ce qu'il y a dessus."
+      ],
+      "next": "Le flow devient la liste des écrans pour les wireframes et les critères d'acceptation de la story. Chaque losange devient un cas de test. Épingle le flow à côté de la tranche de story map à laquelle il appartient.",
+      "source": ""
+    }
+  },
+  "storyboard": {
+    "en": {
+      "prep": [
+        "Invite the product team, four to six people. Drawing skill is not required and saying so at the invite removes half the anxiety.",
+        "Send the persona and the problem statement the day before. The storyboard tells one person's story, not a feature's.",
+        "Prepare the board with two rows of four empty frames, a caption line under each. Put a stock of stick figures and speech bubbles on the side for people who freeze in front of a blank frame."
+      ],
+      "agenda": [
+        {"t": "Set the scene", "min": 10, "d": "Read the persona aloud. Agree on frame 1 (where is the person, what just happened) and frame 8 (what does their life look like once the problem is solved). Write both captions first."},
+        {"t": "Fill the middle", "min": 25, "d": "In pairs, sketch frames 2 to 7: the moment they notice the problem, the moment they meet the product, the moment it works. Stick figures and arrows. Caption in the person's words, first person."},
+        {"t": "Present", "min": 20, "d": "Each pair reads their storyboard aloud in under two minutes without pointing at the drawings. If the story does not hold without the pictures, the captions are missing."},
+        {"t": "Merge", "min": 20, "d": "Pick the strongest frame for each position across the pairs. Rewrite the captions so the eight frames read as one story. Cut any frame that shows a feature instead of a moment."},
+        {"t": "Read as a user", "min": 10, "d": "One person who did not draw reads the final storyboard cold. Note every question they ask: those are the gaps in the concept."},
+        {"t": "Close", "min": 5, "d": "Export the eight frames as one image. Decide who shows it to three users this week and what question they ask after frame 8."}
+      ],
+      "pitfalls": [
+        "Do not draw screens. If a frame shows a UI, replace it with the person's face and what they are doing.",
+        "Do not let good drawers dominate. Set a rule: stick figures only, and give the pen to the person who least wants it.",
+        "Do not end at 'they use the product'. Frame 8 is what is different in their life, or the story has no point."
+      ],
+      "next": "The storyboard goes in front of three to five users as a desirability test before anything is built: 'is this you, would you want this?' Their answers feed the assumption map. If the story holds, it becomes the brief for the Crazy 8's or the design sprint.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite l'équipe produit, quatre à six personnes. Savoir dessiner n'est pas requis et le dire dans l'invitation enlève la moitié de l'angoisse.",
+        "Envoie le persona et l'énoncé du problème la veille. Le storyboard raconte l'histoire d'une personne, pas d'une fonctionnalité.",
+        "Prépare le board avec deux rangées de quatre cadres vides, une ligne de légende sous chacun. Mets un stock de bonshommes bâtons et de bulles sur le côté pour ceux qui bloquent devant un cadre vide."
+      ],
+      "agenda": [
+        {"t": "Planter le décor", "min": 10, "d": "Lis le persona à voix haute. Accorde-toi sur le cadre 1 (où est la personne, que vient-il de se passer) et le cadre 8 (à quoi ressemble sa vie une fois le problème résolu). Écris ces deux légendes en premier."},
+        {"t": "Remplir le milieu", "min": 25, "d": "En binômes, dessine les cadres 2 à 7 : le moment où elle remarque le problème, le moment où elle rencontre le produit, le moment où ça marche. Bonshommes bâtons et flèches. Légende avec les mots de la personne, à la première personne."},
+        {"t": "Présenter", "min": 20, "d": "Chaque binôme lit son storyboard à voix haute en moins de deux minutes sans pointer les dessins. Si l'histoire ne tient pas sans les images, il manque des légendes."},
+        {"t": "Fusionner", "min": 20, "d": "Choisis le cadre le plus fort pour chaque position parmi les binômes. Réécris les légendes pour que les huit cadres se lisent comme une seule histoire. Coupe tout cadre qui montre une fonctionnalité au lieu d'un moment."},
+        {"t": "Lire en utilisateur", "min": 10, "d": "Une personne qui n'a pas dessiné lit le storyboard final à froid. Note chaque question qu'elle pose : ce sont les trous du concept."},
+        {"t": "Clôturer", "min": 5, "d": "Exporte les huit cadres en une image. Décide qui la montre à trois utilisateurs cette semaine et quelle question ils posent après le cadre 8."}
+      ],
+      "pitfalls": [
+        "Ne dessine pas d'écrans. Si un cadre montre une interface, remplace-la par le visage de la personne et ce qu'elle fait.",
+        "Ne laisse pas les bons dessinateurs dominer. Pose une règle : bonshommes bâtons uniquement, et donne le crayon à la personne qui en a le moins envie.",
+        "Ne termine pas sur 'elle utilise le produit'. Le cadre 8, c'est ce qui a changé dans sa vie, sinon l'histoire n'a pas de sens."
+      ],
+      "next": "Le storyboard passe devant trois à cinq utilisateurs comme test de désirabilité avant de construire quoi que ce soit : 'c'est toi ça, tu voudrais ça ?' Leurs réponses alimentent l'assumption map. Si l'histoire tient, elle devient le brief des Crazy 8's ou du design sprint.",
+      "source": ""
+    }
+  },
+  "prd": {
+    "en": {
+      "prep": [
+        "The PM writes a first draft alone before the session and sends it 24 hours ahead. The workshop is a review, not a writing session with six people.",
+        "Invite the tech lead, the designer and one stakeholder who will use the outcome. Four people, five max.",
+        "Pre-fill the board with the draft in the seven blocks. Leave the Open questions block deliberately empty: it gets filled live."
+      ],
+      "agenda": [
+        {"t": "Silent read", "min": 15, "d": "Everyone reads the whole page in silence and drops a sticky on any sentence they disagree with or do not understand. No talking until the timer ends."},
+        {"t": "Problem and goal", "min": 20, "d": "Go through the stickies on the first two blocks. The test: can the stakeholder repeat the problem in their own words? Can the tech lead say which metric moves? Rewrite until both say yes."},
+        {"t": "Scope and out of scope", "min": 30, "d": "Read Scope aloud. For every item, the tech lead asks 'is this needed to move the metric?' Anything that gets a no moves to Out of scope, written down, not deleted."},
+        {"t": "User stories", "min": 25, "d": "Check each story has a user, an action and a reason. Merge stories that describe the same screen. If there are more than ten, the scope is too big for one page: split the PRD."},
+        {"t": "Open questions", "min": 20, "d": "Collect every remaining sticky into the Open questions block. Each one gets an owner and a date. A question without an owner is not open, it is ignored."},
+        {"t": "Sign", "min": 10, "d": "Read the goal and the scope one last time. The stakeholder, the tech lead and the designer each write 'OK' with their name on the board. That is the approval; no separate meeting."}
+      ],
+      "pitfalls": [
+        "Do not exceed one page. If it does not fit, the scope is too big, and the second page is where the misunderstandings hide.",
+        "Do not write solutions in the Problem block. 'Users need a dashboard' is a solution; 'users cannot see if their order shipped' is a problem.",
+        "Do not leave Out of scope empty. It is the block that protects the team during the sprint."
+      ],
+      "next": "The signed PRD is the reference for the user flow and the wireframes. Open questions go into the team channel with their dates. Any scope change after signing is a new paragraph in the PRD with a date, never a hallway agreement.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Le PM écrit un premier jet seul avant la séance et l'envoie 24 heures avant. L'atelier est une revue, pas une séance d'écriture à six.",
+        "Invite le tech lead, le designer et une partie prenante qui utilisera le résultat. Quatre personnes, cinq max.",
+        "Pré-remplis le board avec le brouillon dans les sept blocs. Laisse le bloc Questions ouvertes volontairement vide : il se remplit en direct."
+      ],
+      "agenda": [
+        {"t": "Lecture silencieuse", "min": 15, "d": "Tout le monde lit la page entière en silence et pose un sticky sur chaque phrase avec laquelle il n'est pas d'accord ou qu'il ne comprend pas. Personne ne parle avant la fin du minuteur."},
+        {"t": "Problème et objectif", "min": 20, "d": "Passe les stickies des deux premiers blocs. Le test : la partie prenante peut-elle répéter le problème avec ses mots ? Le tech lead peut-il dire quelle métrique bouge ? Réécris jusqu'à ce que les deux disent oui."},
+        {"t": "Périmètre et hors périmètre", "min": 30, "d": "Lis le Périmètre à voix haute. Pour chaque item, le tech lead demande 'est-ce nécessaire pour faire bouger la métrique ?' Tout ce qui reçoit un non passe en Hors périmètre, écrit, pas supprimé."},
+        {"t": "User stories", "min": 25, "d": "Vérifie que chaque story a un utilisateur, une action et une raison. Fusionne les stories qui décrivent le même écran. S'il y en a plus de dix, le périmètre est trop gros pour une page : découpe le PRD."},
+        {"t": "Questions ouvertes", "min": 20, "d": "Rassemble chaque sticky restant dans le bloc Questions ouvertes. Chacune reçoit un responsable et une date. Une question sans responsable n'est pas ouverte, elle est ignorée."},
+        {"t": "Signer", "min": 10, "d": "Relis l'objectif et le périmètre une dernière fois. La partie prenante, le tech lead et le designer écrivent chacun 'OK' avec leur nom sur le board. C'est la validation ; pas de réunion séparée."}
+      ],
+      "pitfalls": [
+        "Ne dépasse pas une page. Si ça ne tient pas, le périmètre est trop gros, et la deuxième page est là où se cachent les malentendus.",
+        "N'écris pas de solutions dans le bloc Problème. 'Les utilisateurs ont besoin d'un tableau de bord' est une solution ; 'les utilisateurs ne voient pas si leur commande est expédiée' est un problème.",
+        "Ne laisse pas Hors périmètre vide. C'est le bloc qui protège l'équipe pendant le sprint."
+      ],
+      "next": "Le PRD signé est la référence pour le user flow et les wireframes. Les questions ouvertes vont dans le canal de l'équipe avec leurs dates. Tout changement de périmètre après signature est un nouveau paragraphe daté dans le PRD, jamais un accord de couloir.",
+      "source": ""
+    }
+  }
+}

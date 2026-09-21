@@ -1,0 +1,672 @@
+{
+  "raci": {
+    "en": {
+      "prep": [
+        "Invite only the leads who own a step of the process. Anyone whose name will not appear in a cell is an observer, not a participant.",
+        "Send the list of activities 2 days before, capped at 12. If you have more, split the workshop.",
+        "Pre-fill the board with activities as rows and roles as columns. Leave every cell empty."
+      ],
+      "agenda": [
+        {"t": "Set the rules", "min": 10, "d": "State the four letters and the one non-negotiable: exactly one A per row. Show a filled example row from another team."},
+        {"t": "Silent first pass", "min": 15, "d": "Each lead fills the cells for their own role only, in silence. No discussion yet."},
+        {"t": "Walk the rows", "min": 40, "d": "Read each row aloud. Stop at every row with zero A, two As, or more than three Cs. Settle it before moving on."},
+        {"t": "Stress test", "min": 15, "d": "Pick the two activities that caused the most friction last quarter. Replay them against the matrix: would it have prevented the mess?"},
+        {"t": "Publish", "min": 10, "d": "Agree where the matrix lives and who updates it. Set a review date in 3 months."}
+      ],
+      "pitfalls": [
+        "If a row ends with two As, force a choice on the spot. Two accountable people means nobody is.",
+        "Cap the Cs at three per row. Beyond that, the activity is a committee and will stall.",
+        "Do not let people put their own name as R and A on every row. Ask who does the work when they are on holiday."
+      ],
+      "next": "The matrix goes into the team charter or the project wiki. Every new activity is added on the spot. When decisions still stall, run a DACI on the specific decision rather than reopening the whole matrix.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Invite uniquement les leads qui portent une étape du process. Quelqu'un dont le nom n'apparaîtra dans aucune case est observateur, pas participant.",
+        "Envoie la liste des activités 2 jours avant, 12 maximum. Au-delà, découpe l'atelier.",
+        "Pré-remplis le board avec les activités en lignes et les rôles en colonnes. Laisse toutes les cases vides."
+      ],
+      "agenda": [
+        {"t": "Poser les règles", "min": 10, "d": "Explique les quatre lettres et la seule règle non négociable : exactement un A par ligne. Montre une ligne remplie d'une autre équipe."},
+        {"t": "Premier passage en silence", "min": 15, "d": "Chaque lead remplit les cases de son propre rôle uniquement, sans parler. Pas encore de discussion."},
+        {"t": "Parcourir les lignes", "min": 40, "d": "Lis chaque ligne à voix haute. Arrête-toi à chaque ligne avec zéro A, deux A, ou plus de trois C. Tranche avant de passer à la suivante."},
+        {"t": "Test de résistance", "min": 15, "d": "Prends les deux activités qui ont créé le plus de friction le trimestre dernier. Rejoue-les contre la matrice : aurait-elle évité le bazar ?"},
+        {"t": "Publier", "min": 10, "d": "Décide où vit la matrice et qui la met à jour. Fixe une date de revue dans 3 mois."}
+      ],
+      "pitfalls": [
+        "Si une ligne finit avec deux A, force le choix sur place. Deux responsables finaux, c'est personne.",
+        "Limite les C à trois par ligne. Au-delà, l'activité devient un comité et va s'enliser.",
+        "Ne laisse pas quelqu'un se mettre R et A sur toutes les lignes. Demande qui fait le travail quand il est en vacances."
+      ],
+      "next": "La matrice rejoint le team charter ou le wiki projet. Toute nouvelle activité y est ajoutée sur le moment. Si des décisions bloquent encore, fais un DACI sur la décision précise plutôt que de rouvrir toute la matrice.",
+      "source": ""
+    }
+  },
+  "daci": {
+    "en": {
+      "prep": [
+        "Name the Driver before the meeting. If nobody volunteers, the meeting is premature.",
+        "Send a one-paragraph statement of the decision to make, with a deadline, 48 hours before.",
+        "Put the four roles as empty boxes on the board plus two boxes: Options considered, Decision."
+      ],
+      "agenda": [
+        {"t": "Frame the decision", "min": 10, "d": "The Driver reads the decision statement. The group rewrites it until it is one sentence that can be answered yes or no, or by choosing one option."},
+        {"t": "Fill the roles", "min": 10, "d": "Driver, one Approver, Contributors, Informed. If the Approver is not in the room, stop and reschedule."},
+        {"t": "List the options", "min": 15, "d": "Contributors add every serious option, including doing nothing. Each option gets one line of pros and one line of cons."},
+        {"t": "Recommend", "min": 15, "d": "The Driver states a recommendation and why. Contributors challenge it for 10 minutes maximum."},
+        {"t": "Decide and record", "min": 10, "d": "The Approver decides. Write the decision, the date, and the reasoning in the Decision box. Post it to the Informed list before leaving."}
+      ],
+      "pitfalls": [
+        "Do not run the workshop with two Approvers. If two people must sign off, escalate to the person above them.",
+        "Write the options before the recommendation. If the Driver starts with the answer, Contributors only argue against it.",
+        "Record the reasoning, not just the outcome. In six months nobody remembers why, and the decision gets reopened."
+      ],
+      "next": "The document is linked from the project page and becomes the reference when the decision is questioned. Recurring stuck decisions across the team are a signal to run a RACI on the underlying process.",
+      "source": "Atlassian Team Playbook"
+    },
+    "fr": {
+      "prep": [
+        "Nomme le Driver avant la réunion. Si personne ne se propose, la réunion est prématurée.",
+        "Envoie un paragraphe qui énonce la décision à prendre, avec une échéance, 48 heures avant.",
+        "Mets les quatre rôles en cases vides sur le board plus deux cases : Options étudiées, Décision."
+      ],
+      "agenda": [
+        {"t": "Cadrer la décision", "min": 10, "d": "Le Driver lit l'énoncé. Le groupe le réécrit jusqu'à obtenir une phrase à laquelle on répond par oui ou non, ou par le choix d'une option."},
+        {"t": "Remplir les rôles", "min": 10, "d": "Driver, un seul Approver, Contributors, Informed. Si l'Approver n'est pas dans la pièce, arrête et replanifie."},
+        {"t": "Lister les options", "min": 15, "d": "Les Contributors ajoutent chaque option sérieuse, y compris ne rien faire. Chaque option reçoit une ligne de pour et une ligne de contre."},
+        {"t": "Recommander", "min": 15, "d": "Le Driver formule une recommandation et pourquoi. Les Contributors la challengent pendant 10 minutes maximum."},
+        {"t": "Décider et tracer", "min": 10, "d": "L'Approver décide. Écris la décision, la date et le raisonnement dans la case Décision. Envoie-la à la liste Informed avant de partir."}
+      ],
+      "pitfalls": [
+        "Ne fais pas l'atelier avec deux Approvers. Si deux personnes doivent signer, remonte à la personne au-dessus d'elles.",
+        "Écris les options avant la recommandation. Si le Driver commence par la réponse, les Contributors ne font que s'y opposer.",
+        "Trace le raisonnement, pas seulement le résultat. Dans six mois personne ne se souvient du pourquoi, et la décision est rouverte."
+      ],
+      "next": "Le document est lié depuis la page projet et devient la référence quand la décision est remise en cause. Des décisions qui bloquent à répétition dans l'équipe sont le signal de faire un RACI sur le process sous-jacent.",
+      "source": "Atlassian Team Playbook"
+    }
+  },
+  "dependencies": {
+    "en": {
+      "prep": [
+        "One representative per team, with authority to commit dates. Send the next quarter's objectives per team 3 days before.",
+        "Ask each rep to arrive with a list of what their team needs from others, with a wanted-by date.",
+        "Prepare the grid with teams as both rows and columns. Rows give, columns receive."
+      ],
+      "agenda": [
+        {"t": "Rules of the grid", "min": 10, "d": "Explain the reading: the cell at row A, column B is what A must deliver to B. One sticky per dependency, with a date."},
+        {"t": "Write your needs", "min": 20, "d": "Each rep writes what their team needs from every other team, in the receiving column. Silent, 20 minutes."},
+        {"t": "Confirm or contest", "min": 40, "d": "Walk the grid team by team. The giving team says yes with a date, or no with a reason. Mark disputed cells in red."},
+        {"t": "Find the crossings", "min": 20, "d": "Look for pairs where A waits for B and B waits for A. Each crossing is a risk: name it and pick one of the two to go first."},
+        {"t": "Escalate and close", "min": 30, "d": "List the red cells nobody can settle in the room. Assign each to a named person with a 48-hour deadline. Photograph the grid."}
+      ],
+      "pitfalls": [
+        "Do not accept a dependency without a date. 'Sometime in Q3' will slip to Q4.",
+        "Refuse reps who cannot commit. If the tech lead sends a delegate who must check with them, the grid is fiction.",
+        "Do not try to resolve every red cell in the room. Two hours is for mapping. Resolution happens in the 48-hour follow-up."
+      ],
+      "next": "The grid becomes the dependency row of the program board, or a standing item in the weekly sync. Revisit it every sprint: dependencies that keep reappearing point to a team boundary that needs to move.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Un représentant par équipe, avec le pouvoir d'engager des dates. Envoie les objectifs du trimestre par équipe 3 jours avant.",
+        "Demande à chaque rep d'arriver avec la liste de ce dont son équipe a besoin des autres, avec une date souhaitée.",
+        "Prépare la grille avec les équipes en lignes et en colonnes. Les lignes donnent, les colonnes reçoivent."
+      ],
+      "agenda": [
+        {"t": "Règles de la grille", "min": 10, "d": "Explique la lecture : la case ligne A, colonne B, c'est ce que A doit livrer à B. Un sticky par dépendance, avec une date."},
+        {"t": "Écrire ses besoins", "min": 20, "d": "Chaque rep écrit ce dont son équipe a besoin de chaque autre équipe, dans la colonne qui reçoit. En silence, 20 minutes."},
+        {"t": "Confirmer ou contester", "min": 40, "d": "Parcours la grille équipe par équipe. L'équipe qui donne dit oui avec une date, ou non avec une raison. Marque les cases contestées en rouge."},
+        {"t": "Trouver les croisements", "min": 20, "d": "Cherche les paires où A attend B et B attend A. Chaque croisement est un risque : nomme-le et choisis lequel des deux passe en premier."},
+        {"t": "Escalader et clore", "min": 30, "d": "Liste les cases rouges que personne ne peut régler dans la pièce. Attribue chacune à une personne nommée avec 48 heures de délai. Photographie la grille."}
+      ],
+      "pitfalls": [
+        "N'accepte pas une dépendance sans date. 'Quelque part au Q3' glissera au Q4.",
+        "Refuse les reps qui ne peuvent pas s'engager. Si le tech lead envoie un délégué qui doit le consulter, la grille est de la fiction.",
+        "N'essaie pas de résoudre toutes les cases rouges dans la pièce. Deux heures servent à cartographier. La résolution se fait dans les 48 heures qui suivent."
+      ],
+      "next": "La grille devient la ligne Dépendances du program board, ou un point fixe de la synchro hebdo. Revois-la à chaque sprint : les dépendances qui reviennent sans cesse désignent une frontière d'équipe à déplacer.",
+      "source": ""
+    }
+  },
+  "pi": {
+    "en": {
+      "prep": [
+        "Business owners, product management, every team with its PO and tech lead, architects, RTE. Block two full days, no parallel meetings.",
+        "Send the vision briefing, the top 10 features of the increment, and the architecture guardrails one week before. Teams read them before, not during.",
+        "Prepare the program board: sprints as columns, one row per team, one row for milestones. Print the capacity per team per sprint.",
+        "Book a breakout space per team plus the plenary room. Remote: one board per team plus the shared program board."
+      ],
+      "agenda": [
+        {"t": "Day 1 morning: context", "min": 180, "d": "Business context by a business owner (20 min), product vision and top features by product management (45 min), architecture vision (30 min), planning rules and capacity (20 min). Questions after each block, not during."},
+        {"t": "Day 1 afternoon: team breakouts, draft 1", "min": 240, "d": "Each team drafts its sprint plan, writes PI objectives, and posts features and dependencies on the program board. Scrum masters walk between teams to flag conflicts early."},
+        {"t": "Day 1 close: draft review", "min": 60, "d": "Each team presents its draft in 5 minutes: objectives, risks, dependencies. Business owners note what they will challenge tomorrow."},
+        {"t": "Day 2 morning: adjustments, draft 2", "min": 210, "d": "Management shares overnight decisions on scope and capacity. Teams rework their plans and resolve dependencies face to face with the other team, not by proxy."},
+        {"t": "Day 2 afternoon: final plans and business value", "min": 90, "d": "Each team presents its final plan. Business owners assign business value 1 to 10 to every PI objective, out loud, in front of the team."},
+        {"t": "Risks and confidence vote", "min": 60, "d": "Every program risk is ROAMed: resolved, owned, accepted, mitigated. Then fist of five per team. Any team at 2 or below reworks its plan before leaving."}
+      ],
+      "pitfalls": [
+        "Do not let the context morning drift past lunch. If presenters overrun, cut the architecture talk, not the breakout time.",
+        "Refuse features without a business owner in the room. A feature nobody will rate is a feature nobody wanted.",
+        "Do not skip the confidence vote because it is late. A plan the team does not believe in is not a plan, and you will pay for it in sprint 3."
+      ],
+      "next": "PI objectives and the program board are the contract for the increment. The RTE keeps the board alive in the weekly sync; the Inspect & Adapt at the end of the PI closes the loop.",
+      "source": "Scaled Agile"
+    },
+    "fr": {
+      "prep": [
+        "Business owners, product management, chaque équipe avec son PO et son tech lead, architectes, RTE. Bloque deux journées entières, aucune réunion en parallèle.",
+        "Envoie le briefing vision, les 10 features prioritaires de l'incrément et les garde-fous d'architecture une semaine avant. Les équipes lisent avant, pas pendant.",
+        "Prépare le program board : sprints en colonnes, une ligne par équipe, une ligne pour les jalons. Imprime la capacité par équipe et par sprint.",
+        "Réserve un espace par équipe plus la salle plénière. En remote : un board par équipe plus le program board partagé."
+      ],
+      "agenda": [
+        {"t": "Jour 1 matin : contexte", "min": 180, "d": "Contexte business par un business owner (20 min), vision produit et features prioritaires par le product management (45 min), vision architecture (30 min), règles de planification et capacité (20 min). Questions après chaque bloc, pas pendant."},
+        {"t": "Jour 1 après-midi : ateliers par équipe, brouillon 1", "min": 240, "d": "Chaque équipe ébauche son plan par sprint, écrit ses objectifs de PI et pose features et dépendances sur le program board. Les scrum masters circulent entre les équipes pour repérer les conflits tôt."},
+        {"t": "Jour 1 fin : revue des brouillons", "min": 60, "d": "Chaque équipe présente son brouillon en 5 minutes : objectifs, risques, dépendances. Les business owners notent ce qu'ils challengeront demain."},
+        {"t": "Jour 2 matin : ajustements, brouillon 2", "min": 210, "d": "Le management partage les décisions prises dans la nuit sur périmètre et capacité. Les équipes retravaillent leur plan et règlent les dépendances en face à face avec l'autre équipe, pas par intermédiaire."},
+        {"t": "Jour 2 après-midi : plans finaux et valeur business", "min": 90, "d": "Chaque équipe présente son plan final. Les business owners attribuent une valeur business de 1 à 10 à chaque objectif de PI, à voix haute, devant l'équipe."},
+        {"t": "Risques et vote de confiance", "min": 60, "d": "Chaque risque programme est traité ROAM : résolu, porté, accepté, atténué. Puis vote à cinq doigts par équipe. Toute équipe à 2 ou moins retravaille son plan avant de partir."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas la matinée de contexte déborder sur l'après-midi. Si les intervenants dépassent, coupe la présentation architecture, pas le temps d'atelier.",
+        "Refuse les features sans business owner dans la salle. Une feature que personne ne notera est une feature que personne ne voulait.",
+        "Ne saute pas le vote de confiance parce qu'il est tard. Un plan auquel l'équipe ne croit pas n'est pas un plan, et tu le paieras au sprint 3."
+      ],
+      "next": "Les objectifs de PI et le program board sont le contrat de l'incrément. Le RTE fait vivre le board dans la synchro hebdo ; l'Inspect & Adapt de fin de PI ferme la boucle.",
+      "source": "Scaled Agile"
+    }
+  },
+  "program": {
+    "en": {
+      "prep": [
+        "RTE plus the PO of each team. No developers: this is a maintenance session, not a planning one.",
+        "Send the current board and the list of features that moved since the last update 24 hours before.",
+        "Have the milestone row and the dependency strings visible. Prepare red stickies for slipped items."
+      ],
+      "agenda": [
+        {"t": "What moved", "min": 15, "d": "Each PO states in one minute what shifted in their row since last time: done early, slipped, dropped."},
+        {"t": "Update the strings", "min": 40, "d": "For every slipped feature, follow its dependency strings. Ask the receiving PO: does this break your sprint? Move or cut on the spot."},
+        {"t": "Milestone check", "min": 20, "d": "Walk the milestone row. Any milestone with a red feature upstream gets a risk sticky and an owner."},
+        {"t": "Capacity reality", "min": 25, "d": "Compare the load per sprint to the printed capacity. Any sprint over 100 percent gets one feature pushed right, chosen by the PO, not the RTE."},
+        {"t": "Publish the delta", "min": 20, "d": "Write a five-line summary: what moved, what is at risk, who owns what. Send it to the train before end of day."}
+      ],
+      "pitfalls": [
+        "Do not re-plan the whole increment. If more than a third of the board moves, you need a PI re-plan, not a board update.",
+        "Do not let a PO move a feature into a later sprint without asking who was waiting for it. The strings exist for that.",
+        "Do not keep zombie features on the board. If nobody can say who needs it, remove it and note it in the delta."
+      ],
+      "next": "The board feeds the weekly sync and the Inspect & Adapt. Features that slip twice in a row become a topic for the dependency map or the next PI Planning.",
+      "source": "Scaled Agile"
+    },
+    "fr": {
+      "prep": [
+        "RTE plus le PO de chaque équipe. Pas de développeurs : c'est une session de maintenance, pas de planification.",
+        "Envoie le board actuel et la liste des features qui ont bougé depuis la dernière mise à jour, 24 heures avant.",
+        "Garde la ligne des jalons et les fils de dépendances visibles. Prépare des stickies rouges pour les éléments en retard."
+      ],
+      "agenda": [
+        {"t": "Ce qui a bougé", "min": 15, "d": "Chaque PO dit en une minute ce qui a changé dans sa ligne depuis la dernière fois : fini en avance, glissé, abandonné."},
+        {"t": "Mettre à jour les fils", "min": 40, "d": "Pour chaque feature en retard, suis ses fils de dépendance. Demande au PO qui reçoit : est-ce que ça casse ton sprint ? Déplace ou coupe sur le moment."},
+        {"t": "Vérifier les jalons", "min": 20, "d": "Parcours la ligne des jalons. Tout jalon avec une feature rouge en amont reçoit un sticky risque et un responsable."},
+        {"t": "Réalité de la capacité", "min": 25, "d": "Compare la charge par sprint à la capacité imprimée. Tout sprint au-dessus de 100 pour cent voit une feature poussée à droite, choisie par le PO, pas par le RTE."},
+        {"t": "Publier le delta", "min": 20, "d": "Écris un résumé en cinq lignes : ce qui a bougé, ce qui est à risque, qui porte quoi. Envoie-le au train avant la fin de la journée."}
+      ],
+      "pitfalls": [
+        "Ne replanifie pas tout l'incrément. Si plus d'un tiers du board bouge, il te faut un re-PI Planning, pas une mise à jour.",
+        "Ne laisse pas un PO déplacer une feature vers un sprint plus tard sans demander qui l'attendait. Les fils existent pour ça.",
+        "Ne garde pas de features zombies sur le board. Si personne ne sait qui en a besoin, retire-la et note-le dans le delta."
+      ],
+      "next": "Le board alimente la synchro hebdo et l'Inspect & Adapt. Les features qui glissent deux fois de suite deviennent un sujet pour la carte des dépendances ou le prochain PI Planning.",
+      "source": "Scaled Agile"
+    }
+  },
+  "premortem": {
+    "en": {
+      "prep": [
+        "The whole project team plus the sponsor. The sponsor must stay for the full hour, not just the opening.",
+        "Send the project plan, or the one-page brief, 2 days before. Everyone must know what is supposed to happen.",
+        "Prepare three columns on the board: Causes of failure, Grouping, Mitigations. Sticky notes ready, one color for everyone."
+      ],
+      "agenda": [
+        {"t": "Set the scene", "min": 5, "d": "Say it exactly like this: 'It is six months from now. The project failed badly. Not delayed, failed.' Do not soften it."},
+        {"t": "Write the causes", "min": 10, "d": "Everyone writes, in silence, one cause per sticky. Push for volume: at least 5 per person. Nobody speaks."},
+        {"t": "Read around the room", "min": 15, "d": "Go around, one sticky per person per turn, until all are on the board. No comment, no defense, no 'that would never happen'."},
+        {"t": "Group and vote", "min": 15, "d": "Cluster similar causes. Each person gets 3 dots for the causes they find most likely. Take the top 5."},
+        {"t": "Mitigate", "min": 15, "d": "For each of the top 5: what do we change in the plan this week? One action, one owner, one date. Write it in the Mitigations column."}
+      ],
+      "pitfalls": [
+        "Do not run it without the sponsor. The most useful causes are the ones only the sponsor can fix, and they need to hear them said.",
+        "Stop anyone who argues against a cause during the read-around. The exercise works because nobody is allowed to defend the plan yet.",
+        "Do not leave with 12 mitigations. Five with owners beat twelve without."
+      ],
+      "next": "The top 5 risks and their mitigations go into the kick-off canvas or the project risk log. Review them at the first milestone: which ones happened anyway?",
+      "source": "Gary Klein"
+    },
+    "fr": {
+      "prep": [
+        "Toute l'équipe projet plus le sponsor. Le sponsor doit rester l'heure entière, pas seulement l'ouverture.",
+        "Envoie le plan projet, ou le brief d'une page, 2 jours avant. Tout le monde doit savoir ce qui est censé se passer.",
+        "Prépare trois colonnes sur le board : Causes de l'échec, Regroupement, Parades. Stickies prêts, une seule couleur pour tout le monde."
+      ],
+      "agenda": [
+        {"t": "Planter le décor", "min": 5, "d": "Dis-le exactement comme ça : 'Nous sommes dans six mois. Le projet a lamentablement échoué. Pas retardé, échoué.' N'adoucis pas."},
+        {"t": "Écrire les causes", "min": 10, "d": "Chacun écrit, en silence, une cause par sticky. Pousse le volume : au moins 5 par personne. Personne ne parle."},
+        {"t": "Tour de table", "min": 15, "d": "Fais le tour, un sticky par personne et par tour, jusqu'à ce que tout soit sur le board. Pas de commentaire, pas de défense, pas de 'ça n'arriverait jamais'."},
+        {"t": "Regrouper et voter", "min": 15, "d": "Regroupe les causes similaires. Chacun reçoit 3 gommettes pour les causes qu'il juge les plus probables. Garde le top 5."},
+        {"t": "Parer", "min": 15, "d": "Pour chacune des 5 : qu'est-ce qu'on change dans le plan cette semaine ? Une action, un responsable, une date. Écris-le dans la colonne Parades."}
+      ],
+      "pitfalls": [
+        "Ne le fais pas sans le sponsor. Les causes les plus utiles sont celles que seul le sponsor peut régler, et il doit les entendre dites.",
+        "Arrête quiconque conteste une cause pendant le tour de table. L'exercice marche parce que personne n'a encore le droit de défendre le plan.",
+        "Ne repars pas avec 12 parades. Cinq avec des responsables valent mieux que douze sans."
+      ],
+      "next": "Le top 5 des risques et leurs parades vont dans le kick-off canvas ou le registre des risques. Revois-les au premier jalon : lesquels sont arrivés quand même ?",
+      "source": "Gary Klein"
+    }
+  },
+  "launch": {
+    "en": {
+      "prep": [
+        "One decision-maker each from product, marketing, sales, and support. If support is not invited, the launch will land on them by surprise.",
+        "Send the feature description, the target segment, and the intended launch date one week before.",
+        "Pre-fill the board: Target, Message, Channels, Sequence & owners, Launch metrics. Add the draft date on the Sequence block."
+      ],
+      "agenda": [
+        {"t": "Align on the who", "min": 15, "d": "Product describes the target user in one sentence. Sales and support say whether they recognize that user in their tickets and calls. Adjust until all three agree."},
+        {"t": "Write the message", "min": 25, "d": "In pairs, write the one-sentence promise the user will read first. Read all versions aloud, pick one, tune it. No adjectives."},
+        {"t": "Pick the channels", "min": 20, "d": "Marketing lists every channel. For each one, sales or support says if the target actually reads it. Cut the rest."},
+        {"t": "Build the sequence", "min": 30, "d": "Work backward from launch day: what goes out at D-14, D-7, D-1, D-day, D+7. One owner per line. Support writes their internal enablement date first."},
+        {"t": "Metrics and go/no-go", "min": 30, "d": "Agree three launch metrics with a number each: adoption in week 1, support tickets, one business metric. Set the go/no-go meeting date and who attends."}
+      ],
+      "pitfalls": [
+        "Do not write the message with product alone. If sales cannot say it in a call, it is not the message.",
+        "Do not schedule the launch before support has trained. A feature that generates tickets nobody can answer is a failed launch, whatever the adoption.",
+        "Do not leave without numbers on the metrics. 'We will watch adoption' is not a metric."
+      ],
+      "next": "The dated checklist becomes the launch project, tracked in the weekly stakeholder sync. One week after launch, run the metrics review against the three numbers agreed here.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Un décideur de chaque côté : produit, marketing, ventes, support. Si le support n'est pas invité, le lancement lui tombera dessus par surprise.",
+        "Envoie la description de la feature, le segment cible et la date de lancement visée une semaine avant.",
+        "Pré-remplis le board : Cible, Message, Canaux, Séquence & responsables, Métriques de lancement. Ajoute la date prévue sur le bloc Séquence."
+      ],
+      "agenda": [
+        {"t": "S'aligner sur le qui", "min": 15, "d": "Le produit décrit l'utilisateur cible en une phrase. Ventes et support disent s'ils reconnaissent cet utilisateur dans leurs tickets et leurs appels. Ajuste jusqu'à l'accord des trois."},
+        {"t": "Écrire le message", "min": 25, "d": "En binômes, écrivez la promesse d'une phrase que l'utilisateur lira en premier. Lis toutes les versions à voix haute, choisis-en une, affine-la. Pas d'adjectifs."},
+        {"t": "Choisir les canaux", "min": 20, "d": "Le marketing liste tous les canaux. Pour chacun, ventes ou support disent si la cible le lit vraiment. Coupe le reste."},
+        {"t": "Construire la séquence", "min": 30, "d": "Remonte depuis le jour J : ce qui part à J-14, J-7, J-1, J, J+7. Un responsable par ligne. Le support écrit sa date de formation interne en premier."},
+        {"t": "Métriques et go/no-go", "min": 30, "d": "Fixe trois métriques de lancement avec un chiffre chacune : adoption en semaine 1, tickets support, une métrique business. Fixe la date du go/no-go et qui y assiste."}
+      ],
+      "pitfalls": [
+        "N'écris pas le message avec le produit seul. Si les ventes ne peuvent pas le dire en appel, ce n'est pas le message.",
+        "Ne programme pas le lancement avant que le support soit formé. Une feature qui génère des tickets auxquels personne ne sait répondre est un lancement raté, quelle que soit l'adoption.",
+        "Ne repars pas sans chiffres sur les métriques. 'On surveillera l'adoption' n'est pas une métrique."
+      ],
+      "next": "La checklist datée devient le projet de lancement, suivi dans la synchro stakeholders hebdo. Une semaine après le lancement, fais la revue métriques contre les trois chiffres fixés ici.",
+      "source": ""
+    }
+  },
+  "sync": {
+    "en": {
+      "prep": [
+        "PM plus the 3 to 5 stakeholders who can block or unblock the product. Not their delegates.",
+        "Send the agenda 24 hours before, same four headings every time: Agenda, Decisions, Actions, Blockers. Pre-fill the open actions from last time.",
+        "Keep the board as one running page. Each session is a new dated block below the previous one, never a new file."
+      ],
+      "agenda": [
+        {"t": "Actions from last time", "min": 10, "d": "Read each open action with its owner. Done, not done, or dropped. No explanations longer than one sentence."},
+        {"t": "Product update", "min": 10, "d": "PM gives three facts: what shipped, what the numbers say, what changed in the plan. Facts, not a demo."},
+        {"t": "Decisions needed", "min": 25, "d": "Two decisions maximum, prepared in advance with options. Each gets a decision or an owner and a date. Write it in the Decisions block while people watch."},
+        {"t": "Blockers", "min": 10, "d": "Each stakeholder names one thing they need or one thing they can offer. Match them on the spot when possible."},
+        {"t": "Close", "min": 5, "d": "Read the Actions block aloud. Confirm the next date. Post the block to the channel before leaving the room."}
+      ],
+      "pitfalls": [
+        "Do not turn it into a status meeting. If nobody made a decision in 3 sessions, cancel the ritual and redesign it.",
+        "Do not bring more than two decisions. Stakeholders tire after the second and decide badly on the third.",
+        "Do not send the notes the next day. Notes posted after the meeting get read; notes posted the next day get filed."
+      ],
+      "next": "The running page is the memory of the product's decisions. When a decision gets reopened, link the block where it was made. When the same blocker appears 3 times, run a stakeholder map to check who is missing from the room.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Le PM plus les 3 à 5 stakeholders qui peuvent bloquer ou débloquer le produit. Pas leurs délégués.",
+        "Envoie l'ordre du jour 24 heures avant, les mêmes quatre rubriques à chaque fois : Ordre du jour, Décisions, Actions, Bloquants. Pré-remplis les actions ouvertes de la fois précédente.",
+        "Garde le board comme une seule page continue. Chaque session est un nouveau bloc daté sous le précédent, jamais un nouveau fichier."
+      ],
+      "agenda": [
+        {"t": "Actions de la dernière fois", "min": 10, "d": "Lis chaque action ouverte avec son responsable. Fait, pas fait, ou abandonné. Pas d'explication de plus d'une phrase."},
+        {"t": "Point produit", "min": 10, "d": "Le PM donne trois faits : ce qui a été livré, ce que disent les chiffres, ce qui a changé dans le plan. Des faits, pas une démo."},
+        {"t": "Décisions attendues", "min": 25, "d": "Deux décisions maximum, préparées à l'avance avec des options. Chacune reçoit une décision, ou un responsable et une date. Écris-le dans le bloc Décisions pendant que les gens regardent."},
+        {"t": "Bloquants", "min": 10, "d": "Chaque stakeholder nomme une chose dont il a besoin ou une chose qu'il peut offrir. Apparie-les sur le moment quand c'est possible."},
+        {"t": "Clore", "min": 5, "d": "Lis le bloc Actions à voix haute. Confirme la prochaine date. Poste le bloc dans le canal avant de quitter la salle."}
+      ],
+      "pitfalls": [
+        "Ne le transforme pas en réunion de statut. Si personne n'a pris de décision en 3 sessions, annule le rituel et redessine-le.",
+        "N'apporte pas plus de deux décisions. Les stakeholders fatiguent après la deuxième et décident mal à la troisième.",
+        "N'envoie pas le compte-rendu le lendemain. Un compte-rendu posté juste après la réunion est lu ; posté le lendemain, il est classé."
+      ],
+      "next": "La page continue est la mémoire des décisions du produit. Quand une décision est rouverte, renvoie au bloc où elle a été prise. Quand le même bloquant revient 3 fois, fais une stakeholder map pour vérifier qui manque dans la pièce.",
+      "source": ""
+    }
+  },
+  "retro-ssc": {
+    "en": {
+      "prep": [
+        "The delivery team only. No manager unless they are part of the daily work.",
+        "Post last retro's three actions on the board before people arrive, with done or not done.",
+        "Three columns ready: Start, Stop, Continue. One sticky color per column, timer visible."
+      ],
+      "agenda": [
+        {"t": "Last actions", "min": 5, "d": "Read the three actions from last time. Done or not. If not done twice, drop it and say so."},
+        {"t": "Silent writing", "min": 10, "d": "Everyone writes stickies in the three columns, in silence. Minimum two per column. No reading others' notes yet."},
+        {"t": "Read and cluster", "min": 15, "d": "Each person reads their stickies in one breath, no discussion. Cluster duplicates as you go."},
+        {"t": "Vote", "min": 5, "d": "Three dots each. Vote only on Start and Stop. Continue is for morale, not for action."},
+        {"t": "Three actions", "min": 20, "d": "Top three clusters become three actions. Each gets an owner and a check date before next retro. Write them in the team's channel now."},
+        {"t": "One word", "min": 5, "d": "Close with one word per person on how the retro itself felt. Note anything that says 'useless' and change the format next time."}
+      ],
+      "pitfalls": [
+        "Do not let a Continue sticky become an action. Actions come from Start and Stop; Continue is a thank-you.",
+        "Do not take five actions. Three with owners, or you will be reading five not-dones next time.",
+        "Do not let the loudest person read first. Start with whoever spoke least in the last sprint."
+      ],
+      "next": "The three actions live in the team channel and open the next retro. If the same Stop appears three retros in a row, it is not a team problem: escalate it or run a Team Health Monitor.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "L'équipe de delivery uniquement. Pas de manager sauf s'il fait partie du travail quotidien.",
+        "Affiche les trois actions de la dernière rétro sur le board avant l'arrivée des gens, avec fait ou pas fait.",
+        "Trois colonnes prêtes : Start, Stop, Continue. Une couleur de sticky par colonne, minuteur visible."
+      ],
+      "agenda": [
+        {"t": "Actions précédentes", "min": 5, "d": "Lis les trois actions de la dernière fois. Fait ou pas. Si pas fait deux fois, abandonne-la et dis-le."},
+        {"t": "Écriture en silence", "min": 10, "d": "Chacun écrit des stickies dans les trois colonnes, en silence. Minimum deux par colonne. Pas de lecture des notes des autres pour l'instant."},
+        {"t": "Lire et regrouper", "min": 15, "d": "Chaque personne lit ses stickies d'une traite, sans discussion. Regroupe les doublons au fur et à mesure."},
+        {"t": "Voter", "min": 5, "d": "Trois gommettes chacun. On vote seulement sur Start et Stop. Continue sert au moral, pas à l'action."},
+        {"t": "Trois actions", "min": 20, "d": "Les trois groupes en tête deviennent trois actions. Chacune reçoit un responsable et une date de vérification avant la prochaine rétro. Écris-les dans le canal de l'équipe maintenant."},
+        {"t": "Un mot", "min": 5, "d": "Termine par un mot par personne sur la rétro elle-même. Note tout ce qui ressemble à 'inutile' et change le format la prochaine fois."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas un sticky Continue devenir une action. Les actions viennent de Start et Stop ; Continue est un merci.",
+        "Ne prends pas cinq actions. Trois avec des responsables, sinon tu liras cinq 'pas fait' la prochaine fois.",
+        "Ne laisse pas la personne la plus bruyante lire en premier. Commence par celle qui a le moins parlé pendant le sprint."
+      ],
+      "next": "Les trois actions vivent dans le canal de l'équipe et ouvrent la prochaine rétro. Si le même Stop revient trois rétros de suite, ce n'est pas un problème d'équipe : escalade-le ou fais un Team Health Monitor.",
+      "source": ""
+    }
+  },
+  "retro-4l": {
+    "en": {
+      "prep": [
+        "The team that shipped the release or lived the incident. Include whoever was on call, even if they are not in the team.",
+        "Send a one-paragraph reminder of the period covered: dates, what was released, what went wrong if anything.",
+        "Four columns: Liked, Learned, Lacked, Longed for. Put a one-line definition under each header; Lacked and Longed for get confused."
+      ],
+      "agenda": [
+        {"t": "Frame the period", "min": 5, "d": "Say what the retro covers and what it does not. Point at the four headers and read the definitions: Lacked is what was missing, Longed for is what we wish existed."},
+        {"t": "Silent writing", "min": 10, "d": "Each person fills all four columns in silence. Push for at least one Learned per person: that column is the point of this format."},
+        {"t": "Learned first", "min": 15, "d": "Read the Learned column first, before anything else. Each learning gets a question: where do we write this down so the next team finds it?"},
+        {"t": "Lacked and Longed for", "min": 15, "d": "Read both columns. Cluster. Vote with two dots each on the clusters that would have changed the outcome."},
+        {"t": "Actions and Liked", "min": 15, "d": "Turn the top two clusters into actions with owners. Finish by reading Liked aloud, quickly, so people leave on it."}
+      ],
+      "pitfalls": [
+        "Do not read the columns left to right. If you start with Liked, the energy is gone by Lacked.",
+        "Do not accept a Learned that is a complaint in disguise. 'We learned the API is slow' is a Lacked. A Learned changes what you do next time.",
+        "Do not let Longed for become a wish list for management. Filter it: what could the team itself build or ask for this quarter?"
+      ],
+      "next": "Learnings go into the team wiki or the onboarding doc, not the retro board. Actions open the next retro. After an incident, pair this with a blameless post-mortem for the timeline and root causes.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "L'équipe qui a livré la release ou vécu l'incident. Inclus la personne d'astreinte, même si elle n'est pas dans l'équipe.",
+        "Envoie un paragraphe de rappel sur la période couverte : dates, ce qui a été livré, ce qui a mal tourné le cas échéant.",
+        "Quatre colonnes : Liked, Learned, Lacked, Longed for. Mets une définition d'une ligne sous chaque titre ; Lacked et Longed for se confondent."
+      ],
+      "agenda": [
+        {"t": "Cadrer la période", "min": 5, "d": "Dis ce que la rétro couvre et ce qu'elle ne couvre pas. Pointe les quatre titres et lis les définitions : Lacked c'est ce qui a manqué, Longed for c'est ce qu'on aurait aimé avoir."},
+        {"t": "Écriture en silence", "min": 10, "d": "Chacun remplit les quatre colonnes en silence. Exige au moins un Learned par personne : cette colonne est le sens de ce format."},
+        {"t": "Learned en premier", "min": 15, "d": "Lis la colonne Learned en premier, avant tout le reste. Chaque apprentissage reçoit une question : où on l'écrit pour que la prochaine équipe le trouve ?"},
+        {"t": "Lacked et Longed for", "min": 15, "d": "Lis les deux colonnes. Regroupe. Vote avec deux gommettes chacun sur les groupes qui auraient changé le résultat."},
+        {"t": "Actions et Liked", "min": 15, "d": "Transforme les deux groupes en tête en actions avec responsables. Termine en lisant Liked à voix haute, vite, pour que les gens partent là-dessus."}
+      ],
+      "pitfalls": [
+        "Ne lis pas les colonnes de gauche à droite. Si tu commences par Liked, l'énergie est partie avant Lacked.",
+        "N'accepte pas un Learned qui est une plainte déguisée. 'On a appris que l'API est lente' est un Lacked. Un Learned change ce qu'on fait la prochaine fois.",
+        "Ne laisse pas Longed for devenir une liste de souhaits pour le management. Filtre : qu'est-ce que l'équipe elle-même pourrait construire ou demander ce trimestre ?"
+      ],
+      "next": "Les apprentissages vont dans le wiki de l'équipe ou le doc d'onboarding, pas sur le board de rétro. Les actions ouvrent la prochaine rétro. Après un incident, complète avec un post-mortem sans blâme pour la chronologie et les causes racines.",
+      "source": ""
+    }
+  },
+  "retro-sailboat": {
+    "en": {
+      "prep": [
+        "The whole team, including anyone who joined during the sprint. New people see the boat with fresh eyes.",
+        "Write the team's current goal on the island before the session. If you cannot write it in one sentence, that is the first finding.",
+        "Draw the boat, the wind, the anchors, the rocks, the island. One sticky color per zone. Keep the drawing crude; polished boards intimidate."
+      ],
+      "agenda": [
+        {"t": "Read the island", "min": 5, "d": "Read the goal on the island aloud. Ask: does anyone disagree that this is where we are sailing? Fix the sentence if needed."},
+        {"t": "Silent writing", "min": 10, "d": "Each person writes stickies for wind, anchors, and rocks. Minimum one anchor and one rock each. Silence."},
+        {"t": "Wind", "min": 10, "d": "Read the wind stickies fast. No discussion, just acknowledge. This is what to protect."},
+        {"t": "Anchors", "min": 20, "d": "Read every anchor. Cluster. For each cluster ask: is this ours to cut, or someone else's? Mark external anchors differently."},
+        {"t": "Rocks", "min": 10, "d": "Read the rocks. For each one: is it a rock we see or one we fear? Keep only the ones with a concrete trigger."},
+        {"t": "Actions", "min": 20, "d": "Vote on anchors only, two dots each. Top two anchors become actions with owners. One rock gets a watch-out owner. Post the three names in the channel."}
+      ],
+      "pitfalls": [
+        "Do not skip the island. A sailboat retro without a stated goal turns into a complaint session about the weather.",
+        "Do not let external anchors eat the action time. Name them, assign someone to escalate, and move on to the anchors the team controls.",
+        "Do not reuse the same drawing every sprint. After three times the metaphor is dead; switch to Start Stop Continue for a while."
+      ],
+      "next": "Actions open the next retro like any other format. Anchors marked external go to the stakeholder sync or the dependency map. If the island sentence changed during the retro, tell the PM: the team's goal drifted.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Toute l'équipe, y compris ceux qui ont rejoint pendant le sprint. Les nouveaux voient le bateau avec un regard neuf.",
+        "Écris l'objectif actuel de l'équipe sur l'île avant la session. Si tu ne peux pas l'écrire en une phrase, c'est la première découverte.",
+        "Dessine le bateau, le vent, les ancres, les rochers, l'île. Une couleur de sticky par zone. Garde le dessin brut ; un board léché intimide."
+      ],
+      "agenda": [
+        {"t": "Lire l'île", "min": 5, "d": "Lis l'objectif sur l'île à voix haute. Demande : quelqu'un conteste que c'est là qu'on navigue ? Corrige la phrase si besoin."},
+        {"t": "Écriture en silence", "min": 10, "d": "Chacun écrit des stickies pour le vent, les ancres et les rochers. Minimum une ancre et un rocher chacun. Silence."},
+        {"t": "Le vent", "min": 10, "d": "Lis les stickies vent rapidement. Pas de discussion, juste prendre acte. C'est ce qu'il faut protéger."},
+        {"t": "Les ancres", "min": 20, "d": "Lis chaque ancre. Regroupe. Pour chaque groupe demande : c'est à nous de la couper, ou à quelqu'un d'autre ? Marque les ancres externes différemment."},
+        {"t": "Les rochers", "min": 10, "d": "Lis les rochers. Pour chacun : c'est un rocher qu'on voit ou qu'on craint ? Garde seulement ceux qui ont un déclencheur concret."},
+        {"t": "Actions", "min": 20, "d": "Vote sur les ancres seulement, deux gommettes chacun. Les deux ancres en tête deviennent des actions avec responsables. Un rocher reçoit un responsable de veille. Poste les trois noms dans le canal."}
+      ],
+      "pitfalls": [
+        "Ne saute pas l'île. Une rétro sailboat sans objectif énoncé tourne à la séance de plaintes sur la météo.",
+        "Ne laisse pas les ancres externes manger le temps d'action. Nomme-les, désigne quelqu'un pour escalader, et passe aux ancres que l'équipe contrôle.",
+        "Ne réutilise pas le même dessin à chaque sprint. Après trois fois la métaphore est morte ; repasse en Start Stop Continue un moment."
+      ],
+      "next": "Les actions ouvrent la prochaine rétro comme pour tout format. Les ancres marquées externes vont à la synchro stakeholders ou à la carte des dépendances. Si la phrase de l'île a changé pendant la rétro, préviens le PM : l'objectif de l'équipe a dérivé.",
+      "source": ""
+    }
+  },
+  "health": {
+    "en": {
+      "prep": [
+        "The whole team, no manager in the room. The manager gets the result, not the debate.",
+        "Send the eight attributes with their green and red descriptions 2 days before, so nobody discovers the vocabulary live.",
+        "Grid ready: eight rows, columns Green, Yellow, Red, Trend. Prepare voting cards or a hidden poll; votes must be simultaneous."
+      ],
+      "agenda": [
+        {"t": "Rules", "min": 5, "d": "Explain: everyone votes at the same time, red is normal, this is not a performance review. Say it twice."},
+        {"t": "Vote attribute by attribute", "min": 25, "d": "For each of the eight attributes, read the green and red definition, count to three, everyone shows their card. Record the majority color and the spread."},
+        {"t": "Discuss the splits", "min": 15, "d": "Only discuss attributes where votes were split or red. Two minutes each, ask the red voters first: what would make it yellow?"},
+        {"t": "Trend", "min": 5, "d": "For each attribute, arrow up, flat, or down compared to last time. If this is the first session, skip it."},
+        {"t": "One action", "min": 10, "d": "Pick one red or downward attribute. One action the team can do itself before the next check. Owner, date, posted."}
+      ],
+      "pitfalls": [
+        "Do not let people vote one after another. The second voter copies the first. Simultaneous or nothing.",
+        "Do not discuss the green attributes. You have 15 minutes of discussion; spend them on red.",
+        "Do not leave with three actions. This format works because it produces one, and the next check tells you if it worked."
+      ],
+      "next": "The result goes to the manager as a photo of the grid, no commentary. Rerun every 4 to 6 weeks and compare trends. A red on Dependencies calls for a dependency map; a red on Value delivered calls for an OKR or impact mapping session, not another retro.",
+      "source": "Atlassian Team Playbook"
+    },
+    "fr": {
+      "prep": [
+        "Toute l'équipe, pas de manager dans la pièce. Le manager reçoit le résultat, pas le débat.",
+        "Envoie les huit attributs avec leurs descriptions vert et rouge 2 jours avant, pour que personne ne découvre le vocabulaire en direct.",
+        "Grille prête : huit lignes, colonnes Vert, Jaune, Rouge, Tendance. Prépare des cartes de vote ou un sondage caché ; les votes doivent être simultanés."
+      ],
+      "agenda": [
+        {"t": "Règles", "min": 5, "d": "Explique : tout le monde vote en même temps, le rouge est normal, ce n'est pas une évaluation. Dis-le deux fois."},
+        {"t": "Voter attribut par attribut", "min": 25, "d": "Pour chacun des huit attributs, lis la définition verte et rouge, compte jusqu'à trois, tout le monde montre sa carte. Note la couleur majoritaire et la dispersion."},
+        {"t": "Discuter les écarts", "min": 15, "d": "Discute seulement les attributs où les votes sont partagés ou rouges. Deux minutes chacun, demande d'abord aux votants rouges : qu'est-ce qui le ferait passer jaune ?"},
+        {"t": "Tendance", "min": 5, "d": "Pour chaque attribut, flèche haut, plat ou bas par rapport à la dernière fois. Si c'est la première session, saute."},
+        {"t": "Une action", "min": 10, "d": "Choisis un attribut rouge ou en baisse. Une action que l'équipe peut faire elle-même avant le prochain check. Responsable, date, postée."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas les gens voter les uns après les autres. Le deuxième copie le premier. Simultané ou rien.",
+        "Ne discute pas les attributs verts. Tu as 15 minutes de discussion ; dépense-les sur le rouge.",
+        "Ne repars pas avec trois actions. Ce format marche parce qu'il en produit une, et le prochain check te dit si elle a marché."
+      ],
+      "next": "Le résultat part au manager sous forme de photo de la grille, sans commentaire. Refais-le toutes les 4 à 6 semaines et compare les tendances. Un rouge sur Dépendances appelle une carte des dépendances ; un rouge sur Valeur livrée appelle une session OKR ou impact mapping, pas une rétro de plus.",
+      "source": "Atlassian Team Playbook"
+    }
+  },
+  "postmortem": {
+    "en": {
+      "prep": [
+        "Everyone who touched the incident, plus a facilitator who was not involved. The facilitator is the only one who may interrupt.",
+        "Collect the raw timeline before the session: alerts, messages, deploys, with timestamps. Post it on the board as-is, no interpretation.",
+        "Four columns: Timeline, Causes, What went well, Actions. Write the blameless rule at the top of the board in large text."
+      ],
+      "agenda": [
+        {"t": "Read the rule", "min": 5, "d": "Say it: we assume everyone acted with the best information they had. We are fixing the system, not the people. Anyone who names a culprit gets stopped."},
+        {"t": "Walk the timeline", "min": 25, "d": "Read the timeline minute by minute. Each participant adds what they knew and saw at each point. Correct timestamps, add missing events."},
+        {"t": "Causes", "min": 25, "d": "For each turning point, ask why up to five times. Stop at the first cause that is a process, a tool, or missing information. Never stop at a person."},
+        {"t": "What went well", "min": 10, "d": "List what limited the damage: a fast alert, a good rollback, someone who called the right person. These become things to protect."},
+        {"t": "Actions", "min": 25, "d": "Maximum four actions, each preventing a cause or shortening detection or recovery. Owner and date. Publish the report to the whole organization within 48 hours."}
+      ],
+      "pitfalls": [
+        "Do not let the person closest to the incident write the timeline alone. They fill gaps with memory, and memory is kind to itself.",
+        "Do not stop the whys at 'X made a mistake'. Ask why the system let that mistake reach production.",
+        "Do not keep the report private. A post-mortem nobody outside the team reads teaches nobody outside the team."
+      ],
+      "next": "The report is published and the actions tracked like any backlog item, with a check at 30 days. Recurring causes across post-mortems belong in the Inspect & Adapt or on the leadership OKRs.",
+      "source": ""
+    },
+    "fr": {
+      "prep": [
+        "Tous ceux qui ont touché l'incident, plus un facilitateur qui n'y était pas impliqué. Le facilitateur est le seul à pouvoir interrompre.",
+        "Rassemble la chronologie brute avant la session : alertes, messages, déploiements, avec horodatage. Affiche-la sur le board telle quelle, sans interprétation.",
+        "Quatre colonnes : Chronologie, Causes, Ce qui a bien marché, Actions. Écris la règle sans blâme en haut du board en gros."
+      ],
+      "agenda": [
+        {"t": "Lire la règle", "min": 5, "d": "Dis-le : on part du principe que chacun a agi avec la meilleure information qu'il avait. On répare le système, pas les gens. Quiconque nomme un coupable est arrêté."},
+        {"t": "Parcourir la chronologie", "min": 25, "d": "Lis la chronologie minute par minute. Chaque participant ajoute ce qu'il savait et voyait à chaque moment. Corrige les horodatages, ajoute les événements manquants."},
+        {"t": "Causes", "min": 25, "d": "À chaque point de bascule, demande pourquoi jusqu'à cinq fois. Arrête-toi à la première cause qui est un process, un outil ou une information manquante. Jamais à une personne."},
+        {"t": "Ce qui a bien marché", "min": 10, "d": "Liste ce qui a limité les dégâts : une alerte rapide, un bon rollback, quelqu'un qui a appelé la bonne personne. Ce sont des choses à protéger."},
+        {"t": "Actions", "min": 25, "d": "Quatre actions maximum, chacune évitant une cause ou raccourcissant la détection ou la récupération. Responsable et date. Publie le rapport à toute l'organisation sous 48 heures."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas la personne la plus proche de l'incident écrire la chronologie seule. Elle comble les trous avec sa mémoire, et la mémoire est indulgente avec elle-même.",
+        "N'arrête pas les pourquoi à 'X a fait une erreur'. Demande pourquoi le système a laissé cette erreur atteindre la production.",
+        "Ne garde pas le rapport privé. Un post-mortem que personne hors de l'équipe ne lit n'apprend rien à personne hors de l'équipe."
+      ],
+      "next": "Le rapport est publié et les actions suivies comme n'importe quel élément de backlog, avec un point à 30 jours. Les causes qui reviennent d'un post-mortem à l'autre relèvent de l'Inspect & Adapt ou des OKR de la direction.",
+      "source": ""
+    }
+  },
+  "metrics": {
+    "en": {
+      "prep": [
+        "Product, data, and growth. One person must be able to pull numbers live; if not, the session becomes a debate about definitions.",
+        "Agree the definition of each funnel step one week before: what counts as activated, what counts as retained at day 30. Write them on the board.",
+        "Pre-fill the five steps with last month's numbers and the conversion rate between each step. Bring the same numbers for the previous quarter."
+      ],
+      "agenda": [
+        {"t": "Read the funnel", "min": 15, "d": "Walk the five steps with the numbers. No interpretation yet, just confirm everyone reads the same figures and definitions."},
+        {"t": "Find the leak", "min": 25, "d": "Compare each conversion rate to the previous quarter and to what you would expect. Circle the single step where the drop is biggest relative to its potential."},
+        {"t": "Segment the leak", "min": 30, "d": "Data cuts the leaking step by segment: acquisition channel, plan, device, cohort. Look for one segment that behaves differently from the rest."},
+        {"t": "Hypotheses", "min": 30, "d": "Write hypotheses on why the segment leaks. Each one must name a cause you could act on within a month. Vote with three dots each."},
+        {"t": "Commit", "min": 20, "d": "Pick the top hypothesis. Define the experiment, the metric it should move, and the number that would count as success. Owner, review date in 4 weeks."}
+      ],
+      "pitfalls": [
+        "Do not work on two steps at once. A funnel review that fixes retention and activation in the same quarter fixes neither.",
+        "Do not accept a drop without a segment cut. An average leak hides one segment that leaks a lot and others that do not.",
+        "Do not leave with a hypothesis and no number. 'Improve activation' is not a commitment; 'activation from 32 to 38 percent for organic signups' is."
+      ],
+      "next": "The chosen hypothesis goes onto the experiment board and the number becomes an input metric on the North Star tree. Rerun the review monthly; change the target step only when the current one has moved.",
+      "source": "Dave McClure"
+    },
+    "fr": {
+      "prep": [
+        "Produit, data et growth. Une personne doit pouvoir sortir les chiffres en direct ; sinon la session devient un débat sur les définitions.",
+        "Fixe la définition de chaque étape du funnel une semaine avant : ce qui compte comme activé, ce qui compte comme retenu à 30 jours. Écris-les sur le board.",
+        "Pré-remplis les cinq étapes avec les chiffres du mois dernier et le taux de conversion entre chaque étape. Apporte les mêmes chiffres pour le trimestre précédent."
+      ],
+      "agenda": [
+        {"t": "Lire le funnel", "min": 15, "d": "Parcours les cinq étapes avec les chiffres. Pas d'interprétation encore, confirme juste que tout le monde lit les mêmes chiffres et les mêmes définitions."},
+        {"t": "Trouver la fuite", "min": 25, "d": "Compare chaque taux de conversion au trimestre précédent et à ce que tu attendrais. Entoure la seule étape où la chute est la plus grande par rapport à son potentiel."},
+        {"t": "Segmenter la fuite", "min": 30, "d": "La data découpe l'étape qui fuit par segment : canal d'acquisition, plan, appareil, cohorte. Cherche un segment qui se comporte différemment des autres."},
+        {"t": "Hypothèses", "min": 30, "d": "Écris des hypothèses sur pourquoi le segment fuit. Chacune doit nommer une cause sur laquelle on peut agir sous un mois. Vote avec trois gommettes chacun."},
+        {"t": "S'engager", "min": 20, "d": "Prends l'hypothèse en tête. Définis l'expérience, la métrique qu'elle doit bouger, et le chiffre qui compterait comme un succès. Responsable, revue dans 4 semaines."}
+      ],
+      "pitfalls": [
+        "Ne travaille pas sur deux étapes à la fois. Une revue de funnel qui répare rétention et activation dans le même trimestre ne répare aucune des deux.",
+        "N'accepte pas une chute sans découpage par segment. Une fuite moyenne cache un segment qui fuit beaucoup et d'autres qui ne fuient pas.",
+        "Ne repars pas avec une hypothèse sans chiffre. 'Améliorer l'activation' n'est pas un engagement ; 'activation de 32 à 38 pour cent sur les inscriptions organiques' en est un."
+      ],
+      "next": "L'hypothèse choisie va sur l'experiment board et le chiffre devient une métrique d'entrée de l'arbre North Star. Refais la revue chaque mois ; ne change d'étape cible que quand l'actuelle a bougé.",
+      "source": "Dave McClure"
+    }
+  },
+  "ia": {
+    "en": {
+      "prep": [
+        "All teams of the train, business owners, RTE, system architect. Half a day blocked, end of the PI, before the next PI Planning.",
+        "Collect the PI metrics one week before: objectives achieved versus committed, predictability, quality numbers. Send them with the demo agenda.",
+        "Five columns on the board: PI demo, Metrics, Problems, Root causes, Actions. Book the demo environment and test it the day before."
+      ],
+      "agenda": [
+        {"t": "PI system demo", "min": 60, "d": "Each team demos its increment in 8 minutes on the integrated system, not on a local branch. Business owners ask questions; nobody explains why something is missing."},
+        {"t": "Quantitative review", "min": 30, "d": "RTE reads the metrics: program predictability, objectives achieved, defects, cycle time. Compare to the previous PI. No discussion yet, facts only."},
+        {"t": "Problem identification", "min": 30, "d": "Everyone writes problems on stickies, silent, then reads them. Cluster. Vote with three dots each. Keep the top 3 to 5 problems for the train, not per team."},
+        {"t": "Root cause analysis", "min": 60, "d": "Split into groups, one problem each. Fishbone or five whys until the cause is a process or a structure. Each group presents its root cause in 3 minutes."},
+        {"t": "Actions and owners", "min": 40, "d": "Brainstorm solutions per root cause, vote, keep one per problem. Each becomes a backlog item for the next PI with a named owner. Read them all aloud before closing."},
+        {"t": "Close", "min": 20, "d": "Business owners say what they will change on their side. RTE confirms which actions enter the next PI Planning as features."}
+      ],
+      "pitfalls": [
+        "Do not let teams demo on slides. If it does not run on the integrated system, it is not done, and the demo must show that.",
+        "Do not do the problem-solving workshop team by team. Systemic problems live between teams; mixed groups are the point.",
+        "Do not accept actions without a backlog item. An improvement that is not in the next PI is a good intention."
+      ],
+      "next": "The improvement items enter the next PI Planning as features with capacity reserved. The RTE tracks them on the program board like any other feature and reports on them at the next Inspect & Adapt.",
+      "source": "Scaled Agile"
+    },
+    "fr": {
+      "prep": [
+        "Toutes les équipes du train, business owners, RTE, architecte système. Une demi-journée bloquée, en fin de PI, avant le prochain PI Planning.",
+        "Rassemble les métriques du PI une semaine avant : objectifs atteints contre engagés, prédictibilité, chiffres de qualité. Envoie-les avec l'ordre du jour de la démo.",
+        "Cinq colonnes sur le board : Démo PI, Mesures, Problèmes, Causes racines, Actions. Réserve l'environnement de démo et teste-le la veille."
+      ],
+      "agenda": [
+        {"t": "Démo système du PI", "min": 60, "d": "Chaque équipe démontre son incrément en 8 minutes sur le système intégré, pas sur une branche locale. Les business owners posent des questions ; personne n'explique pourquoi quelque chose manque."},
+        {"t": "Revue quantitative", "min": 30, "d": "Le RTE lit les métriques : prédictibilité programme, objectifs atteints, défauts, temps de cycle. Compare au PI précédent. Pas de discussion encore, des faits."},
+        {"t": "Identification des problèmes", "min": 30, "d": "Chacun écrit des problèmes sur stickies, en silence, puis les lit. Regroupe. Vote avec trois gommettes chacun. Garde les 3 à 5 problèmes du train, pas par équipe."},
+        {"t": "Analyse des causes racines", "min": 60, "d": "Répartis en groupes, un problème chacun. Arête de poisson ou cinq pourquoi jusqu'à ce que la cause soit un process ou une structure. Chaque groupe présente sa cause racine en 3 minutes."},
+        {"t": "Actions et responsables", "min": 40, "d": "Brainstorm de solutions par cause racine, vote, une seule par problème. Chacune devient un élément de backlog du prochain PI avec un responsable nommé. Lis-les toutes à voix haute avant de clore."},
+        {"t": "Clore", "min": 20, "d": "Les business owners disent ce qu'ils changeront de leur côté. Le RTE confirme quelles actions entrent au prochain PI Planning comme features."}
+      ],
+      "pitfalls": [
+        "Ne laisse pas les équipes démontrer sur des slides. Si ça ne tourne pas sur le système intégré, ce n'est pas fini, et la démo doit le montrer.",
+        "Ne fais pas l'atelier de résolution de problèmes équipe par équipe. Les problèmes systémiques vivent entre les équipes ; les groupes mixtes sont le but.",
+        "N'accepte pas d'actions sans élément de backlog. Une amélioration qui n'est pas dans le prochain PI est une bonne intention."
+      ],
+      "next": "Les éléments d'amélioration entrent au prochain PI Planning comme features avec de la capacité réservée. Le RTE les suit sur le program board comme n'importe quelle feature et en rend compte au prochain Inspect & Adapt.",
+      "source": "Scaled Agile"
+    }
+  }
+}
