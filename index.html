@@ -221,7 +221,10 @@ dialog::backdrop{background:rgba(10,14,28,.35);transition:opacity .28s}
 .dlg-body h3 .total{font-size:12px;color:var(--ink-3);font-weight:400}
 .dlg-body .desc,.dlg-body .why{margin:0 0 10px}
 #sec-overview{display:flex;flex-direction:column;gap:2px}
-#sec-overview .meta{margin:6px 0 12px}
+#sec-overview .meta{margin:6px 0 14px}
+#sec-overview .actions .btn{width:100%;justify-content:center;padding:13px 16px;font-size:15px;border-radius:12px}
+#sec-overview .actions .btn svg{width:16px;height:16px}
+#sec-overview .actions{margin-bottom:6px}
 body:has(dialog[open]){overflow:hidden}
 @media (prefers-reduced-motion:reduce){dialog{transition:none}}
 .muted{color:var(--ink-3)}
