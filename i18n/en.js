@@ -22,6 +22,7 @@ const I18N_EN = {
         {t:'Are there parts of the product nobody dares touch?', o:['No','Some','A lot']},
         {t:'Where does the roadmap come from?', o:['One person\'s head','One shared backlog','Several teams negotiating']},
       ]},
+    before:'Before you start', needsFrom:'You need', feedsInto:'Your output feeds', flowTitle:'Dependencies in this plan', notInPlan:'not in this plan', noDeps:'This workshop has no prerequisite: it can open a sequence.',
     reasons:{core:(s)=>`Core at ${s}`, fit:(s)=>`Useful at ${s}`, trigger:'Answers your trigger', goals:(g)=>`Covers ${g}`, feeds:(n)=>`Feeds ${n}`, builds:(n)=>`Builds on ${n}`},
     whyStep:'Why this step', prereq:'Prerequisites this plan skips', prereqHint:(a, b)=>`${a} usually feeds ${b}. Run it first, or make sure that input already exists.`,
     viewSteps:'Steps', viewPlan:'Plan', planTitle:'Plan to share', slotSession:'Session', slotDay:(n)=>`Day ${n}`, slotWeek:(n)=>`Week ${n}`, slotWhen:'When', slotWhat:'Workshop', copyLink:'Copy link', copied:'Link copied', print:'Print / PDF', total:'Total',

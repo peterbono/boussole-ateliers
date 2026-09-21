@@ -230,6 +230,12 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
 .plan-url{font-size:12px;word-break:break-all;margin:12px 0 0}
+.flow-wrap{margin-top:18px;overflow-x:auto}
+.flow-wrap h4.k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:0 0 8px}
+.flow{display:block;width:100%;height:auto}
+.fl-node{cursor:pointer}
+.fl-node:hover rect{filter:brightness(.96)}
+.fl-node:focus-visible{outline:2px solid var(--accent)}
 .gantt{display:flex;flex-direction:column;min-width:520px}
 .g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
 .g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
@@ -250,6 +256,14 @@ body:has(dialog[open]){overflow:hidden}
 .agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
 .agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
 .agenda b{color:var(--ink);font-weight:600}
+.deps{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.deps h3{font-size:16px}
+.deps h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
+.deps ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.deps li{display:grid;grid-template-columns:minmax(140px,45%) 1fr;gap:10px;align-items:baseline;font-size:13.5px;color:var(--ink-2);padding:6px 0;border-bottom:1px dashed var(--line)}
+.deps li:last-child{border-bottom:0}
+.deps li button{text-align:left;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:3px}
+.deps li button:hover{text-decoration-color:var(--accent);color:var(--accent)}
 .helpful{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
 @media print{
   body{background:#fff;color:#000}
@@ -339,6 +353,7 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
   if(p.get('goals')){ const g = p.get('goals').split(',').filter(v => ok(GOALS, v)); if(g.length) ans.goals = g; }
 })();
 let view = store.get('view', 'steps');
+if(new URLSearchParams(location.search).get('view') === 'plan') view = 'plan';
 let diag = store.get('diag', {open:false, a:[null,null,null,null,null,null]});
 function diagnose(a){
   // score par stade à partir des 6 réponses (index 0..2), puis équipe et manques déduits
@@ -380,6 +395,7 @@ function syncUrl(){
   const url = new URL(location.href);
   ['stage','team','trigger','horizon'].forEach(k => url.searchParams.set(k, ans[k]));
   url.searchParams.set('goals', ans.goals.join(','));
+  if(view === 'plan') url.searchParams.set('view', 'plan'); else url.searchParams.delete('view');
   if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
   url.searchParams.delete('open');
   history.replaceState(null, '', url);
@@ -572,6 +588,33 @@ function planSlots(pick){
     const slot = {label:u.slotWeek(week + 1), x, start:week, span:1}; used += d; return slot;
   });
 }
+function flowHtml(pick, slots){
+  const u = UI(), ids = pick.map(x => x.t.id);
+  const edges = [];
+  pick.forEach((x, i) => (CHAIN[x.t.id] || {inputs:[]}).inputs.forEach(src => { const j = ids.indexOf(src); if(j >= 0 && j < i) edges.push([j, i]); }));
+  // prérequis hors plan (les mêmes que l'aside)
+  const {prereqs} = recommend(ans);
+  if(!edges.length && !prereqs.length) return '';
+  const W = 720, NW = 128, NH = 40, GX = 40, GY = 14, PAD = 12;
+  const cols = slots.reduce((m, s) => Math.max(m, s.start + 1), 0) + (prereqs.length ? 1 : 0);
+  const off = prereqs.length ? 1 : 0;
+  const colX = c => PAD + c * (NW + GX);
+  const rowsIn = {}; const pos = {};
+  slots.forEach((s, i) => { const c = s.start + off; rowsIn[c] = (rowsIn[c] || 0); pos[i] = {x:colX(c), y:PAD + rowsIn[c] * (NH + GY)}; rowsIn[c]++; });
+  const ppos = {}; prereqs.forEach((p, k) => { ppos[p.from.id] = {x:colX(0), y:PAD + k * (NH + GY)}; });
+  const H = PAD * 2 + Math.max(...Object.values(rowsIn), prereqs.length) * (NH + GY) - GY;
+  const totalW = PAD * 2 + cols * NW + (cols - 1) * GX;
+  const esc2 = esc, name = t => { const n = tx(t).name; return n.length > 20 ? n.slice(0, 19) + '…' : n; };
+  const path = (a, b, dashed) => { const x1 = a.x + NW, y1 = a.y + NH/2, x2 = b.x, y2 = b.y + NH/2, mx = (x1 + x2) / 2; return `<path d="M${x1} ${y1} C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}" fill="none" stroke="var(--pv-muted)" stroke-width="1.4"${dashed ? ' stroke-dasharray="4 3"' : ''} marker-end="url(#fl-arrow)"/>`; };
+  let svg = `<svg class="flow" style="min-width:${Math.round(totalW * .85)}px" viewBox="0 0 ${totalW} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc2(u.flowTitle)}"><defs><marker id="fl-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L6 3L0 6z" fill="var(--pv-muted)"/></marker></defs>`;
+  edges.forEach(([a, b]) => { svg += path(pos[a], pos[b], false); });
+  prereqs.forEach(p => { const j = ids.indexOf(p.to.id); if(j >= 0) svg += path(ppos[p.from.id], pos[j], true); });
+  const node = (t, p, dashed) => { const ph = byId(PHASES, t.phase); return `<g class="fl-node" data-open="${t.id}" style="--h:var(${ph.h})" tabindex="0" role="button"><rect x="${p.x}" y="${p.y}" width="${NW}" height="${NH}" rx="8" fill="${dashed ? 'var(--pv-bg)' : `hsl(var(--h) var(--chip-s) var(--chip-l))`}" stroke="${dashed ? 'var(--pv-muted)' : `hsl(var(--h) 40% calc(var(--chip-l) - 10%))`}"${dashed ? ' stroke-dasharray="4 3"' : ''}/><text x="${p.x + 10}" y="${p.y + (dashed ? 17 : 24)}" font-size="11.5" font-weight="600" fill="${dashed ? 'var(--pv-muted)' : `hsl(var(--h) 45% var(--chip-text-l))`}" font-family="Public Sans, system-ui, sans-serif">${esc2(name(t))}</text>${dashed ? `<text x="${p.x + 10}" y="${p.y + 31}" font-size="10" fill="var(--pv-muted)" font-family="IBM Plex Mono, monospace">${esc2(u.notInPlan)}</text>` : ''}</g>`; };
+  prereqs.forEach(p => { svg += node(p.from, ppos[p.from.id], true); });
+  pick.forEach((x, i) => { svg += node(x.t, pos[i], false); });
+  svg += '</svg>';
+  return `<div class="flow-wrap"><h4 class="k">${esc2(u.flowTitle)}</h4>${svg}</div>`;
+}
 function ganttHtml(slots){
   const u = UI();
   const n = slots.reduce((m, s) => Math.max(m, s.start + s.span), 0);
@@ -594,13 +637,14 @@ function planHtml(pick, total){
   return `<section class="plan">
     <div class="plan-head"><h3>${esc(u.planTitle)}</h3><p class="muted">${esc(st.name)} · ${esc(tr.name)} · ${esc(L.horizons[ans.horizon])}</p></div>
     <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
+    ${flowHtml(pick, planSlots(pick))}
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
     <p class="muted plan-url">${esc(location.href.split('?')[0])}?${new URL(location.href).searchParams.toString()}</p>
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
-  const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); renderResult(); return; }
+  const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
   if(e.target.closest('#copy-link')){ const href = syncUrl(); navigator.clipboard && navigator.clipboard.writeText(href).then(() => { const b = document.getElementById('copy-link'); b.textContent = UI().copied; track('copy_link', {stage:ans.stage, trigger:ans.trigger}); }).catch(() => {}); return; }
   if(e.target.closest('#print')){ window.print(); }
 });
@@ -672,6 +716,17 @@ function howToHtml(t){
     ${c.source ? `<p class="muted">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
   </section>`;
 }
+function depsHtml(t){
+  const u = UI();
+  const ins = (CHAIN[t.id] || {inputs:[]}).inputs.map(id => byId(T, id)).filter(Boolean);
+  const outs = T.filter(q => (CHAIN[q.id] || {inputs:[]}).inputs.includes(t.id));
+  const row = q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(tx(q).out)}</span></li>`;
+  return `<section class="deps">
+    <h3>${esc(u.before)}</h3>
+    ${ins.length ? `<h4>${esc(u.needsFrom)}</h4><ul>${ins.map(row).join('')}</ul>` : `<p class="muted">${esc(u.noDeps)}</p>`}
+    ${outs.length ? `<h4>${esc(u.feedsInto)}</h4><ul>${outs.map(q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(L.phases[q.phase])}</span></li>`).join('')}</ul>` : ''}
+  </section>`;
+}
 function openPreview(id){
   const t = byId(T, id); if(!t) return;
   const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
@@ -686,6 +741,7 @@ function openPreview(id){
       ${metaHtml(t)}
       ${actionsHtml(t, false)}
       <p class="hint">${esc(u.figjamHint)} ${FIGJAM.community ? `<a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a> · ` : ''}<a href="${pageUrl(t)}">${esc(u.permalink)}</a></p>
+      ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
     </div>`;
