@@ -153,26 +153,21 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .aside li{margin:3px 0}
 .aside li button{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
-/* matrice */
-.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
-.matrix-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
-.matrix th,.matrix td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
-.matrix th{background:var(--surface-2);font-weight:600;font-size:14px;position:sticky;top:0}
-.matrix th small{display:block;font-weight:400;color:var(--ink-3);font-size:12px;margin-top:2px}
-.matrix td:first-child,.matrix th:first-child{position:sticky;left:0;background:var(--surface-2);z-index:1;min-width:150px}
-.matrix td:last-child,.matrix th:last-child{border-right:0}
-.matrix tr:last-child td{border-bottom:0}
-.cell{display:flex;flex-direction:column;gap:4px}
-.cell button{text-align:left;color:var(--ink-2);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .12s}
-.cell button:hover{color:var(--ink);text-decoration-color:var(--line-strong)}
-.cell button.strong{color:var(--ink);font-weight:600}
-.legend{font-size:13.5px;color:var(--ink-2);gap:16px}
-.legend span{display:inline-flex;align-items:center;gap:7px}
-.legend b{color:var(--ink);font-weight:700}
-.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
-.dot.ink{background:var(--ink)}.dot.grey{background:var(--ink-3)}
-
+/* liste */
+.list-wrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table.list{border-collapse:collapse;width:100%;min-width:960px;font-size:13.5px;table-layout:fixed}
+.list td:nth-child(4),.list td:last-child{white-space:nowrap}
+.list th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.list td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle;color:var(--ink-2)}
+.list tr:last-child td{border-bottom:0}
+.list tbody tr{cursor:pointer;transition:background .12s}
+.list tbody tr:hover{background:var(--surface-2)}
+.list tbody tr:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.list td b{color:var(--ink);font-weight:600}
+.list td.stages{color:var(--ink-3);min-width:150px}
+.list td.stages b{color:var(--ink);font-weight:600}
+.list td .actions{justify-content:flex-end}
+.list .chip{white-space:nowrap}
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
 .filters .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px}
@@ -316,11 +311,8 @@ body:has(dialog[open]){overflow:hidden}
 
   <section class="view" id="view-library" role="tabpanel" hidden>
     <div class="filters" id="filters"></div>
-    <div id="lib-cards"><div class="grid" id="library"></div></div>
-    <div id="lib-matrix" hidden>
-      <div class="toolbar legend" style="margin-top:14px"><span data-ui="legendIntro"></span><span><i class="dot ink"></i><b data-ui="legendPrimary"></b></span><span><i class="dot grey"></i><span data-ui="legendSecondary"></span></span></div>
-      <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
-    </div>
+    <div class="grid" id="library"></div>
+    <div class="list-wrap" id="lib-list" hidden><table class="list" id="list-table"></table></div>
   </section>
 </div>
 
@@ -666,20 +658,6 @@ document.getElementById('result').addEventListener('mouseout', e => {
   body.querySelectorAll('.on').forEach(el => el.classList.remove('on'));
 });
 
-/* ---------- matrice ---------- */
-function renderMatrix(){
-  let html = `<thead><tr><th>${esc(UI().phase)}</th>${STAGES.map(s => `<th>${esc(L.stages[s.id].short)}<small>${esc(L.stages[s.id].hint)}</small></th>`).join('')}</tr></thead><tbody>`;
-  PHASES.forEach(p => {
-    html += `<tr><td style="--h:var(${p.h})"><span class="chip">${esc(L.phases[p.id])}</span></td>`;
-    STAGES.forEach((s, si) => {
-      const items = T.filter(t => t.phase === p.id && t.fit[si] >= 2).sort((a, b) => b.fit[si] - a.fit[si]);
-      html += `<td><div class="cell">${items.map(t => `<button type="button" class="${t.fit[si] === 3 ? 'strong' : ''}" data-open="${t.id}">${esc(tx(t).name)}</button>`).join('')}</div></td>`;
-    });
-    html += '</tr>';
-  });
-  document.getElementById('matrix').innerHTML = html + '</tbody>';
-}
-
 /* ---------- bibliothèque ---------- */
 function tcard(t, si){
   const ph = byId(PHASES, t.phase), x = tx(t);
@@ -696,8 +674,7 @@ function tcard(t, si){
 function renderFilters(){
   const u = UI();
   const opt = (id, name, cur) => `<option value="${id}"${cur === id ? ' selected' : ''}>${esc(name)}</option>`;
-  const seg = `<div class="seg" id="lib-mode"><button type="button" aria-pressed="${lib.mode === 'cards'}" data-mode="cards">${esc(u.viewCards)}</button><button type="button" aria-pressed="${lib.mode === 'matrix'}" data-mode="matrix">${esc(u.viewMatrix)}</button></div>`;
-  if(lib.mode === 'matrix'){ document.getElementById('filters').innerHTML = seg; return; }
+  const seg = `<div class="seg" id="lib-mode"><button type="button" aria-pressed="${lib.mode === 'cards'}" data-mode="cards">${esc(u.viewCards)}</button><button type="button" aria-pressed="${lib.mode === 'list'}" data-mode="list">${esc(u.viewList)}</button></div>`;
   document.getElementById('filters').innerHTML = seg + '<span class="sep"></span>'
     + `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
     + `<label class="select"><span>${esc(u.filterPhase)}</span><select id="lib-phase">${opt('all', u.all, lib.phase)}${PHASES.map(p => opt(p.id, L.phases[p.id], lib.phase)).join('')}</select></label>`
@@ -713,17 +690,26 @@ document.getElementById('filters').addEventListener('change', e => {
   if(e.target.id === 'lib-stage'){ lib.stage = e.target.value; renderLibrary(); }
 });
 document.getElementById('filters').addEventListener('input', e => { if(e.target.id === 'lib-q'){ lib.q = e.target.value; renderLibrary(); } });
+function listRow(t, si){
+  const x = tx(t), ph = byId(PHASES, t.phase);
+  const stages = STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(L.stages[s.id].short)}</b>` : esc(L.stages[s.id].short)) : null).filter(Boolean).join(' · ');
+  return `<tr data-open="${t.id}" role="button" tabindex="0" style="--h:var(${ph.h})"><td><b>${esc(x.name)}</b></td><td><span class="chip">${esc(L.phases[ph.id])}</span></td><td class="stages">${stages}</td><td class="mono">${fmtDur(t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td><td>${actionsHtml(t, true)}</td></tr>`;
+}
 function renderLibrary(){
-  document.getElementById('lib-cards').hidden = lib.mode === 'matrix';
-  document.getElementById('lib-matrix').hidden = lib.mode !== 'matrix';
-  if(lib.mode === 'matrix') return;
+  const u = UI();
+  document.getElementById('library').hidden = lib.mode === 'list';
+  document.getElementById('lib-list').hidden = lib.mode !== 'list';
   const si = lib.stage === 'all' ? -1 : stageIdx(lib.stage);
   const q = lib.q.trim().toLowerCase();
   const list = T.filter(t => (lib.phase === 'all' || t.phase === lib.phase) && (si < 0 || t.fit[si] >= 2)
     && (!q || (tx(t).name + ' ' + tx(t).desc + ' ' + tx(t).out).toLowerCase().includes(q)));
   list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
   document.getElementById('count').textContent = list.length + ' / ' + T.length;
-  document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(UI().empty)}</div>`;
+  if(lib.mode === 'list'){
+    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:20%"><col style="width:14%"><col style="width:16%"><col style="width:7%"><col style="width:14%"><col style="width:18%"><col style="width:11%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
+    return;
+  }
+  document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(u.empty)}</div>`;
 }
 
 /* ---------- aperçu (dialog) ---------- */
@@ -805,9 +791,10 @@ document.querySelector('.lang').addEventListener('click', e => {
 });
 
 /* ---------- boot ---------- */
-function renderAll(){ applyStatic(); renderQuestions(); renderDiag(); renderResult(); renderMatrix(); renderFilters(); renderLibrary(); }
+function renderAll(){ applyStatic(); renderQuestions(); renderDiag(); renderResult(); renderFilters(); renderLibrary(); }
 renderAll();
-let savedTab = store.get('tab', 'orient'); if(savedTab === 'matrix'){ savedTab = 'library'; lib.mode = 'matrix'; }
+let savedTab = store.get('tab', 'orient'); if(savedTab === 'matrix') savedTab = 'library';
+if(lib.mode !== 'cards' && lib.mode !== 'list') lib.mode = 'cards';
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
 const openId = new URLSearchParams(location.search).get('open'); if(openId && byId(T, openId)) openPreview(openId);
 </script>

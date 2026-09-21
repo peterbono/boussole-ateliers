@@ -2,7 +2,7 @@
 const I18N_FR = {
   code:'fr', title:'Boussole Ateliers', figmaName:'Boussole Ateliers',
   ui:{
-    tabs:{orient:'Orienter', library:'Bibliothèque'}, viewCards:'Cards', viewMatrix:'Matrice',
+    tabs:{orient:'Orienter', library:'Bibliothèque'}, viewCards:'Cards', viewList:'Liste',
     q:{stage:'Stade du produit', team:'Taille produit + tech', trigger:'Déclencheur', goals:'Ce qui manque', horizon:'Horizon'},
     reset:'Réinitialiser',
     summary:(n, hz)=>`${n} atelier${n>1?'s':''} dans l\'ordre, pour ${hz}. Chaque board s\'ouvre dans FigJam, à dupliquer dans ton espace.`,
