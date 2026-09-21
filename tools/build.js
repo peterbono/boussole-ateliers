@@ -22,7 +22,9 @@ if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){
 fs.rmSync(dist, {recursive:true, force:true}); fs.mkdirSync(dist, {recursive:true});
 for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
 fs.mkdirSync(path.join(dist, 'i18n')); for(const f of ['en.js','fr.js']) fs.copyFileSync(path.join(root, 'i18n', f), path.join(dist, 'i18n', f));
-fs.mkdirSync(path.join(dist, 'content')); fs.writeFileSync(path.join(dist, 'content/run.json'), JSON.stringify(RUN));
+const EX = {};
+if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){ if(!/^ex-[A-Z]\.json$/.test(f)) continue; Object.assign(EX, JSON.parse(fs.readFileSync(path.join(contentDir, f), 'utf8'))); }
+fs.mkdirSync(path.join(dist, 'content')); fs.writeFileSync(path.join(dist, 'content/run.json'), JSON.stringify(RUN)); fs.writeFileSync(path.join(dist, 'content/examples.json'), JSON.stringify(EX));
 
 // 3. pages
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -84,6 +86,13 @@ function workshopPage(lang, t){
 <div class="pv-box">${Preview.renderPreview(LAYOUTS[lang][t.id], {class:'pv', title:u.preview(x.name)})}</div>
 <div class="cta">${fj ? `<a class="btn primary" href="${fj}" target="_blank" rel="noopener">${esc(u.openFigjam)}</a>` : ''}<a class="btn" href="/?open=${t.id}${lang === 'fr' ? '&lang=fr' : ''}">${esc(u.openApp)}</a></div>
 <p class="hint">${esc(u.figjamHint)}${FIGJAM.community ? ` <a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a>` : ''}</p>`;
+  const ex = EX[t.id] && EX[t.id][lang];
+  if(ex){
+    const STICKY = ['#FFE58F','#B7EB8F','#91D5FF','#FFADD2','#D3ADF7','#FFD591']; let k = 0;
+    html += `<section><h2>${esc(u.example)}</h2><p class="muted" style="font-size:13px;margin:0 0 8px">${esc(u.exampleIntro)}</p><p style="color:var(--ink-2);margin:0 0 12px">${esc(ex.context)}</p>
+<div class="ex-board">${ex.blocks.map(b => `<div class="ex-block"><div class="ex-title">${esc(b.t)}</div><div class="ex-items">${b.items.map(it => `<div class="sticky" style="--c:${STICKY[k++ % STICKY.length]}">${esc(it)}</div>`).join('')}</div></div>`).join('')}</div>
+<div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(ex.takeaway)}</p></div></section>`;
+  }
   if(run){
     html += `<section><h2>${esc(u.howTo)}</h2>
 <h3 class="k">${esc(u.prep)}</h3><ul>${run.prep.map(p => `<li>${esc(p)}</li>`).join('')}</ul>

@@ -264,7 +264,18 @@ body:has(dialog[open]){overflow:hidden}
 .agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
 .agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
 .agenda b{color:var(--ink);font-weight:600}
-.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec,.ex{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.ex-intro{font-size:12.5px;margin:-4px 0 8px}
+.ex-context{font-size:14px;color:var(--ink-2);margin:0 0 12px;line-height:1.45}
+.ex-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;padding:12px;border-radius:12px;background:var(--pv-fill);border:1px solid var(--line)}
+.ex-block{background:var(--pv-bg);border:1px solid var(--pv-line);border-radius:8px;padding:8px 8px 6px;min-width:0}
+.ex-title{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:.01em}
+.ex-items{display:flex;flex-wrap:wrap;gap:6px}
+.sticky{font-size:12px;line-height:1.3;color:#1A2236;background:var(--c);padding:6px 8px;border-radius:3px;box-shadow:0 1px 2px rgba(20,30,60,.15);max-width:100%;transform:rotate(-.4deg)}
+.sticky:nth-child(even){transform:rotate(.5deg)}
+.ex-take{margin-top:12px;padding:10px 12px;border-left:0;border-radius:10px;background:var(--surface-2)}
+.ex-take b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin-bottom:4px}
+.ex-take p{margin:0;font-size:14px;color:var(--ink);line-height:1.45}
 .dep-group{margin-bottom:10px}
 .dep-group h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:0 0 6px}
 .wchips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -759,6 +770,20 @@ const dlg = document.getElementById('dlg');
 let RUN = null, runPromise = null;
 function loadRun(){ if(RUN) return Promise.resolve(RUN); if(!runPromise) runPromise = fetch('content/run.json').then(r => r.ok ? r.json() : {}).then(j => (RUN = j)).catch(() => (RUN = {})); return runPromise; }
 const pageUrl = t => (lang === 'fr' ? '/fr/ateliers/' : '/workshops/') + t.id + '/';
+let EX = null, exPromise = null;
+function loadEx(){ if(EX) return Promise.resolve(EX); if(!exPromise) exPromise = fetch('content/examples.json').then(r => r.ok ? r.json() : {}).then(j => (EX = j)).catch(() => (EX = {})); return exPromise; }
+const STICKY = ['#FFE58F','#B7EB8F','#91D5FF','#FFADD2','#D3ADF7','#FFD591'];
+function exampleHtml(t){
+  const u = UI(), e = EX && EX[t.id] && EX[t.id][lang]; if(!e) return '';
+  let k = 0;
+  return `<section class="ex" id="sec-example">
+    <h3>${esc(u.example)}</h3>
+    <p class="muted ex-intro">${esc(u.exampleIntro)}</p>
+    <p class="ex-context">${esc(e.context)}</p>
+    <div class="ex-board">${e.blocks.map(b => `<div class="ex-block"><div class="ex-title">${esc(b.t)}</div><div class="ex-items">${b.items.map(it => `<div class="sticky" style="--c:${STICKY[k++ % STICKY.length]}">${esc(it)}</div>`).join('')}</div></div>`).join('')}</div>
+    <div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div>
+  </section>`;
+}
 const prepState = {
   get(id){ return store.get('prep:' + id, []); },
   set(id, arr){ store.set('prep:' + id, arr); },
@@ -811,7 +836,7 @@ function openPreview(id){
   const t = byId(T, id); if(!t) return;
   const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
   track('open_workshop', {id});
-  const nav = [['sec-overview', u.navOverview], ['sec-before', u.before], ['sec-prep', u.prep], ['sec-agenda', u.agenda], ['sec-pitfalls', u.pitfalls], ['sec-next', u.nextStep]];
+  const nav = [['sec-overview', u.navOverview], ['sec-example', u.example], ['sec-before', u.before], ['sec-prep', u.prep], ['sec-agenda', u.agenda], ['sec-pitfalls', u.pitfalls], ['sec-next', u.nextStep]];
   document.getElementById('dlg-content').innerHTML = `
     <div class="dlg-head" style="--h:var(${ph.h})">
       <div class="dlg-head-row"><span class="chip">${esc(L.phases[ph.id])}</span><button class="close" type="button" data-close aria-label="${esc(u.close)}">${ICON.x}</button></div>
@@ -826,6 +851,7 @@ function openPreview(id){
         ${metaHtml(t)}
         ${actionsHtml(t, false)}
       </section>
+      <div id="ex-slot"></div>
       ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
@@ -833,6 +859,7 @@ function openPreview(id){
     </div>`;
   dlg.showModal(); document.getElementById('dlg-content').scrollTop = 0;
   loadRun().then(() => { const slot = document.getElementById('howto-slot'); if(slot) slot.innerHTML = howToHtml(t); });
+  loadEx().then(() => { const slot = document.getElementById('ex-slot'); if(slot) slot.innerHTML = exampleHtml(t); });
 }
 dlg.addEventListener('click', e => {
   const j = e.target.closest('[data-jump]'); if(j){ e.preventDefault(); const el = document.getElementById(j.dataset.jump); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); return; }

@@ -1,0 +1,1382 @@
+{
+  "raci": {
+    "en": {
+      "context": "Scale-up Fieldnote, two squads plus the Integrations squad being staffed: Karim runs the RACI with Tom, Ana and Élise to stop decisions stalling between squads.",
+      "blocks": [
+        {
+          "t": "Activity 1",
+          "items": [
+            "Activity: prioritise the Integrations backlog",
+            "PM: R",
+            "Tech lead: C",
+            "Design: I",
+            "Sponsor: A"
+          ]
+        },
+        {
+          "t": "Activity 2",
+          "items": [
+            "Activity: ship the offline mode release",
+            "PM: A",
+            "Tech lead: R",
+            "Design: C",
+            "Sponsor: I"
+          ]
+        },
+        {
+          "t": "Activity 3",
+          "items": [
+            "Activity: redesign the intervention form",
+            "PM: C",
+            "Tech lead: C",
+            "Design: R",
+            "Sponsor: I"
+          ]
+        },
+        {
+          "t": "Activity 4",
+          "items": [
+            "Activity: choose the invoicing partner (Pennylane vs Sage)",
+            "PM: R",
+            "Tech lead: C",
+            "Design: I",
+            "Sponsor: A"
+          ]
+        }
+      ],
+      "takeaway": "Two activities had two approvers and one had none. Élise keeps A only on partner choice and backlog priority; everything else is Karim's call."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up, deux squads plus la squad Integrations en cours de recrutement : Karim anime le RACI avec Tom, Ana et Élise pour que les décisions arrêtent de traîner entre squads.",
+      "blocks": [
+        {
+          "t": "Activité 1",
+          "items": [
+            "Activité : prioriser le backlog Integrations",
+            "PM : R",
+            "Tech lead : C",
+            "Design : I",
+            "Sponsor : A"
+          ]
+        },
+        {
+          "t": "Activité 2",
+          "items": [
+            "Activité : livrer la release mode hors ligne",
+            "PM : A",
+            "Tech lead : R",
+            "Design : C",
+            "Sponsor : I"
+          ]
+        },
+        {
+          "t": "Activité 3",
+          "items": [
+            "Activité : refondre le formulaire d'intervention",
+            "PM : C",
+            "Tech lead : C",
+            "Design : R",
+            "Sponsor : I"
+          ]
+        },
+        {
+          "t": "Activité 4",
+          "items": [
+            "Activité : choisir le partenaire facturation (Pennylane vs Sage)",
+            "PM : R",
+            "Tech lead : C",
+            "Design : I",
+            "Sponsor : A"
+          ]
+        }
+      ],
+      "takeaway": "Deux activités avaient deux approbateurs et une n'en avait aucun. Élise garde le A uniquement sur le choix du partenaire et la priorité du backlog ; le reste, c'est Karim qui tranche."
+    }
+  },
+  "daci": {
+    "en": {
+      "context": "Post-PMF Fieldnote: the invoicing integration partner has to be picked this month, and the debate has been going around in Slack for three weeks.",
+      "blocks": [
+        {
+          "t": "Driver",
+          "items": [
+            "Karim, PM, owns the timeline and the doc",
+            "Decision due Friday 14th"
+          ]
+        },
+        {
+          "t": "Approver",
+          "items": [
+            "Élise, CEO",
+            "One approver, no committee"
+          ]
+        },
+        {
+          "t": "Contributors",
+          "items": [
+            "Tom: API maturity and sync effort",
+            "Nadia: what the 140 customers already use",
+            "Julien: support load per tool",
+            "Sophie (customer): real Sunday invoicing flow"
+          ]
+        },
+        {
+          "t": "Informed",
+          "items": [
+            "Both squads at Monday standup",
+            "Marketing for the launch page",
+            "The 12 customers on the beta list"
+          ]
+        },
+        {
+          "t": "Options considered",
+          "items": [
+            "Pennylane first: 61 % of customers, modern API",
+            "Sage first: 23 % of customers, bigger accounts",
+            "Both at once: 2 squads blocked for a quarter",
+            "Generic CSV export: cheap, solves nothing for Sophie"
+          ]
+        },
+        {
+          "t": "Decision + why",
+          "items": [
+            "Pennylane first, Sage in Q3",
+            "Covers the retention lever: month-1 connection cuts churn from 19 % to 4 %",
+            "Tom estimates 6 weeks with the Integrations squad",
+            "CSV export stays as fallback for the rest"
+          ]
+        }
+      ],
+      "takeaway": "Writing the options side by side ended the Slack thread in one meeting: Pennylane first, Sage scheduled, and Nadia stops promising both to prospects."
+    },
+    "fr": {
+      "context": "Fieldnote post-PMF : le partenaire d'intégration facturation doit être choisi ce mois-ci, et le débat tourne en rond sur Slack depuis trois semaines.",
+      "blocks": [
+        {
+          "t": "Driver",
+          "items": [
+            "Karim, PM, porte le calendrier et le doc",
+            "Décision attendue vendredi 14"
+          ]
+        },
+        {
+          "t": "Approver",
+          "items": [
+            "Élise, CEO",
+            "Un seul approbateur, pas de comité"
+          ]
+        },
+        {
+          "t": "Contributors",
+          "items": [
+            "Tom : maturité des API et effort de synchro",
+            "Nadia : ce que les 140 clients utilisent déjà",
+            "Julien : charge support par outil",
+            "Sophie (cliente) : son vrai flux de facturation du dimanche"
+          ]
+        },
+        {
+          "t": "Informed",
+          "items": [
+            "Les deux squads au standup du lundi",
+            "Marketing pour la page de lancement",
+            "Les 12 clients de la liste bêta"
+          ]
+        },
+        {
+          "t": "Options étudiées",
+          "items": [
+            "Pennylane d'abord : 61 % des clients, API moderne",
+            "Sage d'abord : 23 % des clients, comptes plus gros",
+            "Les deux en même temps : 2 squads bloquées un trimestre",
+            "Export CSV générique : pas cher, ne règle rien pour Sophie"
+          ]
+        },
+        {
+          "t": "Décision + pourquoi",
+          "items": [
+            "Pennylane d'abord, Sage au T3",
+            "Couvre le levier rétention : connexion au mois 1, churn de 19 % à 4 %",
+            "Tom estime 6 semaines avec la squad Integrations",
+            "L'export CSV reste en solution de repli"
+          ]
+        }
+      ],
+      "takeaway": "Écrire les options côte à côte a clos le fil Slack en une réunion : Pennylane d'abord, Sage planifié, et Nadia arrête de promettre les deux aux prospects."
+    }
+  },
+  "dependencies": {
+    "en": {
+      "context": "Scale-up Fieldnote with three squads (Field app, Office web, Integrations) and the data analyst: the offline mode and the Pennylane integration both slipped because of what each squad was waiting for.",
+      "blocks": [
+        {
+          "t": "Team A",
+          "items": [
+            "Team A = Field app squad",
+            "Team B: needs the new dispatch API before offline sync, sprint 3",
+            "Team C: needs parts catalogue IDs stable, sprint 2",
+            "Team D: needs activation events instrumented, sprint 1"
+          ]
+        },
+        {
+          "t": "Team B",
+          "items": [
+            "Team B = Office web squad",
+            "Team A: needs photo upload fix merged first, sprint 1",
+            "Team C: needs the invoicing status field, sprint 4",
+            "Team D: needs the churn cohort export, sprint 2"
+          ]
+        },
+        {
+          "t": "Team C",
+          "items": [
+            "Team C = Integrations squad",
+            "Team A: needs intervention model frozen, sprint 2",
+            "Team B: needs customer account mapping screen, sprint 3",
+            "Team D: nothing this PI"
+          ]
+        },
+        {
+          "t": "Team D",
+          "items": [
+            "Team D = Data analyst",
+            "Team A: needs the same-day logging event, sprint 1",
+            "Team B: needs dispatcher session tracking, sprint 2",
+            "Team C: needs sync error logs in the warehouse, sprint 4"
+          ]
+        }
+      ],
+      "takeaway": "Six of the nine arrows land on the Field app squad in sprints 1 and 2. They swap the parts scan feature for sprint 4 and clear the model freeze first."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up avec trois squads (Field app, Office web, Integrations) et l'analyste data : le mode hors ligne et l'intégration Pennylane ont tous les deux glissé à cause de ce que chaque squad attendait des autres.",
+      "blocks": [
+        {
+          "t": "Équipe A",
+          "items": [
+            "Équipe A = squad Field app",
+            "Équipe B : a besoin de la nouvelle API dispatch avant la synchro hors ligne, sprint 3",
+            "Équipe C : a besoin d'IDs de catalogue pièces stables, sprint 2",
+            "Équipe D : a besoin des événements d'activation instrumentés, sprint 1"
+          ]
+        },
+        {
+          "t": "Équipe B",
+          "items": [
+            "Équipe B = squad Office web",
+            "Équipe A : a besoin du correctif upload photo mergé d'abord, sprint 1",
+            "Équipe C : a besoin du champ statut facturation, sprint 4",
+            "Équipe D : a besoin de l'export cohorte churn, sprint 2"
+          ]
+        },
+        {
+          "t": "Équipe C",
+          "items": [
+            "Équipe C = squad Integrations",
+            "Équipe A : a besoin du modèle intervention gelé, sprint 2",
+            "Équipe B : a besoin de l'écran de mapping des comptes clients, sprint 3",
+            "Équipe D : rien sur ce PI"
+          ]
+        },
+        {
+          "t": "Équipe D",
+          "items": [
+            "Équipe D = analyste data",
+            "Équipe A : a besoin de l'événement saisie le jour même, sprint 1",
+            "Équipe B : a besoin du suivi de session dispatcher, sprint 2",
+            "Équipe C : a besoin des logs d'erreur de synchro dans le warehouse, sprint 4"
+          ]
+        }
+      ],
+      "takeaway": "Six des neuf flèches tombent sur la squad Field app aux sprints 1 et 2. Elle décale le scan de pièces au sprint 4 et gèle le modèle en premier."
+    }
+  },
+  "pi": {
+    "en": {
+      "context": "Scale-up Fieldnote, first PI Planning with four teams (Field app, Office web, Integrations, Data) and the quarter objective: cut time-to-first-10-interventions from 14 days to 5.",
+      "blocks": [
+        {
+          "t": "Team 1",
+          "items": [
+            "Team 1 = Field app",
+            "Sprint 1: guided first-intervention flow",
+            "Sprint 2: offline queue for photos",
+            "Sprint 3: offline sync v1",
+            "Sprint 4: parts scan spike",
+            "Sprint 5: offline sync hardening",
+            "IP: buffer + demo prep"
+          ]
+        },
+        {
+          "t": "Team 2",
+          "items": [
+            "Team 2 = Office web",
+            "Sprint 1: onboarding checklist for dispatchers",
+            "Sprint 2: invite technicians by SMS",
+            "Sprint 3: dispatch API v2",
+            "Sprint 4: invoicing status on job card",
+            "Sprint 5: activation dashboard for Sophie",
+            "IP: bug bash"
+          ]
+        },
+        {
+          "t": "Team 3",
+          "items": [
+            "Team 3 = Integrations",
+            "Sprint 1: Pennylane OAuth",
+            "Sprint 2: customer account mapping",
+            "Sprint 3: push invoices nightly",
+            "Sprint 4: error retry and alerts",
+            "Sprint 5: beta with 12 companies",
+            "IP: docs + support handover"
+          ]
+        },
+        {
+          "t": "Team 4",
+          "items": [
+            "Team 4 = Data",
+            "Sprint 1: activation events in warehouse",
+            "Sprint 2: churn cohorts by integration status",
+            "Sprint 3: weekly activation report",
+            "Sprint 4: sync error dashboard",
+            "Sprint 5: PI metrics readout",
+            "IP: retro data"
+          ]
+        },
+        {
+          "t": "Milestones",
+          "items": [
+            "Sprint 2: 20 new companies on guided onboarding",
+            "Sprint 3: dispatch API v2 unblocks offline",
+            "Sprint 5: Pennylane beta live",
+            "IP: time-to-10 measured on the whole PI"
+          ]
+        }
+      ],
+      "takeaway": "Three red strings all point at dispatch API v2 in sprint 3; Office web moves it to sprint 2 and pushes SMS invites out one sprint. Confidence vote: 4 out of 5 on average."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up, premier PI Planning avec quatre équipes (Field app, Office web, Integrations, Data) et l'objectif du trimestre : passer le time-to-first-10-interventions de 14 jours à 5.",
+      "blocks": [
+        {
+          "t": "Équipe 1",
+          "items": [
+            "Équipe 1 = Field app",
+            "Sprint 1 : parcours guidé de première intervention",
+            "Sprint 2 : file d'attente hors ligne pour les photos",
+            "Sprint 3 : synchro hors ligne v1",
+            "Sprint 4 : spike scan de pièces",
+            "Sprint 5 : durcissement de la synchro hors ligne",
+            "IP : marge + préparation démo"
+          ]
+        },
+        {
+          "t": "Équipe 2",
+          "items": [
+            "Équipe 2 = Office web",
+            "Sprint 1 : checklist d'onboarding dispatcher",
+            "Sprint 2 : invitation des techniciens par SMS",
+            "Sprint 3 : API dispatch v2",
+            "Sprint 4 : statut facturation sur la fiche intervention",
+            "Sprint 5 : tableau de bord activation pour Sophie",
+            "IP : bug bash"
+          ]
+        },
+        {
+          "t": "Équipe 3",
+          "items": [
+            "Équipe 3 = Integrations",
+            "Sprint 1 : OAuth Pennylane",
+            "Sprint 2 : mapping des comptes clients",
+            "Sprint 3 : envoi des factures chaque nuit",
+            "Sprint 4 : reprise sur erreur et alertes",
+            "Sprint 5 : bêta avec 12 entreprises",
+            "IP : docs + passation support"
+          ]
+        },
+        {
+          "t": "Équipe 4",
+          "items": [
+            "Équipe 4 = Data",
+            "Sprint 1 : événements d'activation dans le warehouse",
+            "Sprint 2 : cohortes de churn par statut d'intégration",
+            "Sprint 3 : rapport d'activation hebdo",
+            "Sprint 4 : tableau de bord erreurs de synchro",
+            "Sprint 5 : lecture des métriques du PI",
+            "IP : données pour la rétro"
+          ]
+        },
+        {
+          "t": "Jalons",
+          "items": [
+            "Sprint 2 : 20 nouvelles entreprises sur l'onboarding guidé",
+            "Sprint 3 : l'API dispatch v2 débloque le hors ligne",
+            "Sprint 5 : bêta Pennylane en ligne",
+            "IP : time-to-10 mesuré sur tout le PI"
+          ]
+        }
+      ],
+      "takeaway": "Trois fils rouges pointent tous vers l'API dispatch v2 au sprint 3 ; Office web l'avance au sprint 2 et décale les invitations SMS d'un sprint. Vote de confiance : 4 sur 5 en moyenne."
+    }
+  },
+  "program": {
+    "en": {
+      "context": "Scale-up Fieldnote, the board Karim keeps updated after PI Planning so the three squads see the same dependencies every Monday.",
+      "blocks": [
+        {
+          "t": "Team 1",
+          "items": [
+            "Team 1 = Field app",
+            "Sprint 1: guided first intervention",
+            "Sprint 2: offline photo queue",
+            "Sprint 3: offline sync v1",
+            "Sprint 4: parts scan spike",
+            "Sprint 5: offline hardening"
+          ]
+        },
+        {
+          "t": "Team 2",
+          "items": [
+            "Team 2 = Office web",
+            "Sprint 1: dispatcher checklist",
+            "Sprint 2: dispatch API v2 (moved up)",
+            "Sprint 3: SMS invites",
+            "Sprint 4: invoicing status on job card",
+            "Sprint 5: activation dashboard"
+          ]
+        },
+        {
+          "t": "Team 3",
+          "items": [
+            "Team 3 = Integrations",
+            "Sprint 1: Pennylane OAuth",
+            "Sprint 2: account mapping",
+            "Sprint 3: nightly invoice push",
+            "Sprint 4: retries and alerts",
+            "Sprint 5: beta with 12 companies"
+          ]
+        },
+        {
+          "t": "Dependencies",
+          "items": [
+            "Sprint 1: photo fix (Field) → dispatcher checklist (Office)",
+            "Sprint 2: dispatch API v2 (Office) → offline sync (Field) sprint 3",
+            "Sprint 2: intervention model frozen (Field) → account mapping (Integrations)",
+            "Sprint 4: invoicing status field (Integrations) → job card (Office)",
+            "Sprint 5: beta feedback (Integrations) → activation dashboard (Office)"
+          ]
+        }
+      ],
+      "takeaway": "Five strings, none crossing backwards after the sprint 2 move. The board goes on the wall next to Marc's dispatch screen, half joking, half not."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up, le board que Karim tient à jour après le PI Planning pour que les trois squads voient les mêmes dépendances chaque lundi.",
+      "blocks": [
+        {
+          "t": "Équipe 1",
+          "items": [
+            "Équipe 1 = Field app",
+            "Sprint 1 : première intervention guidée",
+            "Sprint 2 : file photo hors ligne",
+            "Sprint 3 : synchro hors ligne v1",
+            "Sprint 4 : spike scan de pièces",
+            "Sprint 5 : durcissement hors ligne"
+          ]
+        },
+        {
+          "t": "Équipe 2",
+          "items": [
+            "Équipe 2 = Office web",
+            "Sprint 1 : checklist dispatcher",
+            "Sprint 2 : API dispatch v2 (avancée)",
+            "Sprint 3 : invitations SMS",
+            "Sprint 4 : statut facturation sur la fiche",
+            "Sprint 5 : tableau de bord activation"
+          ]
+        },
+        {
+          "t": "Équipe 3",
+          "items": [
+            "Équipe 3 = Integrations",
+            "Sprint 1 : OAuth Pennylane",
+            "Sprint 2 : mapping des comptes",
+            "Sprint 3 : envoi nocturne des factures",
+            "Sprint 4 : reprises et alertes",
+            "Sprint 5 : bêta avec 12 entreprises"
+          ]
+        },
+        {
+          "t": "Dépendances",
+          "items": [
+            "Sprint 1 : correctif photo (Field) → checklist dispatcher (Office)",
+            "Sprint 2 : API dispatch v2 (Office) → synchro hors ligne (Field) sprint 3",
+            "Sprint 2 : modèle intervention gelé (Field) → mapping des comptes (Integrations)",
+            "Sprint 4 : champ statut facturation (Integrations) → fiche intervention (Office)",
+            "Sprint 5 : retours bêta (Integrations) → tableau de bord activation (Office)"
+          ]
+        }
+      ],
+      "takeaway": "Cinq fils, aucun qui repart en arrière après le déplacement du sprint 2. Le board va au mur à côté de l'écran de dispatch de Marc, moitié blague, moitié pas."
+    }
+  },
+  "premortem": {
+    "en": {
+      "context": "Post-PMF Fieldnote, the week before starting the offline mode project: Karim, Tom, Ana, Julien and Élise imagine it is six months later and offline mode failed.",
+      "blocks": [
+        {
+          "t": "Causes of failure",
+          "items": [
+            "Sync conflicts wiped a technician's afternoon twice",
+            "Photos queued offline never reached invoicing",
+            "Léa never turned it on, the toggle was in settings",
+            "Android 9 vans lost half the feature",
+            "Two squads argued about who owns the sync engine",
+            "We shipped in July, half the customers on holiday",
+            "Support had no way to see a stuck queue",
+            "Scope grew to full offline dispatch"
+          ]
+        },
+        {
+          "t": "Grouping",
+          "items": [
+            "Data loss and trust (3 causes)",
+            "Adoption and discoverability (2 causes)",
+            "Ownership and scope (3 causes)"
+          ]
+        },
+        {
+          "t": "Mitigations",
+          "items": [
+            "Conflict rule written before code: field wins, office gets a diff",
+            "Offline on by default, visible banner when queued, Ana owns it",
+            "Field app squad owns sync end to end, Tom signs the API contract",
+            "Support screen for stuck queues in the same release, Julien tests it",
+            "Ship in September, beta with Sophie's 22 technicians first"
+          ]
+        }
+      ],
+      "takeaway": "Nobody had said out loud that the toggle would live in settings. Five mitigations, five owners, the scope stays at intervention logging only."
+    },
+    "fr": {
+      "context": "Fieldnote post-PMF, la semaine avant de lancer le projet mode hors ligne : Karim, Tom, Ana, Julien et Élise imaginent qu'on est six mois plus tard et que le hors ligne a échoué.",
+      "blocks": [
+        {
+          "t": "Causes de l'échec",
+          "items": [
+            "Des conflits de synchro ont effacé l'après-midi d'un technicien deux fois",
+            "Les photos en file hors ligne ne sont jamais arrivées en facturation",
+            "Léa ne l'a jamais activé, le bouton était dans les réglages",
+            "Les camionnettes sous Android 9 ont perdu la moitié de la fonction",
+            "Deux squads se sont disputé la propriété du moteur de synchro",
+            "On a livré en juillet, la moitié des clients en vacances",
+            "Le support ne pouvait pas voir une file bloquée",
+            "Le périmètre a grossi jusqu'au dispatch hors ligne complet"
+          ]
+        },
+        {
+          "t": "Regroupement",
+          "items": [
+            "Perte de données et confiance (3 causes)",
+            "Adoption et visibilité (2 causes)",
+            "Propriété et périmètre (3 causes)"
+          ]
+        },
+        {
+          "t": "Parades",
+          "items": [
+            "Règle de conflit écrite avant le code : le terrain gagne, le bureau reçoit un diff",
+            "Hors ligne actif par défaut, bandeau visible quand ça file, Ana en est responsable",
+            "La squad Field app possède la synchro de bout en bout, Tom signe le contrat d'API",
+            "Écran support pour les files bloquées dans la même release, Julien le teste",
+            "Livraison en septembre, bêta d'abord avec les 22 techniciens de Sophie"
+          ]
+        }
+      ],
+      "takeaway": "Personne n'avait dit à voix haute que le bouton irait dans les réglages. Cinq parades, cinq responsables, le périmètre reste sur la saisie d'intervention uniquement."
+    }
+  },
+  "launch": {
+    "en": {
+      "context": "Post-PMF Fieldnote, launching the Pennylane invoicing integration after a beta with 12 companies: Karim, Nadia, marketing and Julien in the room.",
+      "blocks": [
+        {
+          "t": "Target",
+          "items": [
+            "The 85 customers already on Pennylane",
+            "Owners like Sophie who invoice on Sunday",
+            "Then prospects blocked on 'do you sync with our accounting'"
+          ]
+        },
+        {
+          "t": "Message",
+          "items": [
+            "Your Sunday invoicing is now Tuesday morning coffee",
+            "Every part logged in the van shows up on the invoice",
+            "Zero retyping, 6 % of billable parts recovered"
+          ]
+        },
+        {
+          "t": "Channels",
+          "items": [
+            "In-app banner for Pennylane customers on day 1",
+            "Email from Nadia to the 85, personal, not a newsletter",
+            "Pennylane partner marketplace listing",
+            "One LinkedIn post with Sophie's quote",
+            "Webinar for owners, 30 minutes, Thursday 12:30"
+          ]
+        },
+        {
+          "t": "Sequence & owners",
+          "items": [
+            "D-7: help centre article and support macro, Julien",
+            "D-3: beta customers get the case study draft, Nadia",
+            "D-day: banner + email, Karim and marketing",
+            "D+2: webinar, Nadia presents, Karim demos",
+            "D+14: call the 20 who connected, Julien",
+            "D+30: metrics readout, Karim"
+          ]
+        },
+        {
+          "t": "Launch metrics",
+          "items": [
+            "40 of 85 connected within 30 days",
+            "Connected companies churn below 5 % at 90 days",
+            "Support tickets on sync under 10 in month 1",
+            "3 prospects closed citing the integration"
+          ]
+        }
+      ],
+      "takeaway": "The webinar and the D+14 calls were not in the first draft. Without them the integration would have launched as a banner nobody clicks."
+    },
+    "fr": {
+      "context": "Fieldnote post-PMF, lancement de l'intégration facturation Pennylane après une bêta avec 12 entreprises : Karim, Nadia, le marketing et Julien dans la salle.",
+      "blocks": [
+        {
+          "t": "Cible",
+          "items": [
+            "Les 85 clients déjà sur Pennylane",
+            "Les gérants comme Sophie qui facturent le dimanche",
+            "Ensuite les prospects bloqués sur 'vous synchronisez avec notre compta ?'"
+          ]
+        },
+        {
+          "t": "Message",
+          "items": [
+            "Ta facturation du dimanche, c'est maintenant le café du mardi matin",
+            "Chaque pièce saisie dans la camionnette apparaît sur la facture",
+            "Zéro ressaisie, 6 % de pièces facturables récupérées"
+          ]
+        },
+        {
+          "t": "Canaux",
+          "items": [
+            "Bandeau dans l'app pour les clients Pennylane dès le jour 1",
+            "Email de Nadia aux 85, personnel, pas une newsletter",
+            "Fiche sur la marketplace partenaires Pennylane",
+            "Un post LinkedIn avec la citation de Sophie",
+            "Webinaire pour les gérants, 30 minutes, jeudi 12h30"
+          ]
+        },
+        {
+          "t": "Séquence & responsables",
+          "items": [
+            "J-7 : article du centre d'aide et macro support, Julien",
+            "J-3 : les clients bêta reçoivent le brouillon de l'étude de cas, Nadia",
+            "Jour J : bandeau + email, Karim et marketing",
+            "J+2 : webinaire, Nadia présente, Karim fait la démo",
+            "J+14 : appeler les 20 qui ont connecté, Julien",
+            "J+30 : lecture des métriques, Karim"
+          ]
+        },
+        {
+          "t": "Métriques de lancement",
+          "items": [
+            "40 des 85 connectés sous 30 jours",
+            "Churn des entreprises connectées sous 5 % à 90 jours",
+            "Moins de 10 tickets support sur la synchro au mois 1",
+            "3 prospects signés en citant l'intégration"
+          ]
+        }
+      ],
+      "takeaway": "Le webinaire et les appels à J+14 n'étaient pas dans le premier jet. Sans eux, l'intégration serait sortie comme un bandeau que personne ne clique."
+    }
+  },
+  "sync": {
+    "en": {
+      "context": "Scale-up Fieldnote, the fortnightly 45-minute sync Karim runs with Élise, Nadia, Julien and Tom, same format every time.",
+      "blocks": [
+        {
+          "t": "Agenda",
+          "items": [
+            "Time-to-first-10-interventions: 14 days → 9 days this fortnight",
+            "Pennylane beta: 9 of 12 companies pushing invoices nightly",
+            "Offline mode: sync conflict rule to validate",
+            "Sales asks: 4 prospects want route planning"
+          ]
+        },
+        {
+          "t": "Decisions",
+          "items": [
+            "Conflict rule approved: field wins, office gets a diff",
+            "Route planning stays out of this quarter, Nadia tells prospects Q4"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "Julien: call the 3 beta companies not pushing invoices, by Friday",
+            "Tom: publish the offline API contract to Integrations, Tuesday",
+            "Karim: share the activation cohort with Élise before board meeting"
+          ]
+        },
+        {
+          "t": "Blockers",
+          "items": [
+            "Integrations squad still one engineer short, hiring since May",
+            "Sage partner API access request pending 3 weeks"
+          ]
+        }
+      ],
+      "takeaway": "Route planning gets asked every sync; writing 'out this quarter' in the decisions column is what finally stopped the question coming back."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up, la synchro de 45 minutes toutes les deux semaines que Karim anime avec Élise, Nadia, Julien et Tom, même format à chaque fois.",
+      "blocks": [
+        {
+          "t": "Ordre du jour",
+          "items": [
+            "Time-to-first-10-interventions : 14 jours → 9 jours sur la quinzaine",
+            "Bêta Pennylane : 9 des 12 entreprises envoient leurs factures chaque nuit",
+            "Mode hors ligne : règle de conflit de synchro à valider",
+            "Demandes commerciales : 4 prospects veulent la planification d'itinéraire"
+          ]
+        },
+        {
+          "t": "Décisions",
+          "items": [
+            "Règle de conflit validée : le terrain gagne, le bureau reçoit un diff",
+            "La planification d'itinéraire reste hors du trimestre, Nadia annonce T4 aux prospects"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "Julien : appeler les 3 entreprises bêta qui n'envoient pas de factures, d'ici vendredi",
+            "Tom : publier le contrat d'API hors ligne à Integrations, mardi",
+            "Karim : partager la cohorte d'activation à Élise avant le board"
+          ]
+        },
+        {
+          "t": "Bloquants",
+          "items": [
+            "La squad Integrations manque toujours d'un ingénieur, recrutement depuis mai",
+            "Demande d'accès à l'API partenaire Sage en attente depuis 3 semaines"
+          ]
+        }
+      ],
+      "takeaway": "La planification d'itinéraire revient à chaque synchro ; écrire 'hors trimestre' dans la colonne décisions est ce qui a enfin arrêté la question."
+    }
+  },
+  "retro-ssc": {
+    "en": {
+      "context": "Field app squad at Fieldnote, retro after the sprint that shipped the guided first-intervention flow, one week after the photo upload incident.",
+      "blocks": [
+        {
+          "t": "Start",
+          "items": [
+            "Smoke-testing photo upload on a real Android van phone before release",
+            "Inviting Julien to sprint review, he sees the tickets first",
+            "One Léa-style technician in the beta group every sprint"
+          ]
+        },
+        {
+          "t": "Stop",
+          "items": [
+            "Merging on Friday afternoon",
+            "Estimating offline sync stories without Tom in the room",
+            "Silent scope adds from sales via Slack DM"
+          ]
+        },
+        {
+          "t": "Continue",
+          "items": [
+            "Pairing on the sync engine, two people know it now",
+            "Demoing on a phone, not a simulator",
+            "Written sprint goal on the board",
+            "15-minute standups, no exceptions"
+          ]
+        }
+      ],
+      "takeaway": "Three actions with owners: Friday merge freeze (Tom), Julien at review (Karim), one real technician in beta (Ana). Nothing else, on purpose."
+    },
+    "fr": {
+      "context": "La squad Field app de Fieldnote, rétro après le sprint qui a livré le parcours guidé de première intervention, une semaine après l'incident d'upload photo.",
+      "blocks": [
+        {
+          "t": "Start",
+          "items": [
+            "Tester l'upload photo sur un vrai téléphone Android de camionnette avant la release",
+            "Inviter Julien à la sprint review, il voit les tickets en premier",
+            "Un technicien du profil de Léa dans le groupe bêta à chaque sprint"
+          ]
+        },
+        {
+          "t": "Stop",
+          "items": [
+            "Merger le vendredi après-midi",
+            "Estimer les stories de synchro hors ligne sans Tom dans la pièce",
+            "Les ajouts de périmètre silencieux du commercial par DM Slack"
+          ]
+        },
+        {
+          "t": "Continue",
+          "items": [
+            "Le pairing sur le moteur de synchro, deux personnes le connaissent maintenant",
+            "Faire la démo sur un téléphone, pas sur un simulateur",
+            "L'objectif de sprint écrit sur le board",
+            "Standups de 15 minutes, sans exception"
+          ]
+        }
+      ],
+      "takeaway": "Trois actions avec responsables : gel des merges le vendredi (Tom), Julien en review (Karim), un vrai technicien en bêta (Ana). Rien d'autre, volontairement."
+    }
+  },
+  "retro-4l": {
+    "en": {
+      "context": "Fieldnote, both squads together, two weeks after the Pennylane integration launch: what the launch taught them.",
+      "blocks": [
+        {
+          "t": "Liked",
+          "items": [
+            "Sophie's quote on LinkedIn brought 3 inbound demos",
+            "Beta first, then launch: no surprise in support",
+            "Webinar Q&A gave us next quarter's backlog"
+          ]
+        },
+        {
+          "t": "Learned",
+          "items": [
+            "Owners connect on Sunday evening, our on-call was Monday",
+            "Account mapping is where 8 of 10 stuck companies stopped",
+            "Nightly push is too slow for 'did it work' anxiety"
+          ]
+        },
+        {
+          "t": "Lacked",
+          "items": [
+            "A status screen showing 'last push at 02:14, 37 invoices'",
+            "Someone from Integrations at the D+14 calls"
+          ]
+        },
+        {
+          "t": "Longed for",
+          "items": [
+            "Sage on the same rails, sales keeps asking",
+            "A single onboarding for app + integration, not two"
+          ]
+        }
+      ],
+      "takeaway": "The status screen moves to the top of the Integrations backlog; the Sunday connection pattern changes the on-call rota for launches."
+    },
+    "fr": {
+      "context": "Fieldnote, les deux squads ensemble, deux semaines après le lancement de l'intégration Pennylane : ce que le lancement leur a appris.",
+      "blocks": [
+        {
+          "t": "Liked",
+          "items": [
+            "La citation de Sophie sur LinkedIn a amené 3 démos entrantes",
+            "Bêta d'abord, puis lancement : aucune surprise au support",
+            "Les questions du webinaire nous ont donné le backlog du trimestre prochain"
+          ]
+        },
+        {
+          "t": "Learned",
+          "items": [
+            "Les gérants connectent le dimanche soir, notre astreinte était le lundi",
+            "Le mapping des comptes est là où 8 des 10 entreprises bloquées se sont arrêtées",
+            "L'envoi nocturne est trop lent pour l'angoisse du 'est-ce que ça a marché'"
+          ]
+        },
+        {
+          "t": "Lacked",
+          "items": [
+            "Un écran de statut 'dernier envoi à 02h14, 37 factures'",
+            "Quelqu'un d'Integrations aux appels de J+14"
+          ]
+        },
+        {
+          "t": "Longed for",
+          "items": [
+            "Sage sur les mêmes rails, le commercial redemande",
+            "Un seul onboarding pour l'app + l'intégration, pas deux"
+          ]
+        }
+      ],
+      "takeaway": "L'écran de statut passe en tête du backlog Integrations ; le schéma de connexion du dimanche change la rotation d'astreinte des lancements."
+    }
+  },
+  "retro-sailboat": {
+    "en": {
+      "context": "Office web squad at Fieldnote, tired of retros after three sprints on the dispatch API rewrite: Ana runs the sailboat to bring the goal back.",
+      "blocks": [
+        {
+          "t": "Wind (what pushes us)",
+          "items": [
+            "Marc's dispatch board demo got applause from sales",
+            "Field app squad is waiting for us, and says so nicely",
+            "API v2 cut dispatch page load from 6 s to 1.2 s"
+          ]
+        },
+        {
+          "t": "Island (goal)",
+          "items": [
+            "A dispatcher reroutes a day in under 2 minutes",
+            "Time-to-first-10-interventions at 5 days by end of quarter",
+            "No more whiteboard behind Marc"
+          ]
+        },
+        {
+          "t": "Anchors (what slows us)",
+          "items": [
+            "Legacy sync code nobody wants to touch",
+            "Three-week wait for the design review of the job card",
+            "Half the squad on support rotation for the photo incident"
+          ]
+        },
+        {
+          "t": "Rocks (risks)",
+          "items": [
+            "Sage integration lands on the same API before it is stable",
+            "Recurring maintenance contracts push another data model change",
+            "Integrations hire slips again, we absorb their work"
+          ]
+        }
+      ],
+      "takeaway": "Naming the island out loud reset the mood: the squad picks the job-card review as the one anchor to cut this sprint and asks Tom to pair on the legacy sync."
+    },
+    "fr": {
+      "context": "La squad Office web de Fieldnote, lassée des rétros après trois sprints sur la réécriture de l'API dispatch : Ana anime le sailboat pour remettre l'objectif au centre.",
+      "blocks": [
+        {
+          "t": "Vent (ce qui pousse)",
+          "items": [
+            "La démo du board de dispatch de Marc a été applaudie par le commercial",
+            "La squad Field app nous attend, et le dit gentiment",
+            "L'API v2 a fait passer la page dispatch de 6 s à 1,2 s"
+          ]
+        },
+        {
+          "t": "Île (objectif)",
+          "items": [
+            "Un dispatcher réorganise une journée en moins de 2 minutes",
+            "Time-to-first-10-interventions à 5 jours d'ici la fin du trimestre",
+            "Plus de tableau blanc derrière Marc"
+          ]
+        },
+        {
+          "t": "Ancres (ce qui freine)",
+          "items": [
+            "Le code de synchro legacy que personne ne veut toucher",
+            "Trois semaines d'attente pour la revue design de la fiche intervention",
+            "La moitié de la squad en rotation support pour l'incident photo"
+          ]
+        },
+        {
+          "t": "Rochers (risques)",
+          "items": [
+            "L'intégration Sage arrive sur la même API avant qu'elle soit stable",
+            "Les contrats de maintenance récurrents imposent un nouveau changement de modèle",
+            "Le recrutement Integrations glisse encore, on absorbe leur travail"
+          ]
+        }
+      ],
+      "takeaway": "Nommer l'île à voix haute a changé l'ambiance : la squad choisit la revue de la fiche intervention comme seule ancre à couper ce sprint et demande à Tom de pairer sur la synchro legacy."
+    }
+  },
+  "health": {
+    "en": {
+      "context": "Field app squad at Fieldnote, monthly health check in May, after the March photo incident and before the offline mode project starts.",
+      "blocks": [
+        {
+          "t": "Leadership",
+          "items": [
+            "Green: Karim's sprint goals are clear and written",
+            "Trend: → stable"
+          ]
+        },
+        {
+          "t": "Value delivered",
+          "items": [
+            "Green: guided onboarding cut time-to-10 from 14 to 9 days",
+            "Trend: ↑ improving"
+          ]
+        },
+        {
+          "t": "Speed",
+          "items": [
+            "Yellow: two sprints partly eaten by incident support",
+            "Trend: ↓ worse than March"
+          ]
+        },
+        {
+          "t": "Dependencies",
+          "items": [
+            "Red: waiting on dispatch API v2 and Integrations hire",
+            "Trend: ↓ getting worse, three strings on us"
+          ]
+        },
+        {
+          "t": "Quality",
+          "items": [
+            "Yellow: photo upload incident, 40 tickets, no device test",
+            "Trend: ↑ smoke test on real phones since"
+          ]
+        },
+        {
+          "t": "Learning",
+          "items": [
+            "Green: two people now know the sync engine",
+            "Trend: ↑ pairing paid off"
+          ]
+        },
+        {
+          "t": "Autonomy",
+          "items": [
+            "Yellow: scope adds still arrive from sales via DM",
+            "Trend: → same as last month"
+          ]
+        },
+        {
+          "t": "Fun",
+          "items": [
+            "Green: demo on Léa's phone got a cheer",
+            "Trend: ↑ better since the incident closed"
+          ]
+        }
+      ],
+      "takeaway": "One red, on dependencies: the squad books a cross-team dependency map for next week instead of another retro."
+    },
+    "fr": {
+      "context": "La squad Field app de Fieldnote, bilan de santé mensuel en mai, après l'incident photo de mars et avant le démarrage du projet mode hors ligne.",
+      "blocks": [
+        {
+          "t": "Leadership",
+          "items": [
+            "Vert : les objectifs de sprint de Karim sont clairs et écrits",
+            "Tendance : → stable"
+          ]
+        },
+        {
+          "t": "Valeur livrée",
+          "items": [
+            "Vert : l'onboarding guidé a fait passer le time-to-10 de 14 à 9 jours",
+            "Tendance : ↑ en amélioration"
+          ]
+        },
+        {
+          "t": "Vélocité",
+          "items": [
+            "Jaune : deux sprints en partie mangés par le support de l'incident",
+            "Tendance : ↓ moins bien qu'en mars"
+          ]
+        },
+        {
+          "t": "Dépendances",
+          "items": [
+            "Rouge : en attente de l'API dispatch v2 et du recrutement Integrations",
+            "Tendance : ↓ ça empire, trois fils sur nous"
+          ]
+        },
+        {
+          "t": "Qualité",
+          "items": [
+            "Jaune : incident upload photo, 40 tickets, pas de test sur appareil",
+            "Tendance : ↑ test sur vrais téléphones depuis"
+          ]
+        },
+        {
+          "t": "Apprentissage",
+          "items": [
+            "Vert : deux personnes connaissent maintenant le moteur de synchro",
+            "Tendance : ↑ le pairing a payé"
+          ]
+        },
+        {
+          "t": "Autonomie",
+          "items": [
+            "Jaune : les ajouts de périmètre arrivent toujours du commercial par DM",
+            "Tendance : → comme le mois dernier"
+          ]
+        },
+        {
+          "t": "Moral",
+          "items": [
+            "Vert : la démo sur le téléphone de Léa a été applaudie",
+            "Tendance : ↑ mieux depuis la clôture de l'incident"
+          ]
+        }
+      ],
+      "takeaway": "Un seul rouge, sur les dépendances : la squad programme une carte des dépendances inter-équipes la semaine prochaine plutôt qu'une rétro de plus."
+    }
+  },
+  "postmortem": {
+    "en": {
+      "context": "Fieldnote, the blameless post-mortem after the March release that broke photo upload for two days: Tom, the two engineers on the release, Julien, and Karim as neutral facilitator.",
+      "blocks": [
+        {
+          "t": "Timeline",
+          "items": [
+            "Thu 14th 17:40: release 4.12 merged, includes image library upgrade",
+            "Fri 15th 08:10: first ticket, photos stuck at 'uploading'",
+            "Fri 15th 11:00: 22 tickets, issue reproduced only on Android 9 and 10",
+            "Fri 15th 16:30: rollback decided, store review pending overnight",
+            "Sat 16th 10:20: 4.12.1 live, queue drains, 40 tickets total"
+          ]
+        },
+        {
+          "t": "Causes",
+          "items": [
+            "Library upgrade dropped support for older Android without a changelog line",
+            "Test devices are all Android 13, vans run 9 and 10",
+            "Release on Thursday evening with nobody on watch Friday morning"
+          ]
+        },
+        {
+          "t": "What went well",
+          "items": [
+            "Julien's support macro went out within the hour",
+            "Rollback path existed and worked first time"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "Buy two Android 9 phones for the test bench, Tom, this week",
+            "No mobile release after Wednesday, written in the team charter",
+            "Photo upload smoke test on real device in the release checklist, both engineers"
+          ]
+        }
+      ],
+      "takeaway": "The room expected 'who merged it'; the timeline showed the merge was fine and the device bench was the hole. Three actions, all about the bench and the calendar."
+    },
+    "fr": {
+      "context": "Fieldnote, le post-mortem sans blâme après la release de mars qui a cassé l'upload photo pendant deux jours : Tom, les deux ingénieurs de la release, Julien, et Karim en facilitateur neutre.",
+      "blocks": [
+        {
+          "t": "Chronologie",
+          "items": [
+            "Jeu 14, 17h40 : release 4.12 mergée, inclut une montée de version de la librairie image",
+            "Ven 15, 08h10 : premier ticket, photos bloquées sur 'envoi en cours'",
+            "Ven 15, 11h00 : 22 tickets, problème reproduit uniquement sur Android 9 et 10",
+            "Ven 15, 16h30 : rollback décidé, validation store en attente pour la nuit",
+            "Sam 16, 10h20 : 4.12.1 en ligne, la file se vide, 40 tickets au total"
+          ]
+        },
+        {
+          "t": "Causes",
+          "items": [
+            "La montée de version a supprimé le support des anciens Android sans ligne de changelog",
+            "Les appareils de test sont tous sous Android 13, les camionnettes tournent en 9 et 10",
+            "Release le jeudi soir sans personne en veille le vendredi matin"
+          ]
+        },
+        {
+          "t": "Ce qui a bien marché",
+          "items": [
+            "La macro support de Julien est partie dans l'heure",
+            "Le chemin de rollback existait et a marché du premier coup"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "Acheter deux téléphones Android 9 pour le banc de test, Tom, cette semaine",
+            "Pas de release mobile après le mercredi, inscrit dans la charte d'équipe",
+            "Test de l'upload photo sur vrai appareil dans la checklist de release, les deux ingénieurs"
+          ]
+        }
+      ],
+      "takeaway": "La salle attendait 'qui a mergé' ; la chronologie a montré que le merge était propre et que le trou était le banc d'appareils. Trois actions, toutes sur le banc et le calendrier."
+    }
+  },
+  "metrics": {
+    "en": {
+      "context": "Post-PMF Fieldnote, the quarterly AARRR review with Karim, the data analyst, Nadia and Élise, looking for the next growth lever.",
+      "blocks": [
+        {
+          "t": "Acquisition",
+          "items": [
+            "38 trials a month, 60 % from Pennylane marketplace and referrals",
+            "Paid search brings trials that never invite a technician"
+          ]
+        },
+        {
+          "t": "Activation",
+          "items": [
+            "Only 62 % of new companies get 10 interventions logged in 2 weeks",
+            "Guided onboarding moved it from 55 % to 62 % in one quarter",
+            "Drop-off point: inviting the first technician"
+          ]
+        },
+        {
+          "t": "Retention",
+          "items": [
+            "4 % annual churn when invoicing is connected in month 1",
+            "19 % when it is not",
+            "NRR 104 %, driven by seat growth in connected accounts"
+          ]
+        },
+        {
+          "t": "Revenue",
+          "items": [
+            "ARR 1.1 M€, 2 100 seats at 29 €",
+            "Average company grows from 9 to 14 seats in year 1 when connected"
+          ]
+        },
+        {
+          "t": "Referral",
+          "items": [
+            "Sophie brought two competitors from her trade association",
+            "No referral mechanic in the product, all word of mouth"
+          ]
+        }
+      ],
+      "takeaway": "The funnel leaks at activation, not acquisition: the team cuts paid search and puts the quarter on time-to-first-10-interventions and month-1 invoicing connection."
+    },
+    "fr": {
+      "context": "Fieldnote post-PMF, la revue AARRR trimestrielle avec Karim, l'analyste data, Nadia et Élise, à la recherche du prochain levier de croissance.",
+      "blocks": [
+        {
+          "t": "Acquisition",
+          "items": [
+            "38 essais par mois, 60 % via la marketplace Pennylane et le bouche-à-oreille",
+            "Le search payant amène des essais qui n'invitent jamais de technicien"
+          ]
+        },
+        {
+          "t": "Activation",
+          "items": [
+            "Seulement 62 % des nouvelles entreprises atteignent 10 interventions saisies en 2 semaines",
+            "L'onboarding guidé l'a fait passer de 55 % à 62 % en un trimestre",
+            "Point de décrochage : inviter le premier technicien"
+          ]
+        },
+        {
+          "t": "Rétention",
+          "items": [
+            "4 % de churn annuel quand la facturation est connectée au mois 1",
+            "19 % quand elle ne l'est pas",
+            "NRR 104 %, tiré par la croissance des sièges des comptes connectés"
+          ]
+        },
+        {
+          "t": "Revenu",
+          "items": [
+            "ARR 1,1 M€, 2 100 sièges à 29 €",
+            "Une entreprise moyenne passe de 9 à 14 sièges en année 1 quand elle est connectée"
+          ]
+        },
+        {
+          "t": "Recommandation",
+          "items": [
+            "Sophie a amené deux concurrents de son association professionnelle",
+            "Aucun mécanisme de parrainage dans le produit, tout en bouche-à-oreille"
+          ]
+        }
+      ],
+      "takeaway": "Le funnel fuit à l'activation, pas à l'acquisition : l'équipe coupe le search payant et met le trimestre sur le time-to-first-10-interventions et la connexion facturation au mois 1."
+    }
+  },
+  "ia": {
+    "en": {
+      "context": "Scale-up Fieldnote, Inspect & Adapt at the end of the first PI with all four teams, half a day, Karim as RTE for lack of one.",
+      "blocks": [
+        {
+          "t": "PI demo",
+          "items": [
+            "Guided onboarding + SMS invites: a new company live in 4 days on stage",
+            "Pennylane beta: 9 of 12 companies pushing invoices nightly"
+          ]
+        },
+        {
+          "t": "Metrics",
+          "items": [
+            "Time-to-first-10-interventions: 14 days → 6 days, objective was 5",
+            "PI predictability: 71 % of committed objectives delivered"
+          ]
+        },
+        {
+          "t": "Problems",
+          "items": [
+            "Offline sync v1 slipped a full sprint",
+            "Integrations squad ran at two engineers instead of three",
+            "Field app absorbed 30 % of its capacity in cross-team asks",
+            "Account mapping stuck 8 of 10 blocked beta companies"
+          ]
+        },
+        {
+          "t": "Root causes",
+          "items": [
+            "Dispatch API v2 contract agreed in sprint 2, tested only in sprint 3",
+            "Hiring pipeline owned by nobody after May",
+            "No capacity reserved for dependencies in planning"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "API contracts signed with a stub before the PI starts, Tom",
+            "Élise owns the Integrations hire until it closes",
+            "Each team reserves 20 % capacity for dependencies in PI 2, Karim"
+          ]
+        }
+      ],
+      "takeaway": "The problem-solving hour landed on one systemic cause, contracts agreed too late; the 20 % dependency reserve becomes a PI 2 rule for all four teams."
+    },
+    "fr": {
+      "context": "Fieldnote en scale-up, Inspect & Adapt à la fin du premier PI avec les quatre équipes, une demi-journée, Karim en RTE faute de mieux.",
+      "blocks": [
+        {
+          "t": "Démo PI",
+          "items": [
+            "Onboarding guidé + invitations SMS : une nouvelle entreprise en ligne en 4 jours, sur scène",
+            "Bêta Pennylane : 9 des 12 entreprises envoient leurs factures chaque nuit"
+          ]
+        },
+        {
+          "t": "Mesures",
+          "items": [
+            "Time-to-first-10-interventions : 14 jours → 6 jours, l'objectif était 5",
+            "Prédictibilité du PI : 71 % des objectifs engagés livrés"
+          ]
+        },
+        {
+          "t": "Problèmes",
+          "items": [
+            "La synchro hors ligne v1 a glissé d'un sprint complet",
+            "La squad Integrations a tourné à deux ingénieurs au lieu de trois",
+            "Field app a absorbé 30 % de sa capacité en demandes inter-équipes",
+            "Le mapping des comptes a bloqué 8 des 10 entreprises bêta en difficulté"
+          ]
+        },
+        {
+          "t": "Causes racines",
+          "items": [
+            "Contrat de l'API dispatch v2 acté au sprint 2, testé seulement au sprint 3",
+            "Pipeline de recrutement sans propriétaire depuis mai",
+            "Aucune capacité réservée aux dépendances en planification"
+          ]
+        },
+        {
+          "t": "Actions",
+          "items": [
+            "Contrats d'API signés avec un stub avant le début du PI, Tom",
+            "Élise porte le recrutement Integrations jusqu'à sa clôture",
+            "Chaque équipe réserve 20 % de capacité aux dépendances au PI 2, Karim"
+          ]
+        }
+      ],
+      "takeaway": "L'heure de résolution de problèmes a fait ressortir une cause systémique, des contrats actés trop tard ; la réserve de 20 % pour les dépendances devient une règle du PI 2 pour les quatre équipes."
+    }
+  }
+}

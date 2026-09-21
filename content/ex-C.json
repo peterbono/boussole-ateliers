@@ -1,0 +1,1150 @@
+{
+  "impact-effort": {
+    "en": {
+      "context": "Post-PMF, Karim and Tom sort the 12 roadmap candidates that sales, support and the CEO keep pushing, one hour before the quarterly planning.",
+      "blocks": [
+        {
+          "t": "Quick wins",
+          "items": [
+            "Photo annotations (arrows, circles)",
+            "Duplicate yesterday's intervention",
+            "Customer signature reminder at end of job",
+            "Export parts list to CSV"
+          ]
+        },
+        {
+          "t": "Big bets",
+          "items": [
+            "Offline mode for the field app",
+            "Invoicing integration (Pennylane, Sage)",
+            "Automatic route planning for dispatchers",
+            "Recurring maintenance contracts"
+          ]
+        },
+        {
+          "t": "Fill-ins",
+          "items": [
+            "Dark mode for the van at night",
+            "Technician skills matrix",
+            "Weekly PDF summary for the owner"
+          ]
+        },
+        {
+          "t": "Avoid",
+          "items": [
+            "Customer portal before the invoicing link works",
+            "Native tablet app",
+            "Chat between technicians"
+          ]
+        }
+      ],
+      "takeaway": "Offline mode and the invoicing integration are the two big bets; the team ships the four quick wins in the next sprint to buy goodwill with support while the bets are being scoped."
+    },
+    "fr": {
+      "context": "Post-PMF, Karim et Tom trient les 12 candidats de roadmap que les ventes, le support et la CEO poussent, une heure avant la planification trimestrielle.",
+      "blocks": [
+        {
+          "t": "Quick wins",
+          "items": [
+            "Annotations photo (flèches, cercles)",
+            "Dupliquer l'intervention d'hier",
+            "Rappel de signature client en fin de job",
+            "Export CSV de la liste de pièces"
+          ]
+        },
+        {
+          "t": "Gros projets",
+          "items": [
+            "Mode hors ligne de l'app terrain",
+            "Intégration facturation (Pennylane, Sage)",
+            "Planification automatique des tournées",
+            "Contrats de maintenance récurrents"
+          ]
+        },
+        {
+          "t": "Remplissage",
+          "items": [
+            "Mode sombre pour la camionnette la nuit",
+            "Matrice de compétences des techniciens",
+            "Résumé PDF hebdo pour le patron"
+          ]
+        },
+        {
+          "t": "À éviter",
+          "items": [
+            "Portail client avant que la facturation marche",
+            "App tablette native",
+            "Chat entre techniciens"
+          ]
+        }
+      ],
+      "takeaway": "Le mode hors ligne et l'intégration facturation sont les deux gros paris ; l'équipe livre les quatre quick wins au prochain sprint pour soulager le support pendant le cadrage des paris."
+    }
+  },
+  "rice": {
+    "en": {
+      "context": "Scale-up, Karim, Tom and the data analyst score the four finalists from the impact/effort matrix before presenting the quarter to Élise.",
+      "blocks": [
+        {
+          "t": "Initiative A",
+          "items": [
+            "Offline mode",
+            "Reach: 2 100 technicians, 140 companies",
+            "Impact: 3 (massive, logs the same day)",
+            "Confidence: 80 %",
+            "Effort: 8 person-weeks",
+            "Score: 63"
+          ]
+        },
+        {
+          "t": "Initiative B",
+          "items": [
+            "Invoicing integration",
+            "Reach: 90 companies on Pennylane or Sage",
+            "Impact: 3 (churn 19 % to 4 %)",
+            "Confidence: 70 %",
+            "Effort: 10 person-weeks",
+            "Score: 19"
+          ]
+        },
+        {
+          "t": "Initiative C",
+          "items": [
+            "Parts catalogue with barcode scan",
+            "Reach: 1 400 technicians",
+            "Impact: 2",
+            "Confidence: 60 %",
+            "Effort: 6 person-weeks",
+            "Score: 28"
+          ]
+        },
+        {
+          "t": "Initiative D",
+          "items": [
+            "Customer portal",
+            "Reach: 40 companies asked for it",
+            "Impact: 1",
+            "Confidence: 50 %",
+            "Effort: 9 person-weeks",
+            "Score: 2"
+          ]
+        }
+      ],
+      "takeaway": "Offline mode wins on reach, the invoicing integration wins on retention: the team commits to both, in that order, and parks the customer portal for a year."
+    },
+    "fr": {
+      "context": "Scale-up, Karim, Tom et l'analyste data scorent les quatre finalistes de la matrice impact/effort avant de présenter le trimestre à Élise.",
+      "blocks": [
+        {
+          "t": "Initiative A",
+          "items": [
+            "Mode hors ligne",
+            "Reach : 2 100 techniciens, 140 entreprises",
+            "Impact : 3 (massif, saisie le jour même)",
+            "Confidence : 80 %",
+            "Effort : 8 personnes-semaines",
+            "Score : 63"
+          ]
+        },
+        {
+          "t": "Initiative B",
+          "items": [
+            "Intégration facturation",
+            "Reach : 90 entreprises sur Pennylane ou Sage",
+            "Impact : 3 (churn de 19 % à 4 %)",
+            "Confidence : 70 %",
+            "Effort : 10 personnes-semaines",
+            "Score : 19"
+          ]
+        },
+        {
+          "t": "Initiative C",
+          "items": [
+            "Catalogue de pièces avec scan",
+            "Reach : 1 400 techniciens",
+            "Impact : 2",
+            "Confidence : 60 %",
+            "Effort : 6 personnes-semaines",
+            "Score : 28"
+          ]
+        },
+        {
+          "t": "Initiative D",
+          "items": [
+            "Portail client",
+            "Reach : 40 entreprises l'ont demandé",
+            "Impact : 1",
+            "Confidence : 50 %",
+            "Effort : 9 personnes-semaines",
+            "Score : 2"
+          ]
+        }
+      ],
+      "takeaway": "Le mode hors ligne gagne sur le reach, l'intégration facturation sur la rétention : l'équipe s'engage sur les deux, dans cet ordre, et gare le portail client pour un an."
+    }
+  },
+  "moscow": {
+    "en": {
+      "context": "Pre-PMF, Karim and Sophie (the first paying customer) lock the scope of the offline mode v1 before Tom's squad starts.",
+      "blocks": [
+        {
+          "t": "Must",
+          "items": [
+            "Log an intervention with no network",
+            "Take and attach photos offline",
+            "Sync automatically when back online",
+            "Show a clear 'not synced yet' badge"
+          ]
+        },
+        {
+          "t": "Should",
+          "items": [
+            "Customer signature offline",
+            "Parts picked from the last catalogue cached",
+            "Conflict message if Marc edited the job meanwhile"
+          ]
+        },
+        {
+          "t": "Could",
+          "items": [
+            "Offline map of the day's route",
+            "Voice note attached to the job",
+            "Retry button per intervention"
+          ]
+        },
+        {
+          "t": "Won't",
+          "items": [
+            "Offline planning for dispatchers",
+            "Editing past interventions offline"
+          ]
+        }
+      ],
+      "takeaway": "Sophie wanted offline planning for Marc; it goes to Won't because dispatchers always have wifi. v1 is four Musts, shippable in one sprint."
+    },
+    "fr": {
+      "context": "Pré-PMF, Karim et Sophie (première cliente payante) verrouillent le périmètre de la v1 du mode hors ligne avant que la squad de Tom démarre.",
+      "blocks": [
+        {
+          "t": "Must",
+          "items": [
+            "Saisir une intervention sans réseau",
+            "Prendre et joindre des photos hors ligne",
+            "Synchroniser automatiquement au retour du réseau",
+            "Badge clair 'pas encore synchronisé'"
+          ]
+        },
+        {
+          "t": "Should",
+          "items": [
+            "Signature client hors ligne",
+            "Pièces choisies dans le dernier catalogue en cache",
+            "Message de conflit si Marc a modifié le job entre-temps"
+          ]
+        },
+        {
+          "t": "Could",
+          "items": [
+            "Carte hors ligne de la tournée du jour",
+            "Note vocale attachée au job",
+            "Bouton réessayer par intervention"
+          ]
+        },
+        {
+          "t": "Won't",
+          "items": [
+            "Planification hors ligne pour les dispatchers",
+            "Modifier d'anciennes interventions hors ligne"
+          ]
+        }
+      ],
+      "takeaway": "Sophie voulait la planification hors ligne pour Marc ; elle part en Won't parce que les dispatchers ont toujours du wifi. La v1 tient en quatre Must, livrable en un sprint."
+    }
+  },
+  "storymap": {
+    "en": {
+      "context": "Post-PMF, the whole Field app squad maps Léa's day to slice the offline mode into three releases.",
+      "blocks": [
+        {
+          "t": "Backbone",
+          "items": [
+            "Step 1: See today's jobs",
+            "Step 2: Start an intervention",
+            "Step 3: Log parts and time",
+            "Step 4: Take photos",
+            "Step 5: Get customer signature",
+            "Step 6: Close and sync"
+          ]
+        },
+        {
+          "t": "Release 1",
+          "items": [
+            "Step 1: Cache today's jobs at 6am",
+            "Step 2: Start with no network",
+            "Step 3: Type parts freely, no catalogue",
+            "Step 4: Photos stored locally",
+            "Step 6: Auto sync, 'not synced' badge"
+          ]
+        },
+        {
+          "t": "Release 2",
+          "items": [
+            "Step 3: Cached parts catalogue",
+            "Step 5: Signature offline",
+            "Step 6: Conflict message if job changed",
+            "Step 1: Refresh jobs when back online"
+          ]
+        },
+        {
+          "t": "Release 3",
+          "items": [
+            "Step 2: Offline map of the route",
+            "Step 4: Photo annotations offline",
+            "Step 6: Retry per intervention",
+            "Step 3: Voice note on the job"
+          ]
+        }
+      ],
+      "takeaway": "Release 1 covers the full walking skeleton of Léa's day except the signature: she can log every job offline within four weeks, the polish comes after."
+    },
+    "fr": {
+      "context": "Post-PMF, toute la squad Field app cartographie la journée de Léa pour découper le mode hors ligne en trois releases.",
+      "blocks": [
+        {
+          "t": "Backbone",
+          "items": [
+            "Étape 1 : Voir les jobs du jour",
+            "Étape 2 : Démarrer une intervention",
+            "Étape 3 : Saisir pièces et temps",
+            "Étape 4 : Prendre des photos",
+            "Étape 5 : Faire signer le client",
+            "Étape 6 : Clôturer et synchroniser"
+          ]
+        },
+        {
+          "t": "Release 1",
+          "items": [
+            "Étape 1 : Jobs du jour en cache à 6h",
+            "Étape 2 : Démarrer sans réseau",
+            "Étape 3 : Pièces en texte libre, sans catalogue",
+            "Étape 4 : Photos stockées en local",
+            "Étape 6 : Sync auto, badge 'non synchronisé'"
+          ]
+        },
+        {
+          "t": "Release 2",
+          "items": [
+            "Étape 3 : Catalogue de pièces en cache",
+            "Étape 5 : Signature hors ligne",
+            "Étape 6 : Message de conflit si le job a changé",
+            "Étape 1 : Rafraîchir les jobs au retour du réseau"
+          ]
+        },
+        {
+          "t": "Release 3",
+          "items": [
+            "Étape 2 : Carte hors ligne de la tournée",
+            "Étape 4 : Annotations photo hors ligne",
+            "Étape 6 : Réessayer par intervention",
+            "Étape 3 : Note vocale sur le job"
+          ]
+        }
+      ],
+      "takeaway": "La release 1 couvre tout le squelette de la journée de Léa sauf la signature : elle peut saisir chaque job hors ligne sous quatre semaines, le confort vient ensuite."
+    }
+  },
+  "roadmap": {
+    "en": {
+      "context": "Scale-up, Karim presents the year to Élise and Nadia, one row per objective, with confidence dropping as the quarters go.",
+      "blocks": [
+        {
+          "t": "Objective 1",
+          "items": [
+            "Objective: technicians log the same day (North Star)",
+            "Q1: Offline mode release 1, confidence high",
+            "Q2: Offline release 2 + cached catalogue, high",
+            "Q3: Photo annotations offline, medium",
+            "Q4: Voice notes, low"
+          ]
+        },
+        {
+          "t": "Objective 2",
+          "items": [
+            "Objective: cut churn from 19 % to 8 %",
+            "Q1: Pennylane integration, high",
+            "Q2: Sage integration, medium",
+            "Q3: Recurring contracts v1, medium",
+            "Q4: Customer portal, low"
+          ]
+        },
+        {
+          "t": "Objective 3",
+          "items": [
+            "Objective: activation in 5 days instead of 14",
+            "Q1: Guided first-week checklist, high",
+            "Q2: Import jobs from Excel, medium",
+            "Q3: Skills matrix for dispatch, low",
+            "Q4: Route planning beta, low"
+          ]
+        }
+      ],
+      "takeaway": "Nadia asked why the customer portal was in Q4 with low confidence; the answer is on the board: it depends on the invoicing link shipping first. The roadmap is published as is, with the confidence column."
+    },
+    "fr": {
+      "context": "Scale-up, Karim présente l'année à Élise et Nadia, une ligne par objectif, la confiance baissant au fil des trimestres.",
+      "blocks": [
+        {
+          "t": "Objectif 1",
+          "items": [
+            "Objectif : les techniciens saisissent le jour même (North Star)",
+            "Q1 : Mode hors ligne release 1, confiance haute",
+            "Q2 : Release 2 + catalogue en cache, haute",
+            "Q3 : Annotations photo hors ligne, moyenne",
+            "Q4 : Notes vocales, basse"
+          ]
+        },
+        {
+          "t": "Objectif 2",
+          "items": [
+            "Objectif : churn de 19 % à 8 %",
+            "Q1 : Intégration Pennylane, haute",
+            "Q2 : Intégration Sage, moyenne",
+            "Q3 : Contrats récurrents v1, moyenne",
+            "Q4 : Portail client, basse"
+          ]
+        },
+        {
+          "t": "Objectif 3",
+          "items": [
+            "Objectif : activation en 5 jours au lieu de 14",
+            "Q1 : Checklist guidée de la première semaine, haute",
+            "Q2 : Import des jobs depuis Excel, moyenne",
+            "Q3 : Matrice de compétences pour le dispatch, basse",
+            "Q4 : Bêta planification de tournées, basse"
+          ]
+        }
+      ],
+      "takeaway": "Nadia a demandé pourquoi le portail client était en Q4 avec une confiance basse ; la réponse est sur le board : il dépend de l'intégration facturation. La roadmap est publiée telle quelle, avec la colonne confiance."
+    }
+  },
+  "nnl": {
+    "en": {
+      "context": "Pre-PMF, Karim and Élise replace the dated Gantt that kept slipping with three columns, shared with the 10 first customers.",
+      "blocks": [
+        {
+          "t": "Now",
+          "items": [
+            "Offline mode release 1",
+            "Duplicate yesterday's intervention",
+            "Fix photo upload on slow 3G"
+          ]
+        },
+        {
+          "t": "Next",
+          "items": [
+            "Customer signature offline",
+            "Parts catalogue with barcode scan",
+            "Pennylane integration",
+            "Weekly PDF summary for the owner"
+          ]
+        },
+        {
+          "t": "Later",
+          "items": [
+            "Automatic route planning",
+            "Recurring maintenance contracts",
+            "Customer portal",
+            "Technician skills matrix",
+            "Sage integration"
+          ]
+        }
+      ],
+      "takeaway": "Sophie stopped asking 'when' once she saw her three requests in Next. The board is reviewed every two weeks and nothing in Later gets a date."
+    },
+    "fr": {
+      "context": "Pré-PMF, Karim et Élise remplacent le Gantt daté qui glissait sans arrêt par trois colonnes, partagées avec les 10 premiers clients.",
+      "blocks": [
+        {
+          "t": "Now",
+          "items": [
+            "Mode hors ligne release 1",
+            "Dupliquer l'intervention d'hier",
+            "Corriger l'upload photo en 3G lente"
+          ]
+        },
+        {
+          "t": "Next",
+          "items": [
+            "Signature client hors ligne",
+            "Catalogue de pièces avec scan",
+            "Intégration Pennylane",
+            "Résumé PDF hebdo pour le patron"
+          ]
+        },
+        {
+          "t": "Later",
+          "items": [
+            "Planification automatique des tournées",
+            "Contrats de maintenance récurrents",
+            "Portail client",
+            "Matrice de compétences des techniciens",
+            "Intégration Sage"
+          ]
+        }
+      ],
+      "takeaway": "Sophie a arrêté de demander 'quand' en voyant ses trois demandes dans Next. Le board est revu toutes les deux semaines et rien dans Later ne reçoit de date."
+    }
+  },
+  "decision": {
+    "en": {
+      "context": "Scale-up, Élise, Karim and Tom choose how to deliver the invoicing integration: three options, three weighted criteria.",
+      "blocks": [
+        {
+          "t": "Option A",
+          "items": [
+            "Build native connectors to Pennylane and Sage ourselves",
+            "Criterion 1 (×3) time to first customer: 2",
+            "Criterion 2 (×2) maintenance cost: 2",
+            "Criterion 3 (×1) data control: 5",
+            "Score: 15"
+          ]
+        },
+        {
+          "t": "Option B",
+          "items": [
+            "Use an integration platform (Merge, Codat)",
+            "Criterion 1 (×3) time to first customer: 5",
+            "Criterion 2 (×2) maintenance cost: 4",
+            "Criterion 3 (×1) data control: 2",
+            "Score: 25"
+          ]
+        },
+        {
+          "t": "Option C",
+          "items": [
+            "Monthly CSV export the accountant imports",
+            "Criterion 1 (×3) time to first customer: 5",
+            "Criterion 2 (×2) maintenance cost: 5",
+            "Criterion 3 (×1) data control: 1",
+            "Score: 26"
+          ]
+        }
+      ],
+      "takeaway": "The CSV export scores highest but does not fix the Sunday retyping that drives churn; the team picks Option B and keeps the CSV as a two-day fallback for the accountants who refuse any integration."
+    },
+    "fr": {
+      "context": "Scale-up, Élise, Karim et Tom choisissent comment livrer l'intégration facturation : trois options, trois critères pondérés.",
+      "blocks": [
+        {
+          "t": "Option A",
+          "items": [
+            "Construire nous-mêmes les connecteurs Pennylane et Sage",
+            "Critère 1 (×3) délai au premier client : 2",
+            "Critère 2 (×2) coût de maintenance : 2",
+            "Critère 3 (×1) maîtrise des données : 5",
+            "Score : 15"
+          ]
+        },
+        {
+          "t": "Option B",
+          "items": [
+            "Passer par une plateforme d'intégration (Merge, Codat)",
+            "Critère 1 (×3) délai au premier client : 5",
+            "Critère 2 (×2) coût de maintenance : 4",
+            "Critère 3 (×1) maîtrise des données : 2",
+            "Score : 25"
+          ]
+        },
+        {
+          "t": "Option C",
+          "items": [
+            "Export CSV mensuel que le comptable importe",
+            "Critère 1 (×3) délai au premier client : 5",
+            "Critère 2 (×2) coût de maintenance : 5",
+            "Critère 3 (×1) maîtrise des données : 1",
+            "Score : 26"
+          ]
+        }
+      ],
+      "takeaway": "L'export CSV a le meilleur score mais ne règle pas la ressaisie du dimanche qui fait churner ; l'équipe retient l'option B et garde le CSV comme solution de repli en deux jours pour les comptables qui refusent toute intégration."
+    }
+  },
+  "wsjf": {
+    "en": {
+      "context": "Scale-up, the two squads and the future Integrations squad compete for the same quarter; the product managers score four features on cost of delay.",
+      "blocks": [
+        {
+          "t": "Feature A",
+          "items": [
+            "Offline mode release 2",
+            "Value: 8",
+            "Urgency: 5 (winter season, vans in basements)",
+            "Risk: 3",
+            "Size: 5",
+            "WSJF: 3.2"
+          ]
+        },
+        {
+          "t": "Feature B",
+          "items": [
+            "Pennylane integration",
+            "Value: 8",
+            "Urgency: 8 (3 churn notices this month)",
+            "Risk: 5",
+            "Size: 8",
+            "WSJF: 2.6"
+          ]
+        },
+        {
+          "t": "Feature C",
+          "items": [
+            "Guided first-week checklist",
+            "Value: 5",
+            "Urgency: 3",
+            "Risk: 2",
+            "Size: 2",
+            "WSJF: 5.0"
+          ]
+        },
+        {
+          "t": "Feature D",
+          "items": [
+            "Recurring maintenance contracts",
+            "Value: 8",
+            "Urgency: 2",
+            "Risk: 3",
+            "Size: 13",
+            "WSJF: 1.0"
+          ]
+        }
+      ],
+      "takeaway": "The small activation checklist jumps to the top because it is cheap, then offline release 2; recurring contracts, everyone's favourite, waits a quarter because of its size."
+    },
+    "fr": {
+      "context": "Scale-up, les deux squads et la future squad Intégrations se disputent le même trimestre ; les product managers scorent quatre features au coût du délai.",
+      "blocks": [
+        {
+          "t": "Feature A",
+          "items": [
+            "Mode hors ligne release 2",
+            "Valeur : 8",
+            "Urgence : 5 (saison d'hiver, camionnettes en sous-sol)",
+            "Risque : 3",
+            "Taille : 5",
+            "WSJF : 3,2"
+          ]
+        },
+        {
+          "t": "Feature B",
+          "items": [
+            "Intégration Pennylane",
+            "Valeur : 8",
+            "Urgence : 8 (3 préavis de churn ce mois-ci)",
+            "Risque : 5",
+            "Taille : 8",
+            "WSJF : 2,6"
+          ]
+        },
+        {
+          "t": "Feature C",
+          "items": [
+            "Checklist guidée de la première semaine",
+            "Valeur : 5",
+            "Urgence : 3",
+            "Risque : 2",
+            "Taille : 2",
+            "WSJF : 5,0"
+          ]
+        },
+        {
+          "t": "Feature D",
+          "items": [
+            "Contrats de maintenance récurrents",
+            "Valeur : 8",
+            "Urgence : 2",
+            "Risque : 3",
+            "Taille : 13",
+            "WSJF : 1,0"
+          ]
+        }
+      ],
+      "takeaway": "La petite checklist d'activation passe en tête parce qu'elle coûte peu, puis la release 2 du hors ligne ; les contrats récurrents, favoris de tous, attendent un trimestre à cause de leur taille."
+    }
+  },
+  "sprintplan": {
+    "en": {
+      "context": "Post-PMF, the Field app squad (5 engineers, Ana, Karim) plans the sprint that ships offline mode release 1.",
+      "blocks": [
+        {
+          "t": "Sprint goal",
+          "items": [
+            "Léa logs a full intervention with no network and it syncs by itself",
+            "Demo: a job logged in the basement, visible on Marc's board an hour later"
+          ]
+        },
+        {
+          "t": "Capacity",
+          "items": [
+            "5 engineers × 8 days, minus 3 days of on-call: 37 days",
+            "Ana half-time on QA in real vans from day 7"
+          ]
+        },
+        {
+          "t": "Selected stories",
+          "items": [
+            "Cache today's jobs at 6am (5)",
+            "Start an intervention offline (3)",
+            "Store photos locally and upload later (8)",
+            "Auto sync when network returns (8)",
+            "'Not synced' badge on the job list (2)"
+          ]
+        },
+        {
+          "t": "Breakdown",
+          "items": [
+            "Local database schema: Tom, day 1 to 2",
+            "Sync queue with retry: 2 engineers, day 2 to 6",
+            "Photo queue: 1 engineer, day 3 to 6",
+            "Badge and QA on real vans: Ana + 1 engineer, day 7 to 8"
+          ]
+        }
+      ],
+      "takeaway": "26 points selected for 37 days of capacity: the squad keeps a margin because the sync queue has never been built before. The goal is written on the board, not the list."
+    },
+    "fr": {
+      "context": "Post-PMF, la squad Field app (5 ingénieurs, Ana, Karim) planifie le sprint qui livre la release 1 du mode hors ligne.",
+      "blocks": [
+        {
+          "t": "Objectif du sprint",
+          "items": [
+            "Léa saisit une intervention complète sans réseau et ça se synchronise tout seul",
+            "Démo : un job saisi en sous-sol, visible sur le tableau de Marc une heure plus tard"
+          ]
+        },
+        {
+          "t": "Capacité",
+          "items": [
+            "5 ingénieurs × 8 jours, moins 3 jours d'astreinte : 37 jours",
+            "Ana à mi-temps sur la QA en vraies camionnettes à partir du jour 7"
+          ]
+        },
+        {
+          "t": "Stories sélectionnées",
+          "items": [
+            "Jobs du jour en cache à 6h (5)",
+            "Démarrer une intervention hors ligne (3)",
+            "Stocker les photos en local et envoyer plus tard (8)",
+            "Sync auto au retour du réseau (8)",
+            "Badge 'non synchronisé' sur la liste des jobs (2)"
+          ]
+        },
+        {
+          "t": "Découpage",
+          "items": [
+            "Schéma de base locale : Tom, jours 1 à 2",
+            "File de sync avec réessai : 2 ingénieurs, jours 2 à 6",
+            "File des photos : 1 ingénieur, jours 3 à 6",
+            "Badge et QA dans de vraies camionnettes : Ana + 1 ingénieur, jours 7 à 8"
+          ]
+        }
+      ],
+      "takeaway": "26 points retenus pour 37 jours de capacité : la squad garde une marge parce que la file de sync n'a jamais été construite. L'objectif est écrit sur le board, pas la liste."
+    }
+  },
+  "sitemap": {
+    "en": {
+      "context": "Mature, Ana and Karim redraw the office web app before adding recurring contracts, because dispatchers cannot find the parts stock anymore.",
+      "blocks": [
+        {
+          "t": "Home",
+          "items": [
+            "Today: map, running jobs, alerts",
+            "Search bar: customer, address or job number"
+          ]
+        },
+        {
+          "t": "Sections",
+          "items": [
+            "Planning",
+            "Interventions",
+            "Customers & contracts",
+            "Company"
+          ]
+        },
+        {
+          "t": "Pages",
+          "items": [
+            "Planning → Day board and technician availability",
+            "Interventions → List and filters",
+            "Interventions → Job detail with photos",
+            "Customers → Customer file",
+            "Customers → Recurring contracts (new)",
+            "Company → Parts stock, invoicing exports and integrations"
+          ]
+        }
+      ],
+      "takeaway": "Parts stock moves from a buried settings tab to the Company section, and recurring contracts get their own page under Customers instead of a modal on the customer file."
+    },
+    "fr": {
+      "context": "Mature, Ana et Karim redessinent l'app web bureau avant d'ajouter les contrats récurrents, parce que les dispatchers ne retrouvent plus le stock de pièces.",
+      "blocks": [
+        {
+          "t": "Accueil",
+          "items": [
+            "Aujourd'hui : carte, jobs en cours, alertes",
+            "Barre de recherche : client, adresse ou numéro de job"
+          ]
+        },
+        {
+          "t": "Sections",
+          "items": [
+            "Planning",
+            "Interventions",
+            "Clients & contrats",
+            "Entreprise"
+          ]
+        },
+        {
+          "t": "Pages",
+          "items": [
+            "Planning → Tableau du jour et disponibilité des techniciens",
+            "Interventions → Liste et filtres",
+            "Interventions → Détail du job avec photos",
+            "Clients → Fiche client",
+            "Clients → Contrats récurrents (nouveau)",
+            "Entreprise → Stock de pièces, exports facturation et intégrations"
+          ]
+        }
+      ],
+      "takeaway": "Le stock de pièces quitte un onglet de réglages enfoui pour la section Entreprise, et les contrats récurrents ont leur page sous Clients au lieu d'une modale sur la fiche client."
+    }
+  },
+  "wireframes": {
+    "en": {
+      "context": "Post-PMF, Ana sketches the three screens of the offline flow in grey so Tom and Karim argue about logic, not colours.",
+      "blocks": [
+        {
+          "t": "Screen 1",
+          "items": [
+            "Job list with a grey 'offline' banner at the top",
+            "Each job: customer, address, time, sync badge",
+            "Big 'Start' button on the next job"
+          ]
+        },
+        {
+          "t": "Screen 2",
+          "items": [
+            "Intervention form: parts, time, photos",
+            "Photo thumbnails with a small clock icon while queued",
+            "Save button always enabled, never blocked by network"
+          ]
+        },
+        {
+          "t": "Screen 3",
+          "items": [
+            "Job closed screen: 'Saved on this phone, will sync'",
+            "Signature area, greyed out if offline in v1",
+            "Link to the queue: '3 jobs waiting to sync'"
+          ]
+        }
+      ],
+      "takeaway": "Tom spotted that the Save button on screen 2 was greyed out in the first sketch; it is the one thing that must never depend on the network. Two other screens were cut."
+    },
+    "fr": {
+      "context": "Post-PMF, Ana esquisse en gris les trois écrans du parcours hors ligne pour que Tom et Karim discutent logique, pas couleurs.",
+      "blocks": [
+        {
+          "t": "Écran 1",
+          "items": [
+            "Liste des jobs avec un bandeau gris 'hors ligne' en haut",
+            "Chaque job : client, adresse, heure, badge de sync",
+            "Gros bouton 'Démarrer' sur le prochain job"
+          ]
+        },
+        {
+          "t": "Écran 2",
+          "items": [
+            "Formulaire d'intervention : pièces, temps, photos",
+            "Vignettes photo avec une petite horloge tant qu'elles sont en attente",
+            "Bouton Enregistrer toujours actif, jamais bloqué par le réseau"
+          ]
+        },
+        {
+          "t": "Écran 3",
+          "items": [
+            "Écran job clôturé : 'Enregistré sur ce téléphone, sera synchronisé'",
+            "Zone de signature, grisée hors ligne en v1",
+            "Lien vers la file : '3 jobs en attente de sync'"
+          ]
+        }
+      ],
+      "takeaway": "Tom a repéré que le bouton Enregistrer de l'écran 2 était grisé sur la première esquisse ; c'est la seule chose qui ne doit jamais dépendre du réseau. Deux autres écrans ont été supprimés."
+    }
+  },
+  "userflow": {
+    "en": {
+      "context": "Post-PMF, Ana and Tom trace Léa's path when she closes a job in a basement with no signal.",
+      "blocks": [
+        {
+          "t": "Entry",
+          "items": [
+            "Léa taps 'Close job' on the intervention form",
+            "Phone shows no network"
+          ]
+        },
+        {
+          "t": "Screen A",
+          "items": [
+            "Summary of parts, time and 4 photos",
+            "Signature area greyed: 'Signature available when online'"
+          ]
+        },
+        {
+          "t": "Decision?",
+          "items": [
+            "Is the customer still here?",
+            "Yes: save now, ask for signature later",
+            "No: save now, flag 'signature missing'"
+          ]
+        },
+        {
+          "t": "Screen B",
+          "items": [
+            "Job saved locally, clock icon on the list",
+            "Toast: 'Will sync when network returns'"
+          ]
+        },
+        {
+          "t": "Success",
+          "items": [
+            "Back at the van, 4G returns, queue syncs",
+            "Marc sees the job as done at 14:12",
+            "Sophie's invoicing export includes it the same day"
+          ]
+        },
+        {
+          "t": "Error / empty state",
+          "items": [
+            "Sync fails 3 times: red badge, 'Retry' button",
+            "Photo too heavy: compressed automatically, no error shown to Léa",
+            "Job deleted by Marc meanwhile: kept as 'orphan', support alerted"
+          ]
+        }
+      ],
+      "takeaway": "The flow revealed the orphan case nobody had thought of: Marc deleting a job Léa is logging offline. It became a story in release 2 instead of a support ticket."
+    },
+    "fr": {
+      "context": "Post-PMF, Ana et Tom tracent le chemin de Léa quand elle clôture un job dans un sous-sol sans réseau.",
+      "blocks": [
+        {
+          "t": "Entrée",
+          "items": [
+            "Léa appuie sur 'Clôturer le job' dans le formulaire",
+            "Le téléphone n'a pas de réseau"
+          ]
+        },
+        {
+          "t": "Écran A",
+          "items": [
+            "Récapitulatif des pièces, du temps et de 4 photos",
+            "Zone de signature grisée : 'Signature disponible en ligne'"
+          ]
+        },
+        {
+          "t": "Décision ?",
+          "items": [
+            "Le client est-il encore là ?",
+            "Oui : enregistrer, demander la signature plus tard",
+            "Non : enregistrer, marquer 'signature manquante'"
+          ]
+        },
+        {
+          "t": "Écran B",
+          "items": [
+            "Job enregistré en local, icône horloge dans la liste",
+            "Toast : 'Sera synchronisé au retour du réseau'"
+          ]
+        },
+        {
+          "t": "Succès",
+          "items": [
+            "De retour à la camionnette, la 4G revient, la file se synchronise",
+            "Marc voit le job terminé à 14h12",
+            "L'export facturation de Sophie l'inclut le jour même"
+          ]
+        },
+        {
+          "t": "Erreur / état vide",
+          "items": [
+            "La sync échoue 3 fois : badge rouge, bouton 'Réessayer'",
+            "Photo trop lourde : compressée automatiquement, aucune erreur pour Léa",
+            "Job supprimé par Marc entre-temps : conservé en 'orphelin', support alerté"
+          ]
+        }
+      ],
+      "takeaway": "Le flow a révélé le cas orphelin auquel personne n'avait pensé : Marc qui supprime un job que Léa saisit hors ligne. C'est devenu une story de la release 2 au lieu d'un ticket support."
+    }
+  },
+  "storyboard": {
+    "en": {
+      "context": "Idea stage, Élise and Karim tell Léa's day in four frames to test whether owners even want the offline promise before writing code.",
+      "blocks": [
+        {
+          "t": "Scene",
+          "items": [
+            "1: Léa in a boiler room, phone up, no bars, paper sheet on the boiler",
+            "2: 7pm in the van, retyping 8 jobs from crumpled sheets",
+            "3: Same boiler room, Fieldnote app, 'saved on this phone' toast",
+            "4: 5pm, Léa home, Marc's board already shows 8 jobs done"
+          ]
+        },
+        {
+          "t": "Caption",
+          "items": [
+            "1: 'No network, no app, back to paper'",
+            "2: 'Two of the sheets are missing the parts used'",
+            "3: 'She logs it once, right there, in 40 seconds'",
+            "4: 'Sophie invoices Monday morning instead of Sunday night'"
+          ]
+        }
+      ],
+      "takeaway": "Shown to 6 owners: 5 reacted to frame 4, not frame 3. The value is the owner's Sunday, not the technician's basement. The pitch changed before a line of code."
+    },
+    "fr": {
+      "context": "Stade idée, Élise et Karim racontent la journée de Léa en quatre cases pour tester si les patrons veulent la promesse hors ligne avant d'écrire du code.",
+      "blocks": [
+        {
+          "t": "Scène",
+          "items": [
+            "1 : Léa dans une chaufferie, téléphone levé, pas de barres, feuille papier sur la chaudière",
+            "2 : 19h dans la camionnette, ressaisie de 8 jobs depuis des feuilles froissées",
+            "3 : Même chaufferie, app Fieldnote, toast 'enregistré sur ce téléphone'",
+            "4 : 17h, Léa chez elle, le tableau de Marc affiche déjà 8 jobs terminés"
+          ]
+        },
+        {
+          "t": "Légende",
+          "items": [
+            "1 : 'Pas de réseau, pas d'app, retour au papier'",
+            "2 : 'Deux feuilles n'ont pas les pièces utilisées'",
+            "3 : 'Elle saisit une fois, sur place, en 40 secondes'",
+            "4 : 'Sophie facture le lundi matin au lieu du dimanche soir'"
+          ]
+        }
+      ],
+      "takeaway": "Montré à 6 patrons : 5 ont réagi à la case 4, pas à la 3. La valeur, c'est le dimanche du patron, pas le sous-sol du technicien. Le pitch a changé avant une ligne de code."
+    }
+  },
+  "prd": {
+    "en": {
+      "context": "Scale-up, Karim writes the one-pager for offline mode release 1, because the Field app squad that builds it was not in the discovery.",
+      "blocks": [
+        {
+          "t": "Problem",
+          "items": [
+            "38 % of interventions happen with no signal (basements, plant rooms)",
+            "Léa retypes them at 7pm, 6 % of parts never get billed",
+            "Top 1 reason in the 14 churn interviews"
+          ]
+        },
+        {
+          "t": "Goal & metrics",
+          "items": [
+            "Interventions logged the same day: 61 % to 85 % in 3 months",
+            "Zero 'lost job' support tickets after release",
+            "Guardrail: sync conflicts under 0.5 % of jobs"
+          ]
+        },
+        {
+          "t": "Scope",
+          "items": [
+            "Log, photograph and close a job with no network",
+            "Automatic sync with a visible queue",
+            "Works on the 3 most common technician phones"
+          ]
+        },
+        {
+          "t": "User stories",
+          "items": [
+            "As Léa, I start a job in a basement and nothing blocks me",
+            "As Léa, I see which jobs are not synced yet",
+            "As Marc, I see a job as done within a minute of Léa getting signal",
+            "As Sophie, offline jobs appear in my export like any other"
+          ]
+        },
+        {
+          "t": "Out of scope",
+          "items": [
+            "Offline signature (release 2)",
+            "Offline planning for dispatchers",
+            "Editing past jobs offline"
+          ]
+        },
+        {
+          "t": "Open questions",
+          "items": [
+            "What happens if Marc deletes a job Léa is logging offline?",
+            "Do we keep 1 or 7 days of jobs cached?",
+            "Photo compression level: Ana to test with real boiler photos"
+          ]
+        }
+      ],
+      "takeaway": "The page was validated in a 30-minute review; the open question about deleted jobs became the first spike of the sprint."
+    },
+    "fr": {
+      "context": "Scale-up, Karim rédige le one-pager de la release 1 du mode hors ligne, parce que la squad Field app qui la construit n'était pas dans la discovery.",
+      "blocks": [
+        {
+          "t": "Problème",
+          "items": [
+            "38 % des interventions se font sans réseau (sous-sols, locaux techniques)",
+            "Léa les ressaisit à 19h, 6 % des pièces ne sont jamais facturées",
+            "Raison numéro 1 dans les 14 entretiens de churn"
+          ]
+        },
+        {
+          "t": "Objectif & métriques",
+          "items": [
+            "Interventions saisies le jour même : de 61 % à 85 % en 3 mois",
+            "Zéro ticket support 'job perdu' après la release",
+            "Garde-fou : conflits de sync sous 0,5 % des jobs"
+          ]
+        },
+        {
+          "t": "Périmètre",
+          "items": [
+            "Saisir, photographier et clôturer un job sans réseau",
+            "Sync automatique avec une file visible",
+            "Fonctionne sur les 3 téléphones les plus courants chez les techniciens"
+          ]
+        },
+        {
+          "t": "User stories",
+          "items": [
+            "En tant que Léa, je démarre un job en sous-sol et rien ne me bloque",
+            "En tant que Léa, je vois quels jobs ne sont pas encore synchronisés",
+            "En tant que Marc, je vois un job terminé dans la minute où Léa retrouve du réseau",
+            "En tant que Sophie, les jobs hors ligne apparaissent dans mon export comme les autres"
+          ]
+        },
+        {
+          "t": "Hors périmètre",
+          "items": [
+            "Signature hors ligne (release 2)",
+            "Planification hors ligne pour les dispatchers",
+            "Modifier d'anciens jobs hors ligne"
+          ]
+        },
+        {
+          "t": "Questions ouvertes",
+          "items": [
+            "Que se passe-t-il si Marc supprime un job que Léa saisit hors ligne ?",
+            "On garde 1 ou 7 jours de jobs en cache ?",
+            "Niveau de compression photo : Ana teste avec de vraies photos de chaudières"
+          ]
+        }
+      ],
+      "takeaway": "La page a été validée en une revue de 30 minutes ; la question ouverte sur les jobs supprimés est devenue le premier spike du sprint."
+    }
+  }
+}
