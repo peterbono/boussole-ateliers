@@ -154,8 +154,10 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 .cell button{text-align:left;color:var(--ink-2);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .12s}
 .cell button:hover{color:var(--ink);text-decoration-color:var(--line-strong)}
 .cell button.strong{color:var(--ink);font-weight:600}
-.legend{font-size:13.5px;color:var(--ink-2);gap:18px}
+.legend{font-size:13.5px;color:var(--ink-3);gap:16px}
 .legend b{color:var(--ink);font-weight:700}
+.legend .opt-like{color:var(--ink-2)}
+.legend .muted{color:var(--ink-3);font-style:italic}
 
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
@@ -225,7 +227,7 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
   </section>
 
   <section class="view" id="view-matrix" role="tabpanel" hidden>
-    <div class="toolbar legend"><span><b>Gras</b> : central à ce stade</span><span>Normal : selon le contexte</span><span>Case vide : trop tôt ou trop tard</span><span class="count">Clique un nom pour l'aperçu</span></div>
+    <div class="toolbar legend"><span>Pour chaque stade :</span><span><b>Atelier à proposer en priorité</b></span><span class="opt-like">Atelier utile selon la situation</span><span class="muted">Absent = pas adapté à ce stade</span></div>
     <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
   </section>
 
