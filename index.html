@@ -170,8 +170,7 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .list tbody tr:hover{background:var(--surface-2)}
 .list tbody tr:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .list td b{color:var(--ink);font-weight:600}
-.list td.stages{color:var(--ink-3);min-width:150px}
-.list td.stages b{color:var(--ink);font-weight:600}
+.list td.stages{min-width:150px}
 .list td .actions{justify-content:flex-end}
 .list .chip{white-space:normal;display:inline-block;line-height:1.25;text-align:left;padding:4px 10px}
 /* bibliothèque et cards */
@@ -191,8 +190,9 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .tcard h3{font-size:16px;font-weight:700}
 .tcard p{margin:0;color:var(--ink-2);font-size:13.5px}
 .tcard .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.tcard .stages{font-size:13px;color:var(--ink-3)}
-.tcard .stages b{color:var(--ink);font-weight:600}
+.stags{display:flex;flex-wrap:wrap;gap:4px}
+.stag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;color:var(--ink-3);border:1px solid var(--line);background:transparent}
+.stag.core{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tcard .actions{margin-top:auto;padding-top:6px}
 .tcard .actions .btn{width:100%;justify-content:center;padding:10px 12px;font-size:13.5px}
 .empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
@@ -450,6 +450,7 @@ const ICON = {
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
+const stageTags = t => `<span class="stags">${STAGES.map((s, i) => t.fit[i] >= 2 ? `<span class="stag${t.fit[i] === 3 ? ' core' : ''}">${esc(L.stages[s.id].short)}</span>` : '').join('')}</span>`;
 function actionsHtml(t, small){
   const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
   const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}${esc(UI().openFigjam)}</a>`
@@ -661,7 +662,7 @@ function tcard(t, si){
     <div class="row"><span class="chip">${esc(L.phases[ph.id])}</span></div>
     <h3>${esc(x.name)}</h3>
     <p>${esc(x.desc)}</p>
-    <p class="stages">${esc(UI().stagesLabel)} ${STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(L.stages[s.id].short)}</b>` : esc(L.stages[s.id].short)) : null).filter(Boolean).join(' · ')}</p>
+    ${stageTags(t)}
     <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(x.who)}</p>
     ${actionsHtml(t, true)}
   </div>`;
@@ -687,8 +688,7 @@ document.getElementById('filters').addEventListener('change', e => {
 document.getElementById('filters').addEventListener('input', e => { if(e.target.id === 'lib-q'){ lib.q = e.target.value; renderLibrary(); } });
 function listRow(t, si){
   const x = tx(t), ph = byId(PHASES, t.phase);
-  const stages = STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(L.stages[s.id].short)}</b>` : esc(L.stages[s.id].short)) : null).filter(Boolean).join(' · ');
-  return `<tr data-open="${t.id}" role="button" tabindex="0" style="--h:var(${ph.h})"><td><b>${esc(x.name)}</b></td><td><span class="chip">${esc(L.phases[ph.id])}</span></td><td class="stages">${stages}</td><td class="mono">${fmtDur(t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td><td>${actionsHtml(t, true)}</td></tr>`;
+  return `<tr data-open="${t.id}" role="button" tabindex="0" style="--h:var(${ph.h})"><td><b>${esc(x.name)}</b></td><td><span class="chip">${esc(L.phases[ph.id])}</span></td><td class="stages">${stageTags(t)}</td><td class="mono">${fmtDur(t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td><td>${actionsHtml(t, true)}</td></tr>`;
 }
 function renderLibrary(){
   const u = UI();
