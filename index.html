@@ -16,6 +16,7 @@
   --shadow:0 1px 2px rgba(20,30,60,.06), 0 8px 24px -12px rgba(20,30,60,.18);
   --h-cadrage:258; --h-strategie:222; --h-research:168; --h-ideation:46; --h-prio:22; --h-conception:335; --h-alignement:92; --h-mesure:200;
   --pv-bg:#FFFFFF; --pv-fill:#F6F7FA; --pv-line:#C9D0DC; --pv-ink:#1A2236; --pv-muted:#6B7590; --pv-accent:#1F4FE0; --pv-accent-soft:#E4EAFC; --pv-warn-soft:#FCE4DA;
+  --warn-soft:#FFF1E6; --warn-line:#F5C9A8; --warn-text:#8A3B12;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
@@ -26,6 +27,7 @@
     --chip-l:24%; --chip-s:35%; --chip-text-l:82%;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
     --pv-bg:#151B2B; --pv-fill:#1F2739; --pv-line:#3A4560; --pv-ink:#E6EAF3; --pv-muted:#8E99B5; --pv-accent:#7C9BFF; --pv-accent-soft:#26304D; --pv-warn-soft:#46261C;
+    --warn-soft:#3A2418; --warn-line:#6B3F22; --warn-text:#FFB59A;
     color-scheme:dark;
   }
 }
@@ -36,6 +38,7 @@
   --chip-l:24%; --chip-s:35%; --chip-text-l:82%;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
   --pv-bg:#151B2B; --pv-fill:#1F2739; --pv-line:#3A4560; --pv-ink:#E6EAF3; --pv-muted:#8E99B5; --pv-accent:#7C9BFF; --pv-accent-soft:#26304D; --pv-warn-soft:#46261C;
+  --warn-soft:#3A2418; --warn-line:#6B3F22; --warn-text:#FFB59A;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -207,7 +210,18 @@ dialog::backdrop{background:rgba(10,14,28,.35);transition:opacity .28s}
 .dlg .close svg{width:16px;height:16px}
 .dlg .close:hover{background:var(--surface-2)}
 .dlg-body .meta{border-top:1px dashed var(--line)}
-.dlg-head{position:sticky;top:0;z-index:3;background:var(--surface);padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.dlg-head{position:sticky;top:0;z-index:3;background:var(--surface);padding:12px 22px 0;border-bottom:1px solid var(--line)}
+.dlg-head-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dlg-nav{display:flex;gap:2px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.dlg-nav::-webkit-scrollbar{display:none}
+.dlg-nav a{padding:8px 10px;font-size:13px;font-weight:600;color:var(--ink-3);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.dlg-nav a:hover{color:var(--ink);border-bottom-color:var(--line-strong)}
+.dlg-body section{scroll-margin-top:96px}
+.dlg-body h3{font-size:16px;margin:0 0 10px;display:flex;align-items:baseline;gap:10px}
+.dlg-body h3 .total{font-size:12px;color:var(--ink-3);font-weight:400}
+.dlg-body .desc,.dlg-body .why{margin:0 0 10px}
+#sec-overview{display:flex;flex-direction:column;gap:2px}
+#sec-overview .meta{margin:6px 0 12px}
 body:has(dialog[open]){overflow:hidden}
 @media (prefers-reduced-motion:reduce){dialog{transition:none}}
 .muted{color:var(--ink-3)}
@@ -247,15 +261,41 @@ body:has(dialog[open]){overflow:hidden}
 .agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
 .agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
 .agenda b{color:var(--ink);font-weight:600}
-.deps{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
-.deps h3{font-size:16px}
-.deps h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
-.deps ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
-.deps li{display:grid;grid-template-columns:minmax(140px,45%) 1fr;gap:10px;align-items:baseline;font-size:13.5px;color:var(--ink-2);padding:6px 0;border-bottom:1px dashed var(--line)}
-.deps li:last-child{border-bottom:0}
-.deps ul.anyof{border-left:2px solid var(--line);padding-left:10px}
-.deps li button{text-align:left;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:3px}
-.deps li button:hover{text-decoration-color:var(--accent);color:var(--accent)}
+.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.dep-group{margin-bottom:10px}
+.dep-group h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:0 0 6px}
+.wchips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.wchip{display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:500;color:var(--ink);transition:border-color .12s,background .12s}
+.wchip i{width:8px;height:8px;border-radius:50%;background:hsl(var(--h) 60% 55%);flex:none}
+.wchip:hover{border-color:var(--accent);background:var(--accent-soft)}
+.wchip.need{border-color:var(--ink);border-width:1.5px}
+.wchip.help{border-style:dashed}
+.wchips.anyof{padding:6px 8px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
+.wchips .or{font-size:11px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+.checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:10px;font-size:14px;color:var(--ink-2);cursor:pointer;line-height:1.45}
+.checklist label:hover{background:var(--surface-2)}
+.checklist input{width:16px;height:16px;margin:3px 0 0;flex:none;accent-color:var(--ink)}
+.checklist input:checked + span{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--line-strong)}
+.timebar{display:flex;gap:2px;height:8px;border-radius:4px;overflow:hidden;margin:0 0 14px}
+.timebar span{display:block;background:hsl(var(--h) calc(var(--chip-s) - 10%) calc(var(--chip-l) - 8% - var(--i) * 6%))}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;position:relative;padding-bottom:14px}
+.timeline li::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line)}
+.timeline li:last-child::before{display:none}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
+.tl-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:4px}
+.tl-head b{font-weight:600;color:var(--ink)}
+.tl-head .mono{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.tl-body p{margin:3px 0 0;color:var(--ink-2);font-size:14px;line-height:1.45}
+.pitfalls{display:flex;flex-direction:column;gap:8px}
+.pitfall{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--warn-soft);border:1px solid var(--warn-line);color:var(--warn-text)}
+.pitfall svg{width:16px;height:16px;flex:none;margin-top:2px}
+.pitfall p{margin:0;font-size:14px;line-height:1.45;color:var(--warn-text)}
+.next-card{padding:12px 14px;border-radius:12px;background:hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 5%) / .55);border:1px solid hsl(var(--h) 40% calc(var(--chip-l) - 10%))}
+.next-card p{margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
+.next-card .dep-group{margin:0}
+.src{font-size:13px;margin:10px 0 0}
 .helpful{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
 @media print{
   body{background:#fff;color:#000}
@@ -401,6 +441,7 @@ const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.co
 const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+  warn:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14 13H2z"/><path d="M8 6.5v3M8 11.5v.2"/></svg>',
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
@@ -666,46 +707,73 @@ const dlg = document.getElementById('dlg');
 let RUN = null, runPromise = null;
 function loadRun(){ if(RUN) return Promise.resolve(RUN); if(!runPromise) runPromise = fetch('content/run.json').then(r => r.ok ? r.json() : {}).then(j => (RUN = j)).catch(() => (RUN = {})); return runPromise; }
 const pageUrl = t => (lang === 'fr' ? '/fr/ateliers/' : '/workshops/') + t.id + '/';
+const prepState = {
+  get(id){ return store.get('prep:' + id, []); },
+  set(id, arr){ store.set('prep:' + id, arr); },
+};
 function howToHtml(t){
   const u = UI(), c = RUN && RUN[t.id] && RUN[t.id][lang]; if(!c) return '';
-  return `<section class="howto">
-    <h3>${esc(u.howTo)}</h3>
-    <h4>${esc(u.prep)}</h4><ul>${c.prep.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
-    <h4>${esc(u.agenda)}</h4><ol class="agenda">${c.agenda.map(a => `<li><span class="mono amin">${a.min} ${esc(u.minutes)}</span><div><b>${esc(a.t)}</b><br>${esc(a.d)}</div></li>`).join('')}</ol>
-    <h4>${esc(u.pitfalls)}</h4><ul>${c.pitfalls.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
-    <h4>${esc(u.nextStep)}</h4><p>${esc(c.next)}</p>
-    ${c.source ? `<p class="muted">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
-  </section>`;
+  const ph = byId(PHASES, t.phase), done = prepState.get(t.id);
+  const bar = c.agenda.map((a, i) => `<span style="flex:${a.min};--i:${i}" title="${esc(a.t)} · ${a.min} ${esc(u.minutes)}"></span>`).join('');
+  return `
+    <section class="prep" id="sec-prep" style="--h:var(${ph.h})">
+      <h3>${esc(u.prep)}</h3>
+      <ul class="checklist">${c.prep.map((p, i) => `<li><label><input type="checkbox" data-prep="${t.id}" data-i="${i}" ${done[i] ? 'checked' : ''}><span>${esc(p)}</span></label></li>`).join('')}</ul>
+    </section>
+    <section class="agenda-sec" id="sec-agenda" style="--h:var(${ph.h})">
+      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span></h3>
+      <div class="timebar" aria-hidden="true">${bar}</div>
+      <ol class="timeline">${c.agenda.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
+    </section>
+    <section class="pitfalls-sec" id="sec-pitfalls">
+      <h3>${esc(u.pitfalls)}</h3>
+      <div class="pitfalls">${c.pitfalls.map(p => `<div class="pitfall">${ICON.warn}<p>${esc(p)}</p></div>`).join('')}</div>
+    </section>
+    <section class="next-sec" id="sec-next" style="--h:var(${ph.h})">
+      <h3>${esc(u.nextStep)}</h3>
+      <div class="next-card"><p>${esc(c.next)}</p>${feedsHtml(t)}</div>
+      ${c.source ? `<p class="muted src">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
+    </section>`;
+}
+function wchip(q, kind){
+  const ph = byId(PHASES, q.phase);
+  return `<button type="button" class="wchip ${kind || ''}" data-open="${q.id}" style="--h:var(${ph.h})" title="${esc(tx(q).out)}"><i></i>${esc(tx(q).name)}</button>`;
 }
 function depsHtml(t){
   const u = UI(), c = CHAIN[t.id] || {};
   const get = ids => (ids || []).map(id => byId(T, id)).filter(Boolean);
   const needs = get(c.needs), anyOf = (c.anyOf || []).map(get).filter(g => g.length), helps = get(c.helps);
-  const outs = T.filter(q => chainInputs(q.id).includes(t.id));
-  const row = q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(tx(q).out)}</span></li>`;
-  const any = anyOf.map(g => `<h4>${esc(u.needsAnyOf)}</h4><ul class="anyof">${g.map(row).join('')}</ul>`).join('');
-  return `<section class="deps">
+  if(!needs.length && !anyOf.length && !helps.length) return `<section class="deps" id="sec-before"><h3>${esc(u.before)}</h3><p class="muted">${esc(u.noDeps)}</p></section>`;
+  return `<section class="deps" id="sec-before">
     <h3>${esc(u.before)}</h3>
-    ${needs.length ? `<h4>${esc(u.needsRequired)}</h4><ul>${needs.map(row).join('')}</ul>` : ''}
-    ${any}
-    ${helps.length ? `<h4>${esc(u.needsHelpful)}</h4><ul>${helps.map(row).join('')}</ul>` : ''}
-    ${!needs.length && !anyOf.length && !helps.length ? `<p class="muted">${esc(u.noDeps)}</p>` : ''}
-    ${outs.length ? `<h4>${esc(u.feedsInto)}</h4><ul>${outs.map(q => `<li><button type="button" data-open="${q.id}"><b>${esc(tx(q).name)}</b></button><span>${esc(L.phases[q.phase])}</span></li>`).join('')}</ul>` : ''}
+    ${needs.length ? `<div class="dep-group"><h4>${esc(u.needsRequired)}</h4><div class="wchips">${needs.map(q => wchip(q, 'need')).join('')}</div></div>` : ''}
+    ${anyOf.map(g => `<div class="dep-group"><h4>${esc(u.needsAnyOf)}</h4><div class="wchips anyof">${g.map(q => wchip(q, 'any')).join(`<span class="or">${esc(u.or)}</span>`)}</div></div>`).join('')}
+    ${helps.length ? `<div class="dep-group"><h4>${esc(u.needsHelpful)}</h4><div class="wchips">${helps.map(q => wchip(q, 'help')).join('')}</div></div>` : ''}
   </section>`;
+}
+function feedsHtml(t){
+  const u = UI(), outs = T.filter(q => chainInputs(q.id).includes(t.id));
+  return outs.length ? `<div class="dep-group"><h4>${esc(u.feedsInto)}</h4><div class="wchips">${outs.map(q => wchip(q)).join('')}</div></div>` : '';
 }
 function openPreview(id){
   const t = byId(T, id); if(!t) return;
   const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
   track('open_workshop', {id});
+  const nav = [['sec-overview', u.navOverview], ['sec-before', u.before], ['sec-prep', u.prep], ['sec-agenda', u.agenda], ['sec-pitfalls', u.pitfalls], ['sec-next', u.nextStep]];
   document.getElementById('dlg-content').innerHTML = `
-    <div class="dlg-head" style="--h:var(${ph.h})"><span class="chip">${esc(L.phases[ph.id])}</span><button class="close" type="button" data-close aria-label="${esc(u.close)}">${ICON.x}</button></div>
+    <div class="dlg-head" style="--h:var(${ph.h})">
+      <div class="dlg-head-row"><span class="chip">${esc(L.phases[ph.id])}</span><button class="close" type="button" data-close aria-label="${esc(u.close)}">${ICON.x}</button></div>
+      <nav class="dlg-nav" aria-label="Sections">${nav.map(([id, n]) => `<a href="#${id}" data-jump="${id}">${esc(n)}</a>`).join('')}</nav>
+    </div>
     <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)})}</div>
     <div class="dlg-body" style="--h:var(${ph.h})">
-      <h2 id="dlg-title">${esc(x.name)}</h2>
-      <p class="desc" style="margin:0">${esc(x.desc)}</p>
-      <p class="why" style="margin:0"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
-      ${metaHtml(t)}
-      ${actionsHtml(t, false)}
+      <section id="sec-overview">
+        <h2 id="dlg-title">${esc(x.name)}</h2>
+        <p class="desc">${esc(x.desc)}</p>
+        <p class="why"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
+        ${metaHtml(t)}
+        ${actionsHtml(t, false)}
+      </section>
       ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
@@ -714,11 +782,16 @@ function openPreview(id){
   loadRun().then(() => { const slot = document.getElementById('howto-slot'); if(slot) slot.innerHTML = howToHtml(t); });
 }
 dlg.addEventListener('click', e => {
+  const j = e.target.closest('[data-jump]'); if(j){ e.preventDefault(); const el = document.getElementById(j.dataset.jump); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); return; }
   const h = e.target.closest('[data-helpful]'); if(!h) return;
   const id = document.querySelector('#dlg-title') && document.querySelector('#dlg-title').textContent;
   track('helpful', {answer:h.dataset.helpful, workshop:id}); document.getElementById('helpful').innerHTML = `<span>${esc(UI().thanks)}</span>`;
 });
 document.addEventListener('click', e => { const a = e.target.closest('a.btn.primary'); if(a) track('open_figjam', {href:a.getAttribute('href')}); });
+dlg.addEventListener('change', e => {
+  const c = e.target.closest('[data-prep]'); if(!c) return;
+  const arr = prepState.get(c.dataset.prep); arr[+c.dataset.i] = c.checked; prepState.set(c.dataset.prep, arr);
+});
 dlg.addEventListener('click', e => { if(e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 document.addEventListener('click', e => {
   const o = e.target.closest('[data-open]'); if(!o) return;
