@@ -178,8 +178,6 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 .dlg-body .close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line)}
 .dlg-body .close:hover{background:var(--surface-2)}
 .dlg-body .meta{border-top:1px dashed var(--line)}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:50}
-.toast.on{opacity:1;transform:translateX(-50%)}
 .hint{font-size:13px;color:var(--ink-3);margin:0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -224,7 +222,6 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 </div>
 
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="data.js"></script>
 <script src="layouts.js"></script>
@@ -248,7 +245,6 @@ const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:'Aperçu
 const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
 const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
-  copy:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V4a1 1 0 0 1 1-1h7"/></svg>',
   eye:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
 };
@@ -256,10 +252,8 @@ function actionsHtml(t, small){
   const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
   const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}Ouvrir dans FigJam</a>`
                  : `<span class="${cls} primary" aria-disabled="true" title="Le fichier FigJam arrive">${ICON.figjam}FigJam bientôt</span>`;
-  return `<div class="actions">${fj}<button class="${cls}" type="button" data-copy="png" data-id="${t.id}">${ICON.copy}Copier l'image</button><button class="${cls}" type="button" data-copy="svg" data-id="${t.id}">${ICON.copy}SVG</button></div>`;
+  return `<div class="actions">${fj}</div>`;
 }
-let toastT;
-function toast(msg){ const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 1800); }
 
 /* ---------- moteur ---------- */
 function recommend(a){
@@ -416,38 +410,15 @@ function openPreview(id){
       <p class="why" style="margin:0"><b>Quand.</b> ${esc(t.why)}</p>
       <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
       ${actionsHtml(t, false)}
-      <p class="hint">${figjamUrl(t) ? 'Dans FigJam : Fichier → Dupliquer dans tes brouillons, puis garde la section de cet atelier.' : 'En attendant le fichier FigJam : "Copier l\'image" colle le board dans FigJam, "SVG" colle des vecteurs dans Figma.'}</p>
+      <p class="hint">Dans FigJam : Fichier → Dupliquer dans tes brouillons, puis garde la section de cet atelier.</p>
     </div>`;
   dlg.showModal();
 }
 dlg.addEventListener('click', e => { if(e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 
-/* ---------- copier ---------- */
-async function copyTemplate(id, mode){
-  const t = byId(T, id); const svg = Preview.renderStandalone(LAYOUTS[id], t.name);
-  try{
-    if(mode === 'png' && navigator.clipboard && window.ClipboardItem){
-      const blob = await svgToPng(svg, 1280, 800);
-      await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
-      toast('Image copiée : colle-la dans FigJam (Cmd+V)'); return;
-    }
-    await navigator.clipboard.writeText(svg);
-    toast(mode === 'png' ? 'SVG copié (image non supportée ici)' : 'SVG copié : colle-le dans Figma');
-  }catch(err){ toast('Copie impossible dans ce navigateur'); }
-}
-function svgToPng(svg, w, h){
-  return new Promise((res, rej) => {
-    const img = new Image(); const url = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
-    img.onload = () => { const c = document.createElement('canvas'); c.width = w * 2; c.height = h * 2; const ctx = c.getContext('2d'); ctx.scale(2, 2); ctx.drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url); c.toBlob(b => b ? res(b) : rej(new Error('png')), 'image/png'); };
-    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('svg')); };
-    img.src = url;
-  });
-}
-
 /* ---------- délégation globale ---------- */
 document.addEventListener('click', e => {
-  const o = e.target.closest('[data-open]'); if(o){ openPreview(o.dataset.open); return; }
-  const c = e.target.closest('[data-copy]'); if(c){ copyTemplate(c.dataset.id, c.dataset.copy); }
+  const o = e.target.closest('[data-open]'); if(o) openPreview(o.dataset.open);
 });
 
 /* ---------- onglets ---------- */
