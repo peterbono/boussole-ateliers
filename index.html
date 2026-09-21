@@ -80,7 +80,8 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* layout orienter */
 .orient{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
-@media (max-width:860px){.orient{grid-template-columns:1fr}}
+@media (max-width:860px){.orient{grid-template-columns:minmax(0,1fr)}}
+#result{min-width:0}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
 .side{position:sticky;top:env(safe-area-inset-top,0px);display:flex;flex-direction:column;gap:20px;max-height:100vh;overflow:auto;scrollbar-width:none;padding-bottom:20px}
 .side::-webkit-scrollbar{display:none}
@@ -137,7 +138,8 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 @media (max-width:700px){.card-body{grid-template-columns:1fr}}
 .card-body .pvbox{display:block;border-radius:8px;border:1px solid var(--line);overflow:hidden}
 .card-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding-top:12px;border-top:1px dashed var(--line)}
-.card-foot .meta{border:0;padding:0;flex:1 1 420px;grid-template-columns:auto auto minmax(0,1fr)}
+.card-foot .meta{border:0;padding:0;flex:1 1 420px;min-width:0;grid-template-columns:auto auto minmax(0,1fr)}
+@media (max-width:700px){.card-foot .meta{flex-basis:100%;grid-template-columns:1fr 1fr}.card-foot .actions,.card-foot .actions .btn{width:100%}.card-foot .actions .btn{justify-content:center}}
 .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .card h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
@@ -298,6 +300,38 @@ body:has(dialog[open]){overflow:hidden}
 .next-card p{margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
 .next-card .dep-group{margin:0}
 .src{font-size:13px;margin:10px 0 0}
+.run-btn{margin-left:auto}
+dialog.run{position:fixed;inset:0;width:100vw;height:100%;max-width:100vw;max-height:100%;border:0;padding:0;margin:0;background:var(--bg);color:var(--ink);transform:none;transition:none}
+dialog.run::backdrop{background:var(--bg)}
+#run-content{height:100%}
+.run-wrap{height:100%;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) 24px calc(20px + env(safe-area-inset-bottom,0px));max-width:920px;margin:0 auto;gap:18px}
+.run-top{display:flex;align-items:center;gap:12px}
+.run-top .run-count{margin-left:auto;font-size:13px;color:var(--ink-3)}
+.run-steps{display:flex;gap:3px;height:6px}
+.run-steps span{display:block;border-radius:3px;background:var(--line)}
+.run-steps span.past{background:hsl(var(--h) 45% 60%)}
+.run-steps span.now{background:var(--ink)}
+.run-main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;min-height:0}
+.run-step{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:0}
+.run-main h2{font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-.02em}
+.run-desc{font-size:clamp(16px,2.2vw,20px);line-height:1.5;color:var(--ink-2);margin:0;max-width:60ch}
+.run-clock-wrap{margin:10px 0}
+.run-clock{font-size:clamp(56px,12vw,120px);font-weight:500;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.run-clock.over{color:var(--warn-text)}
+.run-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:12px;max-width:520px}
+.run-bar div{height:100%;width:0;background:hsl(var(--h) 55% 50%);transition:width 1s linear}
+.run-up{margin:8px 0 0;color:var(--warn-text);font-weight:600}
+.run-tip{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--warn-soft);border:1px solid var(--warn-line);color:var(--warn-text);max-width:640px}
+.run-tip svg{width:16px;height:16px;flex:none;margin-top:3px}
+.run-tip b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-family:"IBM Plex Mono",monospace;font-weight:500;margin-bottom:2px}
+.run-tip p{margin:0;font-size:14px;line-height:1.45}
+.run-bottom{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.run-bottom .btn{padding:12px 18px;font-size:15px}
+.run-bottom .btn[disabled]{opacity:.4;cursor:default}
+.who{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
+.who h4.k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:0 0 8px}
+.wchip.static{cursor:default;color:var(--ink-2)}
+.wchip.static:hover{border-color:var(--line);background:var(--surface)}
 .helpful{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
 @media print{
   body{background:#fff;color:#000}
@@ -344,6 +378,7 @@ body:has(dialog[open]){overflow:hidden}
 </div>
 
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
+<dialog id="run" class="run" aria-label="Run mode"><div id="run-content"></div></dialog>
 
 <script src="data.js"></script>
 <script src="i18n/en.js"></script>
@@ -444,6 +479,7 @@ const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
   warn:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14 13H2z"/><path d="M8 6.5v3M8 11.5v.2"/></svg>',
+  play:'<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>',
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
@@ -658,6 +694,7 @@ function planHtml(pick, total){
     <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
+    <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
@@ -736,7 +773,7 @@ function howToHtml(t){
       <ul class="checklist">${c.prep.map((p, i) => `<li><label><input type="checkbox" data-prep="${t.id}" data-i="${i}" ${done[i] ? 'checked' : ''}><span>${esc(p)}</span></label></li>`).join('')}</ul>
     </section>
     <section class="agenda-sec" id="sec-agenda" style="--h:var(${ph.h})">
-      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span></h3>
+      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span><button type="button" class="btn small run-btn" data-run="${t.id}">${ICON.play}${esc(u.run)}</button></h3>
       <div class="timebar" aria-hidden="true">${bar}</div>
       <ol class="timeline">${c.agenda.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
     </section>
@@ -792,6 +829,7 @@ function openPreview(id){
       ${depsHtml(t)}
       <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
       <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
+      <p class="hint"><a href="mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass · ' + x.name)}">${esc(u.feedback)}</a></p>
     </div>`;
   dlg.showModal(); document.getElementById('dlg-content').scrollTop = 0;
   loadRun().then(() => { const slot = document.getElementById('howto-slot'); if(slot) slot.innerHTML = howToHtml(t); });
@@ -818,6 +856,73 @@ document.addEventListener('keydown', e => {
   const o = e.target.closest && e.target.closest('[data-open][role="button"]'); if(!o || e.target !== o) return;
   e.preventDefault(); openPreview(o.dataset.open);
 });
+
+/* ---------- mode animer ---------- */
+const runDlg = document.getElementById('run');
+const RUNSTATE = {t:null, c:null, i:0, left:0, timer:null, paused:false, lock:null, over:false};
+async function startRun(id){
+  const t = byId(T, id); await loadRun(); const c = RUN[id] && RUN[id][lang]; if(!t || !c) return;
+  Object.assign(RUNSTATE, {t, c, i:0, paused:false}); track('run_start', {id});
+  if(dlg.open) dlg.close();
+  runDlg.showModal(); goStep(0);
+  try{ RUNSTATE.lock = navigator.wakeLock && await navigator.wakeLock.request('screen'); }catch(e){}
+}
+function goStep(i){
+  const st = RUNSTATE; if(i < 0) return;
+  clearInterval(st.timer);
+  if(i >= st.c.agenda.length){ renderRun(true); return; }
+  st.i = i; st.left = st.c.agenda[i].min * 60; st.paused = false; st.over = false;
+  renderRun(); st.timer = setInterval(tick, 1000);
+}
+function tick(){ const st = RUNSTATE; if(st.paused) return; st.left--; if(st.left === 0){ st.over = true; try{ beep(); }catch(e){} } renderRunClock(); }
+function beep(){ const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(), g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 880; g.gain.value = .08; o.start(); o.stop(ctx.currentTime + .25); }
+const mmss = s => { const a = Math.abs(s); return (s < 0 ? '-' : '') + String(Math.floor(a / 60)).padStart(2, '0') + ':' + String(a % 60).padStart(2, '0'); };
+function renderRunClock(){
+  const st = RUNSTATE, el = document.getElementById('run-clock'); if(!el) return;
+  el.textContent = mmss(st.left); el.classList.toggle('over', st.left <= 0);
+  const total = st.c.agenda[st.i].min * 60, fill = document.getElementById('run-fill'); if(fill) fill.style.width = Math.min(100, 100 * (1 - Math.max(0, st.left) / total)) + '%';
+  const up = document.getElementById('run-up'); if(up) up.hidden = st.left > 0;
+}
+function renderRun(done){
+  const st = RUNSTATE, u = UI(), x = tx(st.t), ph = byId(PHASES, st.t.phase), n = st.c.agenda.length;
+  if(done){
+    clearInterval(st.timer);
+    document.getElementById('run-content').innerHTML = `<div class="run-wrap" style="--h:var(${ph.h})">
+      <div class="run-top"><span class="chip">${esc(x.name)}</span><button class="btn small" type="button" data-run-exit>${esc(u.runExit)}</button></div>
+      <div class="run-main"><p class="run-step">${esc(u.runDone)}</p><h2>${esc(u.runEnd)}</h2><p class="run-desc">${esc(st.c.next)}</p><p class="run-desc"><b>${esc(u.out)}</b> · ${esc(x.out)}</p></div>
+      <div class="run-bottom"><button class="btn" type="button" data-run-go="${n - 1}">${esc(u.runPrev)}</button><button class="btn primary" type="button" data-run-exit>${esc(u.runExit)}</button></div>
+    </div>`; return;
+  }
+  const a = st.c.agenda[st.i], pit = st.c.pitfalls[st.i % st.c.pitfalls.length];
+  document.getElementById('run-content').innerHTML = `<div class="run-wrap" style="--h:var(${ph.h})">
+    <div class="run-top"><span class="chip">${esc(x.name)}</span><span class="mono run-count">${esc(u.runStep(st.i + 1, n))}</span><button class="btn small" type="button" data-run-exit>${esc(u.runExit)}</button></div>
+    <div class="run-steps">${st.c.agenda.map((s, k) => `<span class="${k < st.i ? 'past' : k === st.i ? 'now' : ''}" style="flex:${s.min}"></span>`).join('')}</div>
+    <div class="run-main">
+      <p class="run-step">${esc(u.runStep(st.i + 1, n))} · ${a.min} ${esc(u.minutes)}</p>
+      <h2>${esc(a.t)}</h2>
+      <p class="run-desc">${esc(a.d)}</p>
+      <div class="run-clock-wrap"><div class="run-clock mono" id="run-clock">${mmss(st.left)}</div><div class="run-bar"><div id="run-fill"></div></div><p class="run-up" id="run-up" hidden>${esc(u.runTimeUp)}</p></div>
+      <div class="run-tip">${ICON.warn}<div><b>${esc(u.runTip)}</b><p>${esc(pit)}</p></div></div>
+    </div>
+    <div class="run-bottom">
+      <button class="btn" type="button" data-run-go="${st.i - 1}" ${st.i === 0 ? 'disabled' : ''}>${esc(u.runPrev)}</button>
+      <button class="btn" type="button" data-run-pause>${esc(st.paused ? u.runResume : u.runPause)}</button>
+      <button class="btn primary" type="button" data-run-go="${st.i + 1}">${st.i + 1 >= n ? esc(u.runDone) : esc(u.runNext)}</button>
+    </div>
+  </div>`;
+  renderRunClock();
+}
+runDlg.addEventListener('click', e => {
+  if(e.target.closest('[data-run-exit]') || e.target === runDlg){ clearInterval(RUNSTATE.timer); try{ RUNSTATE.lock && RUNSTATE.lock.release(); }catch(x){} runDlg.close(); return; }
+  const g = e.target.closest('[data-run-go]'); if(g){ goStep(+g.dataset.runGo); return; }
+  if(e.target.closest('[data-run-pause]')){ RUNSTATE.paused = !RUNSTATE.paused; e.target.closest('[data-run-pause]').textContent = RUNSTATE.paused ? UI().runResume : UI().runPause; }
+});
+runDlg.addEventListener('close', () => { clearInterval(RUNSTATE.timer); });
+document.addEventListener('keydown', e => {
+  if(!runDlg.open) return;
+  if(e.key === 'ArrowRight'){ goStep(RUNSTATE.i + 1); } else if(e.key === 'ArrowLeft'){ goStep(RUNSTATE.i - 1); } else if(e.key === ' '){ e.preventDefault(); const b = runDlg.querySelector('[data-run-pause]'); if(b) b.click(); }
+});
+document.addEventListener('click', e => { const r = e.target.closest('[data-run]'); if(r){ e.stopPropagation(); startRun(r.dataset.run); } }, true);
 
 /* ---------- onglets et langue ---------- */
 document.querySelector('.tabs').addEventListener('click', e => {
