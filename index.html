@@ -127,9 +127,6 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* matrice */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
-.seg{display:inline-flex;background:var(--surface-2);padding:3px;border-radius:9px;gap:2px}
-.seg button{padding:5px 11px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink-2)}
-.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .matrix-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
 table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 .matrix th,.matrix td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
@@ -142,10 +139,8 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 .cell button{text-align:left;color:var(--ink-2);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .12s}
 .cell button:hover{color:var(--ink);text-decoration-color:var(--line-strong)}
 .cell button.strong{color:var(--ink);font-weight:600}
-.matrix-note{margin:14px 0 0;color:var(--ink-2);font-size:14px}
-.phase-section{margin-top:26px}
-.phase-section h3{font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.phase-section h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.legend{font-size:13.5px;color:var(--ink-2);gap:18px}
+.legend b{color:var(--ink);font-weight:700}
 
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
@@ -215,13 +210,8 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
   </section>
 
   <section class="view" id="view-matrix" role="tabpanel" hidden>
-    <div class="toolbar">
-      <div class="seg" id="matrix-mode"><button aria-pressed="true" data-mode="table">Tableau</button><button aria-pressed="false" data-mode="cards">Cards</button></div>
-      <div class="seg" id="matrix-stage" hidden></div>
-    </div>
-    <div id="matrix-table" class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
-    <p class="matrix-note" id="matrix-note">Gras = template central à ce stade. Normal = utile selon le contexte. Une case vide veut dire : ne propose pas cet atelier là, il arrive trop tôt ou trop tard. Clique un nom pour l'aperçu.</p>
-    <div id="matrix-cards" hidden></div>
+    <div class="toolbar legend"><span><b>Gras</b> : central à ce stade</span><span>Normal : selon le contexte</span><span>Case vide : trop tôt ou trop tard</span><span class="count">Clique un nom pour l'aperçu</span></div>
+    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
   </section>
 
   <section class="view" id="view-library" role="tabpanel" hidden>
@@ -245,7 +235,6 @@ const store = {
 const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine'};
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 let lib = {phase:'all', stage:'all', q:''};
-let matrixMode = 'table', matrixStage = 'postpmf';
 
 const byId = (arr, id) => arr.find(x => x.id === id);
 const phaseIdx = id => PHASES.findIndex(p => p.id === id);
@@ -385,33 +374,6 @@ function tcard(t, si){
     ${actionsHtml(t, true)}
   </div>`;
 }
-function renderMatrixCards(){
-  const si = stageIdx(matrixStage);
-  let html = '';
-  PHASES.forEach(p => {
-    const items = T.filter(t => t.phase === p.id && t.fit[si] >= 2).sort((a, b) => b.fit[si] - a.fit[si]);
-    if(!items.length) return;
-    html += `<section class="phase-section" style="--h:var(${p.h})"><h3><span class="chip">${esc(p.name)}</span></h3><div class="grid" style="margin-top:0">${items.map(t => tcard(t, si)).join('')}</div></section>`;
-  });
-  document.getElementById('matrix-cards').innerHTML = html;
-}
-function renderMatrixStageSeg(){
-  document.getElementById('matrix-stage').innerHTML = STAGES.map(s => `<button type="button" aria-pressed="${matrixStage === s.id}" data-stage="${s.id}">${esc(s.short)}</button>`).join('');
-}
-document.getElementById('matrix-mode').addEventListener('click', e => {
-  const b = e.target.closest('[data-mode]'); if(!b) return;
-  matrixMode = b.dataset.mode; store.set('matrixMode', matrixMode);
-  document.querySelectorAll('#matrix-mode button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  const cards = matrixMode === 'cards';
-  document.getElementById('matrix-table').hidden = cards; document.getElementById('matrix-note').hidden = cards;
-  document.getElementById('matrix-cards').hidden = !cards; document.getElementById('matrix-stage').hidden = !cards;
-  if(cards) renderMatrixCards();
-});
-document.getElementById('matrix-stage').addEventListener('click', e => {
-  const b = e.target.closest('[data-stage]'); if(!b) return;
-  matrixStage = b.dataset.stage; store.set('matrixStage', matrixStage); renderMatrixStageSeg(); renderMatrixCards();
-});
-
 /* ---------- bibliothèque ---------- */
 function renderFilters(){
   const btn = (k, id, name) => `<button class="opt" type="button" aria-pressed="${lib[k] === id}" data-k="${k}" data-id="${id}">${esc(name)}</button>`;
@@ -494,9 +456,7 @@ document.querySelector('.tabs').addEventListener('click', e => {
 });
 
 /* ---------- boot ---------- */
-renderQuestions(); renderResult(); renderMatrix(); renderMatrixStageSeg(); renderFilters(); renderLibrary();
-matrixStage = store.get('matrixStage', ans.stage); renderMatrixStageSeg();
-if(store.get('matrixMode', 'table') === 'cards') document.querySelector('#matrix-mode [data-mode="cards"]').click();
+renderQuestions(); renderResult(); renderMatrix(); renderFilters(); renderLibrary();
 const savedTab = store.get('tab', 'orient');
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
 </script>
