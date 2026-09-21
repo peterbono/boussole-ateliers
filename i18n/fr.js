@@ -6,7 +6,7 @@ const I18N_FR = {
     q:{stage:'Stade du produit', team:'Taille produit + tech', trigger:'Déclencheur', goals:'Ce qui manque', horizon:'Horizon'},
     reset:'Réinitialiser',
     summary:(n, hz)=>`${n} atelier${n>1?'s':''} dans l\'ordre, pour ${hz}. Chaque board s\'ouvre dans FigJam, à dupliquer dans ton espace.`,
-    time:'Temps facilité', phases:'Phases',
+    time:'Temps de facilitation', workshops:(n)=>n>1?'ateliers':'atelier',
     whyNow:'Pourquoi maintenant.', when:'Quand.', dur:'Durée', who:'Participants', out:'Livrable',
     openFigjam:'Ouvrir dans FigJam', figjamSoon:'FigJam bientôt', figjamHint:'Dans FigJam : Fichier → Dupliquer dans tes brouillons, puis garde la section de cet atelier.',
     more:'Si tu as plus de temps, ensuite', skip:'À ne pas proposer à ce stade', tooEarly:'Trop tôt', tooLate:'Dépassé', forStage:(s)=>`pour "${s}" :`,

@@ -6,7 +6,7 @@ const I18N_EN = {
     q:{stage:'Product stage', team:'Product + tech team size', trigger:'Trigger', goals:'What is missing', horizon:'Time frame'},
     reset:'Reset',
     summary:(n, hz)=>`${n} workshop${n>1?'s':''} in order, for ${hz}. Each board opens in FigJam, duplicate it into your space.`,
-    time:'Facilitation time', phases:'Phases',
+    time:'Facilitation time', workshops:(n)=>n>1?'workshops':'workshop',
     whyNow:'Why now.', when:'When.', dur:'Duration', who:'Participants', out:'Output',
     openFigjam:'Open in FigJam', figjamSoon:'FigJam coming soon', figjamHint:'In FigJam: File → Duplicate to your drafts, then keep this workshop\'s section.',
     more:'If you have more time, next', skip:'Do not propose at this stage', tooEarly:'Too early', tooLate:'Past its use', forStage:(s)=>`for "${s}":`,

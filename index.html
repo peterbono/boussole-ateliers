@@ -471,12 +471,11 @@ function stepCard(t, n, reasons){
 }
 function renderResult(){
   const {pick, scored, prereqs} = recommend(ans);
-  const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger], hz = L.horizons[ans.horizon];
+  const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
   const total = pick.reduce((s, x) => s + x.t.dur, 0);
   let html = `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
-      <p>${esc(u.summary(pick.length, hz.toLowerCase()))}</p></div>
-      <div class="stats"><span>${esc(u.time)} <b>${fmtDur(total)}</b></span><span>${esc(u.phases)} <b>${new Set(pick.map(x => x.t.phase)).size}</b></span></div>
+      <p class="stats" style="margin-top:8px"><span><b>${pick.length}</b> ${esc(u.workshops(pick.length))}</span><span>${esc(u.time)} <b>${fmtDur(total)}</b></span></p></div>
     </div>
     <div class="result-bar">
       <div class="seg" id="view-seg"><button type="button" aria-pressed="${view === 'steps'}" data-view="steps">${esc(u.viewSteps)}</button><button type="button" aria-pressed="${view === 'plan'}" data-view="plan">${esc(u.viewPlan)}</button></div>
