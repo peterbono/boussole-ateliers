@@ -236,8 +236,6 @@ body:has(dialog[open]){overflow:hidden}
 .seg button{padding:5px 11px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink-2)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-.plan-head h3{font-size:18px}
-.plan-head p{margin:4px 0 12px}
 .plan-wrap{overflow-x:auto}
 .plan-table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
 .plan-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;padding:0 10px 8px 0;border-bottom:1px solid var(--line)}
@@ -654,10 +652,9 @@ function ganttHtml(slots){
   return html + `</div>`;
 }
 function planHtml(pick, total){
-  const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
+  const u = UI();
   const rows = planSlots(pick).map((s, i) => { const x = tx(s.x.t); return `<tr><td class="mono">${esc(s.label)}</td><td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[s.x.t.phase])}</span></td><td class="mono">${fmtDur(s.x.t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`; }).join('');
   return `<section class="plan">
-    <div class="plan-head"><h3>${esc(u.planTitle)}</h3><p class="muted">${esc(st.name)} · ${esc(tr.name)} · ${esc(L.horizons[ans.horizon])}</p></div>
     <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
