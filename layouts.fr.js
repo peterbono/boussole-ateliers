@@ -1,4 +1,4 @@
-// Boussole Ateliers : spec de layout par atelier.
+// Boussole Ateliers : spec de layout par atelier (labels FR). Version EN : layouts.en.js (référence du fichier FigJam).
 // Source unique : le site en tire l'aperçu SVG, le générateur FigJam en tire les sections.
 //
 // kinds :
@@ -9,7 +9,7 @@
 //  tree     {levels:[{t, n}]}                     arbre gauche → droite (niveau 0 = racine)
 //  flow     {steps:[...], branch?:'…'}            étapes reliées par des flèches
 
-const LAYOUTS = {
+const LAYOUTS_FR = {
   // Cadrage
   kickoff:      {kind:'canvas', cols:3, rows:3, blocks:[{t:'Objectif',c:0,r:0},{t:'Définition du succès',c:1,r:0},{t:'Périmètre',c:2,r:0},{t:'Risques',c:0,r:1},{t:'Rôles',c:1,r:1},{t:'Hors périmètre',c:2,r:1},{t:'Jalons',c:0,r:2,w:3}]},
   problem:      {kind:'canvas', cols:3, rows:3, blocks:[{t:'Qui a le problème',c:0,r:0},{t:'Quel problème',c:1,r:0},{t:'Pourquoi maintenant',c:2,r:0},{t:'Ce qu\'on sait',c:0,r:1,w:1.5},{t:'Ce qu\'on suppose',c:1.5,r:1,w:1.5},{t:'Énoncé du problème (une phrase)',c:0,r:2,w:3}]},
@@ -80,4 +80,4 @@ const LAYOUTS = {
   metrics:      {kind:'flow', steps:['Acquisition','Activation','Rétention','Revenu','Recommandation']},
   ia:           {kind:'columns', cols:[{t:'Démo PI',n:2},{t:'Mesures',n:2},{t:'Problèmes',n:4},{t:'Causes racines',n:3},{t:'Actions',n:3}]},
 };
-if (typeof module !== 'undefined') module.exports = { LAYOUTS };
+if (typeof module !== 'undefined') module.exports = { LAYOUTS: LAYOUTS_FR };

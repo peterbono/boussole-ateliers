@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Boussole Ateliers</title>
-<meta name="description" content="Choisis le stade produit et ce qui bloque : tu obtiens la séquence d'ateliers à proposer, l'aperçu de chaque template et son fichier FigJam.">
+<title>Workshop Compass</title>
+<meta name="description" content="Pick your product stage and what is blocking: get the sequence of workshops to run, a preview of each template and its FigJam board.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -59,6 +59,10 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .tabs button{padding:8px 14px;border-radius:9px;color:var(--ink-2);font-weight:600;font-size:14px}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.lang{display:inline-flex;gap:2px;background:var(--surface-2);padding:3px;border-radius:9px}
+.lang button{padding:5px 9px;border-radius:7px;font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:.03em}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .view[hidden]{display:none}
 
 /* boutons */
@@ -203,32 +207,33 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 <body>
 <div class="wrap">
   <header class="hdr">
-    <div>
-      <h1>Boussole Ateliers</h1>
+    <h1 id="site-title">Workshop Compass</h1>
+    <div class="hdr-right">
+      <nav class="tabs" role="tablist" aria-label="Views">
+        <button role="tab" aria-selected="true" data-tab="orient" data-ui="tabs.orient">Guide me</button>
+        <button role="tab" aria-selected="false" data-tab="matrix" data-ui="tabs.matrix">Matrix</button>
+        <button role="tab" aria-selected="false" data-tab="library" data-ui="tabs.library">Library</button>
+      </nav>
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="fr" aria-pressed="false">FR</button></div>
     </div>
-    <nav class="tabs" role="tablist" aria-label="Vues">
-      <button role="tab" aria-selected="true" data-tab="orient">Orienter</button>
-      <button role="tab" aria-selected="false" data-tab="matrix">Matrice</button>
-      <button role="tab" aria-selected="false" data-tab="library">Bibliothèque</button>
-    </nav>
   </header>
 
   <section class="view" id="view-orient" role="tabpanel">
     <div class="orient">
       <aside class="side">
-        <details class="panel q acc" id="acc-stage"><summary><span class="q-label">Stade du produit</span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div></details>
-        <div class="panel q"><div class="q-label">Taille produit + tech</div><div class="opts" data-q="team"></div></div>
-        <details class="panel q acc" id="acc-trigger"><summary><span class="q-label">Déclencheur</span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
-        <details class="panel q acc" id="acc-goals"><summary><span class="q-label">Ce qui manque</span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
-        <div class="panel q"><div class="q-label">Horizon</div><div class="opts" data-q="horizon"></div></div>
-        <button class="reset" id="reset">Réinitialiser</button>
+        <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div></details>
+        <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
+        <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
+        <details class="panel q acc" id="acc-goals"><summary><span class="q-label" data-ui="q.goals"></span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
+        <div class="panel q"><div class="q-label" data-ui="q.horizon"></div><div class="opts" data-q="horizon"></div></div>
+        <button class="reset" id="reset" data-ui="reset"></button>
       </aside>
       <main id="result"></main>
     </div>
   </section>
 
   <section class="view" id="view-matrix" role="tabpanel" hidden>
-    <div class="toolbar legend"><span>Pour chaque stade :</span><span><i class="dot ink"></i><b>Atelier à proposer en priorité</b></span><span><i class="dot grey"></i>Atelier utile selon la situation</span></div>
+    <div class="toolbar legend"><span data-ui="legendIntro"></span><span><i class="dot ink"></i><b data-ui="legendPrimary"></b></span><span><i class="dot grey"></i><span data-ui="legendSecondary"></span></span></div>
     <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
   </section>
 
@@ -241,14 +246,27 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
 
 <script src="data.js"></script>
-<script src="layouts.js"></script>
+<script src="i18n/en.js"></script>
+<script src="i18n/fr.js"></script>
+<script src="layouts.en.js"></script>
+<script src="layouts.fr.js"></script>
 <script src="preview.js"></script>
 <script>
-/* ---------- utilitaires ---------- */
+/* ---------- langue ---------- */
+const LANGS = {en: I18N_EN, fr: I18N_FR};
+const LAYOUT_SETS = {en: LAYOUTS_EN, fr: LAYOUTS_FR};
 const store = {
-  get(k, d){ try{ const v = localStorage.getItem('boussole:'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
-  set(k, v){ try{ localStorage.setItem('boussole:'+k, JSON.stringify(v)); }catch(e){} },
+  get(k, d){ try{ const v = localStorage.getItem('compass:'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('compass:'+k, JSON.stringify(v)); }catch(e){} },
 };
+const urlLang = new URLSearchParams(location.search).get('lang');
+let lang = (urlLang && LANGS[urlLang]) ? urlLang : store.get('lang', 'en');
+if(!LANGS[lang]) lang = 'en';
+let L = LANGS[lang], LAYOUTS = LAYOUT_SETS[lang];
+const UI = () => L.ui;
+const tx = t => L.templates[t.id];
+
+/* ---------- état ---------- */
 const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine'};
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 let lib = {phase:'all', stage:'all', q:''};
@@ -256,19 +274,18 @@ let lib = {phase:'all', stage:'all', q:''};
 const byId = (arr, id) => arr.find(x => x.id === id);
 const phaseIdx = id => PHASES.findIndex(p => p.id === id);
 const stageIdx = id => STAGES.findIndex(s => s.id === id);
-const fmtDur = h => h >= 7 ? (Math.round(h/7) + ' j') : (h < 1 ? Math.round(h*60) + ' min' : (h % 1 ? h.toFixed(1).replace('.', ',') : h) + ' h');
+const fmtDur = h => h >= 7 ? (Math.round(h/7) + ' ' + UI().days) : (h < 1 ? Math.round(h*60) + ' ' + UI().min : (h % 1 ? (lang === 'fr' ? h.toFixed(1).replace('.', ',') : h.toFixed(1)) : h) + ' ' + UI().hours);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:'Aperçu ' + t.name});
+const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:UI().preview(tx(t).name)});
 const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
 const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
-  eye:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
 };
 function actionsHtml(t, small){
   const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
-  const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}Ouvrir dans FigJam</a>`
-                 : `<span class="${cls} primary" aria-disabled="true" title="Le fichier FigJam arrive">${ICON.figjam}FigJam bientôt</span>`;
+  const fj = url ? `<a class="${cls} primary" href="${url}" target="_blank" rel="noopener">${ICON.figjam}${esc(UI().openFigjam)}</a>`
+                 : `<span class="${cls} primary" aria-disabled="true">${ICON.figjam}${esc(UI().figjamSoon)}</span>`;
   return `<div class="actions">${fj}</div>`;
 }
 
@@ -301,19 +318,31 @@ function recommend(a){
   return {pick, scored};
 }
 
+/* ---------- textes statiques ---------- */
+function applyStatic(){
+  document.documentElement.lang = lang;
+  document.title = L.title;
+  document.getElementById('site-title').textContent = L.title;
+  document.querySelectorAll('[data-ui]').forEach(el => {
+    const v = el.dataset.ui.split('.').reduce((o, k) => o && o[k], UI());
+    if(typeof v === 'string') el.textContent = v;
+  });
+  document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+
 /* ---------- questionnaire ---------- */
 function renderQuestions(){
-  const mk = (q, list, multi, stack) => {
+  const mk = (q, list, tex, stack) => {
     document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
-      const on = multi ? ans[q].includes(o.id) : ans[q] === o.id;
-      return `<button class="opt" type="button" aria-pressed="${on}" data-q="${q}" data-id="${o.id}">${esc(o.name)}${stack && o.hint ? `<small>${esc(o.hint)}</small>` : ''}</button>`;
+      const x = tex(o); const name = typeof x === 'string' ? x : x.name, hint = typeof x === 'string' ? '' : x.hint;
+      return `<button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}${stack && hint ? `<small>${esc(hint)}</small>` : ''}</button>`;
     }).join('');
   };
-  mk('stage', STAGES, false, true); mk('team', TEAMS, false, false); mk('trigger', TRIGGERS, false, true); mk('horizon', HORIZONS, false, false);
-  document.querySelector('[data-q="goals"]').innerHTML = GOALS.map(g => `<label class="check"><input type="checkbox" id="goal-${g.id}" data-goal="${g.id}" ${ans.goals.includes(g.id) ? 'checked' : ''}><span>${esc(g.name)}</span></label>`).join('');
-  document.querySelector('[data-val="stage"]').textContent = byId(STAGES, ans.stage).name;
-  document.querySelector('[data-val="trigger"]').textContent = byId(TRIGGERS, ans.trigger).name;
-  const gs = ans.goals.map(id => byId(GOALS, id).name);
+  mk('stage', STAGES, o => L.stages[o.id], true); mk('team', TEAMS, o => L.teams[o.id], false); mk('trigger', TRIGGERS, o => L.triggers[o.id], true); mk('horizon', HORIZONS, o => L.horizons[o.id], false);
+  document.querySelector('[data-q="goals"]').innerHTML = GOALS.map(g => `<label class="check"><input type="checkbox" id="goal-${g.id}" data-goal="${g.id}" ${ans.goals.includes(g.id) ? 'checked' : ''}><span>${esc(L.goals[g.id])}</span></label>`).join('');
+  document.querySelector('[data-val="stage"]').textContent = L.stages[ans.stage].name;
+  document.querySelector('[data-val="trigger"]').textContent = L.triggers[ans.trigger].name;
+  const gs = ans.goals.map(id => L.goals[id]);
   document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
 }
 document.querySelector('.side').addEventListener('click', e => {
@@ -331,38 +360,39 @@ document.querySelector('.side').addEventListener('change', e => {
 document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); store.set('answers', ans); renderQuestions(); renderResult(); });
 
 /* ---------- parcours ---------- */
+function metaHtml(t){
+  const x = tx(t), u = UI();
+  return `<dl class="meta"><div><dt>${esc(u.dur)}</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>${esc(u.who)}</dt><dd>${esc(x.who)}</dd></div><div><dt>${esc(u.out)}</dt><dd>${esc(x.out)}</dd></div></dl>`;
+}
 function stepCard(t, n){
-  const ph = byId(PHASES, t.phase);
+  const ph = byId(PHASES, t.phase), x = tx(t);
   return `<article class="step">
     <div class="num">${n}</div>
     <div class="card" style="--h:var(${ph.h})">
-      <div class="card-top"><h3>${esc(t.name)}</h3><span class="chip">${esc(ph.name)}</span></div>
+      <div class="card-top"><h3>${esc(x.name)}</h3><span class="chip">${esc(L.phases[ph.id])}</span></div>
       <div class="card-body">
         <div>
-          <p class="why"><b>Pourquoi maintenant.</b> ${esc(t.why)}</p>
-          <p class="desc">${esc(t.desc)}</p>
+          <p class="why"><b>${esc(UI().whyNow)}</b> ${esc(x.why)}</p>
+          <p class="desc">${esc(x.desc)}</p>
         </div>
-        <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
+        <button class="pvbtn" type="button" data-open="${t.id}" aria-label="${esc(UI().preview(x.name))}">${pv(t)}</button>
       </div>
-      <div class="card-foot">
-        <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
-        ${actionsHtml(t, false)}
-      </div>
+      <div class="card-foot">${metaHtml(t)}${actionsHtml(t, false)}</div>
     </div>
   </article>`;
 }
 function renderResult(){
   const {pick, scored} = recommend(ans);
-  const st = byId(STAGES, ans.stage), tr = byId(TRIGGERS, ans.trigger), hz = byId(HORIZONS, ans.horizon);
+  const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger], hz = L.horizons[ans.horizon];
   const total = pick.reduce((s, x) => s + x.t.dur, 0);
   let html = `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
-      <p>${pick.length} atelier${pick.length > 1 ? 's' : ''} dans l'ordre, pour ${esc(hz.name.toLowerCase())}. Chaque board s'ouvre dans FigJam, à dupliquer dans ton espace.</p></div>
-      <div class="stats"><span>Temps facilité <b>${fmtDur(total)}</b></span><span>Phases <b>${new Set(pick.map(x => x.t.phase)).size}</b></span></div>
+      <p>${esc(u.summary(pick.length, hz.toLowerCase()))}</p></div>
+      <div class="stats"><span>${esc(u.time)} <b>${fmtDur(total)}</b></span><span>${esc(u.phases)} <b>${new Set(pick.map(x => x.t.phase)).size}</b></span></div>
     </div><div class="steps">`;
   let lastPhase = null;
   pick.forEach((x, i) => {
-    if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(byId(PHASES, x.t.phase).name)}</div>`; lastPhase = x.t.phase; }
+    if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(L.phases[x.t.phase])}</div>`; lastPhase = x.t.phase; }
     html += stepCard(x.t, i + 1);
   });
   html += '</div>';
@@ -370,44 +400,46 @@ function renderResult(){
   const next = scored.filter(x => !pick.includes(x)).slice(0, 4);
   const skip = T.filter(t => t.fit[si] === 0).slice(0, 6);
   html += `<div class="aside">`;
-  if(next.length) html += `<h3>Si tu as plus de temps, ensuite</h3><ul>${next.map(x => `<li><button type="button" data-open="${x.t.id}">${esc(x.t.name)}</button></li>`).join('')}</ul>`;
-  if(skip.length) html += `<h3 style="margin-top:14px">À ne pas proposer à ce stade</h3><p style="margin:0 0 6px;color:var(--ink-2);font-size:14px">${si <= 1 ? 'Trop tôt' : 'Dépassé'} pour "${esc(st.short)}" :</p><ul>${skip.map(t => `<li>${esc(t.name)}</li>`).join('')}</ul>`;
+  if(next.length) html += `<h3>${esc(u.more)}</h3><ul>${next.map(x => `<li><button type="button" data-open="${x.t.id}">${esc(tx(x.t).name)}</button></li>`).join('')}</ul>`;
+  if(skip.length) html += `<h3 style="margin-top:14px">${esc(u.skip)}</h3><p style="margin:0 0 6px;color:var(--ink-2);font-size:14px">${esc(si <= 1 ? u.tooEarly : u.tooLate)} ${esc(u.forStage(st.short))}</p><ul>${skip.map(t => `<li>${esc(tx(t).name)}</li>`).join('')}</ul>`;
   html += `</div>`;
   document.getElementById('result').innerHTML = html;
 }
 
 /* ---------- matrice ---------- */
 function renderMatrix(){
-  let html = `<thead><tr><th>Phase</th>${STAGES.map(s => `<th>${esc(s.short)}<small>${esc(s.hint)}</small></th>`).join('')}</tr></thead><tbody>`;
+  let html = `<thead><tr><th>${esc(UI().phase)}</th>${STAGES.map(s => `<th>${esc(L.stages[s.id].short)}<small>${esc(L.stages[s.id].hint)}</small></th>`).join('')}</tr></thead><tbody>`;
   PHASES.forEach(p => {
-    html += `<tr><td style="--h:var(${p.h})"><span class="chip">${esc(p.name)}</span></td>`;
+    html += `<tr><td style="--h:var(${p.h})"><span class="chip">${esc(L.phases[p.id])}</span></td>`;
     STAGES.forEach((s, si) => {
       const items = T.filter(t => t.phase === p.id && t.fit[si] >= 2).sort((a, b) => b.fit[si] - a.fit[si]);
-      html += `<td><div class="cell">${items.map(t => `<button type="button" class="${t.fit[si] === 3 ? 'strong' : ''}" data-open="${t.id}">${esc(t.name)}</button>`).join('')}</div></td>`;
+      html += `<td><div class="cell">${items.map(t => `<button type="button" class="${t.fit[si] === 3 ? 'strong' : ''}" data-open="${t.id}">${esc(tx(t).name)}</button>`).join('')}</div></td>`;
     });
     html += '</tr>';
   });
   document.getElementById('matrix').innerHTML = html + '</tbody>';
 }
+
+/* ---------- bibliothèque ---------- */
 function tcard(t, si){
-  const ph = byId(PHASES, t.phase);
+  const ph = byId(PHASES, t.phase), x = tx(t);
   return `<div class="tcard" style="--h:var(${ph.h})">
-    <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
-    <div class="row"><span class="chip">${esc(ph.name)}</span></div>
-    <h3>${esc(t.name)}</h3>
-    <p>${esc(t.desc)}</p>
-    <p class="stages">Stades : ${STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(s.short)}</b>` : esc(s.short)) : null).filter(Boolean).join(' · ')}</p>
-    <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(t.who)}</p>
+    <button class="pvbtn" type="button" data-open="${t.id}" aria-label="${esc(UI().preview(x.name))}">${pv(t)}</button>
+    <div class="row"><span class="chip">${esc(L.phases[ph.id])}</span></div>
+    <h3>${esc(x.name)}</h3>
+    <p>${esc(x.desc)}</p>
+    <p class="stages">${esc(UI().stagesLabel)} ${STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(L.stages[s.id].short)}</b>` : esc(L.stages[s.id].short)) : null).filter(Boolean).join(' · ')}</p>
+    <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(x.who)}</p>
     ${actionsHtml(t, true)}
   </div>`;
 }
-/* ---------- bibliothèque ---------- */
 function renderFilters(){
+  const u = UI();
   const opt = (id, name, cur) => `<option value="${id}"${cur === id ? ' selected' : ''}>${esc(name)}</option>`;
   document.getElementById('filters').innerHTML =
-    `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="Chercher un atelier" value="${esc(lib.q)}" aria-label="Chercher un atelier"></label>`
-    + `<label class="select"><span>Phase</span><select id="lib-phase">${opt('all', 'Toutes', lib.phase)}${PHASES.map(p => opt(p.id, p.name, lib.phase)).join('')}</select></label>`
-    + `<label class="select"><span>Stade</span><select id="lib-stage">${opt('all', 'Tous', lib.stage)}${STAGES.map(s => opt(s.id, s.name, lib.stage)).join('')}</select></label>`
+    `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
+    + `<label class="select"><span>${esc(u.filterPhase)}</span><select id="lib-phase">${opt('all', u.all, lib.phase)}${PHASES.map(p => opt(p.id, L.phases[p.id], lib.phase)).join('')}</select></label>`
+    + `<label class="select"><span>${esc(u.filterStage)}</span><select id="lib-stage">${opt('all', u.allM, lib.stage)}${STAGES.map(s => opt(s.id, L.stages[s.id].name, lib.stage)).join('')}</select></label>`
     + `<span class="count" id="count"></span>`;
 }
 document.getElementById('filters').addEventListener('change', e => {
@@ -419,48 +451,53 @@ function renderLibrary(){
   const si = lib.stage === 'all' ? -1 : stageIdx(lib.stage);
   const q = lib.q.trim().toLowerCase();
   const list = T.filter(t => (lib.phase === 'all' || t.phase === lib.phase) && (si < 0 || t.fit[si] >= 2)
-    && (!q || (t.name + ' ' + t.desc + ' ' + t.out).toLowerCase().includes(q)));
+    && (!q || (tx(t).name + ' ' + tx(t).desc + ' ' + tx(t).out).toLowerCase().includes(q)));
   list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
   document.getElementById('count').textContent = list.length + ' / ' + T.length;
-  document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || '<div class="empty">Aucun atelier ne correspond. Élargis les filtres ou change le mot-clé.</div>';
+  document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(UI().empty)}</div>`;
 }
 
 /* ---------- aperçu (dialog) ---------- */
 const dlg = document.getElementById('dlg');
 function openPreview(id){
   const t = byId(T, id); if(!t) return;
-  const ph = byId(PHASES, t.phase);
+  const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
   document.getElementById('dlg-content').innerHTML = `
-    <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:'Aperçu ' + t.name})}</div>
+    <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)})}</div>
     <div class="dlg-body" style="--h:var(${ph.h})">
-      <button class="close" type="button" data-close aria-label="Fermer">${ICON.x}</button>
-      <span class="chip" style="align-self:flex-start">${esc(ph.name)}</span>
-      <h2 id="dlg-title">${esc(t.name)}</h2>
-      <p class="desc" style="margin:0">${esc(t.desc)}</p>
-      <p class="why" style="margin:0"><b>Quand.</b> ${esc(t.why)}</p>
-      <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
+      <button class="close" type="button" data-close aria-label="${esc(u.close)}">${ICON.x}</button>
+      <span class="chip" style="align-self:flex-start">${esc(L.phases[ph.id])}</span>
+      <h2 id="dlg-title">${esc(x.name)}</h2>
+      <p class="desc" style="margin:0">${esc(x.desc)}</p>
+      <p class="why" style="margin:0"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
+      ${metaHtml(t)}
       ${actionsHtml(t, false)}
-      <p class="hint">Dans FigJam : Fichier → Dupliquer dans tes brouillons, puis garde la section de cet atelier.</p>
+      <p class="hint">${esc(u.figjamHint)}</p>
     </div>`;
   dlg.showModal();
 }
 dlg.addEventListener('click', e => { if(e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
-
-/* ---------- délégation globale ---------- */
 document.addEventListener('click', e => {
   const o = e.target.closest('[data-open]'); if(o) openPreview(o.dataset.open);
 });
 
-/* ---------- onglets ---------- */
+/* ---------- onglets et langue ---------- */
 document.querySelector('.tabs').addEventListener('click', e => {
   const b = e.target.closest('[data-tab]'); if(!b) return;
   document.querySelectorAll('.tabs [role=tab]').forEach(x => x.setAttribute('aria-selected', x === b));
   document.querySelectorAll('.view').forEach(v => v.hidden = v.id !== 'view-' + b.dataset.tab);
   store.set('tab', b.dataset.tab);
 });
+document.querySelector('.lang').addEventListener('click', e => {
+  const b = e.target.closest('[data-lang]'); if(!b || b.dataset.lang === lang) return;
+  lang = b.dataset.lang; L = LANGS[lang]; LAYOUTS = LAYOUT_SETS[lang]; store.set('lang', lang);
+  const url = new URL(location.href); url.searchParams.set('lang', lang); history.replaceState(null, '', url);
+  renderAll();
+});
 
 /* ---------- boot ---------- */
-renderQuestions(); renderResult(); renderMatrix(); renderFilters(); renderLibrary();
+function renderAll(){ applyStatic(); renderQuestions(); renderResult(); renderMatrix(); renderFilters(); renderLibrary(); }
+renderAll();
 const savedTab = store.get('tab', 'orient');
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
 </script>
