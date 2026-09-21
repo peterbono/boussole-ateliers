@@ -177,9 +177,8 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 .tcard h3{font-size:16px;font-weight:700}
 .tcard p{margin:0;color:var(--ink-2);font-size:13.5px}
 .tcard .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.tcard .fit{display:flex;gap:3px;margin-left:auto}
-.fit i{width:8px;height:8px;border-radius:2px;background:var(--line);display:block}
-.fit i.f1{background:hsl(var(--h) 50% 70%)}.fit i.f2{background:hsl(var(--h) 60% 55%)}.fit i.f3{background:hsl(var(--h) 70% 42%)}
+.tcard .stages{font-size:13px;color:var(--ink-3)}
+.tcard .stages b{color:var(--ink);font-weight:600}
 .tcard .actions{margin-top:auto;padding-top:6px}
 .tcard .actions .btn{width:100%;justify-content:center;padding:10px 12px;font-size:13.5px}
 .empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
@@ -394,9 +393,10 @@ function tcard(t, si){
   const ph = byId(PHASES, t.phase);
   return `<div class="tcard" style="--h:var(${ph.h})">
     <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
-    <div class="row"><span class="chip">${esc(ph.name)}</span><span class="fit" title="Pertinence par stade : ${STAGES.map((s, i) => s.short + ' ' + t.fit[i]).join(', ')}">${t.fit.map(f => `<i class="f${f}"></i>`).join('')}</span></div>
+    <div class="row"><span class="chip">${esc(ph.name)}</span></div>
     <h3>${esc(t.name)}</h3>
     <p>${esc(t.desc)}</p>
+    <p class="stages">Stades : ${STAGES.map((s, i) => t.fit[i] >= 2 ? (t.fit[i] === 3 ? `<b>${esc(s.short)}</b>` : esc(s.short)) : null).filter(Boolean).join(' · ')}</p>
     <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(t.who)}</p>
     ${actionsHtml(t, true)}
   </div>`;
