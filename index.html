@@ -459,6 +459,24 @@ function actionsHtml(t, small){
 }
 
 /* ---------- moteur ---------- */
+// ordre du parcours : un atelier vient après ses prérequis présents dans le plan (needs, et au moins un membre de chaque groupe anyOf représenté) ; départage par phase puis score
+function orderByDeps(pick){
+  const inPlan = new Set(pick.map(x => x.t.id));
+  const blockers = x => {
+    const c = CHAIN[x.t.id] || {}, b = [];
+    (c.needs || []).forEach(id => { if(inPlan.has(id)) b.push([id]); });
+    (c.anyOf || []).forEach(g => { const present = g.filter(id => inPlan.has(id)); if(present.length) b.push(present); });
+    return b; // liste de groupes : chaque groupe doit avoir au moins un membre déjà placé
+  };
+  const out = [], placed = new Set(); let rest = pick.slice();
+  while(rest.length){
+    const ready = rest.filter(x => blockers(x).every(g => g.some(id => placed.has(id))));
+    const pool = ready.length ? ready : rest; // cycle improbable : on débloque par phase
+    pool.sort((x, y) => phaseIdx(x.t.phase) - phaseIdx(y.t.phase) || y.s - x.s);
+    const next = pool[0]; out.push(next); placed.add(next.t.id); rest = rest.filter(x => x !== next);
+  }
+  return out;
+}
 function recommend(a){
   const si = stageIdx(a.stage);
   const team = byId(TEAMS, a.team).size;
@@ -483,7 +501,7 @@ function recommend(a){
     scored.forEach(x => { if(pick.length < cap && !pick.includes(x) && x.s >= min) pick.push(x); });
   } else pick = scored.filter(x => x.s >= min).slice(0, cap);
   if(pick.length === 0) pick = scored.slice(0, Math.min(cap, 3));
-  pick.sort((x, y) => phaseIdx(x.t.phase) - phaseIdx(y.t.phase) || y.s - x.s);
+  pick = orderByDeps(pick);
   // raisons par étape + chaînage
   const ids = pick.map(x => x.t.id), u = UI(), st = L.stages[a.stage].short;
   pick.forEach((x, i) => {
@@ -592,11 +610,7 @@ function renderResult(){
     html += planHtml(pick, total);
   } else {
     html += '<div class="steps">';
-    let lastPhase = null;
-    pick.forEach((x, i) => {
-      if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(L.phases[x.t.phase])}</div>`; lastPhase = x.t.phase; }
-      html += stepCard(x.t, i + 1, x.reasons);
-    });
+    pick.forEach((x, i) => { html += stepCard(x.t, i + 1, x.reasons); });
     html += '</div>';
   }
   const si = stageIdx(ans.stage);
