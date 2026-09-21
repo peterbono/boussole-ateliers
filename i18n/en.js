@@ -13,6 +13,11 @@ const I18N_EN = {
     legendIntro:'For each stage:', legendPrimary:'Workshop to propose first', legendSecondary:'Useful depending on the situation', phase:'Phase',
     search:'Search a workshop', filterPhase:'Phase', filterStage:'Stage', all:'All', allM:'All', stagesLabel:'Stages:', empty:'No workshop matches. Widen the filters or change the keyword.',
     close:'Close', preview:(n)=>`Preview of ${n}`, hours:'h', days:'d', min:'min',
+    reasons:{core:(s)=>`Core at ${s}`, fit:(s)=>`Useful at ${s}`, trigger:'Answers your trigger', goals:(g)=>`Covers ${g}`, feeds:(n)=>`Feeds ${n}`, builds:(n)=>`Builds on ${n}`},
+    whyStep:'Why this step', prereq:'Prerequisites this plan skips', prereqHint:(a, b)=>`${a} usually feeds ${b}. Run it first, or make sure that input already exists.`,
+    viewSteps:'Steps', viewPlan:'Plan', planTitle:'Plan to share', slotSession:'Session', slotDay:(n)=>`Day ${n}`, slotWeek:(n)=>`Week ${n}`, slotWhen:'When', slotWhat:'Workshop', copyLink:'Copy link', copied:'Link copied', print:'Print / PDF', total:'Total',
+    howTo:'How to run it', prep:'Before', agenda:'Agenda', pitfalls:'Pitfalls', nextStep:'Afterwards', source:'Source', minutes:'min', loading:'Loading…',
+    helpful:'Was this useful?', yes:'Yes', no:'No', thanks:'Thanks, noted.', permalink:'Workshop page', backToApp:'Back to the compass', openApp:'Find the right sequence', allWorkshops:'All workshops',
   },
   stages:{
     idee:    {name:'Idea / pre-product',  short:'Idea',       hint:'Nothing is built yet, we are looking for the right problem'},

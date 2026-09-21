@@ -13,6 +13,11 @@ const I18N_FR = {
     legendIntro:'Pour chaque stade :', legendPrimary:'Atelier à proposer en priorité', legendSecondary:'Atelier utile selon la situation', phase:'Phase',
     search:'Chercher un atelier', filterPhase:'Phase', filterStage:'Stade', all:'Toutes', allM:'Tous', stagesLabel:'Stades :', empty:'Aucun atelier ne correspond. Élargis les filtres ou change le mot-clé.',
     close:'Fermer', preview:(n)=>`Aperçu de ${n}`, hours:'h', days:'j', min:'min',
+    reasons:{core:(s)=>`Central en ${s}`, fit:(s)=>`Utile en ${s}`, trigger:'Répond à ton déclencheur', goals:(g)=>`Couvre ${g}`, feeds:(n)=>`Alimente ${n}`, builds:(n)=>`S\'appuie sur ${n}`},
+    whyStep:'Pourquoi cette étape', prereq:'Prérequis que ce plan saute', prereqHint:(a, b)=>`${a} alimente normalement ${b}. Fais-le avant, ou assure-toi que cet input existe déjà.`,
+    viewSteps:'Étapes', viewPlan:'Plan', planTitle:'Plan à partager', slotSession:'Session', slotDay:(n)=>`Jour ${n}`, slotWeek:(n)=>`Semaine ${n}`, slotWhen:'Quand', slotWhat:'Atelier', copyLink:'Copier le lien', copied:'Lien copié', print:'Imprimer / PDF', total:'Total',
+    howTo:'Comment l\'animer', prep:'Avant', agenda:'Déroulé', pitfalls:'Pièges', nextStep:'Ensuite', source:'Source', minutes:'min', loading:'Chargement…',
+    helpful:'C\'était utile ?', yes:'Oui', no:'Non', thanks:'Merci, c\'est noté.', permalink:'Page de l\'atelier', backToApp:'Retour à la boussole', openApp:'Trouver la bonne séquence', allWorkshops:'Tous les ateliers',
   },
   stages:{
     idee: {name:'Idée / pré-produit', short:'Idée', hint:'Rien n\'est construit, on cherche le bon problème'},

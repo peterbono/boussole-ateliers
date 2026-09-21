@@ -201,6 +201,42 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 .dlg-body .close:hover{background:var(--surface-2)}
 .dlg-body .meta{border-top:1px dashed var(--line)}
 .hint{font-size:13px;color:var(--ink-3);margin:0}
+.muted{color:var(--ink-3)}
+.reasons{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 0;font-size:12.5px}
+.reasons .rl{color:var(--ink-3);margin-right:2px}
+.reasons .rs{padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);font-weight:500}
+.result-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 18px}
+.seg{display:inline-flex;background:var(--surface-2);padding:3px;border-radius:9px;gap:2px}
+.seg button{padding:5px 11px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.plan-head h3{font-size:18px}
+.plan-head p{margin:4px 0 12px}
+.plan-wrap{overflow-x:auto}
+.plan-table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+.plan-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;padding:0 10px 8px 0;border-bottom:1px solid var(--line)}
+.plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.plan-table tfoot td{border:0;font-weight:600}
+.plan-table .mono{font-size:12.5px;white-space:nowrap}
+.plan-url{font-size:12px;word-break:break-all;margin:12px 0 0}
+.howto{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.howto h3{font-size:16px}
+.howto h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
+.howto ul,.howto ol{margin:0;padding-left:18px;color:var(--ink-2);font-size:14px}
+.howto li{margin:3px 0}
+.howto p{margin:0;color:var(--ink-2);font-size:14px}
+.agenda{list-style:none;padding:0}
+.agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
+.agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
+.agenda b{color:var(--ink);font-weight:600}
+.helpful{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
+@media print{
+  body{background:#fff;color:#000}
+  .hdr,.side,.result-bar,.aside,.steps,.lang{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .plan{border:0;box-shadow:none;padding:0}
+  .plan-table{min-width:0}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -250,7 +286,9 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
 <script src="i18n/fr.js"></script>
 <script src="layouts.en.js"></script>
 <script src="layouts.fr.js"></script>
+<script src="chain.js"></script>
 <script src="preview.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script>
 /* ---------- langue ---------- */
 const LANGS = {en: I18N_EN, fr: I18N_FR};
@@ -265,10 +303,30 @@ if(!LANGS[lang]) lang = 'en';
 let L = LANGS[lang], LAYOUTS = LAYOUT_SETS[lang];
 const UI = () => L.ui;
 const tx = t => L.templates[t.id];
+const track = (name, data) => { try{ window.va && window.va('event', {name, data}); }catch(e){} };
 
 /* ---------- état ---------- */
 const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine'};
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
+(function readUrl(){
+  const p = new URLSearchParams(location.search), ok = (arr, v) => arr.some(x => x.id === v);
+  if(ok(STAGES, p.get('stage'))) ans.stage = p.get('stage');
+  if(ok(TEAMS, p.get('team'))) ans.team = p.get('team');
+  if(ok(TRIGGERS, p.get('trigger'))) ans.trigger = p.get('trigger');
+  if(ok(HORIZONS, p.get('horizon'))) ans.horizon = p.get('horizon');
+  if(p.get('goals')){ const g = p.get('goals').split(',').filter(v => ok(GOALS, v)); if(g.length) ans.goals = g; }
+})();
+let view = store.get('view', 'steps');
+function syncUrl(){
+  const url = new URL(location.href);
+  ['stage','team','trigger','horizon'].forEach(k => url.searchParams.set(k, ans[k]));
+  url.searchParams.set('goals', ans.goals.join(','));
+  if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
+  url.searchParams.delete('open');
+  history.replaceState(null, '', url);
+  return url.href;
+}
+function saveAns(){ store.set('answers', ans); syncUrl(); }
 let lib = {phase:'all', stage:'all', q:''};
 
 const byId = (arr, id) => arr.find(x => x.id === id);
@@ -281,6 +339,10 @@ const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.co
 const ICON = {
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+  link:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-1 1"/><path d="M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l1-1"/></svg>',
+  print:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V2h8v4M4 12H2V7h12v5h-2"/><rect x="4" y="10" width="8" height="4"/></svg>',
+  up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
+  down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
 function actionsHtml(t, small){
   const url = figjamUrl(t), cls = 'btn' + (small ? ' small' : '');
@@ -315,7 +377,28 @@ function recommend(a){
   } else pick = scored.filter(x => x.s >= min).slice(0, cap);
   if(pick.length === 0) pick = scored.slice(0, Math.min(cap, 3));
   pick.sort((x, y) => phaseIdx(x.t.phase) - phaseIdx(y.t.phase) || y.s - x.s);
-  return {pick, scored};
+  // raisons par étape + chaînage
+  const ids = pick.map(x => x.t.id), u = UI(), st = L.stages[a.stage].short;
+  pick.forEach((x, i) => {
+    const r = [];
+    r.push(x.fit === 3 ? u.reasons.core(st) : u.reasons.fit(st));
+    if(x.t.triggers.includes(a.trigger)) r.push(u.reasons.trigger);
+    const g = x.t.goals.filter(g => a.goals.includes(g)).map(g => L.goals[g].toLowerCase());
+    if(g.length) r.push(u.reasons.goals(g.join(', ')));
+    const feeds = pick.slice(i + 1).find(y => (CHAIN[y.t.id] || {inputs:[]}).inputs.includes(x.t.id));
+    if(feeds) r.push(u.reasons.feeds(tx(feeds.t).name));
+    const builds = pick.slice(0, i).find(y => (CHAIN[x.t.id] || {inputs:[]}).inputs.includes(y.t.id));
+    if(builds && !feeds) r.push(u.reasons.builds(tx(builds.t).name));
+    x.reasons = r;
+  });
+  // prérequis sautés : un input pertinent à ce stade, absent du plan, pour un atelier retenu
+  const prereqs = [];
+  pick.forEach(x => {
+    const ins = (CHAIN[x.t.id] || {inputs:[]}).inputs.filter(id => !ids.includes(id));
+    const best = ins.map(id => byId(T, id)).filter(t => t && t.fit[si] >= 2 && !(t.minTeam && team < t.minTeam)).sort((p, q) => q.fit[si] - p.fit[si])[0];
+    if(best && !prereqs.some(p => p.from.id === best.id)) prereqs.push({from: best, to: x.t});
+  });
+  return {pick, scored, prereqs: prereqs.slice(0, 3)};
 }
 
 /* ---------- textes statiques ---------- */
@@ -348,23 +431,23 @@ function renderQuestions(){
 document.querySelector('.side').addEventListener('click', e => {
   const b = e.target.closest('.opt'); if(!b) return;
   ans[b.dataset.q] = b.dataset.id;
-  store.set('answers', ans); renderQuestions(); renderResult();
+  saveAns(); renderQuestions(); renderResult();
   const acc = b.closest('details'); if(acc) acc.open = false;
 });
 document.querySelector('.side').addEventListener('change', e => {
   const c = e.target.closest('[data-goal]'); if(!c) return;
   const id = c.dataset.goal, i = ans.goals.indexOf(id);
   if(c.checked){ if(i < 0) ans.goals.push(id); } else if(ans.goals.length > 1) ans.goals.splice(i, 1); else { c.checked = true; return; }
-  store.set('answers', ans); renderQuestions(); renderResult();
+  saveAns(); renderQuestions(); renderResult();
 });
-document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); store.set('answers', ans); renderQuestions(); renderResult(); });
+document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); saveAns(); renderQuestions(); renderResult(); });
 
 /* ---------- parcours ---------- */
 function metaHtml(t){
   const x = tx(t), u = UI();
   return `<dl class="meta"><div><dt>${esc(u.dur)}</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>${esc(u.who)}</dt><dd>${esc(x.who)}</dd></div><div><dt>${esc(u.out)}</dt><dd>${esc(x.out)}</dd></div></dl>`;
 }
-function stepCard(t, n){
+function stepCard(t, n, reasons){
   const ph = byId(PHASES, t.phase), x = tx(t);
   return `<article class="step">
     <div class="num">${n}</div>
@@ -374,6 +457,7 @@ function stepCard(t, n){
         <div>
           <p class="why"><b>${esc(UI().whyNow)}</b> ${esc(x.why)}</p>
           <p class="desc">${esc(x.desc)}</p>
+          ${reasons ? `<p class="reasons"><span class="rl">${esc(UI().whyStep)}</span>${reasons.map(r => `<span class="rs">${esc(r)}</span>`).join('')}</p>` : ''}
         </div>
         <button class="pvbtn" type="button" data-open="${t.id}" aria-label="${esc(UI().preview(x.name))}">${pv(t)}</button>
       </div>
@@ -382,29 +466,63 @@ function stepCard(t, n){
   </article>`;
 }
 function renderResult(){
-  const {pick, scored} = recommend(ans);
+  const {pick, scored, prereqs} = recommend(ans);
   const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger], hz = L.horizons[ans.horizon];
   const total = pick.reduce((s, x) => s + x.t.dur, 0);
   let html = `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
       <p>${esc(u.summary(pick.length, hz.toLowerCase()))}</p></div>
       <div class="stats"><span>${esc(u.time)} <b>${fmtDur(total)}</b></span><span>${esc(u.phases)} <b>${new Set(pick.map(x => x.t.phase)).size}</b></span></div>
-    </div><div class="steps">`;
-  let lastPhase = null;
-  pick.forEach((x, i) => {
-    if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(L.phases[x.t.phase])}</div>`; lastPhase = x.t.phase; }
-    html += stepCard(x.t, i + 1);
-  });
-  html += '</div>';
+    </div>
+    <div class="result-bar">
+      <div class="seg" id="view-seg"><button type="button" aria-pressed="${view === 'steps'}" data-view="steps">${esc(u.viewSteps)}</button><button type="button" aria-pressed="${view === 'plan'}" data-view="plan">${esc(u.viewPlan)}</button></div>
+      <div class="actions"><button class="btn small" type="button" id="copy-link">${ICON.link}${esc(u.copyLink)}</button><button class="btn small" type="button" id="print">${ICON.print}${esc(u.print)}</button></div>
+    </div>`;
+  if(view === 'plan'){
+    html += planHtml(pick, total);
+  } else {
+    html += '<div class="steps">';
+    let lastPhase = null;
+    pick.forEach((x, i) => {
+      if(ans.horizon === 'programme' && x.t.phase !== lastPhase){ html += `<div class="phase-break">${esc(L.phases[x.t.phase])}</div>`; lastPhase = x.t.phase; }
+      html += stepCard(x.t, i + 1, x.reasons);
+    });
+    html += '</div>';
+  }
   const si = stageIdx(ans.stage);
   const next = scored.filter(x => !pick.includes(x)).slice(0, 4);
   const skip = T.filter(t => t.fit[si] === 0).slice(0, 6);
   html += `<div class="aside">`;
-  if(next.length) html += `<h3>${esc(u.more)}</h3><ul>${next.map(x => `<li><button type="button" data-open="${x.t.id}">${esc(tx(x.t).name)}</button></li>`).join('')}</ul>`;
+  if(prereqs.length) html += `<h3>${esc(u.prereq)}</h3><ul>${prereqs.map(p => `<li><button type="button" data-open="${p.from.id}">${esc(tx(p.from).name)}</button> · ${esc(u.prereqHint(tx(p.from).name, tx(p.to).name))}</li>`).join('')}</ul>`;
+  if(next.length) html += `<h3${prereqs.length ? ' style="margin-top:14px"' : ''}>${esc(u.more)}</h3><ul>${next.map(x => `<li><button type="button" data-open="${x.t.id}">${esc(tx(x.t).name)}</button></li>`).join('')}</ul>`;
   if(skip.length) html += `<h3 style="margin-top:14px">${esc(u.skip)}</h3><p style="margin:0 0 6px;color:var(--ink-2);font-size:14px">${esc(si <= 1 ? u.tooEarly : u.tooLate)} ${esc(u.forStage(st.short))}</p><ul>${skip.map(t => `<li>${esc(tx(t).name)}</li>`).join('')}</ul>`;
   html += `</div>`;
   document.getElementById('result').innerHTML = html;
 }
+
+/* ---------- plan (roadmap partageable) ---------- */
+function planSlots(pick){
+  // demi : une session ; semaine : un atelier par jour ; programme : répartition sur 6 à 8 semaines, ~1 atelier par semaine, les longs prennent leur place
+  const u = UI();
+  if(ans.horizon === 'demi') return pick.map(x => ({label:u.slotSession, x}));
+  if(ans.horizon === 'semaine') return pick.map((x, i) => ({label:u.slotDay(i + 1), x}));
+  let week = 1; return pick.map(x => { const slot = {label:u.slotWeek(week), x}; week += x.t.dur >= 14 ? 2 : 1; return slot; });
+}
+function planHtml(pick, total){
+  const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
+  const rows = planSlots(pick).map((s, i) => { const x = tx(s.x.t); return `<tr><td class="mono">${esc(s.label)}</td><td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[s.x.t.phase])}</span></td><td class="mono">${fmtDur(s.x.t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`; }).join('');
+  return `<section class="plan">
+    <div class="plan-head"><h3>${esc(u.planTitle)}</h3><p class="muted">${esc(st.name)} · ${esc(tr.name)} · ${esc(L.horizons[ans.horizon])}</p></div>
+    <div class="plan-wrap"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
+    <p class="muted plan-url">${esc(location.href.split('?')[0])}?${new URL(location.href).searchParams.toString()}</p>
+  </section>`;
+}
+document.getElementById('result').addEventListener('click', e => {
+  const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); renderResult(); return; }
+  if(e.target.closest('#copy-link')){ const href = syncUrl(); navigator.clipboard && navigator.clipboard.writeText(href).then(() => { const b = document.getElementById('copy-link'); b.textContent = UI().copied; track('copy_link', {stage:ans.stage, trigger:ans.trigger}); }).catch(() => {}); return; }
+  if(e.target.closest('#print')){ window.print(); }
+});
 
 /* ---------- matrice ---------- */
 function renderMatrix(){
@@ -459,9 +577,24 @@ function renderLibrary(){
 
 /* ---------- aperçu (dialog) ---------- */
 const dlg = document.getElementById('dlg');
+let RUN = null, runPromise = null;
+function loadRun(){ if(RUN) return Promise.resolve(RUN); if(!runPromise) runPromise = fetch('content/run.json').then(r => r.ok ? r.json() : {}).then(j => (RUN = j)).catch(() => (RUN = {})); return runPromise; }
+const pageUrl = t => (lang === 'fr' ? '/fr/ateliers/' : '/workshops/') + t.id + '/';
+function howToHtml(t){
+  const u = UI(), c = RUN && RUN[t.id] && RUN[t.id][lang]; if(!c) return '';
+  return `<section class="howto">
+    <h3>${esc(u.howTo)}</h3>
+    <h4>${esc(u.prep)}</h4><ul>${c.prep.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+    <h4>${esc(u.agenda)}</h4><ol class="agenda">${c.agenda.map(a => `<li><span class="mono amin">${a.min} ${esc(u.minutes)}</span><div><b>${esc(a.t)}</b><br>${esc(a.d)}</div></li>`).join('')}</ol>
+    <h4>${esc(u.pitfalls)}</h4><ul>${c.pitfalls.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+    <h4>${esc(u.nextStep)}</h4><p>${esc(c.next)}</p>
+    ${c.source ? `<p class="muted">${esc(u.source)} : ${esc(c.source)}</p>` : ''}
+  </section>`;
+}
 function openPreview(id){
   const t = byId(T, id); if(!t) return;
   const ph = byId(PHASES, t.phase), x = tx(t), u = UI();
+  track('open_workshop', {id});
   document.getElementById('dlg-content').innerHTML = `
     <div class="dlg-pv">${Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)})}</div>
     <div class="dlg-body" style="--h:var(${ph.h})">
@@ -472,10 +605,19 @@ function openPreview(id){
       <p class="why" style="margin:0"><b>${esc(u.when)}</b> ${esc(x.why)}</p>
       ${metaHtml(t)}
       ${actionsHtml(t, false)}
-      <p class="hint">${esc(u.figjamHint)}</p>
+      <p class="hint">${esc(u.figjamHint)} <a href="${pageUrl(t)}">${esc(u.permalink)}</a></p>
+      <div id="howto-slot"><p class="muted">${esc(u.loading)}</p></div>
+      <div class="helpful" id="helpful"><span>${esc(u.helpful)}</span><button class="btn small" type="button" data-helpful="yes">${ICON.up}${esc(u.yes)}</button><button class="btn small" type="button" data-helpful="no">${ICON.down}${esc(u.no)}</button></div>
     </div>`;
   dlg.showModal();
+  loadRun().then(() => { const slot = document.getElementById('howto-slot'); if(slot) slot.innerHTML = howToHtml(t); });
 }
+dlg.addEventListener('click', e => {
+  const h = e.target.closest('[data-helpful]'); if(!h) return;
+  const id = document.querySelector('#dlg-title') && document.querySelector('#dlg-title').textContent;
+  track('helpful', {answer:h.dataset.helpful, workshop:id}); document.getElementById('helpful').innerHTML = `<span>${esc(UI().thanks)}</span>`;
+});
+document.addEventListener('click', e => { const a = e.target.closest('a.btn.primary'); if(a) track('open_figjam', {href:a.getAttribute('href')}); });
 dlg.addEventListener('click', e => { if(e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 document.addEventListener('click', e => {
   const o = e.target.closest('[data-open]'); if(o) openPreview(o.dataset.open);
@@ -490,8 +632,7 @@ document.querySelector('.tabs').addEventListener('click', e => {
 });
 document.querySelector('.lang').addEventListener('click', e => {
   const b = e.target.closest('[data-lang]'); if(!b || b.dataset.lang === lang) return;
-  lang = b.dataset.lang; L = LANGS[lang]; LAYOUTS = LAYOUT_SETS[lang]; store.set('lang', lang);
-  const url = new URL(location.href); url.searchParams.set('lang', lang); history.replaceState(null, '', url);
+  lang = b.dataset.lang; L = LANGS[lang]; LAYOUTS = LAYOUT_SETS[lang]; store.set('lang', lang); syncUrl();
   renderAll();
 });
 
@@ -500,6 +641,7 @@ function renderAll(){ applyStatic(); renderQuestions(); renderResult(); renderMa
 renderAll();
 const savedTab = store.get('tab', 'orient');
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
+const openId = new URLSearchParams(location.search).get('open'); if(openId && byId(T, openId)) openPreview(openId);
 </script>
 </body>
 </html>
