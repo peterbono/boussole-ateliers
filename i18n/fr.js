@@ -13,7 +13,7 @@ const I18N_FR = {
     legendIntro:'Pour chaque stade :', legendPrimary:'Atelier à proposer en priorité', legendSecondary:'Atelier utile selon la situation', phase:'Phase',
     search:'Chercher un atelier', filterPhase:'Phase', filterStage:'Stade', all:'Toutes', allM:'Tous', stagesLabel:'Stades :', empty:'Aucun atelier ne correspond. Élargis les filtres ou change le mot-clé.',
     close:'Fermer', preview:(n)=>`Aperçu de ${n}`, hours:'h', days:'j', min:'min',
-    diag:{open:'Pas sûr ? 6 questions rapides', close:'Terminé', suggested:'Stade suggéré', apply:'Appliqué au formulaire au fil des réponses',
+    diag:{open:'Pas sûr ? 6 questions rapides', close:'Terminé', suggested:'Stade suggéré',
       q:[
         {t:'Le produit est-il utilisé aujourd\'hui ?', o:['Pas encore','Une première version','En production depuis un moment']},
         {t:'Les utilisateurs reviennent-ils sans que tu pousses ?', o:['Non','Certains','Oui, la rétention est mesurée et saine']},

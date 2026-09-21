@@ -355,7 +355,7 @@ function renderDiag(){
   if(!diag.open) return;
   const r = diagnose(diag.a);
   body.innerHTML = d.q.map((q, i) => `<div class="diag-q"><div class="t">${esc(q.t)}</div><div class="opts">${q.o.map((o, j) => `<button class="opt" type="button" aria-pressed="${diag.a[i] === j}" data-diag="${i}" data-v="${j}">${esc(o)}</button>`).join('')}</div></div>`).join('')
-    + `<div class="diag-res"><span>${esc(d.suggested)} : <b>${r ? esc(L.stages[r.stage].name) : '…'}</b></span><span class="muted">${esc(d.apply)}</span></div>`;
+    + `<div class="diag-res"><span>${esc(d.suggested)} : <b>${r ? esc(L.stages[r.stage].name) : '…'}</b></span></div>`;
 }
 document.getElementById('diag').addEventListener('click', e => {
   if(e.target.closest('#diag-toggle')){ diag.open = !diag.open; store.set('diag', diag); renderDiag(); return; }

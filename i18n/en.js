@@ -13,7 +13,7 @@ const I18N_EN = {
     legendIntro:'For each stage:', legendPrimary:'Workshop to propose first', legendSecondary:'Useful depending on the situation', phase:'Phase',
     search:'Search a workshop', filterPhase:'Phase', filterStage:'Stage', all:'All', allM:'All', stagesLabel:'Stages:', empty:'No workshop matches. Widen the filters or change the keyword.',
     close:'Close', preview:(n)=>`Preview of ${n}`, hours:'h', days:'d', min:'min',
-    diag:{open:'Not sure? 6 quick questions', close:'Done', suggested:'Suggested stage', apply:'Applied to the form as you answer',
+    diag:{open:'Not sure? 6 quick questions', close:'Done', suggested:'Suggested stage',
       q:[
         {t:'Do people use the product today?', o:['Not yet','A first version','In production for a while']},
         {t:'Do users come back without you pushing?', o:['No','Some do','Yes, retention is measured and healthy']},
