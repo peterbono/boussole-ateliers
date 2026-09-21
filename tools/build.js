@@ -21,6 +21,7 @@ if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){
 // 2. dist : copie de l'app
 fs.rmSync(dist, {recursive:true, force:true}); fs.mkdirSync(dist, {recursive:true});
 for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
+if(fs.existsSync(path.join(root, 'og'))) fs.cpSync(path.join(root, 'og'), path.join(dist, 'og'), {recursive:true});
 fs.mkdirSync(path.join(dist, 'i18n')); for(const f of ['en.js','fr.js']) fs.copyFileSync(path.join(root, 'i18n', f), path.join(dist, 'i18n', f));
 const EX = {};
 if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){ if(!/^ex-[A-Z]\.json$/.test(f)) continue; Object.assign(EX, JSON.parse(fs.readFileSync(path.join(contentDir, f), 'utf8'))); }
@@ -54,12 +55,12 @@ const PAGE_CSS = `
 .page .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:14px}
 .page .foot a{color:var(--ink-2)}
 `;
-function head(lang, title, desc, url, extra = ''){
+function head(lang, title, desc, url, extra = '', og = '/og/default.png'){
   const alt = lang === 'en' ? 'fr' : 'en';
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}"><link rel="canonical" href="${SITE}${url}">
-<meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:type" content="article"><meta property="og:url" content="${SITE}${url}"><meta property="og:site_name" content="${esc(I18N[lang].title)}">
-<meta name="twitter:card" content="summary">
+<meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:type" content="article"><meta property="og:url" content="${SITE}${url}"><meta property="og:site_name" content="${esc(I18N[lang].title)}"><meta property="og:image" content="${SITE}${og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${SITE}${og}">
 ${extra}${FONTS}<style>${CSS}${PAGE_CSS}</style><script defer src="/_vercel/insights/script.js"></script></head><body>`;
 }
 function workshopPage(lang, t){
@@ -75,7 +76,7 @@ function workshopPage(lang, t){
   const ld = {'@context':'https://schema.org', '@type':'HowTo', name:x.name, description:x.desc, inLanguage:lang, totalTime:`PT${Math.round(t.dur*60)}M`, url:SITE + url};
   if(run) ld.step = run.agenda.map((a, i) => ({'@type':'HowToStep', position:i + 1, name:a.t, text:a.d}));
   const extra = `<link rel="alternate" hreflang="${alt}" href="${SITE}${altUrl}"><link rel="alternate" hreflang="${lang}" href="${SITE}${url}"><link rel="alternate" hreflang="x-default" href="${SITE}${pageUrl('en', t.id)}">\n<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`;
-  let html = head(lang, title, desc, url, extra);
+  let html = head(lang, title, desc, url, extra, `/og/${lang}/${t.id}.png`);
   html += `<div class="page">
 <nav class="crumbs"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(L.title)}</a> › <a href="${base[lang]}">${esc(u.allWorkshops)}</a> › <span>${esc(L.phases[ph.id])}</span><span style="margin-left:auto"><a href="${altUrl}">${alt.toUpperCase()}</a></span></nav>
 <span class="chip" style="--h:var(${ph.h})">${esc(L.phases[ph.id])}</span>
