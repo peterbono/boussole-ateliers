@@ -241,6 +241,6 @@ const T = [
 
 
 // Fichier FigJam communautaire : rempli par le générateur (clé du fichier + node-id de la section de chaque atelier)
-const FIGJAM = { file: '', name: 'Boussole-Ateliers', nodes: {} };
+const FIGJAM = { file: 'zhiQxgTHsZlPgmD1d6tjKl', name: 'Boussole-Ateliers', nodes: {"kickoff":"3:2","problem":"3:59","stakeholders":"3:110","charter":"3:164","lean":"3:242","bmc":"3:303","vpc":"4:194","vision":"4:245","impact":"4:286","box":"4:393","positioning":"4:428","nsm":"4:482","okr":"5:399","horizons":"5:443","prfaq":"5:495","persona":"5:516","jtbd":"5:573","empathy":"5:614","journey":"6:531","research-plan":"6:553","assumptions":"6:594","ost":"6:648","blueprint":"6:779","kano":"6:851","hmw":"7:728","mindmap":"7:780","affinity":"7:886","crazy8":"7:961","brainwriting":"7:973","dotvote":"7:993","sprint":"8:889","experiments":"8:928","impact-effort":"8:996","rice":"8:1050","moscow":"8:1090","storymap":"8:1153","roadmap":"9:1061","nnl":"9:1105","decision":"9:1165","wsjf":"9:1193","sprintplan":"9:1233","sitemap":"9:1288","wireframes":"10:1210","userflow":"10:1220","storyboard":"10:1267","prd":"10:1281","raci":"10:1296","daci":"10:1330","dependencies":"11:1264","pi":"11:1322","program":"11:1346","premortem":"11:1418","launch":"11:1478","sync":"11:1519","retro-ssc":"12:1417","retro-4l":"12:1469","retro-sailboat":"12:1524","health":"12:1574","postmortem":"12:1613","metrics":"12:1676","ia":"12:1715"} };
 
 if (typeof module !== 'undefined') module.exports = { STAGES, TEAMS, TRIGGERS, GOALS, HORIZONS, PHASES, T, FIGJAM };
