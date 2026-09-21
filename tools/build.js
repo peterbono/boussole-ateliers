@@ -4,6 +4,7 @@ const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..'), dist = path.join(root, 'dist');
 const { T, PHASES, STAGES, FIGJAM } = require(path.join(root, 'data.js'));
 const { CHAIN } = require(path.join(root, 'chain.js'));
+const { SOURCES } = require(path.join(root, 'sources.js'));
 const I18N = { en: require(path.join(root, 'i18n/en.js')).I18N, fr: require(path.join(root, 'i18n/fr.js')).I18N };
 const LAYOUTS = { en: require(path.join(root, 'layouts.en.js')).LAYOUTS, fr: require(path.join(root, 'layouts.fr.js')).LAYOUTS };
 const { Preview } = require(path.join(root, 'preview.js'));
@@ -19,7 +20,7 @@ if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){
 
 // 2. dist : copie de l'app
 fs.rmSync(dist, {recursive:true, force:true}); fs.mkdirSync(dist, {recursive:true});
-for(const f of ['index.html','data.js','chain.js','preview.js','layouts.en.js','layouts.fr.js']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
+for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
 fs.mkdirSync(path.join(dist, 'i18n')); for(const f of ['en.js','fr.js']) fs.copyFileSync(path.join(root, 'i18n', f), path.join(dist, 'i18n', f));
 fs.mkdirSync(path.join(dist, 'content')); fs.writeFileSync(path.join(dist, 'content/run.json'), JSON.stringify(RUN));
 
@@ -89,7 +90,7 @@ function workshopPage(lang, t){
 <h3 class="k">${esc(u.agenda)}</h3><ol class="agenda">${run.agenda.map(a => `<li><span class="mono amin">${a.min} ${esc(u.minutes)}</span><div><b>${esc(a.t)}</b><br>${esc(a.d)}</div></li>`).join('')}</ol>
 <h3 class="k">${esc(u.pitfalls)}</h3><ul>${run.pitfalls.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
 <h3 class="k">${esc(u.nextStep)}</h3><p style="color:var(--ink-2)">${esc(run.next)}</p>
-${run.source ? `<p class="muted" style="font-size:13px">${esc(u.source)} : ${esc(run.source)}</p>` : ''}</section>`;
+${run.source ? `<p class="muted" style="font-size:13px">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(run.source)}</a>` : esc(run.source)}</p>` : ''}</section>`;
   }
   if(related.length) html += `<section><h2>${lang === 'en' ? 'Related workshops' : 'Ateliers liés'}</h2><div class="related">${related.map(r => `<a href="${pageUrl(lang, r.q.id)}">${esc(L.templates[r.q.id].name)}<small>${esc(r.k)} · ${esc(L.phases[r.q.phase])}</small></a>`).join('')}</div></section>`;
   html += `<div class="foot"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(u.backToApp)}</a><a href="${base[lang]}">${esc(u.allWorkshops)}</a><a href="${altUrl}">${alt === 'fr' ? 'Version française' : 'English version'}</a></div>
