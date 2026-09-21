@@ -27,7 +27,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0;line-height:1.05;
 .btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:14px;background:var(--accent);color:#fff;font-weight:600;font-size:24px}
 .mono{font-family:"IBM Plex Mono",monospace}
 </style>`;
-const brand = `<div class="url">boussole-ateliers.vercel.app</div><div class="brand">Workshop Compass</div>`;
+const brand = `<div class="url">workshop-compass.vercel.app</div><div class="brand">Workshop Compass</div>`;
 const page = body => `<!doctype html><html><head><meta charset="utf-8">${CSS}</head><body>${body}</body></html>`;
 
 // 1. Thumbnail

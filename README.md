@@ -2,7 +2,7 @@
 
 Pick the product stage and what is blocking: the site returns the sequence of workshops to run, a preview of each template and its FigJam board. English by default, French available (`?lang=fr` or the EN / FR toggle).
 
-Live: https://boussole-ateliers.vercel.app
+Live: https://workshop-compass.vercel.app
 
 ## Files
 
