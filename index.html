@@ -53,9 +53,8 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;text-wrap:ba
 svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* header */
-.hdr{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
 .hdr h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
-.hdr p{margin:6px 0 0;color:var(--ink-2);max-width:56ch}
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:12px}
 .tabs button{padding:8px 14px;border-radius:9px;color:var(--ink-2);font-weight:600;font-size:14px}
 .tabs button:hover{color:var(--ink)}
@@ -115,21 +114,23 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .step::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
 .step:last-child::before{display:none}
 .step .num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;background:var(--surface);border:2px solid var(--ink);color:var(--ink);font-variant-numeric:tabular-nums}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px 20px}
-@media (max-width:700px){.card{grid-template-columns:1fr}}
-.card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
-.card h3{font-size:19px;font-weight:700;letter-spacing:-.01em;flex:1 1 auto;min-width:200px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.card-body{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px 20px;align-items:start}
+@media (max-width:700px){.card-body{grid-template-columns:1fr}}
+.card-body .pvbtn{display:block;border-radius:8px;border:1px solid var(--line);overflow:hidden;transition:border-color .12s}
+.card-body .pvbtn:hover{border-color:var(--accent)}
+.card-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding-top:12px;border-top:1px dashed var(--line)}
+.card-foot .meta{border:0;padding:0;flex:1 1 420px;grid-template-columns:auto auto minmax(0,1fr)}
+.card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
-.why{margin:0 0 12px;color:var(--ink);max-width:70ch}
+.why{margin:0 0 10px;color:var(--ink);max-width:70ch}
 .why b{font-weight:600}
-.desc{margin:0 0 12px;color:var(--ink-2);max-width:70ch}
+.desc{margin:0;color:var(--ink-2);max-width:70ch}
 .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 18px;padding-top:12px;border-top:1px dashed var(--line);margin:0}
 .meta div{font-size:13.5px;color:var(--ink-2)}
 .meta dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
 .meta dd{margin:0;color:var(--ink)}
-.side-pv{display:flex;flex-direction:column;gap:8px}
-.side-pv button.pvbtn{display:block;border-radius:8px;border:1px solid var(--line);overflow:hidden;transition:border-color .12s}
-.side-pv button.pvbtn:hover{border-color:var(--accent)}
 .actions{display:flex;flex-wrap:wrap;gap:6px}
 .phase-break{display:flex;align-items:center;gap:10px;margin:6px 0 14px 58px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .phase-break::after{content:"";flex:1;height:1px;background:var(--line)}
@@ -201,7 +202,6 @@ dialog::backdrop{background:rgba(10,14,28,.55)}
   <header class="hdr">
     <div>
       <h1>Boussole Ateliers</h1>
-      <p>Choisis le stade de l'entreprise et ce qui bloque : tu obtiens la séquence d'ateliers à proposer, l'aperçu de chaque template et son board FigJam prêt à dupliquer.</p>
     </div>
     <nav class="tabs" role="tablist" aria-label="Vues">
       <button role="tab" aria-selected="true" data-tab="orient">Orienter</button>
@@ -333,15 +333,17 @@ function stepCard(t, n){
   return `<article class="step">
     <div class="num">${n}</div>
     <div class="card" style="--h:var(${ph.h})">
-      <div>
-        <div class="card-top"><h3>${esc(t.name)}</h3><span class="chip">${esc(ph.name)}</span></div>
-        <p class="why"><b>Pourquoi maintenant.</b> ${esc(t.why)}</p>
-        <p class="desc">${esc(t.desc)}</p>
-        <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
-      </div>
-      <div class="side-pv">
+      <div class="card-top"><h3>${esc(t.name)}</h3><span class="chip">${esc(ph.name)}</span></div>
+      <div class="card-body">
+        <div>
+          <p class="why"><b>Pourquoi maintenant.</b> ${esc(t.why)}</p>
+          <p class="desc">${esc(t.desc)}</p>
+        </div>
         <button class="pvbtn" type="button" data-open="${t.id}" aria-label="Aperçu de ${esc(t.name)}">${pv(t)}</button>
-        ${actionsHtml(t, true)}
+      </div>
+      <div class="card-foot">
+        <dl class="meta"><div><dt>Durée</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>Participants</dt><dd>${esc(t.who)}</dd></div><div><dt>Livrable</dt><dd>${esc(t.out)}</dd></div></dl>
+        ${actionsHtml(t, false)}
       </div>
     </div>
   </article>`;
