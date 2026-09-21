@@ -175,6 +175,7 @@ table.matrix{border-collapse:collapse;min-width:960px;width:100%;font-size:13px}
 
 /* bibliothèque et cards */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.filters .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px}
 .select{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 6px 0 12px;height:36px;font-size:13.5px;color:var(--ink-3)}
 .select select{border:0;background:transparent;font:inherit;font-weight:600;color:var(--ink);padding:6px 4px;outline:none;max-width:240px;cursor:pointer}
 .select:focus-within{border-color:var(--accent)}
@@ -281,7 +282,6 @@ body:has(dialog[open]){overflow:hidden}
     <div class="hdr-right">
       <nav class="tabs" role="tablist" aria-label="Views">
         <button role="tab" aria-selected="true" data-tab="orient" data-ui="tabs.orient">Guide me</button>
-        <button role="tab" aria-selected="false" data-tab="matrix" data-ui="tabs.matrix">Matrix</button>
         <button role="tab" aria-selected="false" data-tab="library" data-ui="tabs.library">Library</button>
       </nav>
       <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="fr" aria-pressed="false">FR</button></div>
@@ -302,14 +302,13 @@ body:has(dialog[open]){overflow:hidden}
     </div>
   </section>
 
-  <section class="view" id="view-matrix" role="tabpanel" hidden>
-    <div class="toolbar legend"><span data-ui="legendIntro"></span><span><i class="dot ink"></i><b data-ui="legendPrimary"></b></span><span><i class="dot grey"></i><span data-ui="legendSecondary"></span></span></div>
-    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
-  </section>
-
   <section class="view" id="view-library" role="tabpanel" hidden>
     <div class="filters" id="filters"></div>
-    <div class="grid" id="library"></div>
+    <div id="lib-cards"><div class="grid" id="library"></div></div>
+    <div id="lib-matrix" hidden>
+      <div class="toolbar legend" style="margin-top:14px"><span data-ui="legendIntro"></span><span><i class="dot ink"></i><b data-ui="legendPrimary"></b></span><span><i class="dot grey"></i><span data-ui="legendSecondary"></span></span></div>
+      <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+    </div>
   </section>
 </div>
 
@@ -401,7 +400,7 @@ function syncUrl(){
   return url.href;
 }
 function saveAns(){ store.set('answers', ans); syncUrl(); }
-let lib = {phase:'all', stage:'all', q:''};
+let lib = {phase:'all', stage:'all', q:'', mode: store.get('libMode', 'cards')};
 
 const byId = (arr, id) => arr.find(x => x.id === id);
 const phaseIdx = id => PHASES.findIndex(p => p.id === id);
@@ -672,18 +671,27 @@ function tcard(t, si){
 function renderFilters(){
   const u = UI();
   const opt = (id, name, cur) => `<option value="${id}"${cur === id ? ' selected' : ''}>${esc(name)}</option>`;
-  document.getElementById('filters').innerHTML =
-    `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
+  const seg = `<div class="seg" id="lib-mode"><button type="button" aria-pressed="${lib.mode === 'cards'}" data-mode="cards">${esc(u.viewCards)}</button><button type="button" aria-pressed="${lib.mode === 'matrix'}" data-mode="matrix">${esc(u.viewMatrix)}</button></div>`;
+  if(lib.mode === 'matrix'){ document.getElementById('filters').innerHTML = seg; return; }
+  document.getElementById('filters').innerHTML = seg + '<span class="sep"></span>'
+    + `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
     + `<label class="select"><span>${esc(u.filterPhase)}</span><select id="lib-phase">${opt('all', u.all, lib.phase)}${PHASES.map(p => opt(p.id, L.phases[p.id], lib.phase)).join('')}</select></label>`
     + `<label class="select"><span>${esc(u.filterStage)}</span><select id="lib-stage">${opt('all', u.allM, lib.stage)}${STAGES.map(s => opt(s.id, L.stages[s.id].name, lib.stage)).join('')}</select></label>`
     + `<span class="count" id="count"></span>`;
 }
+document.getElementById('filters').addEventListener('click', e => {
+  const m = e.target.closest('[data-mode]'); if(!m) return;
+  lib.mode = m.dataset.mode; store.set('libMode', lib.mode); renderFilters(); renderLibrary();
+});
 document.getElementById('filters').addEventListener('change', e => {
   if(e.target.id === 'lib-phase'){ lib.phase = e.target.value; renderLibrary(); }
   if(e.target.id === 'lib-stage'){ lib.stage = e.target.value; renderLibrary(); }
 });
 document.getElementById('filters').addEventListener('input', e => { if(e.target.id === 'lib-q'){ lib.q = e.target.value; renderLibrary(); } });
 function renderLibrary(){
+  document.getElementById('lib-cards').hidden = lib.mode === 'matrix';
+  document.getElementById('lib-matrix').hidden = lib.mode !== 'matrix';
+  if(lib.mode === 'matrix') return;
   const si = lib.stage === 'all' ? -1 : stageIdx(lib.stage);
   const q = lib.q.trim().toLowerCase();
   const list = T.filter(t => (lib.phase === 'all' || t.phase === lib.phase) && (si < 0 || t.fit[si] >= 2)
@@ -774,7 +782,7 @@ document.querySelector('.lang').addEventListener('click', e => {
 /* ---------- boot ---------- */
 function renderAll(){ applyStatic(); renderQuestions(); renderDiag(); renderResult(); renderMatrix(); renderFilters(); renderLibrary(); }
 renderAll();
-const savedTab = store.get('tab', 'orient');
+let savedTab = store.get('tab', 'orient'); if(savedTab === 'matrix'){ savedTab = 'library'; lib.mode = 'matrix'; }
 if(savedTab !== 'orient'){ const b = document.querySelector(`[data-tab="${savedTab}"]`); if(b) b.click(); }
 const openId = new URLSearchParams(location.search).get('open'); if(openId && byId(T, openId)) openPreview(openId);
 </script>

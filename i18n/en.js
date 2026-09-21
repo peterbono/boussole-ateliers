@@ -2,7 +2,7 @@
 const I18N_EN = {
   code:'en', title:'Workshop Compass', figmaName:'Workshop Compass',
   ui:{
-    tabs:{orient:'Guide me', matrix:'Matrix', library:'Library'},
+    tabs:{orient:'Guide me', library:'Library'}, viewCards:'Cards', viewMatrix:'Matrix',
     q:{stage:'Product stage', team:'Product + tech team size', trigger:'Trigger', goals:'What is missing', horizon:'Time frame'},
     reset:'Reset',
     summary:(n, hz)=>`${n} workshop${n>1?'s':''} in order, for ${hz}. Each board opens in FigJam, duplicate it into your space.`,
