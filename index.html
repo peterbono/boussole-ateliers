@@ -230,6 +230,21 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .stag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-strong)}
 .tcard .actions{margin-top:auto;padding-top:6px}
 .tcard .actions .btn{width:100%;justify-content:center;padding:10px 12px;font-size:13.5px}
+.foot{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:20px}
+.foot-main{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
+@media (max-width:700px){.foot-main{grid-template-columns:1fr;gap:24px}}
+.foot-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.foot-lead{margin:0;font-size:14.5px;color:var(--ink-2);max-width:52ch;line-height:1.5}
+.foot-by{margin:0;font-size:14px;color:var(--ink-3)}
+.foot-by a{color:var(--ink);font-weight:600;text-decoration:none}
+.foot-by a:hover{text-decoration:underline}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:2px}
+.foot-links a{font-size:13.5px;color:var(--ink-2);text-decoration:none;padding:6px 0}
+.foot-links a:hover{color:var(--ink);text-decoration:underline}
+.foot-sub-title{margin:0;font-size:15px;font-weight:600;color:var(--ink)}
+.foot-sub-text{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.5;max-width:40ch}
+.foot .btn.primary{align-self:flex-start;margin-top:4px;padding:11px 16px}
+.foot-legal{margin:0;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
 .empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
 
 /* panneau latéral */
@@ -474,6 +489,27 @@ dialog.run::backdrop{background:var(--bg)}
     <div class="grid" id="library"></div>
     <div class="list-wrap" id="lib-list" hidden><table class="list" id="list-table"></table></div>
   </section>
+  <footer class="foot">
+    <div class="foot-main">
+      <div class="foot-col">
+        <p class="foot-lead" data-ui="foot.lead"></p>
+        <p class="foot-by"><span data-ui="foot.by"></span> <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener">Florian Gouloubi</a></p>
+        <nav class="foot-links">
+          <a href="https://www.linkedin.com/in/floriangouloubi/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener" data-ui="foot.site"></a>
+          <a href="https://github.com/peterbono/boussole-ateliers" target="_blank" rel="noopener">GitHub</a>
+          <a id="foot-figjam" href="#" target="_blank" rel="noopener" data-ui="foot.figjam"></a>
+          <a id="foot-mail" href="#" data-ui="foot.contact"></a>
+        </nav>
+      </div>
+      <div class="foot-col">
+        <p class="foot-sub-title" data-ui="foot.updatesTitle"></p>
+        <p class="foot-sub-text" data-ui="foot.updatesText"></p>
+        <a class="btn primary" id="foot-sub" href="#" target="_blank" rel="noopener" data-ui="foot.updatesCta"></a>
+      </div>
+    </div>
+    <p class="foot-legal"><span data-ui="foot.legal"></span></p>
+  </footer>
 </div>
 
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
@@ -491,6 +527,7 @@ dialog.run::backdrop{background:var(--bg)}
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 /* ---------- langue ---------- */
+const SUBSCRIBE_URL = ''; // formulaire d'inscription (Tally, Airtable…) ; vide = mailto
 const LANGS = {en: I18N_EN, fr: I18N_FR};
 const LAYOUT_SETS = {en: LAYOUTS_EN, fr: LAYOUTS_FR};
 const store = {
@@ -1104,7 +1141,15 @@ document.querySelector('.lang').addEventListener('click', e => {
 });
 
 /* ---------- boot ---------- */
-function renderAll(){ applyStatic(); briefStatic(); renderQuestions(); renderDiag(); renderResult(); renderFilters(); renderLibrary(); }
+function footStatic(){
+  const u = UI(), fj = document.getElementById('foot-figjam');
+  fj.href = FIGJAM.community || '#'; fj.hidden = !FIGJAM.community;
+  document.getElementById('foot-mail').href = `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass')}`;
+  const sub = document.getElementById('foot-sub');
+  sub.href = SUBSCRIBE_URL || `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass · updates')}&body=${encodeURIComponent(u.foot.updatesBody)}`;
+  if(!SUBSCRIBE_URL) sub.removeAttribute('target');
+}
+function renderAll(){ applyStatic(); footStatic(); briefStatic(); renderQuestions(); renderDiag(); renderResult(); renderFilters(); renderLibrary(); }
 renderAll();
 let savedTab = store.get('tab', 'orient'); if(savedTab === 'matrix') savedTab = 'library';
 if(lib.mode !== 'cards' && lib.mode !== 'list') lib.mode = 'cards';
