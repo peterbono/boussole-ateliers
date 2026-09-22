@@ -20,7 +20,7 @@ if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){
 
 // 2. dist : copie de l'app
 fs.rmSync(dist, {recursive:true, force:true}); fs.mkdirSync(dist, {recursive:true});
-for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
+for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js','favicon.svg']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
 if(fs.existsSync(path.join(root, 'og'))) fs.cpSync(path.join(root, 'og'), path.join(dist, 'og'), {recursive:true});
 fs.mkdirSync(path.join(dist, 'i18n')); for(const f of ['en.js','fr.js']) fs.copyFileSync(path.join(root, 'i18n', f), path.join(dist, 'i18n', f));
 const EX = {};
@@ -34,7 +34,7 @@ const pageUrl = (lang, id) => base[lang] + id + '/';
 const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
 const fmtDur = (h, u, lang) => h >= 7 ? Math.round(h/7) + ' ' + u.days : (h < 1 ? Math.round(h*60) + ' ' + u.min : (h % 1 ? (lang === 'fr' ? h.toFixed(1).replace('.', ',') : h.toFixed(1)) : h) + ' ' + u.hours);
 const CSS = fs.readFileSync(path.join(root, 'index.html'), 'utf8').match(/<style>([\s\S]*?)<\/style>/)[1];
-const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">';
+const FONTS = '<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">';
 const PAGE_CSS = `
 .page{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:20px 60px}
 .crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);margin-bottom:18px}

@@ -6,6 +6,7 @@
 <title>Workshop Compass</title>
 <meta name="description" content="Pick your product stage and what is blocking: get the sequence of workshops to run, a preview of each template and its FigJam board.">
 <meta property="og:title" content="Workshop Compass"><meta property="og:description" content="The right product workshop, at the right stage, in the right order. 61 FigJam boards, each with a how-to and a filled example."><meta property="og:image" content="https://workshop-compass.vercel.app/og/default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -58,8 +59,11 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* header */
 .hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-.hdr h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
-.hdr h1 .logo{width:.8em;height:.8em;flex:none;color:var(--ink)}
+.hdr h1{font-size:clamp(26px,3.6vw,36px);font-weight:800;letter-spacing:-.025em;display:flex;align-items:center;gap:13px;line-height:1}
+.hdr h1 .logo{width:1.05em;height:1.05em;flex:none;color:var(--ink);margin-top:-.04em}
+.hdr h1 span{display:inline-flex;gap:.28em}
+.hdr h1 i{font-style:normal}
+.hdr h1 .w2{font-weight:600;color:var(--ink-2)}
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:12px}
 .tabs button{padding:8px 14px;border-radius:9px;color:var(--ink-2);font-weight:600;font-size:14px}
 .tabs button:hover{color:var(--ink)}
@@ -440,6 +444,9 @@ dialog.run::backdrop{background:var(--bg)}
   .wchip{padding:9px 13px 9px 11px;font-size:13.5px}
   .deps li button,.aside li button,.cell button{display:inline-flex;align-items:center;min-height:40px}
   .acc summary{padding:16px 18px}
+  .summary h2{font-size:clamp(26px,7.5vw,32px);letter-spacing:-.02em;line-height:1.1}
+  .summary{display:block}
+  .summary > div{width:100%}
   .brief summary{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:14px 16px}
   .brief .spark{grid-row:1}
   .brief-title{grid-row:1}
@@ -465,7 +472,7 @@ dialog.run::backdrop{background:var(--bg)}
 <body>
 <div class="wrap">
   <header class="hdr">
-    <h1 id="site-title"><svg class="logo" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M15.2 8.8l-1.9 4.5-4.5 1.9 1.9-4.5z" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/></svg><span>Workshop Compass</span></h1>
+    <h1 id="site-title" data-i18n-skip><svg class="logo" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.2" stroke="currentColor" stroke-width="1.8"/><path d="M16 1.4v2.6M16 28v2.6M1.4 16h2.6M28 16h2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 7.2l3.6 8.8H16z" fill="var(--accent)"/><path d="M16 7.2L12.4 16H16z" fill="var(--accent)" opacity=".62"/><path d="M16 24.8l3.6-8.8H16z" fill="currentColor" opacity=".18"/><path d="M16 24.8L12.4 16H16z" fill="currentColor" opacity=".34"/></svg><span>Workshop Compass</span></h1>
     <div class="hdr-right">
       <nav class="tabs" role="tablist" aria-label="Views">
         <button role="tab" aria-selected="true" data-tab="orient" data-ui="tabs.orient">Guide me</button>
@@ -731,7 +738,10 @@ function recommend(a){
 function applyStatic(){
   document.documentElement.lang = lang;
   document.title = L.title;
-  document.querySelector('#site-title span').textContent = L.title;
+  const parts = L.title.split(' ');
+  document.querySelector('#site-title span').innerHTML = parts.length > 1
+    ? `<i class="w1">${esc(parts.slice(0, -1).join(' '))}</i><i class="w2">${esc(parts[parts.length - 1])}</i>`
+    : esc(L.title);
   document.querySelectorAll('[data-ui]').forEach(el => {
     const v = el.dataset.ui.split('.').reduce((o, k) => o && o[k], UI());
     if(typeof v === 'string') el.textContent = v;
