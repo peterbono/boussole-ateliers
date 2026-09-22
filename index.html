@@ -318,8 +318,11 @@ dialog.zoom::backdrop{background:transparent}
 .wchip:hover{border-color:var(--accent);background:var(--accent-soft)}
 .wchip.need{border-color:var(--ink);border-width:1.5px}
 .wchip.help{border-style:dashed}
-.wchips.anyof{display:inline-flex;padding:5px 8px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
-.wchips .op{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);padding:0 2px}
+.req-list{display:flex;flex-direction:column;gap:6px}
+.req{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center}
+.req .conj{font-size:12.5px;color:var(--ink-3);font-style:italic;min-width:0;white-space:nowrap}
+.req .conj:empty{display:none}
+.req .conj:empty + .wchips{grid-column:1 / -1}
 .wchips .or{font-size:11px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
 .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
 .checklist label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:10px;font-size:14px;color:var(--ink-2);cursor:pointer;line-height:1.45}
@@ -909,12 +912,12 @@ function depsHtml(t){
   const get = ids => (ids || []).map(id => byId(T, id)).filter(Boolean);
   const needs = get(c.needs), anyOf = (c.anyOf || []).map(get).filter(g => g.length), helps = get(c.helps);
   if(!needs.length && !anyOf.length && !helps.length) return `<section class="deps" id="sec-before"><h3>${esc(u.before)}</h3><p class="muted">${esc(u.noDeps)}</p></section>`;
-  const plus = `<span class="op">+</span>`;
-  const parts = [...needs.map(q => wchip(q, 'need')), ...anyOf.map(g => `<span class="wchips anyof">${g.map(q => wchip(q, 'any')).join(`<span class="or">${esc(u.or)}</span>`)}</span>`)];
-  const label = needs.length ? u.needsRequired : u.needsAnyOf;
+  const rows = [];
+  needs.forEach((q, i) => rows.push(`<div class="req"><span class="conj">${i ? esc(u.and) : ''}</span><span class="wchips">${wchip(q, 'need')}</span></div>`));
+  anyOf.forEach(g => rows.push(`<div class="req"><span class="conj">${esc(rows.length ? u.andOneOf : u.oneOf)}</span><span class="wchips">${g.map(q => wchip(q, 'any')).join(`<span class="or">${esc(u.or)}</span>`)}</span></div>`));
   return `<section class="deps" id="sec-before">
     <h3>${esc(u.before)}</h3>
-    ${parts.length ? `<div class="dep-group"><h4>${esc(label)}</h4><div class="wchips">${parts.join(plus)}</div></div>` : ''}
+    ${rows.length ? `<div class="dep-group"><h4>${esc(u.needsRequired)}</h4><div class="req-list">${rows.join('')}</div></div>` : ''}
     ${helps.length ? `<div class="dep-group"><h4>${esc(u.needsHelpful)}</h4><div class="wchips">${helps.map(q => wchip(q, 'help')).join('')}</div></div>` : ''}
   </section>`;
 }
