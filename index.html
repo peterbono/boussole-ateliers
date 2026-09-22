@@ -118,13 +118,11 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .brief-side{display:flex;align-items:center;gap:10px;margin-left:auto}
 .brief-msg{font-size:13px;color:var(--ink-3);max-width:320px;text-align:right}
 .brief-msg.err{color:var(--warn-text)}
-.send{display:inline-flex;align-items:center;gap:8px;padding:8px 8px 8px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;transition:background .15s,opacity .15s,transform .1s}
-.send svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--bg);color:var(--ink)}
-.send:hover{background:var(--accent)}
-.send:hover svg{color:var(--accent)}
+.send{display:inline-flex;align-items:center;gap:8px;padding:8px 8px 8px 14px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:600;transition:filter .15s,opacity .15s,transform .1s}
+.send svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--accent-ink);color:var(--accent)}
+.send:hover{filter:brightness(1.08)}
 .send:active{transform:translateY(1px)}
-.send:disabled{opacity:.45;cursor:not-allowed}
-.send:disabled:hover{background:var(--ink)}
+.send:disabled{opacity:.4;cursor:not-allowed;filter:none}
 .readout{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-bottom:16px;font-size:14px}
 .readout .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500}
 .readout .rt button{color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;text-transform:none;letter-spacing:0;font-family:"Public Sans",sans-serif;font-size:12px}
