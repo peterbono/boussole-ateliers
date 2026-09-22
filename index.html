@@ -64,10 +64,11 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .hdr-right{display:flex;align-items:center;gap:10px}
-@media (max-width:700px){.hdr{align-items:center}.hdr-right{width:100%;justify-content:space-between}}
-.lang{display:inline-flex;gap:2px;background:var(--surface-2);padding:3px;border-radius:9px}
-.lang button{padding:5px 9px;border-radius:7px;font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:.03em}
-.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+@media (max-width:700px){.hdr{align-items:center}}
+.lang{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13.5px;color:var(--line-strong)}
+.lang button{color:var(--ink-3);padding:6px 0}
+.lang button:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.lang button[aria-pressed="true"]{color:var(--ink);font-weight:600}
 .view[hidden]{display:none}
 
 /* boutons */
@@ -415,7 +416,7 @@ dialog.run::backdrop{background:var(--bg)}
 @media (max-width:700px){
   /* cibles tactiles : 44 px pour les actions principales, 40 px pour le reste (Fitts) */
   .tabs button{padding:12px 16px}
-  .lang button{padding:10px 12px;font-size:13.5px}
+  .lang button{padding:10px 0}
   .seg button{padding:10px 14px;font-size:13.5px}
   .opt{padding:11px 14px;font-size:14px}
   .opts.stack .opt{padding:12px 14px}
@@ -461,7 +462,6 @@ dialog.run::backdrop{background:var(--bg)}
         <button role="tab" aria-selected="true" data-tab="orient" data-ui="tabs.orient">Guide me</button>
         <button role="tab" aria-selected="false" data-tab="library" data-ui="tabs.library">Library</button>
       </nav>
-      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="fr" aria-pressed="false">FR</button></div>
     </div>
   </header>
 
@@ -506,6 +506,7 @@ dialog.run::backdrop{background:var(--bg)}
           <a id="foot-figjam" href="#" target="_blank" rel="noopener" data-ui="foot.figjam"></a>
           <a id="foot-mail" href="#" data-ui="foot.contact"></a>
         </nav>
+        <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><span aria-hidden="true">·</span><button type="button" data-lang="fr" aria-pressed="false">Français</button></div>
       </div>
       <div class="foot-col">
         <p class="foot-sub-title" data-ui="foot.updatesTitle"></p>
