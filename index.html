@@ -93,6 +93,8 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 /* layout orienter */
 .orient{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
 @media (max-width:860px){.orient{grid-template-columns:minmax(0,1fr)}}
+.orient.solo{grid-template-columns:minmax(0,1fr)}
+.orient.solo > .side{display:none}
 #result{min-width:0}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
 .side{position:sticky;top:env(safe-area-inset-top,0px);display:flex;flex-direction:column;gap:20px;max-height:100vh;overflow:auto;scrollbar-width:none;padding-bottom:20px}
@@ -152,6 +154,12 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .readout .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500}
 .readout .rt button{color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;text-transform:none;letter-spacing:0;font-family:"Public Sans",sans-serif;font-size:12px}
 .readout p{margin:0;color:var(--ink)}
+.readout-set{display:flex;flex-wrap:wrap;gap:10px 26px;margin:8px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+.readout-set > div{min-width:0}
+.readout-set dt{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:3px}
+.readout-set dd{margin:0;font-size:13.5px;line-height:1.35;color:var(--ink);font-weight:500}
+.readout .rt-a{display:flex;align-items:center;gap:16px}
+.readout .rt-a .edit{color:var(--accent);font-weight:600}
 .readout .pins{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--ink-2)}
 .acc{padding:0}
 .acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:14px 18px;border-radius:16px}
@@ -175,13 +183,6 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .diag-q .t{font-size:13.5px;font-weight:600;color:var(--ink)}
 .diag-res{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:13px;color:var(--ink-2)}
 .diag-res b{color:var(--ink)}
-.recap-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.recap .q-label{flex-wrap:wrap}
-.recap .q-label small{font-weight:400;font-size:12.5px;color:var(--ink-3)}
-.recap-edit{flex:none;font-size:13px;font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-.recap-edit:hover{text-decoration-thickness:2px}
-.recap-val{margin:10px 0 0;font-size:14px;line-height:1.55;color:var(--ink)}
-.side.folded > .panel.q:not(.recap),.side.folded > .reset{display:none}
 .reset{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13.5px;font-weight:500;color:var(--ink-2);transition:border-color .12s,color .12s,background .12s}
 .reset svg{width:14px;height:14px}
 .reset:hover{border-color:var(--line-strong);color:var(--ink);background:var(--surface-2)}
@@ -473,7 +474,8 @@ dialog.run::backdrop{background:var(--bg)}
   .step-track::before{top:7px}
   .stepper{gap:8px}
   .diag-toggle{display:inline-block;padding:10px 2px}
-  .recap-edit{padding:8px 0 8px 12px;margin:-8px 0}
+  .readout .rt-a button{padding:8px 0;margin:-8px 0}
+  .readout-set{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
   .reset{width:100%;justify-content:center;padding:12px 14px}
   .btn.small{padding:11px 14px;font-size:13.5px}
   .wchip{padding:9px 13px 9px 11px;font-size:13.5px}
@@ -529,10 +531,6 @@ dialog.run::backdrop{background:var(--bg)}
     </details>
     <div class="orient">
       <aside class="side">
-        <div class="panel q recap" id="recap" hidden>
-          <div class="recap-top"><span class="q-label"><span data-ui="recap.title"></span><small data-ui="recap.from"></small></span><button type="button" class="recap-edit" id="recap-edit" data-ui="recap.edit"></button></div>
-          <p class="recap-val" id="recap-val"></p>
-        </div>
         <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="stepper" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
@@ -796,19 +794,9 @@ function renderStepper(){
     <p class="step-now">${esc(st.hint)}</p>`;
 }
 let folded = store.get('folded', false);
-function renderRecap(){
-  const on = !!(ans.brief && ans.brief.reason) && folded;
-  document.querySelector('.side').classList.toggle('folded', on);
-  document.getElementById('recap').hidden = !on;
-  if(!on) return;
-  const gs = ans.goals.map(id => L.goals[id]);
-  document.getElementById('recap-val').textContent = [
-    L.stages[ans.stage].name, L.teams[ans.team], L.triggers[ans.trigger].name,
-    gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', '),
-    L.horizons[ans.horizon],
-  ].filter(Boolean).join(' · ');
-}
-function setFolded(v){ folded = v; store.set('folded', v); renderRecap(); }
+const isFolded = () => !!(ans.brief && ans.brief.reason) && folded;
+function renderRecap(){ document.querySelector('.orient').classList.toggle('solo', isFolded()); }
+function setFolded(v){ folded = v; store.set('folded', v); renderRecap(); renderResult(); }
 function renderQuestions(){
   const mk = (q, list, tex, stack) => {
     document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
@@ -826,7 +814,6 @@ function renderQuestions(){
   renderRecap();
 }
 document.querySelector('.side').addEventListener('click', e => {
-  if(e.target.closest('#recap-edit')){ setFolded(false); document.getElementById('acc-stage').scrollIntoView({block:'nearest'}); return; }
   const b = e.target.closest('[data-q][data-id]'); if(!b) return;
   const acc = b.classList.contains('step-dot') ? null : b.closest('details');
   ans[b.dataset.q] = b.dataset.id;
@@ -911,7 +898,10 @@ function renderResult(){
   let html = '';
   if(ans.brief && ans.brief.reason){
     const b = ans.brief, names = ids => ids.map(id => byId(T, id)).filter(Boolean).map(t => `<span class="wchip static">${esc(tx(t).name)}</span>`).join('');
-    html += `<div class="readout"><div class="rt"><span>${esc(u.brief.read)}</span><button type="button" id="brief-clear">${esc(u.brief.clear)}</button></div><p>${esc(b.reason)}</p>${(ans.pin.length || ans.skip.length) ? `<div class="pins">${ans.pin.length ? `<span>${esc(u.brief.pinned)}</span>${names(ans.pin)}` : ''}${ans.skip.length ? `<span>${esc(u.brief.skipped)}</span>${names(ans.skip)}` : ''}</div>` : ''}</div>`;
+    const gs = ans.goals.map(id => L.goals[id]);
+    const set = [[u.q.stage, L.stages[ans.stage].name], [u.q.team, L.teams[ans.team]], [u.q.trigger, L.triggers[ans.trigger].name],
+      [u.q.goals, gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ')], [u.q.horizon, L.horizons[ans.horizon]]];
+    html += `<div class="readout"><div class="rt"><span>${esc(u.brief.read)}</span><span class="rt-a">${isFolded() ? `<button type="button" class="edit" id="recap-edit">${esc(u.recap.edit)}</button>` : ''}<button type="button" id="brief-clear">${esc(u.brief.clear)}</button></span></div><p>${esc(b.reason)}</p>${isFolded() ? `<dl class="readout-set">${set.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}${(ans.pin.length || ans.skip.length) ? `<div class="pins">${ans.pin.length ? `<span>${esc(u.brief.pinned)}</span>${names(ans.pin)}` : ''}${ans.skip.length ? `<span>${esc(u.brief.skipped)}</span>${names(ans.skip)}` : ''}</div>` : ''}</div>`;
   }
   html += `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
@@ -979,6 +969,7 @@ function planHtml(pick, total){
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
+  if(e.target.closest('#recap-edit')){ setFolded(false); return; }
   if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; setFolded(false); saveAns(); renderQuestions(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
 });
