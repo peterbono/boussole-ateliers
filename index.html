@@ -150,14 +150,18 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .diag-q .t{font-size:13.5px;font-weight:600;color:var(--ink)}
 .diag-res{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:13px;color:var(--ink-2)}
 .diag-res b{color:var(--ink)}
-.reset{align-self:flex-start;font-size:13px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px}
+.reset{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13.5px;font-weight:500;color:var(--ink-2);transition:border-color .12s,color .12s,background .12s}
+.reset svg{width:14px;height:14px}
+.reset:hover{border-color:var(--line-strong);color:var(--ink);background:var(--surface-2)}
+.reset:active{transform:translateY(1px)}
 
 /* résultat */
 .summary{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;margin-bottom:18px}
 .summary h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.015em}
 .summary p{margin:4px 0 0;color:var(--ink-2)}
-.stats{display:flex;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.stats b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.fact{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:7px;background:var(--surface-2);color:var(--ink-3);font-size:12.5px;line-height:1.4;font-variant-numeric:tabular-nums;cursor:default;user-select:none}
+.fact b{color:var(--ink-2);font-weight:600}
 .steps{display:flex;flex-direction:column;position:relative}
 .step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px;position:relative;padding-bottom:18px}
 .step::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
@@ -420,7 +424,8 @@ dialog.run::backdrop{background:var(--bg)}
   .brief-try .try{padding:10px 12px}
   .send{padding:10px 10px 10px 16px}
   .send svg{width:24px;height:24px}
-  .diag-toggle,.reset{display:inline-block;padding:10px 2px}
+  .diag-toggle{display:inline-block;padding:10px 2px}
+  .reset{width:100%;justify-content:center;padding:12px 14px}
   .btn.small{padding:11px 14px;font-size:13.5px}
   .wchip{padding:9px 13px 9px 11px;font-size:13.5px}
   .deps li button,.aside li button,.cell button{display:inline-flex;align-items:center;min-height:40px}
@@ -478,7 +483,7 @@ dialog.run::backdrop{background:var(--bg)}
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
         <details class="panel q acc" id="acc-goals"><summary><span class="q-label" data-ui="q.goals"></span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.horizon"></div><div class="opts" data-q="horizon"></div></div>
-        <button class="reset" id="reset" data-ui="reset"></button>
+        <button class="reset" id="reset" type="button"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.6-3.7"/><path d="M13.2 2.6v2.6h-2.6"/></svg><span data-ui="reset"></span></button>
       </aside>
       <main id="result"></main>
     </div>
@@ -817,7 +822,7 @@ function renderResult(){
   }
   html += `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
-      <p class="stats" style="margin-top:8px"><span><b>${pick.length}</b> ${esc(u.workshops(pick.length))}</span><span>${esc(u.time)} <b>${fmtDur(total)}</b></span></p></div>
+      <p class="facts"><span class="fact"><b>${pick.length}</b> ${esc(u.workshops(pick.length))}</span><span class="fact">${esc(u.time)} <b>${fmtDur(total)}</b></span></p></div>
     </div>
     <div class="result-bar">
       <div class="seg" id="view-seg"><button type="button" aria-pressed="${view === 'steps'}" data-view="steps">${esc(u.viewSteps)}</button><button type="button" aria-pressed="${view === 'plan'}" data-view="plan">${esc(u.viewPlan)}</button></div>
