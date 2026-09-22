@@ -305,7 +305,8 @@ dialog.zoom::backdrop{background:transparent}
 #zoom-content{height:100%;display:flex;flex-direction:column;gap:12px;padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box}
 .zoom-head{display:flex;align-items:center;gap:12px;color:#B4BCCF;font-size:13px}
 #zoom-content svg{flex:1;min-height:0;width:100%;height:100%;max-height:calc(100% - 40px);border-radius:12px}
-.ex-intro{font-size:12.5px;margin:8px 0 0}
+.ex-intro{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;color:var(--ink-3);margin:8px 0 0;line-height:1.4}
+.ex-intro svg{width:14px;height:14px;flex:none;margin-top:2px}
 .ex-context{font-size:14px;color:var(--ink-2);margin:10px 0 0;line-height:1.45}
 .ex-take{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
 .ex-take b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin-bottom:4px}
@@ -547,6 +548,7 @@ const ICON = {
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
   warn:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14 13H2z"/><path d="M8 6.5v3M8 11.5v.2"/></svg>',
   play:'<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>',
+  info:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4M8 5v.2"/></svg>',
   up:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7v7H2V7zM5 7l3-5c1 0 2 .7 2 2v3h3.2a1 1 0 0 1 1 1.2l-1 5a1 1 0 0 1-1 .8H5"/></svg>',
   down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9V2h3v7zM11 9l-3 5c-1 0-2-.7-2-2V9H2.8a1 1 0 0 1-1-1.2l1-5a1 1 0 0 1 1-.8H11"/></svg>',
 };
@@ -873,7 +875,7 @@ function previewBlock(t, filled){
   const u = UI(), x = tx(t), e = EX && EX[t.id] && EX[t.id][lang];
   const seg = e ? `<div class="seg pv-seg"><button type="button" aria-pressed="${!filled}" data-pv="empty">${esc(u.pvEmpty)}</button><button type="button" aria-pressed="${!!filled}" data-pv="filled">${esc(u.pvFilled)}</button></div>` : '';
   const svg = filled && e ? `<button type="button" class="zoom-btn" data-zoom="${t.id}" title="${esc(u.zoom)}">${Preview.renderFilled(LAYOUTS[t.id], e.blocks, {class:'pv', title:u.pvFilled})}</button>` : Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:u.preview(x.name)});
-  const note = filled && e ? `<p class="ex-context">${esc(e.context)}</p><div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div><p class="muted ex-intro">${esc(u.exampleIntro)}</p>` : '';
+  const note = filled && e ? `<p class="ex-intro">${ICON.info}<span>${esc(u.exampleIntro)}</span></p><p class="ex-context">${esc(e.context)}</p><div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(e.takeaway)}</p></div>` : '';
   return `${seg}${svg}${note}`;
 }
 const prepState = {

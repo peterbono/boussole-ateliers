@@ -89,9 +89,9 @@ function workshopPage(lang, t){
 <p class="hint">${esc(u.figjamHint)}${FIGJAM.community ? ` <a href="${FIGJAM.community}" target="_blank" rel="noopener">${esc(u.communityLink)}</a>` : ''}</p>`;
   const ex = EX[t.id] && EX[t.id][lang];
   if(ex){
-    html += `<section><h2>${esc(u.pvFilled)}</h2><p style="color:var(--ink-2);margin:0 0 12px">${esc(ex.context)}</p>
+    html += `<section><h2>${esc(u.pvFilled)}</h2>
 <div class="pv-box">${Preview.renderFilled(LAYOUTS[lang][t.id], ex.blocks, {class:'pv', title:u.pvFilled})}</div>
-<div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(ex.takeaway)}</p></div><p class="muted" style="font-size:13px;margin:8px 0 0">${esc(u.exampleIntro)}</p></section>`;
+<p class="ex-intro"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4M8 5v.2"/></svg><span>${esc(u.exampleIntro)}</span></p><p style="color:var(--ink-2);margin:10px 0 0">${esc(ex.context)}</p><div class="ex-take"><b>${esc(u.takeaway)}</b><p>${esc(ex.takeaway)}</p></div></section>`;
   }
   if(run){
     html += `<section><h2>${esc(u.howTo)}</h2>
