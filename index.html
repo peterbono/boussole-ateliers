@@ -255,8 +255,6 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .foot-lead{margin:0;font-size:14px;color:var(--ink-2);max-width:52ch;line-height:1.55}
 .foot-legal a{color:var(--ink-2);font-weight:600;text-decoration:none}
 .foot-legal a:hover{color:var(--ink);text-decoration:underline}
-.foot-tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 0}
-.foot-tags span{padding:3px 9px;border-radius:6px;border:1px solid var(--line-strong);font-size:12px;color:var(--ink-3);line-height:1.5}
 .foot-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .foot-links a{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:border-color .12s,color .12s,background .12s}
 .foot-links a svg{width:15px;height:15px;color:var(--ink-3)}
@@ -524,7 +522,6 @@ dialog.run::backdrop{background:var(--bg)}
     <div class="foot-main">
       <div class="foot-col">
         <p class="foot-lead" data-ui="foot.lead"></p>
-        <p class="foot-tags" id="foot-tags"></p>
         <nav class="foot-links">
           <a href="https://www.linkedin.com/in/floriangouloubi/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 5.6H1.9V14h1.7V5.6zM2.7 2a1 1 0 100 2 1 1 0 000-2zM14 9.4c0-2.2-1.2-3.2-2.7-3.2-1.2 0-1.8.7-2.1 1.2V5.6H7.5V14h1.7V9.5c0-.9.5-1.6 1.4-1.6.8 0 1.2.6 1.2 1.6V14H14V9.4z"/></svg>LinkedIn</a>
           <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.3"/><path d="M1.8 8h12.4M8 1.7c1.7 1.8 2.6 4 2.6 6.3S9.7 12.5 8 14.3C6.3 12.5 5.4 10.3 5.4 8s.9-4.5 2.6-6.3z"/></svg><span data-ui="foot.site"></span></a>
@@ -1195,7 +1192,6 @@ function footStatic(){
   const u = UI(), fj = document.getElementById('foot-figjam');
   fj.href = FIGJAM.community || '#'; fj.hidden = !FIGJAM.community;
   document.getElementById('foot-mail').href = `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass')}`;
-  document.getElementById('foot-tags').innerHTML = u.foot.tags.map(t => `<span>${esc(t)}</span>`).join('');
   document.getElementById('foot-copy').innerHTML = `© ${new Date().getFullYear()} <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener">Florian Gouloubi</a>`;
   const sub = document.getElementById('foot-sub');
   sub.href = SUBSCRIBE_URL || `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass · updates')}&body=${encodeURIComponent(u.foot.updatesBody)}`;
