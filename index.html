@@ -97,11 +97,18 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .opts.stack{flex-direction:column}
 .opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
 .opts.stack .opt small{font-size:12px;opacity:.75}
-.brief textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;line-height:1.45;color:var(--ink);background:var(--surface);resize:vertical;min-height:96px}
+.brief{margin-top:24px;padding:18px 20px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.brief-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.brief-title{font-family:"Bricolage Grotesque","Public Sans",sans-serif;font-size:18px;font-weight:700;letter-spacing:-.01em}
+.brief-sub{font-size:13.5px;color:var(--ink-3)}
+.brief-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}
+@media (max-width:700px){.brief-body{grid-template-columns:1fr}}
+.brief textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;font-size:14.5px;line-height:1.45;color:var(--ink);background:var(--surface);resize:vertical;min-height:84px}
 .brief textarea::placeholder{color:var(--ink-3)}
 .brief textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
-.brief-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.brief-msg{font-size:13px;color:var(--ink-3)}
+.brief-side{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:200px}
+.brief-side .btn{justify-content:center;padding:12px 16px;font-size:14.5px}
+.brief-msg{font-size:13px;color:var(--ink-3);max-width:220px}
 .brief-msg.err{color:var(--warn-text)}
 .readout{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-bottom:16px;font-size:14px}
 .readout .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500}
@@ -382,13 +389,12 @@ dialog.run::backdrop{background:var(--bg)}
   </header>
 
   <section class="view" id="view-orient" role="tabpanel">
+    <form class="brief" id="brief-form">
+      <div class="brief-head"><label class="brief-title" for="brief-text" data-ui="brief.title"></label><span class="brief-sub" data-ui="brief.sub"></span></div>
+      <div class="brief-body"><textarea id="brief-text" rows="3"></textarea><div class="brief-side"><button class="btn primary" type="submit" id="brief-go"></button><span class="brief-msg" id="brief-msg"></span></div></div>
+    </form>
     <div class="orient">
       <aside class="side">
-        <form class="panel q brief" id="brief-form">
-          <label class="q-label" for="brief-text" data-ui="brief.title"></label>
-          <textarea id="brief-text" rows="4"></textarea>
-          <div class="brief-row"><button class="btn primary small" type="submit" id="brief-go"></button><span class="brief-msg" id="brief-msg"></span></div>
-        </form>
         <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
