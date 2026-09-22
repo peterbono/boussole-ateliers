@@ -249,6 +249,13 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .foot-sub-text{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.5;max-width:40ch}
 .foot .btn.primary{align-self:flex-start;margin-top:4px;padding:11px 16px}
 .foot-legal{margin:0;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.totop{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;display:inline-flex;align-items:center;gap:8px;padding:11px 16px 11px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:13.5px;font-weight:600;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:opacity .18s,transform .18s,border-color .12s}
+.totop svg{width:15px;height:15px;color:var(--ink-3)}
+.totop.on{opacity:1;transform:translateY(0)}
+.totop:hover{border-color:var(--line-strong)}
+.totop:active{transform:translateY(1px)}
+@media (max-width:700px){.totop{right:14px;padding:12px 16px 12px 14px}}
+@media print{.totop{display:none!important}}
 .empty{padding:30px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);border-radius:14px}
 
 /* panneau latéral */
@@ -516,6 +523,7 @@ dialog.run::backdrop{background:var(--bg)}
     <p class="foot-legal"><span data-ui="foot.legal"></span></p>
   </footer>
 </div>
+<button type="button" id="totop" class="totop" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg><span data-ui="toTop"></span></button>
 
 <dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-content"></div></dialog>
 <dialog id="run" class="run" aria-label="Run mode"><div id="run-content"></div></dialog>
@@ -1131,6 +1139,21 @@ document.addEventListener('keydown', e => {
   if(e.key === 'ArrowRight'){ goStep(RUNSTATE.i + 1); } else if(e.key === 'ArrowLeft'){ goStep(RUNSTATE.i - 1); } else if(e.key === ' '){ e.preventDefault(); const b = runDlg.querySelector('[data-run-pause]'); if(b) b.click(); }
 });
 document.addEventListener('click', e => { const r = e.target.closest('[data-run]'); if(r){ e.stopPropagation(); startRun(r.dataset.run); } }, true);
+
+/* ---------- retour en haut ---------- */
+const toTop = document.getElementById('totop');
+toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+let toTopRaf = 0;
+addEventListener('scroll', () => {
+  if(toTopRaf) return;
+  toTopRaf = requestAnimationFrame(() => {
+    toTopRaf = 0;
+    const show = scrollY > 900 && store.get('tab', 'orient') === 'library';
+    if(show === !toTop.hidden) return;
+    if(show){ toTop.hidden = false; requestAnimationFrame(() => toTop.classList.add('on')); }
+    else { toTop.classList.remove('on'); setTimeout(() => { if(!toTop.classList.contains('on')) toTop.hidden = true; }, 200); }
+  });
+}, {passive:true});
 
 /* ---------- onglets et langue ---------- */
 document.querySelector('.tabs').addEventListener('click', e => {
