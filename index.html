@@ -536,7 +536,7 @@ dialog.run::backdrop{background:var(--bg)}
         <a class="btn primary" id="foot-sub" href="#" target="_blank" rel="noopener" data-ui="foot.updatesCta"></a>
       </div>
     </div>
-    <div class="foot-legal"><span data-ui="foot.legal"></span><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><span aria-hidden="true">·</span><button type="button" data-lang="fr" aria-pressed="false">Français</button></div></div>
+    <div class="foot-legal"><span><span id="foot-copy"></span> · <span data-ui="foot.legal"></span></span><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><span aria-hidden="true">·</span><button type="button" data-lang="fr" aria-pressed="false">Français</button></div></div>
   </footer>
 </div>
 <button type="button" id="totop" class="totop" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg><span data-ui="toTop"></span></button>
@@ -1192,6 +1192,7 @@ function footStatic(){
   const u = UI(), fj = document.getElementById('foot-figjam');
   fj.href = FIGJAM.community || '#'; fj.hidden = !FIGJAM.community;
   document.getElementById('foot-mail').href = `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass')}`;
+  document.getElementById('foot-copy').textContent = `© ${new Date().getFullYear()} Florian Gouloubi`;
   const sub = document.getElementById('foot-sub');
   sub.href = SUBSCRIBE_URL || `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass · updates')}&body=${encodeURIComponent(u.foot.updatesBody)}`;
   if(!SUBSCRIBE_URL) sub.removeAttribute('target');
