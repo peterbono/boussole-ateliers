@@ -106,11 +106,10 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .opt:active{transform:translateY(1px)}
 .opt[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .opts.stack{flex-direction:column}
-.opts.stack .opt{border-radius:10px;text-align:left;flex:1;min-width:0}
-.opt-row{display:flex;align-items:center;gap:6px;position:relative}
-.opt-info{flex:none}
-.hint-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:5;max-width:min(260px,calc(100% - 8px));padding:8px 10px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;box-shadow:var(--shadow)}
-.hint-pop::before{content:"";position:absolute;right:9px;top:-4px;width:8px;height:8px;background:var(--ink);transform:rotate(45deg)}
+.opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.opts.stack .opt small{font-size:12px;opacity:.75;font-weight:400}
+.q-label{justify-content:space-between}
+.q-info{flex:none}
 .brief{margin-top:20px;border-radius:14px;background:var(--surface);border:1px solid var(--line);transition:box-shadow .15s,border-color .15s}
 .brief:focus-within{border-color:var(--line-strong);box-shadow:var(--shadow)}
 .brief summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 14px;border-radius:14px}
@@ -505,9 +504,9 @@ dialog.run::backdrop{background:var(--bg)}
     </details>
     <div class="orient">
       <aside class="side">
-        <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
+        <details class="panel q acc" id="acc-stage"><summary><span class="q-label"><span data-ui="q.stage"></span><button class="info q-info" type="button" data-hints="stage" aria-pressed="false" aria-label="Show explanations">i</button></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
-        <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
+        <details class="panel q acc" id="acc-trigger"><summary><span class="q-label"><span data-ui="q.trigger"></span><button class="info q-info" type="button" data-hints="trigger" aria-pressed="false" aria-label="Show explanations">i</button></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
         <details class="panel q acc" id="acc-goals"><summary><span class="q-label" data-ui="q.goals"></span><span class="val" data-val="goals"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="checks" data-q="goals"></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.horizon"></div><div class="opts" data-q="horizon"></div></div>
         <button class="reset" id="reset" type="button"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.6-3.7"/><path d="M13.2 2.6v2.6h-2.6"/></svg><span data-ui="reset"></span></button>
@@ -591,6 +590,7 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 })();
 let view = store.get('view', 'steps');
 if(new URLSearchParams(location.search).get('view') === 'plan') view = 'plan';
+const hintsOn = new Set(store.get('hints', []));
 let diag = store.get('diag', {open:false, a:[null,null,null,null,null,null]});
 function diagnose(a){
   // score par stade à partir des 6 réponses (index 0..2), puis équipe et manques déduits
@@ -763,22 +763,22 @@ function renderQuestions(){
   const mk = (q, list, tex, stack) => {
     document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
       const x = tex(o); const name = typeof x === 'string' ? x : x.name, hint = typeof x === 'string' ? '' : x.hint;
-      if(stack && hint) return `<div class="opt-row"><button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}</button><button class="info opt-info" type="button" data-hint="${esc(hint)}" aria-label="${esc(hint)}">i</button></div>`;
-      return `<button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}</button>`;
+      const sel = ans[q] === o.id, show = stack && hint && (sel || hintsOn.has(q));
+      return `<button class="opt" type="button" aria-pressed="${sel}" data-q="${q}" data-id="${o.id}">${esc(name)}${show ? `<small>${esc(hint)}</small>` : ''}</button>`;
     }).join('');
   };
   mk('stage', STAGES, o => L.stages[o.id], true); mk('team', TEAMS, o => L.teams[o.id], false); mk('trigger', TRIGGERS, o => L.triggers[o.id], true); mk('horizon', HORIZONS, o => L.horizons[o.id], false);
   document.querySelector('[data-q="goals"]').innerHTML = GOALS.map(g => `<label class="check"><input type="checkbox" id="goal-${g.id}" data-goal="${g.id}" ${ans.goals.includes(g.id) ? 'checked' : ''}><span>${esc(L.goals[g.id])}</span></label>`).join('');
+  document.querySelectorAll('[data-hints]').forEach(el => el.setAttribute('aria-pressed', String(hintsOn.has(el.dataset.hints))));
   document.querySelector('[data-val="stage"]').textContent = L.stages[ans.stage].name;
   document.querySelector('[data-val="trigger"]').textContent = L.triggers[ans.trigger].name;
   const gs = ans.goals.map(id => L.goals[id]);
   document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
 }
 document.querySelector('.side').addEventListener('click', e => {
-  const i = e.target.closest('[data-hint]');
-  if(i){ e.preventDefault(); const open = i.getAttribute('aria-expanded') === 'true'; closeHints(); if(!open){ i.setAttribute('aria-expanded', 'true'); const t = document.createElement('span'); t.className = 'hint-pop'; t.textContent = i.dataset.hint; i.parentNode.appendChild(t); } return; }
+  const h = e.target.closest('[data-hints]');
+  if(h){ e.preventDefault(); e.stopPropagation(); const q = h.dataset.hints; hintsOn.has(q) ? hintsOn.delete(q) : hintsOn.add(q); store.set('hints', [...hintsOn]); renderQuestions(); return; }
   const b = e.target.closest('.opt'); if(!b || !b.dataset.q) return;
-  closeHints();
   const acc = b.closest('details');
   ans[b.dataset.q] = b.dataset.id;
   saveAns(); renderQuestions(); renderResult();
@@ -791,13 +791,6 @@ document.querySelector('.side').addEventListener('change', e => {
   saveAns(); renderQuestions(); renderResult();
 });
 document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); saveAns(); renderQuestions(); renderResult(); document.getElementById('brief-text').value = ''; store.set('briefText', ''); });
-
-function closeHints(){
-  document.querySelectorAll('.hint-pop').forEach(el => el.remove());
-  document.querySelectorAll('[data-hint][aria-expanded="true"]').forEach(el => el.setAttribute('aria-expanded', 'false'));
-}
-document.addEventListener('click', e => { if(!e.target.closest('[data-hint]') && !e.target.closest('.hint-pop')) closeHints(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeHints(); });
 
 /* ---------- brief IA ---------- */
 const briefForm = document.getElementById('brief-form'), briefText = document.getElementById('brief-text'), briefMsg = document.getElementById('brief-msg'), briefGo = document.getElementById('brief-go');
