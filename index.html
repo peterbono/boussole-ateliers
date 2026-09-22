@@ -58,7 +58,8 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 /* header */
 .hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-.hdr h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+.hdr h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
+.hdr h1 .logo{width:.8em;height:.8em;flex:none;color:var(--ink)}
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:12px}
 .tabs button{padding:8px 14px;border-radius:9px;color:var(--ink-2);font-weight:600;font-size:14px}
 .tabs button:hover{color:var(--ink)}
@@ -464,7 +465,7 @@ dialog.run::backdrop{background:var(--bg)}
 <body>
 <div class="wrap">
   <header class="hdr">
-    <h1 id="site-title">Workshop Compass</h1>
+    <h1 id="site-title"><svg class="logo" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M15.2 8.8l-1.9 4.5-4.5 1.9 1.9-4.5z" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/></svg><span>Workshop Compass</span></h1>
     <div class="hdr-right">
       <nav class="tabs" role="tablist" aria-label="Views">
         <button role="tab" aria-selected="true" data-tab="orient" data-ui="tabs.orient">Guide me</button>
@@ -730,7 +731,7 @@ function recommend(a){
 function applyStatic(){
   document.documentElement.lang = lang;
   document.title = L.title;
-  document.getElementById('site-title').textContent = L.title;
+  document.querySelector('#site-title span').textContent = L.title;
   document.querySelectorAll('[data-ui]').forEach(el => {
     const v = el.dataset.ui.split('.').reduce((o, k) => o && o[k], UI());
     if(typeof v === 'string') el.textContent = v;
