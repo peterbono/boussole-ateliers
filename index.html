@@ -255,9 +255,13 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .foot-lead{margin:0;font-size:14px;color:var(--ink-2);max-width:52ch;line-height:1.55}
 .foot-legal a{color:var(--ink-2);font-weight:600;text-decoration:none}
 .foot-legal a:hover{color:var(--ink);text-decoration:underline}
-.foot-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:2px}
-.foot-links a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 0}
-.foot-links a:hover{color:var(--ink);text-decoration:underline}
+.foot-tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 0}
+.foot-tags span{padding:3px 9px;border-radius:6px;border:1px solid var(--line-strong);font-size:12px;color:var(--ink-3);line-height:1.5}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.foot-links a{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:border-color .12s,color .12s,background .12s}
+.foot-links a svg{width:15px;height:15px;color:var(--ink-3)}
+.foot-links a:hover{border-color:var(--line-strong);color:var(--ink);background:var(--surface-2)}
+.foot-links a:hover svg{color:var(--ink-2)}
 .foot-sub-title{margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .foot-sub-text{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55;max-width:40ch}
 .foot .btn.primary{align-self:flex-start;margin-top:4px;padding:11px 16px}
@@ -520,12 +524,13 @@ dialog.run::backdrop{background:var(--bg)}
     <div class="foot-main">
       <div class="foot-col">
         <p class="foot-lead" data-ui="foot.lead"></p>
+        <p class="foot-tags" id="foot-tags"></p>
         <nav class="foot-links">
-          <a href="https://www.linkedin.com/in/floriangouloubi/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener" data-ui="foot.site"></a>
-          <a href="https://github.com/peterbono/boussole-ateliers" target="_blank" rel="noopener">GitHub</a>
-          <a id="foot-figjam" href="#" target="_blank" rel="noopener" data-ui="foot.figjam"></a>
-          <a id="foot-mail" href="#" data-ui="foot.contact"></a>
+          <a href="https://www.linkedin.com/in/floriangouloubi/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 5.6H1.9V14h1.7V5.6zM2.7 2a1 1 0 100 2 1 1 0 000-2zM14 9.4c0-2.2-1.2-3.2-2.7-3.2-1.2 0-1.8.7-2.1 1.2V5.6H7.5V14h1.7V9.5c0-.9.5-1.6 1.4-1.6.8 0 1.2.6 1.2 1.6V14H14V9.4z"/></svg>LinkedIn</a>
+          <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.3"/><path d="M1.8 8h12.4M8 1.7c1.7 1.8 2.6 4 2.6 6.3S9.7 12.5 8 14.3C6.3 12.5 5.4 10.3 5.4 8s.9-4.5 2.6-6.3z"/></svg><span data-ui="foot.site"></span></a>
+          <a href="https://github.com/peterbono/boussole-ateliers" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2a6.8 6.8 0 00-2.2 13.3c.35.06.47-.15.47-.33v-1.2c-1.9.4-2.3-.9-2.3-.9-.3-.8-.76-1-.76-1-.62-.42.05-.41.05-.41.68.05 1.04.7 1.04.7.6 1.05 1.6.75 2 .57.06-.44.24-.75.43-.92-1.5-.17-3.1-.76-3.1-3.4 0-.75.27-1.36.7-1.84-.07-.17-.3-.87.07-1.8 0 0 .58-.19 1.9.7a6.5 6.5 0 013.4 0c1.3-.89 1.88-.7 1.88-.7.38.93.14 1.63.07 1.8.44.48.7 1.1.7 1.84 0 2.65-1.6 3.23-3.12 3.4.25.21.47.63.47 1.27v1.88c0 .18.12.4.48.33A6.8 6.8 0 008 1.2z"/></svg>GitHub</a>
+          <a id="foot-figjam" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h4a2 2 0 110 4H6a2 2 0 110-4zM6 6.5h4a2 2 0 110 4H6a2 2 0 110-4z"/><circle cx="10" cy="12.5" r="2"/></svg><span data-ui="foot.figjam"></span></a>
+          <a id="foot-mail" href="#"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><rect x="1.8" y="3.4" width="12.4" height="9.2" rx="1.6"/><path d="M2.4 4.6L8 8.8l5.6-4.2"/></svg><span data-ui="foot.contact"></span></a>
         </nav>
       </div>
       <div class="foot-col">
@@ -1190,6 +1195,7 @@ function footStatic(){
   const u = UI(), fj = document.getElementById('foot-figjam');
   fj.href = FIGJAM.community || '#'; fj.hidden = !FIGJAM.community;
   document.getElementById('foot-mail').href = `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass')}`;
+  document.getElementById('foot-tags').innerHTML = u.foot.tags.map(t => `<span>${esc(t)}</span>`).join('');
   document.getElementById('foot-copy').innerHTML = `© ${new Date().getFullYear()} <a href="https://www.floriangouloubi.com/" target="_blank" rel="noopener">Florian Gouloubi</a>`;
   const sub = document.getElementById('foot-sub');
   sub.href = SUBSCRIBE_URL || `mailto:floriangouloubi@gmail.com?subject=${encodeURIComponent('Workshop Compass · updates')}&body=${encodeURIComponent(u.foot.updatesBody)}`;
