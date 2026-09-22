@@ -221,6 +221,8 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .select:focus-within{border-color:var(--accent)}
 .search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;height:36px;min-width:220px}
 .search:focus-within{border-color:var(--accent)}
+.search svg{flex:none;color:var(--ink-3)}
+.search:focus-within svg{color:var(--ink-2)}
 .search input{border:0;background:none;font:inherit;color:var(--ink);width:100%;outline:none}
 .search input::placeholder{color:var(--ink-3)}
 .count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);margin-left:auto}
@@ -916,7 +918,7 @@ function renderFilters(){
   const opt = (id, name, cur) => `<option value="${id}"${cur === id ? ' selected' : ''}>${esc(name)}</option>`;
   const seg = `<div class="seg" id="lib-mode"><button type="button" aria-pressed="${lib.mode === 'cards'}" data-mode="cards">${esc(u.viewCards)}</button><button type="button" aria-pressed="${lib.mode === 'list'}" data-mode="list">${esc(u.viewList)}</button></div>`;
   document.getElementById('filters').innerHTML = seg + '<span class="sep"></span>'
-    + `<label class="search"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
+    + `<label class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><input type="search" id="lib-q" placeholder="${esc(u.search)}" value="${esc(lib.q)}" aria-label="${esc(u.search)}"></label>`
     + `<label class="select"><span>${esc(u.filterPhase)}</span><select id="lib-phase">${opt('all', u.all, lib.phase)}${PHASES.map(p => opt(p.id, L.phases[p.id], lib.phase)).join('')}</select></label>`
     + `<label class="select"><span>${esc(u.filterStage)}</span><select id="lib-stage">${opt('all', u.allM, lib.stage)}${STAGES.map(s => opt(s.id, L.stages[s.id].name, lib.stage)).join('')}</select></label>`
     + `<span class="count" id="count"></span>`;
