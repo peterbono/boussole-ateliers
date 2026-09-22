@@ -27,6 +27,13 @@ Live: https://workshop-compass.vercel.app
 
 Guards: 1 500 characters max, `BRIEF_DAILY_LIMIT` per IP per day (default 5), `BRIEF_GLOBAL_DAILY` for everyone (default 400, about 0.5 $ a day at Haiku prices), `BRIEF_ENABLED=false` to switch it off. Counters are per function instance (best effort); set a monthly spend limit on the Anthropic key as the hard cap. Each call logs a one-line JSON (stage, trigger, goals, token usage, no text) to the Vercel logs.
 
+## Security
+
+- No account, no database, no cookie: the only state is `localStorage` in the visitor's browser and the parameters in the URL.
+- Static pages and assets are served by Vercel with CSP, `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` and `Cross-Origin-Opener-Policy`. The CSP allows inline scripts and styles (the app ships one inline script and uses `style` attributes for phase hues), so it hardens resource loading and framing rather than inline injection; every string rendered by the app goes through an HTML escape first.
+- `/api/brief` accepts POST only, rejects bodies over 8 kB, rejects browser calls from other origins, truncates the brief to 1 500 characters, wraps it in a `<brief>` tag with an instruction to treat it as data, and constrains the model's answer to a JSON schema whose enums only contain known ids. The key lives in the Vercel env, never in the client.
+- Rate limits: per IP (platform headers, not client-supplied) and global per day, plus the monthly spend cap on the Anthropic key as the real ceiling.
+
 ## Deploy
 
 Static site on Vercel, auto-deployed on every push to `main`.
