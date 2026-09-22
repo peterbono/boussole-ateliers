@@ -97,6 +97,17 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .opts.stack{flex-direction:column}
 .opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
 .opts.stack .opt small{font-size:12px;opacity:.75}
+.brief textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;line-height:1.45;color:var(--ink);background:var(--surface);resize:vertical;min-height:96px}
+.brief textarea::placeholder{color:var(--ink-3)}
+.brief textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.brief-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.brief-msg{font-size:13px;color:var(--ink-3)}
+.brief-msg.err{color:var(--warn-text)}
+.readout{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-bottom:16px;font-size:14px}
+.readout .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500}
+.readout .rt button{color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;text-transform:none;letter-spacing:0;font-family:"Public Sans",sans-serif;font-size:12px}
+.readout p{margin:0;color:var(--ink)}
+.readout .pins{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--ink-2)}
 .acc{padding:0}
 .acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:14px 18px;border-radius:16px}
 .acc summary::-webkit-details-marker{display:none}
@@ -373,6 +384,11 @@ dialog.run::backdrop{background:var(--bg)}
   <section class="view" id="view-orient" role="tabpanel">
     <div class="orient">
       <aside class="side">
+        <form class="panel q brief" id="brief-form">
+          <label class="q-label" for="brief-text" data-ui="brief.title"></label>
+          <textarea id="brief-text" rows="4"></textarea>
+          <div class="brief-row"><button class="btn primary small" type="submit" id="brief-go"></button><span class="brief-msg" id="brief-msg"></span></div>
+        </form>
         <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
@@ -421,7 +437,7 @@ const tx = t => L.templates[t.id];
 const track = (name, data) => { try{ window.va && window.va('event', {name, data}); }catch(e){} };
 
 /* ---------- état ---------- */
-const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine'};
+const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine', pin:[], skip:[], brief:null};
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 (function readUrl(){
   const p = new URLSearchParams(location.search), ok = (arr, v) => arr.some(x => x.id === v);
@@ -430,6 +446,10 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
   if(ok(TRIGGERS, p.get('trigger'))) ans.trigger = p.get('trigger');
   if(ok(HORIZONS, p.get('horizon'))) ans.horizon = p.get('horizon');
   if(p.get('goals')){ const g = p.get('goals').split(',').filter(v => ok(GOALS, v)); if(g.length) ans.goals = g; }
+  const okT = v => T.some(t => t.id === v);
+  if(p.has('pin')) ans.pin = p.get('pin').split(',').filter(okT);
+  if(p.has('skip')) ans.skip = p.get('skip').split(',').filter(okT);
+  if(!Array.isArray(ans.pin)) ans.pin = []; if(!Array.isArray(ans.skip)) ans.skip = [];
 })();
 let view = store.get('view', 'steps');
 if(new URLSearchParams(location.search).get('view') === 'plan') view = 'plan';
@@ -474,6 +494,8 @@ function syncUrl(){
   const url = new URL(location.href);
   ['stage','team','trigger','horizon'].forEach(k => url.searchParams.set(k, ans[k]));
   url.searchParams.set('goals', ans.goals.join(','));
+  if(ans.pin.length) url.searchParams.set('pin', ans.pin.join(',')); else url.searchParams.delete('pin');
+  if(ans.skip.length) url.searchParams.set('skip', ans.skip.join(',')); else url.searchParams.delete('skip');
   if(view === 'plan') url.searchParams.set('view', 'plan'); else url.searchParams.delete('view');
   if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
   url.searchParams.delete('open');
@@ -531,9 +553,11 @@ function recommend(a){
   const cap = byId(HORIZONS, a.horizon).cap;
   const scored = T.map(t => {
     const fit = t.fit[si];
-    if(fit === 0) return null;
-    if(t.minTeam && team < t.minTeam) return null;
-    let s = fit * 3;
+    if((a.skip || []).includes(t.id)) return null;
+    const pinned = (a.pin || []).includes(t.id);
+    if(fit === 0 && !pinned) return null;
+    if(t.minTeam && team < t.minTeam && !pinned) return null;
+    let s = Math.max(fit, pinned ? 3 : 0) * 3 + (pinned ? 10 : 0);
     const gm = t.goals.filter(g => a.goals.includes(g)).length;
     s += Math.min(gm, 2) * 2;
     if(t.triggers.includes(a.trigger)) s += 3;
@@ -549,6 +573,7 @@ function recommend(a){
     scored.forEach(x => { if(pick.length < cap && !pick.includes(x) && x.s >= min) pick.push(x); });
   } else pick = scored.filter(x => x.s >= min).slice(0, cap);
   if(pick.length === 0) pick = scored.slice(0, Math.min(cap, 3));
+  scored.forEach(x => { if((a.pin || []).includes(x.t.id) && !pick.includes(x)) pick.push(x); });
   pick = orderByDeps(pick);
   // raisons par étape + chaînage
   const ids = pick.map(x => x.t.id), u = UI(), st = L.stages[a.stage].short;
@@ -618,7 +643,31 @@ document.querySelector('.side').addEventListener('change', e => {
   if(c.checked){ if(i < 0) ans.goals.push(id); } else if(ans.goals.length > 1) ans.goals.splice(i, 1); else { c.checked = true; return; }
   saveAns(); renderQuestions(); renderResult();
 });
-document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); saveAns(); renderQuestions(); renderResult(); });
+document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); saveAns(); renderQuestions(); renderResult(); document.getElementById('brief-text').value = ''; store.set('briefText', ''); });
+
+/* ---------- brief IA ---------- */
+const briefForm = document.getElementById('brief-form'), briefText = document.getElementById('brief-text'), briefMsg = document.getElementById('brief-msg'), briefGo = document.getElementById('brief-go');
+briefText.value = store.get('briefText', '');
+briefText.addEventListener('input', () => store.set('briefText', briefText.value));
+function briefStatic(){ const b = UI().brief; briefText.placeholder = b.placeholder; briefGo.textContent = b.button; }
+briefForm.addEventListener('submit', async e => {
+  e.preventDefault(); const b = UI().brief, text = briefText.value.trim();
+  briefMsg.className = 'brief-msg';
+  if(text.length < 20){ briefMsg.textContent = b.short; briefMsg.classList.add('err'); return; }
+  briefGo.disabled = true; briefMsg.textContent = b.loading;
+  try{
+    const r = await fetch('/api/brief', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({brief:text, lang})});
+    if(r.status === 429){ briefMsg.textContent = b.limit; briefMsg.classList.add('err'); return; }
+    if(r.status === 503){ briefMsg.textContent = b.off; briefMsg.classList.add('err'); return; }
+    if(!r.ok) throw new Error(r.status);
+    const out = await r.json();
+    ans.stage = out.stage; ans.team = out.team; ans.trigger = out.trigger; ans.goals = out.goals; ans.horizon = out.horizon;
+    ans.pin = out.pin || []; ans.skip = out.skip || []; ans.brief = {reason: out.reason};
+    saveAns(); renderQuestions(); renderResult(); briefMsg.textContent = ''; track('brief', {stage:out.stage, trigger:out.trigger});
+    if(window.innerWidth < 860) document.getElementById('result').scrollIntoView({behavior:'smooth'});
+  }catch(err){ briefMsg.textContent = b.error; briefMsg.classList.add('err'); }
+  finally{ briefGo.disabled = false; }
+});
 
 /* ---------- parcours ---------- */
 function metaHtml(t){
@@ -647,7 +696,12 @@ function renderResult(){
   const {pick, scored, prereqs} = recommend(ans);
   const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
   const total = pick.reduce((s, x) => s + x.t.dur, 0);
-  let html = `<div class="summary">
+  let html = '';
+  if(ans.brief && ans.brief.reason){
+    const b = ans.brief, names = ids => ids.map(id => byId(T, id)).filter(Boolean).map(t => `<span class="wchip static">${esc(tx(t).name)}</span>`).join('');
+    html += `<div class="readout"><div class="rt"><span>${esc(u.brief.read)}</span><button type="button" id="brief-clear">${esc(u.brief.clear)}</button></div><p>${esc(b.reason)}</p>${(ans.pin.length || ans.skip.length) ? `<div class="pins">${ans.pin.length ? `<span>${esc(u.brief.pinned)}</span>${names(ans.pin)}` : ''}${ans.skip.length ? `<span>${esc(u.brief.skipped)}</span>${names(ans.skip)}` : ''}</div>` : ''}</div>`;
+  }
+  html += `<div class="summary">
       <div><h2>${esc(st.name)} · ${esc(tr.name.toLowerCase())}</h2>
       <p class="stats" style="margin-top:8px"><span><b>${pick.length}</b> ${esc(u.workshops(pick.length))}</span><span>${esc(u.time)} <b>${fmtDur(total)}</b></span></p></div>
     </div>
@@ -713,6 +767,7 @@ function planHtml(pick, total){
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
+  if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; saveAns(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
 });
 
@@ -968,7 +1023,7 @@ document.querySelector('.lang').addEventListener('click', e => {
 });
 
 /* ---------- boot ---------- */
-function renderAll(){ applyStatic(); renderQuestions(); renderDiag(); renderResult(); renderFilters(); renderLibrary(); }
+function renderAll(){ applyStatic(); briefStatic(); renderQuestions(); renderDiag(); renderResult(); renderFilters(); renderLibrary(); }
 renderAll();
 let savedTab = store.get('tab', 'orient'); if(savedTab === 'matrix') savedTab = 'library';
 if(lib.mode !== 'cards' && lib.mode !== 'list') lib.mode = 'cards';

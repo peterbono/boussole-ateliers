@@ -3,6 +3,7 @@ const I18N_EN = {
   code:'en', title:'Workshop Compass', figmaName:'Workshop Compass',
   ui:{
     tabs:{orient:'Guide me', library:'Library'}, viewCards:'Cards', viewList:'List',
+    brief:{title:'Describe your situation', placeholder:'Example: two squads, B2B SaaS with 140 customers, delivery has slowed since we added a third team, sales keeps pushing features, no user research since last year. We have about six weeks.', button:'Guide me from this brief', loading:'Reading your brief…', read:'Read from your brief', pinned:'Added', skipped:'Left out', clear:'Clear', short:'Give a bit more context (a few sentences).', limit:'Daily limit reached for the AI brief. The form on the left does the same job, or come back tomorrow.', off:'The AI brief is paused for now. The form does the same job.', error:'Could not read the brief right now. Try again, or use the form.'},
     q:{stage:'Product stage', team:'Product + tech team size', trigger:'Trigger', goals:'What is missing', horizon:'Time frame'},
     reset:'Reset',
     summary:(n, hz)=>`${n} workshop${n>1?'s':''} in order, for ${hz}. Each board opens in FigJam, duplicate it into your space.`,

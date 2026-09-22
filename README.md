@@ -21,6 +21,12 @@ Live: https://workshop-compass.vercel.app
 3. Add its layout to `layouts.en.js` and `layouts.fr.js`.
 4. Regenerate its FigJam section with `tools/figjam-gen.js` and add the node id to `FIGJAM.nodes`.
 
+## AI brief (optional)
+
+`api/brief.js` is a Vercel function that reads a free-text situation with Claude (`claude-haiku-4-5` by default) and maps it onto the form answers, plus workshops to pin or skip. The plan is still computed by the client-side engine. It needs `ANTHROPIC_API_KEY` in the Vercel project env; without it the site works and the brief box says the feature is paused.
+
+Guards: 1 500 characters max, `BRIEF_DAILY_LIMIT` per IP per day (default 5), `BRIEF_GLOBAL_DAILY` for everyone (default 400, about 0.5 $ a day at Haiku prices), `BRIEF_ENABLED=false` to switch it off. Counters are per function instance (best effort); set a monthly spend limit on the Anthropic key as the hard cap. Each call logs a one-line JSON (stage, trigger, goals, token usage, no text) to the Vercel logs.
+
 ## Deploy
 
 Static site on Vercel, auto-deployed on every push to `main`.
