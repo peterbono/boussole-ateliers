@@ -106,8 +106,11 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .opt:active{transform:translateY(1px)}
 .opt[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .opts.stack{flex-direction:column}
-.opts.stack .opt{border-radius:10px;text-align:left;display:flex;flex-direction:column;gap:2px}
-.opts.stack .opt small{font-size:12px;opacity:.75}
+.opts.stack .opt{border-radius:10px;text-align:left;flex:1;min-width:0}
+.opt-row{display:flex;align-items:center;gap:6px;position:relative}
+.opt-info{flex:none}
+.hint-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:5;max-width:min(260px,calc(100% - 8px));padding:8px 10px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;box-shadow:var(--shadow)}
+.hint-pop::before{content:"";position:absolute;right:9px;top:-4px;width:8px;height:8px;background:var(--ink);transform:rotate(45deg)}
 .brief{margin-top:20px;border-radius:14px;background:var(--surface);border:1px solid var(--line);transition:box-shadow .15s,border-color .15s}
 .brief:focus-within{border-color:var(--line-strong);box-shadow:var(--shadow)}
 .brief summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 14px;border-radius:14px}
@@ -760,7 +763,8 @@ function renderQuestions(){
   const mk = (q, list, tex, stack) => {
     document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
       const x = tex(o); const name = typeof x === 'string' ? x : x.name, hint = typeof x === 'string' ? '' : x.hint;
-      return `<button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}${stack && hint ? `<small>${esc(hint)}</small>` : ''}</button>`;
+      if(stack && hint) return `<div class="opt-row"><button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}</button><button class="info opt-info" type="button" data-hint="${esc(hint)}" aria-label="${esc(hint)}">i</button></div>`;
+      return `<button class="opt" type="button" aria-pressed="${ans[q] === o.id}" data-q="${q}" data-id="${o.id}">${esc(name)}</button>`;
     }).join('');
   };
   mk('stage', STAGES, o => L.stages[o.id], true); mk('team', TEAMS, o => L.teams[o.id], false); mk('trigger', TRIGGERS, o => L.triggers[o.id], true); mk('horizon', HORIZONS, o => L.horizons[o.id], false);
@@ -771,10 +775,14 @@ function renderQuestions(){
   document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
 }
 document.querySelector('.side').addEventListener('click', e => {
+  const i = e.target.closest('[data-hint]');
+  if(i){ e.preventDefault(); const open = i.getAttribute('aria-expanded') === 'true'; closeHints(); if(!open){ i.setAttribute('aria-expanded', 'true'); const t = document.createElement('span'); t.className = 'hint-pop'; t.textContent = i.dataset.hint; i.parentNode.appendChild(t); } return; }
   const b = e.target.closest('.opt'); if(!b || !b.dataset.q) return;
+  closeHints();
+  const acc = b.closest('details');
   ans[b.dataset.q] = b.dataset.id;
   saveAns(); renderQuestions(); renderResult();
-  const acc = b.closest('details'); if(acc) acc.open = false;
+  if(acc) acc.open = false;
 });
 document.querySelector('.side').addEventListener('change', e => {
   const c = e.target.closest('[data-goal]'); if(!c) return;
@@ -783,6 +791,13 @@ document.querySelector('.side').addEventListener('change', e => {
   saveAns(); renderQuestions(); renderResult();
 });
 document.getElementById('reset').addEventListener('click', () => { ans = JSON.parse(JSON.stringify(DEFAULT)); saveAns(); renderQuestions(); renderResult(); document.getElementById('brief-text').value = ''; store.set('briefText', ''); });
+
+function closeHints(){
+  document.querySelectorAll('.hint-pop').forEach(el => el.remove());
+  document.querySelectorAll('[data-hint][aria-expanded="true"]').forEach(el => el.setAttribute('aria-expanded', 'false'));
+}
+document.addEventListener('click', e => { if(!e.target.closest('[data-hint]') && !e.target.closest('.hint-pop')) closeHints(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeHints(); });
 
 /* ---------- brief IA ---------- */
 const briefForm = document.getElementById('brief-form'), briefText = document.getElementById('brief-text'), briefMsg = document.getElementById('brief-msg'), briefGo = document.getElementById('brief-go');
