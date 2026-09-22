@@ -93,12 +93,30 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 /* layout orienter */
 .orient{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
 @media (max-width:860px){.orient{grid-template-columns:minmax(0,1fr)}}
-.orient.solo{grid-template-columns:minmax(0,1fr)}
-.orient.solo > .side{display:none}
 #result{min-width:0}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
 .side{position:sticky;top:env(safe-area-inset-top,0px);display:flex;flex-direction:column;gap:20px;max-height:100vh;overflow:auto;scrollbar-width:none;padding-bottom:20px}
 .side::-webkit-scrollbar{display:none}
+.side-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-bottom:-8px;padding:0 4px}
+.side-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.side-from{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--ink-3)}
+.side-from svg{width:13px;height:13px;color:var(--accent);flex:none}
+@keyframes panelFill{
+  0%{opacity:.35;transform:translateY(8px) scale(.985);background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 0 var(--accent-soft)}
+  28%{opacity:1;transform:translateY(0) scale(1);background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+  100%{opacity:1;transform:none;background:var(--surface);border-color:var(--line);box-shadow:0 0 0 0 rgba(0,0,0,0)}
+}
+@keyframes headFill{0%{opacity:0;transform:translateY(-5px)}100%{opacity:1;transform:none}}
+@keyframes sparkIn{0%{opacity:0;transform:scale(.4) rotate(-60deg)}60%{opacity:1;transform:scale(1.25) rotate(8deg)}100%{opacity:1;transform:none}}
+.side.filling > .side-head{animation:headFill .4s ease both}
+.side.filling .side-from svg{animation:sparkIn .5s cubic-bezier(.3,1.4,.5,1) both;animation-delay:.5s}
+.side.filling > .panel.q{animation:panelFill .58s cubic-bezier(.22,.7,.3,1) both}
+.side.filling > .panel.q:nth-of-type(1){animation-delay:0s}
+.side.filling > .panel.q:nth-of-type(2){animation-delay:.11s}
+.side.filling > .panel.q:nth-of-type(3){animation-delay:.22s}
+.side.filling > .panel.q:nth-of-type(4){animation-delay:.33s}
+.side.filling > .panel.q:nth-of-type(5){animation-delay:.44s}
+@media (prefers-reduced-motion:reduce){.side.filling > .side-head,.side.filling > .panel.q,.side.filling .side-from svg{animation:none}}
 @media (max-width:860px){.side{position:static;max-height:none}}
 .q{display:flex;flex-direction:column;gap:8px}
 .q-label{display:flex;align-items:baseline;gap:6px;font-size:13px;color:var(--ink-2);font-weight:600}
@@ -158,12 +176,7 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .readout-x:hover{background:var(--surface);color:var(--ink)}
 .readout-x svg{width:14px;height:14px}
 .readout p{margin:0;color:var(--ink)}
-.readout-vals{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding-top:12px;border-top:1px solid var(--line)}
-.readout-vals .btn{flex:none;background:var(--surface)}
-.readout-set{flex:1 1 auto;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px 20px;margin:0}
-.readout-set > div{min-width:0}
-.readout-set dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
-.readout-set dd{margin:0;font-size:13.5px;line-height:1.35;color:var(--ink)}
+.readout .readout-set-note{font-size:13px;color:var(--ink-2)}
 .readout .pins{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--ink-2)}
 .acc{padding:0}
 .acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:14px 18px;border-radius:16px}
@@ -478,9 +491,6 @@ dialog.run::backdrop{background:var(--bg)}
   .step-track::before{top:7px}
   .stepper{gap:8px}
   .diag-toggle{display:inline-block;padding:10px 2px}
-  .readout-vals{flex-wrap:wrap;align-items:flex-start}
-  .readout-set{grid-template-columns:1fr 1fr;gap:12px 16px}
-  .readout-vals .btn{min-height:40px;padding:8px 14px;font-size:13px}
   .readout-x{width:40px;height:40px;margin:-8px -10px -8px 0}
   .reset{width:100%;justify-content:center;padding:12px 14px}
   .btn.small{padding:11px 14px;font-size:13.5px}
@@ -537,6 +547,7 @@ dialog.run::backdrop{background:var(--bg)}
     </details>
     <div class="orient">
       <aside class="side">
+        <div class="side-head"><span class="side-title" data-ui="answers.title"></span><span class="side-from" id="side-from" hidden><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 2.9 1.6 4.1 4.5 4.5-2.9.4-4.1 1.6-4.5 4.5-.4-2.9-1.6-4.1-4.5-4.5 2.9-.4 4.1-1.6 4.5-4.5zM3 10c.2 1.3.7 1.8 2 2-1.3.2-1.8.7-2 2-.2-1.3-.7-1.8-2-2 1.3-.2 1.8-.7 2-2z"/></svg><span data-ui="answers.from"></span></span></div>
         <details class="panel q acc" id="acc-stage"><summary><span class="q-label" data-ui="q.stage"></span><span class="val" data-val="stage"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="stepper" data-q="stage"></div><div class="diag" id="diag"><button type="button" class="diag-toggle" id="diag-toggle"></button><div class="diag-body" id="diag-body" hidden></div></div></details>
         <div class="panel q"><div class="q-label" data-ui="q.team"></div><div class="opts" data-q="team"></div></div>
         <details class="panel q acc" id="acc-trigger"><summary><span class="q-label" data-ui="q.trigger"></span><span class="val" data-val="trigger"></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="opts stack" data-q="trigger"></div></details>
@@ -799,10 +810,12 @@ function renderStepper(){
     </div>
     <p class="step-now">${esc(st.hint)}</p>`;
 }
-let folded = store.get('folded', false);
-const isFolded = () => !!(ans.brief && ans.brief.reason) && folded;
-function renderRecap(){ document.querySelector('.orient').classList.toggle('solo', isFolded()); }
-function setFolded(v){ folded = v; store.set('folded', v); renderRecap(); renderResult(); }
+function fromBrief(){ return !!(ans.brief && ans.brief.reason); }
+function playFill(){
+  const side = document.querySelector('.side');
+  side.classList.remove('filling'); void side.offsetWidth; side.classList.add('filling');
+  setTimeout(() => side.classList.remove('filling'), 1300);
+}
 function renderQuestions(){
   const mk = (q, list, tex, stack) => {
     document.querySelector(`[data-q="${q}"]`).innerHTML = list.map(o => {
@@ -817,7 +830,7 @@ function renderQuestions(){
   document.querySelector('[data-val="trigger"]').textContent = L.triggers[ans.trigger].name;
   const gs = ans.goals.map(id => L.goals[id]);
   document.querySelector('[data-val="goals"]').textContent = gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ');
-  renderRecap();
+  document.getElementById('side-from').hidden = !fromBrief();
 }
 document.querySelector('.side').addEventListener('click', e => {
   const b = e.target.closest('[data-q][data-id]'); if(!b) return;
@@ -867,8 +880,7 @@ briefForm.addEventListener('submit', async e => {
     const out = await r.json();
     ans.stage = out.stage; ans.team = out.team; ans.trigger = out.trigger; ans.goals = out.goals; ans.horizon = out.horizon;
     ans.pin = out.pin || []; ans.skip = out.skip || []; ans.brief = {reason: out.reason};
-    folded = true; store.set('folded', true);
-    saveAns(); renderQuestions(); renderResult(); briefMsg.textContent = ''; track('brief', {stage:out.stage, trigger:out.trigger});
+    saveAns(); renderQuestions(); renderResult(); playFill(); briefMsg.textContent = ''; track('brief', {stage:out.stage, trigger:out.trigger});
     if(window.innerWidth < 860) document.getElementById('result').scrollIntoView({behavior:'smooth'});
   }catch(err){ briefMsg.textContent = b.error; briefMsg.classList.add('err'); }
   finally{ briefSync(); }
@@ -904,13 +916,10 @@ function renderResult(){
   let html = '';
   if(ans.brief && ans.brief.reason){
     const b = ans.brief, names = ids => ids.map(id => byId(T, id)).filter(Boolean).map(t => `<span class="wchip static">${esc(tx(t).name)}</span>`).join('');
-    const gs = ans.goals.map(id => L.goals[id]);
-    const set = [[u.q.stage, L.stages[ans.stage].name], [u.q.team, L.teams[ans.team]], [u.q.trigger, L.triggers[ans.trigger].name],
-      [u.q.goals, gs.length > 2 ? `${gs.slice(0, 2).join(', ')} +${gs.length - 2}` : gs.join(', ')], [u.q.horizon, L.horizons[ans.horizon]]];
     html += `<div class="readout">
       <div class="readout-head"><svg class="spark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 2.9 1.6 4.1 4.5 4.5-2.9.4-4.1 1.6-4.5 4.5-.4-2.9-1.6-4.1-4.5-4.5 2.9-.4 4.1-1.6 4.5-4.5zM3 10c.2 1.3.7 1.8 2 2-1.3.2-1.8.7-2 2-.2-1.3-.7-1.8-2-2 1.3-.2 1.8-.7 2-2z"/></svg><span class="readout-k">${esc(u.brief.read)}</span><button type="button" class="readout-x" id="brief-clear" title="${esc(u.brief.clear)}" aria-label="${esc(u.brief.clear)}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
       <p>${esc(b.reason)}</p>
-      ${isFolded() ? `<div class="readout-vals"><dl class="readout-set">${set.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl><button type="button" class="btn small" id="recap-edit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 4.5h3M8.5 4.5h5.5M2 11.5h5.5M13 11.5h1"/><circle cx="6.5" cy="4.5" r="1.7"/><circle cx="10" cy="11.5" r="1.7"/></svg>${esc(u.recap.edit)}</button></div>` : ''}
+      <p class="readout-set-note">${esc(u.brief.set)}</p>
       ${(ans.pin.length || ans.skip.length) ? `<div class="pins">${ans.pin.length ? `<span>${esc(u.brief.pinned)}</span>${names(ans.pin)}` : ''}${ans.skip.length ? `<span>${esc(u.brief.skipped)}</span>${names(ans.skip)}` : ''}</div>` : ''}
     </div>`;
   }
@@ -980,8 +989,7 @@ function planHtml(pick, total){
   </section>`;
 }
 document.getElementById('result').addEventListener('click', e => {
-  if(e.target.closest('#recap-edit')){ setFolded(false); return; }
-  if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; setFolded(false); saveAns(); renderQuestions(); renderResult(); return; }
+  if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; saveAns(); renderQuestions(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
 });
 
