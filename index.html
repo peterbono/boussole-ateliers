@@ -318,6 +318,9 @@ dialog.zoom::backdrop{background:transparent}
 .wchip:hover{border-color:var(--accent);background:var(--accent-soft)}
 .wchip.need{border-color:var(--ink);border-width:1.5px}
 .wchip.help{border-style:dashed}
+.info{width:18px;height:18px;border-radius:50%;border:1px solid var(--line-strong);color:var(--ink-3);font-size:11px;font-weight:600;font-family:"IBM Plex Mono",monospace;display:inline-grid;place-items:center;line-height:1;transition:background .12s,color .12s}
+.info:hover,.info[aria-expanded="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.info-note{margin:0 0 10px;padding:10px 12px;border-radius:10px;background:var(--surface-2);font-size:13.5px;line-height:1.45;color:var(--ink-2)}
 .req-list{display:flex;flex-direction:column;gap:6px}
 .req{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center}
 .req .conj{font-size:12.5px;color:var(--ink-3);font-style:italic;min-width:0;white-space:nowrap}
@@ -911,12 +914,13 @@ function depsHtml(t){
   const u = UI(), c = CHAIN[t.id] || {};
   const get = ids => (ids || []).map(id => byId(T, id)).filter(Boolean);
   const needs = get(c.needs), anyOf = (c.anyOf || []).map(get).filter(g => g.length), helps = get(c.helps);
-  if(!needs.length && !anyOf.length && !helps.length) return `<section class="deps" id="sec-before"><h3>${esc(u.before)}</h3><p class="muted">${esc(u.noDeps)}</p></section>`;
+  if(!needs.length && !anyOf.length && !helps.length) return `<section class="deps" id="sec-before"><h3>${esc(u.before)}<button type="button" class="info" data-info="deps-why" aria-expanded="false" aria-label="${esc(u.whyPrereqTitle)}">?</button></h3><p class="info-note" id="deps-why" hidden>${esc(u.whyPrereq)}</p><p class="muted">${esc(u.noDeps)}</p></section>`;
   const rows = [];
   needs.forEach((q, i) => rows.push(`<div class="req"><span class="conj">${i ? esc(u.and) : ''}</span><span class="wchips">${wchip(q, 'need')}</span></div>`));
   anyOf.forEach(g => rows.push(`<div class="req"><span class="conj">${esc(rows.length ? u.andOneOf : u.oneOf)}</span><span class="wchips">${g.map(q => wchip(q, 'any')).join(`<span class="or">${esc(u.or)}</span>`)}</span></div>`));
   return `<section class="deps" id="sec-before">
-    <h3>${esc(u.before)}</h3>
+    <h3>${esc(u.before)}<button type="button" class="info" data-info="deps-why" aria-expanded="false" aria-label="${esc(u.whyPrereqTitle)}">?</button></h3>
+    <p class="info-note" id="deps-why" hidden>${esc(u.whyPrereq)}</p>
     ${rows.length ? `<div class="dep-group"><h4>${esc(u.needsRequired)}</h4><div class="req-list">${rows.join('')}</div></div>` : ''}
     ${helps.length ? `<div class="dep-group"><h4>${esc(u.needsHelpful)}</h4><div class="wchips">${helps.map(q => wchip(q, 'help')).join('')}</div></div>` : ''}
   </section>`;
@@ -956,6 +960,7 @@ function openPreview(id){
 const zoomDlg = document.getElementById('zoom');
 zoomDlg.addEventListener('click', () => zoomDlg.close());
 dlg.addEventListener('click', e => {
+  const i = e.target.closest('[data-info]'); if(i){ const n = document.getElementById(i.dataset.info); n.hidden = !n.hidden; i.setAttribute('aria-expanded', String(!n.hidden)); return; }
   const z = e.target.closest('[data-zoom]'); if(z){ const t = byId(T, z.dataset.zoom), ex = EX[t.id][lang]; document.getElementById('zoom-content').innerHTML = `<div class="zoom-head"><span class="chip" style="--h:var(${byId(PHASES, t.phase).h})">${esc(tx(t).name)}</span><span class="muted">${esc(UI().pvFilled)} · ${esc(UI().zoomClose)}</span></div>${Preview.renderFilled(LAYOUTS[t.id], ex.blocks, {class:'pv', title:UI().pvFilled})}`; zoomDlg.showModal(); return; }
   const pv = e.target.closest('[data-pv]'); if(pv){ const el = document.getElementById('dlg-pv'), t = byId(T, el.dataset.id); el.innerHTML = previewBlock(t, pv.dataset.pv === 'filled'); if(pv.dataset.pv === 'filled') track('view_example', {id:t.id}); return; }
   const j = e.target.closest('[data-jump]'); if(j){ e.preventDefault(); const el = document.getElementById(j.dataset.jump); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); return; }
