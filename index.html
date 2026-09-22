@@ -74,7 +74,7 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .hdr-right{display:flex;align-items:center;gap:10px}
 @media (max-width:700px){.hdr{align-items:center}}
-.lang{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13.5px;color:var(--line-strong)}
+.lang{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--line-strong);flex:none}
 .lang button{color:var(--ink-3);padding:6px 0}
 .lang button:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .lang button[aria-pressed="true"]{color:var(--ink);font-weight:600}
@@ -259,7 +259,7 @@ table.list{border-collapse:collapse;width:100%;min-width:1020px;font-size:13.5px
 .foot-sub-title{margin:0;font-size:15px;font-weight:600;color:var(--ink)}
 .foot-sub-text{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.5;max-width:40ch}
 .foot .btn.primary{align-self:flex-start;margin-top:4px;padding:11px 16px}
-.foot-legal{margin:0;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.foot-legal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin:0;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
 .totop{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;display:inline-flex;align-items:center;gap:8px;padding:11px 16px 11px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:13.5px;font-weight:600;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:opacity .18s,transform .18s,border-color .12s}
 .totop svg{width:15px;height:15px;color:var(--ink-3)}
 .totop.on{opacity:1;transform:translateY(0)}
@@ -526,7 +526,6 @@ dialog.run::backdrop{background:var(--bg)}
           <a id="foot-figjam" href="#" target="_blank" rel="noopener" data-ui="foot.figjam"></a>
           <a id="foot-mail" href="#" data-ui="foot.contact"></a>
         </nav>
-        <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><span aria-hidden="true">·</span><button type="button" data-lang="fr" aria-pressed="false">Français</button></div>
       </div>
       <div class="foot-col">
         <p class="foot-sub-title" data-ui="foot.updatesTitle"></p>
@@ -534,7 +533,7 @@ dialog.run::backdrop{background:var(--bg)}
         <a class="btn primary" id="foot-sub" href="#" target="_blank" rel="noopener" data-ui="foot.updatesCta"></a>
       </div>
     </div>
-    <p class="foot-legal"><span data-ui="foot.legal"></span></p>
+    <div class="foot-legal"><span data-ui="foot.legal"></span><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><span aria-hidden="true">·</span><button type="button" data-lang="fr" aria-pressed="false">Français</button></div></div>
   </footer>
 </div>
 <button type="button" id="totop" class="totop" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg><span data-ui="toTop"></span></button>
