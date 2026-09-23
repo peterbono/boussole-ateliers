@@ -5,7 +5,9 @@ const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, '..');
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'tools', 'figjam-out');
-const LANG = process.argv[3] || 'en';
+const LANG = (process.argv[3] && !process.argv[3].startsWith('--')) ? process.argv[3] : 'en';
+// --only=id1,id2 : ne génère que ces ateliers (ajout incrémental dans un fichier déjà publié)
+const ONLY = (process.argv.find(a => a.startsWith('--only=')) || '').slice(7).split(',').filter(Boolean);
 fs.mkdirSync(OUT, { recursive: true });
 const { PHASES, T } = require(path.join(root, 'data.js'));
 const { LAYOUTS } = require(path.join(root, `layouts.${LANG}.js`));
@@ -33,6 +35,9 @@ for (const p of PHASES) {
   y += Math.ceil(items.length / COLS) * (SEC_H + GAP) - GAP + PHASE_GAP;
 }
 fs.writeFileSync(path.join(OUT, 'plan.json'), JSON.stringify(plan, null, 1));
+// le plan de placement reste calculé sur le catalogue complet : les positions
+// des ateliers filtrés restent celles de la grille finale.
+if (ONLY.length) plan.items = plan.items.filter(i => ONLY.includes(i.id));
 
 const RUNTIME = String.raw`
 const S = ${S}, PAD = ${PAD}, TOP = ${TOP}, CW = 2560, CH = 1600;
