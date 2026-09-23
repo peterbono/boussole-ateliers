@@ -109,7 +109,7 @@ ${run.source ? `<p class="muted" style="font-size:13px">${esc(u.source)} : ${SOU
 function indexPage(lang){
   const L = I18N[lang], u = L.ui, url = base[lang], alt = lang === 'en' ? 'fr' : 'en';
   const title = `${u.allWorkshops} · ${L.title}`;
-  const desc = lang === 'en' ? '60+ product workshops, by phase, with a preview, a how-to and a FigJam board for each.' : 'Plus de 60 ateliers produit, par phase, avec aperçu, déroulé et board FigJam pour chacun.';
+  const desc = lang === 'en' ? '70+ product workshops, by phase, with a preview, a how-to and a FigJam board for each.' : 'Plus de 70 ateliers produit, par phase, avec aperçu, déroulé et board FigJam pour chacun.';
   let html = head(lang, title, desc, url, `<link rel="alternate" hreflang="${alt}" href="${SITE}${base[alt]}">`);
   html += `<div class="page"><nav class="crumbs"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(L.title)}</a> › <span>${esc(u.allWorkshops)}</span><span style="margin-left:auto"><a href="${base[alt]}">${alt.toUpperCase()}</a></span></nav><h1>${esc(u.allWorkshops)}</h1><p class="lead">${esc(desc)}</p>`;
   for(const ph of PHASES){

@@ -1,1536 +1,1652 @@
 {
-  "persona": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, after 12 interviews with technicians: Ana and Karim consolidate the field technician persona.",
-      "blocks": [
-        {
-          "t": "Portrait & bio",
-          "items": [
-            "Léa, 34, HVAC technician for 9 years",
-            "22-technician company, Lyon suburbs",
-            "8 interventions a day, van as an office",
-            "Fills the paper sheet at 7pm in the van"
-          ]
-        },
-        {
-          "t": "Goals",
-          "items": [
-            "Finish the day without paperwork",
-            "Never come back for a missing part",
-            "Get paid overtime she actually did"
-          ]
-        },
-        {
-          "t": "Frustrations",
-          "items": [
-            "Typing on a phone with gloves",
-            "Retyping the same customer address",
-            "Photos lost between phone and office",
-            "Marc calling while she is on a roof"
-          ]
-        },
-        {
-          "t": "Behaviours",
-          "items": [
-            "Takes 10 to 15 photos per job",
-            "Uses voice messages on WhatsApp",
-            "Checks the schedule once at 7am",
-            "Ignores app notifications after 6pm"
-          ]
-        },
-        {
-          "t": "Context",
-          "items": [
-            "Boiler rooms, no signal, dirty hands",
-            "Alone on site 80% of the time",
-            "Customer waiting next to her"
-          ]
-        },
-        {
-          "t": "Tools",
-          "items": [
-            "Personal Android phone",
-            "Paper sheet with carbon copy",
-            "WhatsApp group with dispatch",
-            "Parts catalogue as a PDF"
-          ]
-        },
-        {
-          "t": "Quote",
-          "items": [
-            "\"If it takes more than 30 seconds, I do it later. And later never comes.\"",
-            "\"The office thinks a job is done when the sheet arrives. For me it is done when I close the van door.\""
-          ]
-        }
-      ],
-      "takeaway": "The persona ruled out a typing-heavy form: the first version became photo-first with voice notes, and the 30-second rule became a design principle."
+ "persona": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, after 12 interviews with technicians: Ana and Karim consolidate the field technician persona.",
+   "blocks": [
+    {
+     "t": "Portrait & bio",
+     "items": [
+      "Léa, 34, HVAC technician for 9 years",
+      "22-technician company, Lyon suburbs",
+      "8 interventions a day, van as an office",
+      "Fills the paper sheet at 7pm in the van"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, après 12 entretiens avec des techniciens : Ana et Karim consolident le persona de la technicienne terrain.",
-      "blocks": [
-        {
-          "t": "Portrait & bio",
-          "items": [
-            "Léa, 34 ans, technicienne CVC depuis 9 ans",
-            "Entreprise de 22 techniciens, banlieue de Lyon",
-            "8 interventions par jour, la camionnette comme bureau",
-            "Remplit la feuille papier à 19h dans la camionnette"
-          ]
-        },
-        {
-          "t": "Objectifs",
-          "items": [
-            "Finir la journée sans paperasse",
-            "Ne jamais revenir pour une pièce manquante",
-            "Être payée des heures sup réellement faites"
-          ]
-        },
-        {
-          "t": "Frustrations",
-          "items": [
-            "Taper sur un téléphone avec des gants",
-            "Ressaisir la même adresse client",
-            "Photos perdues entre le téléphone et le bureau",
-            "Marc qui appelle pendant qu'elle est sur un toit"
-          ]
-        },
-        {
-          "t": "Comportements",
-          "items": [
-            "Prend 10 à 15 photos par intervention",
-            "Utilise les messages vocaux WhatsApp",
-            "Regarde le planning une fois à 7h",
-            "Ignore les notifications après 18h"
-          ]
-        },
-        {
-          "t": "Contexte",
-          "items": [
-            "Chaufferies, pas de réseau, mains sales",
-            "Seule sur site 80 % du temps",
-            "Le client attend à côté d'elle"
-          ]
-        },
-        {
-          "t": "Outils",
-          "items": [
-            "Téléphone Android personnel",
-            "Feuille papier avec carbone",
-            "Groupe WhatsApp avec le dispatch",
-            "Catalogue pièces en PDF"
-          ]
-        },
-        {
-          "t": "Citation",
-          "items": [
-            "\"Si ça prend plus de 30 secondes, je le fais plus tard. Et plus tard n'arrive jamais.\"",
-            "\"Le bureau pense qu'une intervention est finie quand la feuille arrive. Pour moi elle est finie quand je ferme la porte de la camionnette.\""
-          ]
-        }
-      ],
-      "takeaway": "Le persona a écarté un formulaire lourd à saisir : la première version est devenue photo d'abord avec notes vocales, et la règle des 30 secondes est devenue un principe de design."
+    {
+     "t": "Goals",
+     "items": [
+      "Finish the day without paperwork",
+      "Never come back for a missing part",
+      "Get paid overtime she actually did"
+     ]
+    },
+    {
+     "t": "Frustrations",
+     "items": [
+      "Typing on a phone with gloves",
+      "Retyping the same customer address",
+      "Photos lost between phone and office",
+      "Marc calling while she is on a roof"
+     ]
+    },
+    {
+     "t": "Behaviours",
+     "items": [
+      "Takes 10 to 15 photos per job",
+      "Uses voice messages on WhatsApp",
+      "Checks the schedule once at 7am",
+      "Ignores app notifications after 6pm"
+     ]
+    },
+    {
+     "t": "Context",
+     "items": [
+      "Boiler rooms, no signal, dirty hands",
+      "Alone on site 80% of the time",
+      "Customer waiting next to her"
+     ]
+    },
+    {
+     "t": "Tools",
+     "items": [
+      "Personal Android phone",
+      "Paper sheet with carbon copy",
+      "WhatsApp group with dispatch",
+      "Parts catalogue as a PDF"
+     ]
+    },
+    {
+     "t": "Quote",
+     "items": [
+      "\"If it takes more than 30 seconds, I do it later. And later never comes.\"",
+      "\"The office thinks a job is done when the sheet arrives. For me it is done when I close the van door.\""
+     ]
     }
+   ],
+   "takeaway": "The persona ruled out a typing-heavy form: the first version became photo-first with voice notes, and the 30-second rule became a design principle."
   },
-  "jtbd": {
-    "en": {
-      "context": "Pre-PMF Fieldnote: Karim and Ana write the job statement of a technician after 8 switch interviews with companies that left paper sheets.",
-      "blocks": [
-        {
-          "t": "When [situation], I want to [motivation], so I can [outcome]",
-          "items": [
-            "When I finish a job with the customer next to me, I want to record what I did in under a minute, so I can leave with nothing left to do tonight",
-            "When the office asks what parts I used, I want it already written, so I can stop being called back"
-          ]
-        },
-        {
-          "t": "Push (current situation)",
-          "items": [
-            "Paper sheets lost or unreadable",
-            "Sophie chases parts every Sunday",
-            "Overtime disputed because nothing is timestamped"
-          ]
-        },
-        {
-          "t": "Pull (new solution)",
-          "items": [
-            "Photo replaces the description",
-            "Customer signs on the phone",
-            "Parts picked from a list, not typed"
-          ]
-        },
-        {
-          "t": "Anxieties",
-          "items": [
-            "Will it work in a boiler room with no signal?",
-            "Will the boss track my breaks?",
-            "Another app to learn"
-          ]
-        },
-        {
-          "t": "Habits",
-          "items": [
-            "Batch the sheets at 7pm",
-            "WhatsApp voice notes to Marc",
-            "Photos in the phone gallery, never sorted"
-          ]
-        }
-      ],
-      "takeaway": "The job is not 'log interventions', it is 'leave the site with nothing left to do'. Offline mode moved from nice-to-have to a launch requirement."
+  "fr": {
+   "context": "Fieldnote pré-PMF, après 12 entretiens avec des techniciens : Ana et Karim consolident le persona de la technicienne terrain.",
+   "blocks": [
+    {
+     "t": "Portrait & bio",
+     "items": [
+      "Léa, 34 ans, technicienne CVC depuis 9 ans",
+      "Entreprise de 22 techniciens, banlieue de Lyon",
+      "8 interventions par jour, la camionnette comme bureau",
+      "Remplit la feuille papier à 19h dans la camionnette"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF : Karim et Ana écrivent le job d'un technicien après 8 entretiens switch avec des entreprises qui ont quitté les feuilles papier.",
-      "blocks": [
-        {
-          "t": "Quand [situation], je veux [motivation], pour [résultat]",
-          "items": [
-            "Quand je termine une intervention avec le client à côté, je veux enregistrer ce que j'ai fait en moins d'une minute, pour partir sans rien à faire ce soir",
-            "Quand le bureau demande quelles pièces j'ai utilisées, je veux que ce soit déjà écrit, pour ne plus être rappelée"
-          ]
-        },
-        {
-          "t": "Push (situation actuelle)",
-          "items": [
-            "Feuilles papier perdues ou illisibles",
-            "Sophie court après les pièces chaque dimanche",
-            "Heures sup contestées, rien n'est horodaté"
-          ]
-        },
-        {
-          "t": "Pull (nouvelle solution)",
-          "items": [
-            "La photo remplace la description",
-            "Le client signe sur le téléphone",
-            "Pièces choisies dans une liste, pas tapées"
-          ]
-        },
-        {
-          "t": "Anxiétés",
-          "items": [
-            "Ça marchera en chaufferie sans réseau ?",
-            "Le patron va surveiller mes pauses ?",
-            "Encore une appli à apprendre"
-          ]
-        },
-        {
-          "t": "Habitudes",
-          "items": [
-            "Regrouper les feuilles à 19h",
-            "Vocaux WhatsApp à Marc",
-            "Photos dans la galerie, jamais triées"
-          ]
-        }
-      ],
-      "takeaway": "Le job n'est pas 'saisir des interventions', c'est 'quitter le site sans rien à faire après'. Le mode hors ligne est passé de bonus à exigence de lancement."
-    }
-  },
-  "empathy": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, first week: the whole team maps Léa after two ride-alongs in the van.",
-      "blocks": [
-        {
-          "t": "Says",
-          "items": [
-            "\"I'll do the sheet tonight\"",
-            "\"Which part did I put in? The grey one\"",
-            "\"Marc, stop calling, I'm on a roof\""
-          ]
-        },
-        {
-          "t": "Thinks",
-          "items": [
-            "The office does not see how the day really goes",
-            "If I forget a part, it comes out of my bonus",
-            "Nobody reads the sheets anyway"
-          ]
-        },
-        {
-          "t": "Does",
-          "items": [
-            "Photographs the boiler before and after",
-            "Sends voice notes instead of writing",
-            "Keeps parts in the van without logging them"
-          ]
-        },
-        {
-          "t": "Feels",
-          "items": [
-            "Rushed between two jobs",
-            "Blamed for missing parts on Monday",
-            "Proud when a customer says thanks"
-          ]
-        },
-        {
-          "t": "Pains",
-          "items": [
-            "Typing with gloves",
-            "Paperwork after 12 hours of work",
-            "Disputes about overtime"
-          ]
-        },
-        {
-          "t": "Gains",
-          "items": [
-            "Leaving the site done",
-            "Being believed about what was used",
-            "A schedule that does not change at 11am"
-          ]
-        }
-      ],
-      "takeaway": "Three themes for the interview guide came out of this: paperwork after hours, trust about parts, and the schedule changing mid-morning."
+    {
+     "t": "Objectifs",
+     "items": [
+      "Finir la journée sans paperasse",
+      "Ne jamais revenir pour une pièce manquante",
+      "Être payée des heures sup réellement faites"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, première semaine : toute l'équipe cartographie Léa après deux journées passées dans sa camionnette.",
-      "blocks": [
-        {
-          "t": "Dit",
-          "items": [
-            "\"Je ferai la feuille ce soir\"",
-            "\"Quelle pièce j'ai mise ? La grise\"",
-            "\"Marc, arrête d'appeler, je suis sur un toit\""
-          ]
-        },
-        {
-          "t": "Pense",
-          "items": [
-            "Le bureau ne voit pas comment se passe la journée",
-            "Si j'oublie une pièce, ça sort de ma prime",
-            "Personne ne lit les feuilles de toute façon"
-          ]
-        },
-        {
-          "t": "Fait",
-          "items": [
-            "Photographie la chaudière avant et après",
-            "Envoie des vocaux au lieu d'écrire",
-            "Garde des pièces dans la camionnette sans les noter"
-          ]
-        },
-        {
-          "t": "Ressent",
-          "items": [
-            "Pressée entre deux interventions",
-            "Accusée le lundi pour les pièces manquantes",
-            "Fière quand un client dit merci"
-          ]
-        },
-        {
-          "t": "Douleurs",
-          "items": [
-            "Taper avec des gants",
-            "La paperasse après 12 h de travail",
-            "Les litiges sur les heures sup"
-          ]
-        },
-        {
-          "t": "Gains",
-          "items": [
-            "Quitter le site en ayant tout fini",
-            "Être crue sur ce qui a été utilisé",
-            "Un planning qui ne change pas à 11h"
-          ]
-        }
-      ],
-      "takeaway": "Trois thèmes pour le guide d'entretien en sont sortis : la paperasse après les heures, la confiance sur les pièces, et le planning qui bouge en milieu de matinée."
-    }
-  },
-  "journey": {
-    "en": {
-      "context": "Post-PMF Fieldnote: Karim, Ana, Julien (support) and Nadia (sales) map Sophie's journey as a company owner, from first hearing about Fieldnote to renewal.",
-      "blocks": [
-        {
-          "t": "Actions",
-          "items": [
-            "Awareness: hears about it from a peer at a trade fair",
-            "Consideration: books a demo, compares with Jobber",
-            "Purchase: signs for 22 seats at 29 € each",
-            "Usage: 8 technicians log jobs, 14 do not",
-            "Loyalty: renews if invoicing is connected"
-          ]
-        },
-        {
-          "t": "Touchpoints",
-          "items": [
-            "Awareness: peer, trade fair, LinkedIn post",
-            "Consideration: Nadia's demo, pricing page",
-            "Purchase: contract email, onboarding call",
-            "Usage: mobile app, Marc's dispatch screen",
-            "Loyalty: quarterly review with Julien"
-          ]
-        },
-        {
-          "t": "Emotions",
-          "items": [
-            "Awareness: curious, skeptical",
-            "Consideration: hopeful about Sundays",
-            "Purchase: worried about technician adoption",
-            "Usage: frustrated by the 14 silent ones",
-            "Loyalty: relieved when invoices go out on Monday"
-          ]
-        },
-        {
-          "t": "Pain points",
-          "items": [
-            "Awareness: 'another app that techs won't use'",
-            "Consideration: cannot try it with real jobs",
-            "Purchase: no plan to bring technicians on board",
-            "Usage: half the team still on paper after 2 weeks",
-            "Loyalty: invoicing export needs manual cleanup"
-          ]
-        },
-        {
-          "t": "Opportunities",
-          "items": [
-            "Awareness: case study from a 20-technician company",
-            "Consideration: 7-day trial with real interventions",
-            "Purchase: onboarding kit for the first team meeting",
-            "Usage: first-10-interventions checklist per technician",
-            "Loyalty: one-click Pennylane integration"
-          ]
-        }
-      ],
-      "takeaway": "The Usage stage carried the biggest pain: half the technicians never start. The 'first 10 interventions' opportunity became the quarter's target outcome."
+    {
+     "t": "Frustrations",
+     "items": [
+      "Taper sur un téléphone avec des gants",
+      "Ressaisir la même adresse client",
+      "Photos perdues entre le téléphone et le bureau",
+      "Marc qui appelle pendant qu'elle est sur un toit"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote post-PMF : Karim, Ana, Julien (support) et Nadia (ventes) cartographient le parcours de Sophie, dirigeante, de la découverte au renouvellement.",
-      "blocks": [
-        {
-          "t": "Actions",
-          "items": [
-            "Découverte : en entend parler par un confrère sur un salon",
-            "Considération : réserve une démo, compare avec Jobber",
-            "Achat : signe pour 22 sièges à 29 € chacun",
-            "Usage : 8 techniciens saisissent, 14 non",
-            "Fidélité : renouvelle si la facturation est connectée"
-          ]
-        },
-        {
-          "t": "Points de contact",
-          "items": [
-            "Découverte : confrère, salon, post LinkedIn",
-            "Considération : démo de Nadia, page tarifs",
-            "Achat : email de contrat, appel d'onboarding",
-            "Usage : appli mobile, écran dispatch de Marc",
-            "Fidélité : revue trimestrielle avec Julien"
-          ]
-        },
-        {
-          "t": "Émotions",
-          "items": [
-            "Découverte : curieuse, sceptique",
-            "Considération : espoir de récupérer ses dimanches",
-            "Achat : inquiète de l'adoption par les techniciens",
-            "Usage : frustrée par les 14 silencieux",
-            "Fidélité : soulagée quand les factures partent le lundi"
-          ]
-        },
-        {
-          "t": "Frictions",
-          "items": [
-            "Découverte : 'encore une appli que les techs n'utiliseront pas'",
-            "Considération : impossible d'essayer sur de vraies interventions",
-            "Achat : aucun plan pour embarquer les techniciens",
-            "Usage : la moitié de l'équipe encore sur papier après 2 semaines",
-            "Fidélité : l'export facturation demande un nettoyage manuel"
-          ]
-        },
-        {
-          "t": "Opportunités",
-          "items": [
-            "Découverte : étude de cas d'une entreprise de 20 techniciens",
-            "Considération : essai de 7 jours sur de vraies interventions",
-            "Achat : kit d'onboarding pour la première réunion d'équipe",
-            "Usage : checklist des 10 premières interventions par technicien",
-            "Fidélité : intégration Pennylane en un clic"
-          ]
-        }
-      ],
-      "takeaway": "L'étape Usage portait la plus grosse friction : la moitié des techniciens ne démarrent jamais. L'opportunité '10 premières interventions' est devenue le résultat cible du trimestre."
-    }
-  },
-  "research-plan": {
-    "en": {
-      "context": "Post-PMF Fieldnote: Ana and Karim plan the research on why 38 % of new companies never get a technician to 10 interventions.",
-      "blocks": [
-        {
-          "t": "Research questions",
-          "items": [
-            "What happens between signature and the first logged job?",
-            "Who decides that technicians must use the app?",
-            "What makes a technician log a 2nd intervention?"
-          ]
-        },
-        {
-          "t": "Hypotheses",
-          "items": [
-            "H1: nobody tells technicians before day one",
-            "H2: the first job is logged with the boss watching, then never again",
-            "H3: no-signal sites kill the habit in week one"
-          ]
-        },
-        {
-          "t": "Method",
-          "items": [
-            "8 interviews, 45 min, remote",
-            "4 activated companies, 4 stalled ones",
-            "2 ride-alongs with technicians in stalled companies"
-          ]
-        },
-        {
-          "t": "Recruiting",
-          "items": [
-            "Companies signed in the last 60 days",
-            "Pulled from Julien's onboarding list",
-            "Owner + one technician per company",
-            "50 € voucher for technicians"
-          ]
-        },
-        {
-          "t": "Interview guide",
-          "items": [
-            "Tell me about the day Fieldnote arrived in your company",
-            "Walk me through your last intervention, from arrival to leaving",
-            "When did you last open the app? What for?",
-            "What did you do with the paper sheet that day?"
-          ]
-        }
-      ],
-      "takeaway": "The plan forced a split between activated and stalled companies; without it the interviews would only have told the success story."
+    {
+     "t": "Comportements",
+     "items": [
+      "Prend 10 à 15 photos par intervention",
+      "Utilise les messages vocaux WhatsApp",
+      "Regarde le planning une fois à 7h",
+      "Ignore les notifications après 18h"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote post-PMF : Ana et Karim planifient la recherche sur pourquoi 38 % des nouvelles entreprises n'amènent jamais un technicien à 10 interventions.",
-      "blocks": [
-        {
-          "t": "Questions de recherche",
-          "items": [
-            "Que se passe-t-il entre la signature et la première intervention saisie ?",
-            "Qui décide que les techniciens doivent utiliser l'appli ?",
-            "Qu'est-ce qui fait qu'un technicien saisit une 2e intervention ?"
-          ]
-        },
-        {
-          "t": "Hypothèses",
-          "items": [
-            "H1 : personne ne prévient les techniciens avant le jour 1",
-            "H2 : la première intervention est saisie sous l'œil du patron, puis plus jamais",
-            "H3 : les sites sans réseau tuent l'habitude la première semaine"
-          ]
-        },
-        {
-          "t": "Méthode",
-          "items": [
-            "8 entretiens, 45 min, à distance",
-            "4 entreprises activées, 4 bloquées",
-            "2 journées en camionnette avec des techniciens d'entreprises bloquées"
-          ]
-        },
-        {
-          "t": "Recrutement",
-          "items": [
-            "Entreprises signées dans les 60 derniers jours",
-            "Tirées de la liste d'onboarding de Julien",
-            "Dirigeant + un technicien par entreprise",
-            "Bon d'achat de 50 € pour les techniciens"
-          ]
-        },
-        {
-          "t": "Guide d'entretien",
-          "items": [
-            "Raconte-moi le jour où Fieldnote est arrivé dans ton entreprise",
-            "Décris ta dernière intervention, de l'arrivée au départ",
-            "Quand as-tu ouvert l'appli pour la dernière fois ? Pour quoi faire ?",
-            "Qu'as-tu fait de la feuille papier ce jour-là ?"
-          ]
-        }
-      ],
-      "takeaway": "Le plan a imposé de séparer entreprises activées et bloquées ; sans ça, les entretiens n'auraient raconté que l'histoire des succès."
-    }
-  },
-  "assumptions": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, before building offline mode: Karim, Tom and Ana map the assumptions behind the first version.",
-      "blocks": [
-        {
-          "t": "Test first",
-          "items": [
-            "Technicians will log a job with the customer present",
-            "Owners will pay 29 € per technician",
-            "Photos alone are enough for invoicing"
-          ]
-        },
-        {
-          "t": "Already validated",
-          "items": [
-            "Paper sheets get lost (12 of 12 interviews)",
-            "Owners spend Sunday on invoicing",
-            "Parts are the main source of lost revenue"
-          ]
-        },
-        {
-          "t": "Ignore",
-          "items": [
-            "Technicians want a dark theme",
-            "Companies want a customer portal now",
-            "Dispatchers want a map view on day one"
-          ]
-        },
-        {
-          "t": "Monitor",
-          "items": [
-            "Boiler rooms have no signal (offline needed?)",
-            "Technicians use personal phones",
-            "Accountants accept photo evidence"
-          ]
-        }
-      ],
-      "takeaway": "'Customer present' was the riskiest unproven assumption: it became the first experiment, with 5 technicians and a stopwatch."
+    {
+     "t": "Contexte",
+     "items": [
+      "Chaufferies, pas de réseau, mains sales",
+      "Seule sur site 80 % du temps",
+      "Le client attend à côté d'elle"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, avant de construire le mode hors ligne : Karim, Tom et Ana cartographient les hypothèses derrière la première version.",
-      "blocks": [
-        {
-          "t": "Tester en premier",
-          "items": [
-            "Les techniciens saisiront une intervention devant le client",
-            "Les dirigeants paieront 29 € par technicien",
-            "Les photos seules suffisent pour facturer"
-          ]
-        },
-        {
-          "t": "Déjà validé",
-          "items": [
-            "Les feuilles papier se perdent (12 entretiens sur 12)",
-            "Les dirigeants passent le dimanche à facturer",
-            "Les pièces sont la première source de revenu perdu"
-          ]
-        },
-        {
-          "t": "Ignorer",
-          "items": [
-            "Les techniciens veulent un thème sombre",
-            "Les entreprises veulent un portail client maintenant",
-            "Les dispatchers veulent une carte dès le jour 1"
-          ]
-        },
-        {
-          "t": "Surveiller",
-          "items": [
-            "Les chaufferies n'ont pas de réseau (hors ligne nécessaire ?)",
-            "Les techniciens utilisent leur téléphone perso",
-            "Les comptables acceptent la preuve photo"
-          ]
-        }
-      ],
-      "takeaway": "'Devant le client' était l'hypothèse non prouvée la plus risquée : elle est devenue la première expérience, avec 5 techniciens et un chronomètre."
-    }
-  },
-  "ost": {
-    "en": {
-      "context": "Post-PMF Fieldnote, quarter kick-off: the trio (Karim, Ana, Tom) builds the tree for the outcome 'cut time to first 10 interventions from 14 days to 5'.",
-      "blocks": [
-        {
-          "t": "Outcome",
-          "items": [
-            "New companies reach 10 logged interventions per technician in 5 days, not 14",
-            "Measured on companies signed this quarter, per technician seat"
-          ]
-        },
-        {
-          "t": "Opportunities",
-          "items": [
-            "Technicians are not told before day one",
-            "First job is logged with the boss watching, then stops",
-            "No-signal sites break the habit in week one"
-          ]
-        },
-        {
-          "t": "Solutions",
-          "items": [
-            "Onboarding kit for the first team meeting",
-            "SMS to each technician the evening before",
-            "Photo-only quick log in 20 seconds",
-            "Streak of 10 with a visible counter",
-            "Offline mode with sync badge",
-            "Dispatcher sees who logged today"
-          ]
-        },
-        {
-          "t": "Experiments",
-          "items": [
-            "Send the kit to 10 companies, measure day-5 activation",
-            "SMS to 50 technicians, compare first-day logs",
-            "Prototype the 20-second log with 5 technicians",
-            "Fake-door the counter, count taps",
-            "Ride-along in 3 no-signal companies",
-            "Show 'logged today' to 5 dispatchers for a week"
-          ]
-        }
-      ],
-      "takeaway": "The tree exposed that two of three opportunities are about the company, not the app. The onboarding kit was tested before any code."
+    {
+     "t": "Outils",
+     "items": [
+      "Téléphone Android personnel",
+      "Feuille papier avec carbone",
+      "Groupe WhatsApp avec le dispatch",
+      "Catalogue pièces en PDF"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote post-PMF, lancement du trimestre : le trio (Karim, Ana, Tom) construit l'arbre pour le résultat 'passer de 14 à 5 jours pour les 10 premières interventions'.",
-      "blocks": [
-        {
-          "t": "Résultat",
-          "items": [
-            "Les nouvelles entreprises atteignent 10 interventions saisies par technicien en 5 jours, pas 14",
-            "Mesuré sur les entreprises signées ce trimestre, par siège technicien"
-          ]
-        },
-        {
-          "t": "Opportunités",
-          "items": [
-            "Les techniciens ne sont pas prévenus avant le jour 1",
-            "La première intervention est saisie sous l'œil du patron, puis ça s'arrête",
-            "Les sites sans réseau cassent l'habitude la première semaine"
-          ]
-        },
-        {
-          "t": "Solutions",
-          "items": [
-            "Kit d'onboarding pour la première réunion d'équipe",
-            "SMS à chaque technicien la veille au soir",
-            "Saisie photo seule en 20 secondes",
-            "Série de 10 avec un compteur visible",
-            "Mode hors ligne avec badge de synchro",
-            "Le dispatcher voit qui a saisi aujourd'hui"
-          ]
-        },
-        {
-          "t": "Expériences",
-          "items": [
-            "Envoyer le kit à 10 entreprises, mesurer l'activation à J5",
-            "SMS à 50 techniciens, comparer les saisies du premier jour",
-            "Prototyper la saisie 20 secondes avec 5 techniciens",
-            "Fausse porte sur le compteur, compter les taps",
-            "Journée camionnette dans 3 entreprises sans réseau",
-            "Montrer 'saisi aujourd'hui' à 5 dispatchers pendant une semaine"
-          ]
-        }
-      ],
-      "takeaway": "L'arbre a montré que deux opportunités sur trois concernent l'entreprise, pas l'appli. Le kit d'onboarding a été testé avant toute ligne de code."
+    {
+     "t": "Citation",
+     "items": [
+      "\"Si ça prend plus de 30 secondes, je le fais plus tard. Et plus tard n'arrive jamais.\"",
+      "\"Le bureau pense qu'une intervention est finie quand la feuille arrive. Pour moi elle est finie quand je ferme la porte de la camionnette.\""
+     ]
     }
-  },
-  "blueprint": {
-    "en": {
-      "context": "Scale-up Fieldnote: Karim, Julien (support), Tom and an ops person blueprint the intervention flow to find where invoicing data gets lost.",
-      "blocks": [
-        {
-          "t": "Customer actions",
-          "items": [
-            "Step 1: Léa arrives, opens the job on her phone",
-            "Step 2: repairs, photographs, picks parts",
-            "Step 3: customer signs on the phone",
-            "Step 4: Marc closes the day on the dispatch screen",
-            "Step 5: Sophie exports to invoicing on Monday"
-          ]
-        },
-        {
-          "t": "Front stage",
-          "items": [
-            "Step 1: job card with address and history",
-            "Step 2: parts list, photo capture",
-            "Step 3: signature screen, PDF sent to customer",
-            "Step 4: day view with statuses",
-            "Step 5: CSV export button"
-          ]
-        },
-        {
-          "t": "Back stage",
-          "items": [
-            "Step 1: schedule pushed at 6am",
-            "Step 2: parts catalogue updated by hand monthly",
-            "Step 3: PDF generated by a queue worker",
-            "Step 4: Marc corrects statuses by phone",
-            "Step 5: Sophie cleans the CSV in Excel for 2 hours"
-          ]
-        },
-        {
-          "t": "Systems",
-          "items": [
-            "Step 1: scheduling service",
-            "Step 2: mobile app, offline cache, photo storage",
-            "Step 3: PDF service, email provider",
-            "Step 4: dispatch web app",
-            "Step 5: export job, no integration"
-          ]
-        }
-      ],
-      "takeaway": "The leak is at step 5: two hours of manual cleanup every Monday. The Integrations squad got its first mission, Pennylane sync."
-    },
-    "fr": {
-      "context": "Fieldnote scale-up : Karim, Julien (support), Tom et une personne des ops font le blueprint du flux d'intervention pour trouver où les données de facturation se perdent.",
-      "blocks": [
-        {
-          "t": "Actions client",
-          "items": [
-            "Étape 1 : Léa arrive, ouvre l'intervention sur son téléphone",
-            "Étape 2 : répare, photographie, choisit les pièces",
-            "Étape 3 : le client signe sur le téléphone",
-            "Étape 4 : Marc clôture la journée sur l'écran dispatch",
-            "Étape 5 : Sophie exporte vers la facturation le lundi"
-          ]
-        },
-        {
-          "t": "Front stage",
-          "items": [
-            "Étape 1 : fiche intervention avec adresse et historique",
-            "Étape 2 : liste de pièces, prise de photo",
-            "Étape 3 : écran de signature, PDF envoyé au client",
-            "Étape 4 : vue journée avec statuts",
-            "Étape 5 : bouton export CSV"
-          ]
-        },
-        {
-          "t": "Back stage",
-          "items": [
-            "Étape 1 : planning poussé à 6h",
-            "Étape 2 : catalogue pièces mis à jour à la main chaque mois",
-            "Étape 3 : PDF généré par un worker",
-            "Étape 4 : Marc corrige les statuts par téléphone",
-            "Étape 5 : Sophie nettoie le CSV dans Excel pendant 2 heures"
-          ]
-        },
-        {
-          "t": "Systèmes",
-          "items": [
-            "Étape 1 : service de planning",
-            "Étape 2 : appli mobile, cache hors ligne, stockage photos",
-            "Étape 3 : service PDF, prestataire email",
-            "Étape 4 : appli web dispatch",
-            "Étape 5 : job d'export, aucune intégration"
-          ]
-        }
-      ],
-      "takeaway": "La fuite est à l'étape 5 : deux heures de nettoyage manuel chaque lundi. La squad Intégrations a reçu sa première mission, la synchro Pennylane."
-    }
-  },
-  "kano": {
-    "en": {
-      "context": "Mature Fieldnote: Karim runs a Kano questionnaire with 60 owners on 8 roadmap candidates before the annual plan.",
-      "blocks": [
-        {
-          "t": "Delighters",
-          "items": [
-            "Automatic route planning",
-            "Photo annotations with arrows",
-            "Customer portal with intervention history"
-          ]
-        },
-        {
-          "t": "Performance",
-          "items": [
-            "Parts catalogue with barcode scan",
-            "Invoicing integration (Pennylane, Sage)",
-            "Time to sync after a no-signal job"
-          ]
-        },
-        {
-          "t": "Indifferent",
-          "items": [
-            "Technician skills matrix",
-            "Dark theme",
-            "Weekly PDF report by email"
-          ]
-        },
-        {
-          "t": "Basic",
-          "items": [
-            "Offline mode",
-            "Customer signature on the phone",
-            "Photos attached to the right job"
-          ]
-        }
-      ],
-      "takeaway": "Offline mode is a basic: nobody will praise it, everyone will leave without it. The skills matrix, loud in sales calls, scored indifferent and left the roadmap."
-    },
-    "fr": {
-      "context": "Fieldnote mature : Karim lance un questionnaire Kano auprès de 60 dirigeants sur 8 candidats de roadmap avant le plan annuel.",
-      "blocks": [
-        {
-          "t": "Attractif",
-          "items": [
-            "Planification automatique des tournées",
-            "Annotations photo avec flèches",
-            "Portail client avec historique des interventions"
-          ]
-        },
-        {
-          "t": "Performance",
-          "items": [
-            "Catalogue pièces avec scan code-barres",
-            "Intégration facturation (Pennylane, Sage)",
-            "Temps de synchro après une intervention sans réseau"
-          ]
-        },
-        {
-          "t": "Indifférent",
-          "items": [
-            "Matrice de compétences des techniciens",
-            "Thème sombre",
-            "Rapport PDF hebdo par email"
-          ]
-        },
-        {
-          "t": "Basique",
-          "items": [
-            "Mode hors ligne",
-            "Signature client sur le téléphone",
-            "Photos rattachées à la bonne intervention"
-          ]
-        }
-      ],
-      "takeaway": "Le mode hors ligne est un basique : personne ne le félicitera, tout le monde partira sans lui. La matrice de compétences, bruyante en rendez-vous commercial, est sortie indifférente et a quitté la roadmap."
-    }
-  },
-  "hmw": {
-    "en": {
-      "context": "Post-PMF Fieldnote, after the activation research: the product team turns four insights into How Might We questions.",
-      "blocks": [
-        {
-          "t": "Insight",
-          "items": [
-            "Technicians learn about Fieldnote on day one, from the boss",
-            "The first job is logged with the boss watching, then stops",
-            "In boiler rooms there is no signal, so nothing gets logged",
-            "Marc only sees the app's value at 6pm"
-          ]
-        },
-        {
-          "t": "How might we…",
-          "items": [
-            "HMW make the first day feel like the technician's idea, not the boss's?",
-            "HMW make the second logged job easier than the first?",
-            "HMW make logging work exactly the same with or without signal?",
-            "HMW show Marc at 11am who has logged and who has not?"
-          ]
-        },
-        {
-          "t": "Votes",
-          "items": [
-            "Second job easier than the first: 6 votes",
-            "Same with or without signal: 5 votes"
-          ]
-        }
-      ],
-      "takeaway": "Two HMW carried the room. They framed the sketching session the next day; the other two went to the parking lot."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF, après la recherche sur l'activation : l'équipe produit transforme quatre insights en questions Comment pourrions-nous.",
-      "blocks": [
-        {
-          "t": "Insight",
-          "items": [
-            "Les techniciens découvrent Fieldnote le jour 1, par le patron",
-            "La première intervention est saisie sous l'œil du patron, puis ça s'arrête",
-            "En chaufferie il n'y a pas de réseau, donc rien n'est saisi",
-            "Marc ne voit la valeur de l'appli qu'à 18h"
-          ]
-        },
-        {
-          "t": "Comment pourrions-nous…",
-          "items": [
-            "CPN faire que le premier jour ressemble à l'idée du technicien, pas du patron ?",
-            "CPN rendre la deuxième intervention plus facile que la première ?",
-            "CPN faire que la saisie marche pareil avec ou sans réseau ?",
-            "CPN montrer à Marc à 11h qui a saisi et qui non ?"
-          ]
-        },
-        {
-          "t": "Votes",
-          "items": [
-            "Deuxième intervention plus facile que la première : 6 votes",
-            "Pareil avec ou sans réseau : 5 votes"
-          ]
-        }
-      ],
-      "takeaway": "Deux CPN ont emporté la salle. Elles ont cadré la session d'esquisse du lendemain ; les deux autres sont allées au parking."
-    }
-  },
-  "mindmap": {
-    "en": {
-      "context": "Idea-stage Fieldnote, month one: Élise and Karim explore everything 'paperwork in the van' could mean before choosing a problem.",
-      "blocks": [
-        {
-          "t": "Topic",
-          "items": [
-            "Paperwork in the van",
-            "Why does it still exist in 2026, and who suffers most"
-          ]
-        },
-        {
-          "t": "Branches",
-          "items": [
-            "What gets written",
-            "Who needs it",
-            "When it gets lost",
-            "What replaces paper"
-          ]
-        },
-        {
-          "t": "Ideas",
-          "items": [
-            "Parts used, time spent, customer signature",
-            "Owner for invoicing, dispatcher for the next day",
-            "Between the van and the office drawer",
-            "On Sunday when nobody can read it",
-            "Photo of the sheet sent by WhatsApp",
-            "Voice note transcribed",
-            "Checklist per boiler model",
-            "Signature on the phone"
-          ]
-        }
-      ],
-      "takeaway": "The map showed that the loss happens between the van and the office, not on site. That narrowed the first problem statement to 'get the sheet to the office the same day'."
-    },
-    "fr": {
-      "context": "Fieldnote au stade idée, premier mois : Élise et Karim explorent tout ce que 'la paperasse dans la camionnette' peut vouloir dire avant de choisir un problème.",
-      "blocks": [
-        {
-          "t": "Sujet",
-          "items": [
-            "La paperasse dans la camionnette",
-            "Pourquoi ça existe encore en 2026, et qui en souffre le plus"
-          ]
-        },
-        {
-          "t": "Branches",
-          "items": [
-            "Ce qui s'écrit",
-            "Qui en a besoin",
-            "Quand ça se perd",
-            "Ce qui remplace le papier"
-          ]
-        },
-        {
-          "t": "Idées",
-          "items": [
-            "Pièces utilisées, temps passé, signature client",
-            "Le dirigeant pour facturer, le dispatcher pour le lendemain",
-            "Entre la camionnette et le tiroir du bureau",
-            "Le dimanche quand personne ne peut le relire",
-            "Photo de la feuille envoyée par WhatsApp",
-            "Vocal transcrit",
-            "Checklist par modèle de chaudière",
-            "Signature sur le téléphone"
-          ]
-        }
-      ],
-      "takeaway": "La carte a montré que la perte se produit entre la camionnette et le bureau, pas sur site. Le premier énoncé de problème s'est réduit à 'faire arriver la feuille au bureau le jour même'."
-    }
-  },
-  "affinity": {
-    "en": {
-      "context": "Post-PMF Fieldnote: after 8 activation interviews, Ana and Karim cluster 70 verbatims into themes.",
-      "blocks": [
-        {
-          "t": "Theme A",
-          "items": [
-            "Nobody told us before day one",
-            "The boss sent a WhatsApp at 7am saying 'use this'",
-            "I thought it was optional",
-            "We found out at the Monday meeting",
-            "The dispatcher did not know either"
-          ]
-        },
-        {
-          "t": "Theme B",
-          "items": [
-            "I logged the first one with Sophie next to me",
-            "After that I went back to the sheet",
-            "It takes longer than paper the first times",
-            "Nobody checked, so I stopped"
-          ]
-        },
-        {
-          "t": "Theme C",
-          "items": [
-            "No signal in the boiler room",
-            "The app spun for a minute then lost the photos",
-            "I gave up and took photos with the camera",
-            "I sync in the van but forget",
-            "The customer was waiting",
-            "I do not trust it when it says pending"
-          ]
-        },
-        {
-          "t": "Theme D",
-          "items": [
-            "Marc still calls to ask where I am",
-            "The office does not look at the app before 6pm",
-            "Nothing changed for dispatch"
-          ]
-        }
-      ],
-      "takeaway": "Theme C, offline, had the most notes but Theme A, nobody told us, explained the most stalled companies. Both became opportunities on the tree."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF : après 8 entretiens sur l'activation, Ana et Karim regroupent 70 verbatims en thèmes.",
-      "blocks": [
-        {
-          "t": "Thème A",
-          "items": [
-            "Personne ne nous a prévenus avant le jour 1",
-            "Le patron a envoyé un WhatsApp à 7h : 'utilisez ça'",
-            "Je pensais que c'était facultatif",
-            "On l'a appris à la réunion du lundi",
-            "Le dispatcher ne savait pas non plus"
-          ]
-        },
-        {
-          "t": "Thème B",
-          "items": [
-            "J'ai saisi la première avec Sophie à côté",
-            "Après je suis repassée à la feuille",
-            "Ça prend plus longtemps que le papier les premières fois",
-            "Personne ne vérifiait, donc j'ai arrêté"
-          ]
-        },
-        {
-          "t": "Thème C",
-          "items": [
-            "Pas de réseau en chaufferie",
-            "L'appli a tourné une minute puis a perdu les photos",
-            "J'ai abandonné et pris les photos avec l'appareil",
-            "Je synchronise dans la camionnette mais j'oublie",
-            "Le client attendait",
-            "Je ne lui fais pas confiance quand ça dit en attente"
-          ]
-        },
-        {
-          "t": "Thème D",
-          "items": [
-            "Marc appelle toujours pour savoir où je suis",
-            "Le bureau ne regarde pas l'appli avant 18h",
-            "Rien n'a changé pour le dispatch"
-          ]
-        }
-      ],
-      "takeaway": "Le thème C, hors ligne, avait le plus de notes, mais le thème A, personne ne nous a prévenus, expliquait le plus d'entreprises bloquées. Les deux sont devenus des opportunités sur l'arbre."
-    }
-  },
-  "crazy8": {
-    "en": {
-      "context": "Post-PMF Fieldnote, sketching session on 'HMW make the second logged job easier than the first': Ana, Karim, Tom and Julien, eight minutes each.",
-      "blocks": [
-        {
-          "t": "1",
-          "items": [
-            "Big camera button, nothing else on the screen",
-            "Parts suggested from the last job at the same address"
-          ]
-        },
-        {
-          "t": "2",
-          "items": [
-            "Counter '2 of 10' with a progress ring",
-            "Card 'you saved 4 minutes vs paper'"
-          ]
-        },
-        {
-          "t": "3",
-          "items": [
-            "Voice note transcribed into the report",
-            "One-tap 'same as last time' on the parts list"
-          ]
-        },
-        {
-          "t": "4",
-          "items": [
-            "Marc's screen shows a green dot when Léa logs",
-            "SMS to Léa: 'Marc saw your report'"
-          ]
-        }
-      ],
-      "takeaway": "Sixteen sketches in eight minutes; 'same as last time' and the green dot for Marc got the most dots and went to the prototype."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF, session d'esquisse sur 'CPN rendre la deuxième intervention plus facile que la première' : Ana, Karim, Tom et Julien, huit minutes chacun.",
-      "blocks": [
-        {
-          "t": "1",
-          "items": [
-            "Gros bouton appareil photo, rien d'autre à l'écran",
-            "Pièces suggérées d'après la dernière intervention à la même adresse"
-          ]
-        },
-        {
-          "t": "2",
-          "items": [
-            "Compteur '2 sur 10' avec un anneau de progression",
-            "Carte 'tu as gagné 4 minutes par rapport au papier'"
-          ]
-        },
-        {
-          "t": "3",
-          "items": [
-            "Vocal transcrit dans le rapport",
-            "'Comme la dernière fois' en un tap sur la liste de pièces"
-          ]
-        },
-        {
-          "t": "4",
-          "items": [
-            "L'écran de Marc affiche un point vert quand Léa saisit",
-            "SMS à Léa : 'Marc a vu ton rapport'"
-          ]
-        }
-      ],
-      "takeaway": "Seize esquisses en huit minutes ; 'comme la dernière fois' et le point vert pour Marc ont eu le plus de gommettes et sont partis en prototype."
-    }
-  },
-  "brainwriting": {
-    "en": {
-      "context": "Post-PMF Fieldnote: six people (Karim, Ana, Tom, Julien, Nadia, Marc as guest) on 'how to get a technician to the 10th logged job'.",
-      "blocks": [
-        {
-          "t": "Round 1",
-          "items": [
-            "Idea 1: SMS the evening before day one",
-            "Idea 2: first 3 jobs prefilled by the dispatcher",
-            "Idea 3: counter to 10 on the home screen"
-          ]
-        },
-        {
-          "t": "Round 2",
-          "items": [
-            "Idea 1: SMS with a 20-second video from a peer",
-            "Idea 2: dispatcher prefills, technician only adds photos",
-            "Idea 3: counter shared with the whole team"
-          ]
-        },
-        {
-          "t": "Round 3",
-          "items": [
-            "Idea 1: video recorded by Léa, not by Fieldnote",
-            "Idea 2: photos only for jobs 1 to 3, parts later",
-            "Idea 3: team counter on Marc's screen"
-          ]
-        },
-        {
-          "t": "Round 4",
-          "items": [
-            "Idea 1: technician chooses who sends the video",
-            "Idea 2: 'photo only' mode as a permanent option",
-            "Idea 3: 10th job unlocks the parts scanner"
-          ]
-        },
-        {
-          "t": "Round 5",
-          "items": [
-            "Idea 1: kit with the video and a printed QR",
-            "Idea 2: photo-only mode default for week one",
-            "Idea 3: unlock celebrated in the WhatsApp group"
-          ]
-        },
-        {
-          "t": "Round 6",
-          "items": [
-            "Idea 1: kit tested with 10 companies",
-            "Idea 2: default measured against full form",
-            "Idea 3: Marc's screen shows the streak, no unlock"
-          ]
-        }
-      ],
-      "takeaway": "Passing the sheet turned 'a counter' into 'photo-only mode by default in week one', a testable change nobody had at round one."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF : six personnes (Karim, Ana, Tom, Julien, Nadia, Marc en invité) sur 'comment amener un technicien à la 10e intervention saisie'.",
-      "blocks": [
-        {
-          "t": "Tour 1",
-          "items": [
-            "Idée 1 : SMS la veille du jour 1",
-            "Idée 2 : 3 premières interventions préremplies par le dispatcher",
-            "Idée 3 : compteur jusqu'à 10 sur l'écran d'accueil"
-          ]
-        },
-        {
-          "t": "Tour 2",
-          "items": [
-            "Idée 1 : SMS avec une vidéo de 20 secondes d'un collègue",
-            "Idée 2 : le dispatcher prérempli, le technicien n'ajoute que les photos",
-            "Idée 3 : compteur partagé avec toute l'équipe"
-          ]
-        },
-        {
-          "t": "Tour 3",
-          "items": [
-            "Idée 1 : vidéo enregistrée par Léa, pas par Fieldnote",
-            "Idée 2 : photos seules pour les interventions 1 à 3, pièces plus tard",
-            "Idée 3 : compteur d'équipe sur l'écran de Marc"
-          ]
-        },
-        {
-          "t": "Tour 4",
-          "items": [
-            "Idée 1 : le technicien choisit qui envoie la vidéo",
-            "Idée 2 : mode 'photo seule' en option permanente",
-            "Idée 3 : la 10e intervention débloque le scanner de pièces"
-          ]
-        },
-        {
-          "t": "Tour 5",
-          "items": [
-            "Idée 1 : kit avec la vidéo et un QR imprimé",
-            "Idée 2 : mode photo seule par défaut la première semaine",
-            "Idée 3 : déblocage fêté dans le groupe WhatsApp"
-          ]
-        },
-        {
-          "t": "Tour 6",
-          "items": [
-            "Idée 1 : kit testé avec 10 entreprises",
-            "Idée 2 : défaut mesuré contre le formulaire complet",
-            "Idée 3 : l'écran de Marc montre la série, pas de déblocage"
-          ]
-        }
-      ],
-      "takeaway": "Faire tourner la feuille a transformé 'un compteur' en 'mode photo seule par défaut la première semaine', un changement testable que personne n'avait au tour 1."
-    }
-  },
-  "dotvote": {
-    "en": {
-      "context": "Post-PMF Fieldnote, end of the ideation week: 11 people, 3 dots each, on the four ideas left standing.",
-      "blocks": [
-        {
-          "t": "Option A",
-          "items": [
-            "Onboarding kit for the first team meeting",
-            "Video from a technician, printed QR, checklist"
-          ]
-        },
-        {
-          "t": "Option B",
-          "items": [
-            "Photo-only mode by default in week one",
-            "Parts and time asked from the 4th job"
-          ]
-        },
-        {
-          "t": "Option C",
-          "items": [
-            "Team counter on Marc's dispatch screen",
-            "Green dot per technician who logged today"
-          ]
-        },
-        {
-          "t": "Option D",
-          "items": [
-            "SMS to each technician the evening before",
-            "Sent by Fieldnote, signed by the owner"
-          ]
-        }
-      ],
-      "takeaway": "Option B took 5 of 11 first dots and Option A 3. Both went to the experiment board; C and D wait for the next round."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF, fin de la semaine d'idéation : 11 personnes, 3 gommettes chacune, sur les quatre idées encore en lice.",
-      "blocks": [
-        {
-          "t": "Option A",
-          "items": [
-            "Kit d'onboarding pour la première réunion d'équipe",
-            "Vidéo d'un technicien, QR imprimé, checklist"
-          ]
-        },
-        {
-          "t": "Option B",
-          "items": [
-            "Mode photo seule par défaut la première semaine",
-            "Pièces et temps demandés à partir de la 4e intervention"
-          ]
-        },
-        {
-          "t": "Option C",
-          "items": [
-            "Compteur d'équipe sur l'écran dispatch de Marc",
-            "Point vert par technicien qui a saisi aujourd'hui"
-          ]
-        },
-        {
-          "t": "Option D",
-          "items": [
-            "SMS à chaque technicien la veille au soir",
-            "Envoyé par Fieldnote, signé par le dirigeant"
-          ]
-        }
-      ],
-      "takeaway": "L'option B a pris 5 premières gommettes sur 11 et l'option A 3. Les deux sont allées au tableau d'expériences ; C et D attendent le prochain tour."
-    }
-  },
-  "sprint": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, month four: a five-day sprint on 'can a technician log a job in under a minute with the customer present?' with Élise as decider.",
-      "blocks": [
-        {
-          "t": "Monday · Map",
-          "items": [
-            "Map: arrive, repair, log, sign, leave",
-            "Target: the 'log' step, under 60 seconds",
-            "Expert: Léa on the phone for 30 minutes"
-          ]
-        },
-        {
-          "t": "Tuesday · Sketch",
-          "items": [
-            "Lightning demos: WhatsApp, Instagram camera, Uber signature",
-            "Crazy 8 on the log screen",
-            "Solution sketches: photo-first vs form-first"
-          ]
-        },
-        {
-          "t": "Wednesday · Decide",
-          "items": [
-            "Heat map: photo-first wins",
-            "Élise decides: photo, parts from a list, signature",
-            "Storyboard: 6 screens from arrival to PDF"
-          ]
-        },
-        {
-          "t": "Thursday · Prototype",
-          "items": [
-            "Figma prototype on Ana's phone",
-            "Fake parts list with the 30 most used",
-            "Pre-filled customer address"
-          ]
-        },
-        {
-          "t": "Friday · Test",
-          "items": [
-            "5 technicians, in their van, stopwatch",
-            "Median 48 seconds, one at 2 minutes (parts search)",
-            "All five signed the fake PDF without asking"
-          ]
-        }
-      ],
-      "takeaway": "Under a minute is possible if parts are picked, not typed. The parts search became the first thing Tom built."
-    },
-    "fr": {
-      "context": "Fieldnote pré-PMF, quatrième mois : sprint de cinq jours sur 'un technicien peut-il saisir une intervention en moins d'une minute devant le client ?', Élise comme décideuse.",
-      "blocks": [
-        {
-          "t": "Lundi · Cartographier",
-          "items": [
-            "Carte : arriver, réparer, saisir, signer, partir",
-            "Cible : l'étape 'saisir', sous 60 secondes",
-            "Experte : Léa au téléphone pendant 30 minutes"
-          ]
-        },
-        {
-          "t": "Mardi · Esquisser",
-          "items": [
-            "Démos éclair : WhatsApp, appareil photo Instagram, signature Uber",
-            "Crazy 8 sur l'écran de saisie",
-            "Esquisses de solution : photo d'abord contre formulaire d'abord"
-          ]
-        },
-        {
-          "t": "Mercredi · Décider",
-          "items": [
-            "Carte de chaleur : photo d'abord l'emporte",
-            "Élise tranche : photo, pièces dans une liste, signature",
-            "Storyboard : 6 écrans de l'arrivée au PDF"
-          ]
-        },
-        {
-          "t": "Jeudi · Prototyper",
-          "items": [
-            "Prototype Figma sur le téléphone d'Ana",
-            "Fausse liste de pièces avec les 30 plus utilisées",
-            "Adresse client préremplie"
-          ]
-        },
-        {
-          "t": "Vendredi · Tester",
-          "items": [
-            "5 techniciens, dans leur camionnette, chronomètre",
-            "Médiane 48 secondes, un à 2 minutes (recherche de pièce)",
-            "Les cinq ont signé le faux PDF sans poser de question"
-          ]
-        }
-      ],
-      "takeaway": "Moins d'une minute est possible si les pièces sont choisies, pas tapées. La recherche de pièces est devenue la première chose que Tom a construite."
-    }
-  },
-  "experiments": {
-    "en": {
-      "context": "Post-PMF Fieldnote: the trio turns the two winning ideas plus one assumption into experiments for the next three weeks.",
-      "blocks": [
-        {
-          "t": "Experiment 1",
-          "items": [
-            "Hypothesis: photo-only mode in week one doubles day-5 activation",
-            "Test: default for 20 new companies, full form for 20 others",
-            "Metric: technicians with 10 jobs logged by day 5",
-            "Success criteria: 40 % vs 20 % baseline",
-            "Result: 37 % vs 19 %",
-            "Learning: parts are the blocker, not photos"
-          ]
-        },
-        {
-          "t": "Experiment 2",
-          "items": [
-            "Hypothesis: an onboarding kit gets technicians told before day one",
-            "Test: kit sent to 10 companies, none to 10 others",
-            "Metric: technicians who log on day one",
-            "Success criteria: 60 % vs 30 %",
-            "Result: 55 % vs 28 %",
-            "Learning: the video matters more than the checklist"
-          ]
-        },
-        {
-          "t": "Experiment 3",
-          "items": [
-            "Hypothesis: technicians will pay attention to a counter to 10",
-            "Test: fake-door counter on the home screen, tap tracked",
-            "Metric: tap rate in week one",
-            "Success criteria: 30 % tap it at least once",
-            "Result: 11 %",
-            "Learning: dropped, the counter is a Fieldnote idea, not a technician need"
-          ]
-        }
-      ],
-      "takeaway": "Two of three held up. Photo-only mode shipped as the default, the kit went to Julien's onboarding, the counter died cheaply."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF : le trio transforme les deux idées gagnantes et une hypothèse en expériences pour les trois prochaines semaines.",
-      "blocks": [
-        {
-          "t": "Expérience 1",
-          "items": [
-            "Hypothèse : le mode photo seule en semaine 1 double l'activation à J5",
-            "Test : par défaut pour 20 nouvelles entreprises, formulaire complet pour 20 autres",
-            "Métrique : techniciens avec 10 interventions saisies à J5",
-            "Critère de succès : 40 % contre 20 % de base",
-            "Résultat : 37 % contre 19 %",
-            "Apprentissage : ce sont les pièces qui bloquent, pas les photos"
-          ]
-        },
-        {
-          "t": "Expérience 2",
-          "items": [
-            "Hypothèse : un kit d'onboarding fait prévenir les techniciens avant le jour 1",
-            "Test : kit envoyé à 10 entreprises, rien à 10 autres",
-            "Métrique : techniciens qui saisissent le jour 1",
-            "Critère de succès : 60 % contre 30 %",
-            "Résultat : 55 % contre 28 %",
-            "Apprentissage : la vidéo compte plus que la checklist"
-          ]
-        },
-        {
-          "t": "Expérience 3",
-          "items": [
-            "Hypothèse : les techniciens prêteront attention à un compteur jusqu'à 10",
-            "Test : fausse porte sur l'écran d'accueil, taps mesurés",
-            "Métrique : taux de tap en semaine 1",
-            "Critère de succès : 30 % tapent au moins une fois",
-            "Résultat : 11 %",
-            "Apprentissage : abandonné, le compteur est une idée Fieldnote, pas un besoin technicien"
-          ]
-        }
-      ],
-      "takeaway": "Deux sur trois ont tenu. Le mode photo seule est sorti par défaut, le kit est parti dans l'onboarding de Julien, le compteur est mort à peu de frais."
-    }
+   ],
+   "takeaway": "Le persona a écarté un formulaire lourd à saisir : la première version est devenue photo d'abord avec notes vocales, et la règle des 30 secondes est devenue un principe de design."
   }
+ },
+ "jtbd": {
+  "en": {
+   "context": "Pre-PMF Fieldnote: Karim and Ana write the job statement of a technician after 8 switch interviews with companies that left paper sheets.",
+   "blocks": [
+    {
+     "t": "When [situation], I want to [motivation], so I can [outcome]",
+     "items": [
+      "When I finish a job with the customer next to me, I want to record what I did in under a minute, so I can leave with nothing left to do tonight",
+      "When the office asks what parts I used, I want it already written, so I can stop being called back"
+     ]
+    },
+    {
+     "t": "Push (current situation)",
+     "items": [
+      "Paper sheets lost or unreadable",
+      "Sophie chases parts every Sunday",
+      "Overtime disputed because nothing is timestamped"
+     ]
+    },
+    {
+     "t": "Pull (new solution)",
+     "items": [
+      "Photo replaces the description",
+      "Customer signs on the phone",
+      "Parts picked from a list, not typed"
+     ]
+    },
+    {
+     "t": "Anxieties",
+     "items": [
+      "Will it work in a boiler room with no signal?",
+      "Will the boss track my breaks?",
+      "Another app to learn"
+     ]
+    },
+    {
+     "t": "Habits",
+     "items": [
+      "Batch the sheets at 7pm",
+      "WhatsApp voice notes to Marc",
+      "Photos in the phone gallery, never sorted"
+     ]
+    }
+   ],
+   "takeaway": "The job is not 'log interventions', it is 'leave the site with nothing left to do'. Offline mode moved from nice-to-have to a launch requirement."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF : Karim et Ana écrivent le job d'un technicien après 8 entretiens switch avec des entreprises qui ont quitté les feuilles papier.",
+   "blocks": [
+    {
+     "t": "Quand [situation], je veux [motivation], pour [résultat]",
+     "items": [
+      "Quand je termine une intervention avec le client à côté, je veux enregistrer ce que j'ai fait en moins d'une minute, pour partir sans rien à faire ce soir",
+      "Quand le bureau demande quelles pièces j'ai utilisées, je veux que ce soit déjà écrit, pour ne plus être rappelée"
+     ]
+    },
+    {
+     "t": "Push (situation actuelle)",
+     "items": [
+      "Feuilles papier perdues ou illisibles",
+      "Sophie court après les pièces chaque dimanche",
+      "Heures sup contestées, rien n'est horodaté"
+     ]
+    },
+    {
+     "t": "Pull (nouvelle solution)",
+     "items": [
+      "La photo remplace la description",
+      "Le client signe sur le téléphone",
+      "Pièces choisies dans une liste, pas tapées"
+     ]
+    },
+    {
+     "t": "Anxiétés",
+     "items": [
+      "Ça marchera en chaufferie sans réseau ?",
+      "Le patron va surveiller mes pauses ?",
+      "Encore une appli à apprendre"
+     ]
+    },
+    {
+     "t": "Habitudes",
+     "items": [
+      "Regrouper les feuilles à 19h",
+      "Vocaux WhatsApp à Marc",
+      "Photos dans la galerie, jamais triées"
+     ]
+    }
+   ],
+   "takeaway": "Le job n'est pas 'saisir des interventions', c'est 'quitter le site sans rien à faire après'. Le mode hors ligne est passé de bonus à exigence de lancement."
+  }
+ },
+ "empathy": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, first week: the whole team maps Léa after two ride-alongs in the van.",
+   "blocks": [
+    {
+     "t": "Says",
+     "items": [
+      "\"I'll do the sheet tonight\"",
+      "\"Which part did I put in? The grey one\"",
+      "\"Marc, stop calling, I'm on a roof\""
+     ]
+    },
+    {
+     "t": "Thinks",
+     "items": [
+      "The office does not see how the day really goes",
+      "If I forget a part, it comes out of my bonus",
+      "Nobody reads the sheets anyway"
+     ]
+    },
+    {
+     "t": "Does",
+     "items": [
+      "Photographs the boiler before and after",
+      "Sends voice notes instead of writing",
+      "Keeps parts in the van without logging them"
+     ]
+    },
+    {
+     "t": "Feels",
+     "items": [
+      "Rushed between two jobs",
+      "Blamed for missing parts on Monday",
+      "Proud when a customer says thanks"
+     ]
+    },
+    {
+     "t": "Pains",
+     "items": [
+      "Typing with gloves",
+      "Paperwork after 12 hours of work",
+      "Disputes about overtime"
+     ]
+    },
+    {
+     "t": "Gains",
+     "items": [
+      "Leaving the site done",
+      "Being believed about what was used",
+      "A schedule that does not change at 11am"
+     ]
+    }
+   ],
+   "takeaway": "Three themes for the interview guide came out of this: paperwork after hours, trust about parts, and the schedule changing mid-morning."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, première semaine : toute l'équipe cartographie Léa après deux journées passées dans sa camionnette.",
+   "blocks": [
+    {
+     "t": "Dit",
+     "items": [
+      "\"Je ferai la feuille ce soir\"",
+      "\"Quelle pièce j'ai mise ? La grise\"",
+      "\"Marc, arrête d'appeler, je suis sur un toit\""
+     ]
+    },
+    {
+     "t": "Pense",
+     "items": [
+      "Le bureau ne voit pas comment se passe la journée",
+      "Si j'oublie une pièce, ça sort de ma prime",
+      "Personne ne lit les feuilles de toute façon"
+     ]
+    },
+    {
+     "t": "Fait",
+     "items": [
+      "Photographie la chaudière avant et après",
+      "Envoie des vocaux au lieu d'écrire",
+      "Garde des pièces dans la camionnette sans les noter"
+     ]
+    },
+    {
+     "t": "Ressent",
+     "items": [
+      "Pressée entre deux interventions",
+      "Accusée le lundi pour les pièces manquantes",
+      "Fière quand un client dit merci"
+     ]
+    },
+    {
+     "t": "Douleurs",
+     "items": [
+      "Taper avec des gants",
+      "La paperasse après 12 h de travail",
+      "Les litiges sur les heures sup"
+     ]
+    },
+    {
+     "t": "Gains",
+     "items": [
+      "Quitter le site en ayant tout fini",
+      "Être crue sur ce qui a été utilisé",
+      "Un planning qui ne change pas à 11h"
+     ]
+    }
+   ],
+   "takeaway": "Trois thèmes pour le guide d'entretien en sont sortis : la paperasse après les heures, la confiance sur les pièces, et le planning qui bouge en milieu de matinée."
+  }
+ },
+ "journey": {
+  "en": {
+   "context": "Post-PMF Fieldnote: Karim, Ana, Julien (support) and Nadia (sales) map Sophie's journey as a company owner, from first hearing about Fieldnote to renewal.",
+   "blocks": [
+    {
+     "t": "Actions",
+     "items": [
+      "Awareness: hears about it from a peer at a trade fair",
+      "Consideration: books a demo, compares with Jobber",
+      "Purchase: signs for 22 seats at 29 € each",
+      "Usage: 8 technicians log jobs, 14 do not",
+      "Loyalty: renews if invoicing is connected"
+     ]
+    },
+    {
+     "t": "Touchpoints",
+     "items": [
+      "Awareness: peer, trade fair, LinkedIn post",
+      "Consideration: Nadia's demo, pricing page",
+      "Purchase: contract email, onboarding call",
+      "Usage: mobile app, Marc's dispatch screen",
+      "Loyalty: quarterly review with Julien"
+     ]
+    },
+    {
+     "t": "Emotions",
+     "items": [
+      "Awareness: curious, skeptical",
+      "Consideration: hopeful about Sundays",
+      "Purchase: worried about technician adoption",
+      "Usage: frustrated by the 14 silent ones",
+      "Loyalty: relieved when invoices go out on Monday"
+     ]
+    },
+    {
+     "t": "Pain points",
+     "items": [
+      "Awareness: 'another app that techs won't use'",
+      "Consideration: cannot try it with real jobs",
+      "Purchase: no plan to bring technicians on board",
+      "Usage: half the team still on paper after 2 weeks",
+      "Loyalty: invoicing export needs manual cleanup"
+     ]
+    },
+    {
+     "t": "Opportunities",
+     "items": [
+      "Awareness: case study from a 20-technician company",
+      "Consideration: 7-day trial with real interventions",
+      "Purchase: onboarding kit for the first team meeting",
+      "Usage: first-10-interventions checklist per technician",
+      "Loyalty: one-click Pennylane integration"
+     ]
+    }
+   ],
+   "takeaway": "The Usage stage carried the biggest pain: half the technicians never start. The 'first 10 interventions' opportunity became the quarter's target outcome."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF : Karim, Ana, Julien (support) et Nadia (ventes) cartographient le parcours de Sophie, dirigeante, de la découverte au renouvellement.",
+   "blocks": [
+    {
+     "t": "Actions",
+     "items": [
+      "Découverte : en entend parler par un confrère sur un salon",
+      "Considération : réserve une démo, compare avec Jobber",
+      "Achat : signe pour 22 sièges à 29 € chacun",
+      "Usage : 8 techniciens saisissent, 14 non",
+      "Fidélité : renouvelle si la facturation est connectée"
+     ]
+    },
+    {
+     "t": "Points de contact",
+     "items": [
+      "Découverte : confrère, salon, post LinkedIn",
+      "Considération : démo de Nadia, page tarifs",
+      "Achat : email de contrat, appel d'onboarding",
+      "Usage : appli mobile, écran dispatch de Marc",
+      "Fidélité : revue trimestrielle avec Julien"
+     ]
+    },
+    {
+     "t": "Émotions",
+     "items": [
+      "Découverte : curieuse, sceptique",
+      "Considération : espoir de récupérer ses dimanches",
+      "Achat : inquiète de l'adoption par les techniciens",
+      "Usage : frustrée par les 14 silencieux",
+      "Fidélité : soulagée quand les factures partent le lundi"
+     ]
+    },
+    {
+     "t": "Frictions",
+     "items": [
+      "Découverte : 'encore une appli que les techs n'utiliseront pas'",
+      "Considération : impossible d'essayer sur de vraies interventions",
+      "Achat : aucun plan pour embarquer les techniciens",
+      "Usage : la moitié de l'équipe encore sur papier après 2 semaines",
+      "Fidélité : l'export facturation demande un nettoyage manuel"
+     ]
+    },
+    {
+     "t": "Opportunités",
+     "items": [
+      "Découverte : étude de cas d'une entreprise de 20 techniciens",
+      "Considération : essai de 7 jours sur de vraies interventions",
+      "Achat : kit d'onboarding pour la première réunion d'équipe",
+      "Usage : checklist des 10 premières interventions par technicien",
+      "Fidélité : intégration Pennylane en un clic"
+     ]
+    }
+   ],
+   "takeaway": "L'étape Usage portait la plus grosse friction : la moitié des techniciens ne démarrent jamais. L'opportunité '10 premières interventions' est devenue le résultat cible du trimestre."
+  }
+ },
+ "research-plan": {
+  "en": {
+   "context": "Post-PMF Fieldnote: Ana and Karim plan the research on why 38 % of new companies never get a technician to 10 interventions.",
+   "blocks": [
+    {
+     "t": "Research questions",
+     "items": [
+      "What happens between signature and the first logged job?",
+      "Who decides that technicians must use the app?",
+      "What makes a technician log a 2nd intervention?"
+     ]
+    },
+    {
+     "t": "Hypotheses",
+     "items": [
+      "H1: nobody tells technicians before day one",
+      "H2: the first job is logged with the boss watching, then never again",
+      "H3: no-signal sites kill the habit in week one"
+     ]
+    },
+    {
+     "t": "Method",
+     "items": [
+      "8 interviews, 45 min, remote",
+      "4 activated companies, 4 stalled ones",
+      "2 ride-alongs with technicians in stalled companies"
+     ]
+    },
+    {
+     "t": "Recruiting",
+     "items": [
+      "Companies signed in the last 60 days",
+      "Pulled from Julien's onboarding list",
+      "Owner + one technician per company",
+      "50 € voucher for technicians"
+     ]
+    },
+    {
+     "t": "Interview guide",
+     "items": [
+      "Tell me about the day Fieldnote arrived in your company",
+      "Walk me through your last intervention, from arrival to leaving",
+      "When did you last open the app? What for?",
+      "What did you do with the paper sheet that day?"
+     ]
+    }
+   ],
+   "takeaway": "The plan forced a split between activated and stalled companies; without it the interviews would only have told the success story."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF : Ana et Karim planifient la recherche sur pourquoi 38 % des nouvelles entreprises n'amènent jamais un technicien à 10 interventions.",
+   "blocks": [
+    {
+     "t": "Questions de recherche",
+     "items": [
+      "Que se passe-t-il entre la signature et la première intervention saisie ?",
+      "Qui décide que les techniciens doivent utiliser l'appli ?",
+      "Qu'est-ce qui fait qu'un technicien saisit une 2e intervention ?"
+     ]
+    },
+    {
+     "t": "Hypothèses",
+     "items": [
+      "H1 : personne ne prévient les techniciens avant le jour 1",
+      "H2 : la première intervention est saisie sous l'œil du patron, puis plus jamais",
+      "H3 : les sites sans réseau tuent l'habitude la première semaine"
+     ]
+    },
+    {
+     "t": "Méthode",
+     "items": [
+      "8 entretiens, 45 min, à distance",
+      "4 entreprises activées, 4 bloquées",
+      "2 journées en camionnette avec des techniciens d'entreprises bloquées"
+     ]
+    },
+    {
+     "t": "Recrutement",
+     "items": [
+      "Entreprises signées dans les 60 derniers jours",
+      "Tirées de la liste d'onboarding de Julien",
+      "Dirigeant + un technicien par entreprise",
+      "Bon d'achat de 50 € pour les techniciens"
+     ]
+    },
+    {
+     "t": "Guide d'entretien",
+     "items": [
+      "Raconte-moi le jour où Fieldnote est arrivé dans ton entreprise",
+      "Décris ta dernière intervention, de l'arrivée au départ",
+      "Quand as-tu ouvert l'appli pour la dernière fois ? Pour quoi faire ?",
+      "Qu'as-tu fait de la feuille papier ce jour-là ?"
+     ]
+    }
+   ],
+   "takeaway": "Le plan a imposé de séparer entreprises activées et bloquées ; sans ça, les entretiens n'auraient raconté que l'histoire des succès."
+  }
+ },
+ "assumptions": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, before building offline mode: Karim, Tom and Ana map the assumptions behind the first version.",
+   "blocks": [
+    {
+     "t": "Test first",
+     "items": [
+      "Technicians will log a job with the customer present",
+      "Owners will pay 29 € per technician",
+      "Photos alone are enough for invoicing"
+     ]
+    },
+    {
+     "t": "Already validated",
+     "items": [
+      "Paper sheets get lost (12 of 12 interviews)",
+      "Owners spend Sunday on invoicing",
+      "Parts are the main source of lost revenue"
+     ]
+    },
+    {
+     "t": "Ignore",
+     "items": [
+      "Technicians want a dark theme",
+      "Companies want a customer portal now",
+      "Dispatchers want a map view on day one"
+     ]
+    },
+    {
+     "t": "Monitor",
+     "items": [
+      "Boiler rooms have no signal (offline needed?)",
+      "Technicians use personal phones",
+      "Accountants accept photo evidence"
+     ]
+    }
+   ],
+   "takeaway": "'Customer present' was the riskiest unproven assumption: it became the first experiment, with 5 technicians and a stopwatch."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, avant de construire le mode hors ligne : Karim, Tom et Ana cartographient les hypothèses derrière la première version.",
+   "blocks": [
+    {
+     "t": "Tester en premier",
+     "items": [
+      "Les techniciens saisiront une intervention devant le client",
+      "Les dirigeants paieront 29 € par technicien",
+      "Les photos seules suffisent pour facturer"
+     ]
+    },
+    {
+     "t": "Déjà validé",
+     "items": [
+      "Les feuilles papier se perdent (12 entretiens sur 12)",
+      "Les dirigeants passent le dimanche à facturer",
+      "Les pièces sont la première source de revenu perdu"
+     ]
+    },
+    {
+     "t": "Ignorer",
+     "items": [
+      "Les techniciens veulent un thème sombre",
+      "Les entreprises veulent un portail client maintenant",
+      "Les dispatchers veulent une carte dès le jour 1"
+     ]
+    },
+    {
+     "t": "Surveiller",
+     "items": [
+      "Les chaufferies n'ont pas de réseau (hors ligne nécessaire ?)",
+      "Les techniciens utilisent leur téléphone perso",
+      "Les comptables acceptent la preuve photo"
+     ]
+    }
+   ],
+   "takeaway": "'Devant le client' était l'hypothèse non prouvée la plus risquée : elle est devenue la première expérience, avec 5 techniciens et un chronomètre."
+  }
+ },
+ "ost": {
+  "en": {
+   "context": "Post-PMF Fieldnote, quarter kick-off: the trio (Karim, Ana, Tom) builds the tree for the outcome 'cut time to first 10 interventions from 14 days to 5'.",
+   "blocks": [
+    {
+     "t": "Outcome",
+     "items": [
+      "New companies reach 10 logged interventions per technician in 5 days, not 14",
+      "Measured on companies signed this quarter, per technician seat"
+     ]
+    },
+    {
+     "t": "Opportunities",
+     "items": [
+      "Technicians are not told before day one",
+      "First job is logged with the boss watching, then stops",
+      "No-signal sites break the habit in week one"
+     ]
+    },
+    {
+     "t": "Solutions",
+     "items": [
+      "Onboarding kit for the first team meeting",
+      "SMS to each technician the evening before",
+      "Photo-only quick log in 20 seconds",
+      "Streak of 10 with a visible counter",
+      "Offline mode with sync badge",
+      "Dispatcher sees who logged today"
+     ]
+    },
+    {
+     "t": "Experiments",
+     "items": [
+      "Send the kit to 10 companies, measure day-5 activation",
+      "SMS to 50 technicians, compare first-day logs",
+      "Prototype the 20-second log with 5 technicians",
+      "Fake-door the counter, count taps",
+      "Ride-along in 3 no-signal companies",
+      "Show 'logged today' to 5 dispatchers for a week"
+     ]
+    }
+   ],
+   "takeaway": "The tree exposed that two of three opportunities are about the company, not the app. The onboarding kit was tested before any code."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, lancement du trimestre : le trio (Karim, Ana, Tom) construit l'arbre pour le résultat 'passer de 14 à 5 jours pour les 10 premières interventions'.",
+   "blocks": [
+    {
+     "t": "Résultat",
+     "items": [
+      "Les nouvelles entreprises atteignent 10 interventions saisies par technicien en 5 jours, pas 14",
+      "Mesuré sur les entreprises signées ce trimestre, par siège technicien"
+     ]
+    },
+    {
+     "t": "Opportunités",
+     "items": [
+      "Les techniciens ne sont pas prévenus avant le jour 1",
+      "La première intervention est saisie sous l'œil du patron, puis ça s'arrête",
+      "Les sites sans réseau cassent l'habitude la première semaine"
+     ]
+    },
+    {
+     "t": "Solutions",
+     "items": [
+      "Kit d'onboarding pour la première réunion d'équipe",
+      "SMS à chaque technicien la veille au soir",
+      "Saisie photo seule en 20 secondes",
+      "Série de 10 avec un compteur visible",
+      "Mode hors ligne avec badge de synchro",
+      "Le dispatcher voit qui a saisi aujourd'hui"
+     ]
+    },
+    {
+     "t": "Expériences",
+     "items": [
+      "Envoyer le kit à 10 entreprises, mesurer l'activation à J5",
+      "SMS à 50 techniciens, comparer les saisies du premier jour",
+      "Prototyper la saisie 20 secondes avec 5 techniciens",
+      "Fausse porte sur le compteur, compter les taps",
+      "Journée camionnette dans 3 entreprises sans réseau",
+      "Montrer 'saisi aujourd'hui' à 5 dispatchers pendant une semaine"
+     ]
+    }
+   ],
+   "takeaway": "L'arbre a montré que deux opportunités sur trois concernent l'entreprise, pas l'appli. Le kit d'onboarding a été testé avant toute ligne de code."
+  }
+ },
+ "blueprint": {
+  "en": {
+   "context": "Scale-up Fieldnote: Karim, Julien (support), Tom and an ops person blueprint the intervention flow to find where invoicing data gets lost.",
+   "blocks": [
+    {
+     "t": "Customer actions",
+     "items": [
+      "Step 1: Léa arrives, opens the job on her phone",
+      "Step 2: repairs, photographs, picks parts",
+      "Step 3: customer signs on the phone",
+      "Step 4: Marc closes the day on the dispatch screen",
+      "Step 5: Sophie exports to invoicing on Monday"
+     ]
+    },
+    {
+     "t": "Front stage",
+     "items": [
+      "Step 1: job card with address and history",
+      "Step 2: parts list, photo capture",
+      "Step 3: signature screen, PDF sent to customer",
+      "Step 4: day view with statuses",
+      "Step 5: CSV export button"
+     ]
+    },
+    {
+     "t": "Back stage",
+     "items": [
+      "Step 1: schedule pushed at 6am",
+      "Step 2: parts catalogue updated by hand monthly",
+      "Step 3: PDF generated by a queue worker",
+      "Step 4: Marc corrects statuses by phone",
+      "Step 5: Sophie cleans the CSV in Excel for 2 hours"
+     ]
+    },
+    {
+     "t": "Systems",
+     "items": [
+      "Step 1: scheduling service",
+      "Step 2: mobile app, offline cache, photo storage",
+      "Step 3: PDF service, email provider",
+      "Step 4: dispatch web app",
+      "Step 5: export job, no integration"
+     ]
+    }
+   ],
+   "takeaway": "The leak is at step 5: two hours of manual cleanup every Monday. The Integrations squad got its first mission, Pennylane sync."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up : Karim, Julien (support), Tom et une personne des ops font le blueprint du flux d'intervention pour trouver où les données de facturation se perdent.",
+   "blocks": [
+    {
+     "t": "Actions client",
+     "items": [
+      "Étape 1 : Léa arrive, ouvre l'intervention sur son téléphone",
+      "Étape 2 : répare, photographie, choisit les pièces",
+      "Étape 3 : le client signe sur le téléphone",
+      "Étape 4 : Marc clôture la journée sur l'écran dispatch",
+      "Étape 5 : Sophie exporte vers la facturation le lundi"
+     ]
+    },
+    {
+     "t": "Front stage",
+     "items": [
+      "Étape 1 : fiche intervention avec adresse et historique",
+      "Étape 2 : liste de pièces, prise de photo",
+      "Étape 3 : écran de signature, PDF envoyé au client",
+      "Étape 4 : vue journée avec statuts",
+      "Étape 5 : bouton export CSV"
+     ]
+    },
+    {
+     "t": "Back stage",
+     "items": [
+      "Étape 1 : planning poussé à 6h",
+      "Étape 2 : catalogue pièces mis à jour à la main chaque mois",
+      "Étape 3 : PDF généré par un worker",
+      "Étape 4 : Marc corrige les statuts par téléphone",
+      "Étape 5 : Sophie nettoie le CSV dans Excel pendant 2 heures"
+     ]
+    },
+    {
+     "t": "Systèmes",
+     "items": [
+      "Étape 1 : service de planning",
+      "Étape 2 : appli mobile, cache hors ligne, stockage photos",
+      "Étape 3 : service PDF, prestataire email",
+      "Étape 4 : appli web dispatch",
+      "Étape 5 : job d'export, aucune intégration"
+     ]
+    }
+   ],
+   "takeaway": "La fuite est à l'étape 5 : deux heures de nettoyage manuel chaque lundi. La squad Intégrations a reçu sa première mission, la synchro Pennylane."
+  }
+ },
+ "kano": {
+  "en": {
+   "context": "Mature Fieldnote: Karim runs a Kano questionnaire with 60 owners on 8 roadmap candidates before the annual plan.",
+   "blocks": [
+    {
+     "t": "Delighters",
+     "items": [
+      "Automatic route planning",
+      "Photo annotations with arrows",
+      "Customer portal with intervention history"
+     ]
+    },
+    {
+     "t": "Performance",
+     "items": [
+      "Parts catalogue with barcode scan",
+      "Invoicing integration (Pennylane, Sage)",
+      "Time to sync after a no-signal job"
+     ]
+    },
+    {
+     "t": "Indifferent",
+     "items": [
+      "Technician skills matrix",
+      "Dark theme",
+      "Weekly PDF report by email"
+     ]
+    },
+    {
+     "t": "Basic",
+     "items": [
+      "Offline mode",
+      "Customer signature on the phone",
+      "Photos attached to the right job"
+     ]
+    }
+   ],
+   "takeaway": "Offline mode is a basic: nobody will praise it, everyone will leave without it. The skills matrix, loud in sales calls, scored indifferent and left the roadmap."
+  },
+  "fr": {
+   "context": "Fieldnote mature : Karim lance un questionnaire Kano auprès de 60 dirigeants sur 8 candidats de roadmap avant le plan annuel.",
+   "blocks": [
+    {
+     "t": "Attractif",
+     "items": [
+      "Planification automatique des tournées",
+      "Annotations photo avec flèches",
+      "Portail client avec historique des interventions"
+     ]
+    },
+    {
+     "t": "Performance",
+     "items": [
+      "Catalogue pièces avec scan code-barres",
+      "Intégration facturation (Pennylane, Sage)",
+      "Temps de synchro après une intervention sans réseau"
+     ]
+    },
+    {
+     "t": "Indifférent",
+     "items": [
+      "Matrice de compétences des techniciens",
+      "Thème sombre",
+      "Rapport PDF hebdo par email"
+     ]
+    },
+    {
+     "t": "Basique",
+     "items": [
+      "Mode hors ligne",
+      "Signature client sur le téléphone",
+      "Photos rattachées à la bonne intervention"
+     ]
+    }
+   ],
+   "takeaway": "Le mode hors ligne est un basique : personne ne le félicitera, tout le monde partira sans lui. La matrice de compétences, bruyante en rendez-vous commercial, est sortie indifférente et a quitté la roadmap."
+  }
+ },
+ "hmw": {
+  "en": {
+   "context": "Post-PMF Fieldnote, after the activation research: the product team turns four insights into How Might We questions.",
+   "blocks": [
+    {
+     "t": "Insight",
+     "items": [
+      "Technicians learn about Fieldnote on day one, from the boss",
+      "The first job is logged with the boss watching, then stops",
+      "In boiler rooms there is no signal, so nothing gets logged",
+      "Marc only sees the app's value at 6pm"
+     ]
+    },
+    {
+     "t": "How might we…",
+     "items": [
+      "HMW make the first day feel like the technician's idea, not the boss's?",
+      "HMW make the second logged job easier than the first?",
+      "HMW make logging work exactly the same with or without signal?",
+      "HMW show Marc at 11am who has logged and who has not?"
+     ]
+    },
+    {
+     "t": "Votes",
+     "items": [
+      "Second job easier than the first: 6 votes",
+      "Same with or without signal: 5 votes"
+     ]
+    }
+   ],
+   "takeaway": "Two HMW carried the room. They framed the sketching session the next day; the other two went to the parking lot."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, après la recherche sur l'activation : l'équipe produit transforme quatre insights en questions Comment pourrions-nous.",
+   "blocks": [
+    {
+     "t": "Insight",
+     "items": [
+      "Les techniciens découvrent Fieldnote le jour 1, par le patron",
+      "La première intervention est saisie sous l'œil du patron, puis ça s'arrête",
+      "En chaufferie il n'y a pas de réseau, donc rien n'est saisi",
+      "Marc ne voit la valeur de l'appli qu'à 18h"
+     ]
+    },
+    {
+     "t": "Comment pourrions-nous…",
+     "items": [
+      "CPN faire que le premier jour ressemble à l'idée du technicien, pas du patron ?",
+      "CPN rendre la deuxième intervention plus facile que la première ?",
+      "CPN faire que la saisie marche pareil avec ou sans réseau ?",
+      "CPN montrer à Marc à 11h qui a saisi et qui non ?"
+     ]
+    },
+    {
+     "t": "Votes",
+     "items": [
+      "Deuxième intervention plus facile que la première : 6 votes",
+      "Pareil avec ou sans réseau : 5 votes"
+     ]
+    }
+   ],
+   "takeaway": "Deux CPN ont emporté la salle. Elles ont cadré la session d'esquisse du lendemain ; les deux autres sont allées au parking."
+  }
+ },
+ "mindmap": {
+  "en": {
+   "context": "Idea-stage Fieldnote, month one: Élise and Karim explore everything 'paperwork in the van' could mean before choosing a problem.",
+   "blocks": [
+    {
+     "t": "Topic",
+     "items": [
+      "Paperwork in the van",
+      "Why does it still exist in 2026, and who suffers most"
+     ]
+    },
+    {
+     "t": "Branches",
+     "items": [
+      "What gets written",
+      "Who needs it",
+      "When it gets lost",
+      "What replaces paper"
+     ]
+    },
+    {
+     "t": "Ideas",
+     "items": [
+      "Parts used, time spent, customer signature",
+      "Owner for invoicing, dispatcher for the next day",
+      "Between the van and the office drawer",
+      "On Sunday when nobody can read it",
+      "Photo of the sheet sent by WhatsApp",
+      "Voice note transcribed",
+      "Checklist per boiler model",
+      "Signature on the phone"
+     ]
+    }
+   ],
+   "takeaway": "The map showed that the loss happens between the van and the office, not on site. That narrowed the first problem statement to 'get the sheet to the office the same day'."
+  },
+  "fr": {
+   "context": "Fieldnote au stade idée, premier mois : Élise et Karim explorent tout ce que 'la paperasse dans la camionnette' peut vouloir dire avant de choisir un problème.",
+   "blocks": [
+    {
+     "t": "Sujet",
+     "items": [
+      "La paperasse dans la camionnette",
+      "Pourquoi ça existe encore en 2026, et qui en souffre le plus"
+     ]
+    },
+    {
+     "t": "Branches",
+     "items": [
+      "Ce qui s'écrit",
+      "Qui en a besoin",
+      "Quand ça se perd",
+      "Ce qui remplace le papier"
+     ]
+    },
+    {
+     "t": "Idées",
+     "items": [
+      "Pièces utilisées, temps passé, signature client",
+      "Le dirigeant pour facturer, le dispatcher pour le lendemain",
+      "Entre la camionnette et le tiroir du bureau",
+      "Le dimanche quand personne ne peut le relire",
+      "Photo de la feuille envoyée par WhatsApp",
+      "Vocal transcrit",
+      "Checklist par modèle de chaudière",
+      "Signature sur le téléphone"
+     ]
+    }
+   ],
+   "takeaway": "La carte a montré que la perte se produit entre la camionnette et le bureau, pas sur site. Le premier énoncé de problème s'est réduit à 'faire arriver la feuille au bureau le jour même'."
+  }
+ },
+ "affinity": {
+  "en": {
+   "context": "Post-PMF Fieldnote: after 8 activation interviews, Ana and Karim cluster 70 verbatims into themes.",
+   "blocks": [
+    {
+     "t": "Theme A",
+     "items": [
+      "Nobody told us before day one",
+      "The boss sent a WhatsApp at 7am saying 'use this'",
+      "I thought it was optional",
+      "We found out at the Monday meeting",
+      "The dispatcher did not know either"
+     ]
+    },
+    {
+     "t": "Theme B",
+     "items": [
+      "I logged the first one with Sophie next to me",
+      "After that I went back to the sheet",
+      "It takes longer than paper the first times",
+      "Nobody checked, so I stopped"
+     ]
+    },
+    {
+     "t": "Theme C",
+     "items": [
+      "No signal in the boiler room",
+      "The app spun for a minute then lost the photos",
+      "I gave up and took photos with the camera",
+      "I sync in the van but forget",
+      "The customer was waiting",
+      "I do not trust it when it says pending"
+     ]
+    },
+    {
+     "t": "Theme D",
+     "items": [
+      "Marc still calls to ask where I am",
+      "The office does not look at the app before 6pm",
+      "Nothing changed for dispatch"
+     ]
+    }
+   ],
+   "takeaway": "Theme C, offline, had the most notes but Theme A, nobody told us, explained the most stalled companies. Both became opportunities on the tree."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF : après 8 entretiens sur l'activation, Ana et Karim regroupent 70 verbatims en thèmes.",
+   "blocks": [
+    {
+     "t": "Thème A",
+     "items": [
+      "Personne ne nous a prévenus avant le jour 1",
+      "Le patron a envoyé un WhatsApp à 7h : 'utilisez ça'",
+      "Je pensais que c'était facultatif",
+      "On l'a appris à la réunion du lundi",
+      "Le dispatcher ne savait pas non plus"
+     ]
+    },
+    {
+     "t": "Thème B",
+     "items": [
+      "J'ai saisi la première avec Sophie à côté",
+      "Après je suis repassée à la feuille",
+      "Ça prend plus longtemps que le papier les premières fois",
+      "Personne ne vérifiait, donc j'ai arrêté"
+     ]
+    },
+    {
+     "t": "Thème C",
+     "items": [
+      "Pas de réseau en chaufferie",
+      "L'appli a tourné une minute puis a perdu les photos",
+      "J'ai abandonné et pris les photos avec l'appareil",
+      "Je synchronise dans la camionnette mais j'oublie",
+      "Le client attendait",
+      "Je ne lui fais pas confiance quand ça dit en attente"
+     ]
+    },
+    {
+     "t": "Thème D",
+     "items": [
+      "Marc appelle toujours pour savoir où je suis",
+      "Le bureau ne regarde pas l'appli avant 18h",
+      "Rien n'a changé pour le dispatch"
+     ]
+    }
+   ],
+   "takeaway": "Le thème C, hors ligne, avait le plus de notes, mais le thème A, personne ne nous a prévenus, expliquait le plus d'entreprises bloquées. Les deux sont devenus des opportunités sur l'arbre."
+  }
+ },
+ "crazy8": {
+  "en": {
+   "context": "Post-PMF Fieldnote, sketching session on 'HMW make the second logged job easier than the first': Ana, Karim, Tom and Julien, eight minutes each.",
+   "blocks": [
+    {
+     "t": "1",
+     "items": [
+      "Big camera button, nothing else on the screen",
+      "Parts suggested from the last job at the same address"
+     ]
+    },
+    {
+     "t": "2",
+     "items": [
+      "Counter '2 of 10' with a progress ring",
+      "Card 'you saved 4 minutes vs paper'"
+     ]
+    },
+    {
+     "t": "3",
+     "items": [
+      "Voice note transcribed into the report",
+      "One-tap 'same as last time' on the parts list"
+     ]
+    },
+    {
+     "t": "4",
+     "items": [
+      "Marc's screen shows a green dot when Léa logs",
+      "SMS to Léa: 'Marc saw your report'"
+     ]
+    }
+   ],
+   "takeaway": "Sixteen sketches in eight minutes; 'same as last time' and the green dot for Marc got the most dots and went to the prototype."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, session d'esquisse sur 'CPN rendre la deuxième intervention plus facile que la première' : Ana, Karim, Tom et Julien, huit minutes chacun.",
+   "blocks": [
+    {
+     "t": "1",
+     "items": [
+      "Gros bouton appareil photo, rien d'autre à l'écran",
+      "Pièces suggérées d'après la dernière intervention à la même adresse"
+     ]
+    },
+    {
+     "t": "2",
+     "items": [
+      "Compteur '2 sur 10' avec un anneau de progression",
+      "Carte 'tu as gagné 4 minutes par rapport au papier'"
+     ]
+    },
+    {
+     "t": "3",
+     "items": [
+      "Vocal transcrit dans le rapport",
+      "'Comme la dernière fois' en un tap sur la liste de pièces"
+     ]
+    },
+    {
+     "t": "4",
+     "items": [
+      "L'écran de Marc affiche un point vert quand Léa saisit",
+      "SMS à Léa : 'Marc a vu ton rapport'"
+     ]
+    }
+   ],
+   "takeaway": "Seize esquisses en huit minutes ; 'comme la dernière fois' et le point vert pour Marc ont eu le plus de gommettes et sont partis en prototype."
+  }
+ },
+ "brainwriting": {
+  "en": {
+   "context": "Post-PMF Fieldnote: six people (Karim, Ana, Tom, Julien, Nadia, Marc as guest) on 'how to get a technician to the 10th logged job'.",
+   "blocks": [
+    {
+     "t": "Round 1",
+     "items": [
+      "Idea 1: SMS the evening before day one",
+      "Idea 2: first 3 jobs prefilled by the dispatcher",
+      "Idea 3: counter to 10 on the home screen"
+     ]
+    },
+    {
+     "t": "Round 2",
+     "items": [
+      "Idea 1: SMS with a 20-second video from a peer",
+      "Idea 2: dispatcher prefills, technician only adds photos",
+      "Idea 3: counter shared with the whole team"
+     ]
+    },
+    {
+     "t": "Round 3",
+     "items": [
+      "Idea 1: video recorded by Léa, not by Fieldnote",
+      "Idea 2: photos only for jobs 1 to 3, parts later",
+      "Idea 3: team counter on Marc's screen"
+     ]
+    },
+    {
+     "t": "Round 4",
+     "items": [
+      "Idea 1: technician chooses who sends the video",
+      "Idea 2: 'photo only' mode as a permanent option",
+      "Idea 3: 10th job unlocks the parts scanner"
+     ]
+    },
+    {
+     "t": "Round 5",
+     "items": [
+      "Idea 1: kit with the video and a printed QR",
+      "Idea 2: photo-only mode default for week one",
+      "Idea 3: unlock celebrated in the WhatsApp group"
+     ]
+    },
+    {
+     "t": "Round 6",
+     "items": [
+      "Idea 1: kit tested with 10 companies",
+      "Idea 2: default measured against full form",
+      "Idea 3: Marc's screen shows the streak, no unlock"
+     ]
+    }
+   ],
+   "takeaway": "Passing the sheet turned 'a counter' into 'photo-only mode by default in week one', a testable change nobody had at round one."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF : six personnes (Karim, Ana, Tom, Julien, Nadia, Marc en invité) sur 'comment amener un technicien à la 10e intervention saisie'.",
+   "blocks": [
+    {
+     "t": "Tour 1",
+     "items": [
+      "Idée 1 : SMS la veille du jour 1",
+      "Idée 2 : 3 premières interventions préremplies par le dispatcher",
+      "Idée 3 : compteur jusqu'à 10 sur l'écran d'accueil"
+     ]
+    },
+    {
+     "t": "Tour 2",
+     "items": [
+      "Idée 1 : SMS avec une vidéo de 20 secondes d'un collègue",
+      "Idée 2 : le dispatcher prérempli, le technicien n'ajoute que les photos",
+      "Idée 3 : compteur partagé avec toute l'équipe"
+     ]
+    },
+    {
+     "t": "Tour 3",
+     "items": [
+      "Idée 1 : vidéo enregistrée par Léa, pas par Fieldnote",
+      "Idée 2 : photos seules pour les interventions 1 à 3, pièces plus tard",
+      "Idée 3 : compteur d'équipe sur l'écran de Marc"
+     ]
+    },
+    {
+     "t": "Tour 4",
+     "items": [
+      "Idée 1 : le technicien choisit qui envoie la vidéo",
+      "Idée 2 : mode 'photo seule' en option permanente",
+      "Idée 3 : la 10e intervention débloque le scanner de pièces"
+     ]
+    },
+    {
+     "t": "Tour 5",
+     "items": [
+      "Idée 1 : kit avec la vidéo et un QR imprimé",
+      "Idée 2 : mode photo seule par défaut la première semaine",
+      "Idée 3 : déblocage fêté dans le groupe WhatsApp"
+     ]
+    },
+    {
+     "t": "Tour 6",
+     "items": [
+      "Idée 1 : kit testé avec 10 entreprises",
+      "Idée 2 : défaut mesuré contre le formulaire complet",
+      "Idée 3 : l'écran de Marc montre la série, pas de déblocage"
+     ]
+    }
+   ],
+   "takeaway": "Faire tourner la feuille a transformé 'un compteur' en 'mode photo seule par défaut la première semaine', un changement testable que personne n'avait au tour 1."
+  }
+ },
+ "dotvote": {
+  "en": {
+   "context": "Post-PMF Fieldnote, end of the ideation week: 11 people, 3 dots each, on the four ideas left standing.",
+   "blocks": [
+    {
+     "t": "Option A",
+     "items": [
+      "Onboarding kit for the first team meeting",
+      "Video from a technician, printed QR, checklist"
+     ]
+    },
+    {
+     "t": "Option B",
+     "items": [
+      "Photo-only mode by default in week one",
+      "Parts and time asked from the 4th job"
+     ]
+    },
+    {
+     "t": "Option C",
+     "items": [
+      "Team counter on Marc's dispatch screen",
+      "Green dot per technician who logged today"
+     ]
+    },
+    {
+     "t": "Option D",
+     "items": [
+      "SMS to each technician the evening before",
+      "Sent by Fieldnote, signed by the owner"
+     ]
+    }
+   ],
+   "takeaway": "Option B took 5 of 11 first dots and Option A 3. Both went to the experiment board; C and D wait for the next round."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, fin de la semaine d'idéation : 11 personnes, 3 gommettes chacune, sur les quatre idées encore en lice.",
+   "blocks": [
+    {
+     "t": "Option A",
+     "items": [
+      "Kit d'onboarding pour la première réunion d'équipe",
+      "Vidéo d'un technicien, QR imprimé, checklist"
+     ]
+    },
+    {
+     "t": "Option B",
+     "items": [
+      "Mode photo seule par défaut la première semaine",
+      "Pièces et temps demandés à partir de la 4e intervention"
+     ]
+    },
+    {
+     "t": "Option C",
+     "items": [
+      "Compteur d'équipe sur l'écran dispatch de Marc",
+      "Point vert par technicien qui a saisi aujourd'hui"
+     ]
+    },
+    {
+     "t": "Option D",
+     "items": [
+      "SMS à chaque technicien la veille au soir",
+      "Envoyé par Fieldnote, signé par le dirigeant"
+     ]
+    }
+   ],
+   "takeaway": "L'option B a pris 5 premières gommettes sur 11 et l'option A 3. Les deux sont allées au tableau d'expériences ; C et D attendent le prochain tour."
+  }
+ },
+ "sprint": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, month four: a five-day sprint on 'can a technician log a job in under a minute with the customer present?' with Élise as decider.",
+   "blocks": [
+    {
+     "t": "Monday · Map",
+     "items": [
+      "Map: arrive, repair, log, sign, leave",
+      "Target: the 'log' step, under 60 seconds",
+      "Expert: Léa on the phone for 30 minutes"
+     ]
+    },
+    {
+     "t": "Tuesday · Sketch",
+     "items": [
+      "Lightning demos: WhatsApp, Instagram camera, Uber signature",
+      "Crazy 8 on the log screen",
+      "Solution sketches: photo-first vs form-first"
+     ]
+    },
+    {
+     "t": "Wednesday · Decide",
+     "items": [
+      "Heat map: photo-first wins",
+      "Élise decides: photo, parts from a list, signature",
+      "Storyboard: 6 screens from arrival to PDF"
+     ]
+    },
+    {
+     "t": "Thursday · Prototype",
+     "items": [
+      "Figma prototype on Ana's phone",
+      "Fake parts list with the 30 most used",
+      "Pre-filled customer address"
+     ]
+    },
+    {
+     "t": "Friday · Test",
+     "items": [
+      "5 technicians, in their van, stopwatch",
+      "Median 48 seconds, one at 2 minutes (parts search)",
+      "All five signed the fake PDF without asking"
+     ]
+    }
+   ],
+   "takeaway": "Under a minute is possible if parts are picked, not typed. The parts search became the first thing Tom built."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, quatrième mois : sprint de cinq jours sur 'un technicien peut-il saisir une intervention en moins d'une minute devant le client ?', Élise comme décideuse.",
+   "blocks": [
+    {
+     "t": "Lundi · Cartographier",
+     "items": [
+      "Carte : arriver, réparer, saisir, signer, partir",
+      "Cible : l'étape 'saisir', sous 60 secondes",
+      "Experte : Léa au téléphone pendant 30 minutes"
+     ]
+    },
+    {
+     "t": "Mardi · Esquisser",
+     "items": [
+      "Démos éclair : WhatsApp, appareil photo Instagram, signature Uber",
+      "Crazy 8 sur l'écran de saisie",
+      "Esquisses de solution : photo d'abord contre formulaire d'abord"
+     ]
+    },
+    {
+     "t": "Mercredi · Décider",
+     "items": [
+      "Carte de chaleur : photo d'abord l'emporte",
+      "Élise tranche : photo, pièces dans une liste, signature",
+      "Storyboard : 6 écrans de l'arrivée au PDF"
+     ]
+    },
+    {
+     "t": "Jeudi · Prototyper",
+     "items": [
+      "Prototype Figma sur le téléphone d'Ana",
+      "Fausse liste de pièces avec les 30 plus utilisées",
+      "Adresse client préremplie"
+     ]
+    },
+    {
+     "t": "Vendredi · Tester",
+     "items": [
+      "5 techniciens, dans leur camionnette, chronomètre",
+      "Médiane 48 secondes, un à 2 minutes (recherche de pièce)",
+      "Les cinq ont signé le faux PDF sans poser de question"
+     ]
+    }
+   ],
+   "takeaway": "Moins d'une minute est possible si les pièces sont choisies, pas tapées. La recherche de pièces est devenue la première chose que Tom a construite."
+  }
+ },
+ "experiments": {
+  "en": {
+   "context": "Post-PMF Fieldnote: the trio turns the two winning ideas plus one assumption into experiments for the next three weeks.",
+   "blocks": [
+    {
+     "t": "Experiment 1",
+     "items": [
+      "Hypothesis: photo-only mode in week one doubles day-5 activation",
+      "Test: default for 20 new companies, full form for 20 others",
+      "Metric: technicians with 10 jobs logged by day 5",
+      "Success criteria: 40 % vs 20 % baseline",
+      "Result: 37 % vs 19 %",
+      "Learning: parts are the blocker, not photos"
+     ]
+    },
+    {
+     "t": "Experiment 2",
+     "items": [
+      "Hypothesis: an onboarding kit gets technicians told before day one",
+      "Test: kit sent to 10 companies, none to 10 others",
+      "Metric: technicians who log on day one",
+      "Success criteria: 60 % vs 30 %",
+      "Result: 55 % vs 28 %",
+      "Learning: the video matters more than the checklist"
+     ]
+    },
+    {
+     "t": "Experiment 3",
+     "items": [
+      "Hypothesis: technicians will pay attention to a counter to 10",
+      "Test: fake-door counter on the home screen, tap tracked",
+      "Metric: tap rate in week one",
+      "Success criteria: 30 % tap it at least once",
+      "Result: 11 %",
+      "Learning: dropped, the counter is a Fieldnote idea, not a technician need"
+     ]
+    }
+   ],
+   "takeaway": "Two of three held up. Photo-only mode shipped as the default, the kit went to Julien's onboarding, the counter died cheaply."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF : le trio transforme les deux idées gagnantes et une hypothèse en expériences pour les trois prochaines semaines.",
+   "blocks": [
+    {
+     "t": "Expérience 1",
+     "items": [
+      "Hypothèse : le mode photo seule en semaine 1 double l'activation à J5",
+      "Test : par défaut pour 20 nouvelles entreprises, formulaire complet pour 20 autres",
+      "Métrique : techniciens avec 10 interventions saisies à J5",
+      "Critère de succès : 40 % contre 20 % de base",
+      "Résultat : 37 % contre 19 %",
+      "Apprentissage : ce sont les pièces qui bloquent, pas les photos"
+     ]
+    },
+    {
+     "t": "Expérience 2",
+     "items": [
+      "Hypothèse : un kit d'onboarding fait prévenir les techniciens avant le jour 1",
+      "Test : kit envoyé à 10 entreprises, rien à 10 autres",
+      "Métrique : techniciens qui saisissent le jour 1",
+      "Critère de succès : 60 % contre 30 %",
+      "Résultat : 55 % contre 28 %",
+      "Apprentissage : la vidéo compte plus que la checklist"
+     ]
+    },
+    {
+     "t": "Expérience 3",
+     "items": [
+      "Hypothèse : les techniciens prêteront attention à un compteur jusqu'à 10",
+      "Test : fausse porte sur l'écran d'accueil, taps mesurés",
+      "Métrique : taux de tap en semaine 1",
+      "Critère de succès : 30 % tapent au moins une fois",
+      "Résultat : 11 %",
+      "Apprentissage : abandonné, le compteur est une idée Fieldnote, pas un besoin technicien"
+     ]
+    }
+   ],
+   "takeaway": "Deux sur trois ont tenu. Le mode photo seule est sorti par défaut, le kit est parti dans l'onboarding de Julien, le compteur est mort à peu de frais."
+  }
+ },
+ "eventstorming": {
+  "en": {
+   "context": "Fieldnote, three hours on a wall with Karim, Tom, Ana, Julien and Marc the dispatcher, mapping one intervention from dispatch to invoice.",
+   "blocks": [
+    {
+     "t": "Trigger",
+     "items": [
+      "Customer calls with a broken boiler",
+      "Recurring maintenance contract comes due",
+      "Technician finishes early and asks for more"
+     ]
+    },
+    {
+     "t": "Command",
+     "items": [
+      "Dispatcher assigns the job",
+      "Technician starts the intervention",
+      "Technician adds a part used",
+      "Technician captures the signature"
+     ]
+    },
+    {
+     "t": "Domain event",
+     "items": [
+      "Job was assigned",
+      "Intervention was started",
+      "Part was recorded",
+      "Signature was captured",
+      "Intervention was synced"
+     ]
+    },
+    {
+     "t": "Policy",
+     "items": [
+      "When signature captured, intervention locks",
+      "When sync fails three times, support is alerted",
+      "When part missing from catalogue, it becomes free text"
+     ]
+    },
+    {
+     "t": "Read model",
+     "items": [
+      "Dispatcher's day view",
+      "Owner's invoicing export",
+      "Technician's own history"
+     ]
+    },
+    {
+     "t": "Hot spot: nobody agrees",
+     "items": [
+      "When exactly is an intervention finished?",
+      "Free-text parts never reach invoicing",
+      "Who owns an intervention started by one technician and finished by another?"
+     ]
+    }
+   ],
+   "takeaway": "The free-text parts policy was written years ago as a convenience. On the wall it turned out to be where the 6 % of lost billable parts goes, and nobody in the room had connected the two before."
+  },
+  "fr": {
+   "context": "Fieldnote, trois heures sur un mur avec Karim, Tom, Ana, Julien et Marc le dispatcheur, pour cartographier une intervention de l'affectation à la facture.",
+   "blocks": [
+    {
+     "t": "Déclencheur",
+     "items": [
+      "Un client appelle pour une chaudière en panne",
+      "Un contrat d'entretien récurrent arrive à échéance",
+      "Un technicien finit tôt et redemande du travail"
+     ]
+    },
+    {
+     "t": "Commande",
+     "items": [
+      "Le dispatcheur affecte le chantier",
+      "Le technicien démarre l'intervention",
+      "Le technicien ajoute une pièce utilisée",
+      "Le technicien fait signer le client"
+     ]
+    },
+    {
+     "t": "Événement métier",
+     "items": [
+      "Chantier affecté",
+      "Intervention démarrée",
+      "Pièce enregistrée",
+      "Signature capturée",
+      "Intervention synchronisée"
+     ]
+    },
+    {
+     "t": "Règle",
+     "items": [
+      "Quand la signature est capturée, l'intervention se verrouille",
+      "Après trois échecs de synchro, le support est alerté",
+      "Quand la pièce est absente du catalogue, elle devient du texte libre"
+     ]
+    },
+    {
+     "t": "Vue de lecture",
+     "items": [
+      "La journée du dispatcheur",
+      "L'export de facturation du patron",
+      "L'historique du technicien"
+     ]
+    },
+    {
+     "t": "Point chaud : personne n'est d'accord",
+     "items": [
+      "Quand une intervention est-elle finie exactement ?",
+      "Les pièces en texte libre n'arrivent jamais à la facturation",
+      "Qui possède une intervention démarrée par un technicien et finie par un autre ?"
+     ]
+    }
+   ],
+   "takeaway": "La règle des pièces en texte libre avait été écrite il y a des années par commodité. Sur le mur, elle s'est révélée être l'endroit où partent les 6 % de pièces facturables perdues, et personne dans la salle n'avait relié les deux."
+  }
+ }
 }

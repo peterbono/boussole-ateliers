@@ -1,1516 +1,1924 @@
 {
-  "kickoff": {
-    "en": {
-      "context": "Post-PMF Fieldnote, kick-off of the \"first 10 interventions\" activation project. Karim, Ana, Tom, Julien and Élise as sponsor.",
-      "blocks": [
-        {
-          "t": "Goal",
-          "items": [
-            "Cut time to first 10 logged interventions from 14 days to 5",
-            "Stop losing 38 % of new companies in week 2",
-            "One activation flow that works with gloves on"
-          ]
-        },
-        {
-          "t": "Definition of success",
-          "items": [
-            "70 % of new companies reach 10 interventions in 5 days",
-            "Julien's onboarding tickets down by half",
-            "Léa logs her first intervention without calling support"
-          ]
-        },
-        {
-          "t": "Scope",
-          "items": [
-            "Technician first-run on mobile",
-            "Dispatcher import of the first week's jobs",
-            "Sample data and guided first intervention",
-            "Activation emails to Sophie"
-          ]
-        },
-        {
-          "t": "Risks",
-          "items": [
-            "Offline mode requested by every prospect, not in scope",
-            "Field app squad already committed to barcode scan",
-            "Invoicing integration slips and hides the real churn cause"
-          ]
-        },
-        {
-          "t": "Roles",
-          "items": [
-            "Karim owns the outcome and the weekly demo",
-            "Ana owns the first-run flow",
-            "Tom decides on scope trade-offs with Karim",
-            "Élise signs off, one decision per week max"
-          ]
-        },
-        {
-          "t": "Out of scope",
-          "items": [
-            "Offline mode",
-            "Customer portal",
-            "Recurring maintenance contracts",
-            "Pennylane and Sage integrations"
-          ]
-        },
-        {
-          "t": "Milestones",
-          "items": [
-            "Week 1: 8 onboarding interviews with owners and technicians",
-            "Week 3: prototype tested with 5 new companies",
-            "Week 6: first-run shipped to 20 % of signups",
-            "Week 8: go / no-go on full rollout with data"
-          ]
-        }
-      ],
-      "takeaway": "The team agreed to measure success on companies, not on technician seats, and Élise accepted that offline mode stays out until the activation number moves."
+ "kickoff": {
+  "en": {
+   "context": "Post-PMF Fieldnote, kick-off of the \"first 10 interventions\" activation project. Karim, Ana, Tom, Julien and Élise as sponsor.",
+   "blocks": [
+    {
+     "t": "Goal",
+     "items": [
+      "Cut time to first 10 logged interventions from 14 days to 5",
+      "Stop losing 38 % of new companies in week 2",
+      "One activation flow that works with gloves on"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote post-PMF, kick-off du projet d'activation \"10 premières interventions\". Karim, Ana, Tom, Julien et Élise en sponsor.",
-      "blocks": [
-        {
-          "t": "Objectif",
-          "items": [
-            "Passer de 14 à 5 jours pour les 10 premières interventions saisies",
-            "Arrêter de perdre 38 % des nouvelles sociétés en semaine 2",
-            "Un parcours d'activation qui marche avec des gants"
-          ]
-        },
-        {
-          "t": "Définition du succès",
-          "items": [
-            "70 % des nouvelles sociétés atteignent 10 interventions en 5 jours",
-            "Tickets d'onboarding de Julien divisés par deux",
-            "Léa saisit sa première intervention sans appeler le support"
-          ]
-        },
-        {
-          "t": "Périmètre",
-          "items": [
-            "Premier lancement technicien sur mobile",
-            "Import par le dispatcher des jobs de la première semaine",
-            "Données d'exemple et première intervention guidée",
-            "Emails d'activation à Sophie"
-          ]
-        },
-        {
-          "t": "Risques",
-          "items": [
-            "Le mode hors ligne demandé par tous les prospects, hors périmètre",
-            "La squad Field app déjà engagée sur le scan code-barres",
-            "L'intégration facturation glisse et cache la vraie cause de churn"
-          ]
-        },
-        {
-          "t": "Rôles",
-          "items": [
-            "Karim porte le résultat et la démo hebdo",
-            "Ana porte le parcours de premier lancement",
-            "Tom tranche les arbitrages de périmètre avec Karim",
-            "Élise valide, une décision par semaine maximum"
-          ]
-        },
-        {
-          "t": "Hors périmètre",
-          "items": [
-            "Mode hors ligne",
-            "Portail client",
-            "Contrats de maintenance récurrents",
-            "Intégrations Pennylane et Sage"
-          ]
-        },
-        {
-          "t": "Jalons",
-          "items": [
-            "Semaine 1 : 8 entretiens d'onboarding avec patrons et techniciens",
-            "Semaine 3 : prototype testé avec 5 nouvelles sociétés",
-            "Semaine 6 : premier lancement livré à 20 % des inscriptions",
-            "Semaine 8 : go / no-go sur le déploiement complet avec les données"
-          ]
-        }
-      ],
-      "takeaway": "L'équipe a décidé de mesurer le succès en sociétés et non en sièges techniciens, et Élise a accepté que le hors ligne attende que le chiffre d'activation bouge."
+    {
+     "t": "Definition of success",
+     "items": [
+      "70 % of new companies reach 10 interventions in 5 days",
+      "Julien's onboarding tickets down by half",
+      "Léa logs her first intervention without calling support"
+     ]
+    },
+    {
+     "t": "Scope",
+     "items": [
+      "Technician first-run on mobile",
+      "Dispatcher import of the first week's jobs",
+      "Sample data and guided first intervention",
+      "Activation emails to Sophie"
+     ]
+    },
+    {
+     "t": "Risks",
+     "items": [
+      "Offline mode requested by every prospect, not in scope",
+      "Field app squad already committed to barcode scan",
+      "Invoicing integration slips and hides the real churn cause"
+     ]
+    },
+    {
+     "t": "Roles",
+     "items": [
+      "Karim owns the outcome and the weekly demo",
+      "Ana owns the first-run flow",
+      "Tom decides on scope trade-offs with Karim",
+      "Élise signs off, one decision per week max"
+     ]
+    },
+    {
+     "t": "Out of scope",
+     "items": [
+      "Offline mode",
+      "Customer portal",
+      "Recurring maintenance contracts",
+      "Pennylane and Sage integrations"
+     ]
+    },
+    {
+     "t": "Milestones",
+     "items": [
+      "Week 1: 8 onboarding interviews with owners and technicians",
+      "Week 3: prototype tested with 5 new companies",
+      "Week 6: first-run shipped to 20 % of signups",
+      "Week 8: go / no-go on full rollout with data"
+     ]
     }
+   ],
+   "takeaway": "The team agreed to measure success on companies, not on technician seats, and Élise accepted that offline mode stays out until the activation number moves."
   },
-  "problem": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, 12 paying companies. Élise, Karim, Tom and Nadia, with two customer quotes pasted on the side of the board.",
-      "blocks": [
-        {
-          "t": "Who has the problem",
-          "items": [
-            "Sophie, owner of a 22-technician HVAC company",
-            "Marc, dispatcher with a whiteboard behind him",
-            "Léa, technician filling paper sheets at 7pm in the van"
-          ]
-        },
-        {
-          "t": "What problem",
-          "items": [
-            "Parts used in the field never reach the invoice",
-            "Sophie retypes photos of paper sheets every Sunday",
-            "About 6 % of billable parts are lost each month"
-          ]
-        },
-        {
-          "t": "Why now",
-          "items": [
-            "Three competitors' quotes landed on Sophie's desk this quarter",
-            "Paper sheets got worse since the company grew past 15 technicians",
-            "Sophie just hired a second dispatcher to cope"
-          ]
-        },
-        {
-          "t": "What we know",
-          "items": [
-            "Every owner we met does invoicing on the weekend",
-            "Technicians refuse anything that needs both hands",
-            "Marc reroutes 3 to 4 jobs a day by phone"
-          ]
-        },
-        {
-          "t": "What we assume",
-          "items": [
-            "Technicians will log parts if it takes under 20 seconds",
-            "Owners will pay 29 € per seat to recover 6 % of parts",
-            "Photo plus voice beats typing in a van"
-          ]
-        },
-        {
-          "t": "Problem statement (one sentence)",
-          "items": [
-            "Sophie loses 6 % of billable parts because Léa's paper sheet reaches the office three days late and half filled",
-            "Rejected draft: \"Technicians need a mobile app to log parts\" (a solution in disguise)"
-          ]
-        }
-      ],
-      "takeaway": "The statement dropped the word \"app\" entirely; three assumptions went straight into the research plan."
+  "fr": {
+   "context": "Fieldnote post-PMF, kick-off du projet d'activation \"10 premières interventions\". Karim, Ana, Tom, Julien et Élise en sponsor.",
+   "blocks": [
+    {
+     "t": "Objectif",
+     "items": [
+      "Passer de 14 à 5 jours pour les 10 premières interventions saisies",
+      "Arrêter de perdre 38 % des nouvelles sociétés en semaine 2",
+      "Un parcours d'activation qui marche avec des gants"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, 12 sociétés clientes. Élise, Karim, Tom et Nadia, avec deux verbatims clients collés sur le côté du board.",
-      "blocks": [
-        {
-          "t": "Qui a le problème",
-          "items": [
-            "Sophie, patronne d'une société CVC de 22 techniciens",
-            "Marc, dispatcher avec un tableau blanc derrière lui",
-            "Léa, technicienne qui remplit ses fiches papier à 19h dans le camion"
-          ]
-        },
-        {
-          "t": "Quel problème",
-          "items": [
-            "Les pièces utilisées sur le terrain n'arrivent jamais sur la facture",
-            "Sophie ressaisit des photos de fiches papier chaque dimanche",
-            "Environ 6 % des pièces facturables perdues chaque mois"
-          ]
-        },
-        {
-          "t": "Pourquoi maintenant",
-          "items": [
-            "Trois devis de concurrents sur le bureau de Sophie ce trimestre",
-            "Le papier a empiré depuis que la société a dépassé 15 techniciens",
-            "Sophie vient d'embaucher un second dispatcher pour tenir"
-          ]
-        },
-        {
-          "t": "Ce qu'on sait",
-          "items": [
-            "Tous les patrons rencontrés facturent le week-end",
-            "Les techniciens refusent tout ce qui demande les deux mains",
-            "Marc réaffecte 3 à 4 jobs par jour au téléphone"
-          ]
-        },
-        {
-          "t": "Ce qu'on suppose",
-          "items": [
-            "Les techniciens saisiront les pièces si ça prend moins de 20 secondes",
-            "Les patrons paieront 29 € par siège pour récupérer 6 % de pièces",
-            "Photo plus voix bat la saisie clavier dans un camion"
-          ]
-        },
-        {
-          "t": "Énoncé du problème (une phrase)",
-          "items": [
-            "Sophie perd 6 % de pièces facturables parce que la fiche papier de Léa arrive au bureau trois jours plus tard et à moitié remplie",
-            "Brouillon rejeté : \"Les techniciens ont besoin d'une appli mobile pour saisir les pièces\" (une solution déguisée)"
-          ]
-        }
-      ],
-      "takeaway": "L'énoncé a perdu le mot \"appli\" ; trois hypothèses sont parties directement dans le plan de recherche."
-    }
-  },
-  "stakeholders": {
-    "en": {
-      "context": "Scale-up Fieldnote, mapping who matters for the Integrations squad launch. Karim and Élise, one hour.",
-      "blocks": [
-        {
-          "t": "Keep satisfied",
-          "items": [
-            "Élise, CEO: wants ARR, not integration details",
-            "Pennylane partnership manager",
-            "Board member pushing for a US launch"
-          ]
-        },
-        {
-          "t": "Manage closely",
-          "items": [
-            "Nadia, head of sales: integrations block 30 % of deals",
-            "Tom, tech lead: owns the legacy sync code",
-            "Sophie and 5 owners in the design partner group"
-          ]
-        },
-        {
-          "t": "Monitor",
-          "items": [
-            "Sage integration contact, slow to answer",
-            "Field app squad, affected only by the shared API",
-            "Finance, watches the third squad's cost"
-          ]
-        },
-        {
-          "t": "Keep informed",
-          "items": [
-            "Julien, support: gets the tickets when sync breaks",
-            "Marketing, needs the launch date",
-            "Data analyst Priya, tracks month-1 connection rate"
-          ]
-        }
-      ],
-      "takeaway": "Nadia moved from \"informed\" to \"manage closely\" once the team saw she was the one promising integrations to prospects."
+    {
+     "t": "Définition du succès",
+     "items": [
+      "70 % des nouvelles sociétés atteignent 10 interventions en 5 jours",
+      "Tickets d'onboarding de Julien divisés par deux",
+      "Léa saisit sa première intervention sans appeler le support"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote scale-up, cartographie des parties prenantes du lancement de la squad Intégrations. Karim et Élise, une heure.",
-      "blocks": [
-        {
-          "t": "Satisfaire",
-          "items": [
-            "Élise, CEO : veut de l'ARR, pas les détails d'intégration",
-            "Responsable partenariat chez Pennylane",
-            "Membre du board qui pousse un lancement US"
-          ]
-        },
-        {
-          "t": "Impliquer",
-          "items": [
-            "Nadia, head of sales : les intégrations bloquent 30 % des deals",
-            "Tom, tech lead : possède le code de synchro legacy",
-            "Sophie et 5 patrons du groupe de design partners"
-          ]
-        },
-        {
-          "t": "Surveiller",
-          "items": [
-            "Contact intégration Sage, lent à répondre",
-            "Squad Field app, touchée seulement par l'API partagée",
-            "Finance, surveille le coût de la troisième squad"
-          ]
-        },
-        {
-          "t": "Informer",
-          "items": [
-            "Julien, support : reçoit les tickets quand la synchro casse",
-            "Marketing, a besoin de la date de lancement",
-            "Priya, data analyst, suit le taux de connexion au mois 1"
-          ]
-        }
-      ],
-      "takeaway": "Nadia est passée de \"informer\" à \"impliquer\" quand l'équipe a vu que c'était elle qui promettait les intégrations aux prospects."
-    }
-  },
-  "charter": {
-    "en": {
-      "context": "Scale-up Fieldnote, the new Integrations squad (4 engineers, Karim as PM) writes its working agreements on day one.",
-      "blocks": [
-        {
-          "t": "Mission",
-          "items": [
-            "Every Fieldnote company connected to its invoicing tool in month 1",
-            "Zero retyping between the field and the invoice"
-          ]
-        },
-        {
-          "t": "Values",
-          "items": [
-            "Boring and reliable beats clever",
-            "Sync errors are shown to Sophie, never hidden",
-            "We ship behind a flag or we do not ship"
-          ]
-        },
-        {
-          "t": "Rules",
-          "items": [
-            "No meetings before 10am, technicians call support early",
-            "One integration at a time, Pennylane first",
-            "Pull requests reviewed within 4 working hours",
-            "Decisions written in the squad channel, not in DMs"
-          ]
-        },
-        {
-          "t": "Rituals",
-          "items": [
-            "Monday 30-minute planning with Nadia's top 3 blocked deals",
-            "Wednesday demo to Julien and one design partner",
-            "Friday 20-minute retro, Start / Stop / Continue"
-          ]
-        },
-        {
-          "t": "Definition of Done",
-          "items": [
-            "Tested against a real Pennylane sandbox account",
-            "Error states reviewed with Julien",
-            "Month-1 connection metric wired for Priya"
-          ]
-        }
-      ],
-      "takeaway": "The 10am rule came from Tom: the March photo incident was debugged at 8am while support drowned in calls."
+    {
+     "t": "Périmètre",
+     "items": [
+      "Premier lancement technicien sur mobile",
+      "Import par le dispatcher des jobs de la première semaine",
+      "Données d'exemple et première intervention guidée",
+      "Emails d'activation à Sophie"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote scale-up, la nouvelle squad Intégrations (4 ingénieurs, Karim en PM) écrit ses accords d'équipe le premier jour.",
-      "blocks": [
-        {
-          "t": "Mission",
-          "items": [
-            "Chaque société Fieldnote connectée à son outil de facturation dès le mois 1",
-            "Zéro ressaisie entre le terrain et la facture"
-          ]
-        },
-        {
-          "t": "Valeurs",
-          "items": [
-            "Ennuyeux et fiable bat astucieux",
-            "Les erreurs de synchro sont montrées à Sophie, jamais cachées",
-            "On livre derrière un flag ou on ne livre pas"
-          ]
-        },
-        {
-          "t": "Règles",
-          "items": [
-            "Pas de réunion avant 10h, les techniciens appellent le support tôt",
-            "Une intégration à la fois, Pennylane d'abord",
-            "Pull requests relues sous 4 heures ouvrées",
-            "Décisions écrites dans le canal de la squad, pas en DM"
-          ]
-        },
-        {
-          "t": "Rituels",
-          "items": [
-            "Lundi, planning de 30 minutes avec les 3 deals bloqués de Nadia",
-            "Mercredi, démo à Julien et à un design partner",
-            "Vendredi, rétro de 20 minutes, Start / Stop / Continue"
-          ]
-        },
-        {
-          "t": "Definition of Done",
-          "items": [
-            "Testé sur un vrai compte sandbox Pennylane",
-            "États d'erreur relus avec Julien",
-            "Métrique de connexion au mois 1 branchée pour Priya"
-          ]
-        }
-      ],
-      "takeaway": "La règle des 10h vient de Tom : l'incident photo de mars a été débuggé à 8h pendant que le support croulait sous les appels."
-    }
-  },
-  "lean": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, month 4, Élise and Karim rewrite the canvas after the first 10 customers.",
-      "blocks": [
-        {
-          "t": "Problem",
-          "items": [
-            "Parts used in the field are lost before invoicing",
-            "Owners spend Sunday retyping paper sheets",
-            "Dispatchers reroute the day by phone"
-          ]
-        },
-        {
-          "t": "Solution",
-          "items": [
-            "Photo plus voice intervention log in 20 seconds",
-            "Shared day view for the dispatcher",
-            "Invoice export at the end of the day"
-          ]
-        },
-        {
-          "t": "Unique value proposition",
-          "items": [
-            "Every part you use gets invoiced, without typing in the van",
-            "Built for a gloved hand, not for an office"
-          ]
-        },
-        {
-          "t": "Unfair advantage",
-          "items": [
-            "Élise ran a 30-technician HVAC company for 9 years",
-            "Access to 40 owners through the regional trade association"
-          ]
-        },
-        {
-          "t": "Customer segments",
-          "items": [
-            "HVAC and plumbing companies, 5 to 60 technicians",
-            "Early adopter: owner who invoices herself on Sunday",
-            "Not: one-person companies, national chains"
-          ]
-        },
-        {
-          "t": "Key metrics",
-          "items": [
-            "Interventions logged the same day",
-            "Parts recovered per company per month",
-            "Companies past 10 interventions in week 1"
-          ]
-        },
-        {
-          "t": "Channels",
-          "items": [
-            "Trade association meetings",
-            "Referrals from the first 10 owners",
-            "Parts wholesalers' counters"
-          ]
-        },
-        {
-          "t": "Cost structure",
-          "items": [
-            "4 people, 38 k€ a month",
-            "Field visits for onboarding, 400 € per company",
-            "SMS and photo storage, marginal"
-          ]
-        },
-        {
-          "t": "Revenue streams",
-          "items": [
-            "29 € per technician per month",
-            "Onboarding fee 500 € waived for the first 20",
-            "Later: invoicing integration as a paid add-on"
-          ]
-        }
-      ],
-      "takeaway": "The riskiest assumption was moved to the top: technicians logging parts themselves. Everything else depends on it."
+    {
+     "t": "Risques",
+     "items": [
+      "Le mode hors ligne demandé par tous les prospects, hors périmètre",
+      "La squad Field app déjà engagée sur le scan code-barres",
+      "L'intégration facturation glisse et cache la vraie cause de churn"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, mois 4, Élise et Karim réécrivent le canvas après les 10 premiers clients.",
-      "blocks": [
-        {
-          "t": "Problème",
-          "items": [
-            "Les pièces utilisées sur le terrain sont perdues avant facturation",
-            "Les patrons passent le dimanche à ressaisir des fiches papier",
-            "Les dispatchers réorganisent la journée au téléphone"
-          ]
-        },
-        {
-          "t": "Solution",
-          "items": [
-            "Saisie d'intervention photo plus voix en 20 secondes",
-            "Vue partagée de la journée pour le dispatcher",
-            "Export facturation en fin de journée"
-          ]
-        },
-        {
-          "t": "Proposition de valeur unique",
-          "items": [
-            "Chaque pièce utilisée est facturée, sans taper dans le camion",
-            "Conçu pour une main gantée, pas pour un bureau"
-          ]
-        },
-        {
-          "t": "Avantage déloyal",
-          "items": [
-            "Élise a dirigé une société CVC de 30 techniciens pendant 9 ans",
-            "Accès à 40 patrons via l'association professionnelle régionale"
-          ]
-        },
-        {
-          "t": "Segments clients",
-          "items": [
-            "Sociétés CVC et plomberie, 5 à 60 techniciens",
-            "Early adopter : la patronne qui facture elle-même le dimanche",
-            "Pas : les indépendants seuls, les réseaux nationaux"
-          ]
-        },
-        {
-          "t": "Métriques clés",
-          "items": [
-            "Interventions saisies le jour même",
-            "Pièces récupérées par société et par mois",
-            "Sociétés au-delà de 10 interventions en semaine 1"
-          ]
-        },
-        {
-          "t": "Canaux",
-          "items": [
-            "Réunions de l'association professionnelle",
-            "Recommandations des 10 premiers patrons",
-            "Comptoirs des grossistes en pièces"
-          ]
-        },
-        {
-          "t": "Structure de coûts",
-          "items": [
-            "4 personnes, 38 k€ par mois",
-            "Visites terrain pour l'onboarding, 400 € par société",
-            "SMS et stockage photo, marginal"
-          ]
-        },
-        {
-          "t": "Sources de revenus",
-          "items": [
-            "29 € par technicien et par mois",
-            "Frais d'onboarding 500 €, offerts aux 20 premiers",
-            "Plus tard : intégration facturation en option payante"
-          ]
-        }
-      ],
-      "takeaway": "L'hypothèse la plus risquée est remontée en tête : les techniciens saisissent eux-mêmes les pièces. Tout le reste en dépend."
-    }
-  },
-  "bmc": {
-    "en": {
-      "context": "Post-PMF Fieldnote at 1.1 M€ ARR. Élise, Karim, Nadia and the finance lead decide where the next hire goes.",
-      "blocks": [
-        {
-          "t": "Key partners",
-          "items": [
-            "Pennylane and Sage for invoicing",
-            "Two parts wholesalers who resell seats",
-            "Regional HVAC trade associations"
-          ]
-        },
-        {
-          "t": "Key activities",
-          "items": [
-            "Field app reliability, photo upload above all",
-            "Onboarding visits for companies above 20 technicians",
-            "Integration maintenance"
-          ]
-        },
-        {
-          "t": "Value proposition",
-          "items": [
-            "Every part used in the field ends up on the invoice",
-            "The dispatcher sees the day, not a whiteboard",
-            "Sunday is no longer invoicing day"
-          ]
-        },
-        {
-          "t": "Customer relationships",
-          "items": [
-            "Onboarding call with the owner in week 1",
-            "Support by phone before 10am, Julien's team",
-            "Design partner group of 12 owners"
-          ]
-        },
-        {
-          "t": "Customer segments",
-          "items": [
-            "140 HVAC and plumbing companies, 5 to 60 technicians",
-            "Growth segment: 20 to 60 technicians with a dispatcher",
-            "Weak segment: under 5 technicians, churns at 30 %"
-          ]
-        },
-        {
-          "t": "Key resources",
-          "items": [
-            "9 engineers in 2 squads",
-            "3 years of intervention data",
-            "Élise's network of owners"
-          ]
-        },
-        {
-          "t": "Channels",
-          "items": [
-            "Wholesaler counters, 40 % of new companies",
-            "Referrals, 35 %",
-            "Inbound from the blog, 25 %"
-          ]
-        },
-        {
-          "t": "Cost structure",
-          "items": [
-            "Team, 95 k€ a month",
-            "Onboarding visits, 400 € per company",
-            "Photo storage and SMS, 3 k€ a month"
-          ]
-        },
-        {
-          "t": "Revenue streams",
-          "items": [
-            "2 100 seats at 29 €, 1.1 M€ ARR",
-            "Net revenue retention 104 %",
-            "Candidate: integrations add-on at 99 € a month per company"
-          ]
-        }
-      ],
-      "takeaway": "Finance saw that the under-5-technician segment costs more in support than it pays; sales stopped targeting it."
+    {
+     "t": "Rôles",
+     "items": [
+      "Karim porte le résultat et la démo hebdo",
+      "Ana porte le parcours de premier lancement",
+      "Tom tranche les arbitrages de périmètre avec Karim",
+      "Élise valide, une décision par semaine maximum"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote post-PMF à 1,1 M€ d'ARR. Élise, Karim, Nadia et le responsable finance décident où va la prochaine embauche.",
-      "blocks": [
-        {
-          "t": "Partenaires clés",
-          "items": [
-            "Pennylane et Sage pour la facturation",
-            "Deux grossistes en pièces qui revendent des sièges",
-            "Associations professionnelles CVC régionales"
-          ]
-        },
-        {
-          "t": "Activités clés",
-          "items": [
-            "Fiabilité de l'appli terrain, l'envoi photo avant tout",
-            "Visites d'onboarding pour les sociétés de plus de 20 techniciens",
-            "Maintenance des intégrations"
-          ]
-        },
-        {
-          "t": "Proposition de valeur",
-          "items": [
-            "Chaque pièce utilisée sur le terrain finit sur la facture",
-            "Le dispatcher voit la journée, pas un tableau blanc",
-            "Le dimanche n'est plus le jour de la facturation"
-          ]
-        },
-        {
-          "t": "Relation client",
-          "items": [
-            "Appel d'onboarding avec le patron en semaine 1",
-            "Support téléphonique avant 10h, l'équipe de Julien",
-            "Groupe de design partners de 12 patrons"
-          ]
-        },
-        {
-          "t": "Segments clients",
-          "items": [
-            "140 sociétés CVC et plomberie, 5 à 60 techniciens",
-            "Segment de croissance : 20 à 60 techniciens avec un dispatcher",
-            "Segment faible : moins de 5 techniciens, churn à 30 %"
-          ]
-        },
-        {
-          "t": "Ressources clés",
-          "items": [
-            "9 ingénieurs en 2 squads",
-            "3 ans de données d'interventions",
-            "Le réseau de patrons d'Élise"
-          ]
-        },
-        {
-          "t": "Canaux",
-          "items": [
-            "Comptoirs des grossistes, 40 % des nouvelles sociétés",
-            "Recommandations, 35 %",
-            "Inbound via le blog, 25 %"
-          ]
-        },
-        {
-          "t": "Structure de coûts",
-          "items": [
-            "Équipe, 95 k€ par mois",
-            "Visites d'onboarding, 400 € par société",
-            "Stockage photo et SMS, 3 k€ par mois"
-          ]
-        },
-        {
-          "t": "Sources de revenus",
-          "items": [
-            "2 100 sièges à 29 €, 1,1 M€ d'ARR",
-            "Net revenue retention 104 %",
-            "Candidat : option intégrations à 99 € par mois et par société"
-          ]
-        }
-      ],
-      "takeaway": "La finance a vu que le segment sous 5 techniciens coûte plus en support qu'il ne rapporte ; les ventes ont arrêté de le cibler."
-    }
-  },
-  "vpc": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, after 8 interviews with technicians and owners. Karim, Ana and Nadia check the fit for Léa's side of the product.",
-      "blocks": [
-        {
-          "t": "Products & services",
-          "items": [
-            "Mobile intervention log: photo, voice note, parts",
-            "Customer signature on the phone",
-            "Day view shared with the dispatcher"
-          ]
-        },
-        {
-          "t": "Gain creators",
-          "items": [
-            "Log an intervention in 20 seconds, one hand",
-            "Parts list pre-filled from the last visit at that site",
-            "Day finished at 5pm, nothing left to do in the van"
-          ]
-        },
-        {
-          "t": "Pain relievers",
-          "items": [
-            "No typing: voice note transcribed later",
-            "Photo of the part replaces the reference number",
-            "Signature on the phone, no paper to lose"
-          ]
-        },
-        {
-          "t": "Gains",
-          "items": [
-            "Leave the last site and be done",
-            "Get credit for every part actually used",
-            "Fewer calls from Marc asking where she is"
-          ]
-        },
-        {
-          "t": "Pains",
-          "items": [
-            "Paper sheet filled at 7pm from memory",
-            "Gloves, cold, no flat surface to write on",
-            "Blamed on Friday for parts she did not log"
-          ]
-        },
-        {
-          "t": "Customer jobs",
-          "items": [
-            "Fix the boiler and move to the next site",
-            "Prove what was done and what was used",
-            "Get home before 7pm"
-          ]
-        }
-      ],
-      "takeaway": "The gap: nothing on the left addressed \"blamed on Friday\". A parts confirmation screen at the end of the day was added to the backlog."
+    {
+     "t": "Hors périmètre",
+     "items": [
+      "Mode hors ligne",
+      "Portail client",
+      "Contrats de maintenance récurrents",
+      "Intégrations Pennylane et Sage"
+     ]
     },
-    "fr": {
-      "context": "Fieldnote pré-PMF, après 8 entretiens avec des techniciens et des patrons. Karim, Ana et Nadia vérifient le fit côté Léa.",
-      "blocks": [
-        {
-          "t": "Produits & services",
-          "items": [
-            "Saisie d'intervention mobile : photo, note vocale, pièces",
-            "Signature client sur le téléphone",
-            "Vue de la journée partagée avec le dispatcher"
-          ]
-        },
-        {
-          "t": "Créateurs de gain",
-          "items": [
-            "Saisir une intervention en 20 secondes, d'une main",
-            "Liste de pièces pré-remplie depuis la dernière visite sur le site",
-            "Journée finie à 17h, plus rien à faire dans le camion"
-          ]
-        },
-        {
-          "t": "Soulageurs de douleur",
-          "items": [
-            "Pas de clavier : note vocale transcrite plus tard",
-            "La photo de la pièce remplace la référence",
-            "Signature sur le téléphone, plus de papier à perdre"
-          ]
-        },
-        {
-          "t": "Gains",
-          "items": [
-            "Quitter le dernier site et avoir fini",
-            "Être créditée de chaque pièce vraiment utilisée",
-            "Moins d'appels de Marc pour savoir où elle est"
-          ]
-        },
-        {
-          "t": "Douleurs",
-          "items": [
-            "Fiche papier remplie à 19h de mémoire",
-            "Gants, froid, pas de surface plane pour écrire",
-            "Accusée le vendredi pour des pièces non notées"
-          ]
-        },
-        {
-          "t": "Tâches du client",
-          "items": [
-            "Réparer la chaudière et passer au site suivant",
-            "Prouver ce qui a été fait et utilisé",
-            "Rentrer avant 19h"
-          ]
-        }
-      ],
-      "takeaway": "L'écart : rien à gauche ne répondait à \"accusée le vendredi\". Un écran de confirmation des pièces en fin de journée a été ajouté au backlog."
+    {
+     "t": "Jalons",
+     "items": [
+      "Semaine 1 : 8 entretiens d'onboarding avec patrons et techniciens",
+      "Semaine 3 : prototype testé avec 5 nouvelles sociétés",
+      "Semaine 6 : premier lancement livré à 20 % des inscriptions",
+      "Semaine 8 : go / no-go sur le déploiement complet avec les données"
+     ]
     }
-  },
-  "vision": {
-    "en": {
-      "context": "Post-PMF Fieldnote, 2 squads and a new head of sales. Élise, Karim, Tom, Ana and Nadia put the vision on one board.",
-      "blocks": [
-        {
-          "t": "Vision",
-          "items": [
-            "Every maintenance company under 60 technicians runs its day from Fieldnote, and nobody retypes anything, ever",
-            "Rejected draft: \"The best field service software for small companies\" (says nothing)"
-          ]
-        },
-        {
-          "t": "Target group",
-          "items": [
-            "HVAC and plumbing companies, 5 to 60 technicians",
-            "The owner who still invoices herself",
-            "The dispatcher with a whiteboard"
-          ]
-        },
-        {
-          "t": "Needs",
-          "items": [
-            "Parts used equal parts invoiced",
-            "See the day change in real time",
-            "Technicians who adopt it in a week"
-          ]
-        },
-        {
-          "t": "Product",
-          "items": [
-            "Field app: log in 20 seconds, works with gloves",
-            "Office web: live day view and dispatch",
-            "Invoicing integrations: Pennylane first"
-          ]
-        },
-        {
-          "t": "Business goals",
-          "items": [
-            "3 M€ ARR in 24 months",
-            "Churn under 8 % a year across all segments",
-            "60 % of companies connected to invoicing in month 1"
-          ]
-        }
-      ],
-      "takeaway": "\"Nobody retypes anything\" became the sentence Nadia uses in every demo, and the reason the Integrations squad exists."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF, 2 squads et une nouvelle head of sales. Élise, Karim, Tom, Ana et Nadia posent la vision sur un seul board.",
-      "blocks": [
-        {
-          "t": "Vision",
-          "items": [
-            "Chaque société de maintenance de moins de 60 techniciens pilote sa journée depuis Fieldnote, et personne ne ressaisit rien, jamais",
-            "Brouillon rejeté : \"Le meilleur logiciel de gestion d'interventions pour les petites sociétés\" (ne dit rien)"
-          ]
-        },
-        {
-          "t": "Groupe cible",
-          "items": [
-            "Sociétés CVC et plomberie, 5 à 60 techniciens",
-            "La patronne qui facture encore elle-même",
-            "Le dispatcher au tableau blanc"
-          ]
-        },
-        {
-          "t": "Besoins",
-          "items": [
-            "Pièces utilisées égale pièces facturées",
-            "Voir la journée changer en temps réel",
-            "Des techniciens qui adoptent en une semaine"
-          ]
-        },
-        {
-          "t": "Produit",
-          "items": [
-            "Appli terrain : saisie en 20 secondes, marche avec des gants",
-            "Web bureau : vue de la journée en direct et dispatch",
-            "Intégrations facturation : Pennylane d'abord"
-          ]
-        },
-        {
-          "t": "Objectifs business",
-          "items": [
-            "3 M€ d'ARR en 24 mois",
-            "Churn sous 8 % par an sur tous les segments",
-            "60 % des sociétés connectées à la facturation dès le mois 1"
-          ]
-        }
-      ],
-      "takeaway": "\"Personne ne ressaisit rien\" est devenue la phrase que Nadia utilise dans chaque démo, et la raison d'être de la squad Intégrations."
-    }
-  },
-  "impact": {
-    "en": {
-      "context": "Scale-up Fieldnote, quarter planning. Karim maps the activation objective with Tom, Ana, Julien and Priya.",
-      "blocks": [
-        {
-          "t": "Goal",
-          "items": [
-            "70 % of new companies log 10 interventions within 5 days, by end of quarter",
-            "Measured on companies, not on technician seats"
-          ]
-        },
-        {
-          "t": "Actors",
-          "items": [
-            "Léa, technician on her first day with the app",
-            "Marc, dispatcher who imports the week's jobs"
-          ]
-        },
-        {
-          "t": "Impacts",
-          "items": [
-            "Léa → logs her first intervention without support",
-            "Léa → keeps logging on day 2 and 3",
-            "Marc → has the week's jobs in the app before Monday",
-            "Marc → stops re-entering jobs from the whiteboard"
-          ]
-        },
-        {
-          "t": "Deliverables",
-          "items": [
-            "Guided first intervention with sample site",
-            "Voice note as the default input",
-            "CSV and Excel import of the week's jobs",
-            "Day-1 SMS to technicians with a one-tap login",
-            "Activation dashboard for Julien",
-            "Onboarding call script for companies above 20 technicians"
-          ]
-        }
-      ],
-      "takeaway": "The barcode scanner did not connect to any impact and left the quarter; the SMS one-tap login was promoted because it served two impacts."
-    },
-    "fr": {
-      "context": "Fieldnote scale-up, planning du trimestre. Karim cartographie l'objectif d'activation avec Tom, Ana, Julien et Priya.",
-      "blocks": [
-        {
-          "t": "Objectif",
-          "items": [
-            "70 % des nouvelles sociétés saisissent 10 interventions en 5 jours, d'ici la fin du trimestre",
-            "Mesuré en sociétés, pas en sièges techniciens"
-          ]
-        },
-        {
-          "t": "Acteurs",
-          "items": [
-            "Léa, technicienne le premier jour avec l'appli",
-            "Marc, dispatcher qui importe les jobs de la semaine"
-          ]
-        },
-        {
-          "t": "Impacts",
-          "items": [
-            "Léa → saisit sa première intervention sans le support",
-            "Léa → continue à saisir les jours 2 et 3",
-            "Marc → a les jobs de la semaine dans l'appli avant lundi",
-            "Marc → arrête de ressaisir les jobs depuis le tableau blanc"
-          ]
-        },
-        {
-          "t": "Livrables",
-          "items": [
-            "Première intervention guidée avec un site d'exemple",
-            "Note vocale comme saisie par défaut",
-            "Import CSV et Excel des jobs de la semaine",
-            "SMS du jour 1 aux techniciens avec connexion en un tap",
-            "Tableau de bord d'activation pour Julien",
-            "Script d'appel d'onboarding pour les sociétés de plus de 20 techniciens"
-          ]
-        }
-      ],
-      "takeaway": "Le scan code-barres ne se reliait à aucun impact et a quitté le trimestre ; la connexion SMS en un tap a été promue parce qu'elle servait deux impacts."
-    }
-  },
-  "box": {
-    "en": {
-      "context": "Pre-PMF Fieldnote, 3 groups of mixed sales, tech and support. Winning box shown here.",
-      "blocks": [
-        {
-          "t": "Product name",
-          "items": [
-            "Fieldnote",
-            "Sub-brand voted down: Fieldnote Pro"
-          ]
-        },
-        {
-          "t": "Tagline / promise",
-          "items": [
-            "Every part you use, invoiced. Without typing in the van.",
-            "Runner-up: Your Sunday back."
-          ]
-        },
-        {
-          "t": "3 selling points",
-          "items": [
-            "Log an intervention in 20 seconds with one gloved hand",
-            "The dispatcher sees the day change live",
-            "Invoice on Monday morning, not Sunday night"
-          ]
-        },
-        {
-          "t": "Back of the box",
-          "items": [
-            "Works on any Android or iPhone, no tablet needed",
-            "Set up in one afternoon with our onboarding visit",
-            "Used by 12 HVAC companies, 180 technicians",
-            "29 € per technician per month, no contract"
-          ]
-        }
-      ],
-      "takeaway": "Sales and tech had written different taglines; the winning one was the only one that did not mention software at all."
-    },
-    "fr": {
-      "context": "Fieldnote pré-PMF, 3 groupes mêlant ventes, tech et support. La boîte gagnante est reproduite ici.",
-      "blocks": [
-        {
-          "t": "Nom du produit",
-          "items": [
-            "Fieldnote",
-            "Sous-marque rejetée : Fieldnote Pro"
-          ]
-        },
-        {
-          "t": "Slogan / promesse",
-          "items": [
-            "Chaque pièce utilisée, facturée. Sans taper dans le camion.",
-            "Second : Récupérez vos dimanches."
-          ]
-        },
-        {
-          "t": "3 arguments",
-          "items": [
-            "Saisir une intervention en 20 secondes, d'une main gantée",
-            "Le dispatcher voit la journée changer en direct",
-            "Facturer le lundi matin, pas le dimanche soir"
-          ]
-        },
-        {
-          "t": "Dos de la boîte",
-          "items": [
-            "Marche sur tout Android ou iPhone, pas besoin de tablette",
-            "Installé en une après-midi avec notre visite d'onboarding",
-            "Utilisé par 12 sociétés CVC, 180 techniciens",
-            "29 € par technicien et par mois, sans engagement"
-          ]
-        }
-      ],
-      "takeaway": "Ventes et tech avaient écrit des slogans différents ; le gagnant était le seul à ne pas parler de logiciel."
-    }
-  },
-  "positioning": {
-    "en": {
-      "context": "Mature Fieldnote, growth slowing. Karim, Nadia and marketing redraw the map after losing 3 deals to Jobber.",
-      "blocks": [
-        {
-          "t": "Competitor A",
-          "items": [
-            "Jobber: premium, mainstream, every trade",
-            "Wins on polish and marketing budget",
-            "Loses on French invoicing and gloves-on logging"
-          ]
-        },
-        {
-          "t": "Competitor B",
-          "items": [
-            "Synchroteam: premium, niche, feature-heavy",
-            "Wins on large fleets above 100 technicians",
-            "Loses on onboarding time, 6 weeks average"
-          ]
-        },
-        {
-          "t": "Us",
-          "items": [
-            "Fieldnote: mid-price, niche HVAC and plumbing",
-            "Wins on same-day logging and Pennylane sync",
-            "Perceived as \"the small one\" by 60-technician prospects"
-          ]
-        },
-        {
-          "t": "Open space",
-          "items": [
-            "Low price, mainstream: paper and Excel live here",
-            "Nobody owns \"recurring maintenance contracts done right\"",
-            "Nobody sells to the wholesaler channel"
-          ]
-        }
-      ],
-      "takeaway": "The team chose to stay niche and own recurring contracts rather than chase Jobber on polish; marketing dropped \"all-in-one\" from the site."
-    },
-    "fr": {
-      "context": "Fieldnote mature, croissance qui ralentit. Karim, Nadia et le marketing redessinent la carte après avoir perdu 3 deals face à Jobber.",
-      "blocks": [
-        {
-          "t": "Concurrent A",
-          "items": [
-            "Jobber : premium, généraliste, tous les métiers",
-            "Gagne sur le polish et le budget marketing",
-            "Perd sur la facturation française et la saisie avec des gants"
-          ]
-        },
-        {
-          "t": "Concurrent B",
-          "items": [
-            "Synchroteam : premium, niche, lourd en fonctionnalités",
-            "Gagne sur les grandes flottes de plus de 100 techniciens",
-            "Perd sur le temps d'onboarding, 6 semaines en moyenne"
-          ]
-        },
-        {
-          "t": "Nous",
-          "items": [
-            "Fieldnote : prix moyen, niche CVC et plomberie",
-            "Gagne sur la saisie le jour même et la synchro Pennylane",
-            "Perçu comme \"le petit\" par les prospects de 60 techniciens"
-          ]
-        },
-        {
-          "t": "Espace vide",
-          "items": [
-            "Prix bas, généraliste : le papier et Excel vivent ici",
-            "Personne ne possède \"les contrats de maintenance récurrents bien faits\"",
-            "Personne ne vend via le canal des grossistes"
-          ]
-        }
-      ],
-      "takeaway": "L'équipe a choisi de rester niche et de s'approprier les contrats récurrents plutôt que de courir après le polish de Jobber ; le marketing a retiré \"tout-en-un\" du site."
-    }
-  },
-  "nsm": {
-    "en": {
-      "context": "Post-PMF Fieldnote, 2 squads optimising different things. Élise, Karim, Tom and Priya pick one metric.",
-      "blocks": [
-        {
-          "t": "North Star",
-          "items": [
-            "Interventions logged in the field the same day, per week",
-            "Rejected: active technician seats (pleases finance, predicts nothing)"
-          ]
-        },
-        {
-          "t": "Levers",
-          "items": [
-            "More technicians active each week",
-            "More interventions logged per active technician",
-            "Higher share logged before 6pm"
-          ]
-        },
-        {
-          "t": "Input metrics",
-          "items": [
-            "New companies past 10 interventions in 5 days (Field app squad)",
-            "Weekly active technicians per company (Field app squad)",
-            "Jobs imported by the dispatcher before Monday (Office web squad)",
-            "Voice note usage rate (Field app squad)",
-            "Photo upload success rate, target 99.5 % (Field app squad)",
-            "Companies connected to invoicing in month 1 (Office web squad)"
-          ]
-        }
-      ],
-      "takeaway": "\"Same day\" was the fight: seats would have pleased finance, but only same-day logging predicts the 4 % churn cohort."
-    },
-    "fr": {
-      "context": "Fieldnote post-PMF, 2 squads qui optimisent des choses différentes. Élise, Karim, Tom et Priya choisissent une métrique.",
-      "blocks": [
-        {
-          "t": "North Star",
-          "items": [
-            "Interventions saisies sur le terrain le jour même, par semaine",
-            "Rejeté : sièges techniciens actifs (plaît à la finance, ne prédit rien)"
-          ]
-        },
-        {
-          "t": "Leviers",
-          "items": [
-            "Plus de techniciens actifs chaque semaine",
-            "Plus d'interventions saisies par technicien actif",
-            "Part plus élevée saisie avant 18h"
-          ]
-        },
-        {
-          "t": "Métriques d'entrée",
-          "items": [
-            "Nouvelles sociétés à 10 interventions en 5 jours (squad Field app)",
-            "Techniciens actifs hebdo par société (squad Field app)",
-            "Jobs importés par le dispatcher avant lundi (squad Office web)",
-            "Taux d'usage de la note vocale (squad Field app)",
-            "Taux de succès d'envoi photo, cible 99,5 % (squad Field app)",
-            "Sociétés connectées à la facturation au mois 1 (squad Office web)"
-          ]
-        }
-      ],
-      "takeaway": "\"Le jour même\" a été le débat : les sièges auraient plu à la finance, mais seule la saisie le jour même prédit la cohorte à 4 % de churn."
-    }
-  },
-  "okr": {
-    "en": {
-      "context": "Scale-up Fieldnote, Q3 OKRs for the company and its 2 squads. Élise, Karim, Tom, Nadia, Julien.",
-      "blocks": [
-        {
-          "t": "Objective 1",
-          "items": [
-            "KR 1: 70 % of new companies log 10 interventions within 5 days (from 62 % of 14 days)",
-            "KR 2: Onboarding support tickets down from 90 to 45 a month",
-            "KR 3: Day-1 technician login rate above 85 %",
-            "Initiatives: guided first intervention, SMS one-tap login, dispatcher CSV import"
-          ]
-        },
-        {
-          "t": "Objective 2",
-          "items": [
-            "KR 1: 60 % of new companies connected to Pennylane or Sage in month 1",
-            "KR 2: Sync error rate under 0.5 % of invoices",
-            "KR 3: 30 companies migrated off the legacy export",
-            "Initiatives: Integrations squad launch, Pennylane sandbox tests, sync error screen for owners"
-          ]
-        },
-        {
-          "t": "Objective 3",
-          "items": [
-            "KR 1: Photo upload success rate at 99.5 % every week",
-            "KR 2: Zero incidents above 4 hours",
-            "KR 3: Field app crash-free sessions at 99.8 %",
-            "Initiatives: upload retry queue, release behind flags, on-call rotation with Julien in the loop"
-          ]
-        }
-      ],
-      "takeaway": "Objective 3 exists because of the March photo incident; Tom insisted reliability gets a KR or it silently loses to features."
-    },
-    "fr": {
-      "context": "Fieldnote scale-up, OKR du T3 pour l'entreprise et ses 2 squads. Élise, Karim, Tom, Nadia, Julien.",
-      "blocks": [
-        {
-          "t": "Objectif 1",
-          "items": [
-            "KR 1 : 70 % des nouvelles sociétés saisissent 10 interventions en 5 jours (contre 62 % en 14 jours)",
-            "KR 2 : Tickets support d'onboarding de 90 à 45 par mois",
-            "KR 3 : Taux de connexion technicien au jour 1 au-dessus de 85 %",
-            "Initiatives : première intervention guidée, connexion SMS en un tap, import CSV dispatcher"
-          ]
-        },
-        {
-          "t": "Objectif 2",
-          "items": [
-            "KR 1 : 60 % des nouvelles sociétés connectées à Pennylane ou Sage au mois 1",
-            "KR 2 : Taux d'erreur de synchro sous 0,5 % des factures",
-            "KR 3 : 30 sociétés migrées hors de l'export legacy",
-            "Initiatives : lancement de la squad Intégrations, tests sandbox Pennylane, écran d'erreur de synchro pour les patrons"
-          ]
-        },
-        {
-          "t": "Objectif 3",
-          "items": [
-            "KR 1 : Taux de succès d'envoi photo à 99,5 % chaque semaine",
-            "KR 2 : Zéro incident de plus de 4 heures",
-            "KR 3 : Sessions sans crash de l'appli terrain à 99,8 %",
-            "Initiatives : file de reprise des envois, releases derrière des flags, astreinte avec Julien dans la boucle"
-          ]
-        }
-      ],
-      "takeaway": "L'objectif 3 existe à cause de l'incident photo de mars ; Tom a insisté pour que la fiabilité ait un KR, sinon elle perd en silence face aux features."
-    }
-  },
-  "horizons": {
-    "en": {
-      "context": "Mature Fieldnote, 1.1 M€ ARR with growth slowing. Élise, Karim, Nadia and finance split next year's investment.",
-      "blocks": [
-        {
-          "t": "H1 · Core business",
-          "items": [
-            "Field app reliability and offline mode, finally",
-            "Pennylane and Sage integrations kept green",
-            "Onboarding for 20 to 60 technician companies",
-            "Parts catalogue with barcode scan",
-            "Support before 10am"
-          ]
-        },
-        {
-          "t": "H2 · Extensions",
-          "items": [
-            "Recurring maintenance contracts line, 99 € a month add-on",
-            "Customer portal for the buildings Sophie serves",
-            "Wholesaler channel as a reseller programme"
-          ]
-        },
-        {
-          "t": "H3 · Bets",
-          "items": [
-            "Automatic route planning from logged interventions",
-            "Electricians as a second trade, tested with 5 companies"
-          ]
-        }
-      ],
-      "takeaway": "Split agreed: 65 % H1, 25 % H2, 10 % H3. Recurring contracts moved from bet to extension once Nadia showed 40 companies already ask for it."
-    },
-    "fr": {
-      "context": "Fieldnote mature, 1,1 M€ d'ARR avec une croissance qui ralentit. Élise, Karim, Nadia et la finance répartissent l'investissement de l'année prochaine.",
-      "blocks": [
-        {
-          "t": "H1 · Coeur de métier",
-          "items": [
-            "Fiabilité de l'appli terrain et mode hors ligne, enfin",
-            "Intégrations Pennylane et Sage maintenues au vert",
-            "Onboarding des sociétés de 20 à 60 techniciens",
-            "Catalogue de pièces avec scan code-barres",
-            "Support avant 10h"
-          ]
-        },
-        {
-          "t": "H2 · Extensions",
-          "items": [
-            "Ligne contrats de maintenance récurrents, option à 99 € par mois",
-            "Portail client pour les immeubles que Sophie entretient",
-            "Canal grossistes en programme revendeur"
-          ]
-        },
-        {
-          "t": "H3 · Paris",
-          "items": [
-            "Planification automatique des tournées depuis les interventions saisies",
-            "Les électriciens comme deuxième métier, testé avec 5 sociétés"
-          ]
-        }
-      ],
-      "takeaway": "Répartition actée : 65 % H1, 25 % H2, 10 % H3. Les contrats récurrents sont passés de pari à extension quand Nadia a montré que 40 sociétés les demandent déjà."
-    }
-  },
-  "prfaq": {
-    "en": {
-      "context": "Scale-up Fieldnote, Karim writes the PR/FAQ for the recurring maintenance contracts line before any engineer is assigned.",
-      "blocks": [
-        {
-          "t": "Headline + subheading",
-          "items": [
-            "Fieldnote launches Contracts: recurring maintenance that schedules and invoices itself",
-            "HVAC companies stop forgetting the 6-month boiler check they already sold"
-          ]
-        },
-        {
-          "t": "Summary",
-          "items": [
-            "Contracts turns a signed maintenance agreement into planned visits",
-            "Each visit appears in the dispatcher's day and is invoiced when logged",
-            "Available to companies on the Office web plan, 99 € a month"
-          ]
-        },
-        {
-          "t": "Problem",
-          "items": [
-            "Sophie sells 300 annual contracts and forgets 15 % of the visits",
-            "Forgotten visits mean lost revenue and lost customers",
-            "Today contracts live in a spreadsheet nobody opens"
-          ]
-        },
-        {
-          "t": "Solution",
-          "items": [
-            "Create the contract once: site, frequency, price",
-            "Visits are generated 30 days ahead into the day view",
-            "The logged visit invoices itself through Pennylane"
-          ]
-        },
-        {
-          "t": "Leader quote",
-          "items": [
-            "\"A contract you forget is worse than no contract. Contracts makes the promise keep itself.\" Élise, founder",
-            "Rejected: \"We are thrilled to announce\" (banned opening)"
-          ]
-        },
-        {
-          "t": "How to get started",
-          "items": [
-            "Import existing contracts from a CSV or type them in",
-            "Pick the technician and the month, Fieldnote does the rest",
-            "First month free for design partners"
-          ]
-        },
-        {
-          "t": "Customer quote",
-          "items": [
-            "\"I found 22 visits I had sold and never done. That paid for the year.\" Sophie, 22-technician company",
-            "Marc, dispatcher: \"September is going to be a wall of visits. Spread them or I will.\""
-          ]
-        },
-        {
-          "t": "Internal FAQ",
-          "items": [
-            "Why now: 40 companies asked, Jobber does not do French contracts",
-            "Which squad: Office web, 2 engineers for one quarter",
-            "Risk: dispatch overload in September when all boilers are due"
-          ]
-        },
-        {
-          "t": "External FAQ",
-          "items": [
-            "Does it work with my current contracts: yes, via CSV import",
-            "Can the customer see the visit: portal later, email now",
-            "What if a technician is sick: the visit moves, not the contract"
-          ]
-        }
-      ],
-      "takeaway": "The September overload question had no answer; the launch was moved to October and a visit-spreading rule was added to the scope."
-    },
-    "fr": {
-      "context": "Fieldnote scale-up, Karim écrit le PR/FAQ de la ligne contrats de maintenance récurrents avant qu'un seul ingénieur soit affecté.",
-      "blocks": [
-        {
-          "t": "Titre + sous-titre",
-          "items": [
-            "Fieldnote lance Contrats : la maintenance récurrente qui se planifie et se facture toute seule",
-            "Les sociétés CVC arrêtent d'oublier la visite chaudière à 6 mois qu'elles ont déjà vendue"
-          ]
-        },
-        {
-          "t": "Résumé",
-          "items": [
-            "Contrats transforme un contrat de maintenance signé en visites planifiées",
-            "Chaque visite apparaît dans la journée du dispatcher et se facture une fois saisie",
-            "Disponible pour les sociétés sur l'offre Office web, 99 € par mois"
-          ]
-        },
-        {
-          "t": "Problème",
-          "items": [
-            "Sophie vend 300 contrats annuels et oublie 15 % des visites",
-            "Visites oubliées, revenu perdu et clients perdus",
-            "Aujourd'hui les contrats vivent dans un tableur que personne n'ouvre"
-          ]
-        },
-        {
-          "t": "Solution",
-          "items": [
-            "Créer le contrat une fois : site, fréquence, prix",
-            "Les visites sont générées 30 jours à l'avance dans la vue journée",
-            "La visite saisie se facture via Pennylane"
-          ]
-        },
-        {
-          "t": "Citation dirigeant",
-          "items": [
-            "\"Un contrat qu'on oublie est pire que pas de contrat. Contrats fait que la promesse se tient toute seule.\" Élise, fondatrice",
-            "Rejeté : \"Nous sommes ravis d'annoncer\" (ouverture interdite)"
-          ]
-        },
-        {
-          "t": "Comment démarrer",
-          "items": [
-            "Importer les contrats existants depuis un CSV ou les saisir",
-            "Choisir le technicien et le mois, Fieldnote fait le reste",
-            "Premier mois offert aux design partners"
-          ]
-        },
-        {
-          "t": "Citation client",
-          "items": [
-            "\"J'ai retrouvé 22 visites vendues et jamais faites. Ça a payé l'année.\" Sophie, société de 22 techniciens",
-            "Marc, dispatcher : \"Septembre va être un mur de visites. Étalez-les ou je le ferai.\""
-          ]
-        },
-        {
-          "t": "FAQ interne",
-          "items": [
-            "Pourquoi maintenant : 40 sociétés l'ont demandé, Jobber ne fait pas les contrats français",
-            "Quelle squad : Office web, 2 ingénieurs pendant un trimestre",
-            "Risque : surcharge du dispatch en septembre quand toutes les chaudières sont dues"
-          ]
-        },
-        {
-          "t": "FAQ externe",
-          "items": [
-            "Ça marche avec mes contrats actuels : oui, via import CSV",
-            "Le client peut voir la visite : portail plus tard, email dès maintenant",
-            "Si un technicien est malade : la visite bouge, pas le contrat"
-          ]
-        }
-      ],
-      "takeaway": "La question de la surcharge de septembre n'avait pas de réponse ; le lancement est passé à octobre et une règle d'étalement des visites a été ajoutée au périmètre."
-    }
+   ],
+   "takeaway": "L'équipe a décidé de mesurer le succès en sociétés et non en sièges techniciens, et Élise a accepté que le hors ligne attende que le chiffre d'activation bouge."
   }
+ },
+ "problem": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, 12 paying companies. Élise, Karim, Tom and Nadia, with two customer quotes pasted on the side of the board.",
+   "blocks": [
+    {
+     "t": "Who has the problem",
+     "items": [
+      "Sophie, owner of a 22-technician HVAC company",
+      "Marc, dispatcher with a whiteboard behind him",
+      "Léa, technician filling paper sheets at 7pm in the van"
+     ]
+    },
+    {
+     "t": "What problem",
+     "items": [
+      "Parts used in the field never reach the invoice",
+      "Sophie retypes photos of paper sheets every Sunday",
+      "About 6 % of billable parts are lost each month"
+     ]
+    },
+    {
+     "t": "Why now",
+     "items": [
+      "Three competitors' quotes landed on Sophie's desk this quarter",
+      "Paper sheets got worse since the company grew past 15 technicians",
+      "Sophie just hired a second dispatcher to cope"
+     ]
+    },
+    {
+     "t": "What we know",
+     "items": [
+      "Every owner we met does invoicing on the weekend",
+      "Technicians refuse anything that needs both hands",
+      "Marc reroutes 3 to 4 jobs a day by phone"
+     ]
+    },
+    {
+     "t": "What we assume",
+     "items": [
+      "Technicians will log parts if it takes under 20 seconds",
+      "Owners will pay 29 € per seat to recover 6 % of parts",
+      "Photo plus voice beats typing in a van"
+     ]
+    },
+    {
+     "t": "Problem statement (one sentence)",
+     "items": [
+      "Sophie loses 6 % of billable parts because Léa's paper sheet reaches the office three days late and half filled",
+      "Rejected draft: \"Technicians need a mobile app to log parts\" (a solution in disguise)"
+     ]
+    }
+   ],
+   "takeaway": "The statement dropped the word \"app\" entirely; three assumptions went straight into the research plan."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, 12 sociétés clientes. Élise, Karim, Tom et Nadia, avec deux verbatims clients collés sur le côté du board.",
+   "blocks": [
+    {
+     "t": "Qui a le problème",
+     "items": [
+      "Sophie, patronne d'une société CVC de 22 techniciens",
+      "Marc, dispatcher avec un tableau blanc derrière lui",
+      "Léa, technicienne qui remplit ses fiches papier à 19h dans le camion"
+     ]
+    },
+    {
+     "t": "Quel problème",
+     "items": [
+      "Les pièces utilisées sur le terrain n'arrivent jamais sur la facture",
+      "Sophie ressaisit des photos de fiches papier chaque dimanche",
+      "Environ 6 % des pièces facturables perdues chaque mois"
+     ]
+    },
+    {
+     "t": "Pourquoi maintenant",
+     "items": [
+      "Trois devis de concurrents sur le bureau de Sophie ce trimestre",
+      "Le papier a empiré depuis que la société a dépassé 15 techniciens",
+      "Sophie vient d'embaucher un second dispatcher pour tenir"
+     ]
+    },
+    {
+     "t": "Ce qu'on sait",
+     "items": [
+      "Tous les patrons rencontrés facturent le week-end",
+      "Les techniciens refusent tout ce qui demande les deux mains",
+      "Marc réaffecte 3 à 4 jobs par jour au téléphone"
+     ]
+    },
+    {
+     "t": "Ce qu'on suppose",
+     "items": [
+      "Les techniciens saisiront les pièces si ça prend moins de 20 secondes",
+      "Les patrons paieront 29 € par siège pour récupérer 6 % de pièces",
+      "Photo plus voix bat la saisie clavier dans un camion"
+     ]
+    },
+    {
+     "t": "Énoncé du problème (une phrase)",
+     "items": [
+      "Sophie perd 6 % de pièces facturables parce que la fiche papier de Léa arrive au bureau trois jours plus tard et à moitié remplie",
+      "Brouillon rejeté : \"Les techniciens ont besoin d'une appli mobile pour saisir les pièces\" (une solution déguisée)"
+     ]
+    }
+   ],
+   "takeaway": "L'énoncé a perdu le mot \"appli\" ; trois hypothèses sont parties directement dans le plan de recherche."
+  }
+ },
+ "stakeholders": {
+  "en": {
+   "context": "Scale-up Fieldnote, mapping who matters for the Integrations squad launch. Karim and Élise, one hour.",
+   "blocks": [
+    {
+     "t": "Keep satisfied",
+     "items": [
+      "Élise, CEO: wants ARR, not integration details",
+      "Pennylane partnership manager",
+      "Board member pushing for a US launch"
+     ]
+    },
+    {
+     "t": "Manage closely",
+     "items": [
+      "Nadia, head of sales: integrations block 30 % of deals",
+      "Tom, tech lead: owns the legacy sync code",
+      "Sophie and 5 owners in the design partner group"
+     ]
+    },
+    {
+     "t": "Monitor",
+     "items": [
+      "Sage integration contact, slow to answer",
+      "Field app squad, affected only by the shared API",
+      "Finance, watches the third squad's cost"
+     ]
+    },
+    {
+     "t": "Keep informed",
+     "items": [
+      "Julien, support: gets the tickets when sync breaks",
+      "Marketing, needs the launch date",
+      "Data analyst Priya, tracks month-1 connection rate"
+     ]
+    }
+   ],
+   "takeaway": "Nadia moved from \"informed\" to \"manage closely\" once the team saw she was the one promising integrations to prospects."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up, cartographie des parties prenantes du lancement de la squad Intégrations. Karim et Élise, une heure.",
+   "blocks": [
+    {
+     "t": "Satisfaire",
+     "items": [
+      "Élise, CEO : veut de l'ARR, pas les détails d'intégration",
+      "Responsable partenariat chez Pennylane",
+      "Membre du board qui pousse un lancement US"
+     ]
+    },
+    {
+     "t": "Impliquer",
+     "items": [
+      "Nadia, head of sales : les intégrations bloquent 30 % des deals",
+      "Tom, tech lead : possède le code de synchro legacy",
+      "Sophie et 5 patrons du groupe de design partners"
+     ]
+    },
+    {
+     "t": "Surveiller",
+     "items": [
+      "Contact intégration Sage, lent à répondre",
+      "Squad Field app, touchée seulement par l'API partagée",
+      "Finance, surveille le coût de la troisième squad"
+     ]
+    },
+    {
+     "t": "Informer",
+     "items": [
+      "Julien, support : reçoit les tickets quand la synchro casse",
+      "Marketing, a besoin de la date de lancement",
+      "Priya, data analyst, suit le taux de connexion au mois 1"
+     ]
+    }
+   ],
+   "takeaway": "Nadia est passée de \"informer\" à \"impliquer\" quand l'équipe a vu que c'était elle qui promettait les intégrations aux prospects."
+  }
+ },
+ "charter": {
+  "en": {
+   "context": "Scale-up Fieldnote, the new Integrations squad (4 engineers, Karim as PM) writes its working agreements on day one.",
+   "blocks": [
+    {
+     "t": "Mission",
+     "items": [
+      "Every Fieldnote company connected to its invoicing tool in month 1",
+      "Zero retyping between the field and the invoice"
+     ]
+    },
+    {
+     "t": "Values",
+     "items": [
+      "Boring and reliable beats clever",
+      "Sync errors are shown to Sophie, never hidden",
+      "We ship behind a flag or we do not ship"
+     ]
+    },
+    {
+     "t": "Rules",
+     "items": [
+      "No meetings before 10am, technicians call support early",
+      "One integration at a time, Pennylane first",
+      "Pull requests reviewed within 4 working hours",
+      "Decisions written in the squad channel, not in DMs"
+     ]
+    },
+    {
+     "t": "Rituals",
+     "items": [
+      "Monday 30-minute planning with Nadia's top 3 blocked deals",
+      "Wednesday demo to Julien and one design partner",
+      "Friday 20-minute retro, Start / Stop / Continue"
+     ]
+    },
+    {
+     "t": "Definition of Done",
+     "items": [
+      "Tested against a real Pennylane sandbox account",
+      "Error states reviewed with Julien",
+      "Month-1 connection metric wired for Priya"
+     ]
+    }
+   ],
+   "takeaway": "The 10am rule came from Tom: the March photo incident was debugged at 8am while support drowned in calls."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up, la nouvelle squad Intégrations (4 ingénieurs, Karim en PM) écrit ses accords d'équipe le premier jour.",
+   "blocks": [
+    {
+     "t": "Mission",
+     "items": [
+      "Chaque société Fieldnote connectée à son outil de facturation dès le mois 1",
+      "Zéro ressaisie entre le terrain et la facture"
+     ]
+    },
+    {
+     "t": "Valeurs",
+     "items": [
+      "Ennuyeux et fiable bat astucieux",
+      "Les erreurs de synchro sont montrées à Sophie, jamais cachées",
+      "On livre derrière un flag ou on ne livre pas"
+     ]
+    },
+    {
+     "t": "Règles",
+     "items": [
+      "Pas de réunion avant 10h, les techniciens appellent le support tôt",
+      "Une intégration à la fois, Pennylane d'abord",
+      "Pull requests relues sous 4 heures ouvrées",
+      "Décisions écrites dans le canal de la squad, pas en DM"
+     ]
+    },
+    {
+     "t": "Rituels",
+     "items": [
+      "Lundi, planning de 30 minutes avec les 3 deals bloqués de Nadia",
+      "Mercredi, démo à Julien et à un design partner",
+      "Vendredi, rétro de 20 minutes, Start / Stop / Continue"
+     ]
+    },
+    {
+     "t": "Definition of Done",
+     "items": [
+      "Testé sur un vrai compte sandbox Pennylane",
+      "États d'erreur relus avec Julien",
+      "Métrique de connexion au mois 1 branchée pour Priya"
+     ]
+    }
+   ],
+   "takeaway": "La règle des 10h vient de Tom : l'incident photo de mars a été débuggé à 8h pendant que le support croulait sous les appels."
+  }
+ },
+ "lean": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, month 4, Élise and Karim rewrite the canvas after the first 10 customers.",
+   "blocks": [
+    {
+     "t": "Problem",
+     "items": [
+      "Parts used in the field are lost before invoicing",
+      "Owners spend Sunday retyping paper sheets",
+      "Dispatchers reroute the day by phone"
+     ]
+    },
+    {
+     "t": "Solution",
+     "items": [
+      "Photo plus voice intervention log in 20 seconds",
+      "Shared day view for the dispatcher",
+      "Invoice export at the end of the day"
+     ]
+    },
+    {
+     "t": "Unique value proposition",
+     "items": [
+      "Every part you use gets invoiced, without typing in the van",
+      "Built for a gloved hand, not for an office"
+     ]
+    },
+    {
+     "t": "Unfair advantage",
+     "items": [
+      "Élise ran a 30-technician HVAC company for 9 years",
+      "Access to 40 owners through the regional trade association"
+     ]
+    },
+    {
+     "t": "Customer segments",
+     "items": [
+      "HVAC and plumbing companies, 5 to 60 technicians",
+      "Early adopter: owner who invoices herself on Sunday",
+      "Not: one-person companies, national chains"
+     ]
+    },
+    {
+     "t": "Key metrics",
+     "items": [
+      "Interventions logged the same day",
+      "Parts recovered per company per month",
+      "Companies past 10 interventions in week 1"
+     ]
+    },
+    {
+     "t": "Channels",
+     "items": [
+      "Trade association meetings",
+      "Referrals from the first 10 owners",
+      "Parts wholesalers' counters"
+     ]
+    },
+    {
+     "t": "Cost structure",
+     "items": [
+      "4 people, 38 k€ a month",
+      "Field visits for onboarding, 400 € per company",
+      "SMS and photo storage, marginal"
+     ]
+    },
+    {
+     "t": "Revenue streams",
+     "items": [
+      "29 € per technician per month",
+      "Onboarding fee 500 € waived for the first 20",
+      "Later: invoicing integration as a paid add-on"
+     ]
+    }
+   ],
+   "takeaway": "The riskiest assumption was moved to the top: technicians logging parts themselves. Everything else depends on it."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, mois 4, Élise et Karim réécrivent le canvas après les 10 premiers clients.",
+   "blocks": [
+    {
+     "t": "Problème",
+     "items": [
+      "Les pièces utilisées sur le terrain sont perdues avant facturation",
+      "Les patrons passent le dimanche à ressaisir des fiches papier",
+      "Les dispatchers réorganisent la journée au téléphone"
+     ]
+    },
+    {
+     "t": "Solution",
+     "items": [
+      "Saisie d'intervention photo plus voix en 20 secondes",
+      "Vue partagée de la journée pour le dispatcher",
+      "Export facturation en fin de journée"
+     ]
+    },
+    {
+     "t": "Proposition de valeur unique",
+     "items": [
+      "Chaque pièce utilisée est facturée, sans taper dans le camion",
+      "Conçu pour une main gantée, pas pour un bureau"
+     ]
+    },
+    {
+     "t": "Avantage déloyal",
+     "items": [
+      "Élise a dirigé une société CVC de 30 techniciens pendant 9 ans",
+      "Accès à 40 patrons via l'association professionnelle régionale"
+     ]
+    },
+    {
+     "t": "Segments clients",
+     "items": [
+      "Sociétés CVC et plomberie, 5 à 60 techniciens",
+      "Early adopter : la patronne qui facture elle-même le dimanche",
+      "Pas : les indépendants seuls, les réseaux nationaux"
+     ]
+    },
+    {
+     "t": "Métriques clés",
+     "items": [
+      "Interventions saisies le jour même",
+      "Pièces récupérées par société et par mois",
+      "Sociétés au-delà de 10 interventions en semaine 1"
+     ]
+    },
+    {
+     "t": "Canaux",
+     "items": [
+      "Réunions de l'association professionnelle",
+      "Recommandations des 10 premiers patrons",
+      "Comptoirs des grossistes en pièces"
+     ]
+    },
+    {
+     "t": "Structure de coûts",
+     "items": [
+      "4 personnes, 38 k€ par mois",
+      "Visites terrain pour l'onboarding, 400 € par société",
+      "SMS et stockage photo, marginal"
+     ]
+    },
+    {
+     "t": "Sources de revenus",
+     "items": [
+      "29 € par technicien et par mois",
+      "Frais d'onboarding 500 €, offerts aux 20 premiers",
+      "Plus tard : intégration facturation en option payante"
+     ]
+    }
+   ],
+   "takeaway": "L'hypothèse la plus risquée est remontée en tête : les techniciens saisissent eux-mêmes les pièces. Tout le reste en dépend."
+  }
+ },
+ "bmc": {
+  "en": {
+   "context": "Post-PMF Fieldnote at 1.1 M€ ARR. Élise, Karim, Nadia and the finance lead decide where the next hire goes.",
+   "blocks": [
+    {
+     "t": "Key partners",
+     "items": [
+      "Pennylane and Sage for invoicing",
+      "Two parts wholesalers who resell seats",
+      "Regional HVAC trade associations"
+     ]
+    },
+    {
+     "t": "Key activities",
+     "items": [
+      "Field app reliability, photo upload above all",
+      "Onboarding visits for companies above 20 technicians",
+      "Integration maintenance"
+     ]
+    },
+    {
+     "t": "Value proposition",
+     "items": [
+      "Every part used in the field ends up on the invoice",
+      "The dispatcher sees the day, not a whiteboard",
+      "Sunday is no longer invoicing day"
+     ]
+    },
+    {
+     "t": "Customer relationships",
+     "items": [
+      "Onboarding call with the owner in week 1",
+      "Support by phone before 10am, Julien's team",
+      "Design partner group of 12 owners"
+     ]
+    },
+    {
+     "t": "Customer segments",
+     "items": [
+      "140 HVAC and plumbing companies, 5 to 60 technicians",
+      "Growth segment: 20 to 60 technicians with a dispatcher",
+      "Weak segment: under 5 technicians, churns at 30 %"
+     ]
+    },
+    {
+     "t": "Key resources",
+     "items": [
+      "9 engineers in 2 squads",
+      "3 years of intervention data",
+      "Élise's network of owners"
+     ]
+    },
+    {
+     "t": "Channels",
+     "items": [
+      "Wholesaler counters, 40 % of new companies",
+      "Referrals, 35 %",
+      "Inbound from the blog, 25 %"
+     ]
+    },
+    {
+     "t": "Cost structure",
+     "items": [
+      "Team, 95 k€ a month",
+      "Onboarding visits, 400 € per company",
+      "Photo storage and SMS, 3 k€ a month"
+     ]
+    },
+    {
+     "t": "Revenue streams",
+     "items": [
+      "2 100 seats at 29 €, 1.1 M€ ARR",
+      "Net revenue retention 104 %",
+      "Candidate: integrations add-on at 99 € a month per company"
+     ]
+    }
+   ],
+   "takeaway": "Finance saw that the under-5-technician segment costs more in support than it pays; sales stopped targeting it."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF à 1,1 M€ d'ARR. Élise, Karim, Nadia et le responsable finance décident où va la prochaine embauche.",
+   "blocks": [
+    {
+     "t": "Partenaires clés",
+     "items": [
+      "Pennylane et Sage pour la facturation",
+      "Deux grossistes en pièces qui revendent des sièges",
+      "Associations professionnelles CVC régionales"
+     ]
+    },
+    {
+     "t": "Activités clés",
+     "items": [
+      "Fiabilité de l'appli terrain, l'envoi photo avant tout",
+      "Visites d'onboarding pour les sociétés de plus de 20 techniciens",
+      "Maintenance des intégrations"
+     ]
+    },
+    {
+     "t": "Proposition de valeur",
+     "items": [
+      "Chaque pièce utilisée sur le terrain finit sur la facture",
+      "Le dispatcher voit la journée, pas un tableau blanc",
+      "Le dimanche n'est plus le jour de la facturation"
+     ]
+    },
+    {
+     "t": "Relation client",
+     "items": [
+      "Appel d'onboarding avec le patron en semaine 1",
+      "Support téléphonique avant 10h, l'équipe de Julien",
+      "Groupe de design partners de 12 patrons"
+     ]
+    },
+    {
+     "t": "Segments clients",
+     "items": [
+      "140 sociétés CVC et plomberie, 5 à 60 techniciens",
+      "Segment de croissance : 20 à 60 techniciens avec un dispatcher",
+      "Segment faible : moins de 5 techniciens, churn à 30 %"
+     ]
+    },
+    {
+     "t": "Ressources clés",
+     "items": [
+      "9 ingénieurs en 2 squads",
+      "3 ans de données d'interventions",
+      "Le réseau de patrons d'Élise"
+     ]
+    },
+    {
+     "t": "Canaux",
+     "items": [
+      "Comptoirs des grossistes, 40 % des nouvelles sociétés",
+      "Recommandations, 35 %",
+      "Inbound via le blog, 25 %"
+     ]
+    },
+    {
+     "t": "Structure de coûts",
+     "items": [
+      "Équipe, 95 k€ par mois",
+      "Visites d'onboarding, 400 € par société",
+      "Stockage photo et SMS, 3 k€ par mois"
+     ]
+    },
+    {
+     "t": "Sources de revenus",
+     "items": [
+      "2 100 sièges à 29 €, 1,1 M€ d'ARR",
+      "Net revenue retention 104 %",
+      "Candidat : option intégrations à 99 € par mois et par société"
+     ]
+    }
+   ],
+   "takeaway": "La finance a vu que le segment sous 5 techniciens coûte plus en support qu'il ne rapporte ; les ventes ont arrêté de le cibler."
+  }
+ },
+ "vpc": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, after 8 interviews with technicians and owners. Karim, Ana and Nadia check the fit for Léa's side of the product.",
+   "blocks": [
+    {
+     "t": "Products & services",
+     "items": [
+      "Mobile intervention log: photo, voice note, parts",
+      "Customer signature on the phone",
+      "Day view shared with the dispatcher"
+     ]
+    },
+    {
+     "t": "Gain creators",
+     "items": [
+      "Log an intervention in 20 seconds, one hand",
+      "Parts list pre-filled from the last visit at that site",
+      "Day finished at 5pm, nothing left to do in the van"
+     ]
+    },
+    {
+     "t": "Pain relievers",
+     "items": [
+      "No typing: voice note transcribed later",
+      "Photo of the part replaces the reference number",
+      "Signature on the phone, no paper to lose"
+     ]
+    },
+    {
+     "t": "Gains",
+     "items": [
+      "Leave the last site and be done",
+      "Get credit for every part actually used",
+      "Fewer calls from Marc asking where she is"
+     ]
+    },
+    {
+     "t": "Pains",
+     "items": [
+      "Paper sheet filled at 7pm from memory",
+      "Gloves, cold, no flat surface to write on",
+      "Blamed on Friday for parts she did not log"
+     ]
+    },
+    {
+     "t": "Customer jobs",
+     "items": [
+      "Fix the boiler and move to the next site",
+      "Prove what was done and what was used",
+      "Get home before 7pm"
+     ]
+    }
+   ],
+   "takeaway": "The gap: nothing on the left addressed \"blamed on Friday\". A parts confirmation screen at the end of the day was added to the backlog."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, après 8 entretiens avec des techniciens et des patrons. Karim, Ana et Nadia vérifient le fit côté Léa.",
+   "blocks": [
+    {
+     "t": "Produits & services",
+     "items": [
+      "Saisie d'intervention mobile : photo, note vocale, pièces",
+      "Signature client sur le téléphone",
+      "Vue de la journée partagée avec le dispatcher"
+     ]
+    },
+    {
+     "t": "Créateurs de gain",
+     "items": [
+      "Saisir une intervention en 20 secondes, d'une main",
+      "Liste de pièces pré-remplie depuis la dernière visite sur le site",
+      "Journée finie à 17h, plus rien à faire dans le camion"
+     ]
+    },
+    {
+     "t": "Soulageurs de douleur",
+     "items": [
+      "Pas de clavier : note vocale transcrite plus tard",
+      "La photo de la pièce remplace la référence",
+      "Signature sur le téléphone, plus de papier à perdre"
+     ]
+    },
+    {
+     "t": "Gains",
+     "items": [
+      "Quitter le dernier site et avoir fini",
+      "Être créditée de chaque pièce vraiment utilisée",
+      "Moins d'appels de Marc pour savoir où elle est"
+     ]
+    },
+    {
+     "t": "Douleurs",
+     "items": [
+      "Fiche papier remplie à 19h de mémoire",
+      "Gants, froid, pas de surface plane pour écrire",
+      "Accusée le vendredi pour des pièces non notées"
+     ]
+    },
+    {
+     "t": "Tâches du client",
+     "items": [
+      "Réparer la chaudière et passer au site suivant",
+      "Prouver ce qui a été fait et utilisé",
+      "Rentrer avant 19h"
+     ]
+    }
+   ],
+   "takeaway": "L'écart : rien à gauche ne répondait à \"accusée le vendredi\". Un écran de confirmation des pièces en fin de journée a été ajouté au backlog."
+  }
+ },
+ "vision": {
+  "en": {
+   "context": "Post-PMF Fieldnote, 2 squads and a new head of sales. Élise, Karim, Tom, Ana and Nadia put the vision on one board.",
+   "blocks": [
+    {
+     "t": "Vision",
+     "items": [
+      "Every maintenance company under 60 technicians runs its day from Fieldnote, and nobody retypes anything, ever",
+      "Rejected draft: \"The best field service software for small companies\" (says nothing)"
+     ]
+    },
+    {
+     "t": "Target group",
+     "items": [
+      "HVAC and plumbing companies, 5 to 60 technicians",
+      "The owner who still invoices herself",
+      "The dispatcher with a whiteboard"
+     ]
+    },
+    {
+     "t": "Needs",
+     "items": [
+      "Parts used equal parts invoiced",
+      "See the day change in real time",
+      "Technicians who adopt it in a week"
+     ]
+    },
+    {
+     "t": "Product",
+     "items": [
+      "Field app: log in 20 seconds, works with gloves",
+      "Office web: live day view and dispatch",
+      "Invoicing integrations: Pennylane first"
+     ]
+    },
+    {
+     "t": "Business goals",
+     "items": [
+      "3 M€ ARR in 24 months",
+      "Churn under 8 % a year across all segments",
+      "60 % of companies connected to invoicing in month 1"
+     ]
+    }
+   ],
+   "takeaway": "\"Nobody retypes anything\" became the sentence Nadia uses in every demo, and the reason the Integrations squad exists."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, 2 squads et une nouvelle head of sales. Élise, Karim, Tom, Ana et Nadia posent la vision sur un seul board.",
+   "blocks": [
+    {
+     "t": "Vision",
+     "items": [
+      "Chaque société de maintenance de moins de 60 techniciens pilote sa journée depuis Fieldnote, et personne ne ressaisit rien, jamais",
+      "Brouillon rejeté : \"Le meilleur logiciel de gestion d'interventions pour les petites sociétés\" (ne dit rien)"
+     ]
+    },
+    {
+     "t": "Groupe cible",
+     "items": [
+      "Sociétés CVC et plomberie, 5 à 60 techniciens",
+      "La patronne qui facture encore elle-même",
+      "Le dispatcher au tableau blanc"
+     ]
+    },
+    {
+     "t": "Besoins",
+     "items": [
+      "Pièces utilisées égale pièces facturées",
+      "Voir la journée changer en temps réel",
+      "Des techniciens qui adoptent en une semaine"
+     ]
+    },
+    {
+     "t": "Produit",
+     "items": [
+      "Appli terrain : saisie en 20 secondes, marche avec des gants",
+      "Web bureau : vue de la journée en direct et dispatch",
+      "Intégrations facturation : Pennylane d'abord"
+     ]
+    },
+    {
+     "t": "Objectifs business",
+     "items": [
+      "3 M€ d'ARR en 24 mois",
+      "Churn sous 8 % par an sur tous les segments",
+      "60 % des sociétés connectées à la facturation dès le mois 1"
+     ]
+    }
+   ],
+   "takeaway": "\"Personne ne ressaisit rien\" est devenue la phrase que Nadia utilise dans chaque démo, et la raison d'être de la squad Intégrations."
+  }
+ },
+ "impact": {
+  "en": {
+   "context": "Scale-up Fieldnote, quarter planning. Karim maps the activation objective with Tom, Ana, Julien and Priya.",
+   "blocks": [
+    {
+     "t": "Goal",
+     "items": [
+      "70 % of new companies log 10 interventions within 5 days, by end of quarter",
+      "Measured on companies, not on technician seats"
+     ]
+    },
+    {
+     "t": "Actors",
+     "items": [
+      "Léa, technician on her first day with the app",
+      "Marc, dispatcher who imports the week's jobs"
+     ]
+    },
+    {
+     "t": "Impacts",
+     "items": [
+      "Léa → logs her first intervention without support",
+      "Léa → keeps logging on day 2 and 3",
+      "Marc → has the week's jobs in the app before Monday",
+      "Marc → stops re-entering jobs from the whiteboard"
+     ]
+    },
+    {
+     "t": "Deliverables",
+     "items": [
+      "Guided first intervention with sample site",
+      "Voice note as the default input",
+      "CSV and Excel import of the week's jobs",
+      "Day-1 SMS to technicians with a one-tap login",
+      "Activation dashboard for Julien",
+      "Onboarding call script for companies above 20 technicians"
+     ]
+    }
+   ],
+   "takeaway": "The barcode scanner did not connect to any impact and left the quarter; the SMS one-tap login was promoted because it served two impacts."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up, planning du trimestre. Karim cartographie l'objectif d'activation avec Tom, Ana, Julien et Priya.",
+   "blocks": [
+    {
+     "t": "Objectif",
+     "items": [
+      "70 % des nouvelles sociétés saisissent 10 interventions en 5 jours, d'ici la fin du trimestre",
+      "Mesuré en sociétés, pas en sièges techniciens"
+     ]
+    },
+    {
+     "t": "Acteurs",
+     "items": [
+      "Léa, technicienne le premier jour avec l'appli",
+      "Marc, dispatcher qui importe les jobs de la semaine"
+     ]
+    },
+    {
+     "t": "Impacts",
+     "items": [
+      "Léa → saisit sa première intervention sans le support",
+      "Léa → continue à saisir les jours 2 et 3",
+      "Marc → a les jobs de la semaine dans l'appli avant lundi",
+      "Marc → arrête de ressaisir les jobs depuis le tableau blanc"
+     ]
+    },
+    {
+     "t": "Livrables",
+     "items": [
+      "Première intervention guidée avec un site d'exemple",
+      "Note vocale comme saisie par défaut",
+      "Import CSV et Excel des jobs de la semaine",
+      "SMS du jour 1 aux techniciens avec connexion en un tap",
+      "Tableau de bord d'activation pour Julien",
+      "Script d'appel d'onboarding pour les sociétés de plus de 20 techniciens"
+     ]
+    }
+   ],
+   "takeaway": "Le scan code-barres ne se reliait à aucun impact et a quitté le trimestre ; la connexion SMS en un tap a été promue parce qu'elle servait deux impacts."
+  }
+ },
+ "box": {
+  "en": {
+   "context": "Pre-PMF Fieldnote, 3 groups of mixed sales, tech and support. Winning box shown here.",
+   "blocks": [
+    {
+     "t": "Product name",
+     "items": [
+      "Fieldnote",
+      "Sub-brand voted down: Fieldnote Pro"
+     ]
+    },
+    {
+     "t": "Tagline / promise",
+     "items": [
+      "Every part you use, invoiced. Without typing in the van.",
+      "Runner-up: Your Sunday back."
+     ]
+    },
+    {
+     "t": "3 selling points",
+     "items": [
+      "Log an intervention in 20 seconds with one gloved hand",
+      "The dispatcher sees the day change live",
+      "Invoice on Monday morning, not Sunday night"
+     ]
+    },
+    {
+     "t": "Back of the box",
+     "items": [
+      "Works on any Android or iPhone, no tablet needed",
+      "Set up in one afternoon with our onboarding visit",
+      "Used by 12 HVAC companies, 180 technicians",
+      "29 € per technician per month, no contract"
+     ]
+    }
+   ],
+   "takeaway": "Sales and tech had written different taglines; the winning one was the only one that did not mention software at all."
+  },
+  "fr": {
+   "context": "Fieldnote pré-PMF, 3 groupes mêlant ventes, tech et support. La boîte gagnante est reproduite ici.",
+   "blocks": [
+    {
+     "t": "Nom du produit",
+     "items": [
+      "Fieldnote",
+      "Sous-marque rejetée : Fieldnote Pro"
+     ]
+    },
+    {
+     "t": "Slogan / promesse",
+     "items": [
+      "Chaque pièce utilisée, facturée. Sans taper dans le camion.",
+      "Second : Récupérez vos dimanches."
+     ]
+    },
+    {
+     "t": "3 arguments",
+     "items": [
+      "Saisir une intervention en 20 secondes, d'une main gantée",
+      "Le dispatcher voit la journée changer en direct",
+      "Facturer le lundi matin, pas le dimanche soir"
+     ]
+    },
+    {
+     "t": "Dos de la boîte",
+     "items": [
+      "Marche sur tout Android ou iPhone, pas besoin de tablette",
+      "Installé en une après-midi avec notre visite d'onboarding",
+      "Utilisé par 12 sociétés CVC, 180 techniciens",
+      "29 € par technicien et par mois, sans engagement"
+     ]
+    }
+   ],
+   "takeaway": "Ventes et tech avaient écrit des slogans différents ; le gagnant était le seul à ne pas parler de logiciel."
+  }
+ },
+ "positioning": {
+  "en": {
+   "context": "Mature Fieldnote, growth slowing. Karim, Nadia and marketing redraw the map after losing 3 deals to Jobber.",
+   "blocks": [
+    {
+     "t": "Competitor A",
+     "items": [
+      "Jobber: premium, mainstream, every trade",
+      "Wins on polish and marketing budget",
+      "Loses on French invoicing and gloves-on logging"
+     ]
+    },
+    {
+     "t": "Competitor B",
+     "items": [
+      "Synchroteam: premium, niche, feature-heavy",
+      "Wins on large fleets above 100 technicians",
+      "Loses on onboarding time, 6 weeks average"
+     ]
+    },
+    {
+     "t": "Us",
+     "items": [
+      "Fieldnote: mid-price, niche HVAC and plumbing",
+      "Wins on same-day logging and Pennylane sync",
+      "Perceived as \"the small one\" by 60-technician prospects"
+     ]
+    },
+    {
+     "t": "Open space",
+     "items": [
+      "Low price, mainstream: paper and Excel live here",
+      "Nobody owns \"recurring maintenance contracts done right\"",
+      "Nobody sells to the wholesaler channel"
+     ]
+    }
+   ],
+   "takeaway": "The team chose to stay niche and own recurring contracts rather than chase Jobber on polish; marketing dropped \"all-in-one\" from the site."
+  },
+  "fr": {
+   "context": "Fieldnote mature, croissance qui ralentit. Karim, Nadia et le marketing redessinent la carte après avoir perdu 3 deals face à Jobber.",
+   "blocks": [
+    {
+     "t": "Concurrent A",
+     "items": [
+      "Jobber : premium, généraliste, tous les métiers",
+      "Gagne sur le polish et le budget marketing",
+      "Perd sur la facturation française et la saisie avec des gants"
+     ]
+    },
+    {
+     "t": "Concurrent B",
+     "items": [
+      "Synchroteam : premium, niche, lourd en fonctionnalités",
+      "Gagne sur les grandes flottes de plus de 100 techniciens",
+      "Perd sur le temps d'onboarding, 6 semaines en moyenne"
+     ]
+    },
+    {
+     "t": "Nous",
+     "items": [
+      "Fieldnote : prix moyen, niche CVC et plomberie",
+      "Gagne sur la saisie le jour même et la synchro Pennylane",
+      "Perçu comme \"le petit\" par les prospects de 60 techniciens"
+     ]
+    },
+    {
+     "t": "Espace vide",
+     "items": [
+      "Prix bas, généraliste : le papier et Excel vivent ici",
+      "Personne ne possède \"les contrats de maintenance récurrents bien faits\"",
+      "Personne ne vend via le canal des grossistes"
+     ]
+    }
+   ],
+   "takeaway": "L'équipe a choisi de rester niche et de s'approprier les contrats récurrents plutôt que de courir après le polish de Jobber ; le marketing a retiré \"tout-en-un\" du site."
+  }
+ },
+ "nsm": {
+  "en": {
+   "context": "Post-PMF Fieldnote, 2 squads optimising different things. Élise, Karim, Tom and Priya pick one metric.",
+   "blocks": [
+    {
+     "t": "North Star",
+     "items": [
+      "Interventions logged in the field the same day, per week",
+      "Rejected: active technician seats (pleases finance, predicts nothing)"
+     ]
+    },
+    {
+     "t": "Levers",
+     "items": [
+      "More technicians active each week",
+      "More interventions logged per active technician",
+      "Higher share logged before 6pm"
+     ]
+    },
+    {
+     "t": "Input metrics",
+     "items": [
+      "New companies past 10 interventions in 5 days (Field app squad)",
+      "Weekly active technicians per company (Field app squad)",
+      "Jobs imported by the dispatcher before Monday (Office web squad)",
+      "Voice note usage rate (Field app squad)",
+      "Photo upload success rate, target 99.5 % (Field app squad)",
+      "Companies connected to invoicing in month 1 (Office web squad)"
+     ]
+    }
+   ],
+   "takeaway": "\"Same day\" was the fight: seats would have pleased finance, but only same-day logging predicts the 4 % churn cohort."
+  },
+  "fr": {
+   "context": "Fieldnote post-PMF, 2 squads qui optimisent des choses différentes. Élise, Karim, Tom et Priya choisissent une métrique.",
+   "blocks": [
+    {
+     "t": "North Star",
+     "items": [
+      "Interventions saisies sur le terrain le jour même, par semaine",
+      "Rejeté : sièges techniciens actifs (plaît à la finance, ne prédit rien)"
+     ]
+    },
+    {
+     "t": "Leviers",
+     "items": [
+      "Plus de techniciens actifs chaque semaine",
+      "Plus d'interventions saisies par technicien actif",
+      "Part plus élevée saisie avant 18h"
+     ]
+    },
+    {
+     "t": "Métriques d'entrée",
+     "items": [
+      "Nouvelles sociétés à 10 interventions en 5 jours (squad Field app)",
+      "Techniciens actifs hebdo par société (squad Field app)",
+      "Jobs importés par le dispatcher avant lundi (squad Office web)",
+      "Taux d'usage de la note vocale (squad Field app)",
+      "Taux de succès d'envoi photo, cible 99,5 % (squad Field app)",
+      "Sociétés connectées à la facturation au mois 1 (squad Office web)"
+     ]
+    }
+   ],
+   "takeaway": "\"Le jour même\" a été le débat : les sièges auraient plu à la finance, mais seule la saisie le jour même prédit la cohorte à 4 % de churn."
+  }
+ },
+ "okr": {
+  "en": {
+   "context": "Scale-up Fieldnote, Q3 OKRs for the company and its 2 squads. Élise, Karim, Tom, Nadia, Julien.",
+   "blocks": [
+    {
+     "t": "Objective 1",
+     "items": [
+      "KR 1: 70 % of new companies log 10 interventions within 5 days (from 62 % of 14 days)",
+      "KR 2: Onboarding support tickets down from 90 to 45 a month",
+      "KR 3: Day-1 technician login rate above 85 %",
+      "Initiatives: guided first intervention, SMS one-tap login, dispatcher CSV import"
+     ]
+    },
+    {
+     "t": "Objective 2",
+     "items": [
+      "KR 1: 60 % of new companies connected to Pennylane or Sage in month 1",
+      "KR 2: Sync error rate under 0.5 % of invoices",
+      "KR 3: 30 companies migrated off the legacy export",
+      "Initiatives: Integrations squad launch, Pennylane sandbox tests, sync error screen for owners"
+     ]
+    },
+    {
+     "t": "Objective 3",
+     "items": [
+      "KR 1: Photo upload success rate at 99.5 % every week",
+      "KR 2: Zero incidents above 4 hours",
+      "KR 3: Field app crash-free sessions at 99.8 %",
+      "Initiatives: upload retry queue, release behind flags, on-call rotation with Julien in the loop"
+     ]
+    }
+   ],
+   "takeaway": "Objective 3 exists because of the March photo incident; Tom insisted reliability gets a KR or it silently loses to features."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up, OKR du T3 pour l'entreprise et ses 2 squads. Élise, Karim, Tom, Nadia, Julien.",
+   "blocks": [
+    {
+     "t": "Objectif 1",
+     "items": [
+      "KR 1 : 70 % des nouvelles sociétés saisissent 10 interventions en 5 jours (contre 62 % en 14 jours)",
+      "KR 2 : Tickets support d'onboarding de 90 à 45 par mois",
+      "KR 3 : Taux de connexion technicien au jour 1 au-dessus de 85 %",
+      "Initiatives : première intervention guidée, connexion SMS en un tap, import CSV dispatcher"
+     ]
+    },
+    {
+     "t": "Objectif 2",
+     "items": [
+      "KR 1 : 60 % des nouvelles sociétés connectées à Pennylane ou Sage au mois 1",
+      "KR 2 : Taux d'erreur de synchro sous 0,5 % des factures",
+      "KR 3 : 30 sociétés migrées hors de l'export legacy",
+      "Initiatives : lancement de la squad Intégrations, tests sandbox Pennylane, écran d'erreur de synchro pour les patrons"
+     ]
+    },
+    {
+     "t": "Objectif 3",
+     "items": [
+      "KR 1 : Taux de succès d'envoi photo à 99,5 % chaque semaine",
+      "KR 2 : Zéro incident de plus de 4 heures",
+      "KR 3 : Sessions sans crash de l'appli terrain à 99,8 %",
+      "Initiatives : file de reprise des envois, releases derrière des flags, astreinte avec Julien dans la boucle"
+     ]
+    }
+   ],
+   "takeaway": "L'objectif 3 existe à cause de l'incident photo de mars ; Tom a insisté pour que la fiabilité ait un KR, sinon elle perd en silence face aux features."
+  }
+ },
+ "horizons": {
+  "en": {
+   "context": "Mature Fieldnote, 1.1 M€ ARR with growth slowing. Élise, Karim, Nadia and finance split next year's investment.",
+   "blocks": [
+    {
+     "t": "H1 · Core business",
+     "items": [
+      "Field app reliability and offline mode, finally",
+      "Pennylane and Sage integrations kept green",
+      "Onboarding for 20 to 60 technician companies",
+      "Parts catalogue with barcode scan",
+      "Support before 10am"
+     ]
+    },
+    {
+     "t": "H2 · Extensions",
+     "items": [
+      "Recurring maintenance contracts line, 99 € a month add-on",
+      "Customer portal for the buildings Sophie serves",
+      "Wholesaler channel as a reseller programme"
+     ]
+    },
+    {
+     "t": "H3 · Bets",
+     "items": [
+      "Automatic route planning from logged interventions",
+      "Electricians as a second trade, tested with 5 companies"
+     ]
+    }
+   ],
+   "takeaway": "Split agreed: 65 % H1, 25 % H2, 10 % H3. Recurring contracts moved from bet to extension once Nadia showed 40 companies already ask for it."
+  },
+  "fr": {
+   "context": "Fieldnote mature, 1,1 M€ d'ARR avec une croissance qui ralentit. Élise, Karim, Nadia et la finance répartissent l'investissement de l'année prochaine.",
+   "blocks": [
+    {
+     "t": "H1 · Coeur de métier",
+     "items": [
+      "Fiabilité de l'appli terrain et mode hors ligne, enfin",
+      "Intégrations Pennylane et Sage maintenues au vert",
+      "Onboarding des sociétés de 20 à 60 techniciens",
+      "Catalogue de pièces avec scan code-barres",
+      "Support avant 10h"
+     ]
+    },
+    {
+     "t": "H2 · Extensions",
+     "items": [
+      "Ligne contrats de maintenance récurrents, option à 99 € par mois",
+      "Portail client pour les immeubles que Sophie entretient",
+      "Canal grossistes en programme revendeur"
+     ]
+    },
+    {
+     "t": "H3 · Paris",
+     "items": [
+      "Planification automatique des tournées depuis les interventions saisies",
+      "Les électriciens comme deuxième métier, testé avec 5 sociétés"
+     ]
+    }
+   ],
+   "takeaway": "Répartition actée : 65 % H1, 25 % H2, 10 % H3. Les contrats récurrents sont passés de pari à extension quand Nadia a montré que 40 sociétés les demandent déjà."
+  }
+ },
+ "prfaq": {
+  "en": {
+   "context": "Scale-up Fieldnote, Karim writes the PR/FAQ for the recurring maintenance contracts line before any engineer is assigned.",
+   "blocks": [
+    {
+     "t": "Headline + subheading",
+     "items": [
+      "Fieldnote launches Contracts: recurring maintenance that schedules and invoices itself",
+      "HVAC companies stop forgetting the 6-month boiler check they already sold"
+     ]
+    },
+    {
+     "t": "Summary",
+     "items": [
+      "Contracts turns a signed maintenance agreement into planned visits",
+      "Each visit appears in the dispatcher's day and is invoiced when logged",
+      "Available to companies on the Office web plan, 99 € a month"
+     ]
+    },
+    {
+     "t": "Problem",
+     "items": [
+      "Sophie sells 300 annual contracts and forgets 15 % of the visits",
+      "Forgotten visits mean lost revenue and lost customers",
+      "Today contracts live in a spreadsheet nobody opens"
+     ]
+    },
+    {
+     "t": "Solution",
+     "items": [
+      "Create the contract once: site, frequency, price",
+      "Visits are generated 30 days ahead into the day view",
+      "The logged visit invoices itself through Pennylane"
+     ]
+    },
+    {
+     "t": "Leader quote",
+     "items": [
+      "\"A contract you forget is worse than no contract. Contracts makes the promise keep itself.\" Élise, founder",
+      "Rejected: \"We are thrilled to announce\" (banned opening)"
+     ]
+    },
+    {
+     "t": "How to get started",
+     "items": [
+      "Import existing contracts from a CSV or type them in",
+      "Pick the technician and the month, Fieldnote does the rest",
+      "First month free for design partners"
+     ]
+    },
+    {
+     "t": "Customer quote",
+     "items": [
+      "\"I found 22 visits I had sold and never done. That paid for the year.\" Sophie, 22-technician company",
+      "Marc, dispatcher: \"September is going to be a wall of visits. Spread them or I will.\""
+     ]
+    },
+    {
+     "t": "Internal FAQ",
+     "items": [
+      "Why now: 40 companies asked, Jobber does not do French contracts",
+      "Which squad: Office web, 2 engineers for one quarter",
+      "Risk: dispatch overload in September when all boilers are due"
+     ]
+    },
+    {
+     "t": "External FAQ",
+     "items": [
+      "Does it work with my current contracts: yes, via CSV import",
+      "Can the customer see the visit: portal later, email now",
+      "What if a technician is sick: the visit moves, not the contract"
+     ]
+    }
+   ],
+   "takeaway": "The September overload question had no answer; the launch was moved to October and a visit-spreading rule was added to the scope."
+  },
+  "fr": {
+   "context": "Fieldnote scale-up, Karim écrit le PR/FAQ de la ligne contrats de maintenance récurrents avant qu'un seul ingénieur soit affecté.",
+   "blocks": [
+    {
+     "t": "Titre + sous-titre",
+     "items": [
+      "Fieldnote lance Contrats : la maintenance récurrente qui se planifie et se facture toute seule",
+      "Les sociétés CVC arrêtent d'oublier la visite chaudière à 6 mois qu'elles ont déjà vendue"
+     ]
+    },
+    {
+     "t": "Résumé",
+     "items": [
+      "Contrats transforme un contrat de maintenance signé en visites planifiées",
+      "Chaque visite apparaît dans la journée du dispatcher et se facture une fois saisie",
+      "Disponible pour les sociétés sur l'offre Office web, 99 € par mois"
+     ]
+    },
+    {
+     "t": "Problème",
+     "items": [
+      "Sophie vend 300 contrats annuels et oublie 15 % des visites",
+      "Visites oubliées, revenu perdu et clients perdus",
+      "Aujourd'hui les contrats vivent dans un tableur que personne n'ouvre"
+     ]
+    },
+    {
+     "t": "Solution",
+     "items": [
+      "Créer le contrat une fois : site, fréquence, prix",
+      "Les visites sont générées 30 jours à l'avance dans la vue journée",
+      "La visite saisie se facture via Pennylane"
+     ]
+    },
+    {
+     "t": "Citation dirigeant",
+     "items": [
+      "\"Un contrat qu'on oublie est pire que pas de contrat. Contrats fait que la promesse se tient toute seule.\" Élise, fondatrice",
+      "Rejeté : \"Nous sommes ravis d'annoncer\" (ouverture interdite)"
+     ]
+    },
+    {
+     "t": "Comment démarrer",
+     "items": [
+      "Importer les contrats existants depuis un CSV ou les saisir",
+      "Choisir le technicien et le mois, Fieldnote fait le reste",
+      "Premier mois offert aux design partners"
+     ]
+    },
+    {
+     "t": "Citation client",
+     "items": [
+      "\"J'ai retrouvé 22 visites vendues et jamais faites. Ça a payé l'année.\" Sophie, société de 22 techniciens",
+      "Marc, dispatcher : \"Septembre va être un mur de visites. Étalez-les ou je le ferai.\""
+     ]
+    },
+    {
+     "t": "FAQ interne",
+     "items": [
+      "Pourquoi maintenant : 40 sociétés l'ont demandé, Jobber ne fait pas les contrats français",
+      "Quelle squad : Office web, 2 ingénieurs pendant un trimestre",
+      "Risque : surcharge du dispatch en septembre quand toutes les chaudières sont dues"
+     ]
+    },
+    {
+     "t": "FAQ externe",
+     "items": [
+      "Ça marche avec mes contrats actuels : oui, via import CSV",
+      "Le client peut voir la visite : portail plus tard, email dès maintenant",
+      "Si un technicien est malade : la visite bouge, pas le contrat"
+     ]
+    }
+   ],
+   "takeaway": "La question de la surcharge de septembre n'avait pas de réponse ; le lancement est passé à octobre et une règle d'étalement des visites a été ajoutée au périmètre."
+  }
+ },
+ "icebreaker": {
+  "en": {
+   "context": "Fieldnote, opening of the activation workshop. Karim, Ana, Tom, Julien and Nadia, the morning after support hit 40 tickets in a week.",
+   "blocks": [
+    {
+     "t": "Name and role",
+     "items": [
+      "Karim, PM, owns activation",
+      "Ana, design, did the van interviews",
+      "Tom, tech lead, mobile",
+      "Julien, support, front line",
+      "Nadia, sales, sells the promise"
+     ]
+    },
+    {
+     "t": "One word for today",
+     "items": [
+      "Impatient",
+      "Sceptical",
+      "Relieved we are finally doing this",
+      "Tired of the ticket queue"
+     ]
+    },
+    {
+     "t": "What I need from this session",
+     "items": [
+      "A number we agree on",
+      "To stop guessing why they drop",
+      "One decision, not five options",
+      "Something I can tell customers"
+     ]
+    },
+    {
+     "t": "What I can bring",
+     "items": [
+      "Six van interviews, transcribed",
+      "The drop-off funnel by week",
+      "Every onboarding ticket tagged",
+      "What I promise in demos"
+     ]
+    }
+   ],
+   "takeaway": "Nadia's need, something to tell customers, was not on the agenda. It became the last twenty minutes instead of a separate meeting nobody would have booked."
+  },
+  "fr": {
+   "context": "Fieldnote, ouverture de l'atelier activation. Karim, Ana, Tom, Julien et Nadia, au lendemain d'une semaine à 40 tickets de support.",
+   "blocks": [
+    {
+     "t": "Nom et rôle",
+     "items": [
+      "Karim, PM, porte l'activation",
+      "Ana, design, a fait les entretiens en camionnette",
+      "Tom, tech lead, mobile",
+      "Julien, support, en première ligne",
+      "Nadia, ventes, vend la promesse"
+     ]
+    },
+    {
+     "t": "Un mot pour aujourd'hui",
+     "items": [
+      "Impatient",
+      "Sceptique",
+      "Soulagé qu'on s'y mette enfin",
+      "Fatigué par la file de tickets"
+     ]
+    },
+    {
+     "t": "Ce dont j'ai besoin ici",
+     "items": [
+      "Un chiffre sur lequel on s'accorde",
+      "Arrêter de deviner pourquoi ils décrochent",
+      "Une décision, pas cinq options",
+      "Quelque chose à dire aux clients"
+     ]
+    },
+    {
+     "t": "Ce que je peux apporter",
+     "items": [
+      "Six entretiens transcrits",
+      "L'entonnoir de décrochage par semaine",
+      "Tous les tickets d'onboarding étiquetés",
+      "Ce que je promets en démo"
+     ]
+    }
+   ],
+   "takeaway": "Le besoin de Nadia, avoir quelque chose à dire aux clients, n'était pas à l'ordre du jour. Il est devenu les vingt dernières minutes au lieu d'une réunion que personne n'aurait posée."
+  }
+ },
+ "teamcanvas": {
+  "en": {
+   "context": "Fieldnote, the Field app squad, two weeks after a third engineer joined and the squad split from Office web.",
+   "blocks": [
+    {
+     "t": "Purpose",
+     "items": [
+      "Make the technician's day end at the last job, not at 7pm in the van"
+     ]
+    },
+    {
+     "t": "People and roles",
+     "items": [
+      "Karim: says no on scope",
+      "Ana: owns the gloved-hand test",
+      "Tom: owns offline behaviour",
+      "Two engineers, one new, one on call"
+     ]
+    },
+    {
+     "t": "Common goals",
+     "items": [
+      "Time to 10 interventions: 14 days to 5",
+      "No repeat of the March photo incident",
+      "Ship the offline draft this quarter"
+     ]
+    },
+    {
+     "t": "Personal goals",
+     "items": [
+      "Ana wants to run research herself",
+      "Tom wants to stop being the only one who knows sync",
+      "The new engineer wants to own a feature end to end"
+     ]
+    },
+    {
+     "t": "Values",
+     "items": [
+      "We test with gloves on",
+      "We ship small",
+      "We say the bad number out loud"
+     ]
+    },
+    {
+     "t": "Strengths and assets",
+     "items": [
+      "Six recorded van interviews",
+      "Direct line to Julien in support",
+      "Two years of sync edge cases in Tom's head"
+     ]
+    },
+    {
+     "t": "Rules and activities",
+     "items": [
+      "Decisions written in the channel the same day",
+      "No release on Friday after the March incident",
+      "Refinement Tuesday, one hour, top ten items"
+     ]
+    },
+    {
+     "t": "Needs and expectations",
+     "items": [
+      "Ana needs research time protected, not squeezed",
+      "Tom needs a second person on sync within the quarter",
+      "Karim needs sales to stop promising dates in demos"
+     ]
+    }
+   ],
+   "takeaway": "Two of the three values already existed as habits. The third, saying the bad number out loud, was written after nobody could name the 38 % activation loss without checking."
+  },
+  "fr": {
+   "context": "Fieldnote, la squad Field app, deux semaines après l'arrivée d'un troisième développeur et la séparation d'avec Office web.",
+   "blocks": [
+    {
+     "t": "Raison d'être",
+     "items": [
+      "Faire que la journée du technicien finisse au dernier chantier, pas à 19 h dans la camionnette"
+     ]
+    },
+    {
+     "t": "Personnes et rôles",
+     "items": [
+      "Karim : dit non sur le périmètre",
+      "Ana : porte le test avec les gants",
+      "Tom : porte le comportement hors ligne",
+      "Deux développeurs, un nouveau, un d'astreinte"
+     ]
+    },
+    {
+     "t": "Objectifs communs",
+     "items": [
+      "Délai jusqu'à 10 interventions : de 14 jours à 5",
+      "Aucune répétition de l'incident photo de mars",
+      "Livrer le brouillon hors ligne ce trimestre"
+     ]
+    },
+    {
+     "t": "Objectifs personnels",
+     "items": [
+      "Ana veut mener la recherche elle-même",
+      "Tom veut ne plus être seul à connaître la synchro",
+      "Le nouveau veut porter une feature de bout en bout"
+     ]
+    },
+    {
+     "t": "Valeurs",
+     "items": [
+      "On teste avec les gants",
+      "On livre petit",
+      "On dit le mauvais chiffre à voix haute"
+     ]
+    },
+    {
+     "t": "Forces et atouts",
+     "items": [
+      "Six entretiens en camionnette enregistrés",
+      "Ligne directe avec Julien au support",
+      "Deux ans de cas limites de synchro dans la tête de Tom"
+     ]
+    },
+    {
+     "t": "Règles et rituels",
+     "items": [
+      "Décisions écrites dans le canal le jour même",
+      "Pas de livraison le vendredi depuis l'incident de mars",
+      "Affinage le mardi, une heure, dix items maximum"
+     ]
+    },
+    {
+     "t": "Besoins et attentes",
+     "items": [
+      "Ana a besoin d'un temps de recherche protégé, pas grignoté",
+      "Tom a besoin d'une deuxième personne sur la synchro ce trimestre",
+      "Karim a besoin que les ventes arrêtent de promettre des dates en démo"
+     ]
+    }
+   ],
+   "takeaway": "Deux des trois valeurs existaient déjà comme habitudes. La troisième, dire le mauvais chiffre à voix haute, a été écrite après que personne n'ait su citer les 38 % de perte à l'activation sans vérifier."
+  }
+ },
+ "pitch": {
+  "en": {
+   "context": "Fieldnote, 140 paying companies, preparing the move upmarket to 40-technician firms.",
+   "blocks": [
+    {
+     "t": "For (target customer)",
+     "items": [
+      "Owners of HVAC and plumbing firms with 5 to 60 technicians",
+      "Who invoice from paper sheets on Sunday"
+     ]
+    },
+    {
+     "t": "Who (problem or need)",
+     "items": [
+      "Lose about 6 % of billable parts every month",
+      "Retype what the technician already wrote once"
+     ]
+    },
+    {
+     "t": "Our product is a (category)",
+     "items": [
+      "Field service app for the technician first",
+      "Not a dispatch tool, not an ERP module"
+     ]
+    },
+    {
+     "t": "That (key benefit)",
+     "items": [
+      "The intervention is logged before the van leaves the driveway",
+      "Invoicing starts from data, not from photos of paper"
+     ]
+    },
+    {
+     "t": "Unlike (the alternative)",
+     "items": [
+      "Paper and Excel, the real competitor",
+      "Jobber, built for the office not the glove",
+      "Synchroteam, feature-heavy and older"
+     ]
+    },
+    {
+     "t": "Ours (what only we do)",
+     "items": [
+      "Works with gloves on, one hand, in the rain",
+      "Logs offline and syncs without the technician thinking about it"
+     ]
+    }
+   ],
+   "takeaway": "The category block took the whole session. Calling it a dispatch tool would have put Fieldnote against Jobber on features; calling it technician-first put it against paper, which is the fight it wins."
+  },
+  "fr": {
+   "context": "Fieldnote, 140 entreprises clientes, en préparation d'une montée en gamme vers les sociétés de 40 techniciens.",
+   "blocks": [
+    {
+     "t": "Pour (client cible)",
+     "items": [
+      "Des patrons de PME de chauffage et plomberie, 5 à 60 techniciens",
+      "Qui facturent depuis des feuilles papier le dimanche"
+     ]
+    },
+    {
+     "t": "Qui (problème ou besoin)",
+     "items": [
+      "Perdent environ 6 % des pièces facturables chaque mois",
+      "Ressaisissent ce que le technicien a déjà écrit une fois"
+     ]
+    },
+    {
+     "t": "Notre produit est un (catégorie)",
+     "items": [
+      "Une app d'intervention pensée pour le technicien d'abord",
+      "Pas un outil de planification, pas un module d'ERP"
+     ]
+    },
+    {
+     "t": "Qui (bénéfice clé)",
+     "items": [
+      "L'intervention est saisie avant que la camionnette reparte",
+      "La facturation part de données, pas de photos de papier"
+     ]
+    },
+    {
+     "t": "Contrairement à (l'alternative)",
+     "items": [
+      "Le papier et Excel, le vrai concurrent",
+      "Jobber, conçu pour le bureau pas pour le gant",
+      "Synchroteam, plus ancien et chargé en fonctions"
+     ]
+    },
+    {
+     "t": "Nous seuls (ce qu'on fait)",
+     "items": [
+      "Ça marche avec les gants, à une main, sous la pluie",
+      "Ça enregistre hors ligne et se synchronise sans y penser"
+     ]
+    }
+   ],
+   "takeaway": "Le bloc catégorie a pris toute la session. Se dire outil de planification plaçait Fieldnote contre Jobber sur les fonctions ; se dire technicien d'abord le plaçait contre le papier, le combat qu'il gagne."
+  }
+ },
+ "remember": {
+  "en": {
+   "context": "Fieldnote, session run with four customers, including Sophie. Date set at the Tuesday after the spring trade show, ten months out.",
+   "blocks": [
+    {
+     "t": "Six months from now",
+     "items": [
+      "The Tuesday after the spring trade show",
+      "Sophie's company has grown from 22 to 30 technicians"
+     ]
+    },
+    {
+     "t": "What changed for them",
+     "items": [
+      "I stopped doing invoicing on Sunday",
+      "We stopped losing parts on the invoice",
+      "New technicians were useful in their first week",
+      "Marc stopped calling technicians to ask where they were"
+     ]
+    },
+    {
+     "t": "What they told a colleague",
+     "items": [
+      "The technicians actually use it, that was the surprise",
+      "I get my Sundays back",
+      "It paid for itself in recovered parts"
+     ]
+    },
+    {
+     "t": "What we shipped to get there",
+     "items": [
+      "Offline draft that survives a dead zone",
+      "Parts scanned instead of typed",
+      "Invoicing export straight into Pennylane",
+      "A first week that does not need support"
+     ]
+    }
+   ],
+   "takeaway": "Nobody mentioned the features the roadmap led with. Every outcome pointed at parts and at the first week, which reordered the quarter."
+  },
+  "fr": {
+   "context": "Fieldnote, session animée avec quatre clients dont Sophie. Date fixée au mardi après le salon de printemps, dans dix mois.",
+   "blocks": [
+    {
+     "t": "Dans six mois",
+     "items": [
+      "Le mardi après le salon de printemps",
+      "L'entreprise de Sophie est passée de 22 à 30 techniciens"
+     ]
+    },
+    {
+     "t": "Ce qui a changé pour eux",
+     "items": [
+      "J'ai arrêté de facturer le dimanche",
+      "On a arrêté de perdre des pièces sur la facture",
+      "Les nouveaux techniciens étaient utiles dès la première semaine",
+      "Marc a arrêté d'appeler les techniciens pour savoir où ils étaient"
+     ]
+    },
+    {
+     "t": "Ce qu'ils ont dit à un collègue",
+     "items": [
+      "Les techniciens s'en servent vraiment, c'est ça la surprise",
+      "Je récupère mes dimanches",
+      "Ça s'est remboursé en pièces récupérées"
+     ]
+    },
+    {
+     "t": "Ce qu'on a livré pour y arriver",
+     "items": [
+      "Un brouillon hors ligne qui survit à une zone blanche",
+      "Des pièces scannées au lieu d'être saisies",
+      "Un export de facturation direct vers Pennylane",
+      "Une première semaine qui n'a pas besoin du support"
+     ]
+    }
+   ],
+   "takeaway": "Personne n'a cité les features qui ouvraient la roadmap. Tous les résultats pointaient vers les pièces et la première semaine, ce qui a réordonné le trimestre."
+  }
+ }
 }

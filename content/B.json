@@ -1,806 +1,1660 @@
 {
-  "persona": {
-    "en": {
-      "prep": [
-        "Invite the people who talked to users in the last month: design, PM, support. No one who has never met a user.",
-        "Send the interview notes or recordings two days before. Ask everyone to arrive with 5 verbatims highlighted.",
-        "On the board: one empty persona canvas per hypothesized segment (2 or 3, no more), plus a parking area for the raw quotes.",
-        "Print or pin the segmentation you already use in marketing or sales, so the personas do not contradict it."
-      ],
-      "agenda": [
-        {"t": "Frame", "min": 10, "d": "State the segments you are building personas for and why. Remind everyone: a persona is a synthesis of interviews, not a character we invent."},
-        {"t": "Quote dump", "min": 20, "d": "Everyone posts their verbatims as stickies in the parking area, one quote per sticky, with the interviewee code. Silent work."},
-        {"t": "Cluster by segment", "min": 20, "d": "Move each quote under the persona it belongs to. Quotes that fit nowhere start a new column: that is a segment you missed or one you should drop."},
-        {"t": "Fill the canvas", "min": 40, "d": "In pairs per persona: goals, frustrations, behaviors, context, tools. Every block must cite at least one quote. If a block has no quote, leave it empty."},
-        {"t": "Read-out and challenge", "min": 20, "d": "Each pair reads its persona in 3 minutes. The others ask: which interview backs this? Remove anything that survives only on opinion."},
-        {"t": "Name and pick the primary", "min": 10, "d": "Give each persona a name and a one-line summary. Decide which one the next quarter is designed for first."}
-      ],
-      "pitfalls": [
-        "Do not add a stock photo, an age and a hobby: it makes people design for a cartoon. Keep the quote and the context instead.",
-        "If you have fewer than 5 interviews per segment, call it a proto-persona and mark it as a hypothesis on the board.",
-        "Never let two personas share the same goals and frustrations. Merge them, or you will build the same feature twice."
-      ],
-      "next": "The primary persona goes on the wall of the team room and at the top of every PRD. It feeds the customer journey map and the How Might We session. Revisit it after each research round.",
-      "source": "Alan Cooper"
+ "persona": {
+  "en": {
+   "prep": [
+    "Invite the people who talked to users in the last month: design, PM, support. No one who has never met a user.",
+    "Send the interview notes or recordings two days before. Ask everyone to arrive with 5 verbatims highlighted.",
+    "On the board: one empty persona canvas per hypothesized segment (2 or 3, no more), plus a parking area for the raw quotes.",
+    "Print or pin the segmentation you already use in marketing or sales, so the personas do not contradict it."
+   ],
+   "agenda": [
+    {
+     "t": "Frame",
+     "min": 10,
+     "d": "State the segments you are building personas for and why. Remind everyone: a persona is a synthesis of interviews, not a character we invent."
     },
-    "fr": {
-      "prep": [
-        "Invite les gens qui ont parlé à des utilisateurs dans le mois : design, PM, support. Personne qui n'a jamais rencontré un utilisateur.",
-        "Envoie les notes ou enregistrements d'entretiens deux jours avant. Demande à chacun d'arriver avec 5 verbatims surlignés.",
-        "Sur le board : un canvas persona vide par segment supposé (2 ou 3, pas plus), plus une zone de parking pour les citations brutes.",
-        "Affiche la segmentation déjà utilisée par le marketing ou les ventes, pour que les personas ne la contredisent pas."
-      ],
-      "agenda": [
-        {"t": "Cadrer", "min": 10, "d": "Dis pour quels segments tu construis des personas et pourquoi. Rappelle que c'est une synthèse d'entretiens, pas un personnage inventé."},
-        {"t": "Vidage des citations", "min": 20, "d": "Chacun colle ses verbatims dans le parking, une citation par sticky, avec le code de l'interviewé. En silence."},
-        {"t": "Regrouper par segment", "min": 20, "d": "Déplace chaque citation sous le persona concerné. Celles qui ne rentrent nulle part ouvrent une colonne : un segment oublié, ou un segment à abandonner."},
-        {"t": "Remplir le canvas", "min": 40, "d": "En binôme par persona : objectifs, frustrations, comportements, contexte, outils. Chaque bloc cite au moins une citation. Pas de citation, bloc vide."},
-        {"t": "Lecture et challenge", "min": 20, "d": "Chaque binôme lit son persona en 3 minutes. Les autres demandent : quel entretien soutient ça ? Retire tout ce qui ne tient que sur une opinion."},
-        {"t": "Nommer et choisir le principal", "min": 10, "d": "Donne un nom et une phrase de résumé à chaque persona. Décide pour lequel on conçoit en premier ce trimestre."}
-      ],
-      "pitfalls": [
-        "N'ajoute pas de photo de stock, d'âge et de hobby : on finit par concevoir pour un personnage de BD. Garde la citation et le contexte.",
-        "Moins de 5 entretiens par segment ? Appelle ça un proto-persona et marque-le comme hypothèse sur le board.",
-        "Deux personas avec les mêmes objectifs et frustrations, ça n'existe pas. Fusionne-les, sinon tu construis deux fois la même feature."
-      ],
-      "next": "Le persona principal va sur le mur de l'équipe et en tête de chaque PRD. Il nourrit la customer journey map et la session How Might We. Révise-le après chaque vague de recherche.",
-      "source": "Alan Cooper"
+    {
+     "t": "Quote dump",
+     "min": 20,
+     "d": "Everyone posts their verbatims as stickies in the parking area, one quote per sticky, with the interviewee code. Silent work."
+    },
+    {
+     "t": "Cluster by segment",
+     "min": 20,
+     "d": "Move each quote under the persona it belongs to. Quotes that fit nowhere start a new column: that is a segment you missed or one you should drop."
+    },
+    {
+     "t": "Fill the canvas",
+     "min": 40,
+     "d": "In pairs per persona: goals, frustrations, behaviors, context, tools. Every block must cite at least one quote. If a block has no quote, leave it empty."
+    },
+    {
+     "t": "Read-out and challenge",
+     "min": 20,
+     "d": "Each pair reads its persona in 3 minutes. The others ask: which interview backs this? Remove anything that survives only on opinion."
+    },
+    {
+     "t": "Name and pick the primary",
+     "min": 10,
+     "d": "Give each persona a name and a one-line summary. Decide which one the next quarter is designed for first."
     }
+   ],
+   "pitfalls": [
+    "Do not add a stock photo, an age and a hobby: it makes people design for a cartoon. Keep the quote and the context instead.",
+    "If you have fewer than 5 interviews per segment, call it a proto-persona and mark it as a hypothesis on the board.",
+    "Never let two personas share the same goals and frustrations. Merge them, or you will build the same feature twice."
+   ],
+   "next": "The primary persona goes on the wall of the team room and at the top of every PRD. It feeds the customer journey map and the How Might We session. Revisit it after each research round.",
+   "source": "Alan Cooper"
   },
-  "jtbd": {
-    "en": {
-      "prep": [
-        "Run 4 to 6 switch interviews beforehand: people who recently adopted or dropped a solution like yours. Bring the timeline of each decision.",
-        "Invite product and design, plus one salesperson or support agent who hears customers every day. Max 6 people.",
-        "On the board: one job statement template per interview, and the four forces zones (push, pull, anxieties, habits) empty.",
-        "Send the interview recordings the day before with the timestamps of the moment the customer decided to switch."
-      ],
-      "agenda": [
-        {"t": "Frame the job, not the product", "min": 10, "d": "Explain the difference between what people buy and the progress they want. Give one example outside your industry so nobody argues about your product."},
-        {"t": "Replay the switch stories", "min": 30, "d": "For each interview, one person retells the timeline in 4 minutes: first thought, passive looking, active looking, decision. The others note pushes and pulls on stickies."},
-        {"t": "Map the four forces", "min": 30, "d": "Post the stickies in the four zones. Group duplicates. The biggest cluster in push and pull is your real reason to be bought. The biggest in anxieties is what blocks the sale."},
-        {"t": "Write job statements", "min": 40, "d": "In pairs, write 'When [situation], I want to [motivation], so I can [outcome]' for each distinct job you heard. Situation must be a moment, not a demographic."},
-        {"t": "Rank the jobs", "min": 25, "d": "Score each job on frequency and importance from the interviews. Dot vote only to break ties. Keep the top 2 or 3."},
-        {"t": "Decide what changes", "min": 15, "d": "For the top job: what in the current product serves it, what fights it. Write one sentence on what the next discovery cycle focuses on."}
-      ],
-      "pitfalls": [
-        "A job statement that names your feature is not a job. 'I want to export a CSV' is a task; 'I want to show my boss the numbers before the meeting' is the job.",
-        "Do not write jobs from your own experience of the product. If there are no interviews, cancel the session and go do them.",
-        "Resist the urge to list 15 jobs. Three sharp jobs drive a roadmap; fifteen vague ones drive nothing."
-      ],
-      "next": "The top job statement and its forces go into the Value Proposition Canvas and the Opportunity Solution Tree. Sales gets the pushes and anxieties for its pitch. Redo the exercise when you enter a new segment.",
-      "source": "Clayton Christensen / Bob Moesta"
+  "fr": {
+   "prep": [
+    "Invite les gens qui ont parlé à des utilisateurs dans le mois : design, PM, support. Personne qui n'a jamais rencontré un utilisateur.",
+    "Envoie les notes ou enregistrements d'entretiens deux jours avant. Demande à chacun d'arriver avec 5 verbatims surlignés.",
+    "Sur le board : un canvas persona vide par segment supposé (2 ou 3, pas plus), plus une zone de parking pour les citations brutes.",
+    "Affiche la segmentation déjà utilisée par le marketing ou les ventes, pour que les personas ne la contredisent pas."
+   ],
+   "agenda": [
+    {
+     "t": "Cadrer",
+     "min": 10,
+     "d": "Dis pour quels segments tu construis des personas et pourquoi. Rappelle que c'est une synthèse d'entretiens, pas un personnage inventé."
     },
-    "fr": {
-      "prep": [
-        "Mène 4 à 6 entretiens de switch avant : des gens qui ont récemment adopté ou abandonné une solution comme la tienne. Apporte la chronologie de chaque décision.",
-        "Invite produit et design, plus un commercial ou un agent support qui entend les clients tous les jours. 6 personnes max.",
-        "Sur le board : un gabarit de job statement par entretien, et les quatre zones de forces (push, pull, anxiétés, habitudes) vides.",
-        "Envoie les enregistrements la veille avec les timestamps du moment où le client a décidé de changer."
-      ],
-      "agenda": [
-        {"t": "Cadrer le job, pas le produit", "min": 10, "d": "Explique la différence entre ce que les gens achètent et le progrès qu'ils cherchent. Prends un exemple hors de ton secteur pour que personne ne débatte du produit."},
-        {"t": "Rejouer les histoires de switch", "min": 30, "d": "Pour chaque entretien, une personne raconte la chronologie en 4 minutes : première pensée, recherche passive, recherche active, décision. Les autres notent les push et pull sur stickies."},
-        {"t": "Cartographier les quatre forces", "min": 30, "d": "Colle les stickies dans les quatre zones. Regroupe les doublons. Le plus gros cluster en push et pull, c'est ta vraie raison d'être acheté. Le plus gros en anxiétés, c'est ce qui bloque la vente."},
-        {"t": "Écrire les job statements", "min": 40, "d": "En binôme, écris 'Quand [situation], je veux [motivation], pour [résultat]' pour chaque job distinct entendu. La situation est un moment, pas une catégorie de gens."},
-        {"t": "Classer les jobs", "min": 25, "d": "Note chaque job sur fréquence et importance d'après les entretiens. Le dot voting ne sert qu'à départager. Garde le top 2 ou 3."},
-        {"t": "Décider ce qui change", "min": 15, "d": "Pour le job numéro un : ce qui, dans le produit actuel, le sert, et ce qui le combat. Une phrase sur ce que le prochain cycle de discovery vise."}
-      ],
-      "pitfalls": [
-        "Un job statement qui nomme ta feature n'est pas un job. 'Je veux exporter un CSV' est une tâche ; 'je veux montrer les chiffres à mon boss avant la réunion' est le job.",
-        "N'écris pas les jobs à partir de ta propre expérience du produit. Sans entretiens, annule la session et va les faire.",
-        "Résiste à la liste de 15 jobs. Trois jobs nets pilotent une roadmap ; quinze jobs flous ne pilotent rien."
-      ],
-      "next": "Le job principal et ses forces alimentent le Value Proposition Canvas et l'Opportunity Solution Tree. Les ventes récupèrent les push et anxiétés pour leur pitch. Refais l'exercice à chaque nouveau segment.",
-      "source": "Clayton Christensen / Bob Moesta"
-    }
-  },
-  "empathy": {
-    "en": {
-      "prep": [
-        "Invite the whole team, including engineers. The point is that people who never meet users hear them for one hour.",
-        "Pick one user segment and one situation of use. One map per segment, never a map for 'users' in general.",
-        "Collect material beforehand: 3 to 5 interview extracts, support tickets, a screen recording. Without material, the map is fiction.",
-        "On the board: the four quadrants (says, thinks, does, feels) and the pains / gains strip at the bottom, with a photo or name of the segment at the top."
-      ],
-      "agenda": [
-        {"t": "Set the scene", "min": 5, "d": "Name the segment and the moment you are mapping: 'a first-time admin setting up the workspace on day one'. Write it at the top of the board."},
-        {"t": "Watch or read the material", "min": 15, "d": "Play two interview extracts or read three tickets aloud. Everyone writes what they notice on stickies, one observation each, without discussing."},
-        {"t": "Fill says and does", "min": 10, "d": "Post the observable facts: exact words heard, actions seen. Only things you could have recorded on camera."},
-        {"t": "Fill thinks and feels", "min": 15, "d": "Now the inferences: what they probably think, what they feel. Mark each with a question mark if it is a guess. Guesses become interview questions."},
-        {"t": "Pains and gains", "min": 10, "d": "From the four quadrants, pull the top 3 pains and top 3 gains. Vote if there are more than five candidates."},
-        {"t": "Name the surprise", "min": 5, "d": "Each person says one thing they did not expect. Write those down; they are the most valuable output of the hour."}
-      ],
-      "pitfalls": [
-        "If nobody has material, do not run the session. An empathy map filled from imagination is worse than no map: it feels like research.",
-        "Keep 'says' to actual words. Paraphrases lose the signal that tells you how users name things.",
-        "Do not let the loudest person dictate 'feels'. Silent writing first, then posting, always."
-      ],
-      "next": "The pains and gains feed the Value Proposition Canvas or the How Might We questions. The question-marked stickies become the script of your next interviews. Keep the map next to the persona it belongs to.",
-      "source": "Dave Gray, XPLANE"
+    {
+     "t": "Vidage des citations",
+     "min": 20,
+     "d": "Chacun colle ses verbatims dans le parking, une citation par sticky, avec le code de l'interviewé. En silence."
     },
-    "fr": {
-      "prep": [
-        "Invite toute l'équipe, ingénieurs compris. Le but est que ceux qui ne rencontrent jamais d'utilisateurs les entendent pendant une heure.",
-        "Choisis un segment et une situation d'usage. Une carte par segment, jamais une carte pour 'les utilisateurs' en général.",
-        "Rassemble du matériau avant : 3 à 5 extraits d'entretiens, des tickets support, un enregistrement d'écran. Sans matériau, la carte est de la fiction.",
-        "Sur le board : les quatre quadrants (dit, pense, fait, ressent), la bande douleurs / gains en bas, et le nom ou la photo du segment en haut."
-      ],
-      "agenda": [
-        {"t": "Poser la scène", "min": 5, "d": "Nomme le segment et le moment cartographié : 'un admin qui configure l'espace le premier jour'. Écris-le en haut du board."},
-        {"t": "Regarder ou lire le matériau", "min": 15, "d": "Passe deux extraits d'entretien ou lis trois tickets à voix haute. Chacun note ce qu'il remarque sur stickies, une observation par sticky, sans discuter."},
-        {"t": "Remplir dit et fait", "min": 10, "d": "Colle les faits observables : mots exacts entendus, actions vues. Uniquement ce qu'une caméra aurait enregistré."},
-        {"t": "Remplir pense et ressent", "min": 15, "d": "Maintenant les inférences : ce qu'ils pensent sans doute, ce qu'ils ressentent. Un point d'interrogation sur chaque supposition. Les suppositions deviennent des questions d'entretien."},
-        {"t": "Douleurs et gains", "min": 10, "d": "À partir des quatre quadrants, sors les 3 douleurs et 3 gains principaux. Vote s'il y a plus de cinq candidats."},
-        {"t": "Nommer la surprise", "min": 5, "d": "Chacun dit une chose à laquelle il ne s'attendait pas. Note-les : c'est le résultat le plus précieux de l'heure."}
-      ],
-      "pitfalls": [
-        "Personne n'a de matériau ? N'anime pas la session. Une empathy map remplie d'imagination est pire que rien : elle ressemble à de la recherche.",
-        "Garde 'dit' aux mots réels. Les paraphrases perdent le signal qui t'apprend comment les utilisateurs nomment les choses.",
-        "Ne laisse pas la personne la plus bavarde dicter 'ressent'. Écriture silencieuse d'abord, puis affichage, toujours."
-      ],
-      "next": "Les douleurs et gains alimentent le Value Proposition Canvas ou les questions How Might We. Les stickies avec point d'interrogation deviennent le script de tes prochains entretiens. Garde la carte à côté du persona concerné.",
-      "source": "Dave Gray, XPLANE"
-    }
-  },
-  "journey": {
-    "en": {
-      "prep": [
-        "Invite one person per function that touches the customer: product, design, support, sales, and ops if onboarding involves them. Six to eight people.",
-        "Pick one persona and one scenario end to end, for example 'from first visit to second month of use'. Send it two days before.",
-        "Bring data: funnel numbers per step, top 10 support reasons, NPS verbatims. Print them or pin them on the board.",
-        "On the board: stages in columns, rows for actions, touchpoints, emotions, pain points, opportunities. Pre-fill the stage names from your funnel."
-      ],
-      "agenda": [
-        {"t": "Frame the scenario", "min": 10, "d": "Read the persona and scenario. Agree on the first and last stage so nobody maps the whole company."},
-        {"t": "Actions per stage", "min": 30, "d": "For each stage, what does the customer actually do? One action per sticky. Support and sales usually know steps product never sees; give them the pen."},
-        {"t": "Touchpoints and channels", "min": 20, "d": "Under each action: the screen, email, call, or person involved. Mark internal handoffs, they are where journeys break."},
-        {"t": "Emotions with evidence", "min": 30, "d": "Draw the emotion line stage by stage. Every dip must have a quote or a number next to it. A dip without evidence gets a question mark."},
-        {"t": "Pain points and opportunities", "min": 40, "d": "Post pains under the dips, then opportunities under each pain. Cluster duplicates. Vote for the top 5 pains with three dots each."},
-        {"t": "Pick the battle", "min": 30, "d": "For the top 3 pains: what would fix it, who owns it, what metric would move. Assign an owner for each before leaving the room."},
-        {"t": "Close", "min": 20, "d": "Photograph or export the board. Agree on when the map is revisited: after the next research round or the next release."}
-      ],
-      "pitfalls": [
-        "Do not map the ideal journey. Map what happens today, with the ugly workarounds. The ideal comes in the service blueprint or the redesign.",
-        "One persona, one scenario. A map that covers three personas shows nothing.",
-        "Emotions without evidence turn the session into a debate. Bring numbers and quotes, or mark guesses as guesses."
-      ],
-      "next": "The top pains become How Might We questions or opportunities in the Opportunity Solution Tree. The map with owners goes to the roadmap discussion. Print it and leave it on the wall until it is out of date.",
-      "source": ""
+    {
+     "t": "Regrouper par segment",
+     "min": 20,
+     "d": "Déplace chaque citation sous le persona concerné. Celles qui ne rentrent nulle part ouvrent une colonne : un segment oublié, ou un segment à abandonner."
     },
-    "fr": {
-      "prep": [
-        "Invite une personne par fonction en contact avec le client : produit, design, support, ventes, ops si l'onboarding les implique. Six à huit personnes.",
-        "Choisis un persona et un scénario de bout en bout, par exemple 'de la première visite au deuxième mois d'usage'. Envoie-le deux jours avant.",
-        "Apporte des données : chiffres du funnel par étape, top 10 des motifs support, verbatims NPS. Imprime-les ou épingle-les sur le board.",
-        "Sur le board : les étapes en colonnes, des lignes pour actions, points de contact, émotions, frictions, opportunités. Préremplis les noms d'étapes depuis ton funnel."
-      ],
-      "agenda": [
-        {"t": "Cadrer le scénario", "min": 10, "d": "Lis le persona et le scénario. Mets-vous d'accord sur la première et la dernière étape pour que personne ne cartographie toute l'entreprise."},
-        {"t": "Actions par étape", "min": 30, "d": "Pour chaque étape, que fait réellement le client ? Une action par sticky. Support et ventes connaissent des étapes que le produit ne voit jamais : donne-leur le stylo."},
-        {"t": "Points de contact et canaux", "min": 20, "d": "Sous chaque action : l'écran, l'email, l'appel ou la personne impliquée. Marque les passages de relais internes, c'est là que les parcours cassent."},
-        {"t": "Émotions avec preuves", "min": 30, "d": "Trace la courbe d'émotion étape par étape. Chaque creux a une citation ou un chiffre à côté. Un creux sans preuve prend un point d'interrogation."},
-        {"t": "Frictions et opportunités", "min": 40, "d": "Colle les frictions sous les creux, puis les opportunités sous chaque friction. Regroupe les doublons. Vote pour les 5 frictions principales, trois gommettes chacun."},
-        {"t": "Choisir la bataille", "min": 30, "d": "Pour les 3 frictions principales : ce qui la corrige, qui en est responsable, quelle métrique bougerait. Un responsable par friction avant de sortir."},
-        {"t": "Clore", "min": 20, "d": "Photographie ou exporte le board. Décide quand la carte est révisée : après la prochaine vague de recherche ou la prochaine release."}
-      ],
-      "pitfalls": [
-        "Ne cartographie pas le parcours idéal. Cartographie ce qui se passe aujourd'hui, avec les bricolages moches. L'idéal vient dans le service blueprint ou la refonte.",
-        "Un persona, un scénario. Une carte qui couvre trois personas ne montre rien.",
-        "Des émotions sans preuve transforment la session en débat. Apporte chiffres et citations, ou marque les suppositions comme telles."
-      ],
-      "next": "Les frictions principales deviennent des questions How Might We ou des opportunités dans l'Opportunity Solution Tree. La carte avec ses responsables part en discussion de roadmap. Imprime-la et laisse-la au mur jusqu'à ce qu'elle soit périmée.",
-      "source": ""
-    }
-  },
-  "research-plan": {
-    "en": {
-      "prep": [
-        "Two people are enough: the designer or researcher who will run the interviews and the PM who owns the decision the research must inform.",
-        "Write down the decision at stake before the session: 'should we build X for segment Y this quarter'. No decision, no research.",
-        "Bring the list of what the team already believes, ideally the assumption map if you ran one.",
-        "On the board: the five blocks (research questions, hypotheses, method, recruiting, interview guide) empty."
-      ],
-      "agenda": [
-        {"t": "Name the decision", "min": 10, "d": "Write the decision the research informs and the date it is needed. Everything else is scoped by this."},
-        {"t": "Research questions", "min": 20, "d": "Write 3 to 5 questions you need answered, phrased as unknowns ('how do admins choose a tool today'), not as survey questions."},
-        {"t": "Hypotheses", "min": 15, "d": "For each question, what you currently believe. Written down, so you can notice later when the interviews contradict you."},
-        {"t": "Method and recruiting", "min": 15, "d": "Interviews, observation, diary, or usability test. Then who: segment, screening criteria, how many (5 to 8 per segment), where you find them, what incentive."},
-        {"t": "Interview guide", "min": 25, "d": "Write the opening, 6 to 8 open questions ordered from past behavior to opinions, and the closing. Rewrite every question that can be answered by yes or no."},
-        {"t": "Pilot and schedule", "min": 5, "d": "Decide who pilots the guide on a colleague tomorrow, and block the interview slots in the calendar now."}
-      ],
-      "pitfalls": [
-        "Do not ask people what they want. Ask what they did last time. 'Would you use…' gives you politeness, not behavior.",
-        "Five good interviews beat a 200-answer survey when you do not yet know what to ask. Start qualitative.",
-        "Do not recruit from your fan base or your team's friends. Screen for the situation, not the enthusiasm."
-      ],
-      "next": "The guide goes to whoever runs the interviews; notes come back within 24 hours of each session. After 5 to 8 interviews, run an affinity map to synthesize, then update the assumption map.",
-      "source": ""
+    {
+     "t": "Remplir le canvas",
+     "min": 40,
+     "d": "En binôme par persona : objectifs, frustrations, comportements, contexte, outils. Chaque bloc cite au moins une citation. Pas de citation, bloc vide."
     },
-    "fr": {
-      "prep": [
-        "Deux personnes suffisent : le designer ou chercheur qui mènera les entretiens et le PM qui porte la décision que la recherche doit éclairer.",
-        "Écris la décision en jeu avant la session : 'faut-il construire X pour le segment Y ce trimestre'. Pas de décision, pas de recherche.",
-        "Apporte la liste de ce que l'équipe croit déjà, idéalement l'assumption map si tu l'as faite.",
-        "Sur le board : les cinq blocs (questions de recherche, hypothèses, méthode, recrutement, guide d'entretien) vides."
-      ],
-      "agenda": [
-        {"t": "Nommer la décision", "min": 10, "d": "Écris la décision que la recherche éclaire et la date où il la faut. Tout le reste en découle."},
-        {"t": "Questions de recherche", "min": 20, "d": "Écris 3 à 5 questions auxquelles tu dois répondre, formulées comme des inconnues ('comment les admins choisissent un outil aujourd'hui'), pas comme des questions de sondage."},
-        {"t": "Hypothèses", "min": 15, "d": "Pour chaque question, ce que tu crois aujourd'hui. Par écrit, pour remarquer plus tard quand les entretiens te contredisent."},
-        {"t": "Méthode et recrutement", "min": 15, "d": "Entretiens, observation, journal de bord ou test d'utilisabilité. Puis qui : segment, critères de sélection, combien (5 à 8 par segment), où les trouver, quelle contrepartie."},
-        {"t": "Guide d'entretien", "min": 25, "d": "Écris l'ouverture, 6 à 8 questions ouvertes ordonnées du comportement passé vers les opinions, et la clôture. Réécris toute question à laquelle on répond par oui ou non."},
-        {"t": "Pilote et planning", "min": 5, "d": "Décide qui teste le guide sur un collègue demain, et bloque les créneaux d'entretien dans l'agenda maintenant."}
-      ],
-      "pitfalls": [
-        "Ne demande pas aux gens ce qu'ils veulent. Demande ce qu'ils ont fait la dernière fois. 'Utiliseriez-vous…' te donne de la politesse, pas du comportement.",
-        "Cinq bons entretiens valent mieux qu'un sondage à 200 réponses quand tu ne sais pas encore quoi demander. Commence par le qualitatif.",
-        "Ne recrute pas dans ta base de fans ni chez les amis de l'équipe. Sélectionne sur la situation, pas sur l'enthousiasme."
-      ],
-      "next": "Le guide part chez celui qui mène les entretiens ; les notes reviennent sous 24 heures après chaque session. Après 5 à 8 entretiens, fais une affinity map pour synthétiser, puis mets à jour l'assumption map.",
-      "source": ""
-    }
-  },
-  "assumptions": {
-    "en": {
-      "prep": [
-        "Invite the trio: product, tech, design. Add the sponsor only if the initiative is big enough that their beliefs matter.",
-        "Send the problem statement or the vision board the day before. Ask everyone to arrive with 10 assumptions written down.",
-        "On the board: the 2x2 (importance × evidence) and three colored sticky sets: desirability, feasibility, viability.",
-        "Prepare the list of what you already know: analytics, past research, competitor facts. It stops people from testing what is already proven."
-      ],
-      "agenda": [
-        {"t": "Explain the three risks", "min": 10, "d": "Desirability: do they want it. Feasibility: can we build it. Viability: does it work for the business. One example of each from a past failure of the company."},
-        {"t": "Dump assumptions", "min": 25, "d": "Silent writing: 'we believe that…', one per sticky, colored by risk type. Aim for 40 or more. Quantity first, no filtering."},
-        {"t": "Deduplicate and sharpen", "min": 20, "d": "Group duplicates, split vague ones. 'Users will like it' becomes 'admins will finish setup in under 10 minutes without help'."},
-        {"t": "Place on the grid", "min": 30, "d": "One at a time, the group places each sticky: how much does the project die if this is false, how much evidence do we have. Argue for 30 seconds max per sticky."},
-        {"t": "Pick the top right", "min": 20, "d": "The high-importance, low-evidence corner is the test list. Rank it. Take the top 3 to 5."},
-        {"t": "Design the tests", "min": 15, "d": "For each: the cheapest test that could prove it false in under two weeks, the metric, the owner, the deadline."}
-      ],
-      "pitfalls": [
-        "Assumptions written as facts ('the market is growing') do not get tested. Force the 'we believe that' prefix.",
-        "Do not let engineers only write feasibility and PMs only desirability. Everyone writes all three colors.",
-        "A test that takes six weeks is not a test, it is the project. Shrink it until it fits in two weeks."
-      ],
-      "next": "The top assumptions become the rows of the experiment board and the questions of the research plan. Bring the grid back after each test and move the stickies: evidence up, or importance down.",
-      "source": "David Bland"
+    {
+     "t": "Lecture et challenge",
+     "min": 20,
+     "d": "Chaque binôme lit son persona en 3 minutes. Les autres demandent : quel entretien soutient ça ? Retire tout ce qui ne tient que sur une opinion."
     },
-    "fr": {
-      "prep": [
-        "Invite le trio : produit, tech, design. Ajoute le sponsor seulement si l'initiative est assez grosse pour que ses croyances comptent.",
-        "Envoie le problem statement ou le vision board la veille. Demande à chacun d'arriver avec 10 hypothèses écrites.",
-        "Sur le board : le 2x2 (importance × preuve) et trois couleurs de stickies : désirabilité, faisabilité, viabilité.",
-        "Prépare la liste de ce que tu sais déjà : analytics, recherche passée, faits sur les concurrents. Ça évite de tester ce qui est déjà prouvé."
-      ],
-      "agenda": [
-        {"t": "Expliquer les trois risques", "min": 10, "d": "Désirabilité : est-ce qu'ils le veulent. Faisabilité : sait-on le construire. Viabilité : est-ce que ça marche pour le business. Un exemple de chaque tiré d'un échec passé de la boîte."},
-        {"t": "Vider les hypothèses", "min": 25, "d": "Écriture silencieuse : 'nous croyons que…', une par sticky, colorée par type de risque. Vise 40 ou plus. La quantité d'abord, pas de filtre."},
-        {"t": "Dédoublonner et affûter", "min": 20, "d": "Regroupe les doublons, découpe les vagues. 'Les utilisateurs vont aimer' devient 'les admins finissent la configuration en moins de 10 minutes sans aide'."},
-        {"t": "Placer sur la grille", "min": 30, "d": "Un par un, le groupe place chaque sticky : à quel point le projet meurt si c'est faux, quelle preuve on a. 30 secondes de débat max par sticky."},
-        {"t": "Prendre le coin haut droit", "min": 20, "d": "Le coin importance forte, preuve faible, c'est la liste à tester. Classe-la. Garde le top 3 à 5."},
-        {"t": "Concevoir les tests", "min": 15, "d": "Pour chacune : le test le moins cher qui pourrait la prouver fausse en moins de deux semaines, la métrique, le responsable, la date."}
-      ],
-      "pitfalls": [
-        "Les hypothèses écrites comme des faits ('le marché grandit') ne se font pas tester. Impose le préfixe 'nous croyons que'.",
-        "Ne laisse pas les ingénieurs écrire seulement la faisabilité et les PM seulement la désirabilité. Tout le monde écrit les trois couleurs.",
-        "Un test qui prend six semaines n'est pas un test, c'est le projet. Réduis-le jusqu'à ce qu'il tienne en deux semaines."
-      ],
-      "next": "Les hypothèses du haut deviennent les lignes de l'experiment board et les questions du plan de recherche. Ressors la grille après chaque test et déplace les stickies : preuve vers le haut, ou importance vers le bas.",
-      "source": "David Bland"
+    {
+     "t": "Nommer et choisir le principal",
+     "min": 10,
+     "d": "Donne un nom et une phrase de résumé à chaque persona. Décide pour lequel on conçoit en premier ce trimestre."
     }
-  },
-  "ost": {
-    "en": {
-      "prep": [
-        "Invite the product trio only: PM, designer, tech lead. The tree is theirs; stakeholders see it later.",
-        "Have the outcome ready: one measurable metric the team owns this quarter, agreed with leadership. Without it, postpone.",
-        "Bring the synthesis of your last 6 to 10 interviews: the affinity map themes or the journey pain points.",
-        "On the board: the outcome at the top, then empty levels for opportunities, solutions, experiments."
-      ],
-      "agenda": [
-        {"t": "Lock the outcome", "min": 15, "d": "Write it at the root as a number to move: 'raise week-4 retention from 32 to 40 %'. If it is an output ('ship the new onboarding'), rewrite it."},
-        {"t": "List opportunities", "min": 40, "d": "From the research, post every need, pain, or desire heard from customers, in their words. Opportunities are not solutions: 'I never know if my invite was received' yes, 'add notifications' no."},
-        {"t": "Structure the opportunity space", "min": 30, "d": "Group opportunities into parents and children. A parent is a moment in the journey; children are specific pains inside it. Cut anything that does not plausibly move the outcome."},
-        {"t": "Choose the target opportunity", "min": 20, "d": "Compare sibling opportunities on size (how many customers), frequency, and confidence. Pick one. One. Write why the others wait."},
-        {"t": "Generate solutions", "min": 30, "d": "Under the target opportunity: at least 3 solution ideas, each one written by a different trio member first, then discussed. Cross out the solution that was in someone's head before the session."},
-        {"t": "Define the first experiments", "min": 15, "d": "For each surviving solution: the riskiest assumption and a test for it this sprint. Post it as a leaf under the solution."}
-      ],
-      "pitfalls": [
-        "Do not put solutions at the opportunity level. If the sticky names a feature, it goes down one level or in the trash.",
-        "Do not pick three target opportunities to keep everyone happy. The tree exists to make one choice visible.",
-        "An outcome the team cannot influence within a quarter ('grow revenue') makes the tree useless. Pick the leading metric the team really moves."
-      ],
-      "next": "The tree lives in the team's space and is updated weekly during discovery. The experiments go to the experiment board. Show the tree, not a slide, when leadership asks why you build what you build.",
-      "source": "Teresa Torres"
-    },
-    "fr": {
-      "prep": [
-        "Invite le trio produit seulement : PM, designer, tech lead. L'arbre est le leur ; les stakeholders le voient plus tard.",
-        "Aie le résultat prêt : une métrique mesurable que l'équipe porte ce trimestre, validée par la direction. Sans ça, reporte.",
-        "Apporte la synthèse de tes 6 à 10 derniers entretiens : les thèmes de l'affinity map ou les frictions de la journey.",
-        "Sur le board : le résultat en haut, puis des niveaux vides pour opportunités, solutions, expériences."
-      ],
-      "agenda": [
-        {"t": "Verrouiller le résultat", "min": 15, "d": "Écris-le à la racine comme un chiffre à bouger : 'passer la rétention à 4 semaines de 32 à 40 %'. Si c'est un livrable ('sortir le nouvel onboarding'), réécris."},
-        {"t": "Lister les opportunités", "min": 40, "d": "À partir de la recherche, colle chaque besoin, douleur ou envie entendu chez les clients, avec leurs mots. Une opportunité n'est pas une solution : 'je ne sais jamais si mon invitation est arrivée' oui, 'ajouter des notifications' non."},
-        {"t": "Structurer l'espace des opportunités", "min": 30, "d": "Regroupe en parents et enfants. Un parent est un moment du parcours ; les enfants sont des douleurs précises dedans. Coupe tout ce qui ne bouge pas plausiblement le résultat."},
-        {"t": "Choisir l'opportunité cible", "min": 20, "d": "Compare les opportunités soeurs sur taille (combien de clients), fréquence et confiance. Choisis-en une. Une seule. Écris pourquoi les autres attendent."},
-        {"t": "Générer des solutions", "min": 30, "d": "Sous l'opportunité cible : au moins 3 idées, chacune écrite d'abord par un membre différent du trio, puis discutée. Barre la solution qui était déjà dans une tête avant la session."},
-        {"t": "Définir les premières expériences", "min": 15, "d": "Pour chaque solution retenue : l'hypothèse la plus risquée et un test ce sprint. Colle-le en feuille sous la solution."}
-      ],
-      "pitfalls": [
-        "Pas de solution au niveau opportunité. Si le sticky nomme une feature, il descend d'un niveau ou va à la poubelle.",
-        "Ne choisis pas trois opportunités cibles pour contenter tout le monde. L'arbre existe pour rendre un seul choix visible.",
-        "Un résultat que l'équipe ne peut pas influencer en un trimestre ('faire croître le revenu') rend l'arbre inutile. Prends la métrique amont que l'équipe bouge vraiment."
-      ],
-      "next": "L'arbre vit dans l'espace de l'équipe et se met à jour chaque semaine pendant la discovery. Les expériences partent dans l'experiment board. Montre l'arbre, pas une slide, quand la direction demande pourquoi tu construis ce que tu construis.",
-      "source": "Teresa Torres"
-    }
-  },
-  "blueprint": {
-    "en": {
-      "prep": [
-        "Invite one person from each function behind the scenes: ops, support, tech, plus product and design. Eight people max, and every function present or the blueprint has holes.",
-        "Start from an existing journey map. If you do not have one, run it first; a blueprint without the customer line is an org chart.",
-        "Collect the internal process docs, SLAs, and the tools list. Print the list of systems involved.",
-        "On the board: the customer actions row at the top, the line of visibility, front stage, back stage, systems rows, one column per journey step."
-      ],
-      "agenda": [
-        {"t": "Recall the journey", "min": 20, "d": "Walk through the customer actions row from the journey map. Fix the columns. Nobody adds internal steps yet."},
-        {"t": "Front stage", "min": 40, "d": "Under each step: what the customer sees or who they talk to. Screens, emails, humans. Mark where the customer waits."},
-        {"t": "Back stage", "min": 60, "d": "What happens out of sight to make the front stage possible: manual checks, approvals, tickets, handoffs between teams. Support and ops drive this part; product listens."},
-        {"t": "Systems", "min": 30, "d": "The tools and data behind each back stage action. Draw the lines: where information is re-typed from one tool to another is a failure point."},
-        {"t": "Find the bottlenecks", "min": 50, "d": "Trace time and effort per column. Circle steps with a wait over 24 hours, a manual copy, or more than two handoffs. Vote for the three worst."},
-        {"t": "Owners and next step", "min": 40, "d": "For each bottleneck: is it a product fix, a process fix, or a staffing fix? Name an owner and a date to come back with a proposal."}
-      ],
-      "pitfalls": [
-        "Do not map the process as documented. Map what people actually do, including the spreadsheet nobody admits to.",
-        "Keep the customer row honest and short. Blueprints die when the back stage takes 80 % of the board and nobody remembers the customer.",
-        "Half a day is the minimum. Splitting it across two short meetings loses the cross-function conversation that is the whole point."
-      ],
-      "next": "The bottlenecks list goes to the operations lead and the product lead together. Product fixes enter the prioritization matrix; process fixes go to the team charter or a dedicated ops sprint. Refresh the blueprint after any org change.",
-      "source": "G. Lynn Shostack"
-    },
-    "fr": {
-      "prep": [
-        "Invite une personne par fonction en coulisses : ops, support, tech, plus produit et design. Huit max, et chaque fonction présente, sinon le blueprint a des trous.",
-        "Pars d'une journey map existante. Si tu n'en as pas, fais-la d'abord ; un blueprint sans la ligne client est un organigramme.",
-        "Rassemble les docs de process internes, les SLA et la liste des outils. Imprime la liste des systèmes impliqués.",
-        "Sur le board : la ligne des actions client en haut, la ligne de visibilité, les lignes front stage, back stage, systèmes, une colonne par étape du parcours."
-      ],
-      "agenda": [
-        {"t": "Rappeler le parcours", "min": 20, "d": "Parcours la ligne des actions client depuis la journey map. Fixe les colonnes. Personne n'ajoute d'étape interne pour l'instant."},
-        {"t": "Front stage", "min": 40, "d": "Sous chaque étape : ce que le client voit ou à qui il parle. Écrans, emails, humains. Marque où le client attend."},
-        {"t": "Back stage", "min": 60, "d": "Ce qui se passe hors de vue pour rendre le front stage possible : vérifications manuelles, validations, tickets, passages entre équipes. Support et ops mènent ; le produit écoute."},
-        {"t": "Systèmes", "min": 30, "d": "Les outils et données derrière chaque action de back stage. Trace les lignes : là où une info est ressaisie d'un outil à l'autre, c'est un point de rupture."},
-        {"t": "Trouver les goulots", "min": 50, "d": "Suis le temps et l'effort par colonne. Entoure les étapes avec une attente de plus de 24 h, une copie manuelle ou plus de deux passages de relais. Vote pour les trois pires."},
-        {"t": "Responsables et suite", "min": 40, "d": "Pour chaque goulot : correction produit, process ou effectif ? Nomme un responsable et une date pour revenir avec une proposition."}
-      ],
-      "pitfalls": [
-        "Ne cartographie pas le process tel que documenté. Cartographie ce que les gens font vraiment, y compris le tableur que personne n'avoue.",
-        "Garde la ligne client honnête et courte. Les blueprints meurent quand le back stage prend 80 % du board et que personne ne se souvient du client.",
-        "Une demi-journée est le minimum. Découper en deux réunions courtes perd la conversation inter-fonctions qui est tout l'intérêt."
-      ],
-      "next": "La liste des goulots va au responsable des opérations et au responsable produit ensemble. Les corrections produit entrent dans la matrice de priorisation ; les corrections de process vont dans le team charter ou un sprint ops dédié. Rafraîchis le blueprint à chaque changement d'organisation.",
-      "source": "G. Lynn Shostack"
-    }
-  },
-  "kano": {
-    "en": {
-      "prep": [
-        "Pick 10 to 15 candidate features, described in one customer-facing sentence each. More than 15 and the questionnaire response rate collapses.",
-        "Send the paired questionnaire (functional and dysfunctional question per feature) to 30 or more customers a week before. Collect the answers in a sheet.",
-        "Invite product, one designer, and someone from customer success who can read the results against real accounts.",
-        "On the board: the Kano grid, one sticky per feature, and the classification counts already computed from the sheet."
-      ],
-      "agenda": [
-        {"t": "Explain the categories", "min": 15, "d": "Basic: expected, absence angers. Performance: more is better. Delighter: unexpected, absence is fine. Indifferent: nobody cares. Give one example of each from your own product."},
-        {"t": "Place the features", "min": 30, "d": "Post each feature in the category that won the count. Mark close calls where two categories are within 10 %."},
-        {"t": "Read the surprises", "min": 30, "d": "Which features the team thought were delighters turned out basic, and which loud requests turned out indifferent. Customer success explains the accounts behind each surprise."},
-        {"t": "Segment check", "min": 25, "d": "Split the results by segment or plan. A feature basic for enterprise and indifferent for SMB is a packaging decision, not a build decision."},
-        {"t": "Decide", "min": 20, "d": "Basics missing go first, no debate. Then choose between performance and delighters based on strategy. Indifferent gets cut from the backlog today."}
-      ],
-      "pitfalls": [
-        "Do not run Kano on features customers cannot picture. Vague descriptions produce indifferent scores that mean 'I did not understand'.",
-        "Do not skip the dysfunctional question. Without it you cannot tell a basic from a performance feature.",
-        "Delighters decay into basics within a couple of years. Do not treat today's classification as permanent."
-      ],
-      "next": "The classified list feeds the RICE scoring or the roadmap: basics first, then the strategic choice. Share the surprises with sales and marketing; they change the pitch. Rerun on a new segment or every 12 months.",
-      "source": "Noriaki Kano"
-    },
-    "fr": {
-      "prep": [
-        "Choisis 10 à 15 features candidates, décrites en une phrase orientée client chacune. Au-delà de 15, le taux de réponse au questionnaire s'effondre.",
-        "Envoie le questionnaire par paires (question fonctionnelle et dysfonctionnelle par feature) à 30 clients ou plus une semaine avant. Collecte les réponses dans un tableur.",
-        "Invite le produit, un designer, et quelqu'un du customer success qui sait lire les résultats face à de vrais comptes.",
-        "Sur le board : la grille Kano, un sticky par feature, et les décomptes de classification déjà calculés depuis le tableur."
-      ],
-      "agenda": [
-        {"t": "Expliquer les catégories", "min": 15, "d": "Basique : attendu, l'absence énerve. Performance : plus c'est mieux. Attractif : inattendu, l'absence ne gêne pas. Indifférent : personne ne s'en soucie. Un exemple de chaque tiré de ton propre produit."},
-        {"t": "Placer les features", "min": 30, "d": "Colle chaque feature dans la catégorie qui a gagné le décompte. Marque les cas serrés où deux catégories sont à moins de 10 %."},
-        {"t": "Lire les surprises", "min": 30, "d": "Quelles features jugées attractives par l'équipe sont ressorties basiques, et quelles demandes bruyantes sont ressorties indifférentes. Le customer success explique les comptes derrière chaque surprise."},
-        {"t": "Vérifier par segment", "min": 25, "d": "Découpe les résultats par segment ou par offre. Une feature basique pour l'enterprise et indifférente pour les PME, c'est une décision de packaging, pas de construction."},
-        {"t": "Décider", "min": 20, "d": "Les basiques manquants passent en premier, sans débat. Puis choisis entre performance et attractif selon la stratégie. L'indifférent sort du backlog aujourd'hui."}
-      ],
-      "pitfalls": [
-        "Ne fais pas de Kano sur des features que les clients ne peuvent pas se représenter. Des descriptions vagues produisent des scores indifférents qui veulent dire 'je n'ai pas compris'.",
-        "Ne saute pas la question dysfonctionnelle. Sans elle, tu ne distingues pas un basique d'une feature de performance.",
-        "Les attractifs deviennent des basiques en deux ou trois ans. Ne traite pas la classification d'aujourd'hui comme définitive."
-      ],
-      "next": "La liste classée alimente le scoring RICE ou la roadmap : les basiques d'abord, puis le choix stratégique. Partage les surprises avec les ventes et le marketing ; elles changent le pitch. Refais l'exercice sur un nouveau segment ou tous les 12 mois.",
-      "source": "Noriaki Kano"
-    }
-  },
-  "hmw": {
-    "en": {
-      "prep": [
-        "Invite the product team plus anyone who joined the research. Five to eight people.",
-        "Bring the insights: the top pains from the journey map, the affinity map themes, or the persona frustrations. Pin them on the left of the board.",
-        "On the board: three columns, insight, How Might We, votes. One row per insight.",
-        "Send the insights the day before so people arrive having read them, not discovering them live."
-      ],
-      "agenda": [
-        {"t": "Show the format", "min": 5, "d": "Take one insight and rewrite it live as a HMW: 'admins abandon setup at the invite step' becomes 'how might we make inviting the team the fastest step of setup'."},
-        {"t": "Write in silence", "min": 15, "d": "Everyone writes HMW questions for every insight, one per sticky. Aim for three per insight. No talking."},
-        {"t": "Post and read", "min": 10, "d": "Post them under each insight. Each person reads their own aloud in one breath. No comments yet."},
-        {"t": "Sort by altitude", "min": 15, "d": "Too broad ('how might we improve onboarding') goes up, too narrow ('how might we add a copy-link button') goes down. Rewrite the extremes to the middle."},
-        {"t": "Vote", "min": 10, "d": "Three dots each. Then the PM picks the final 5 to 10 with the votes as input, not as verdict."},
-        {"t": "Bridge to ideation", "min": 5, "d": "Write the selected HMWs at the top of the ideation board. Schedule the ideation session within the week."}
-      ],
-      "pitfalls": [
-        "A HMW that contains the solution is not a question. If it names a feature, rewrite it around the need.",
-        "Do not skip the silent writing. Group writing produces the first loud idea, then variations of it.",
-        "Ten HMWs is the ceiling. With thirty, ideation spreads thin and nothing gets prototyped."
-      ],
-      "next": "The selected HMWs open the ideation session: Crazy 8's, brainwriting, or a design sprint. Keep the full list, the ones not selected are next quarter's raw material.",
-      "source": "Procter & Gamble / IDEO"
-    },
-    "fr": {
-      "prep": [
-        "Invite l'équipe produit plus ceux qui ont participé à la recherche. Cinq à huit personnes.",
-        "Apporte les insights : les frictions principales de la journey map, les thèmes de l'affinity map ou les frustrations du persona. Épingle-les à gauche du board.",
-        "Sur le board : trois colonnes, insight, Comment pourrions-nous, votes. Une ligne par insight.",
-        "Envoie les insights la veille pour que les gens arrivent en les ayant lus, pas en les découvrant en direct."
-      ],
-      "agenda": [
-        {"t": "Montrer le format", "min": 5, "d": "Prends un insight et réécris-le en direct en HMW : 'les admins abandonnent la configuration à l'étape invitation' devient 'comment pourrions-nous faire de l'invitation l'étape la plus rapide de la configuration'."},
-        {"t": "Écrire en silence", "min": 15, "d": "Chacun écrit des questions HMW pour chaque insight, une par sticky. Vise trois par insight. Sans parler."},
-        {"t": "Afficher et lire", "min": 10, "d": "Colle-les sous chaque insight. Chacun lit les siennes à voix haute d'une traite. Pas de commentaire pour l'instant."},
-        {"t": "Trier par altitude", "min": 15, "d": "Trop large ('comment améliorer l'onboarding') monte, trop étroit ('comment ajouter un bouton copier le lien') descend. Réécris les extrêmes vers le milieu."},
-        {"t": "Voter", "min": 10, "d": "Trois gommettes chacun. Puis le PM choisit les 5 à 10 finales avec les votes comme entrée, pas comme verdict."},
-        {"t": "Passerelle vers l'idéation", "min": 5, "d": "Écris les HMW retenues en haut du board d'idéation. Planifie la session d'idéation dans la semaine."}
-      ],
-      "pitfalls": [
-        "Une HMW qui contient la solution n'est pas une question. Si elle nomme une feature, réécris-la autour du besoin.",
-        "Ne saute pas l'écriture silencieuse. L'écriture en groupe produit la première idée bruyante, puis ses variantes.",
-        "Dix HMW, c'est le plafond. Avec trente, l'idéation s'éparpille et rien n'est prototypé."
-      ],
-      "next": "Les HMW retenues ouvrent la session d'idéation : Crazy 8's, brainwriting ou design sprint. Garde la liste complète, les non retenues sont la matière brute du trimestre prochain.",
-      "source": "Procter & Gamble / IDEO"
-    }
-  },
-  "mindmap": {
-    "en": {
-      "prep": [
-        "Three to five people. Beyond that, one person draws and the others watch.",
-        "Choose one central topic phrased as a noun, not a question: 'onboarding for teams', not 'how to improve onboarding'.",
-        "On the board: the topic in the center, nothing else. Do not pre-draw branches, that is the work.",
-        "Tell participants it is a divergence session: no evaluation, no 'we tried that', for one hour."
-      ],
-      "agenda": [
-        {"t": "State the topic", "min": 5, "d": "Write it in the center. Agree on the one thing you are exploring and the things you are explicitly not."},
-        {"t": "First-level branches", "min": 10, "d": "Each person proposes main branches: angles, actors, moments, constraints. Keep 4 to 7. Merge overlaps."},
-        {"t": "Solo expansion", "min": 15, "d": "Each person takes one branch and expands it alone: sub-branches, examples, questions. Two levels deep minimum."},
-        {"t": "Rotate", "min": 15, "d": "Everyone moves to the next branch and adds to what is there. Two rotations. Nobody edits, only adds."},
-        {"t": "Read the map", "min": 10, "d": "Walk the map together. Circle the branches that are dense (known territory) and the ones that are thin (blind spots or dead ends)."},
-        {"t": "Pick the threads", "min": 5, "d": "Choose the 2 or 3 sub-branches worth a real investigation. Write them as next steps with an owner."}
-      ],
-      "pitfalls": [
-        "Do not start evaluating during expansion. The moment someone says 'that will not work', the map stops growing.",
-        "Thin branches are information. Do not pad them to look balanced; ask why they are thin.",
-        "A mind map is a starting point, not a deliverable. If it ends up in a slide deck as is, the session failed."
-      ],
-      "next": "The selected threads become research questions, HMW questions, or assumptions to map. The map itself is archived; nobody needs to read it again.",
-      "source": "Tony Buzan"
-    },
-    "fr": {
-      "prep": [
-        "Trois à cinq personnes. Au-delà, une personne dessine et les autres regardent.",
-        "Choisis un sujet central formulé comme un nom, pas une question : 'l'onboarding des équipes', pas 'comment améliorer l'onboarding'.",
-        "Sur le board : le sujet au centre, rien d'autre. Ne prédessine pas les branches, c'est le travail.",
-        "Dis aux participants que c'est une session de divergence : pas d'évaluation, pas de 'on a déjà essayé', pendant une heure."
-      ],
-      "agenda": [
-        {"t": "Poser le sujet", "min": 5, "d": "Écris-le au centre. Mettez-vous d'accord sur la seule chose que vous explorez et sur ce que vous n'explorez explicitement pas."},
-        {"t": "Branches de premier niveau", "min": 10, "d": "Chacun propose des branches principales : angles, acteurs, moments, contraintes. Garde 4 à 7. Fusionne les recouvrements."},
-        {"t": "Expansion en solo", "min": 15, "d": "Chacun prend une branche et la développe seul : sous-branches, exemples, questions. Deux niveaux de profondeur minimum."},
-        {"t": "Tourner", "min": 15, "d": "Tout le monde passe à la branche suivante et ajoute à ce qui existe. Deux rotations. Personne ne modifie, on ajoute seulement."},
-        {"t": "Lire la carte", "min": 10, "d": "Parcourez la carte ensemble. Entoure les branches denses (territoire connu) et les branches maigres (angles morts ou impasses)."},
-        {"t": "Choisir les fils", "min": 5, "d": "Choisis les 2 ou 3 sous-branches qui méritent une vraie investigation. Écris-les comme prochaines étapes avec un responsable."}
-      ],
-      "pitfalls": [
-        "Ne commence pas à évaluer pendant l'expansion. Dès que quelqu'un dit 'ça ne marchera pas', la carte arrête de grandir.",
-        "Les branches maigres sont une information. Ne les remplis pas pour faire joli ; demande pourquoi elles sont maigres.",
-        "Une mind map est un point de départ, pas un livrable. Si elle finit telle quelle dans un deck, la session a raté."
-      ],
-      "next": "Les fils retenus deviennent des questions de recherche, des HMW ou des hypothèses à cartographier. La carte elle-même est archivée ; personne n'a besoin de la relire.",
-      "source": "Tony Buzan"
-    }
-  },
-  "affinity": {
-    "en": {
-      "prep": [
-        "Invite only the people who ran the interviews or read every transcript. Three to five. Others slow it down and guess.",
-        "Before the session, everyone extracts observations from their interviews: one fact or quote per sticky, tagged with the interviewee code. Aim for 100 to 300 stickies in total.",
-        "On the board: an empty wall. No pre-made categories, that is the anti-pattern.",
-        "Block two uninterrupted hours. Affinity mapping in 30-minute chunks loses the emerging structure."
-      ],
-      "agenda": [
-        {"t": "Rules", "min": 5, "d": "One observation per sticky, cluster by meaning not by keyword, anyone can move any sticky, no naming groups before step 4."},
-        {"t": "Post everything", "min": 15, "d": "Dump all stickies on the wall in random order. Read a few aloud so people get the tone of the material."},
-        {"t": "Cluster in silence", "min": 40, "d": "Move stickies next to those that say the same thing. Silent. When two people disagree, duplicate the sticky. Let groups split and merge."},
-        {"t": "Name the groups", "min": 30, "d": "Write a header for each group as a full sentence in the user's voice: 'I do not trust the numbers on the dashboard', not 'trust'. Sub-group if a cluster exceeds 15."},
-        {"t": "Rank and cross-check", "min": 20, "d": "Count interviewees per theme, not stickies. A theme from one talkative person is not a theme. Order by breadth and intensity."},
-        {"t": "Write the insight sheet", "min": 10, "d": "Top 5 to 8 themes, each with the count and two quotes. This sheet is the deliverable, not the wall."}
-      ],
-      "pitfalls": [
-        "Do not create categories first and sort into them. You will find what you expected and nothing else.",
-        "Do not count stickies. Count people. One interviewee can generate 20 stickies about their pet peeve.",
-        "Do not name groups with a single word. Single words hide disagreement about what the group means."
-      ],
-      "next": "The insight sheet feeds the How Might We session, the opportunity level of the OST, and updates the assumption map. Share it with the whole team within 48 hours, while the interviews are fresh.",
-      "source": "Jiro Kawakita (KJ method)"
-    },
-    "fr": {
-      "prep": [
-        "Invite seulement ceux qui ont mené les entretiens ou lu toutes les transcriptions. Trois à cinq. Les autres ralentissent et devinent.",
-        "Avant la session, chacun extrait des observations de ses entretiens : un fait ou une citation par sticky, avec le code de l'interviewé. Vise 100 à 300 stickies au total.",
-        "Sur le board : un mur vide. Pas de catégories préfaites, c'est l'anti-pattern.",
-        "Bloque deux heures sans interruption. Une affinity map par tranches de 30 minutes perd la structure qui émerge."
-      ],
-      "agenda": [
-        {"t": "Règles", "min": 5, "d": "Une observation par sticky, on regroupe par sens et pas par mot-clé, n'importe qui déplace n'importe quel sticky, pas de nom de groupe avant l'étape 4."},
-        {"t": "Tout afficher", "min": 15, "d": "Vide tous les stickies sur le mur dans le désordre. Lis-en quelques-uns à voix haute pour donner le ton du matériau."},
-        {"t": "Regrouper en silence", "min": 40, "d": "Déplace les stickies à côté de ceux qui disent la même chose. En silence. Quand deux personnes ne sont pas d'accord, duplique le sticky. Laisse les groupes se scinder et fusionner."},
-        {"t": "Nommer les groupes", "min": 30, "d": "Écris un titre par groupe, en phrase complète avec la voix de l'utilisateur : 'je ne fais pas confiance aux chiffres du dashboard', pas 'confiance'. Sous-groupe si un cluster dépasse 15."},
-        {"t": "Classer et recouper", "min": 20, "d": "Compte les interviewés par thème, pas les stickies. Un thème porté par une seule personne bavarde n'est pas un thème. Ordonne par largeur et intensité."},
-        {"t": "Écrire la fiche d'insights", "min": 10, "d": "Top 5 à 8 thèmes, chacun avec le décompte et deux citations. Cette fiche est le livrable, pas le mur."}
-      ],
-      "pitfalls": [
-        "Ne crée pas les catégories d'abord pour trier dedans. Tu trouveras ce que tu attendais et rien d'autre.",
-        "Ne compte pas les stickies. Compte les personnes. Un interviewé peut générer 20 stickies sur sa marotte.",
-        "Ne nomme pas les groupes d'un seul mot. Un mot seul cache le désaccord sur ce que le groupe veut dire."
-      ],
-      "next": "La fiche d'insights alimente la session How Might We, le niveau opportunités de l'OST, et met à jour l'assumption map. Partage-la à toute l'équipe sous 48 heures, tant que les entretiens sont frais.",
-      "source": "Jiro Kawakita (méthode KJ)"
-    }
-  },
-  "crazy8": {
-    "en": {
-      "prep": [
-        "Everyone who will build or decide, including engineers and the PM. Drawing skill is irrelevant; say it in the invite.",
-        "One HMW question or one screen to redesign, chosen before the session. Post it big at the top.",
-        "Paper folded in eight, or a 2x4 grid per person on the board, plus a timer visible to all.",
-        "Show two or three examples of ugly but useful sketches so people stop worrying about drawing."
-      ],
-      "agenda": [
-        {"t": "Brief", "min": 5, "d": "Read the HMW or show the screen. Rule: eight ideas, one minute each, boxes not art, no talking, no erasing."},
-        {"t": "Eight minutes", "min": 8, "d": "Start the timer, call each minute out loud. When someone is stuck, tell them to redraw their best idea with one thing changed."},
-        {"t": "Pick and detail", "min": 10, "d": "Each person picks their strongest box and redraws it larger with a title and three annotations. Still silent."},
-        {"t": "Gallery walk", "min": 12, "d": "Post the detailed sketches. Everyone walks and puts dots on the details they find interesting, not on whole sketches."},
-        {"t": "Explain the winners", "min": 8, "d": "The three most dotted sketches: the author explains in 90 seconds. Others ask questions only, no critique."},
-        {"t": "Decide", "min": 2, "d": "The decider names what goes to prototype. Write it down before leaving."}
-      ],
-      "pitfalls": [
-        "Do not give ten minutes instead of eight. The pressure is the method; comfort produces the same idea eight times.",
-        "Do not let people present their sketch before the dot vote. Pitching skill would replace idea quality.",
-        "Do not run it without a decider. Eight sketches and no decision is an afternoon lost."
-      ],
-      "next": "The chosen sketch goes to wireframes or a prototype within the week. Keep the other sketches in a shared folder; they resurface when the first prototype fails a test.",
-      "source": "Jake Knapp, GV"
-    },
-    "fr": {
-      "prep": [
-        "Tous ceux qui vont construire ou décider, ingénieurs et PM compris. Savoir dessiner n'a aucune importance ; dis-le dans l'invitation.",
-        "Une question HMW ou un écran à refaire, choisi avant la session. Affiche-le en grand en haut.",
-        "Une feuille pliée en huit, ou une grille 2x4 par personne sur le board, plus un timer visible de tous.",
-        "Montre deux ou trois exemples de croquis moches mais utiles pour que les gens arrêtent de stresser sur le dessin."
-      ],
-      "agenda": [
-        {"t": "Brief", "min": 5, "d": "Lis la HMW ou montre l'écran. Règle : huit idées, une minute chacune, des cases pas de l'art, pas de parole, pas de gomme."},
-        {"t": "Huit minutes", "min": 8, "d": "Lance le timer, annonce chaque minute à voix haute. Quand quelqu'un bloque, dis-lui de redessiner sa meilleure idée en changeant une seule chose."},
-        {"t": "Choisir et détailler", "min": 10, "d": "Chacun prend sa case la plus forte et la redessine en grand avec un titre et trois annotations. Toujours en silence."},
-        {"t": "Galerie", "min": 12, "d": "Affiche les croquis détaillés. Tout le monde circule et met des gommettes sur les détails intéressants, pas sur des croquis entiers."},
-        {"t": "Expliquer les gagnants", "min": 8, "d": "Les trois croquis les plus gommettés : l'auteur explique en 90 secondes. Les autres posent des questions seulement, pas de critique."},
-        {"t": "Décider", "min": 2, "d": "Le décideur nomme ce qui part en prototype. Écris-le avant de sortir."}
-      ],
-      "pitfalls": [
-        "Ne donne pas dix minutes au lieu de huit. La pression, c'est la méthode ; le confort produit huit fois la même idée.",
-        "Ne laisse pas les gens présenter leur croquis avant le vote. Le talent de pitch remplacerait la qualité de l'idée.",
-        "Ne le fais pas sans décideur. Huit croquis et pas de décision, c'est un après-midi perdu."
-      ],
-      "next": "Le croquis retenu part en wireframes ou en prototype dans la semaine. Garde les autres croquis dans un dossier partagé ; ils ressortent quand le premier prototype rate un test.",
-      "source": "Jake Knapp, GV"
-    }
-  },
-  "brainwriting": {
-    "en": {
-      "prep": [
-        "Exactly six people per table. Five or seven works with adjusted rounds, but six keeps the 6-3-5 math clean: 108 ideas in 30 minutes.",
-        "One problem statement or HMW per table, written at the top of each sheet. Send it the day before.",
-        "One sheet per person with a 6-row, 3-column grid, on paper or on the board. A timer.",
-        "Mix roles at each table: no table with only designers or only engineers."
-      ],
-      "agenda": [
-        {"t": "Rules", "min": 5, "d": "Three ideas in five minutes, then pass your sheet left. You may build on what is already on the sheet or add something new. Total silence for 30 minutes."},
-        {"t": "Six rounds", "min": 30, "d": "Call time every five minutes. Do not stretch a round because someone is not done; the constraint is the point."},
-        {"t": "Read and mark", "min": 7, "d": "Each person reads the sheet in front of them and circles the two ideas they would not have thought of themselves."},
-        {"t": "Shortlist", "min": 3, "d": "Collect the circled ideas on the board. Group duplicates. Leave with a shortlist of 10 to 15 for evaluation later."}
-      ],
-      "pitfalls": [
-        "Do not allow talking, not even 'what did you mean by this'. Ambiguity on the sheet is what generates the unexpected variations.",
-        "Do not evaluate in the same session. Divergence and evaluation in the same hour kill the second half of the ideas.",
-        "Do not use a vague prompt. 'Improve retention' gives 108 platitudes. 'Get a team to invite a second member in the first session' gives ideas."
-      ],
-      "next": "The shortlist goes through dot voting or the impact / effort matrix in the next session. Photograph every sheet; the unselected ideas are useful later.",
-      "source": "Bernd Rohrbach"
-    },
-    "fr": {
-      "prep": [
-        "Exactement six personnes par table. Cinq ou sept marche avec des tours ajustés, mais six garde le calcul du 6-3-5 propre : 108 idées en 30 minutes.",
-        "Un énoncé de problème ou une HMW par table, écrit en haut de chaque feuille. Envoie-le la veille.",
-        "Une feuille par personne avec une grille de 6 lignes et 3 colonnes, papier ou board. Un timer.",
-        "Mélange les rôles à chaque table : pas de table avec seulement des designers ou seulement des ingénieurs."
-      ],
-      "agenda": [
-        {"t": "Règles", "min": 5, "d": "Trois idées en cinq minutes, puis tu passes ta feuille à gauche. Tu peux prolonger ce qui est déjà sur la feuille ou ajouter du neuf. Silence total pendant 30 minutes."},
-        {"t": "Six tours", "min": 30, "d": "Annonce le temps toutes les cinq minutes. N'allonge pas un tour parce que quelqu'un n'a pas fini ; la contrainte est le but."},
-        {"t": "Lire et marquer", "min": 7, "d": "Chacun lit la feuille devant lui et entoure les deux idées qu'il n'aurait pas eues lui-même."},
-        {"t": "Présélection", "min": 3, "d": "Rassemble les idées entourées sur le board. Regroupe les doublons. Repars avec une liste de 10 à 15 idées à évaluer plus tard."}
-      ],
-      "pitfalls": [
-        "N'autorise pas la parole, même pas 'tu voulais dire quoi'. L'ambiguïté sur la feuille est ce qui génère les variations inattendues.",
-        "N'évalue pas dans la même session. Divergence et évaluation dans la même heure tuent la deuxième moitié des idées.",
-        "Pas de sujet vague. 'Améliorer la rétention' donne 108 platitudes. 'Amener une équipe à inviter un deuxième membre dès la première session' donne des idées."
-      ],
-      "next": "La présélection passe au dot voting ou à la matrice impact / effort à la session suivante. Photographie chaque feuille ; les idées non retenues servent plus tard.",
-      "source": "Bernd Rohrbach"
-    }
-  },
-  "dotvote": {
-    "en": {
-      "prep": [
-        "Only the people who took part in the divergent session. Adding a stakeholder at vote time changes the dynamics.",
-        "The options on the board, deduplicated and numbered. If two stickies say the same thing, merge before the vote or the votes split.",
-        "Decide the number of dots: a third of the number of options, rounded down, three minimum. Say it before the vote.",
-        "Agree on the criterion in one sentence: 'most likely to move retention', not 'best'."
-      ],
-      "agenda": [
-        {"t": "Read the options", "min": 4, "d": "Someone reads every option aloud, one sentence each. Clarifying questions only, no advocacy."},
-        {"t": "Vote in silence", "min": 5, "d": "Everyone places their dots at the same time. Allowed: multiple dots on one option. Not allowed: watching where others put theirs first."},
-        {"t": "Read the result", "min": 3, "d": "Count. Show the top 3 to 5. If the top is a tie, do not revote; the decider breaks it."},
-        {"t": "Decide", "min": 3, "d": "The decider states the pick and one sentence of reasoning. The vote is input; the decider owns the outcome."}
-      ],
-      "pitfalls": [
-        "Do not vote on 30 options. Cluster first, or the winner gets four dots and means nothing.",
-        "Do not let the most senior person vote first. Silent, simultaneous, or the vote measures hierarchy.",
-        "Do not treat the count as the decision. Say clearly who decides, or the group thinks it was a democracy and resents the outcome."
-      ],
-      "next": "The selected options go to the impact / effort matrix, a prototype, or the experiment board. Write the result on the board with the criterion used, so nobody rewrites history next week.",
-      "source": ""
-    },
-    "fr": {
-      "prep": [
-        "Seulement les gens qui ont participé à la session de divergence. Ajouter un stakeholder au moment du vote change la dynamique.",
-        "Les options sur le board, dédoublonnées et numérotées. Si deux stickies disent la même chose, fusionne avant le vote, sinon les voix se divisent.",
-        "Décide le nombre de gommettes : un tiers du nombre d'options, arrondi en dessous, trois minimum. Dis-le avant le vote.",
-        "Mettez-vous d'accord sur le critère en une phrase : 'le plus susceptible de bouger la rétention', pas 'le meilleur'."
-      ],
-      "agenda": [
-        {"t": "Lire les options", "min": 4, "d": "Quelqu'un lit chaque option à voix haute, une phrase chacune. Questions de clarification seulement, pas de plaidoyer."},
-        {"t": "Voter en silence", "min": 5, "d": "Tout le monde place ses gommettes en même temps. Autorisé : plusieurs gommettes sur une option. Interdit : regarder où les autres mettent les leurs d'abord."},
-        {"t": "Lire le résultat", "min": 3, "d": "Compte. Affiche le top 3 à 5. En cas d'égalité en tête, pas de second vote ; le décideur tranche."},
-        {"t": "Décider", "min": 3, "d": "Le décideur annonce le choix et une phrase de raisonnement. Le vote est une entrée ; le décideur porte le résultat."}
-      ],
-      "pitfalls": [
-        "Ne vote pas sur 30 options. Regroupe d'abord, sinon le gagnant a quatre gommettes et ne veut rien dire.",
-        "Ne laisse pas la personne la plus senior voter en premier. Silencieux, simultané, sinon le vote mesure la hiérarchie.",
-        "Ne prends pas le décompte pour la décision. Dis clairement qui décide, sinon le groupe croit à une démocratie et en veut au résultat."
-      ],
-      "next": "Les options retenues passent à la matrice impact / effort, en prototype ou dans l'experiment board. Écris le résultat sur le board avec le critère utilisé, pour que personne ne réécrive l'histoire la semaine suivante.",
-      "source": ""
-    }
-  },
-  "sprint": {
-    "en": {
-      "prep": [
-        "Recruit the team three weeks ahead: a decider with real authority, a facilitator, and 5 to 7 people covering product, design, engineering, marketing, support. Block five full days in every calendar.",
-        "Choose the challenge: big enough to justify a week, small enough to prototype in one day. Write it in one sentence and get the decider to sign off.",
-        "Book a room for the week with two large walls, or a dedicated board. Order sticky notes, markers, a timer, and healthy snacks; the afternoons are long.",
-        "Recruit five test users matching the target segment for Friday. Start recruiting on Monday of the sprint at the latest, ideally the week before."
-      ],
-      "agenda": [
-        {"t": "Monday: map", "min": 420, "d": "Set a long-term goal and sprint questions. Map the journey from actor to goal. Interview internal experts, capture 'how might we' notes. The decider picks the target on the map by end of day."},
-        {"t": "Tuesday: sketch", "min": 420, "d": "Lightning demos of inspiring solutions, 3 minutes each. Then four-step sketching, solo: notes, ideas, Crazy 8's, and a detailed three-panel solution sketch. Sketches stay anonymous until Wednesday."},
-        {"t": "Wednesday: decide", "min": 420, "d": "Art museum, heat map with dots, speed critique, straw poll, then the decider's supervote. Afternoon: storyboard the prototype in 10 to 15 frames. Every frame is a screen or a step."},
-        {"t": "Thursday: prototype", "min": 420, "d": "Build a realistic facade of the storyboard, not a product. Split roles: makers, stitcher, writer, asset collector, interviewer. Trial run at 3 pm; fix what breaks."},
-        {"t": "Friday: test", "min": 420, "d": "Five one-hour interviews with target users, one at a time. The team watches in another room and takes notes on a grid: user × screen. Debrief after the fifth: patterns, not opinions. Decide: go, iterate, or drop."}
-      ],
-      "pitfalls": [
-        "Do not run a sprint without a decider in the room. A decider who joins for an hour on Wednesday and Friday is acceptable; a decider who reads a summary is not.",
-        "Do not build a working product on Thursday. Keynote, Figma, or a fake landing page is enough; if it takes more than a day, the storyboard is too big.",
-        "Do not skip Friday or replace it with a team review. Five real users is the entire point; the rest of the week is preparation for it."
-      ],
-      "next": "Friday's patterns go into a one-page report to leadership within 48 hours: what was tested, what held, what failed, the decision. A go leads to a real build; an iterate means a second, shorter sprint on the failed part.",
-      "source": "Jake Knapp, GV"
-    },
-    "fr": {
-      "prep": [
-        "Recrute l'équipe trois semaines avant : un décideur avec une vraie autorité, un facilitateur, et 5 à 7 personnes couvrant produit, design, ingénierie, marketing, support. Bloque cinq journées complètes dans tous les agendas.",
-        "Choisis le défi : assez gros pour justifier une semaine, assez petit pour être prototypé en une journée. Écris-le en une phrase et fais-le valider par le décideur.",
-        "Réserve une salle pour la semaine avec deux grands murs, ou un board dédié. Commande stickies, marqueurs, un timer et des encas corrects ; les après-midi sont longs.",
-        "Recrute cinq utilisateurs testeurs du segment cible pour vendredi. Commence à recruter au plus tard le lundi du sprint, idéalement la semaine d'avant."
-      ],
-      "agenda": [
-        {"t": "Lundi : cartographier", "min": 420, "d": "Fixe un objectif long terme et les questions du sprint. Cartographie le parcours de l'acteur jusqu'au but. Interviewe les experts internes, capture des notes 'comment pourrions-nous'. Le décideur choisit la cible sur la carte en fin de journée."},
-        {"t": "Mardi : esquisser", "min": 420, "d": "Démos éclair de solutions inspirantes, 3 minutes chacune. Puis esquisse en quatre étapes, en solo : notes, idées, Crazy 8's, et un croquis de solution détaillé en trois panneaux. Les croquis restent anonymes jusqu'à mercredi."},
-        {"t": "Mercredi : décider", "min": 420, "d": "Musée des croquis, heat map avec gommettes, critique rapide, vote indicatif, puis supervote du décideur. Après-midi : storyboard du prototype en 10 à 15 cases. Chaque case est un écran ou une étape."},
-        {"t": "Jeudi : prototyper", "min": 420, "d": "Construis une façade réaliste du storyboard, pas un produit. Répartis les rôles : fabricants, assembleur, rédacteur, collecteur d'assets, interviewer. Répétition à 15 h ; corrige ce qui casse."},
-        {"t": "Vendredi : tester", "min": 420, "d": "Cinq entretiens d'une heure avec des utilisateurs cibles, un par un. L'équipe observe dans une autre salle et note dans une grille : utilisateur × écran. Débrief après le cinquième : des patterns, pas des opinions. Décision : go, itérer ou abandonner."}
-      ],
-      "pitfalls": [
-        "Ne fais pas de sprint sans décideur dans la salle. Un décideur qui passe une heure mercredi et vendredi, ça va ; un décideur qui lit un résumé, non.",
-        "Ne construis pas un produit fonctionnel jeudi. Keynote, Figma ou une fausse landing page suffisent ; si ça prend plus d'une journée, le storyboard est trop gros.",
-        "Ne saute pas le vendredi et ne le remplace pas par une revue d'équipe. Cinq vrais utilisateurs, c'est tout l'intérêt ; le reste de la semaine ne fait que le préparer."
-      ],
-      "next": "Les patterns du vendredi vont dans un rapport d'une page à la direction sous 48 heures : ce qui a été testé, ce qui a tenu, ce qui a raté, la décision. Un go mène à une vraie construction ; un itérer déclenche un second sprint plus court sur la partie ratée.",
-      "source": "Jake Knapp, GV"
-    }
-  },
-  "experiments": {
-    "en": {
-      "prep": [
-        "The product trio: PM, designer, tech lead. Add a data person if you have one; they will save you from untestable metrics.",
-        "Bring the top 3 to 5 assumptions from the assumption map, or the leaf-level experiments from the OST.",
-        "On the board: the grid with one row per experiment and the six columns: hypothesis, test, metric, success criteria, result, learning.",
-        "Have last quarter's experiment board open next to it. Half the time, someone already tested something close."
-      ],
-      "agenda": [
-        {"t": "Rewrite the assumptions as hypotheses", "min": 15, "d": "Format: 'we believe [segment] will [behavior] because [reason]'. One per row. If you cannot name the behavior, the hypothesis is not testable yet."},
-        {"t": "Choose the cheapest test", "min": 25, "d": "For each: fake door, concierge, landing page, prototype interview, data pull, or a real small release. Pick the one that gives a signal in two weeks or less. Write who runs it."},
-        {"t": "Define metric and threshold", "min": 25, "d": "One metric per test and the number that means 'validated' or 'killed', decided now. 'We will see' is not a criterion. Include the sample size you need."},
-        {"t": "Check for confounds", "min": 15, "d": "For each test, ask what else could explain a positive result. If the answer is obvious, change the test. Add the control where needed."},
-        {"t": "Schedule and commit", "min": 10, "d": "Start dates, review date, owner in each row. Book the review in the calendar before leaving."}
-      ],
-      "pitfalls": [
-        "Do not set the success threshold after seeing the data. Every result looks like a win in hindsight.",
-        "Do not run six experiments at once with a team of three. Two in parallel is the realistic ceiling.",
-        "Do not delete failed rows. The learning column of a failed experiment is worth more than the result column of a successful one."
-      ],
-      "next": "Each row is reviewed at the agreed date; result and learning are filled in the same meeting. Validated hypotheses move to the story map or the roadmap; killed ones update the assumption map and the OST.",
-      "source": "Eric Ries / Ash Maurya"
-    },
-    "fr": {
-      "prep": [
-        "Le trio produit : PM, designer, tech lead. Ajoute une personne data si tu en as une ; elle t'évitera des métriques intestables.",
-        "Apporte les 3 à 5 hypothèses principales de l'assumption map, ou les expériences en feuilles de l'OST.",
-        "Sur le board : la grille avec une ligne par expérience et les six colonnes : hypothèse, test, métrique, critère de succès, résultat, apprentissage.",
-        "Ouvre l'experiment board du trimestre dernier à côté. Une fois sur deux, quelqu'un a déjà testé un truc proche."
-      ],
-      "agenda": [
-        {"t": "Réécrire les hypothèses", "min": 15, "d": "Format : 'nous croyons que [segment] va [comportement] parce que [raison]'. Une par ligne. Si tu ne sais pas nommer le comportement, l'hypothèse n'est pas encore testable."},
-        {"t": "Choisir le test le moins cher", "min": 25, "d": "Pour chacune : fausse porte, concierge, landing page, entretien sur prototype, extraction de données, ou une vraie petite release. Prends celui qui donne un signal en deux semaines ou moins. Écris qui le mène."},
-        {"t": "Définir métrique et seuil", "min": 25, "d": "Une métrique par test et le chiffre qui veut dire 'validé' ou 'tué', décidé maintenant. 'On verra' n'est pas un critère. Inclus la taille d'échantillon nécessaire."},
-        {"t": "Chasser les biais", "min": 15, "d": "Pour chaque test, demande ce qui d'autre pourrait expliquer un résultat positif. Si la réponse est évidente, change le test. Ajoute un groupe témoin si besoin."},
-        {"t": "Planifier et s'engager", "min": 10, "d": "Dates de démarrage, date de revue, responsable sur chaque ligne. Réserve la revue dans l'agenda avant de sortir."}
-      ],
-      "pitfalls": [
-        "Ne fixe pas le seuil de succès après avoir vu les données. Tout résultat ressemble à une victoire après coup.",
-        "Ne lance pas six expériences à la fois avec une équipe de trois. Deux en parallèle, c'est le plafond réaliste.",
-        "Ne supprime pas les lignes ratées. La colonne apprentissage d'une expérience ratée vaut plus que la colonne résultat d'une réussie."
-      ],
-      "next": "Chaque ligne est revue à la date convenue ; résultat et apprentissage sont remplis dans la même réunion. Les hypothèses validées passent dans la story map ou la roadmap ; les tuées mettent à jour l'assumption map et l'OST.",
-      "source": "Eric Ries / Ash Maurya"
-    }
+   ],
+   "pitfalls": [
+    "N'ajoute pas de photo de stock, d'âge et de hobby : on finit par concevoir pour un personnage de BD. Garde la citation et le contexte.",
+    "Moins de 5 entretiens par segment ? Appelle ça un proto-persona et marque-le comme hypothèse sur le board.",
+    "Deux personas avec les mêmes objectifs et frustrations, ça n'existe pas. Fusionne-les, sinon tu construis deux fois la même feature."
+   ],
+   "next": "Le persona principal va sur le mur de l'équipe et en tête de chaque PRD. Il nourrit la customer journey map et la session How Might We. Révise-le après chaque vague de recherche.",
+   "source": "Alan Cooper"
   }
+ },
+ "jtbd": {
+  "en": {
+   "prep": [
+    "Run 4 to 6 switch interviews beforehand: people who recently adopted or dropped a solution like yours. Bring the timeline of each decision.",
+    "Invite product and design, plus one salesperson or support agent who hears customers every day. Max 6 people.",
+    "On the board: one job statement template per interview, and the four forces zones (push, pull, anxieties, habits) empty.",
+    "Send the interview recordings the day before with the timestamps of the moment the customer decided to switch."
+   ],
+   "agenda": [
+    {
+     "t": "Frame the job, not the product",
+     "min": 10,
+     "d": "Explain the difference between what people buy and the progress they want. Give one example outside your industry so nobody argues about your product."
+    },
+    {
+     "t": "Replay the switch stories",
+     "min": 30,
+     "d": "For each interview, one person retells the timeline in 4 minutes: first thought, passive looking, active looking, decision. The others note pushes and pulls on stickies."
+    },
+    {
+     "t": "Map the four forces",
+     "min": 30,
+     "d": "Post the stickies in the four zones. Group duplicates. The biggest cluster in push and pull is your real reason to be bought. The biggest in anxieties is what blocks the sale."
+    },
+    {
+     "t": "Write job statements",
+     "min": 40,
+     "d": "In pairs, write 'When [situation], I want to [motivation], so I can [outcome]' for each distinct job you heard. Situation must be a moment, not a demographic."
+    },
+    {
+     "t": "Rank the jobs",
+     "min": 25,
+     "d": "Score each job on frequency and importance from the interviews. Dot vote only to break ties. Keep the top 2 or 3."
+    },
+    {
+     "t": "Decide what changes",
+     "min": 15,
+     "d": "For the top job: what in the current product serves it, what fights it. Write one sentence on what the next discovery cycle focuses on."
+    }
+   ],
+   "pitfalls": [
+    "A job statement that names your feature is not a job. 'I want to export a CSV' is a task; 'I want to show my boss the numbers before the meeting' is the job.",
+    "Do not write jobs from your own experience of the product. If there are no interviews, cancel the session and go do them.",
+    "Resist the urge to list 15 jobs. Three sharp jobs drive a roadmap; fifteen vague ones drive nothing."
+   ],
+   "next": "The top job statement and its forces go into the Value Proposition Canvas and the Opportunity Solution Tree. Sales gets the pushes and anxieties for its pitch. Redo the exercise when you enter a new segment.",
+   "source": "Clayton Christensen / Bob Moesta"
+  },
+  "fr": {
+   "prep": [
+    "Mène 4 à 6 entretiens de switch avant : des gens qui ont récemment adopté ou abandonné une solution comme la tienne. Apporte la chronologie de chaque décision.",
+    "Invite produit et design, plus un commercial ou un agent support qui entend les clients tous les jours. 6 personnes max.",
+    "Sur le board : un gabarit de job statement par entretien, et les quatre zones de forces (push, pull, anxiétés, habitudes) vides.",
+    "Envoie les enregistrements la veille avec les timestamps du moment où le client a décidé de changer."
+   ],
+   "agenda": [
+    {
+     "t": "Cadrer le job, pas le produit",
+     "min": 10,
+     "d": "Explique la différence entre ce que les gens achètent et le progrès qu'ils cherchent. Prends un exemple hors de ton secteur pour que personne ne débatte du produit."
+    },
+    {
+     "t": "Rejouer les histoires de switch",
+     "min": 30,
+     "d": "Pour chaque entretien, une personne raconte la chronologie en 4 minutes : première pensée, recherche passive, recherche active, décision. Les autres notent les push et pull sur stickies."
+    },
+    {
+     "t": "Cartographier les quatre forces",
+     "min": 30,
+     "d": "Colle les stickies dans les quatre zones. Regroupe les doublons. Le plus gros cluster en push et pull, c'est ta vraie raison d'être acheté. Le plus gros en anxiétés, c'est ce qui bloque la vente."
+    },
+    {
+     "t": "Écrire les job statements",
+     "min": 40,
+     "d": "En binôme, écris 'Quand [situation], je veux [motivation], pour [résultat]' pour chaque job distinct entendu. La situation est un moment, pas une catégorie de gens."
+    },
+    {
+     "t": "Classer les jobs",
+     "min": 25,
+     "d": "Note chaque job sur fréquence et importance d'après les entretiens. Le dot voting ne sert qu'à départager. Garde le top 2 ou 3."
+    },
+    {
+     "t": "Décider ce qui change",
+     "min": 15,
+     "d": "Pour le job numéro un : ce qui, dans le produit actuel, le sert, et ce qui le combat. Une phrase sur ce que le prochain cycle de discovery vise."
+    }
+   ],
+   "pitfalls": [
+    "Un job statement qui nomme ta feature n'est pas un job. 'Je veux exporter un CSV' est une tâche ; 'je veux montrer les chiffres à mon boss avant la réunion' est le job.",
+    "N'écris pas les jobs à partir de ta propre expérience du produit. Sans entretiens, annule la session et va les faire.",
+    "Résiste à la liste de 15 jobs. Trois jobs nets pilotent une roadmap ; quinze jobs flous ne pilotent rien."
+   ],
+   "next": "Le job principal et ses forces alimentent le Value Proposition Canvas et l'Opportunity Solution Tree. Les ventes récupèrent les push et anxiétés pour leur pitch. Refais l'exercice à chaque nouveau segment.",
+   "source": "Clayton Christensen / Bob Moesta"
+  }
+ },
+ "empathy": {
+  "en": {
+   "prep": [
+    "Invite the whole team, including engineers. The point is that people who never meet users hear them for one hour.",
+    "Pick one user segment and one situation of use. One map per segment, never a map for 'users' in general.",
+    "Collect material beforehand: 3 to 5 interview extracts, support tickets, a screen recording. Without material, the map is fiction.",
+    "On the board: the four quadrants (says, thinks, does, feels) and the pains / gains strip at the bottom, with a photo or name of the segment at the top."
+   ],
+   "agenda": [
+    {
+     "t": "Set the scene",
+     "min": 5,
+     "d": "Name the segment and the moment you are mapping: 'a first-time admin setting up the workspace on day one'. Write it at the top of the board."
+    },
+    {
+     "t": "Watch or read the material",
+     "min": 15,
+     "d": "Play two interview extracts or read three tickets aloud. Everyone writes what they notice on stickies, one observation each, without discussing."
+    },
+    {
+     "t": "Fill says and does",
+     "min": 10,
+     "d": "Post the observable facts: exact words heard, actions seen. Only things you could have recorded on camera."
+    },
+    {
+     "t": "Fill thinks and feels",
+     "min": 15,
+     "d": "Now the inferences: what they probably think, what they feel. Mark each with a question mark if it is a guess. Guesses become interview questions."
+    },
+    {
+     "t": "Pains and gains",
+     "min": 10,
+     "d": "From the four quadrants, pull the top 3 pains and top 3 gains. Vote if there are more than five candidates."
+    },
+    {
+     "t": "Name the surprise",
+     "min": 5,
+     "d": "Each person says one thing they did not expect. Write those down; they are the most valuable output of the hour."
+    }
+   ],
+   "pitfalls": [
+    "If nobody has material, do not run the session. An empathy map filled from imagination is worse than no map: it feels like research.",
+    "Keep 'says' to actual words. Paraphrases lose the signal that tells you how users name things.",
+    "Do not let the loudest person dictate 'feels'. Silent writing first, then posting, always."
+   ],
+   "next": "The pains and gains feed the Value Proposition Canvas or the How Might We questions. The question-marked stickies become the script of your next interviews. Keep the map next to the persona it belongs to.",
+   "source": "Dave Gray, XPLANE"
+  },
+  "fr": {
+   "prep": [
+    "Invite toute l'équipe, ingénieurs compris. Le but est que ceux qui ne rencontrent jamais d'utilisateurs les entendent pendant une heure.",
+    "Choisis un segment et une situation d'usage. Une carte par segment, jamais une carte pour 'les utilisateurs' en général.",
+    "Rassemble du matériau avant : 3 à 5 extraits d'entretiens, des tickets support, un enregistrement d'écran. Sans matériau, la carte est de la fiction.",
+    "Sur le board : les quatre quadrants (dit, pense, fait, ressent), la bande douleurs / gains en bas, et le nom ou la photo du segment en haut."
+   ],
+   "agenda": [
+    {
+     "t": "Poser la scène",
+     "min": 5,
+     "d": "Nomme le segment et le moment cartographié : 'un admin qui configure l'espace le premier jour'. Écris-le en haut du board."
+    },
+    {
+     "t": "Regarder ou lire le matériau",
+     "min": 15,
+     "d": "Passe deux extraits d'entretien ou lis trois tickets à voix haute. Chacun note ce qu'il remarque sur stickies, une observation par sticky, sans discuter."
+    },
+    {
+     "t": "Remplir dit et fait",
+     "min": 10,
+     "d": "Colle les faits observables : mots exacts entendus, actions vues. Uniquement ce qu'une caméra aurait enregistré."
+    },
+    {
+     "t": "Remplir pense et ressent",
+     "min": 15,
+     "d": "Maintenant les inférences : ce qu'ils pensent sans doute, ce qu'ils ressentent. Un point d'interrogation sur chaque supposition. Les suppositions deviennent des questions d'entretien."
+    },
+    {
+     "t": "Douleurs et gains",
+     "min": 10,
+     "d": "À partir des quatre quadrants, sors les 3 douleurs et 3 gains principaux. Vote s'il y a plus de cinq candidats."
+    },
+    {
+     "t": "Nommer la surprise",
+     "min": 5,
+     "d": "Chacun dit une chose à laquelle il ne s'attendait pas. Note-les : c'est le résultat le plus précieux de l'heure."
+    }
+   ],
+   "pitfalls": [
+    "Personne n'a de matériau ? N'anime pas la session. Une empathy map remplie d'imagination est pire que rien : elle ressemble à de la recherche.",
+    "Garde 'dit' aux mots réels. Les paraphrases perdent le signal qui t'apprend comment les utilisateurs nomment les choses.",
+    "Ne laisse pas la personne la plus bavarde dicter 'ressent'. Écriture silencieuse d'abord, puis affichage, toujours."
+   ],
+   "next": "Les douleurs et gains alimentent le Value Proposition Canvas ou les questions How Might We. Les stickies avec point d'interrogation deviennent le script de tes prochains entretiens. Garde la carte à côté du persona concerné.",
+   "source": "Dave Gray, XPLANE"
+  }
+ },
+ "journey": {
+  "en": {
+   "prep": [
+    "Invite one person per function that touches the customer: product, design, support, sales, and ops if onboarding involves them. Six to eight people.",
+    "Pick one persona and one scenario end to end, for example 'from first visit to second month of use'. Send it two days before.",
+    "Bring data: funnel numbers per step, top 10 support reasons, NPS verbatims. Print them or pin them on the board.",
+    "On the board: stages in columns, rows for actions, touchpoints, emotions, pain points, opportunities. Pre-fill the stage names from your funnel."
+   ],
+   "agenda": [
+    {
+     "t": "Frame the scenario",
+     "min": 10,
+     "d": "Read the persona and scenario. Agree on the first and last stage so nobody maps the whole company."
+    },
+    {
+     "t": "Actions per stage",
+     "min": 30,
+     "d": "For each stage, what does the customer actually do? One action per sticky. Support and sales usually know steps product never sees; give them the pen."
+    },
+    {
+     "t": "Touchpoints and channels",
+     "min": 20,
+     "d": "Under each action: the screen, email, call, or person involved. Mark internal handoffs, they are where journeys break."
+    },
+    {
+     "t": "Emotions with evidence",
+     "min": 30,
+     "d": "Draw the emotion line stage by stage. Every dip must have a quote or a number next to it. A dip without evidence gets a question mark."
+    },
+    {
+     "t": "Pain points and opportunities",
+     "min": 40,
+     "d": "Post pains under the dips, then opportunities under each pain. Cluster duplicates. Vote for the top 5 pains with three dots each."
+    },
+    {
+     "t": "Pick the battle",
+     "min": 30,
+     "d": "For the top 3 pains: what would fix it, who owns it, what metric would move. Assign an owner for each before leaving the room."
+    },
+    {
+     "t": "Close",
+     "min": 20,
+     "d": "Photograph or export the board. Agree on when the map is revisited: after the next research round or the next release."
+    }
+   ],
+   "pitfalls": [
+    "Do not map the ideal journey. Map what happens today, with the ugly workarounds. The ideal comes in the service blueprint or the redesign.",
+    "One persona, one scenario. A map that covers three personas shows nothing.",
+    "Emotions without evidence turn the session into a debate. Bring numbers and quotes, or mark guesses as guesses."
+   ],
+   "next": "The top pains become How Might We questions or opportunities in the Opportunity Solution Tree. The map with owners goes to the roadmap discussion. Print it and leave it on the wall until it is out of date.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Invite une personne par fonction en contact avec le client : produit, design, support, ventes, ops si l'onboarding les implique. Six à huit personnes.",
+    "Choisis un persona et un scénario de bout en bout, par exemple 'de la première visite au deuxième mois d'usage'. Envoie-le deux jours avant.",
+    "Apporte des données : chiffres du funnel par étape, top 10 des motifs support, verbatims NPS. Imprime-les ou épingle-les sur le board.",
+    "Sur le board : les étapes en colonnes, des lignes pour actions, points de contact, émotions, frictions, opportunités. Préremplis les noms d'étapes depuis ton funnel."
+   ],
+   "agenda": [
+    {
+     "t": "Cadrer le scénario",
+     "min": 10,
+     "d": "Lis le persona et le scénario. Mets-vous d'accord sur la première et la dernière étape pour que personne ne cartographie toute l'entreprise."
+    },
+    {
+     "t": "Actions par étape",
+     "min": 30,
+     "d": "Pour chaque étape, que fait réellement le client ? Une action par sticky. Support et ventes connaissent des étapes que le produit ne voit jamais : donne-leur le stylo."
+    },
+    {
+     "t": "Points de contact et canaux",
+     "min": 20,
+     "d": "Sous chaque action : l'écran, l'email, l'appel ou la personne impliquée. Marque les passages de relais internes, c'est là que les parcours cassent."
+    },
+    {
+     "t": "Émotions avec preuves",
+     "min": 30,
+     "d": "Trace la courbe d'émotion étape par étape. Chaque creux a une citation ou un chiffre à côté. Un creux sans preuve prend un point d'interrogation."
+    },
+    {
+     "t": "Frictions et opportunités",
+     "min": 40,
+     "d": "Colle les frictions sous les creux, puis les opportunités sous chaque friction. Regroupe les doublons. Vote pour les 5 frictions principales, trois gommettes chacun."
+    },
+    {
+     "t": "Choisir la bataille",
+     "min": 30,
+     "d": "Pour les 3 frictions principales : ce qui la corrige, qui en est responsable, quelle métrique bougerait. Un responsable par friction avant de sortir."
+    },
+    {
+     "t": "Clore",
+     "min": 20,
+     "d": "Photographie ou exporte le board. Décide quand la carte est révisée : après la prochaine vague de recherche ou la prochaine release."
+    }
+   ],
+   "pitfalls": [
+    "Ne cartographie pas le parcours idéal. Cartographie ce qui se passe aujourd'hui, avec les bricolages moches. L'idéal vient dans le service blueprint ou la refonte.",
+    "Un persona, un scénario. Une carte qui couvre trois personas ne montre rien.",
+    "Des émotions sans preuve transforment la session en débat. Apporte chiffres et citations, ou marque les suppositions comme telles."
+   ],
+   "next": "Les frictions principales deviennent des questions How Might We ou des opportunités dans l'Opportunity Solution Tree. La carte avec ses responsables part en discussion de roadmap. Imprime-la et laisse-la au mur jusqu'à ce qu'elle soit périmée.",
+   "source": ""
+  }
+ },
+ "research-plan": {
+  "en": {
+   "prep": [
+    "Two people are enough: the designer or researcher who will run the interviews and the PM who owns the decision the research must inform.",
+    "Write down the decision at stake before the session: 'should we build X for segment Y this quarter'. No decision, no research.",
+    "Bring the list of what the team already believes, ideally the assumption map if you ran one.",
+    "On the board: the five blocks (research questions, hypotheses, method, recruiting, interview guide) empty."
+   ],
+   "agenda": [
+    {
+     "t": "Name the decision",
+     "min": 10,
+     "d": "Write the decision the research informs and the date it is needed. Everything else is scoped by this."
+    },
+    {
+     "t": "Research questions",
+     "min": 20,
+     "d": "Write 3 to 5 questions you need answered, phrased as unknowns ('how do admins choose a tool today'), not as survey questions."
+    },
+    {
+     "t": "Hypotheses",
+     "min": 15,
+     "d": "For each question, what you currently believe. Written down, so you can notice later when the interviews contradict you."
+    },
+    {
+     "t": "Method and recruiting",
+     "min": 15,
+     "d": "Interviews, observation, diary, or usability test. Then who: segment, screening criteria, how many (5 to 8 per segment), where you find them, what incentive."
+    },
+    {
+     "t": "Interview guide",
+     "min": 25,
+     "d": "Write the opening, 6 to 8 open questions ordered from past behavior to opinions, and the closing. Rewrite every question that can be answered by yes or no."
+    },
+    {
+     "t": "Pilot and schedule",
+     "min": 5,
+     "d": "Decide who pilots the guide on a colleague tomorrow, and block the interview slots in the calendar now."
+    }
+   ],
+   "pitfalls": [
+    "Do not ask people what they want. Ask what they did last time. 'Would you use…' gives you politeness, not behavior.",
+    "Five good interviews beat a 200-answer survey when you do not yet know what to ask. Start qualitative.",
+    "Do not recruit from your fan base or your team's friends. Screen for the situation, not the enthusiasm."
+   ],
+   "next": "The guide goes to whoever runs the interviews; notes come back within 24 hours of each session. After 5 to 8 interviews, run an affinity map to synthesize, then update the assumption map.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Deux personnes suffisent : le designer ou chercheur qui mènera les entretiens et le PM qui porte la décision que la recherche doit éclairer.",
+    "Écris la décision en jeu avant la session : 'faut-il construire X pour le segment Y ce trimestre'. Pas de décision, pas de recherche.",
+    "Apporte la liste de ce que l'équipe croit déjà, idéalement l'assumption map si tu l'as faite.",
+    "Sur le board : les cinq blocs (questions de recherche, hypothèses, méthode, recrutement, guide d'entretien) vides."
+   ],
+   "agenda": [
+    {
+     "t": "Nommer la décision",
+     "min": 10,
+     "d": "Écris la décision que la recherche éclaire et la date où il la faut. Tout le reste en découle."
+    },
+    {
+     "t": "Questions de recherche",
+     "min": 20,
+     "d": "Écris 3 à 5 questions auxquelles tu dois répondre, formulées comme des inconnues ('comment les admins choisissent un outil aujourd'hui'), pas comme des questions de sondage."
+    },
+    {
+     "t": "Hypothèses",
+     "min": 15,
+     "d": "Pour chaque question, ce que tu crois aujourd'hui. Par écrit, pour remarquer plus tard quand les entretiens te contredisent."
+    },
+    {
+     "t": "Méthode et recrutement",
+     "min": 15,
+     "d": "Entretiens, observation, journal de bord ou test d'utilisabilité. Puis qui : segment, critères de sélection, combien (5 à 8 par segment), où les trouver, quelle contrepartie."
+    },
+    {
+     "t": "Guide d'entretien",
+     "min": 25,
+     "d": "Écris l'ouverture, 6 à 8 questions ouvertes ordonnées du comportement passé vers les opinions, et la clôture. Réécris toute question à laquelle on répond par oui ou non."
+    },
+    {
+     "t": "Pilote et planning",
+     "min": 5,
+     "d": "Décide qui teste le guide sur un collègue demain, et bloque les créneaux d'entretien dans l'agenda maintenant."
+    }
+   ],
+   "pitfalls": [
+    "Ne demande pas aux gens ce qu'ils veulent. Demande ce qu'ils ont fait la dernière fois. 'Utiliseriez-vous…' te donne de la politesse, pas du comportement.",
+    "Cinq bons entretiens valent mieux qu'un sondage à 200 réponses quand tu ne sais pas encore quoi demander. Commence par le qualitatif.",
+    "Ne recrute pas dans ta base de fans ni chez les amis de l'équipe. Sélectionne sur la situation, pas sur l'enthousiasme."
+   ],
+   "next": "Le guide part chez celui qui mène les entretiens ; les notes reviennent sous 24 heures après chaque session. Après 5 à 8 entretiens, fais une affinity map pour synthétiser, puis mets à jour l'assumption map.",
+   "source": ""
+  }
+ },
+ "assumptions": {
+  "en": {
+   "prep": [
+    "Invite the trio: product, tech, design. Add the sponsor only if the initiative is big enough that their beliefs matter.",
+    "Send the problem statement or the vision board the day before. Ask everyone to arrive with 10 assumptions written down.",
+    "On the board: the 2x2 (importance × evidence) and three colored sticky sets: desirability, feasibility, viability.",
+    "Prepare the list of what you already know: analytics, past research, competitor facts. It stops people from testing what is already proven."
+   ],
+   "agenda": [
+    {
+     "t": "Explain the three risks",
+     "min": 10,
+     "d": "Desirability: do they want it. Feasibility: can we build it. Viability: does it work for the business. One example of each from a past failure of the company."
+    },
+    {
+     "t": "Dump assumptions",
+     "min": 25,
+     "d": "Silent writing: 'we believe that…', one per sticky, colored by risk type. Aim for 40 or more. Quantity first, no filtering."
+    },
+    {
+     "t": "Deduplicate and sharpen",
+     "min": 20,
+     "d": "Group duplicates, split vague ones. 'Users will like it' becomes 'admins will finish setup in under 10 minutes without help'."
+    },
+    {
+     "t": "Place on the grid",
+     "min": 30,
+     "d": "One at a time, the group places each sticky: how much does the project die if this is false, how much evidence do we have. Argue for 30 seconds max per sticky."
+    },
+    {
+     "t": "Pick the top right",
+     "min": 20,
+     "d": "The high-importance, low-evidence corner is the test list. Rank it. Take the top 3 to 5."
+    },
+    {
+     "t": "Design the tests",
+     "min": 15,
+     "d": "For each: the cheapest test that could prove it false in under two weeks, the metric, the owner, the deadline."
+    }
+   ],
+   "pitfalls": [
+    "Assumptions written as facts ('the market is growing') do not get tested. Force the 'we believe that' prefix.",
+    "Do not let engineers only write feasibility and PMs only desirability. Everyone writes all three colors.",
+    "A test that takes six weeks is not a test, it is the project. Shrink it until it fits in two weeks."
+   ],
+   "next": "The top assumptions become the rows of the experiment board and the questions of the research plan. Bring the grid back after each test and move the stickies: evidence up, or importance down.",
+   "source": "David Bland"
+  },
+  "fr": {
+   "prep": [
+    "Invite le trio : produit, tech, design. Ajoute le sponsor seulement si l'initiative est assez grosse pour que ses croyances comptent.",
+    "Envoie le problem statement ou le vision board la veille. Demande à chacun d'arriver avec 10 hypothèses écrites.",
+    "Sur le board : le 2x2 (importance × preuve) et trois couleurs de stickies : désirabilité, faisabilité, viabilité.",
+    "Prépare la liste de ce que tu sais déjà : analytics, recherche passée, faits sur les concurrents. Ça évite de tester ce qui est déjà prouvé."
+   ],
+   "agenda": [
+    {
+     "t": "Expliquer les trois risques",
+     "min": 10,
+     "d": "Désirabilité : est-ce qu'ils le veulent. Faisabilité : sait-on le construire. Viabilité : est-ce que ça marche pour le business. Un exemple de chaque tiré d'un échec passé de la boîte."
+    },
+    {
+     "t": "Vider les hypothèses",
+     "min": 25,
+     "d": "Écriture silencieuse : 'nous croyons que…', une par sticky, colorée par type de risque. Vise 40 ou plus. La quantité d'abord, pas de filtre."
+    },
+    {
+     "t": "Dédoublonner et affûter",
+     "min": 20,
+     "d": "Regroupe les doublons, découpe les vagues. 'Les utilisateurs vont aimer' devient 'les admins finissent la configuration en moins de 10 minutes sans aide'."
+    },
+    {
+     "t": "Placer sur la grille",
+     "min": 30,
+     "d": "Un par un, le groupe place chaque sticky : à quel point le projet meurt si c'est faux, quelle preuve on a. 30 secondes de débat max par sticky."
+    },
+    {
+     "t": "Prendre le coin haut droit",
+     "min": 20,
+     "d": "Le coin importance forte, preuve faible, c'est la liste à tester. Classe-la. Garde le top 3 à 5."
+    },
+    {
+     "t": "Concevoir les tests",
+     "min": 15,
+     "d": "Pour chacune : le test le moins cher qui pourrait la prouver fausse en moins de deux semaines, la métrique, le responsable, la date."
+    }
+   ],
+   "pitfalls": [
+    "Les hypothèses écrites comme des faits ('le marché grandit') ne se font pas tester. Impose le préfixe 'nous croyons que'.",
+    "Ne laisse pas les ingénieurs écrire seulement la faisabilité et les PM seulement la désirabilité. Tout le monde écrit les trois couleurs.",
+    "Un test qui prend six semaines n'est pas un test, c'est le projet. Réduis-le jusqu'à ce qu'il tienne en deux semaines."
+   ],
+   "next": "Les hypothèses du haut deviennent les lignes de l'experiment board et les questions du plan de recherche. Ressors la grille après chaque test et déplace les stickies : preuve vers le haut, ou importance vers le bas.",
+   "source": "David Bland"
+  }
+ },
+ "ost": {
+  "en": {
+   "prep": [
+    "Invite the product trio only: PM, designer, tech lead. The tree is theirs; stakeholders see it later.",
+    "Have the outcome ready: one measurable metric the team owns this quarter, agreed with leadership. Without it, postpone.",
+    "Bring the synthesis of your last 6 to 10 interviews: the affinity map themes or the journey pain points.",
+    "On the board: the outcome at the top, then empty levels for opportunities, solutions, experiments."
+   ],
+   "agenda": [
+    {
+     "t": "Lock the outcome",
+     "min": 15,
+     "d": "Write it at the root as a number to move: 'raise week-4 retention from 32 to 40 %'. If it is an output ('ship the new onboarding'), rewrite it."
+    },
+    {
+     "t": "List opportunities",
+     "min": 40,
+     "d": "From the research, post every need, pain, or desire heard from customers, in their words. Opportunities are not solutions: 'I never know if my invite was received' yes, 'add notifications' no."
+    },
+    {
+     "t": "Structure the opportunity space",
+     "min": 30,
+     "d": "Group opportunities into parents and children. A parent is a moment in the journey; children are specific pains inside it. Cut anything that does not plausibly move the outcome."
+    },
+    {
+     "t": "Choose the target opportunity",
+     "min": 20,
+     "d": "Compare sibling opportunities on size (how many customers), frequency, and confidence. Pick one. One. Write why the others wait."
+    },
+    {
+     "t": "Generate solutions",
+     "min": 30,
+     "d": "Under the target opportunity: at least 3 solution ideas, each one written by a different trio member first, then discussed. Cross out the solution that was in someone's head before the session."
+    },
+    {
+     "t": "Define the first experiments",
+     "min": 15,
+     "d": "For each surviving solution: the riskiest assumption and a test for it this sprint. Post it as a leaf under the solution."
+    }
+   ],
+   "pitfalls": [
+    "Do not put solutions at the opportunity level. If the sticky names a feature, it goes down one level or in the trash.",
+    "Do not pick three target opportunities to keep everyone happy. The tree exists to make one choice visible.",
+    "An outcome the team cannot influence within a quarter ('grow revenue') makes the tree useless. Pick the leading metric the team really moves."
+   ],
+   "next": "The tree lives in the team's space and is updated weekly during discovery. The experiments go to the experiment board. Show the tree, not a slide, when leadership asks why you build what you build.",
+   "source": "Teresa Torres"
+  },
+  "fr": {
+   "prep": [
+    "Invite le trio produit seulement : PM, designer, tech lead. L'arbre est le leur ; les stakeholders le voient plus tard.",
+    "Aie le résultat prêt : une métrique mesurable que l'équipe porte ce trimestre, validée par la direction. Sans ça, reporte.",
+    "Apporte la synthèse de tes 6 à 10 derniers entretiens : les thèmes de l'affinity map ou les frictions de la journey.",
+    "Sur le board : le résultat en haut, puis des niveaux vides pour opportunités, solutions, expériences."
+   ],
+   "agenda": [
+    {
+     "t": "Verrouiller le résultat",
+     "min": 15,
+     "d": "Écris-le à la racine comme un chiffre à bouger : 'passer la rétention à 4 semaines de 32 à 40 %'. Si c'est un livrable ('sortir le nouvel onboarding'), réécris."
+    },
+    {
+     "t": "Lister les opportunités",
+     "min": 40,
+     "d": "À partir de la recherche, colle chaque besoin, douleur ou envie entendu chez les clients, avec leurs mots. Une opportunité n'est pas une solution : 'je ne sais jamais si mon invitation est arrivée' oui, 'ajouter des notifications' non."
+    },
+    {
+     "t": "Structurer l'espace des opportunités",
+     "min": 30,
+     "d": "Regroupe en parents et enfants. Un parent est un moment du parcours ; les enfants sont des douleurs précises dedans. Coupe tout ce qui ne bouge pas plausiblement le résultat."
+    },
+    {
+     "t": "Choisir l'opportunité cible",
+     "min": 20,
+     "d": "Compare les opportunités soeurs sur taille (combien de clients), fréquence et confiance. Choisis-en une. Une seule. Écris pourquoi les autres attendent."
+    },
+    {
+     "t": "Générer des solutions",
+     "min": 30,
+     "d": "Sous l'opportunité cible : au moins 3 idées, chacune écrite d'abord par un membre différent du trio, puis discutée. Barre la solution qui était déjà dans une tête avant la session."
+    },
+    {
+     "t": "Définir les premières expériences",
+     "min": 15,
+     "d": "Pour chaque solution retenue : l'hypothèse la plus risquée et un test ce sprint. Colle-le en feuille sous la solution."
+    }
+   ],
+   "pitfalls": [
+    "Pas de solution au niveau opportunité. Si le sticky nomme une feature, il descend d'un niveau ou va à la poubelle.",
+    "Ne choisis pas trois opportunités cibles pour contenter tout le monde. L'arbre existe pour rendre un seul choix visible.",
+    "Un résultat que l'équipe ne peut pas influencer en un trimestre ('faire croître le revenu') rend l'arbre inutile. Prends la métrique amont que l'équipe bouge vraiment."
+   ],
+   "next": "L'arbre vit dans l'espace de l'équipe et se met à jour chaque semaine pendant la discovery. Les expériences partent dans l'experiment board. Montre l'arbre, pas une slide, quand la direction demande pourquoi tu construis ce que tu construis.",
+   "source": "Teresa Torres"
+  }
+ },
+ "blueprint": {
+  "en": {
+   "prep": [
+    "Invite one person from each function behind the scenes: ops, support, tech, plus product and design. Eight people max, and every function present or the blueprint has holes.",
+    "Start from an existing journey map. If you do not have one, run it first; a blueprint without the customer line is an org chart.",
+    "Collect the internal process docs, SLAs, and the tools list. Print the list of systems involved.",
+    "On the board: the customer actions row at the top, the line of visibility, front stage, back stage, systems rows, one column per journey step."
+   ],
+   "agenda": [
+    {
+     "t": "Recall the journey",
+     "min": 20,
+     "d": "Walk through the customer actions row from the journey map. Fix the columns. Nobody adds internal steps yet."
+    },
+    {
+     "t": "Front stage",
+     "min": 40,
+     "d": "Under each step: what the customer sees or who they talk to. Screens, emails, humans. Mark where the customer waits."
+    },
+    {
+     "t": "Back stage",
+     "min": 60,
+     "d": "What happens out of sight to make the front stage possible: manual checks, approvals, tickets, handoffs between teams. Support and ops drive this part; product listens."
+    },
+    {
+     "t": "Systems",
+     "min": 30,
+     "d": "The tools and data behind each back stage action. Draw the lines: where information is re-typed from one tool to another is a failure point."
+    },
+    {
+     "t": "Find the bottlenecks",
+     "min": 50,
+     "d": "Trace time and effort per column. Circle steps with a wait over 24 hours, a manual copy, or more than two handoffs. Vote for the three worst."
+    },
+    {
+     "t": "Owners and next step",
+     "min": 40,
+     "d": "For each bottleneck: is it a product fix, a process fix, or a staffing fix? Name an owner and a date to come back with a proposal."
+    }
+   ],
+   "pitfalls": [
+    "Do not map the process as documented. Map what people actually do, including the spreadsheet nobody admits to.",
+    "Keep the customer row honest and short. Blueprints die when the back stage takes 80 % of the board and nobody remembers the customer.",
+    "Half a day is the minimum. Splitting it across two short meetings loses the cross-function conversation that is the whole point."
+   ],
+   "next": "The bottlenecks list goes to the operations lead and the product lead together. Product fixes enter the prioritization matrix; process fixes go to the team charter or a dedicated ops sprint. Refresh the blueprint after any org change.",
+   "source": "G. Lynn Shostack"
+  },
+  "fr": {
+   "prep": [
+    "Invite une personne par fonction en coulisses : ops, support, tech, plus produit et design. Huit max, et chaque fonction présente, sinon le blueprint a des trous.",
+    "Pars d'une journey map existante. Si tu n'en as pas, fais-la d'abord ; un blueprint sans la ligne client est un organigramme.",
+    "Rassemble les docs de process internes, les SLA et la liste des outils. Imprime la liste des systèmes impliqués.",
+    "Sur le board : la ligne des actions client en haut, la ligne de visibilité, les lignes front stage, back stage, systèmes, une colonne par étape du parcours."
+   ],
+   "agenda": [
+    {
+     "t": "Rappeler le parcours",
+     "min": 20,
+     "d": "Parcours la ligne des actions client depuis la journey map. Fixe les colonnes. Personne n'ajoute d'étape interne pour l'instant."
+    },
+    {
+     "t": "Front stage",
+     "min": 40,
+     "d": "Sous chaque étape : ce que le client voit ou à qui il parle. Écrans, emails, humains. Marque où le client attend."
+    },
+    {
+     "t": "Back stage",
+     "min": 60,
+     "d": "Ce qui se passe hors de vue pour rendre le front stage possible : vérifications manuelles, validations, tickets, passages entre équipes. Support et ops mènent ; le produit écoute."
+    },
+    {
+     "t": "Systèmes",
+     "min": 30,
+     "d": "Les outils et données derrière chaque action de back stage. Trace les lignes : là où une info est ressaisie d'un outil à l'autre, c'est un point de rupture."
+    },
+    {
+     "t": "Trouver les goulots",
+     "min": 50,
+     "d": "Suis le temps et l'effort par colonne. Entoure les étapes avec une attente de plus de 24 h, une copie manuelle ou plus de deux passages de relais. Vote pour les trois pires."
+    },
+    {
+     "t": "Responsables et suite",
+     "min": 40,
+     "d": "Pour chaque goulot : correction produit, process ou effectif ? Nomme un responsable et une date pour revenir avec une proposition."
+    }
+   ],
+   "pitfalls": [
+    "Ne cartographie pas le process tel que documenté. Cartographie ce que les gens font vraiment, y compris le tableur que personne n'avoue.",
+    "Garde la ligne client honnête et courte. Les blueprints meurent quand le back stage prend 80 % du board et que personne ne se souvient du client.",
+    "Une demi-journée est le minimum. Découper en deux réunions courtes perd la conversation inter-fonctions qui est tout l'intérêt."
+   ],
+   "next": "La liste des goulots va au responsable des opérations et au responsable produit ensemble. Les corrections produit entrent dans la matrice de priorisation ; les corrections de process vont dans le team charter ou un sprint ops dédié. Rafraîchis le blueprint à chaque changement d'organisation.",
+   "source": "G. Lynn Shostack"
+  }
+ },
+ "kano": {
+  "en": {
+   "prep": [
+    "Pick 10 to 15 candidate features, described in one customer-facing sentence each. More than 15 and the questionnaire response rate collapses.",
+    "Send the paired questionnaire (functional and dysfunctional question per feature) to 30 or more customers a week before. Collect the answers in a sheet.",
+    "Invite product, one designer, and someone from customer success who can read the results against real accounts.",
+    "On the board: the Kano grid, one sticky per feature, and the classification counts already computed from the sheet."
+   ],
+   "agenda": [
+    {
+     "t": "Explain the categories",
+     "min": 15,
+     "d": "Basic: expected, absence angers. Performance: more is better. Delighter: unexpected, absence is fine. Indifferent: nobody cares. Give one example of each from your own product."
+    },
+    {
+     "t": "Place the features",
+     "min": 30,
+     "d": "Post each feature in the category that won the count. Mark close calls where two categories are within 10 %."
+    },
+    {
+     "t": "Read the surprises",
+     "min": 30,
+     "d": "Which features the team thought were delighters turned out basic, and which loud requests turned out indifferent. Customer success explains the accounts behind each surprise."
+    },
+    {
+     "t": "Segment check",
+     "min": 25,
+     "d": "Split the results by segment or plan. A feature basic for enterprise and indifferent for SMB is a packaging decision, not a build decision."
+    },
+    {
+     "t": "Decide",
+     "min": 20,
+     "d": "Basics missing go first, no debate. Then choose between performance and delighters based on strategy. Indifferent gets cut from the backlog today."
+    }
+   ],
+   "pitfalls": [
+    "Do not run Kano on features customers cannot picture. Vague descriptions produce indifferent scores that mean 'I did not understand'.",
+    "Do not skip the dysfunctional question. Without it you cannot tell a basic from a performance feature.",
+    "Delighters decay into basics within a couple of years. Do not treat today's classification as permanent."
+   ],
+   "next": "The classified list feeds the RICE scoring or the roadmap: basics first, then the strategic choice. Share the surprises with sales and marketing; they change the pitch. Rerun on a new segment or every 12 months.",
+   "source": "Noriaki Kano"
+  },
+  "fr": {
+   "prep": [
+    "Choisis 10 à 15 features candidates, décrites en une phrase orientée client chacune. Au-delà de 15, le taux de réponse au questionnaire s'effondre.",
+    "Envoie le questionnaire par paires (question fonctionnelle et dysfonctionnelle par feature) à 30 clients ou plus une semaine avant. Collecte les réponses dans un tableur.",
+    "Invite le produit, un designer, et quelqu'un du customer success qui sait lire les résultats face à de vrais comptes.",
+    "Sur le board : la grille Kano, un sticky par feature, et les décomptes de classification déjà calculés depuis le tableur."
+   ],
+   "agenda": [
+    {
+     "t": "Expliquer les catégories",
+     "min": 15,
+     "d": "Basique : attendu, l'absence énerve. Performance : plus c'est mieux. Attractif : inattendu, l'absence ne gêne pas. Indifférent : personne ne s'en soucie. Un exemple de chaque tiré de ton propre produit."
+    },
+    {
+     "t": "Placer les features",
+     "min": 30,
+     "d": "Colle chaque feature dans la catégorie qui a gagné le décompte. Marque les cas serrés où deux catégories sont à moins de 10 %."
+    },
+    {
+     "t": "Lire les surprises",
+     "min": 30,
+     "d": "Quelles features jugées attractives par l'équipe sont ressorties basiques, et quelles demandes bruyantes sont ressorties indifférentes. Le customer success explique les comptes derrière chaque surprise."
+    },
+    {
+     "t": "Vérifier par segment",
+     "min": 25,
+     "d": "Découpe les résultats par segment ou par offre. Une feature basique pour l'enterprise et indifférente pour les PME, c'est une décision de packaging, pas de construction."
+    },
+    {
+     "t": "Décider",
+     "min": 20,
+     "d": "Les basiques manquants passent en premier, sans débat. Puis choisis entre performance et attractif selon la stratégie. L'indifférent sort du backlog aujourd'hui."
+    }
+   ],
+   "pitfalls": [
+    "Ne fais pas de Kano sur des features que les clients ne peuvent pas se représenter. Des descriptions vagues produisent des scores indifférents qui veulent dire 'je n'ai pas compris'.",
+    "Ne saute pas la question dysfonctionnelle. Sans elle, tu ne distingues pas un basique d'une feature de performance.",
+    "Les attractifs deviennent des basiques en deux ou trois ans. Ne traite pas la classification d'aujourd'hui comme définitive."
+   ],
+   "next": "La liste classée alimente le scoring RICE ou la roadmap : les basiques d'abord, puis le choix stratégique. Partage les surprises avec les ventes et le marketing ; elles changent le pitch. Refais l'exercice sur un nouveau segment ou tous les 12 mois.",
+   "source": "Noriaki Kano"
+  }
+ },
+ "hmw": {
+  "en": {
+   "prep": [
+    "Invite the product team plus anyone who joined the research. Five to eight people.",
+    "Bring the insights: the top pains from the journey map, the affinity map themes, or the persona frustrations. Pin them on the left of the board.",
+    "On the board: three columns, insight, How Might We, votes. One row per insight.",
+    "Send the insights the day before so people arrive having read them, not discovering them live."
+   ],
+   "agenda": [
+    {
+     "t": "Show the format",
+     "min": 5,
+     "d": "Take one insight and rewrite it live as a HMW: 'admins abandon setup at the invite step' becomes 'how might we make inviting the team the fastest step of setup'."
+    },
+    {
+     "t": "Write in silence",
+     "min": 15,
+     "d": "Everyone writes HMW questions for every insight, one per sticky. Aim for three per insight. No talking."
+    },
+    {
+     "t": "Post and read",
+     "min": 10,
+     "d": "Post them under each insight. Each person reads their own aloud in one breath. No comments yet."
+    },
+    {
+     "t": "Sort by altitude",
+     "min": 15,
+     "d": "Too broad ('how might we improve onboarding') goes up, too narrow ('how might we add a copy-link button') goes down. Rewrite the extremes to the middle."
+    },
+    {
+     "t": "Vote",
+     "min": 10,
+     "d": "Three dots each. Then the PM picks the final 5 to 10 with the votes as input, not as verdict."
+    },
+    {
+     "t": "Bridge to ideation",
+     "min": 5,
+     "d": "Write the selected HMWs at the top of the ideation board. Schedule the ideation session within the week."
+    }
+   ],
+   "pitfalls": [
+    "A HMW that contains the solution is not a question. If it names a feature, rewrite it around the need.",
+    "Do not skip the silent writing. Group writing produces the first loud idea, then variations of it.",
+    "Ten HMWs is the ceiling. With thirty, ideation spreads thin and nothing gets prototyped."
+   ],
+   "next": "The selected HMWs open the ideation session: Crazy 8's, brainwriting, or a design sprint. Keep the full list, the ones not selected are next quarter's raw material.",
+   "source": "Procter & Gamble / IDEO"
+  },
+  "fr": {
+   "prep": [
+    "Invite l'équipe produit plus ceux qui ont participé à la recherche. Cinq à huit personnes.",
+    "Apporte les insights : les frictions principales de la journey map, les thèmes de l'affinity map ou les frustrations du persona. Épingle-les à gauche du board.",
+    "Sur le board : trois colonnes, insight, Comment pourrions-nous, votes. Une ligne par insight.",
+    "Envoie les insights la veille pour que les gens arrivent en les ayant lus, pas en les découvrant en direct."
+   ],
+   "agenda": [
+    {
+     "t": "Montrer le format",
+     "min": 5,
+     "d": "Prends un insight et réécris-le en direct en HMW : 'les admins abandonnent la configuration à l'étape invitation' devient 'comment pourrions-nous faire de l'invitation l'étape la plus rapide de la configuration'."
+    },
+    {
+     "t": "Écrire en silence",
+     "min": 15,
+     "d": "Chacun écrit des questions HMW pour chaque insight, une par sticky. Vise trois par insight. Sans parler."
+    },
+    {
+     "t": "Afficher et lire",
+     "min": 10,
+     "d": "Colle-les sous chaque insight. Chacun lit les siennes à voix haute d'une traite. Pas de commentaire pour l'instant."
+    },
+    {
+     "t": "Trier par altitude",
+     "min": 15,
+     "d": "Trop large ('comment améliorer l'onboarding') monte, trop étroit ('comment ajouter un bouton copier le lien') descend. Réécris les extrêmes vers le milieu."
+    },
+    {
+     "t": "Voter",
+     "min": 10,
+     "d": "Trois gommettes chacun. Puis le PM choisit les 5 à 10 finales avec les votes comme entrée, pas comme verdict."
+    },
+    {
+     "t": "Passerelle vers l'idéation",
+     "min": 5,
+     "d": "Écris les HMW retenues en haut du board d'idéation. Planifie la session d'idéation dans la semaine."
+    }
+   ],
+   "pitfalls": [
+    "Une HMW qui contient la solution n'est pas une question. Si elle nomme une feature, réécris-la autour du besoin.",
+    "Ne saute pas l'écriture silencieuse. L'écriture en groupe produit la première idée bruyante, puis ses variantes.",
+    "Dix HMW, c'est le plafond. Avec trente, l'idéation s'éparpille et rien n'est prototypé."
+   ],
+   "next": "Les HMW retenues ouvrent la session d'idéation : Crazy 8's, brainwriting ou design sprint. Garde la liste complète, les non retenues sont la matière brute du trimestre prochain.",
+   "source": "Procter & Gamble / IDEO"
+  }
+ },
+ "mindmap": {
+  "en": {
+   "prep": [
+    "Three to five people. Beyond that, one person draws and the others watch.",
+    "Choose one central topic phrased as a noun, not a question: 'onboarding for teams', not 'how to improve onboarding'.",
+    "On the board: the topic in the center, nothing else. Do not pre-draw branches, that is the work.",
+    "Tell participants it is a divergence session: no evaluation, no 'we tried that', for one hour."
+   ],
+   "agenda": [
+    {
+     "t": "State the topic",
+     "min": 5,
+     "d": "Write it in the center. Agree on the one thing you are exploring and the things you are explicitly not."
+    },
+    {
+     "t": "First-level branches",
+     "min": 10,
+     "d": "Each person proposes main branches: angles, actors, moments, constraints. Keep 4 to 7. Merge overlaps."
+    },
+    {
+     "t": "Solo expansion",
+     "min": 15,
+     "d": "Each person takes one branch and expands it alone: sub-branches, examples, questions. Two levels deep minimum."
+    },
+    {
+     "t": "Rotate",
+     "min": 15,
+     "d": "Everyone moves to the next branch and adds to what is there. Two rotations. Nobody edits, only adds."
+    },
+    {
+     "t": "Read the map",
+     "min": 10,
+     "d": "Walk the map together. Circle the branches that are dense (known territory) and the ones that are thin (blind spots or dead ends)."
+    },
+    {
+     "t": "Pick the threads",
+     "min": 5,
+     "d": "Choose the 2 or 3 sub-branches worth a real investigation. Write them as next steps with an owner."
+    }
+   ],
+   "pitfalls": [
+    "Do not start evaluating during expansion. The moment someone says 'that will not work', the map stops growing.",
+    "Thin branches are information. Do not pad them to look balanced; ask why they are thin.",
+    "A mind map is a starting point, not a deliverable. If it ends up in a slide deck as is, the session failed."
+   ],
+   "next": "The selected threads become research questions, HMW questions, or assumptions to map. The map itself is archived; nobody needs to read it again.",
+   "source": "Tony Buzan"
+  },
+  "fr": {
+   "prep": [
+    "Trois à cinq personnes. Au-delà, une personne dessine et les autres regardent.",
+    "Choisis un sujet central formulé comme un nom, pas une question : 'l'onboarding des équipes', pas 'comment améliorer l'onboarding'.",
+    "Sur le board : le sujet au centre, rien d'autre. Ne prédessine pas les branches, c'est le travail.",
+    "Dis aux participants que c'est une session de divergence : pas d'évaluation, pas de 'on a déjà essayé', pendant une heure."
+   ],
+   "agenda": [
+    {
+     "t": "Poser le sujet",
+     "min": 5,
+     "d": "Écris-le au centre. Mettez-vous d'accord sur la seule chose que vous explorez et sur ce que vous n'explorez explicitement pas."
+    },
+    {
+     "t": "Branches de premier niveau",
+     "min": 10,
+     "d": "Chacun propose des branches principales : angles, acteurs, moments, contraintes. Garde 4 à 7. Fusionne les recouvrements."
+    },
+    {
+     "t": "Expansion en solo",
+     "min": 15,
+     "d": "Chacun prend une branche et la développe seul : sous-branches, exemples, questions. Deux niveaux de profondeur minimum."
+    },
+    {
+     "t": "Tourner",
+     "min": 15,
+     "d": "Tout le monde passe à la branche suivante et ajoute à ce qui existe. Deux rotations. Personne ne modifie, on ajoute seulement."
+    },
+    {
+     "t": "Lire la carte",
+     "min": 10,
+     "d": "Parcourez la carte ensemble. Entoure les branches denses (territoire connu) et les branches maigres (angles morts ou impasses)."
+    },
+    {
+     "t": "Choisir les fils",
+     "min": 5,
+     "d": "Choisis les 2 ou 3 sous-branches qui méritent une vraie investigation. Écris-les comme prochaines étapes avec un responsable."
+    }
+   ],
+   "pitfalls": [
+    "Ne commence pas à évaluer pendant l'expansion. Dès que quelqu'un dit 'ça ne marchera pas', la carte arrête de grandir.",
+    "Les branches maigres sont une information. Ne les remplis pas pour faire joli ; demande pourquoi elles sont maigres.",
+    "Une mind map est un point de départ, pas un livrable. Si elle finit telle quelle dans un deck, la session a raté."
+   ],
+   "next": "Les fils retenus deviennent des questions de recherche, des HMW ou des hypothèses à cartographier. La carte elle-même est archivée ; personne n'a besoin de la relire.",
+   "source": "Tony Buzan"
+  }
+ },
+ "affinity": {
+  "en": {
+   "prep": [
+    "Invite only the people who ran the interviews or read every transcript. Three to five. Others slow it down and guess.",
+    "Before the session, everyone extracts observations from their interviews: one fact or quote per sticky, tagged with the interviewee code. Aim for 100 to 300 stickies in total.",
+    "On the board: an empty wall. No pre-made categories, that is the anti-pattern.",
+    "Block two uninterrupted hours. Affinity mapping in 30-minute chunks loses the emerging structure."
+   ],
+   "agenda": [
+    {
+     "t": "Rules",
+     "min": 5,
+     "d": "One observation per sticky, cluster by meaning not by keyword, anyone can move any sticky, no naming groups before step 4."
+    },
+    {
+     "t": "Post everything",
+     "min": 15,
+     "d": "Dump all stickies on the wall in random order. Read a few aloud so people get the tone of the material."
+    },
+    {
+     "t": "Cluster in silence",
+     "min": 40,
+     "d": "Move stickies next to those that say the same thing. Silent. When two people disagree, duplicate the sticky. Let groups split and merge."
+    },
+    {
+     "t": "Name the groups",
+     "min": 30,
+     "d": "Write a header for each group as a full sentence in the user's voice: 'I do not trust the numbers on the dashboard', not 'trust'. Sub-group if a cluster exceeds 15."
+    },
+    {
+     "t": "Rank and cross-check",
+     "min": 20,
+     "d": "Count interviewees per theme, not stickies. A theme from one talkative person is not a theme. Order by breadth and intensity."
+    },
+    {
+     "t": "Write the insight sheet",
+     "min": 10,
+     "d": "Top 5 to 8 themes, each with the count and two quotes. This sheet is the deliverable, not the wall."
+    }
+   ],
+   "pitfalls": [
+    "Do not create categories first and sort into them. You will find what you expected and nothing else.",
+    "Do not count stickies. Count people. One interviewee can generate 20 stickies about their pet peeve.",
+    "Do not name groups with a single word. Single words hide disagreement about what the group means."
+   ],
+   "next": "The insight sheet feeds the How Might We session, the opportunity level of the OST, and updates the assumption map. Share it with the whole team within 48 hours, while the interviews are fresh.",
+   "source": "Jiro Kawakita (KJ method)"
+  },
+  "fr": {
+   "prep": [
+    "Invite seulement ceux qui ont mené les entretiens ou lu toutes les transcriptions. Trois à cinq. Les autres ralentissent et devinent.",
+    "Avant la session, chacun extrait des observations de ses entretiens : un fait ou une citation par sticky, avec le code de l'interviewé. Vise 100 à 300 stickies au total.",
+    "Sur le board : un mur vide. Pas de catégories préfaites, c'est l'anti-pattern.",
+    "Bloque deux heures sans interruption. Une affinity map par tranches de 30 minutes perd la structure qui émerge."
+   ],
+   "agenda": [
+    {
+     "t": "Règles",
+     "min": 5,
+     "d": "Une observation par sticky, on regroupe par sens et pas par mot-clé, n'importe qui déplace n'importe quel sticky, pas de nom de groupe avant l'étape 4."
+    },
+    {
+     "t": "Tout afficher",
+     "min": 15,
+     "d": "Vide tous les stickies sur le mur dans le désordre. Lis-en quelques-uns à voix haute pour donner le ton du matériau."
+    },
+    {
+     "t": "Regrouper en silence",
+     "min": 40,
+     "d": "Déplace les stickies à côté de ceux qui disent la même chose. En silence. Quand deux personnes ne sont pas d'accord, duplique le sticky. Laisse les groupes se scinder et fusionner."
+    },
+    {
+     "t": "Nommer les groupes",
+     "min": 30,
+     "d": "Écris un titre par groupe, en phrase complète avec la voix de l'utilisateur : 'je ne fais pas confiance aux chiffres du dashboard', pas 'confiance'. Sous-groupe si un cluster dépasse 15."
+    },
+    {
+     "t": "Classer et recouper",
+     "min": 20,
+     "d": "Compte les interviewés par thème, pas les stickies. Un thème porté par une seule personne bavarde n'est pas un thème. Ordonne par largeur et intensité."
+    },
+    {
+     "t": "Écrire la fiche d'insights",
+     "min": 10,
+     "d": "Top 5 à 8 thèmes, chacun avec le décompte et deux citations. Cette fiche est le livrable, pas le mur."
+    }
+   ],
+   "pitfalls": [
+    "Ne crée pas les catégories d'abord pour trier dedans. Tu trouveras ce que tu attendais et rien d'autre.",
+    "Ne compte pas les stickies. Compte les personnes. Un interviewé peut générer 20 stickies sur sa marotte.",
+    "Ne nomme pas les groupes d'un seul mot. Un mot seul cache le désaccord sur ce que le groupe veut dire."
+   ],
+   "next": "La fiche d'insights alimente la session How Might We, le niveau opportunités de l'OST, et met à jour l'assumption map. Partage-la à toute l'équipe sous 48 heures, tant que les entretiens sont frais.",
+   "source": "Jiro Kawakita (méthode KJ)"
+  }
+ },
+ "crazy8": {
+  "en": {
+   "prep": [
+    "Everyone who will build or decide, including engineers and the PM. Drawing skill is irrelevant; say it in the invite.",
+    "One HMW question or one screen to redesign, chosen before the session. Post it big at the top.",
+    "Paper folded in eight, or a 2x4 grid per person on the board, plus a timer visible to all.",
+    "Show two or three examples of ugly but useful sketches so people stop worrying about drawing."
+   ],
+   "agenda": [
+    {
+     "t": "Brief",
+     "min": 5,
+     "d": "Read the HMW or show the screen. Rule: eight ideas, one minute each, boxes not art, no talking, no erasing."
+    },
+    {
+     "t": "Eight minutes",
+     "min": 8,
+     "d": "Start the timer, call each minute out loud. When someone is stuck, tell them to redraw their best idea with one thing changed."
+    },
+    {
+     "t": "Pick and detail",
+     "min": 10,
+     "d": "Each person picks their strongest box and redraws it larger with a title and three annotations. Still silent."
+    },
+    {
+     "t": "Gallery walk",
+     "min": 12,
+     "d": "Post the detailed sketches. Everyone walks and puts dots on the details they find interesting, not on whole sketches."
+    },
+    {
+     "t": "Explain the winners",
+     "min": 8,
+     "d": "The three most dotted sketches: the author explains in 90 seconds. Others ask questions only, no critique."
+    },
+    {
+     "t": "Decide",
+     "min": 2,
+     "d": "The decider names what goes to prototype. Write it down before leaving."
+    }
+   ],
+   "pitfalls": [
+    "Do not give ten minutes instead of eight. The pressure is the method; comfort produces the same idea eight times.",
+    "Do not let people present their sketch before the dot vote. Pitching skill would replace idea quality.",
+    "Do not run it without a decider. Eight sketches and no decision is an afternoon lost."
+   ],
+   "next": "The chosen sketch goes to wireframes or a prototype within the week. Keep the other sketches in a shared folder; they resurface when the first prototype fails a test.",
+   "source": "Jake Knapp, GV"
+  },
+  "fr": {
+   "prep": [
+    "Tous ceux qui vont construire ou décider, ingénieurs et PM compris. Savoir dessiner n'a aucune importance ; dis-le dans l'invitation.",
+    "Une question HMW ou un écran à refaire, choisi avant la session. Affiche-le en grand en haut.",
+    "Une feuille pliée en huit, ou une grille 2x4 par personne sur le board, plus un timer visible de tous.",
+    "Montre deux ou trois exemples de croquis moches mais utiles pour que les gens arrêtent de stresser sur le dessin."
+   ],
+   "agenda": [
+    {
+     "t": "Brief",
+     "min": 5,
+     "d": "Lis la HMW ou montre l'écran. Règle : huit idées, une minute chacune, des cases pas de l'art, pas de parole, pas de gomme."
+    },
+    {
+     "t": "Huit minutes",
+     "min": 8,
+     "d": "Lance le timer, annonce chaque minute à voix haute. Quand quelqu'un bloque, dis-lui de redessiner sa meilleure idée en changeant une seule chose."
+    },
+    {
+     "t": "Choisir et détailler",
+     "min": 10,
+     "d": "Chacun prend sa case la plus forte et la redessine en grand avec un titre et trois annotations. Toujours en silence."
+    },
+    {
+     "t": "Galerie",
+     "min": 12,
+     "d": "Affiche les croquis détaillés. Tout le monde circule et met des gommettes sur les détails intéressants, pas sur des croquis entiers."
+    },
+    {
+     "t": "Expliquer les gagnants",
+     "min": 8,
+     "d": "Les trois croquis les plus gommettés : l'auteur explique en 90 secondes. Les autres posent des questions seulement, pas de critique."
+    },
+    {
+     "t": "Décider",
+     "min": 2,
+     "d": "Le décideur nomme ce qui part en prototype. Écris-le avant de sortir."
+    }
+   ],
+   "pitfalls": [
+    "Ne donne pas dix minutes au lieu de huit. La pression, c'est la méthode ; le confort produit huit fois la même idée.",
+    "Ne laisse pas les gens présenter leur croquis avant le vote. Le talent de pitch remplacerait la qualité de l'idée.",
+    "Ne le fais pas sans décideur. Huit croquis et pas de décision, c'est un après-midi perdu."
+   ],
+   "next": "Le croquis retenu part en wireframes ou en prototype dans la semaine. Garde les autres croquis dans un dossier partagé ; ils ressortent quand le premier prototype rate un test.",
+   "source": "Jake Knapp, GV"
+  }
+ },
+ "brainwriting": {
+  "en": {
+   "prep": [
+    "Exactly six people per table. Five or seven works with adjusted rounds, but six keeps the 6-3-5 math clean: 108 ideas in 30 minutes.",
+    "One problem statement or HMW per table, written at the top of each sheet. Send it the day before.",
+    "One sheet per person with a 6-row, 3-column grid, on paper or on the board. A timer.",
+    "Mix roles at each table: no table with only designers or only engineers."
+   ],
+   "agenda": [
+    {
+     "t": "Rules",
+     "min": 5,
+     "d": "Three ideas in five minutes, then pass your sheet left. You may build on what is already on the sheet or add something new. Total silence for 30 minutes."
+    },
+    {
+     "t": "Six rounds",
+     "min": 30,
+     "d": "Call time every five minutes. Do not stretch a round because someone is not done; the constraint is the point."
+    },
+    {
+     "t": "Read and mark",
+     "min": 7,
+     "d": "Each person reads the sheet in front of them and circles the two ideas they would not have thought of themselves."
+    },
+    {
+     "t": "Shortlist",
+     "min": 3,
+     "d": "Collect the circled ideas on the board. Group duplicates. Leave with a shortlist of 10 to 15 for evaluation later."
+    }
+   ],
+   "pitfalls": [
+    "Do not allow talking, not even 'what did you mean by this'. Ambiguity on the sheet is what generates the unexpected variations.",
+    "Do not evaluate in the same session. Divergence and evaluation in the same hour kill the second half of the ideas.",
+    "Do not use a vague prompt. 'Improve retention' gives 108 platitudes. 'Get a team to invite a second member in the first session' gives ideas."
+   ],
+   "next": "The shortlist goes through dot voting or the impact / effort matrix in the next session. Photograph every sheet; the unselected ideas are useful later.",
+   "source": "Bernd Rohrbach"
+  },
+  "fr": {
+   "prep": [
+    "Exactement six personnes par table. Cinq ou sept marche avec des tours ajustés, mais six garde le calcul du 6-3-5 propre : 108 idées en 30 minutes.",
+    "Un énoncé de problème ou une HMW par table, écrit en haut de chaque feuille. Envoie-le la veille.",
+    "Une feuille par personne avec une grille de 6 lignes et 3 colonnes, papier ou board. Un timer.",
+    "Mélange les rôles à chaque table : pas de table avec seulement des designers ou seulement des ingénieurs."
+   ],
+   "agenda": [
+    {
+     "t": "Règles",
+     "min": 5,
+     "d": "Trois idées en cinq minutes, puis tu passes ta feuille à gauche. Tu peux prolonger ce qui est déjà sur la feuille ou ajouter du neuf. Silence total pendant 30 minutes."
+    },
+    {
+     "t": "Six tours",
+     "min": 30,
+     "d": "Annonce le temps toutes les cinq minutes. N'allonge pas un tour parce que quelqu'un n'a pas fini ; la contrainte est le but."
+    },
+    {
+     "t": "Lire et marquer",
+     "min": 7,
+     "d": "Chacun lit la feuille devant lui et entoure les deux idées qu'il n'aurait pas eues lui-même."
+    },
+    {
+     "t": "Présélection",
+     "min": 3,
+     "d": "Rassemble les idées entourées sur le board. Regroupe les doublons. Repars avec une liste de 10 à 15 idées à évaluer plus tard."
+    }
+   ],
+   "pitfalls": [
+    "N'autorise pas la parole, même pas 'tu voulais dire quoi'. L'ambiguïté sur la feuille est ce qui génère les variations inattendues.",
+    "N'évalue pas dans la même session. Divergence et évaluation dans la même heure tuent la deuxième moitié des idées.",
+    "Pas de sujet vague. 'Améliorer la rétention' donne 108 platitudes. 'Amener une équipe à inviter un deuxième membre dès la première session' donne des idées."
+   ],
+   "next": "La présélection passe au dot voting ou à la matrice impact / effort à la session suivante. Photographie chaque feuille ; les idées non retenues servent plus tard.",
+   "source": "Bernd Rohrbach"
+  }
+ },
+ "dotvote": {
+  "en": {
+   "prep": [
+    "Only the people who took part in the divergent session. Adding a stakeholder at vote time changes the dynamics.",
+    "The options on the board, deduplicated and numbered. If two stickies say the same thing, merge before the vote or the votes split.",
+    "Decide the number of dots: a third of the number of options, rounded down, three minimum. Say it before the vote.",
+    "Agree on the criterion in one sentence: 'most likely to move retention', not 'best'."
+   ],
+   "agenda": [
+    {
+     "t": "Read the options",
+     "min": 4,
+     "d": "Someone reads every option aloud, one sentence each. Clarifying questions only, no advocacy."
+    },
+    {
+     "t": "Vote in silence",
+     "min": 5,
+     "d": "Everyone places their dots at the same time. Allowed: multiple dots on one option. Not allowed: watching where others put theirs first."
+    },
+    {
+     "t": "Read the result",
+     "min": 3,
+     "d": "Count. Show the top 3 to 5. If the top is a tie, do not revote; the decider breaks it."
+    },
+    {
+     "t": "Decide",
+     "min": 3,
+     "d": "The decider states the pick and one sentence of reasoning. The vote is input; the decider owns the outcome."
+    }
+   ],
+   "pitfalls": [
+    "Do not vote on 30 options. Cluster first, or the winner gets four dots and means nothing.",
+    "Do not let the most senior person vote first. Silent, simultaneous, or the vote measures hierarchy.",
+    "Do not treat the count as the decision. Say clearly who decides, or the group thinks it was a democracy and resents the outcome."
+   ],
+   "next": "The selected options go to the impact / effort matrix, a prototype, or the experiment board. Write the result on the board with the criterion used, so nobody rewrites history next week.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Seulement les gens qui ont participé à la session de divergence. Ajouter un stakeholder au moment du vote change la dynamique.",
+    "Les options sur le board, dédoublonnées et numérotées. Si deux stickies disent la même chose, fusionne avant le vote, sinon les voix se divisent.",
+    "Décide le nombre de gommettes : un tiers du nombre d'options, arrondi en dessous, trois minimum. Dis-le avant le vote.",
+    "Mettez-vous d'accord sur le critère en une phrase : 'le plus susceptible de bouger la rétention', pas 'le meilleur'."
+   ],
+   "agenda": [
+    {
+     "t": "Lire les options",
+     "min": 4,
+     "d": "Quelqu'un lit chaque option à voix haute, une phrase chacune. Questions de clarification seulement, pas de plaidoyer."
+    },
+    {
+     "t": "Voter en silence",
+     "min": 5,
+     "d": "Tout le monde place ses gommettes en même temps. Autorisé : plusieurs gommettes sur une option. Interdit : regarder où les autres mettent les leurs d'abord."
+    },
+    {
+     "t": "Lire le résultat",
+     "min": 3,
+     "d": "Compte. Affiche le top 3 à 5. En cas d'égalité en tête, pas de second vote ; le décideur tranche."
+    },
+    {
+     "t": "Décider",
+     "min": 3,
+     "d": "Le décideur annonce le choix et une phrase de raisonnement. Le vote est une entrée ; le décideur porte le résultat."
+    }
+   ],
+   "pitfalls": [
+    "Ne vote pas sur 30 options. Regroupe d'abord, sinon le gagnant a quatre gommettes et ne veut rien dire.",
+    "Ne laisse pas la personne la plus senior voter en premier. Silencieux, simultané, sinon le vote mesure la hiérarchie.",
+    "Ne prends pas le décompte pour la décision. Dis clairement qui décide, sinon le groupe croit à une démocratie et en veut au résultat."
+   ],
+   "next": "Les options retenues passent à la matrice impact / effort, en prototype ou dans l'experiment board. Écris le résultat sur le board avec le critère utilisé, pour que personne ne réécrive l'histoire la semaine suivante.",
+   "source": ""
+  }
+ },
+ "sprint": {
+  "en": {
+   "prep": [
+    "Recruit the team three weeks ahead: a decider with real authority, a facilitator, and 5 to 7 people covering product, design, engineering, marketing, support. Block five full days in every calendar.",
+    "Choose the challenge: big enough to justify a week, small enough to prototype in one day. Write it in one sentence and get the decider to sign off.",
+    "Book a room for the week with two large walls, or a dedicated board. Order sticky notes, markers, a timer, and healthy snacks; the afternoons are long.",
+    "Recruit five test users matching the target segment for Friday. Start recruiting on Monday of the sprint at the latest, ideally the week before."
+   ],
+   "agenda": [
+    {
+     "t": "Monday: map",
+     "min": 420,
+     "d": "Set a long-term goal and sprint questions. Map the journey from actor to goal. Interview internal experts, capture 'how might we' notes. The decider picks the target on the map by end of day."
+    },
+    {
+     "t": "Tuesday: sketch",
+     "min": 420,
+     "d": "Lightning demos of inspiring solutions, 3 minutes each. Then four-step sketching, solo: notes, ideas, Crazy 8's, and a detailed three-panel solution sketch. Sketches stay anonymous until Wednesday."
+    },
+    {
+     "t": "Wednesday: decide",
+     "min": 420,
+     "d": "Art museum, heat map with dots, speed critique, straw poll, then the decider's supervote. Afternoon: storyboard the prototype in 10 to 15 frames. Every frame is a screen or a step."
+    },
+    {
+     "t": "Thursday: prototype",
+     "min": 420,
+     "d": "Build a realistic facade of the storyboard, not a product. Split roles: makers, stitcher, writer, asset collector, interviewer. Trial run at 3 pm; fix what breaks."
+    },
+    {
+     "t": "Friday: test",
+     "min": 420,
+     "d": "Five one-hour interviews with target users, one at a time. The team watches in another room and takes notes on a grid: user × screen. Debrief after the fifth: patterns, not opinions. Decide: go, iterate, or drop."
+    }
+   ],
+   "pitfalls": [
+    "Do not run a sprint without a decider in the room. A decider who joins for an hour on Wednesday and Friday is acceptable; a decider who reads a summary is not.",
+    "Do not build a working product on Thursday. Keynote, Figma, or a fake landing page is enough; if it takes more than a day, the storyboard is too big.",
+    "Do not skip Friday or replace it with a team review. Five real users is the entire point; the rest of the week is preparation for it."
+   ],
+   "next": "Friday's patterns go into a one-page report to leadership within 48 hours: what was tested, what held, what failed, the decision. A go leads to a real build; an iterate means a second, shorter sprint on the failed part.",
+   "source": "Jake Knapp, GV"
+  },
+  "fr": {
+   "prep": [
+    "Recrute l'équipe trois semaines avant : un décideur avec une vraie autorité, un facilitateur, et 5 à 7 personnes couvrant produit, design, ingénierie, marketing, support. Bloque cinq journées complètes dans tous les agendas.",
+    "Choisis le défi : assez gros pour justifier une semaine, assez petit pour être prototypé en une journée. Écris-le en une phrase et fais-le valider par le décideur.",
+    "Réserve une salle pour la semaine avec deux grands murs, ou un board dédié. Commande stickies, marqueurs, un timer et des encas corrects ; les après-midi sont longs.",
+    "Recrute cinq utilisateurs testeurs du segment cible pour vendredi. Commence à recruter au plus tard le lundi du sprint, idéalement la semaine d'avant."
+   ],
+   "agenda": [
+    {
+     "t": "Lundi : cartographier",
+     "min": 420,
+     "d": "Fixe un objectif long terme et les questions du sprint. Cartographie le parcours de l'acteur jusqu'au but. Interviewe les experts internes, capture des notes 'comment pourrions-nous'. Le décideur choisit la cible sur la carte en fin de journée."
+    },
+    {
+     "t": "Mardi : esquisser",
+     "min": 420,
+     "d": "Démos éclair de solutions inspirantes, 3 minutes chacune. Puis esquisse en quatre étapes, en solo : notes, idées, Crazy 8's, et un croquis de solution détaillé en trois panneaux. Les croquis restent anonymes jusqu'à mercredi."
+    },
+    {
+     "t": "Mercredi : décider",
+     "min": 420,
+     "d": "Musée des croquis, heat map avec gommettes, critique rapide, vote indicatif, puis supervote du décideur. Après-midi : storyboard du prototype en 10 à 15 cases. Chaque case est un écran ou une étape."
+    },
+    {
+     "t": "Jeudi : prototyper",
+     "min": 420,
+     "d": "Construis une façade réaliste du storyboard, pas un produit. Répartis les rôles : fabricants, assembleur, rédacteur, collecteur d'assets, interviewer. Répétition à 15 h ; corrige ce qui casse."
+    },
+    {
+     "t": "Vendredi : tester",
+     "min": 420,
+     "d": "Cinq entretiens d'une heure avec des utilisateurs cibles, un par un. L'équipe observe dans une autre salle et note dans une grille : utilisateur × écran. Débrief après le cinquième : des patterns, pas des opinions. Décision : go, itérer ou abandonner."
+    }
+   ],
+   "pitfalls": [
+    "Ne fais pas de sprint sans décideur dans la salle. Un décideur qui passe une heure mercredi et vendredi, ça va ; un décideur qui lit un résumé, non.",
+    "Ne construis pas un produit fonctionnel jeudi. Keynote, Figma ou une fausse landing page suffisent ; si ça prend plus d'une journée, le storyboard est trop gros.",
+    "Ne saute pas le vendredi et ne le remplace pas par une revue d'équipe. Cinq vrais utilisateurs, c'est tout l'intérêt ; le reste de la semaine ne fait que le préparer."
+   ],
+   "next": "Les patterns du vendredi vont dans un rapport d'une page à la direction sous 48 heures : ce qui a été testé, ce qui a tenu, ce qui a raté, la décision. Un go mène à une vraie construction ; un itérer déclenche un second sprint plus court sur la partie ratée.",
+   "source": "Jake Knapp, GV"
+  }
+ },
+ "experiments": {
+  "en": {
+   "prep": [
+    "The product trio: PM, designer, tech lead. Add a data person if you have one; they will save you from untestable metrics.",
+    "Bring the top 3 to 5 assumptions from the assumption map, or the leaf-level experiments from the OST.",
+    "On the board: the grid with one row per experiment and the six columns: hypothesis, test, metric, success criteria, result, learning.",
+    "Have last quarter's experiment board open next to it. Half the time, someone already tested something close."
+   ],
+   "agenda": [
+    {
+     "t": "Rewrite the assumptions as hypotheses",
+     "min": 15,
+     "d": "Format: 'we believe [segment] will [behavior] because [reason]'. One per row. If you cannot name the behavior, the hypothesis is not testable yet."
+    },
+    {
+     "t": "Choose the cheapest test",
+     "min": 25,
+     "d": "For each: fake door, concierge, landing page, prototype interview, data pull, or a real small release. Pick the one that gives a signal in two weeks or less. Write who runs it."
+    },
+    {
+     "t": "Define metric and threshold",
+     "min": 25,
+     "d": "One metric per test and the number that means 'validated' or 'killed', decided now. 'We will see' is not a criterion. Include the sample size you need."
+    },
+    {
+     "t": "Check for confounds",
+     "min": 15,
+     "d": "For each test, ask what else could explain a positive result. If the answer is obvious, change the test. Add the control where needed."
+    },
+    {
+     "t": "Schedule and commit",
+     "min": 10,
+     "d": "Start dates, review date, owner in each row. Book the review in the calendar before leaving."
+    }
+   ],
+   "pitfalls": [
+    "Do not set the success threshold after seeing the data. Every result looks like a win in hindsight.",
+    "Do not run six experiments at once with a team of three. Two in parallel is the realistic ceiling.",
+    "Do not delete failed rows. The learning column of a failed experiment is worth more than the result column of a successful one."
+   ],
+   "next": "Each row is reviewed at the agreed date; result and learning are filled in the same meeting. Validated hypotheses move to the story map or the roadmap; killed ones update the assumption map and the OST.",
+   "source": "Eric Ries / Ash Maurya"
+  },
+  "fr": {
+   "prep": [
+    "Le trio produit : PM, designer, tech lead. Ajoute une personne data si tu en as une ; elle t'évitera des métriques intestables.",
+    "Apporte les 3 à 5 hypothèses principales de l'assumption map, ou les expériences en feuilles de l'OST.",
+    "Sur le board : la grille avec une ligne par expérience et les six colonnes : hypothèse, test, métrique, critère de succès, résultat, apprentissage.",
+    "Ouvre l'experiment board du trimestre dernier à côté. Une fois sur deux, quelqu'un a déjà testé un truc proche."
+   ],
+   "agenda": [
+    {
+     "t": "Réécrire les hypothèses",
+     "min": 15,
+     "d": "Format : 'nous croyons que [segment] va [comportement] parce que [raison]'. Une par ligne. Si tu ne sais pas nommer le comportement, l'hypothèse n'est pas encore testable."
+    },
+    {
+     "t": "Choisir le test le moins cher",
+     "min": 25,
+     "d": "Pour chacune : fausse porte, concierge, landing page, entretien sur prototype, extraction de données, ou une vraie petite release. Prends celui qui donne un signal en deux semaines ou moins. Écris qui le mène."
+    },
+    {
+     "t": "Définir métrique et seuil",
+     "min": 25,
+     "d": "Une métrique par test et le chiffre qui veut dire 'validé' ou 'tué', décidé maintenant. 'On verra' n'est pas un critère. Inclus la taille d'échantillon nécessaire."
+    },
+    {
+     "t": "Chasser les biais",
+     "min": 15,
+     "d": "Pour chaque test, demande ce qui d'autre pourrait expliquer un résultat positif. Si la réponse est évidente, change le test. Ajoute un groupe témoin si besoin."
+    },
+    {
+     "t": "Planifier et s'engager",
+     "min": 10,
+     "d": "Dates de démarrage, date de revue, responsable sur chaque ligne. Réserve la revue dans l'agenda avant de sortir."
+    }
+   ],
+   "pitfalls": [
+    "Ne fixe pas le seuil de succès après avoir vu les données. Tout résultat ressemble à une victoire après coup.",
+    "Ne lance pas six expériences à la fois avec une équipe de trois. Deux en parallèle, c'est le plafond réaliste.",
+    "Ne supprime pas les lignes ratées. La colonne apprentissage d'une expérience ratée vaut plus que la colonne résultat d'une réussie."
+   ],
+   "next": "Chaque ligne est revue à la date convenue ; résultat et apprentissage sont remplis dans la même réunion. Les hypothèses validées passent dans la story map ou la roadmap ; les tuées mettent à jour l'assumption map et l'OST.",
+   "source": "Eric Ries / Ash Maurya"
+  }
+ },
+ "eventstorming": {
+  "en": {
+   "prep": [
+    "Get a wall, not a table. Event storming needs eight metres of paper roll and room for fifteen people to stand and move.",
+    "Buy far more orange stickies than you think. Running out of orange mid-session stops the only thing that matters.",
+    "Invite at least one person who knows the business rules and has been there for years. Without them the timeline stops at what the code does.",
+    "Agree the colour legend before starting and post it: orange for events, blue for commands, yellow for actors, purple for policies, pink for hot spots."
+   ],
+   "agenda": [
+    {
+     "t": "Chaotic exploration",
+     "min": 40,
+     "d": "Everyone writes domain events on orange stickies, in the past tense, and puts them on the wall anywhere. No order, no discussion, no filtering. The mess is the point: it shows the real surface of the domain."
+    },
+    {
+     "t": "Enforce the timeline",
+     "min": 40,
+     "d": "Together, push the events left to right in time order. Duplicates merge, gaps appear, and arguments start. Every argument gets a pink sticky rather than a resolution."
+    },
+    {
+     "t": "Commands and actors",
+     "min": 35,
+     "d": "For each event, what triggered it and who did it. Blue command, yellow actor. Events with no trigger are usually the ones nobody understood."
+    },
+    {
+     "t": "Policies and read models",
+     "min": 30,
+     "d": "Whenever an event automatically causes another, name the rule. These policies are where product decisions hide inside what looks like technical behaviour."
+    },
+    {
+     "t": "Walk the hot spots",
+     "min": 35,
+     "d": "Go through every pink sticky out loud. Assign each one an owner and a next step: a decision to make, a person to ask, or a spike to run."
+    }
+   ],
+   "pitfalls": [
+    "Letting engineers turn it into a system design session. The wall describes what happens in the business, not what the code does. Keep asking 'and then what happened for the customer'.",
+    "Cleaning up too early. If you enforce the timeline in the first twenty minutes, you get the model people already agreed on, which is the one you already had.",
+    "Resolving hot spots on the spot. A pink sticky is worth more than a rushed decision made by whoever spoke loudest. Park it and move."
+   ],
+   "next": "The timeline feeds a story map or a service blueprint directly. The hot spots are the best backlog of discovery work you will get in one session.",
+   "source": "https://www.eventstorming.com/"
+  },
+  "fr": {
+   "prep": [
+    "Prévois un mur, pas une table. L'event storming demande huit mètres de papier et de la place pour que quinze personnes se lèvent et bougent.",
+    "Achète beaucoup plus de post-it orange que prévu. Tomber en panne d'orange en pleine session arrête la seule chose qui compte.",
+    "Invite au moins une personne qui connaît les règles métier et qui est là depuis des années. Sans elle, la frise s'arrête à ce que fait le code.",
+    "Fixe la légende des couleurs avant de commencer et affiche-la : orange pour les événements, bleu pour les commandes, jaune pour les acteurs, violet pour les règles, rose pour les points chauds."
+   ],
+   "agenda": [
+    {
+     "t": "Exploration chaotique",
+     "min": 40,
+     "d": "Chacun écrit des événements métier sur des post-it orange, au passé, et les colle n'importe où. Pas d'ordre, pas de discussion, pas de tri. Le désordre est le but : il montre la vraie surface du domaine."
+    },
+    {
+     "t": "Imposer la frise",
+     "min": 40,
+     "d": "Ensemble, poussez les événements de gauche à droite dans l'ordre du temps. Les doublons fusionnent, les trous apparaissent, et les disputes commencent. Chaque dispute donne un post-it rose plutôt qu'une résolution."
+    },
+    {
+     "t": "Commandes et acteurs",
+     "min": 35,
+     "d": "Pour chaque événement, ce qui l'a déclenché et qui l'a fait. Commande en bleu, acteur en jaune. Les événements sans déclencheur sont en général ceux que personne n'avait compris."
+    },
+    {
+     "t": "Règles et vues de lecture",
+     "min": 30,
+     "d": "Dès qu'un événement en provoque automatiquement un autre, nomme la règle. C'est dans ces règles que se cachent des décisions produit déguisées en comportement technique."
+    },
+    {
+     "t": "Parcourir les points chauds",
+     "min": 35,
+     "d": "Passe chaque post-it rose à voix haute. Attribue à chacun un responsable et une suite : une décision à prendre, une personne à interroger, ou une exploration à mener."
+    }
+   ],
+   "pitfalls": [
+    "Laisser les développeurs en faire une session d'architecture. Le mur décrit ce qui se passe dans le métier, pas ce que fait le code. Continue à demander « et ensuite, qu'est-ce qui s'est passé pour le client ».",
+    "Ranger trop tôt. Si tu imposes la frise dans les vingt premières minutes, tu obtiens le modèle sur lequel tout le monde était déjà d'accord, c'est-à-dire celui que tu avais déjà.",
+    "Résoudre les points chauds sur le moment. Un post-it rose vaut mieux qu'une décision bâclée prise par celui qui a parlé le plus fort. Mets-le de côté et avance."
+   ],
+   "next": "La frise alimente directement une story map ou un service blueprint. Les points chauds constituent le meilleur backlog de découverte que tu obtiendras en une session.",
+   "source": "https://www.eventstorming.com/"
+  }
+ }
 }

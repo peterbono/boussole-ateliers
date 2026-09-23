@@ -37,5 +37,18 @@ const SOURCES = {
   sprintplan:   'https://scrumguides.org/scrum-guide.html',
   ost:          'https://www.producttalk.org/opportunity-solution-tree/',
   mindmap:      'https://en.wikipedia.org/wiki/Mind_map',
+  poker:        'https://en.wikipedia.org/wiki/Planning_poker',
+  tshirt:       'https://www.agilealliance.org/glossary/estimation/',
+  buyfeature:   'https://www.lukehohmann.com/innovation-games/buy-a-feature',
+  remember:     'https://www.lukehohmann.com/innovation-games/remember-the-future',
+  eventstorming:'https://www.eventstorming.com/',
+  vsm:          'https://www.lean.org/lexicon-terms/value-stream-mapping/',
+  roam:         'https://scaledagileframework.com/pi-planning/',
+  teamboard:    'https://scaledagileframework.com/pi-planning/',
+  refinement:   'https://scrumguides.org/scrum-guide.html',
+  dod:          'https://scrumguides.org/scrum-guide.html',
+  storywriting: 'https://www.agilealliance.org/glossary/invest/',
+  teamcanvas:   'https://theteamcanvas.com/',
+  pitch:        'https://www.aprildunford.com/obviously-awesome',
 };
 if (typeof module !== 'undefined') module.exports = { SOURCES };

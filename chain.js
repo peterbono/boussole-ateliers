@@ -65,6 +65,20 @@ const CHAIN = {
   postmortem:     {helps:['launch']},
   metrics:        {needs:['nsm'], helps:['launch']},
   ia:             {needs:['pi'], helps:['program']},
+  icebreaker:     {},
+  teamcanvas:     {helps:['kickoff','charter']},
+  pitch:          {anyOf:[['positioning','vpc','vision']]},
+  remember:       {helps:['persona','jtbd']},
+  eventstorming:  {anyOf:[['journey','userflow']], helps:['storymap']},
+  poker:          {needs:['storywriting'], helps:['refinement']},
+  tshirt:         {anyOf:[['storymap','moscow','impact-effort']]},
+  buyfeature:     {anyOf:[['impact-effort','rice','storymap']]},
+  refinement:     {needs:['storymap'], helps:['dod','storywriting']},
+  storywriting:   {needs:['storymap'], helps:['persona','journey']},
+  dod:            {helps:['charter','sprintplan']},
+  vsm:            {helps:['dependencies','metrics']},
+  roam:           {needs:['pi'], helps:['premortem']},
+  teamboard:      {needs:['pi'], helps:['dependencies','sprintplan']},
 };
 // every input of a workshop, whatever its level
 const chainInputs = id => { const c = CHAIN[id] || {}; return [...(c.needs || []), ...(c.anyOf || []).flat(), ...(c.helps || [])]; };

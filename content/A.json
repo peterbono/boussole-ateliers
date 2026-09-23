@@ -1,708 +1,1724 @@
 {
-  "kickoff": {
-    "en": {
-      "prep": [
-        "Invite the sponsor in person, not a delegate: the charter is only worth something if the person who funds it signs it in the room.",
-        "Send a one-line project pitch and the known constraints (deadline, budget, non-negotiables) two days before, so nobody discovers them live.",
-        "Pre-fill the Goal and Milestones blocks with the sponsor's own words, in draft color, so the group edits instead of starting from blank.",
-        "Book 2 hours with no meeting right after: the last 20 minutes are the ones that produce the signature."
-      ],
-      "agenda": [
-        {"t": "Why we are here", "min": 10, "d": "The sponsor says in their own words why this project exists and what happens if it does not. No slides."},
-        {"t": "Goal and success", "min": 25, "d": "Everyone writes on their own for 3 minutes what success looks like in 6 months, then you cluster. Force one measurable sentence in the Success block."},
-        {"t": "Scope and out of scope", "min": 25, "d": "Fill Scope first, then ask 'what will people assume is included that is not?' and write those in Out of scope. This block is the most valuable of the board."},
-        {"t": "Risks", "min": 15, "d": "Silent writing, one risk per sticky, then dot vote the top 3. Each of the 3 gets an owner right away."},
-        {"t": "Roles and milestones", "min": 25, "d": "Name the decider, the person who does the work, and who is consulted. Place 3 to 4 dated milestones, the first one within two weeks."},
-        {"t": "Read-back and sign-off", "min": 20, "d": "The PM reads the whole board aloud. The sponsor says 'yes' or edits. Screenshot the signed version and send it within the hour."}
-      ],
-      "pitfalls": [
-        "Do not let the Goal block hold a solution ('build a mobile app'). Rewrite it as an outcome ('cut onboarding time in half') before moving on.",
-        "If Out of scope stays empty, you have not finished. Ask for three things explicitly, the group always has them in mind.",
-        "Skipping the read-back to save time costs you the sign-off. Fifteen minutes now beats three weeks of 'that is not what I meant'."
-      ],
-      "next": "The charter goes to the top of the project space and gets quoted in every steering meeting. If the problem is still fuzzy, run the Problem statement canvas next; if the team is new, the Team charter.",
-      "source": ""
+ "kickoff": {
+  "en": {
+   "prep": [
+    "Invite the sponsor in person, not a delegate: the charter is only worth something if the person who funds it signs it in the room.",
+    "Send a one-line project pitch and the known constraints (deadline, budget, non-negotiables) two days before, so nobody discovers them live.",
+    "Pre-fill the Goal and Milestones blocks with the sponsor's own words, in draft color, so the group edits instead of starting from blank.",
+    "Book 2 hours with no meeting right after: the last 20 minutes are the ones that produce the signature."
+   ],
+   "agenda": [
+    {
+     "t": "Why we are here",
+     "min": 10,
+     "d": "The sponsor says in their own words why this project exists and what happens if it does not. No slides."
     },
-    "fr": {
-      "prep": [
-        "Invite le sponsor en personne, pas un délégué : la charte ne vaut que si celui qui finance la signe dans la salle.",
-        "Envoie deux jours avant un pitch d'une ligne et les contraintes connues (délai, budget, non négociables), pour que personne ne les découvre en séance.",
-        "Pré-remplis les blocs Objectif et Jalons avec les mots du sponsor, en couleur brouillon, pour que le groupe corrige au lieu de partir d'une page blanche.",
-        "Bloque 2 heures sans réunion juste après : les 20 dernières minutes sont celles qui produisent la signature."
-      ],
-      "agenda": [
-        {"t": "Pourquoi on est là", "min": 10, "d": "Le sponsor dit avec ses mots pourquoi ce projet existe et ce qui se passe s'il ne se fait pas. Sans slides."},
-        {"t": "Objectif et succès", "min": 25, "d": "Chacun écrit seul pendant 3 minutes à quoi ressemble le succès dans 6 mois, puis tu regroupes. Impose une phrase mesurable dans le bloc Succès."},
-        {"t": "Périmètre et hors périmètre", "min": 25, "d": "Remplis le Périmètre, puis demande 'qu'est-ce que les gens vont croire inclus alors que ça ne l'est pas ?' et note-le en Hors périmètre. C'est le bloc le plus précieux du board."},
-        {"t": "Risques", "min": 15, "d": "Écriture silencieuse, un risque par sticky, puis vote par gommettes sur le top 3. Chacun des 3 reçoit un responsable tout de suite."},
-        {"t": "Rôles et jalons", "min": 25, "d": "Nomme qui décide, qui fait, qui est consulté. Pose 3 à 4 jalons datés, le premier à moins de deux semaines."},
-        {"t": "Relecture et signature", "min": 20, "d": "Le PM relit tout le board à voix haute. Le sponsor dit 'oui' ou corrige. Capture d'écran de la version signée, envoyée dans l'heure."}
-      ],
-      "pitfalls": [
-        "Ne laisse pas le bloc Objectif contenir une solution ('faire une app mobile'). Reformule en résultat ('diviser par deux le temps d'onboarding') avant d'avancer.",
-        "Si Hors périmètre reste vide, tu n'as pas fini. Demande explicitement trois éléments, le groupe les a toujours en tête.",
-        "Sauter la relecture pour gagner du temps te coûte la signature. Quinze minutes maintenant valent mieux que trois semaines de 'ce n'est pas ce que je voulais dire'."
-      ],
-      "next": "La charte s'épingle en haut de l'espace projet et se cite à chaque comité. Si le problème reste flou, enchaîne avec le Problem statement canvas ; si l'équipe est nouvelle, avec le Team charter.",
-      "source": ""
+    {
+     "t": "Goal and success",
+     "min": 25,
+     "d": "Everyone writes on their own for 3 minutes what success looks like in 6 months, then you cluster. Force one measurable sentence in the Success block."
+    },
+    {
+     "t": "Scope and out of scope",
+     "min": 25,
+     "d": "Fill Scope first, then ask 'what will people assume is included that is not?' and write those in Out of scope. This block is the most valuable of the board."
+    },
+    {
+     "t": "Risks",
+     "min": 15,
+     "d": "Silent writing, one risk per sticky, then dot vote the top 3. Each of the 3 gets an owner right away."
+    },
+    {
+     "t": "Roles and milestones",
+     "min": 25,
+     "d": "Name the decider, the person who does the work, and who is consulted. Place 3 to 4 dated milestones, the first one within two weeks."
+    },
+    {
+     "t": "Read-back and sign-off",
+     "min": 20,
+     "d": "The PM reads the whole board aloud. The sponsor says 'yes' or edits. Screenshot the signed version and send it within the hour."
     }
+   ],
+   "pitfalls": [
+    "Do not let the Goal block hold a solution ('build a mobile app'). Rewrite it as an outcome ('cut onboarding time in half') before moving on.",
+    "If Out of scope stays empty, you have not finished. Ask for three things explicitly, the group always has them in mind.",
+    "Skipping the read-back to save time costs you the sign-off. Fifteen minutes now beats three weeks of 'that is not what I meant'."
+   ],
+   "next": "The charter goes to the top of the project space and gets quoted in every steering meeting. If the problem is still fuzzy, run the Problem statement canvas next; if the team is new, the Team charter.",
+   "source": ""
   },
-  "problem": {
-    "en": {
-      "prep": [
-        "Bring one or two people who talk to customers every week (support, sales, CSM). Without them the board fills with product opinions.",
-        "Collect 5 to 10 verbatim customer quotes or support tickets and paste them on the side of the board before the session.",
-        "Ask everyone to write their own one-sentence version of the problem before coming. Do not share them yet.",
-        "Set up the board with the three top blocks visible and the Statement block hidden until the end."
-      ],
-      "agenda": [
-        {"t": "Reveal the drafts", "min": 10, "d": "Everyone pastes their pre-written problem sentence. Read them aloud without comment. The gaps between them are the agenda."},
-        {"t": "Who and what", "min": 20, "d": "Fill Who has the problem with a specific person, not a segment ('Léa, ops manager at a 40-person clinic'). Then What problem, in their words, using the quotes."},
-        {"t": "Why now", "min": 15, "d": "What changed in the last 12 months that makes this worth solving today? If nobody can answer, note it as the first assumption."},
-        {"t": "Know versus assume", "min": 25, "d": "Sort every claim on the board: proven by data or interviews goes left, everything else goes right. Be strict: 'everyone knows' is an assumption."},
-        {"t": "Write the statement", "min": 20, "d": "In pairs, write one sentence: who, struggles with what, because of, which costs them. Vote, then merge the top two into the final."}
-      ],
-      "pitfalls": [
-        "If the statement contains a feature name, it is a solution in disguise. Rewrite it until a competitor could solve the same sentence differently.",
-        "A segment ('SMBs') in the Who block hides ten different problems. Push for a named person with a role and a context.",
-        "Do not end with an empty Assume column. Three assumptions minimum, and each one becomes an item for the research plan."
-      ],
-      "next": "The statement becomes the first line of the PRD and the brief for research. The Assume column feeds Assumption mapping directly, then the Research plan.",
-      "source": ""
+  "fr": {
+   "prep": [
+    "Invite le sponsor en personne, pas un délégué : la charte ne vaut que si celui qui finance la signe dans la salle.",
+    "Envoie deux jours avant un pitch d'une ligne et les contraintes connues (délai, budget, non négociables), pour que personne ne les découvre en séance.",
+    "Pré-remplis les blocs Objectif et Jalons avec les mots du sponsor, en couleur brouillon, pour que le groupe corrige au lieu de partir d'une page blanche.",
+    "Bloque 2 heures sans réunion juste après : les 20 dernières minutes sont celles qui produisent la signature."
+   ],
+   "agenda": [
+    {
+     "t": "Pourquoi on est là",
+     "min": 10,
+     "d": "Le sponsor dit avec ses mots pourquoi ce projet existe et ce qui se passe s'il ne se fait pas. Sans slides."
     },
-    "fr": {
-      "prep": [
-        "Fais venir une ou deux personnes qui parlent aux clients chaque semaine (support, ventes, CSM). Sans elles, le board se remplit d'opinions produit.",
-        "Rassemble 5 à 10 verbatims clients ou tickets support et colle-les sur le côté du board avant la séance.",
-        "Demande à chacun d'écrire sa version du problème en une phrase avant de venir. Sans la partager.",
-        "Prépare le board avec les trois blocs du haut visibles et le bloc Énoncé masqué jusqu'à la fin."
-      ],
-      "agenda": [
-        {"t": "Révéler les brouillons", "min": 10, "d": "Chacun colle sa phrase écrite à l'avance. Lecture à voix haute sans commentaire. Les écarts entre les phrases font l'ordre du jour."},
-        {"t": "Qui et quoi", "min": 20, "d": "Remplis Qui avec une personne précise, pas un segment ('Léa, responsable ops d'une clinique de 40 personnes'). Puis Quel problème, avec ses mots, en t'appuyant sur les verbatims."},
-        {"t": "Pourquoi maintenant", "min": 15, "d": "Qu'est-ce qui a changé ces 12 derniers mois qui rend ce problème digne d'être résolu aujourd'hui ? Si personne ne sait, note-le comme première hypothèse."},
-        {"t": "Su ou supposé", "min": 25, "d": "Trie chaque affirmation du board : prouvé par des données ou des entretiens à gauche, tout le reste à droite. Sois strict : 'tout le monde sait que' est une hypothèse."},
-        {"t": "Écrire l'énoncé", "min": 20, "d": "En binômes, une phrase : qui, galère avec quoi, à cause de, ce qui lui coûte. Vote, puis fusion des deux meilleures en version finale."}
-      ],
-      "pitfalls": [
-        "Si l'énoncé contient un nom de fonctionnalité, c'est une solution déguisée. Réécris jusqu'à ce qu'un concurrent puisse résoudre la même phrase autrement.",
-        "Un segment ('les PME') dans le bloc Qui cache dix problèmes différents. Exige une personne nommée, avec un rôle et un contexte.",
-        "Ne termine pas avec une colonne Supposé vide. Trois hypothèses minimum, chacune devient une ligne du plan de recherche."
-      ],
-      "next": "L'énoncé devient la première ligne du PRD et le brief de la research. La colonne Supposé alimente directement l'Assumption mapping, puis le Plan de recherche.",
-      "source": ""
-    }
-  },
-  "stakeholders": {
-    "en": {
-      "prep": [
-        "Do it with the sponsor only, or the sponsor plus one trusted lead. Nobody wants to be rated 'low power' in front of colleagues.",
-        "List every name that has appeared in an email about the project, plus the people who own the systems or budgets you touch. Aim for 15 to 25 names.",
-        "Prepare one sticky per name before the session, so the hour is spent placing, not brainstorming."
-      ],
-      "agenda": [
-        {"t": "Complete the list", "min": 10, "d": "Read the names aloud. Ask 'who can stop this project with one email?' and 'who will complain last minute?'. Add the missing ones."},
-        {"t": "Place on the map", "min": 20, "d": "One name at a time, place on power and interest. Say the reason out loud in one sentence. Disagreements go on a parking sticky."},
-        {"t": "Settle the parking lot", "min": 10, "d": "For each contested name, ask 'what did this person do last time a similar project ran?'. Place them based on behavior, not title."},
-        {"t": "Decide the treatment", "min": 15, "d": "Manage closely: named owner, 1:1 every two weeks. Keep satisfied: monthly written update. Keep informed: newsletter or demo. Monitor: nothing, and say so."},
-        {"t": "First three moves", "min": 5, "d": "Pick the three people who need a conversation this week. Put the name, the owner and the date on the board."}
-      ],
-      "pitfalls": [
-        "Do not place people by their org chart title. A quiet architect who owns the data model has more power than a VP who has never opened the product.",
-        "'Manage closely' with eight names means nobody is managed closely. Cap it at four; the rest move to Keep satisfied.",
-        "The map is a snapshot. Put a 30-minute revisit in the calendar after the first milestone, or it will be wrong within a month."
-      ],
-      "next": "The four treatments turn into calendar entries and a distribution list, owned by the PM. High-power skeptics get a 1:1 before the kick-off, and the map decides who is invited to the Pre-mortem.",
-      "source": ""
+    {
+     "t": "Objectif et succès",
+     "min": 25,
+     "d": "Chacun écrit seul pendant 3 minutes à quoi ressemble le succès dans 6 mois, puis tu regroupes. Impose une phrase mesurable dans le bloc Succès."
     },
-    "fr": {
-      "prep": [
-        "Fais-le avec le sponsor seul, ou le sponsor plus un lead de confiance. Personne n'a envie d'être classé 'pouvoir faible' devant ses collègues.",
-        "Liste tous les noms apparus dans un email sur le projet, plus ceux qui possèdent les systèmes ou budgets que tu touches. Vise 15 à 25 noms.",
-        "Prépare un sticky par nom avant la séance, pour que l'heure serve à placer, pas à brainstormer."
-      ],
-      "agenda": [
-        {"t": "Compléter la liste", "min": 10, "d": "Lis les noms à voix haute. Demande 'qui peut arrêter ce projet en un email ?' et 'qui va se plaindre au dernier moment ?'. Ajoute les manquants."},
-        {"t": "Placer sur la carte", "min": 20, "d": "Un nom à la fois, placé sur pouvoir et intérêt. La raison se dit en une phrase. Les désaccords vont sur un sticky de parking."},
-        {"t": "Vider le parking", "min": 10, "d": "Pour chaque nom contesté, demande 'qu'a fait cette personne la dernière fois qu'un projet similaire a tourné ?'. Place selon le comportement, pas le titre."},
-        {"t": "Décider le traitement", "min": 15, "d": "Impliquer : un responsable nommé, un 1:1 toutes les deux semaines. Satisfaire : point écrit mensuel. Informer : newsletter ou démo. Surveiller : rien, et on le dit."},
-        {"t": "Trois premiers gestes", "min": 5, "d": "Choisis les trois personnes à voir cette semaine. Nom, responsable et date sur le board."}
-      ],
-      "pitfalls": [
-        "Ne place pas les gens selon l'organigramme. Un architecte discret qui possède le modèle de données a plus de pouvoir qu'un VP qui n'a jamais ouvert le produit.",
-        "'Impliquer' avec huit noms, c'est personne d'impliqué. Plafonne à quatre ; les autres passent en Satisfaire.",
-        "La carte est un instantané. Mets 30 minutes de révision au calendrier après le premier jalon, sinon elle sera fausse dans un mois."
-      ],
-      "next": "Les quatre traitements deviennent des entrées de calendrier et une liste de diffusion, tenues par le PM. Les sceptiques à fort pouvoir ont un 1:1 avant le kick-off, et la carte décide qui est invité au Pre-mortem.",
-      "source": ""
-    }
-  },
-  "charter": {
-    "en": {
-      "prep": [
-        "Whole team, including the part-timers and the person who joins next month if you can. Missing people do not follow rules they did not write.",
-        "Ask each person to bring one thing that worked in a previous team and one thing that drove them crazy. Two stickies, written before the session.",
-        "Prepare the five columns and pre-fill Rituals with what already exists (standup, sprint review) so the discussion is about changing, not listing.",
-        "Print or pin the charter template of a team people admire, as a reference for the level of concreteness expected."
-      ],
-      "agenda": [
-        {"t": "Past teams", "min": 15, "d": "Everyone shares their two stickies. No debate, just listening. Cluster the 'drove me crazy' ones: those become the rules."},
-        {"t": "Mission", "min": 20, "d": "Write 'we exist to ... for ... so that ...' in pairs. Two rounds of merging. If it could describe another team in the company, it is not done."},
-        {"t": "Values into behaviors", "min": 20, "d": "For each proposed value, ask 'what would we see someone do?'. Keep only values that produce an observable behavior. Three to four maximum."},
-        {"t": "Working rules", "min": 30, "d": "Response time on messages, meeting-free blocks, how decisions get made when the PM is out, how to say 'I am stuck'. One rule per sticky, thumbs up or down from everyone."},
-        {"t": "Rituals and Definition of Done", "min": 25, "d": "Confirm or kill each ritual with its purpose and owner. Then write the DoD as a checklist a new joiner could apply alone."},
-        {"t": "Sign and schedule", "min": 10, "d": "Everyone puts their initials on the board. Book a 30-minute review in six weeks, on the spot."}
-      ],
-      "pitfalls": [
-        "Values written as nouns ('transparency', 'ownership') change nothing. If you cannot describe the behavior, delete the value.",
-        "More than eight rules and nobody remembers any. Vote them down to the ones the team actually broke in the last quarter.",
-        "A charter without a review date becomes a poster. Six weeks, then quarterly."
-      ],
-      "next": "The charter is pinned in the team channel and read to every new joiner in their first week. Its rituals get scheduled the same day; the Team Health Monitor six weeks later checks whether they hold.",
-      "source": ""
+    {
+     "t": "Périmètre et hors périmètre",
+     "min": 25,
+     "d": "Remplis le Périmètre, puis demande 'qu'est-ce que les gens vont croire inclus alors que ça ne l'est pas ?' et note-le en Hors périmètre. C'est le bloc le plus précieux du board."
     },
-    "fr": {
-      "prep": [
-        "Toute l'équipe, y compris les temps partiels et, si possible, la personne qui arrive le mois prochain. Les absents ne suivent pas des règles qu'ils n'ont pas écrites.",
-        "Demande à chacun d'apporter une chose qui marchait dans une équipe précédente et une chose qui le rendait fou. Deux stickies, écrits avant la séance.",
-        "Prépare les cinq colonnes et pré-remplis Rituels avec ce qui existe déjà (standup, sprint review) pour que la discussion porte sur ce qui change, pas sur l'inventaire.",
-        "Affiche la charte d'une équipe que les gens admirent, comme référence du niveau de concret attendu."
-      ],
-      "agenda": [
-        {"t": "Équipes passées", "min": 15, "d": "Chacun partage ses deux stickies. Pas de débat, on écoute. Regroupe les 'ça me rendait fou' : ils deviennent les règles."},
-        {"t": "Mission", "min": 20, "d": "En binômes, écrivez 'on existe pour ... auprès de ... afin que ...'. Deux tours de fusion. Si la phrase pourrait décrire une autre équipe de la boîte, ce n'est pas fini."},
-        {"t": "Des valeurs aux comportements", "min": 20, "d": "Pour chaque valeur proposée, demande 'qu'est-ce qu'on verrait quelqu'un faire ?'. Ne garde que les valeurs qui produisent un comportement observable. Trois ou quatre maximum."},
-        {"t": "Règles de fonctionnement", "min": 30, "d": "Délai de réponse aux messages, plages sans réunion, comment on décide quand le PM est absent, comment dire 'je suis bloqué'. Une règle par sticky, pouce levé ou baissé de chacun."},
-        {"t": "Rituels et Definition of Done", "min": 25, "d": "Confirme ou supprime chaque rituel avec son but et son responsable. Puis écris la DoD comme une checklist qu'un nouveau pourrait appliquer seul."},
-        {"t": "Signer et planifier", "min": 10, "d": "Chacun met ses initiales sur le board. Réserve une revue de 30 minutes dans six semaines, tout de suite."}
-      ],
-      "pitfalls": [
-        "Des valeurs écrites en noms ('transparence', 'ownership') ne changent rien. Si tu ne peux pas décrire le comportement, supprime la valeur.",
-        "Plus de huit règles et personne n'en retient aucune. Vote pour ne garder que celles que l'équipe a réellement enfreintes le trimestre dernier.",
-        "Une charte sans date de révision devient un poster. Six semaines, puis chaque trimestre."
-      ],
-      "next": "La charte s'épingle dans le canal de l'équipe et se lit à chaque nouveau dans sa première semaine. Ses rituels sont planifiés le jour même ; le Team Health Monitor six semaines plus tard vérifie qu'ils tiennent.",
-      "source": ""
-    }
-  },
-  "lean": {
-    "en": {
-      "prep": [
-        "Founders and PM only, three to five people. A Lean Canvas with ten people becomes a negotiation.",
-        "Ask each founder to fill their own canvas alone the day before, in 20 minutes, without checking with the others. The differences are the workshop.",
-        "Paste the last 30 days of numbers you have (signups, conversations, churn) on the side. Even rough numbers stop the 'I think' loop.",
-        "Set a timer visible to everyone: this canvas is meant to be fast and rewritten, not perfect."
-      ],
-      "agenda": [
-        {"t": "Compare the solo versions", "min": 20, "d": "Put the individual canvases side by side. Circle every block where founders disagree. Those blocks get the time; the others are copied as is."},
-        {"t": "Problem and segments", "min": 25, "d": "Top 3 problems, ranked, with the existing alternative for each. Then the early adopter: a specific person you could call today, not a market."},
-        {"t": "UVP and solution", "min": 20, "d": "Write the UVP as a headline a stranger would understand in 5 seconds. Only then list the minimum solution, one feature per problem."},
-        {"t": "Channels, revenue, costs, metrics", "min": 25, "d": "Fill fast, 5 minutes per block. One key metric only: the number that tells you the engine works. Revenue must have a price on it, even a guess."},
-        {"t": "Unfair advantage", "min": 10, "d": "Something that cannot be bought or copied in six months. If the block is empty, write 'none yet' honestly; it is a finding, not a failure."},
-        {"t": "Riskiest assumptions", "min": 20, "d": "Each person picks the one block that, if wrong, kills the business. Vote. The top 2 leave the room with a test and a date."}
-      ],
-      "pitfalls": [
-        "Starting with the Solution block is the classic mistake. Cover it with a sticky until Problem, Segments and UVP are done.",
-        "A customer segment that is a market ('restaurants') cannot be interviewed. Name the early adopter precisely enough to find ten of them this week.",
-        "Do not polish. If the canvas takes more than two hours, you are writing a business plan. Ship v1 and rewrite it after ten interviews."
-      ],
-      "next": "The canvas lives in the founders' shared doc and gets rewritten every four to six weeks. The two riskiest assumptions go straight into Assumption mapping or an Experiment board.",
-      "source": "Ash Maurya, Running Lean"
+    {
+     "t": "Risques",
+     "min": 15,
+     "d": "Écriture silencieuse, un risque par sticky, puis vote par gommettes sur le top 3. Chacun des 3 reçoit un responsable tout de suite."
     },
-    "fr": {
-      "prep": [
-        "Fondateurs et PM seulement, trois à cinq personnes. Un Lean Canvas à dix devient une négociation.",
-        "Demande à chaque fondateur de remplir son propre canvas seul la veille, en 20 minutes, sans se concerter. Les différences sont l'atelier.",
-        "Colle sur le côté les chiffres des 30 derniers jours (inscriptions, conversations, churn). Même approximatifs, ils coupent la boucle du 'je pense que'.",
-        "Mets un minuteur visible de tous : ce canvas doit être rapide et réécrit, pas parfait."
-      ],
-      "agenda": [
-        {"t": "Comparer les versions solo", "min": 20, "d": "Mets les canvas individuels côte à côte. Entoure chaque bloc où les fondateurs divergent. Ces blocs prennent le temps ; les autres sont recopiés tels quels."},
-        {"t": "Problème et segments", "min": 25, "d": "Top 3 des problèmes, classés, avec l'alternative existante pour chacun. Puis l'early adopter : une personne précise que tu pourrais appeler aujourd'hui, pas un marché."},
-        {"t": "PVU et solution", "min": 20, "d": "Écris la proposition de valeur comme un titre qu'un inconnu comprend en 5 secondes. Ensuite seulement, la solution minimale, une fonctionnalité par problème."},
-        {"t": "Canaux, revenus, coûts, métriques", "min": 25, "d": "Remplis vite, 5 minutes par bloc. Une seule métrique clé : le chiffre qui dit que le moteur tourne. Les revenus ont un prix dessus, même deviné."},
-        {"t": "Avantage déloyal", "min": 10, "d": "Quelque chose qui ne s'achète pas et ne se copie pas en six mois. Si le bloc est vide, écris 'pas encore' honnêtement ; c'est un constat, pas un échec."},
-        {"t": "Hypothèses les plus risquées", "min": 20, "d": "Chacun choisit le bloc qui, s'il est faux, tue la boîte. Vote. Les 2 premières sortent de la salle avec un test et une date."}
-      ],
-      "pitfalls": [
-        "Commencer par le bloc Solution est l'erreur classique. Couvre-le d'un sticky tant que Problème, Segments et PVU ne sont pas faits.",
-        "Un segment client qui est un marché ('les restaurants') ne s'interviewe pas. Nomme l'early adopter assez précisément pour en trouver dix cette semaine.",
-        "Ne peaufine pas. Si le canvas prend plus de deux heures, tu écris un business plan. Sors la v1 et réécris-la après dix entretiens."
-      ],
-      "next": "Le canvas vit dans le doc partagé des fondateurs et se réécrit toutes les quatre à six semaines. Les deux hypothèses les plus risquées partent directement dans l'Assumption mapping ou un Experiment board.",
-      "source": "Ash Maurya, Running Lean"
-    }
-  },
-  "bmc": {
-    "en": {
-      "prep": [
-        "Get finance in the room, or at least someone who can say what a customer actually costs and brings. The canvas without numbers is a drawing.",
-        "Send the nine-block definitions and one filled example from another company two days before. Half the room has never done one.",
-        "Print the current P&L lines and the top 5 customers by revenue; paste them next to Revenue streams and Customer segments.",
-        "Block three hours with a real break at 90 minutes. Tired people fill Key partners with everyone they know."
-      ],
-      "agenda": [
-        {"t": "Segments and value", "min": 40, "d": "Start on the right. Name the 2 to 4 segments that pay, with the share of revenue each brings. For each, the value proposition in the customer's words, not yours."},
-        {"t": "Channels and relationships", "min": 30, "d": "How does each segment discover, buy, and get served today? Mark which channel brings the most revenue and which costs the most to run."},
-        {"t": "Revenue streams", "min": 20, "d": "One sticky per way money comes in, with the pricing model and last year's amount. Sum it. If it does not match the P&L, find the missing stream."},
-        {"t": "Break", "min": 10, "d": "Real break, off the board."},
-        {"t": "Activities, resources, partners", "min": 40, "d": "Left side. Only what is needed to deliver the value on the right. Ask for each item 'if it disappeared tomorrow, which segment would notice?'. Delete the ones nobody would."},
-        {"t": "Cost structure and weak spots", "min": 40, "d": "Top 5 costs with amounts. Then everyone puts a red dot on the block they trust least. The three most dotted blocks get a next step and an owner."}
-      ],
-      "pitfalls": [
-        "Filling left to right leads to a canvas about what you do, not why customers pay. Always start with segments and value.",
-        "Key partners is not your supplier list. Keep only partners whose failure would stop delivery.",
-        "A canvas with no amounts on Revenue and Costs cannot support a decision. Rough numbers written in are better than precise numbers in someone's head."
-      ],
-      "next": "The canvas becomes the reference for leadership planning and the input for Three Horizons or OKRs. Red-dotted blocks become questions for the next Metrics review or a Positioning map.",
-      "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
+    {
+     "t": "Rôles et jalons",
+     "min": 25,
+     "d": "Nomme qui décide, qui fait, qui est consulté. Pose 3 à 4 jalons datés, le premier à moins de deux semaines."
     },
-    "fr": {
-      "prep": [
-        "Fais venir la finance, ou au moins quelqu'un qui sait ce qu'un client coûte et rapporte vraiment. Sans chiffres, le canvas est un dessin.",
-        "Envoie deux jours avant la définition des neuf blocs et un exemple rempli d'une autre boîte. La moitié de la salle n'en a jamais fait.",
-        "Imprime les lignes du compte de résultat et le top 5 des clients par chiffre d'affaires ; colle-les à côté de Sources de revenus et Segments.",
-        "Bloque trois heures avec une vraie pause à 90 minutes. Fatigués, les gens remplissent Partenaires clés avec tout leur carnet d'adresses."
-      ],
-      "agenda": [
-        {"t": "Segments et valeur", "min": 40, "d": "Commence à droite. Nomme les 2 à 4 segments qui paient, avec la part de revenus de chacun. Pour chacun, la proposition de valeur avec les mots du client, pas les tiens."},
-        {"t": "Canaux et relation", "min": 30, "d": "Comment chaque segment découvre, achète et est servi aujourd'hui ? Marque le canal qui rapporte le plus et celui qui coûte le plus à faire tourner."},
-        {"t": "Sources de revenus", "min": 20, "d": "Un sticky par façon dont l'argent rentre, avec le modèle de prix et le montant de l'an dernier. Additionne. Si ça ne colle pas au compte de résultat, cherche la source manquante."},
-        {"t": "Pause", "min": 10, "d": "Vraie pause, loin du board."},
-        {"t": "Activités, ressources, partenaires", "min": 40, "d": "Côté gauche. Seulement ce qui sert à livrer la valeur de droite. Pour chaque élément, demande 'si ça disparaissait demain, quel segment le remarquerait ?'. Supprime ce que personne ne remarquerait."},
-        {"t": "Coûts et zones de fragilité", "min": 40, "d": "Top 5 des coûts avec montants. Puis chacun pose une gommette rouge sur le bloc auquel il croit le moins. Les trois blocs les plus marqués reçoivent une prochaine étape et un responsable."}
-      ],
-      "pitfalls": [
-        "Remplir de gauche à droite donne un canvas sur ce que vous faites, pas sur pourquoi les clients paient. Commence toujours par segments et valeur.",
-        "Partenaires clés n'est pas la liste des fournisseurs. Ne garde que ceux dont la défaillance arrêterait la livraison.",
-        "Un canvas sans montants sur Revenus et Coûts ne permet aucune décision. Des chiffres approximatifs écrits valent mieux que des chiffres précis dans la tête de quelqu'un."
-      ],
-      "next": "Le canvas devient la référence des plans de direction et l'entrée des Three Horizons ou des OKR. Les blocs à gommette rouge deviennent des questions pour la prochaine Revue métriques ou une Carte de positionnement.",
-      "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
+    {
+     "t": "Relecture et signature",
+     "min": 20,
+     "d": "Le PM relit tout le board à voix haute. Le sponsor dit 'oui' ou corrige. Capture d'écran de la version signée, envoyée dans l'heure."
     }
-  },
-  "vpc": {
-    "en": {
-      "prep": [
-        "Product plus the people who hear customers say no: sales for prospects, support for existing users. Four to six people.",
-        "Pick one segment for the session. Two segments means two canvases, never one.",
-        "Bring 5 to 10 interview quotes or call recordings snippets. The customer side must be filled with their words.",
-        "Cover the left side (value map) with a big sticky until the customer profile is done."
-      ],
-      "agenda": [
-        {"t": "Customer jobs", "min": 25, "d": "Functional jobs first ('submit the monthly report'), then social and emotional ('look competent to my boss'). Rank them by importance to the customer, not to you."},
-        {"t": "Pains and gains", "min": 30, "d": "Pains: what makes the job slow, risky, annoying, with severity. Gains: what would make them recommend you, with how much they care. Ten stickies each, then rank."},
-        {"t": "Reveal the value map", "min": 25, "d": "Uncover the left side. List products and features, then for each write which pain it relieves or which gain it creates. Features with no arrow to the right are exposed."},
-        {"t": "Fit check", "min": 25, "d": "Take the top 3 pains and top 3 gains. Is there a pain reliever or gain creator for each? Mark matched ones green, unmatched red."},
-        {"t": "Gaps and next moves", "min": 15, "d": "Red items are either a product gap or a messaging gap. Decide which for each, with an owner. Orphan features get a 'keep or cut' question."}
-      ],
-      "pitfalls": [
-        "Filling the value map first turns the customer profile into a justification. Keep it covered.",
-        "Pains written as 'lack of feature X' are your roadmap in disguise. Rewrite from the customer's day: 'spends Friday afternoon reconciling numbers'.",
-        "Fit is not a feeling. Count the matches on the top 3 pains and gains; below two out of three on each, you do not have fit yet."
-      ],
-      "next": "Matched pairs become the messaging for the Positioning map and the landing page. Red gaps become Assumption mapping items; orphan features go to the Impact/effort matrix for a keep-or-cut call.",
-      "source": "Alexander Osterwalder, Strategyzer"
-    },
-    "fr": {
-      "prep": [
-        "Produit plus les gens qui entendent les clients dire non : les ventes pour les prospects, le support pour les utilisateurs existants. Quatre à six personnes.",
-        "Choisis un seul segment pour la séance. Deux segments, c'est deux canvas, jamais un.",
-        "Apporte 5 à 10 verbatims d'entretiens ou extraits d'appels. Le côté client doit se remplir avec leurs mots.",
-        "Couvre le côté gauche (carte de valeur) d'un grand sticky jusqu'à ce que le profil client soit fini."
-      ],
-      "agenda": [
-        {"t": "Tâches du client", "min": 25, "d": "Les tâches fonctionnelles d'abord ('rendre le rapport mensuel'), puis sociales et émotionnelles ('paraître compétent devant mon chef'). Classe par importance pour le client, pas pour toi."},
-        {"t": "Douleurs et gains", "min": 30, "d": "Douleurs : ce qui rend la tâche lente, risquée, pénible, avec la gravité. Gains : ce qui le ferait te recommander, avec l'intensité. Dix stickies chacun, puis classement."},
-        {"t": "Révéler la carte de valeur", "min": 25, "d": "Découvre le côté gauche. Liste produits et fonctionnalités, puis pour chacune écris quelle douleur elle soulage ou quel gain elle crée. Les fonctionnalités sans flèche vers la droite sont à nu."},
-        {"t": "Vérifier le fit", "min": 25, "d": "Prends le top 3 des douleurs et le top 3 des gains. Y a-t-il un soulageur ou un créateur pour chacun ? Vert si oui, rouge si non."},
-        {"t": "Écarts et suites", "min": 15, "d": "Un rouge est soit un trou produit, soit un trou de message. Tranche pour chacun, avec un responsable. Les fonctionnalités orphelines reçoivent une question 'garder ou couper'."}
-      ],
-      "pitfalls": [
-        "Remplir la carte de valeur d'abord transforme le profil client en justification. Garde-la couverte.",
-        "Des douleurs écrites 'absence de la fonctionnalité X', c'est ta roadmap déguisée. Réécris depuis la journée du client : 'passe son vendredi après-midi à rapprocher des chiffres'.",
-        "Le fit n'est pas une impression. Compte les correspondances sur le top 3 des douleurs et des gains ; sous deux sur trois de chaque côté, tu n'as pas encore le fit."
-      ],
-      "next": "Les paires vertes deviennent le message de la Carte de positionnement et de la landing page. Les rouges deviennent des lignes d'Assumption mapping ; les fonctionnalités orphelines passent en Matrice impact/effort pour trancher garder ou couper.",
-      "source": "Alexander Osterwalder, Strategyzer"
-    }
-  },
-  "vision": {
-    "en": {
-      "prep": [
-        "Leadership plus the product and design leads, six to eight people. Everyone who will be asked 'why are we doing this' by their team.",
-        "Ask each participant to write their vision sentence alone beforehand and send it to you. Paste them anonymously on the board.",
-        "Prepare the four bottom blocks with what exists today: current target group, current product line, this year's business goals.",
-        "Have the company mission and last strategy deck at hand; the vision must fit under them, not replace them."
-      ],
-      "agenda": [
-        {"t": "Read the anonymous visions", "min": 15, "d": "Read the sentences aloud. Ask the group to mark words that appear in more than three of them and words that appear only once. Both lists matter."},
-        {"t": "Target group and needs", "min": 25, "d": "Who is the product for in three years? Write the group, then their top 3 needs. Anything that is a need of the company rather than the customer moves to Business goals."},
-        {"t": "Product", "min": 20, "d": "Three to five defining characteristics of the future product. Not features: what makes it different, what it refuses to be."},
-        {"t": "Business goals", "min": 15, "d": "What the company gets: revenue, market position, strategic option. Each with a horizon and a rough magnitude."},
-        {"t": "Write the vision", "min": 30, "d": "Now the top block. In pairs, one sentence, no jargon, that a new hire repeats after hearing it once. Vote, then the leader chooses between the top two and says why."},
-        {"t": "Read-back test", "min": 15, "d": "Pick two people who were not in the pairs that wrote the winner. They explain the vision to the room in their own words. If they cannot, edit."}
-      ],
-      "pitfalls": [
-        "Writing the vision sentence first produces a slogan. Do the four bottom blocks first, the sentence writes itself from them.",
-        "A vision that mentions a technology or a feature expires in 18 months. Keep it about the change in the customer's life.",
-        "Voting to consensus gives you a sentence nobody hates and nobody remembers. Let the leader make the final call, in the room."
-      ],
-      "next": "The vision opens the roadmap, the OKR session and every onboarding. Business goals feed the North Star Metric work; the Product block becomes the filter for Now / Next / Later.",
-      "source": "Roman Pichler"
-    },
-    "fr": {
-      "prep": [
-        "Direction plus les leads produit et design, six à huit personnes. Tous ceux à qui leur équipe demandera 'pourquoi on fait ça'.",
-        "Demande à chaque participant d'écrire sa phrase de vision seul avant et de te l'envoyer. Colle-les anonymement sur le board.",
-        "Prépare les quatre blocs du bas avec l'existant : cible actuelle, gamme actuelle, objectifs business de l'année.",
-        "Garde sous la main la mission de l'entreprise et le dernier deck de stratégie ; la vision doit tenir dessous, pas les remplacer."
-      ],
-      "agenda": [
-        {"t": "Lire les visions anonymes", "min": 15, "d": "Lis les phrases à voix haute. Demande au groupe de marquer les mots présents dans plus de trois phrases et ceux présents une seule fois. Les deux listes comptent."},
-        {"t": "Cible et besoins", "min": 25, "d": "Pour qui est le produit dans trois ans ? Écris le groupe, puis ses 3 besoins principaux. Tout besoin qui est celui de l'entreprise plutôt que du client migre vers Objectifs business."},
-        {"t": "Produit", "min": 20, "d": "Trois à cinq caractéristiques du produit futur. Pas des fonctionnalités : ce qui le rend différent, ce qu'il refuse d'être."},
-        {"t": "Objectifs business", "min": 15, "d": "Ce que l'entreprise y gagne : revenus, position, option stratégique. Chacun avec un horizon et un ordre de grandeur."},
-        {"t": "Écrire la vision", "min": 30, "d": "Le bloc du haut, enfin. En binômes, une phrase, sans jargon, qu'un nouveau répète après l'avoir entendue une fois. Vote, puis le dirigeant tranche entre les deux premières et dit pourquoi."},
-        {"t": "Test de restitution", "min": 15, "d": "Choisis deux personnes qui n'ont pas écrit la phrase gagnante. Elles expliquent la vision à la salle avec leurs mots. Si elles n'y arrivent pas, corrige."}
-      ],
-      "pitfalls": [
-        "Écrire la phrase de vision en premier produit un slogan. Fais d'abord les quatre blocs du bas, la phrase en découle.",
-        "Une vision qui cite une technologie ou une fonctionnalité expire en 18 mois. Garde-la sur le changement dans la vie du client.",
-        "Voter jusqu'au consensus donne une phrase que personne ne déteste et que personne ne retient. Laisse le dirigeant trancher, dans la salle."
-      ],
-      "next": "La vision ouvre la roadmap, la séance OKR et chaque onboarding. Les objectifs business nourrissent le travail sur la North Star Metric ; le bloc Produit devient le filtre du Now / Next / Later.",
-      "source": "Roman Pichler"
-    }
-  },
-  "impact": {
-    "en": {
-      "prep": [
-        "Product, tech lead and a business owner who can defend the goal with a number. Six to eight people, no observers.",
-        "Agree the goal with the sponsor before the session and write it with a metric, a target and a date. The workshop starts from it, it does not debate it.",
-        "Prepare the four columns and a parking lot for 'features people came with'. They will arrive with a list; give it a place off the tree.",
-        "Bring the current backlog top 20 printed. You will map it onto the tree at the end."
-      ],
-      "agenda": [
-        {"t": "Lock the goal", "min": 15, "d": "Read the goal. Ask 'how will we know we got there?' until there is a number and a date. If the group wants to change it, stop and call the sponsor."},
-        {"t": "Actors", "min": 25, "d": "Who can move the metric up or down? Users, but also support, sales, partners, regulators. One sticky per actor, ranked by how much they can move the number."},
-        {"t": "Impacts", "min": 45, "d": "For each top actor: what behavior change would move the metric? Write it as a verb ('renews earlier', 'invites a colleague'). Five to eight impacts, then dot vote the top 4."},
-        {"t": "Break", "min": 10, "d": "Off the board."},
-        {"t": "Deliverables", "min": 50, "d": "Only now: what could we build or do to cause each impact? Several options per impact, cheap ones first. Then paste the backlog top 20 and connect each to an impact. Unconnected items go in a 'no impact' box."},
-        {"t": "Choose the first branch", "min": 35, "d": "Pick the one actor-impact path with the best ratio of expected movement to cost. Its deliverables become the next release. Everything else stays on the map, not in the backlog."}
-      ],
-      "pitfalls": [
-        "If the group jumps to deliverables while filling impacts, cover the fourth column. The map only works in order.",
-        "Impacts written as features ('has a dashboard') are not behaviors. Ask 'and then what do they do differently?'.",
-        "Do not keep every branch alive. A map with twelve open branches is a backlog with arrows. Pick one, ship, remeasure, then open the next."
-      ],
-      "next": "The chosen branch becomes the scope of the User story map or the next PRD. Backlog items in the 'no impact' box are archived with the map as justification. Remeasure the goal metric after each release and prune the tree.",
-      "source": "Gojko Adzic"
-    },
-    "fr": {
-      "prep": [
-        "Produit, lead tech et un responsable métier capable de défendre l'objectif avec un chiffre. Six à huit personnes, pas d'observateurs.",
-        "Valide l'objectif avec le sponsor avant la séance et écris-le avec une métrique, une cible et une date. L'atelier part de là, il ne le débat pas.",
-        "Prépare les quatre colonnes et un parking pour 'les fonctionnalités avec lesquelles les gens arrivent'. Ils viendront avec une liste ; donne-lui une place hors de l'arbre.",
-        "Apporte le top 20 du backlog imprimé. Tu le placeras sur l'arbre à la fin."
-      ],
-      "agenda": [
-        {"t": "Verrouiller l'objectif", "min": 15, "d": "Lis l'objectif. Demande 'comment saura-t-on qu'on y est ?' jusqu'à obtenir un chiffre et une date. Si le groupe veut le changer, arrête et appelle le sponsor."},
-        {"t": "Acteurs", "min": 25, "d": "Qui peut faire bouger la métrique, dans un sens ou l'autre ? Les utilisateurs, mais aussi le support, les ventes, les partenaires, le régulateur. Un sticky par acteur, classés par capacité à bouger le chiffre."},
-        {"t": "Impacts", "min": 45, "d": "Pour chaque acteur du haut : quel changement de comportement ferait bouger la métrique ? Écris-le avec un verbe ('renouvelle plus tôt', 'invite un collègue'). Cinq à huit impacts, puis vote par gommettes sur le top 4."},
-        {"t": "Pause", "min": 10, "d": "Loin du board."},
-        {"t": "Livrables", "min": 50, "d": "Maintenant seulement : que pourrait-on construire ou faire pour provoquer chaque impact ? Plusieurs options par impact, les moins chères d'abord. Puis colle le top 20 du backlog et relie chaque item à un impact. Les items non reliés vont dans une boîte 'sans impact'."},
-        {"t": "Choisir la première branche", "min": 35, "d": "Choisis le seul chemin acteur-impact avec le meilleur rapport mouvement attendu sur coût. Ses livrables deviennent la prochaine release. Le reste reste sur la carte, pas dans le backlog."}
-      ],
-      "pitfalls": [
-        "Si le groupe saute aux livrables pendant les impacts, couvre la quatrième colonne. La carte ne marche que dans l'ordre.",
-        "Des impacts écrits comme des fonctionnalités ('a un dashboard') ne sont pas des comportements. Demande 'et ensuite, qu'est-ce qu'il fait différemment ?'.",
-        "Ne garde pas toutes les branches vivantes. Une carte avec douze branches ouvertes est un backlog avec des flèches. Choisis-en une, livre, remesure, puis ouvre la suivante."
-      ],
-      "next": "La branche choisie devient le périmètre du User story map ou du prochain PRD. Les items du backlog dans la boîte 'sans impact' sont archivés avec la carte comme justification. Remesure la métrique après chaque release et élague l'arbre.",
-      "source": "Gojko Adzic"
-    }
-  },
-  "box": {
-    "en": {
-      "prep": [
-        "Mix the groups: one engineer, one salesperson, one support person, one designer per table. Homogeneous tables produce homogeneous boxes.",
-        "Bring three real product boxes or their photos (a cereal box, a game, a gadget) so people see what front, tagline and back look like.",
-        "Prepare one board area per group with the four blocks already drawn, plus markers if in person.",
-        "Tell people to leave laptops closed. Drawing badly is the point."
-      ],
-      "agenda": [
-        {"t": "Brief", "min": 10, "d": "Show the real boxes. Rule: the box must convince a stranger in a store aisle in 10 seconds. No internal words allowed."},
-        {"t": "Build the box", "min": 35, "d": "Each group fills name, tagline, three selling points and the back. Force a decision on the three points: which three, in which order, and why those."},
-        {"t": "Sell it", "min": 25, "d": "Each group has 3 minutes to pitch their box to the room as if to a customer. The room notes the words that come back in every pitch and those that appear once."},
-        {"t": "Merge", "min": 20, "d": "Take the recurring words and the best tagline. Write one shared box on the main board. Disagreements on the three points are settled by the person closest to customers."}
-      ],
-      "pitfalls": [
-        "If a group writes 'scalable', 'seamless' or 'AI-powered', make them replace it with what the customer sees happen.",
-        "Three selling points means three. A box with six points has no priority; ask 'which three would you keep if the box were half the size?'.",
-        "Do not let the design-skilled group win because their box looks nicer. Judge the words, cover the drawings if needed."
-      ],
-      "next": "The merged box becomes the brief for the landing page, the sales deck and the Positioning map. The three selling points are the test for every roadmap item: does it strengthen one of them?",
-      "source": "Luke Hohmann, Innovation Games"
-    },
-    "fr": {
-      "prep": [
-        "Mélange les groupes : un dev, un commercial, un support, un designer par table. Des tables homogènes produisent des boîtes homogènes.",
-        "Apporte trois vraies boîtes de produits ou leurs photos (une boîte de céréales, un jeu, un gadget) pour que les gens voient à quoi ressemblent le recto, le slogan et le dos.",
-        "Prépare une zone de board par groupe avec les quatre blocs déjà tracés, plus des marqueurs si c'est en présentiel.",
-        "Demande de fermer les ordinateurs. Dessiner mal fait partie de l'exercice."
-      ],
-      "agenda": [
-        {"t": "Brief", "min": 10, "d": "Montre les vraies boîtes. Règle : la boîte doit convaincre un inconnu dans un rayon en 10 secondes. Aucun mot interne autorisé."},
-        {"t": "Fabriquer la boîte", "min": 35, "d": "Chaque groupe remplit nom, slogan, trois arguments et le dos. Force la décision sur les trois arguments : lesquels, dans quel ordre, et pourquoi ceux-là."},
-        {"t": "La vendre", "min": 25, "d": "Chaque groupe a 3 minutes pour pitcher sa boîte à la salle comme à un client. La salle note les mots qui reviennent dans chaque pitch et ceux qui n'apparaissent qu'une fois."},
-        {"t": "Fusionner", "min": 20, "d": "Prends les mots récurrents et le meilleur slogan. Écris une boîte commune sur le board principal. Les désaccords sur les trois arguments sont tranchés par la personne la plus proche des clients."}
-      ],
-      "pitfalls": [
-        "Si un groupe écrit 'scalable', 'fluide' ou 'propulsé par l'IA', fais-lui remplacer par ce que le client voit se passer.",
-        "Trois arguments, ça veut dire trois. Une boîte à six arguments n'a pas de priorité ; demande 'lesquels garderiez-vous si la boîte était deux fois plus petite ?'.",
-        "Ne laisse pas gagner le groupe qui dessine bien parce que sa boîte est plus jolie. Juge les mots, couvre les dessins s'il le faut."
-      ],
-      "next": "La boîte fusionnée devient le brief de la landing page, du deck commercial et de la Carte de positionnement. Les trois arguments sont le test de chaque item de roadmap : est-ce qu'il renforce l'un des trois ?",
-      "source": "Luke Hohmann, Innovation Games"
-    }
-  },
-  "positioning": {
-    "en": {
-      "prep": [
-        "Product, marketing and sales, five to seven people. Sales brings the 'why we lost' notes from the last ten deals.",
-        "List 6 to 10 competitors, including the non-obvious ones (spreadsheet, agency, doing nothing). One sticky each with logo.",
-        "Prepare three candidate axis pairs in advance, drawn from customer interviews, not from your feature list.",
-        "Collect how each competitor describes itself on its homepage, one line each, and paste it on the side."
-      ],
-      "agenda": [
-        {"t": "Choose the axes", "min": 20, "d": "Present the three candidate pairs. The test: does a customer choose between vendors on this axis? Pick the pair where the group can name a lost deal for each end."},
-        {"t": "Place the competitors", "min": 25, "d": "One at a time, place them as the customer perceives them, not as you know them to be. Use their homepage line as evidence. Argue in one sentence, move on."},
-        {"t": "Place yourselves, twice", "min": 15, "d": "First where customers see you today (sales decides). Then where you want to be in 18 months (product decides). Draw the arrow between the two."},
-        {"t": "Find the open space", "min": 15, "d": "Look for the quadrant or edge with no logo and a real customer need. If there is none, the axes are wrong; go back to step 1 with the second pair."},
-        {"t": "Write the differentiating message", "min": 15, "d": "One sentence: 'For [who], unlike [nearest competitor], we [difference the map shows]'. Two versions, sales picks the one they can say on a call."}
-      ],
-      "pitfalls": [
-        "Axes like 'ease of use' versus 'power' put everyone in the top right. Pick axes where being at one end means giving something up.",
-        "Placing competitors where you wish they were, to make your space look bigger. Sales knows better; let them override product here.",
-        "A map with no arrow is a diagnosis without a decision. Always draw where you go next and what you stop claiming."
-      ],
-      "next": "The message goes to the landing page, the first sales deck slide and the Product Box. The arrow becomes a strategic theme in Now / Next / Later; revisit the map every six months or after a competitor launch.",
-      "source": "April Dunford, Obviously Awesome"
-    },
-    "fr": {
-      "prep": [
-        "Produit, marketing et ventes, cinq à sept personnes. Les ventes apportent les notes 'pourquoi on a perdu' des dix derniers deals.",
-        "Liste 6 à 10 concurrents, y compris les moins évidents (le tableur, l'agence, ne rien faire). Un sticky chacun avec logo.",
-        "Prépare à l'avance trois paires d'axes candidates, tirées des entretiens clients, pas de ta liste de fonctionnalités.",
-        "Relève comment chaque concurrent se décrit sur sa page d'accueil, une ligne chacun, et colle-les sur le côté."
-      ],
-      "agenda": [
-        {"t": "Choisir les axes", "min": 20, "d": "Présente les trois paires candidates. Le test : est-ce qu'un client choisit entre fournisseurs sur cet axe ? Prends la paire où le groupe sait citer un deal perdu à chaque extrémité."},
-        {"t": "Placer les concurrents", "min": 25, "d": "Un à la fois, placés comme le client les perçoit, pas comme tu sais qu'ils sont. Utilise leur ligne d'accueil comme preuve. Un argument en une phrase, on passe."},
-        {"t": "Se placer, deux fois", "min": 15, "d": "D'abord où les clients te voient aujourd'hui (les ventes décident). Puis où tu veux être dans 18 mois (le produit décide). Trace la flèche entre les deux."},
-        {"t": "Trouver l'espace vide", "min": 15, "d": "Cherche le quadrant ou le bord sans logo et avec un vrai besoin client. S'il n'y en a pas, les axes sont mauvais ; retour à l'étape 1 avec la deuxième paire."},
-        {"t": "Écrire le message différenciant", "min": 15, "d": "Une phrase : 'Pour [qui], contrairement à [concurrent le plus proche], nous [différence que montre la carte]'. Deux versions, les ventes gardent celle qu'elles peuvent dire en appel."}
-      ],
-      "pitfalls": [
-        "Des axes comme 'simplicité' contre 'puissance' mettent tout le monde en haut à droite. Choisis des axes où être à un bout oblige à renoncer à quelque chose.",
-        "Placer les concurrents là où tu aimerais qu'ils soient, pour agrandir ton espace. Les ventes savent mieux ; laisse-les avoir le dernier mot ici.",
-        "Une carte sans flèche est un diagnostic sans décision. Trace toujours où tu vas et ce que tu arrêtes de revendiquer."
-      ],
-      "next": "Le message part sur la landing page, la première slide du deck commercial et la Product Box. La flèche devient un thème stratégique du Now / Next / Later ; revois la carte tous les six mois ou après un lancement concurrent.",
-      "source": "April Dunford, Obviously Awesome"
-    }
-  },
-  "nsm": {
-    "en": {
-      "prep": [
-        "Leadership, product leads and one data person who can pull numbers live. Without data in the room, the tree is a wish list.",
-        "Send three examples of North Star metrics from other companies (Airbnb nights booked, Slack messages sent in teams) with why each was chosen.",
-        "Prepare a dashboard tab with the 10 metrics you already track, last 90 days, so candidates can be checked against reality immediately.",
-        "Ask each lead to propose one candidate NSM beforehand, with the reason in one sentence."
-      ],
-      "agenda": [
-        {"t": "Candidates", "min": 20, "d": "Paste the proposed candidates. For each, ask: does it measure value received by the customer, not by us? Revenue and signups are out. Keep 3 to 4."},
-        {"t": "Choose the North Star", "min": 40, "d": "Test each candidate: if it doubled, would revenue follow within a year? Can a team move it this quarter? Can we measure it today? Score, debate, the CEO or product head decides in the room."},
-        {"t": "Break", "min": 10, "d": "Off the board."},
-        {"t": "Levers", "min": 40, "d": "What are the 3 to 5 things that mathematically drive the NSM? Breadth (how many), depth (how much), frequency (how often), efficiency. Write the formula on the board if you can."},
-        {"t": "Input metrics per team", "min": 50, "d": "Under each lever, the input metrics a team can move week to week. Each team leaves with one or two they own. Pull the current value for each, live."},
-        {"t": "First review date", "min": 20, "d": "Decide who reports the tree monthly and in which meeting. Set the first review in four weeks and the questions it must answer."}
-      ],
-      "pitfalls": [
-        "Choosing revenue or MRR as the North Star. It lags by months and no single team can move it. Pick what causes revenue.",
-        "A tree with twelve input metrics is a dashboard, not a focus. Two per team, maximum.",
-        "Ending without pulling the current numbers. A metric nobody has measured yet is a project, not a metric; assign it before leaving."
-      ],
-      "next": "The tree is reviewed monthly in the leadership meeting and the input metrics become the KRs of the next OKR session. Each team's input metric shows up on their Sprint planning board.",
-      "source": "Amplitude, The North Star Playbook"
-    },
-    "fr": {
-      "prep": [
-        "Direction, leads produit et une personne data capable de sortir des chiffres en direct. Sans données dans la salle, l'arbre est une liste de souhaits.",
-        "Envoie trois exemples de North Star d'autres boîtes (nuits réservées chez Airbnb, messages envoyés dans les équipes chez Slack) avec la raison de chaque choix.",
-        "Prépare un onglet de dashboard avec les 10 métriques déjà suivies, 90 derniers jours, pour confronter les candidates à la réalité tout de suite.",
-        "Demande à chaque lead de proposer une North Star candidate avant, avec la raison en une phrase."
-      ],
-      "agenda": [
-        {"t": "Candidates", "min": 20, "d": "Colle les propositions. Pour chacune, demande : mesure-t-elle la valeur reçue par le client, pas par nous ? Revenus et inscriptions sont exclus. Garde 3 ou 4."},
-        {"t": "Choisir la North Star", "min": 40, "d": "Teste chaque candidate : si elle doublait, les revenus suivraient-ils dans l'année ? Une équipe peut-elle la bouger ce trimestre ? Peut-on la mesurer aujourd'hui ? Note, débat, le CEO ou le head of product tranche dans la salle."},
-        {"t": "Pause", "min": 10, "d": "Loin du board."},
-        {"t": "Leviers", "min": 40, "d": "Quels sont les 3 à 5 facteurs qui font mathématiquement bouger la North Star ? Largeur (combien), profondeur (combien à chaque fois), fréquence (à quel rythme), efficacité. Écris la formule sur le board si tu peux."},
-        {"t": "Métriques d'entrée par équipe", "min": 50, "d": "Sous chaque levier, les métriques d'entrée qu'une équipe peut bouger de semaine en semaine. Chaque équipe repart avec une ou deux qu'elle possède. Sors la valeur actuelle de chacune, en direct."},
-        {"t": "Première date de revue", "min": 20, "d": "Décide qui présente l'arbre chaque mois et dans quelle réunion. Fixe la première revue dans quatre semaines et les questions auxquelles elle doit répondre."}
-      ],
-      "pitfalls": [
-        "Choisir les revenus ou le MRR comme North Star. Ils sont en retard de plusieurs mois et aucune équipe seule ne peut les bouger. Choisis ce qui cause les revenus.",
-        "Un arbre à douze métriques d'entrée est un dashboard, pas un focus. Deux par équipe, maximum.",
-        "Finir sans sortir les chiffres actuels. Une métrique que personne n'a encore mesurée est un projet, pas une métrique ; attribue-le avant de sortir."
-      ],
-      "next": "L'arbre est revu chaque mois en réunion de direction et les métriques d'entrée deviennent les KR de la prochaine séance OKR. La métrique d'entrée de chaque équipe apparaît sur son board de Sprint planning.",
-      "source": "Amplitude, The North Star Playbook"
-    }
-  },
-  "okr": {
-    "en": {
-      "prep": [
-        "The lead of each team plus the person who owns company objectives. Eight to twelve people; beyond that, split by department.",
-        "Send the company-level objectives for the quarter one week before. Team OKRs without company OKRs are just to-do lists with scores.",
-        "Ask each lead to bring a draft of their team's OKRs, with last quarter's results. Paste the drafts on the board before the session.",
-        "Prepare the grid: one row per objective, columns for KRs and initiatives. Keep a separate 'initiatives that arrived as objectives' parking lot."
-      ],
-      "agenda": [
-        {"t": "Last quarter in 10 minutes", "min": 15, "d": "Each lead states their score and the one thing they learned. No justification, one sentence each. The pattern across teams is the input for this quarter."},
-        {"t": "Objectives", "min": 40, "d": "Per team, 1 to 3 objectives that answer 'what changes for the customer or the business if we succeed?'. Each must link to a company objective. Objectives that are projects go to the parking lot."},
-        {"t": "Key results", "min": 60, "d": "Two to four KRs per objective, each a number with a current value and a target. Test each: if all KRs hit, is the objective clearly achieved? If yes, done. If not, a KR is missing."},
-        {"t": "Break", "min": 10, "d": "Off the board."},
-        {"t": "Cross-team check", "min": 35, "d": "Read every team's KRs aloud. Flag any KR that depends on another team's work. Both leads agree on it or one of them drops it. Flag KRs that contradict each other."},
-        {"t": "Confidence and cadence", "min": 20, "d": "Each KR gets a confidence score out of 10. Anything at 9 or 10 is a sandbag; anything at 3 is a wish. Fix the weekly check-in slot before leaving."}
-      ],
-      "pitfalls": [
-        "KRs that are tasks ('ship the new checkout'). Ask 'what number moves when it ships?' and write that instead.",
-        "Twelve KRs for one team means no focus. Cap at 3 objectives and 4 KRs each, and expect people to hit 70 percent.",
-        "Skipping the cross-team check leaves two teams with KRs that need the same engineers. This step is where the workshop pays for itself."
-      ],
-      "next": "The OKR grid goes into the shared tracker with a weekly confidence update. KRs are the input for Now / Next / Later and RICE scoring; the mid-quarter review and the retro at the end close the loop.",
-      "source": "John Doerr, Measure What Matters"
-    },
-    "fr": {
-      "prep": [
-        "Le lead de chaque équipe plus la personne qui porte les objectifs d'entreprise. Huit à douze personnes ; au-delà, découpe par département.",
-        "Envoie les objectifs d'entreprise du trimestre une semaine avant. Des OKR d'équipe sans OKR d'entreprise, ce sont des to-do lists avec des notes.",
-        "Demande à chaque lead d'apporter un brouillon des OKR de son équipe, avec les résultats du trimestre passé. Colle les brouillons sur le board avant la séance.",
-        "Prépare la grille : une ligne par objectif, des colonnes pour les KR et les initiatives. Garde un parking séparé pour 'les initiatives arrivées déguisées en objectifs'."
-      ],
-      "agenda": [
-        {"t": "Le trimestre passé en 10 minutes", "min": 15, "d": "Chaque lead donne son score et la seule chose qu'il a apprise. Pas de justification, une phrase chacun. Le motif commun entre équipes est l'entrée de ce trimestre."},
-        {"t": "Objectifs", "min": 40, "d": "Par équipe, 1 à 3 objectifs qui répondent à 'qu'est-ce qui change pour le client ou l'entreprise si on réussit ?'. Chacun doit se relier à un objectif d'entreprise. Les objectifs qui sont des projets partent au parking."},
-        {"t": "Résultats clés", "min": 60, "d": "Deux à quatre KR par objectif, chacun un chiffre avec valeur actuelle et cible. Teste chacun : si tous les KR sont atteints, l'objectif est-il clairement atteint ? Si oui, fini. Sinon, il manque un KR."},
-        {"t": "Pause", "min": 10, "d": "Loin du board."},
-        {"t": "Vérification inter-équipes", "min": 35, "d": "Lis les KR de chaque équipe à voix haute. Signale tout KR qui dépend du travail d'une autre équipe. Les deux leads se mettent d'accord ou l'un des deux le retire. Signale les KR qui se contredisent."},
-        {"t": "Confiance et cadence", "min": 20, "d": "Chaque KR reçoit une note de confiance sur 10. À 9 ou 10, c'est du sandbagging ; à 3, c'est un vœu. Fixe le créneau du point hebdo avant de sortir."}
-      ],
-      "pitfalls": [
-        "Des KR qui sont des tâches ('livrer le nouveau checkout'). Demande 'quel chiffre bouge quand c'est livré ?' et écris ça à la place.",
-        "Douze KR pour une équipe, c'est zéro focus. Plafonne à 3 objectifs et 4 KR chacun, et attends-toi à 70 pour cent d'atteinte.",
-        "Sauter la vérification inter-équipes laisse deux équipes avec des KR qui réclament les mêmes devs. C'est l'étape où l'atelier se rentabilise."
-      ],
-      "next": "La grille OKR part dans le tracker partagé avec une mise à jour hebdo de la confiance. Les KR sont l'entrée du Now / Next / Later et du scoring RICE ; la revue de mi-trimestre et la rétro de fin ferment la boucle.",
-      "source": "John Doerr, Measure What Matters"
-    }
-  },
-  "horizons": {
-    "en": {
-      "prep": [
-        "Leadership and product leads, six to eight people. Finance must be in the room or have validated the current spend split beforehand.",
-        "List every initiative currently funded or staffed, with its headcount or budget. Twenty to forty stickies, prepared before the session.",
-        "Compute the current split of spend across the three horizons as best you can. The number will shock someone; that is the point.",
-        "Send the three-horizon definitions with one example from your own industry per horizon two days before."
-      ],
-      "agenda": [
-        {"t": "Define the horizons for us", "min": 15, "d": "H1: what pays salaries today. H2: what will pay them in 2 to 3 years, already started. H3: bets with a 5-year payoff. Agree the definitions in your own words before placing anything."},
-        {"t": "Place the portfolio", "min": 35, "d": "One initiative at a time into a column. Disagreements settle on one question: 'when does this pay back?'. Write the headcount on each sticky."},
-        {"t": "Read the split", "min": 15, "d": "Sum the headcount per column. Compare with the target split the group believes in (often around 70/20/10). Name the gap out loud."},
-        {"t": "Rebalance", "min": 35, "d": "What moves? Which H1 initiatives are protecting revenue that is not at risk? Which H3 bets have no owner? Decide 3 to 5 moves with headcount attached."},
-        {"t": "Owners and review", "min": 20, "d": "Each horizon gets a named owner who reports on it quarterly. The H3 owner gets a kill-or-continue date for each bet."}
-      ],
-      "pitfalls": [
-        "Calling everything H2 to avoid the conversation. Force the payback question; anything paying in the next 12 months is H1.",
-        "An empty H3 column means the company has no future beyond its current product. Do not leave without at least two bets, even small.",
-        "Rebalancing on paper without moving people. A move that does not change someone's calendar next month did not happen."
-      ],
-      "next": "The split and the moves go into the annual plan and the next Business Model Canvas review. H1 initiatives get RICE-scored; H3 bets get an Experiment board each with a kill date.",
-      "source": "Baghai, Coley & White, McKinsey"
-    },
-    "fr": {
-      "prep": [
-        "Direction et leads produit, six à huit personnes. La finance doit être dans la salle ou avoir validé la répartition actuelle des dépenses avant.",
-        "Liste chaque initiative financée ou staffée aujourd'hui, avec son effectif ou son budget. Vingt à quarante stickies, préparés avant la séance.",
-        "Calcule au mieux la répartition actuelle des dépenses entre les trois horizons. Le chiffre va choquer quelqu'un ; c'est le but.",
-        "Envoie deux jours avant la définition des trois horizons avec un exemple de ton secteur par horizon."
-      ],
-      "agenda": [
-        {"t": "Définir les horizons pour nous", "min": 15, "d": "H1 : ce qui paie les salaires aujourd'hui. H2 : ce qui les paiera dans 2 à 3 ans, déjà lancé. H3 : des paris à 5 ans. Mettez-vous d'accord sur les définitions avec vos mots avant de placer quoi que ce soit."},
-        {"t": "Placer le portefeuille", "min": 35, "d": "Une initiative à la fois dans une colonne. Les désaccords se règlent sur une question : 'quand est-ce que ça rapporte ?'. Écris l'effectif sur chaque sticky."},
-        {"t": "Lire la répartition", "min": 15, "d": "Additionne les effectifs par colonne. Compare avec la répartition cible en laquelle le groupe croit (souvent autour de 70/20/10). Nomme l'écart à voix haute."},
-        {"t": "Rééquilibrer", "min": 35, "d": "Qu'est-ce qui bouge ? Quelles initiatives H1 protègent des revenus qui ne sont pas menacés ? Quels paris H3 n'ont pas de responsable ? Décide 3 à 5 mouvements avec les effectifs attachés."},
-        {"t": "Responsables et revue", "min": 20, "d": "Chaque horizon reçoit un responsable nommé qui en rend compte chaque trimestre. Le responsable H3 fixe une date 'on arrête ou on continue' pour chaque pari."}
-      ],
-      "pitfalls": [
-        "Tout classer en H2 pour éviter la conversation. Impose la question du retour ; tout ce qui rapporte dans les 12 mois est H1.",
-        "Une colonne H3 vide veut dire que l'entreprise n'a pas d'avenir au-delà de son produit actuel. Ne sors pas sans au moins deux paris, même petits.",
-        "Rééquilibrer sur le papier sans déplacer des gens. Un mouvement qui ne change pas l'agenda de quelqu'un le mois prochain n'a pas eu lieu."
-      ],
-      "next": "La répartition et les mouvements entrent dans le plan annuel et dans la prochaine revue du Business Model Canvas. Les initiatives H1 passent au scoring RICE ; chaque pari H3 reçoit un Experiment board avec une date d'arrêt.",
-      "source": "Baghai, Coley & White, McKinsey"
-    }
-  },
-  "prfaq": {
-    "en": {
-      "prep": [
-        "The PM writes alone before the session: a full draft of the press release and at least ten FAQ questions. The four hours are for review, not writing.",
-        "Send the draft 48 hours before to the leads who will review it, with the instruction to read it fully and write comments in the document, not in email.",
-        "Pick a reviewer who does not know the project. Their confusion is the most useful signal you will get.",
-        "Print or pin one PR/FAQ you consider excellent so the bar is visible."
-      ],
-      "agenda": [
-        {"t": "Silent reading", "min": 30, "d": "Everyone reads the whole document in silence, including those who read it before. Comments go in the margin. Nobody speaks."},
-        {"t": "Headline and first paragraph", "min": 30, "d": "Would a customer stop scrolling on this headline? Does the first paragraph say who, what, and why it matters, with no adjectives? Rewrite live until yes."},
-        {"t": "Problem and solution", "min": 45, "d": "Is the problem stated in the customer's terms with a number? Does the solution describe what the customer does, not what we build? The customer quote must sound like a real person."},
-        {"t": "Break", "min": 15, "d": "Off the document."},
-        {"t": "The FAQ hunt", "min": 60, "d": "Go through internal FAQs: cost, risks, dependencies, what we will not do, why now. Each reviewer adds the one question they would ask if they were funding it. Unanswered questions stay in the document, marked open."},
-        {"t": "Decide", "min": 40, "d": "Three outcomes only: approved to move to a PRD, rewrite and re-review in a week, or stopped. The decider says which and names the top reason in the document."},
-        {"t": "Log the decision", "min": 20, "d": "The PM writes the decision and open questions at the top of the document, with the date. Send the link the same day."}
-      ],
-      "pitfalls": [
-        "Skipping the silent reading because 'everyone read it'. Half did not. Thirty minutes of silence saves two hours of arguing about a paragraph nobody read.",
-        "A press release full of 'seamless', 'powerful', 'innovative'. Delete every adjective and see if the story still stands.",
-        "Treating 'stopped' as failure. A project killed at PR/FAQ stage costs four hours. The same project killed at launch costs a quarter."
-      ],
-      "next": "An approved PR/FAQ becomes the first page of the PRD and the source for the Launch plan. A rewrite comes back in a week; a stop is archived with its reason so nobody reopens it in six months without new information.",
-      "source": "Amazon, Working Backwards"
-    },
-    "fr": {
-      "prep": [
-        "Le PM écrit seul avant la séance : un brouillon complet du communiqué et au moins dix questions de FAQ. Les quatre heures servent à relire, pas à écrire.",
-        "Envoie le brouillon 48 heures avant aux leads qui relisent, avec la consigne de le lire en entier et de commenter dans le document, pas par email.",
-        "Choisis un relecteur qui ne connaît pas le projet. Sa confusion est le signal le plus utile que tu auras.",
-        "Imprime ou épingle un PR/FAQ que tu juges excellent pour que la barre soit visible."
-      ],
-      "agenda": [
-        {"t": "Lecture silencieuse", "min": 30, "d": "Tout le monde lit le document en entier, en silence, y compris ceux qui l'ont déjà lu. Les commentaires vont en marge. Personne ne parle."},
-        {"t": "Titre et premier paragraphe", "min": 30, "d": "Un client s'arrêterait-il sur ce titre ? Le premier paragraphe dit-il qui, quoi, et pourquoi ça compte, sans adjectif ? Réécris en direct jusqu'à ce que oui."},
-        {"t": "Problème et solution", "min": 45, "d": "Le problème est-il dit avec les mots du client et un chiffre ? La solution décrit-elle ce que le client fait, pas ce qu'on construit ? La citation client doit sonner comme une vraie personne."},
-        {"t": "Pause", "min": 15, "d": "Loin du document."},
-        {"t": "La chasse aux questions", "min": 60, "d": "Passe les FAQ internes : coût, risques, dépendances, ce qu'on ne fera pas, pourquoi maintenant. Chaque relecteur ajoute la question qu'il poserait s'il finançait. Les questions sans réponse restent dans le document, marquées ouvertes."},
-        {"t": "Décider", "min": 40, "d": "Trois issues seulement : approuvé pour passer au PRD, à réécrire et relire dans une semaine, ou arrêté. Le décideur dit laquelle et écrit la raison principale dans le document."},
-        {"t": "Consigner la décision", "min": 20, "d": "Le PM écrit la décision et les questions ouvertes en haut du document, avec la date. Le lien part le jour même."}
-      ],
-      "pitfalls": [
-        "Sauter la lecture silencieuse parce que 'tout le monde l'a lu'. La moitié ne l'a pas fait. Trente minutes de silence épargnent deux heures de débat sur un paragraphe que personne n'a lu.",
-        "Un communiqué plein de 'fluide', 'puissant', 'innovant'. Supprime chaque adjectif et regarde si l'histoire tient encore.",
-        "Considérer 'arrêté' comme un échec. Un projet tué au stade PR/FAQ coûte quatre heures. Le même projet tué au lancement coûte un trimestre."
-      ],
-      "next": "Un PR/FAQ approuvé devient la première page du PRD et la source du Plan de lancement. Une réécriture revient dans une semaine ; un arrêt est archivé avec sa raison pour que personne ne le rouvre dans six mois sans information nouvelle.",
-      "source": "Amazon, Working Backwards"
-    }
+   ],
+   "pitfalls": [
+    "Ne laisse pas le bloc Objectif contenir une solution ('faire une app mobile'). Reformule en résultat ('diviser par deux le temps d'onboarding') avant d'avancer.",
+    "Si Hors périmètre reste vide, tu n'as pas fini. Demande explicitement trois éléments, le groupe les a toujours en tête.",
+    "Sauter la relecture pour gagner du temps te coûte la signature. Quinze minutes maintenant valent mieux que trois semaines de 'ce n'est pas ce que je voulais dire'."
+   ],
+   "next": "La charte s'épingle en haut de l'espace projet et se cite à chaque comité. Si le problème reste flou, enchaîne avec le Problem statement canvas ; si l'équipe est nouvelle, avec le Team charter.",
+   "source": ""
   }
+ },
+ "problem": {
+  "en": {
+   "prep": [
+    "Bring one or two people who talk to customers every week (support, sales, CSM). Without them the board fills with product opinions.",
+    "Collect 5 to 10 verbatim customer quotes or support tickets and paste them on the side of the board before the session.",
+    "Ask everyone to write their own one-sentence version of the problem before coming. Do not share them yet.",
+    "Set up the board with the three top blocks visible and the Statement block hidden until the end."
+   ],
+   "agenda": [
+    {
+     "t": "Reveal the drafts",
+     "min": 10,
+     "d": "Everyone pastes their pre-written problem sentence. Read them aloud without comment. The gaps between them are the agenda."
+    },
+    {
+     "t": "Who and what",
+     "min": 20,
+     "d": "Fill Who has the problem with a specific person, not a segment ('Léa, ops manager at a 40-person clinic'). Then What problem, in their words, using the quotes."
+    },
+    {
+     "t": "Why now",
+     "min": 15,
+     "d": "What changed in the last 12 months that makes this worth solving today? If nobody can answer, note it as the first assumption."
+    },
+    {
+     "t": "Know versus assume",
+     "min": 25,
+     "d": "Sort every claim on the board: proven by data or interviews goes left, everything else goes right. Be strict: 'everyone knows' is an assumption."
+    },
+    {
+     "t": "Write the statement",
+     "min": 20,
+     "d": "In pairs, write one sentence: who, struggles with what, because of, which costs them. Vote, then merge the top two into the final."
+    }
+   ],
+   "pitfalls": [
+    "If the statement contains a feature name, it is a solution in disguise. Rewrite it until a competitor could solve the same sentence differently.",
+    "A segment ('SMBs') in the Who block hides ten different problems. Push for a named person with a role and a context.",
+    "Do not end with an empty Assume column. Three assumptions minimum, and each one becomes an item for the research plan."
+   ],
+   "next": "The statement becomes the first line of the PRD and the brief for research. The Assume column feeds Assumption mapping directly, then the Research plan.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Fais venir une ou deux personnes qui parlent aux clients chaque semaine (support, ventes, CSM). Sans elles, le board se remplit d'opinions produit.",
+    "Rassemble 5 à 10 verbatims clients ou tickets support et colle-les sur le côté du board avant la séance.",
+    "Demande à chacun d'écrire sa version du problème en une phrase avant de venir. Sans la partager.",
+    "Prépare le board avec les trois blocs du haut visibles et le bloc Énoncé masqué jusqu'à la fin."
+   ],
+   "agenda": [
+    {
+     "t": "Révéler les brouillons",
+     "min": 10,
+     "d": "Chacun colle sa phrase écrite à l'avance. Lecture à voix haute sans commentaire. Les écarts entre les phrases font l'ordre du jour."
+    },
+    {
+     "t": "Qui et quoi",
+     "min": 20,
+     "d": "Remplis Qui avec une personne précise, pas un segment ('Léa, responsable ops d'une clinique de 40 personnes'). Puis Quel problème, avec ses mots, en t'appuyant sur les verbatims."
+    },
+    {
+     "t": "Pourquoi maintenant",
+     "min": 15,
+     "d": "Qu'est-ce qui a changé ces 12 derniers mois qui rend ce problème digne d'être résolu aujourd'hui ? Si personne ne sait, note-le comme première hypothèse."
+    },
+    {
+     "t": "Su ou supposé",
+     "min": 25,
+     "d": "Trie chaque affirmation du board : prouvé par des données ou des entretiens à gauche, tout le reste à droite. Sois strict : 'tout le monde sait que' est une hypothèse."
+    },
+    {
+     "t": "Écrire l'énoncé",
+     "min": 20,
+     "d": "En binômes, une phrase : qui, galère avec quoi, à cause de, ce qui lui coûte. Vote, puis fusion des deux meilleures en version finale."
+    }
+   ],
+   "pitfalls": [
+    "Si l'énoncé contient un nom de fonctionnalité, c'est une solution déguisée. Réécris jusqu'à ce qu'un concurrent puisse résoudre la même phrase autrement.",
+    "Un segment ('les PME') dans le bloc Qui cache dix problèmes différents. Exige une personne nommée, avec un rôle et un contexte.",
+    "Ne termine pas avec une colonne Supposé vide. Trois hypothèses minimum, chacune devient une ligne du plan de recherche."
+   ],
+   "next": "L'énoncé devient la première ligne du PRD et le brief de la research. La colonne Supposé alimente directement l'Assumption mapping, puis le Plan de recherche.",
+   "source": ""
+  }
+ },
+ "stakeholders": {
+  "en": {
+   "prep": [
+    "Do it with the sponsor only, or the sponsor plus one trusted lead. Nobody wants to be rated 'low power' in front of colleagues.",
+    "List every name that has appeared in an email about the project, plus the people who own the systems or budgets you touch. Aim for 15 to 25 names.",
+    "Prepare one sticky per name before the session, so the hour is spent placing, not brainstorming."
+   ],
+   "agenda": [
+    {
+     "t": "Complete the list",
+     "min": 10,
+     "d": "Read the names aloud. Ask 'who can stop this project with one email?' and 'who will complain last minute?'. Add the missing ones."
+    },
+    {
+     "t": "Place on the map",
+     "min": 20,
+     "d": "One name at a time, place on power and interest. Say the reason out loud in one sentence. Disagreements go on a parking sticky."
+    },
+    {
+     "t": "Settle the parking lot",
+     "min": 10,
+     "d": "For each contested name, ask 'what did this person do last time a similar project ran?'. Place them based on behavior, not title."
+    },
+    {
+     "t": "Decide the treatment",
+     "min": 15,
+     "d": "Manage closely: named owner, 1:1 every two weeks. Keep satisfied: monthly written update. Keep informed: newsletter or demo. Monitor: nothing, and say so."
+    },
+    {
+     "t": "First three moves",
+     "min": 5,
+     "d": "Pick the three people who need a conversation this week. Put the name, the owner and the date on the board."
+    }
+   ],
+   "pitfalls": [
+    "Do not place people by their org chart title. A quiet architect who owns the data model has more power than a VP who has never opened the product.",
+    "'Manage closely' with eight names means nobody is managed closely. Cap it at four; the rest move to Keep satisfied.",
+    "The map is a snapshot. Put a 30-minute revisit in the calendar after the first milestone, or it will be wrong within a month."
+   ],
+   "next": "The four treatments turn into calendar entries and a distribution list, owned by the PM. High-power skeptics get a 1:1 before the kick-off, and the map decides who is invited to the Pre-mortem.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Fais-le avec le sponsor seul, ou le sponsor plus un lead de confiance. Personne n'a envie d'être classé 'pouvoir faible' devant ses collègues.",
+    "Liste tous les noms apparus dans un email sur le projet, plus ceux qui possèdent les systèmes ou budgets que tu touches. Vise 15 à 25 noms.",
+    "Prépare un sticky par nom avant la séance, pour que l'heure serve à placer, pas à brainstormer."
+   ],
+   "agenda": [
+    {
+     "t": "Compléter la liste",
+     "min": 10,
+     "d": "Lis les noms à voix haute. Demande 'qui peut arrêter ce projet en un email ?' et 'qui va se plaindre au dernier moment ?'. Ajoute les manquants."
+    },
+    {
+     "t": "Placer sur la carte",
+     "min": 20,
+     "d": "Un nom à la fois, placé sur pouvoir et intérêt. La raison se dit en une phrase. Les désaccords vont sur un sticky de parking."
+    },
+    {
+     "t": "Vider le parking",
+     "min": 10,
+     "d": "Pour chaque nom contesté, demande 'qu'a fait cette personne la dernière fois qu'un projet similaire a tourné ?'. Place selon le comportement, pas le titre."
+    },
+    {
+     "t": "Décider le traitement",
+     "min": 15,
+     "d": "Impliquer : un responsable nommé, un 1:1 toutes les deux semaines. Satisfaire : point écrit mensuel. Informer : newsletter ou démo. Surveiller : rien, et on le dit."
+    },
+    {
+     "t": "Trois premiers gestes",
+     "min": 5,
+     "d": "Choisis les trois personnes à voir cette semaine. Nom, responsable et date sur le board."
+    }
+   ],
+   "pitfalls": [
+    "Ne place pas les gens selon l'organigramme. Un architecte discret qui possède le modèle de données a plus de pouvoir qu'un VP qui n'a jamais ouvert le produit.",
+    "'Impliquer' avec huit noms, c'est personne d'impliqué. Plafonne à quatre ; les autres passent en Satisfaire.",
+    "La carte est un instantané. Mets 30 minutes de révision au calendrier après le premier jalon, sinon elle sera fausse dans un mois."
+   ],
+   "next": "Les quatre traitements deviennent des entrées de calendrier et une liste de diffusion, tenues par le PM. Les sceptiques à fort pouvoir ont un 1:1 avant le kick-off, et la carte décide qui est invité au Pre-mortem.",
+   "source": ""
+  }
+ },
+ "charter": {
+  "en": {
+   "prep": [
+    "Whole team, including the part-timers and the person who joins next month if you can. Missing people do not follow rules they did not write.",
+    "Ask each person to bring one thing that worked in a previous team and one thing that drove them crazy. Two stickies, written before the session.",
+    "Prepare the five columns and pre-fill Rituals with what already exists (standup, sprint review) so the discussion is about changing, not listing.",
+    "Print or pin the charter template of a team people admire, as a reference for the level of concreteness expected."
+   ],
+   "agenda": [
+    {
+     "t": "Past teams",
+     "min": 15,
+     "d": "Everyone shares their two stickies. No debate, just listening. Cluster the 'drove me crazy' ones: those become the rules."
+    },
+    {
+     "t": "Mission",
+     "min": 20,
+     "d": "Write 'we exist to ... for ... so that ...' in pairs. Two rounds of merging. If it could describe another team in the company, it is not done."
+    },
+    {
+     "t": "Values into behaviors",
+     "min": 20,
+     "d": "For each proposed value, ask 'what would we see someone do?'. Keep only values that produce an observable behavior. Three to four maximum."
+    },
+    {
+     "t": "Working rules",
+     "min": 30,
+     "d": "Response time on messages, meeting-free blocks, how decisions get made when the PM is out, how to say 'I am stuck'. One rule per sticky, thumbs up or down from everyone."
+    },
+    {
+     "t": "Rituals and Definition of Done",
+     "min": 25,
+     "d": "Confirm or kill each ritual with its purpose and owner. Then write the DoD as a checklist a new joiner could apply alone."
+    },
+    {
+     "t": "Sign and schedule",
+     "min": 10,
+     "d": "Everyone puts their initials on the board. Book a 30-minute review in six weeks, on the spot."
+    }
+   ],
+   "pitfalls": [
+    "Values written as nouns ('transparency', 'ownership') change nothing. If you cannot describe the behavior, delete the value.",
+    "More than eight rules and nobody remembers any. Vote them down to the ones the team actually broke in the last quarter.",
+    "A charter without a review date becomes a poster. Six weeks, then quarterly."
+   ],
+   "next": "The charter is pinned in the team channel and read to every new joiner in their first week. Its rituals get scheduled the same day; the Team Health Monitor six weeks later checks whether they hold.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Toute l'équipe, y compris les temps partiels et, si possible, la personne qui arrive le mois prochain. Les absents ne suivent pas des règles qu'ils n'ont pas écrites.",
+    "Demande à chacun d'apporter une chose qui marchait dans une équipe précédente et une chose qui le rendait fou. Deux stickies, écrits avant la séance.",
+    "Prépare les cinq colonnes et pré-remplis Rituels avec ce qui existe déjà (standup, sprint review) pour que la discussion porte sur ce qui change, pas sur l'inventaire.",
+    "Affiche la charte d'une équipe que les gens admirent, comme référence du niveau de concret attendu."
+   ],
+   "agenda": [
+    {
+     "t": "Équipes passées",
+     "min": 15,
+     "d": "Chacun partage ses deux stickies. Pas de débat, on écoute. Regroupe les 'ça me rendait fou' : ils deviennent les règles."
+    },
+    {
+     "t": "Mission",
+     "min": 20,
+     "d": "En binômes, écrivez 'on existe pour ... auprès de ... afin que ...'. Deux tours de fusion. Si la phrase pourrait décrire une autre équipe de la boîte, ce n'est pas fini."
+    },
+    {
+     "t": "Des valeurs aux comportements",
+     "min": 20,
+     "d": "Pour chaque valeur proposée, demande 'qu'est-ce qu'on verrait quelqu'un faire ?'. Ne garde que les valeurs qui produisent un comportement observable. Trois ou quatre maximum."
+    },
+    {
+     "t": "Règles de fonctionnement",
+     "min": 30,
+     "d": "Délai de réponse aux messages, plages sans réunion, comment on décide quand le PM est absent, comment dire 'je suis bloqué'. Une règle par sticky, pouce levé ou baissé de chacun."
+    },
+    {
+     "t": "Rituels et Definition of Done",
+     "min": 25,
+     "d": "Confirme ou supprime chaque rituel avec son but et son responsable. Puis écris la DoD comme une checklist qu'un nouveau pourrait appliquer seul."
+    },
+    {
+     "t": "Signer et planifier",
+     "min": 10,
+     "d": "Chacun met ses initiales sur le board. Réserve une revue de 30 minutes dans six semaines, tout de suite."
+    }
+   ],
+   "pitfalls": [
+    "Des valeurs écrites en noms ('transparence', 'ownership') ne changent rien. Si tu ne peux pas décrire le comportement, supprime la valeur.",
+    "Plus de huit règles et personne n'en retient aucune. Vote pour ne garder que celles que l'équipe a réellement enfreintes le trimestre dernier.",
+    "Une charte sans date de révision devient un poster. Six semaines, puis chaque trimestre."
+   ],
+   "next": "La charte s'épingle dans le canal de l'équipe et se lit à chaque nouveau dans sa première semaine. Ses rituels sont planifiés le jour même ; le Team Health Monitor six semaines plus tard vérifie qu'ils tiennent.",
+   "source": ""
+  }
+ },
+ "lean": {
+  "en": {
+   "prep": [
+    "Founders and PM only, three to five people. A Lean Canvas with ten people becomes a negotiation.",
+    "Ask each founder to fill their own canvas alone the day before, in 20 minutes, without checking with the others. The differences are the workshop.",
+    "Paste the last 30 days of numbers you have (signups, conversations, churn) on the side. Even rough numbers stop the 'I think' loop.",
+    "Set a timer visible to everyone: this canvas is meant to be fast and rewritten, not perfect."
+   ],
+   "agenda": [
+    {
+     "t": "Compare the solo versions",
+     "min": 20,
+     "d": "Put the individual canvases side by side. Circle every block where founders disagree. Those blocks get the time; the others are copied as is."
+    },
+    {
+     "t": "Problem and segments",
+     "min": 25,
+     "d": "Top 3 problems, ranked, with the existing alternative for each. Then the early adopter: a specific person you could call today, not a market."
+    },
+    {
+     "t": "UVP and solution",
+     "min": 20,
+     "d": "Write the UVP as a headline a stranger would understand in 5 seconds. Only then list the minimum solution, one feature per problem."
+    },
+    {
+     "t": "Channels, revenue, costs, metrics",
+     "min": 25,
+     "d": "Fill fast, 5 minutes per block. One key metric only: the number that tells you the engine works. Revenue must have a price on it, even a guess."
+    },
+    {
+     "t": "Unfair advantage",
+     "min": 10,
+     "d": "Something that cannot be bought or copied in six months. If the block is empty, write 'none yet' honestly; it is a finding, not a failure."
+    },
+    {
+     "t": "Riskiest assumptions",
+     "min": 20,
+     "d": "Each person picks the one block that, if wrong, kills the business. Vote. The top 2 leave the room with a test and a date."
+    }
+   ],
+   "pitfalls": [
+    "Starting with the Solution block is the classic mistake. Cover it with a sticky until Problem, Segments and UVP are done.",
+    "A customer segment that is a market ('restaurants') cannot be interviewed. Name the early adopter precisely enough to find ten of them this week.",
+    "Do not polish. If the canvas takes more than two hours, you are writing a business plan. Ship v1 and rewrite it after ten interviews."
+   ],
+   "next": "The canvas lives in the founders' shared doc and gets rewritten every four to six weeks. The two riskiest assumptions go straight into Assumption mapping or an Experiment board.",
+   "source": "Ash Maurya, Running Lean"
+  },
+  "fr": {
+   "prep": [
+    "Fondateurs et PM seulement, trois à cinq personnes. Un Lean Canvas à dix devient une négociation.",
+    "Demande à chaque fondateur de remplir son propre canvas seul la veille, en 20 minutes, sans se concerter. Les différences sont l'atelier.",
+    "Colle sur le côté les chiffres des 30 derniers jours (inscriptions, conversations, churn). Même approximatifs, ils coupent la boucle du 'je pense que'.",
+    "Mets un minuteur visible de tous : ce canvas doit être rapide et réécrit, pas parfait."
+   ],
+   "agenda": [
+    {
+     "t": "Comparer les versions solo",
+     "min": 20,
+     "d": "Mets les canvas individuels côte à côte. Entoure chaque bloc où les fondateurs divergent. Ces blocs prennent le temps ; les autres sont recopiés tels quels."
+    },
+    {
+     "t": "Problème et segments",
+     "min": 25,
+     "d": "Top 3 des problèmes, classés, avec l'alternative existante pour chacun. Puis l'early adopter : une personne précise que tu pourrais appeler aujourd'hui, pas un marché."
+    },
+    {
+     "t": "PVU et solution",
+     "min": 20,
+     "d": "Écris la proposition de valeur comme un titre qu'un inconnu comprend en 5 secondes. Ensuite seulement, la solution minimale, une fonctionnalité par problème."
+    },
+    {
+     "t": "Canaux, revenus, coûts, métriques",
+     "min": 25,
+     "d": "Remplis vite, 5 minutes par bloc. Une seule métrique clé : le chiffre qui dit que le moteur tourne. Les revenus ont un prix dessus, même deviné."
+    },
+    {
+     "t": "Avantage déloyal",
+     "min": 10,
+     "d": "Quelque chose qui ne s'achète pas et ne se copie pas en six mois. Si le bloc est vide, écris 'pas encore' honnêtement ; c'est un constat, pas un échec."
+    },
+    {
+     "t": "Hypothèses les plus risquées",
+     "min": 20,
+     "d": "Chacun choisit le bloc qui, s'il est faux, tue la boîte. Vote. Les 2 premières sortent de la salle avec un test et une date."
+    }
+   ],
+   "pitfalls": [
+    "Commencer par le bloc Solution est l'erreur classique. Couvre-le d'un sticky tant que Problème, Segments et PVU ne sont pas faits.",
+    "Un segment client qui est un marché ('les restaurants') ne s'interviewe pas. Nomme l'early adopter assez précisément pour en trouver dix cette semaine.",
+    "Ne peaufine pas. Si le canvas prend plus de deux heures, tu écris un business plan. Sors la v1 et réécris-la après dix entretiens."
+   ],
+   "next": "Le canvas vit dans le doc partagé des fondateurs et se réécrit toutes les quatre à six semaines. Les deux hypothèses les plus risquées partent directement dans l'Assumption mapping ou un Experiment board.",
+   "source": "Ash Maurya, Running Lean"
+  }
+ },
+ "bmc": {
+  "en": {
+   "prep": [
+    "Get finance in the room, or at least someone who can say what a customer actually costs and brings. The canvas without numbers is a drawing.",
+    "Send the nine-block definitions and one filled example from another company two days before. Half the room has never done one.",
+    "Print the current P&L lines and the top 5 customers by revenue; paste them next to Revenue streams and Customer segments.",
+    "Block three hours with a real break at 90 minutes. Tired people fill Key partners with everyone they know."
+   ],
+   "agenda": [
+    {
+     "t": "Segments and value",
+     "min": 40,
+     "d": "Start on the right. Name the 2 to 4 segments that pay, with the share of revenue each brings. For each, the value proposition in the customer's words, not yours."
+    },
+    {
+     "t": "Channels and relationships",
+     "min": 30,
+     "d": "How does each segment discover, buy, and get served today? Mark which channel brings the most revenue and which costs the most to run."
+    },
+    {
+     "t": "Revenue streams",
+     "min": 20,
+     "d": "One sticky per way money comes in, with the pricing model and last year's amount. Sum it. If it does not match the P&L, find the missing stream."
+    },
+    {
+     "t": "Break",
+     "min": 10,
+     "d": "Real break, off the board."
+    },
+    {
+     "t": "Activities, resources, partners",
+     "min": 40,
+     "d": "Left side. Only what is needed to deliver the value on the right. Ask for each item 'if it disappeared tomorrow, which segment would notice?'. Delete the ones nobody would."
+    },
+    {
+     "t": "Cost structure and weak spots",
+     "min": 40,
+     "d": "Top 5 costs with amounts. Then everyone puts a red dot on the block they trust least. The three most dotted blocks get a next step and an owner."
+    }
+   ],
+   "pitfalls": [
+    "Filling left to right leads to a canvas about what you do, not why customers pay. Always start with segments and value.",
+    "Key partners is not your supplier list. Keep only partners whose failure would stop delivery.",
+    "A canvas with no amounts on Revenue and Costs cannot support a decision. Rough numbers written in are better than precise numbers in someone's head."
+   ],
+   "next": "The canvas becomes the reference for leadership planning and the input for Three Horizons or OKRs. Red-dotted blocks become questions for the next Metrics review or a Positioning map.",
+   "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
+  },
+  "fr": {
+   "prep": [
+    "Fais venir la finance, ou au moins quelqu'un qui sait ce qu'un client coûte et rapporte vraiment. Sans chiffres, le canvas est un dessin.",
+    "Envoie deux jours avant la définition des neuf blocs et un exemple rempli d'une autre boîte. La moitié de la salle n'en a jamais fait.",
+    "Imprime les lignes du compte de résultat et le top 5 des clients par chiffre d'affaires ; colle-les à côté de Sources de revenus et Segments.",
+    "Bloque trois heures avec une vraie pause à 90 minutes. Fatigués, les gens remplissent Partenaires clés avec tout leur carnet d'adresses."
+   ],
+   "agenda": [
+    {
+     "t": "Segments et valeur",
+     "min": 40,
+     "d": "Commence à droite. Nomme les 2 à 4 segments qui paient, avec la part de revenus de chacun. Pour chacun, la proposition de valeur avec les mots du client, pas les tiens."
+    },
+    {
+     "t": "Canaux et relation",
+     "min": 30,
+     "d": "Comment chaque segment découvre, achète et est servi aujourd'hui ? Marque le canal qui rapporte le plus et celui qui coûte le plus à faire tourner."
+    },
+    {
+     "t": "Sources de revenus",
+     "min": 20,
+     "d": "Un sticky par façon dont l'argent rentre, avec le modèle de prix et le montant de l'an dernier. Additionne. Si ça ne colle pas au compte de résultat, cherche la source manquante."
+    },
+    {
+     "t": "Pause",
+     "min": 10,
+     "d": "Vraie pause, loin du board."
+    },
+    {
+     "t": "Activités, ressources, partenaires",
+     "min": 40,
+     "d": "Côté gauche. Seulement ce qui sert à livrer la valeur de droite. Pour chaque élément, demande 'si ça disparaissait demain, quel segment le remarquerait ?'. Supprime ce que personne ne remarquerait."
+    },
+    {
+     "t": "Coûts et zones de fragilité",
+     "min": 40,
+     "d": "Top 5 des coûts avec montants. Puis chacun pose une gommette rouge sur le bloc auquel il croit le moins. Les trois blocs les plus marqués reçoivent une prochaine étape et un responsable."
+    }
+   ],
+   "pitfalls": [
+    "Remplir de gauche à droite donne un canvas sur ce que vous faites, pas sur pourquoi les clients paient. Commence toujours par segments et valeur.",
+    "Partenaires clés n'est pas la liste des fournisseurs. Ne garde que ceux dont la défaillance arrêterait la livraison.",
+    "Un canvas sans montants sur Revenus et Coûts ne permet aucune décision. Des chiffres approximatifs écrits valent mieux que des chiffres précis dans la tête de quelqu'un."
+   ],
+   "next": "Le canvas devient la référence des plans de direction et l'entrée des Three Horizons ou des OKR. Les blocs à gommette rouge deviennent des questions pour la prochaine Revue métriques ou une Carte de positionnement.",
+   "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
+  }
+ },
+ "vpc": {
+  "en": {
+   "prep": [
+    "Product plus the people who hear customers say no: sales for prospects, support for existing users. Four to six people.",
+    "Pick one segment for the session. Two segments means two canvases, never one.",
+    "Bring 5 to 10 interview quotes or call recordings snippets. The customer side must be filled with their words.",
+    "Cover the left side (value map) with a big sticky until the customer profile is done."
+   ],
+   "agenda": [
+    {
+     "t": "Customer jobs",
+     "min": 25,
+     "d": "Functional jobs first ('submit the monthly report'), then social and emotional ('look competent to my boss'). Rank them by importance to the customer, not to you."
+    },
+    {
+     "t": "Pains and gains",
+     "min": 30,
+     "d": "Pains: what makes the job slow, risky, annoying, with severity. Gains: what would make them recommend you, with how much they care. Ten stickies each, then rank."
+    },
+    {
+     "t": "Reveal the value map",
+     "min": 25,
+     "d": "Uncover the left side. List products and features, then for each write which pain it relieves or which gain it creates. Features with no arrow to the right are exposed."
+    },
+    {
+     "t": "Fit check",
+     "min": 25,
+     "d": "Take the top 3 pains and top 3 gains. Is there a pain reliever or gain creator for each? Mark matched ones green, unmatched red."
+    },
+    {
+     "t": "Gaps and next moves",
+     "min": 15,
+     "d": "Red items are either a product gap or a messaging gap. Decide which for each, with an owner. Orphan features get a 'keep or cut' question."
+    }
+   ],
+   "pitfalls": [
+    "Filling the value map first turns the customer profile into a justification. Keep it covered.",
+    "Pains written as 'lack of feature X' are your roadmap in disguise. Rewrite from the customer's day: 'spends Friday afternoon reconciling numbers'.",
+    "Fit is not a feeling. Count the matches on the top 3 pains and gains; below two out of three on each, you do not have fit yet."
+   ],
+   "next": "Matched pairs become the messaging for the Positioning map and the landing page. Red gaps become Assumption mapping items; orphan features go to the Impact/effort matrix for a keep-or-cut call.",
+   "source": "Alexander Osterwalder, Strategyzer"
+  },
+  "fr": {
+   "prep": [
+    "Produit plus les gens qui entendent les clients dire non : les ventes pour les prospects, le support pour les utilisateurs existants. Quatre à six personnes.",
+    "Choisis un seul segment pour la séance. Deux segments, c'est deux canvas, jamais un.",
+    "Apporte 5 à 10 verbatims d'entretiens ou extraits d'appels. Le côté client doit se remplir avec leurs mots.",
+    "Couvre le côté gauche (carte de valeur) d'un grand sticky jusqu'à ce que le profil client soit fini."
+   ],
+   "agenda": [
+    {
+     "t": "Tâches du client",
+     "min": 25,
+     "d": "Les tâches fonctionnelles d'abord ('rendre le rapport mensuel'), puis sociales et émotionnelles ('paraître compétent devant mon chef'). Classe par importance pour le client, pas pour toi."
+    },
+    {
+     "t": "Douleurs et gains",
+     "min": 30,
+     "d": "Douleurs : ce qui rend la tâche lente, risquée, pénible, avec la gravité. Gains : ce qui le ferait te recommander, avec l'intensité. Dix stickies chacun, puis classement."
+    },
+    {
+     "t": "Révéler la carte de valeur",
+     "min": 25,
+     "d": "Découvre le côté gauche. Liste produits et fonctionnalités, puis pour chacune écris quelle douleur elle soulage ou quel gain elle crée. Les fonctionnalités sans flèche vers la droite sont à nu."
+    },
+    {
+     "t": "Vérifier le fit",
+     "min": 25,
+     "d": "Prends le top 3 des douleurs et le top 3 des gains. Y a-t-il un soulageur ou un créateur pour chacun ? Vert si oui, rouge si non."
+    },
+    {
+     "t": "Écarts et suites",
+     "min": 15,
+     "d": "Un rouge est soit un trou produit, soit un trou de message. Tranche pour chacun, avec un responsable. Les fonctionnalités orphelines reçoivent une question 'garder ou couper'."
+    }
+   ],
+   "pitfalls": [
+    "Remplir la carte de valeur d'abord transforme le profil client en justification. Garde-la couverte.",
+    "Des douleurs écrites 'absence de la fonctionnalité X', c'est ta roadmap déguisée. Réécris depuis la journée du client : 'passe son vendredi après-midi à rapprocher des chiffres'.",
+    "Le fit n'est pas une impression. Compte les correspondances sur le top 3 des douleurs et des gains ; sous deux sur trois de chaque côté, tu n'as pas encore le fit."
+   ],
+   "next": "Les paires vertes deviennent le message de la Carte de positionnement et de la landing page. Les rouges deviennent des lignes d'Assumption mapping ; les fonctionnalités orphelines passent en Matrice impact/effort pour trancher garder ou couper.",
+   "source": "Alexander Osterwalder, Strategyzer"
+  }
+ },
+ "vision": {
+  "en": {
+   "prep": [
+    "Leadership plus the product and design leads, six to eight people. Everyone who will be asked 'why are we doing this' by their team.",
+    "Ask each participant to write their vision sentence alone beforehand and send it to you. Paste them anonymously on the board.",
+    "Prepare the four bottom blocks with what exists today: current target group, current product line, this year's business goals.",
+    "Have the company mission and last strategy deck at hand; the vision must fit under them, not replace them."
+   ],
+   "agenda": [
+    {
+     "t": "Read the anonymous visions",
+     "min": 15,
+     "d": "Read the sentences aloud. Ask the group to mark words that appear in more than three of them and words that appear only once. Both lists matter."
+    },
+    {
+     "t": "Target group and needs",
+     "min": 25,
+     "d": "Who is the product for in three years? Write the group, then their top 3 needs. Anything that is a need of the company rather than the customer moves to Business goals."
+    },
+    {
+     "t": "Product",
+     "min": 20,
+     "d": "Three to five defining characteristics of the future product. Not features: what makes it different, what it refuses to be."
+    },
+    {
+     "t": "Business goals",
+     "min": 15,
+     "d": "What the company gets: revenue, market position, strategic option. Each with a horizon and a rough magnitude."
+    },
+    {
+     "t": "Write the vision",
+     "min": 30,
+     "d": "Now the top block. In pairs, one sentence, no jargon, that a new hire repeats after hearing it once. Vote, then the leader chooses between the top two and says why."
+    },
+    {
+     "t": "Read-back test",
+     "min": 15,
+     "d": "Pick two people who were not in the pairs that wrote the winner. They explain the vision to the room in their own words. If they cannot, edit."
+    }
+   ],
+   "pitfalls": [
+    "Writing the vision sentence first produces a slogan. Do the four bottom blocks first, the sentence writes itself from them.",
+    "A vision that mentions a technology or a feature expires in 18 months. Keep it about the change in the customer's life.",
+    "Voting to consensus gives you a sentence nobody hates and nobody remembers. Let the leader make the final call, in the room."
+   ],
+   "next": "The vision opens the roadmap, the OKR session and every onboarding. Business goals feed the North Star Metric work; the Product block becomes the filter for Now / Next / Later.",
+   "source": "Roman Pichler"
+  },
+  "fr": {
+   "prep": [
+    "Direction plus les leads produit et design, six à huit personnes. Tous ceux à qui leur équipe demandera 'pourquoi on fait ça'.",
+    "Demande à chaque participant d'écrire sa phrase de vision seul avant et de te l'envoyer. Colle-les anonymement sur le board.",
+    "Prépare les quatre blocs du bas avec l'existant : cible actuelle, gamme actuelle, objectifs business de l'année.",
+    "Garde sous la main la mission de l'entreprise et le dernier deck de stratégie ; la vision doit tenir dessous, pas les remplacer."
+   ],
+   "agenda": [
+    {
+     "t": "Lire les visions anonymes",
+     "min": 15,
+     "d": "Lis les phrases à voix haute. Demande au groupe de marquer les mots présents dans plus de trois phrases et ceux présents une seule fois. Les deux listes comptent."
+    },
+    {
+     "t": "Cible et besoins",
+     "min": 25,
+     "d": "Pour qui est le produit dans trois ans ? Écris le groupe, puis ses 3 besoins principaux. Tout besoin qui est celui de l'entreprise plutôt que du client migre vers Objectifs business."
+    },
+    {
+     "t": "Produit",
+     "min": 20,
+     "d": "Trois à cinq caractéristiques du produit futur. Pas des fonctionnalités : ce qui le rend différent, ce qu'il refuse d'être."
+    },
+    {
+     "t": "Objectifs business",
+     "min": 15,
+     "d": "Ce que l'entreprise y gagne : revenus, position, option stratégique. Chacun avec un horizon et un ordre de grandeur."
+    },
+    {
+     "t": "Écrire la vision",
+     "min": 30,
+     "d": "Le bloc du haut, enfin. En binômes, une phrase, sans jargon, qu'un nouveau répète après l'avoir entendue une fois. Vote, puis le dirigeant tranche entre les deux premières et dit pourquoi."
+    },
+    {
+     "t": "Test de restitution",
+     "min": 15,
+     "d": "Choisis deux personnes qui n'ont pas écrit la phrase gagnante. Elles expliquent la vision à la salle avec leurs mots. Si elles n'y arrivent pas, corrige."
+    }
+   ],
+   "pitfalls": [
+    "Écrire la phrase de vision en premier produit un slogan. Fais d'abord les quatre blocs du bas, la phrase en découle.",
+    "Une vision qui cite une technologie ou une fonctionnalité expire en 18 mois. Garde-la sur le changement dans la vie du client.",
+    "Voter jusqu'au consensus donne une phrase que personne ne déteste et que personne ne retient. Laisse le dirigeant trancher, dans la salle."
+   ],
+   "next": "La vision ouvre la roadmap, la séance OKR et chaque onboarding. Les objectifs business nourrissent le travail sur la North Star Metric ; le bloc Produit devient le filtre du Now / Next / Later.",
+   "source": "Roman Pichler"
+  }
+ },
+ "impact": {
+  "en": {
+   "prep": [
+    "Product, tech lead and a business owner who can defend the goal with a number. Six to eight people, no observers.",
+    "Agree the goal with the sponsor before the session and write it with a metric, a target and a date. The workshop starts from it, it does not debate it.",
+    "Prepare the four columns and a parking lot for 'features people came with'. They will arrive with a list; give it a place off the tree.",
+    "Bring the current backlog top 20 printed. You will map it onto the tree at the end."
+   ],
+   "agenda": [
+    {
+     "t": "Lock the goal",
+     "min": 15,
+     "d": "Read the goal. Ask 'how will we know we got there?' until there is a number and a date. If the group wants to change it, stop and call the sponsor."
+    },
+    {
+     "t": "Actors",
+     "min": 25,
+     "d": "Who can move the metric up or down? Users, but also support, sales, partners, regulators. One sticky per actor, ranked by how much they can move the number."
+    },
+    {
+     "t": "Impacts",
+     "min": 45,
+     "d": "For each top actor: what behavior change would move the metric? Write it as a verb ('renews earlier', 'invites a colleague'). Five to eight impacts, then dot vote the top 4."
+    },
+    {
+     "t": "Break",
+     "min": 10,
+     "d": "Off the board."
+    },
+    {
+     "t": "Deliverables",
+     "min": 50,
+     "d": "Only now: what could we build or do to cause each impact? Several options per impact, cheap ones first. Then paste the backlog top 20 and connect each to an impact. Unconnected items go in a 'no impact' box."
+    },
+    {
+     "t": "Choose the first branch",
+     "min": 35,
+     "d": "Pick the one actor-impact path with the best ratio of expected movement to cost. Its deliverables become the next release. Everything else stays on the map, not in the backlog."
+    }
+   ],
+   "pitfalls": [
+    "If the group jumps to deliverables while filling impacts, cover the fourth column. The map only works in order.",
+    "Impacts written as features ('has a dashboard') are not behaviors. Ask 'and then what do they do differently?'.",
+    "Do not keep every branch alive. A map with twelve open branches is a backlog with arrows. Pick one, ship, remeasure, then open the next."
+   ],
+   "next": "The chosen branch becomes the scope of the User story map or the next PRD. Backlog items in the 'no impact' box are archived with the map as justification. Remeasure the goal metric after each release and prune the tree.",
+   "source": "Gojko Adzic"
+  },
+  "fr": {
+   "prep": [
+    "Produit, lead tech et un responsable métier capable de défendre l'objectif avec un chiffre. Six à huit personnes, pas d'observateurs.",
+    "Valide l'objectif avec le sponsor avant la séance et écris-le avec une métrique, une cible et une date. L'atelier part de là, il ne le débat pas.",
+    "Prépare les quatre colonnes et un parking pour 'les fonctionnalités avec lesquelles les gens arrivent'. Ils viendront avec une liste ; donne-lui une place hors de l'arbre.",
+    "Apporte le top 20 du backlog imprimé. Tu le placeras sur l'arbre à la fin."
+   ],
+   "agenda": [
+    {
+     "t": "Verrouiller l'objectif",
+     "min": 15,
+     "d": "Lis l'objectif. Demande 'comment saura-t-on qu'on y est ?' jusqu'à obtenir un chiffre et une date. Si le groupe veut le changer, arrête et appelle le sponsor."
+    },
+    {
+     "t": "Acteurs",
+     "min": 25,
+     "d": "Qui peut faire bouger la métrique, dans un sens ou l'autre ? Les utilisateurs, mais aussi le support, les ventes, les partenaires, le régulateur. Un sticky par acteur, classés par capacité à bouger le chiffre."
+    },
+    {
+     "t": "Impacts",
+     "min": 45,
+     "d": "Pour chaque acteur du haut : quel changement de comportement ferait bouger la métrique ? Écris-le avec un verbe ('renouvelle plus tôt', 'invite un collègue'). Cinq à huit impacts, puis vote par gommettes sur le top 4."
+    },
+    {
+     "t": "Pause",
+     "min": 10,
+     "d": "Loin du board."
+    },
+    {
+     "t": "Livrables",
+     "min": 50,
+     "d": "Maintenant seulement : que pourrait-on construire ou faire pour provoquer chaque impact ? Plusieurs options par impact, les moins chères d'abord. Puis colle le top 20 du backlog et relie chaque item à un impact. Les items non reliés vont dans une boîte 'sans impact'."
+    },
+    {
+     "t": "Choisir la première branche",
+     "min": 35,
+     "d": "Choisis le seul chemin acteur-impact avec le meilleur rapport mouvement attendu sur coût. Ses livrables deviennent la prochaine release. Le reste reste sur la carte, pas dans le backlog."
+    }
+   ],
+   "pitfalls": [
+    "Si le groupe saute aux livrables pendant les impacts, couvre la quatrième colonne. La carte ne marche que dans l'ordre.",
+    "Des impacts écrits comme des fonctionnalités ('a un dashboard') ne sont pas des comportements. Demande 'et ensuite, qu'est-ce qu'il fait différemment ?'.",
+    "Ne garde pas toutes les branches vivantes. Une carte avec douze branches ouvertes est un backlog avec des flèches. Choisis-en une, livre, remesure, puis ouvre la suivante."
+   ],
+   "next": "La branche choisie devient le périmètre du User story map ou du prochain PRD. Les items du backlog dans la boîte 'sans impact' sont archivés avec la carte comme justification. Remesure la métrique après chaque release et élague l'arbre.",
+   "source": "Gojko Adzic"
+  }
+ },
+ "box": {
+  "en": {
+   "prep": [
+    "Mix the groups: one engineer, one salesperson, one support person, one designer per table. Homogeneous tables produce homogeneous boxes.",
+    "Bring three real product boxes or their photos (a cereal box, a game, a gadget) so people see what front, tagline and back look like.",
+    "Prepare one board area per group with the four blocks already drawn, plus markers if in person.",
+    "Tell people to leave laptops closed. Drawing badly is the point."
+   ],
+   "agenda": [
+    {
+     "t": "Brief",
+     "min": 10,
+     "d": "Show the real boxes. Rule: the box must convince a stranger in a store aisle in 10 seconds. No internal words allowed."
+    },
+    {
+     "t": "Build the box",
+     "min": 35,
+     "d": "Each group fills name, tagline, three selling points and the back. Force a decision on the three points: which three, in which order, and why those."
+    },
+    {
+     "t": "Sell it",
+     "min": 25,
+     "d": "Each group has 3 minutes to pitch their box to the room as if to a customer. The room notes the words that come back in every pitch and those that appear once."
+    },
+    {
+     "t": "Merge",
+     "min": 20,
+     "d": "Take the recurring words and the best tagline. Write one shared box on the main board. Disagreements on the three points are settled by the person closest to customers."
+    }
+   ],
+   "pitfalls": [
+    "If a group writes 'scalable', 'seamless' or 'AI-powered', make them replace it with what the customer sees happen.",
+    "Three selling points means three. A box with six points has no priority; ask 'which three would you keep if the box were half the size?'.",
+    "Do not let the design-skilled group win because their box looks nicer. Judge the words, cover the drawings if needed."
+   ],
+   "next": "The merged box becomes the brief for the landing page, the sales deck and the Positioning map. The three selling points are the test for every roadmap item: does it strengthen one of them?",
+   "source": "Luke Hohmann, Innovation Games"
+  },
+  "fr": {
+   "prep": [
+    "Mélange les groupes : un dev, un commercial, un support, un designer par table. Des tables homogènes produisent des boîtes homogènes.",
+    "Apporte trois vraies boîtes de produits ou leurs photos (une boîte de céréales, un jeu, un gadget) pour que les gens voient à quoi ressemblent le recto, le slogan et le dos.",
+    "Prépare une zone de board par groupe avec les quatre blocs déjà tracés, plus des marqueurs si c'est en présentiel.",
+    "Demande de fermer les ordinateurs. Dessiner mal fait partie de l'exercice."
+   ],
+   "agenda": [
+    {
+     "t": "Brief",
+     "min": 10,
+     "d": "Montre les vraies boîtes. Règle : la boîte doit convaincre un inconnu dans un rayon en 10 secondes. Aucun mot interne autorisé."
+    },
+    {
+     "t": "Fabriquer la boîte",
+     "min": 35,
+     "d": "Chaque groupe remplit nom, slogan, trois arguments et le dos. Force la décision sur les trois arguments : lesquels, dans quel ordre, et pourquoi ceux-là."
+    },
+    {
+     "t": "La vendre",
+     "min": 25,
+     "d": "Chaque groupe a 3 minutes pour pitcher sa boîte à la salle comme à un client. La salle note les mots qui reviennent dans chaque pitch et ceux qui n'apparaissent qu'une fois."
+    },
+    {
+     "t": "Fusionner",
+     "min": 20,
+     "d": "Prends les mots récurrents et le meilleur slogan. Écris une boîte commune sur le board principal. Les désaccords sur les trois arguments sont tranchés par la personne la plus proche des clients."
+    }
+   ],
+   "pitfalls": [
+    "Si un groupe écrit 'scalable', 'fluide' ou 'propulsé par l'IA', fais-lui remplacer par ce que le client voit se passer.",
+    "Trois arguments, ça veut dire trois. Une boîte à six arguments n'a pas de priorité ; demande 'lesquels garderiez-vous si la boîte était deux fois plus petite ?'.",
+    "Ne laisse pas gagner le groupe qui dessine bien parce que sa boîte est plus jolie. Juge les mots, couvre les dessins s'il le faut."
+   ],
+   "next": "La boîte fusionnée devient le brief de la landing page, du deck commercial et de la Carte de positionnement. Les trois arguments sont le test de chaque item de roadmap : est-ce qu'il renforce l'un des trois ?",
+   "source": "Luke Hohmann, Innovation Games"
+  }
+ },
+ "positioning": {
+  "en": {
+   "prep": [
+    "Product, marketing and sales, five to seven people. Sales brings the 'why we lost' notes from the last ten deals.",
+    "List 6 to 10 competitors, including the non-obvious ones (spreadsheet, agency, doing nothing). One sticky each with logo.",
+    "Prepare three candidate axis pairs in advance, drawn from customer interviews, not from your feature list.",
+    "Collect how each competitor describes itself on its homepage, one line each, and paste it on the side."
+   ],
+   "agenda": [
+    {
+     "t": "Choose the axes",
+     "min": 20,
+     "d": "Present the three candidate pairs. The test: does a customer choose between vendors on this axis? Pick the pair where the group can name a lost deal for each end."
+    },
+    {
+     "t": "Place the competitors",
+     "min": 25,
+     "d": "One at a time, place them as the customer perceives them, not as you know them to be. Use their homepage line as evidence. Argue in one sentence, move on."
+    },
+    {
+     "t": "Place yourselves, twice",
+     "min": 15,
+     "d": "First where customers see you today (sales decides). Then where you want to be in 18 months (product decides). Draw the arrow between the two."
+    },
+    {
+     "t": "Find the open space",
+     "min": 15,
+     "d": "Look for the quadrant or edge with no logo and a real customer need. If there is none, the axes are wrong; go back to step 1 with the second pair."
+    },
+    {
+     "t": "Write the differentiating message",
+     "min": 15,
+     "d": "One sentence: 'For [who], unlike [nearest competitor], we [difference the map shows]'. Two versions, sales picks the one they can say on a call."
+    }
+   ],
+   "pitfalls": [
+    "Axes like 'ease of use' versus 'power' put everyone in the top right. Pick axes where being at one end means giving something up.",
+    "Placing competitors where you wish they were, to make your space look bigger. Sales knows better; let them override product here.",
+    "A map with no arrow is a diagnosis without a decision. Always draw where you go next and what you stop claiming."
+   ],
+   "next": "The message goes to the landing page, the first sales deck slide and the Product Box. The arrow becomes a strategic theme in Now / Next / Later; revisit the map every six months or after a competitor launch.",
+   "source": "April Dunford, Obviously Awesome"
+  },
+  "fr": {
+   "prep": [
+    "Produit, marketing et ventes, cinq à sept personnes. Les ventes apportent les notes 'pourquoi on a perdu' des dix derniers deals.",
+    "Liste 6 à 10 concurrents, y compris les moins évidents (le tableur, l'agence, ne rien faire). Un sticky chacun avec logo.",
+    "Prépare à l'avance trois paires d'axes candidates, tirées des entretiens clients, pas de ta liste de fonctionnalités.",
+    "Relève comment chaque concurrent se décrit sur sa page d'accueil, une ligne chacun, et colle-les sur le côté."
+   ],
+   "agenda": [
+    {
+     "t": "Choisir les axes",
+     "min": 20,
+     "d": "Présente les trois paires candidates. Le test : est-ce qu'un client choisit entre fournisseurs sur cet axe ? Prends la paire où le groupe sait citer un deal perdu à chaque extrémité."
+    },
+    {
+     "t": "Placer les concurrents",
+     "min": 25,
+     "d": "Un à la fois, placés comme le client les perçoit, pas comme tu sais qu'ils sont. Utilise leur ligne d'accueil comme preuve. Un argument en une phrase, on passe."
+    },
+    {
+     "t": "Se placer, deux fois",
+     "min": 15,
+     "d": "D'abord où les clients te voient aujourd'hui (les ventes décident). Puis où tu veux être dans 18 mois (le produit décide). Trace la flèche entre les deux."
+    },
+    {
+     "t": "Trouver l'espace vide",
+     "min": 15,
+     "d": "Cherche le quadrant ou le bord sans logo et avec un vrai besoin client. S'il n'y en a pas, les axes sont mauvais ; retour à l'étape 1 avec la deuxième paire."
+    },
+    {
+     "t": "Écrire le message différenciant",
+     "min": 15,
+     "d": "Une phrase : 'Pour [qui], contrairement à [concurrent le plus proche], nous [différence que montre la carte]'. Deux versions, les ventes gardent celle qu'elles peuvent dire en appel."
+    }
+   ],
+   "pitfalls": [
+    "Des axes comme 'simplicité' contre 'puissance' mettent tout le monde en haut à droite. Choisis des axes où être à un bout oblige à renoncer à quelque chose.",
+    "Placer les concurrents là où tu aimerais qu'ils soient, pour agrandir ton espace. Les ventes savent mieux ; laisse-les avoir le dernier mot ici.",
+    "Une carte sans flèche est un diagnostic sans décision. Trace toujours où tu vas et ce que tu arrêtes de revendiquer."
+   ],
+   "next": "Le message part sur la landing page, la première slide du deck commercial et la Product Box. La flèche devient un thème stratégique du Now / Next / Later ; revois la carte tous les six mois ou après un lancement concurrent.",
+   "source": "April Dunford, Obviously Awesome"
+  }
+ },
+ "nsm": {
+  "en": {
+   "prep": [
+    "Leadership, product leads and one data person who can pull numbers live. Without data in the room, the tree is a wish list.",
+    "Send three examples of North Star metrics from other companies (Airbnb nights booked, Slack messages sent in teams) with why each was chosen.",
+    "Prepare a dashboard tab with the 10 metrics you already track, last 90 days, so candidates can be checked against reality immediately.",
+    "Ask each lead to propose one candidate NSM beforehand, with the reason in one sentence."
+   ],
+   "agenda": [
+    {
+     "t": "Candidates",
+     "min": 20,
+     "d": "Paste the proposed candidates. For each, ask: does it measure value received by the customer, not by us? Revenue and signups are out. Keep 3 to 4."
+    },
+    {
+     "t": "Choose the North Star",
+     "min": 40,
+     "d": "Test each candidate: if it doubled, would revenue follow within a year? Can a team move it this quarter? Can we measure it today? Score, debate, the CEO or product head decides in the room."
+    },
+    {
+     "t": "Break",
+     "min": 10,
+     "d": "Off the board."
+    },
+    {
+     "t": "Levers",
+     "min": 40,
+     "d": "What are the 3 to 5 things that mathematically drive the NSM? Breadth (how many), depth (how much), frequency (how often), efficiency. Write the formula on the board if you can."
+    },
+    {
+     "t": "Input metrics per team",
+     "min": 50,
+     "d": "Under each lever, the input metrics a team can move week to week. Each team leaves with one or two they own. Pull the current value for each, live."
+    },
+    {
+     "t": "First review date",
+     "min": 20,
+     "d": "Decide who reports the tree monthly and in which meeting. Set the first review in four weeks and the questions it must answer."
+    }
+   ],
+   "pitfalls": [
+    "Choosing revenue or MRR as the North Star. It lags by months and no single team can move it. Pick what causes revenue.",
+    "A tree with twelve input metrics is a dashboard, not a focus. Two per team, maximum.",
+    "Ending without pulling the current numbers. A metric nobody has measured yet is a project, not a metric; assign it before leaving."
+   ],
+   "next": "The tree is reviewed monthly in the leadership meeting and the input metrics become the KRs of the next OKR session. Each team's input metric shows up on their Sprint planning board.",
+   "source": "Amplitude, The North Star Playbook"
+  },
+  "fr": {
+   "prep": [
+    "Direction, leads produit et une personne data capable de sortir des chiffres en direct. Sans données dans la salle, l'arbre est une liste de souhaits.",
+    "Envoie trois exemples de North Star d'autres boîtes (nuits réservées chez Airbnb, messages envoyés dans les équipes chez Slack) avec la raison de chaque choix.",
+    "Prépare un onglet de dashboard avec les 10 métriques déjà suivies, 90 derniers jours, pour confronter les candidates à la réalité tout de suite.",
+    "Demande à chaque lead de proposer une North Star candidate avant, avec la raison en une phrase."
+   ],
+   "agenda": [
+    {
+     "t": "Candidates",
+     "min": 20,
+     "d": "Colle les propositions. Pour chacune, demande : mesure-t-elle la valeur reçue par le client, pas par nous ? Revenus et inscriptions sont exclus. Garde 3 ou 4."
+    },
+    {
+     "t": "Choisir la North Star",
+     "min": 40,
+     "d": "Teste chaque candidate : si elle doublait, les revenus suivraient-ils dans l'année ? Une équipe peut-elle la bouger ce trimestre ? Peut-on la mesurer aujourd'hui ? Note, débat, le CEO ou le head of product tranche dans la salle."
+    },
+    {
+     "t": "Pause",
+     "min": 10,
+     "d": "Loin du board."
+    },
+    {
+     "t": "Leviers",
+     "min": 40,
+     "d": "Quels sont les 3 à 5 facteurs qui font mathématiquement bouger la North Star ? Largeur (combien), profondeur (combien à chaque fois), fréquence (à quel rythme), efficacité. Écris la formule sur le board si tu peux."
+    },
+    {
+     "t": "Métriques d'entrée par équipe",
+     "min": 50,
+     "d": "Sous chaque levier, les métriques d'entrée qu'une équipe peut bouger de semaine en semaine. Chaque équipe repart avec une ou deux qu'elle possède. Sors la valeur actuelle de chacune, en direct."
+    },
+    {
+     "t": "Première date de revue",
+     "min": 20,
+     "d": "Décide qui présente l'arbre chaque mois et dans quelle réunion. Fixe la première revue dans quatre semaines et les questions auxquelles elle doit répondre."
+    }
+   ],
+   "pitfalls": [
+    "Choisir les revenus ou le MRR comme North Star. Ils sont en retard de plusieurs mois et aucune équipe seule ne peut les bouger. Choisis ce qui cause les revenus.",
+    "Un arbre à douze métriques d'entrée est un dashboard, pas un focus. Deux par équipe, maximum.",
+    "Finir sans sortir les chiffres actuels. Une métrique que personne n'a encore mesurée est un projet, pas une métrique ; attribue-le avant de sortir."
+   ],
+   "next": "L'arbre est revu chaque mois en réunion de direction et les métriques d'entrée deviennent les KR de la prochaine séance OKR. La métrique d'entrée de chaque équipe apparaît sur son board de Sprint planning.",
+   "source": "Amplitude, The North Star Playbook"
+  }
+ },
+ "okr": {
+  "en": {
+   "prep": [
+    "The lead of each team plus the person who owns company objectives. Eight to twelve people; beyond that, split by department.",
+    "Send the company-level objectives for the quarter one week before. Team OKRs without company OKRs are just to-do lists with scores.",
+    "Ask each lead to bring a draft of their team's OKRs, with last quarter's results. Paste the drafts on the board before the session.",
+    "Prepare the grid: one row per objective, columns for KRs and initiatives. Keep a separate 'initiatives that arrived as objectives' parking lot."
+   ],
+   "agenda": [
+    {
+     "t": "Last quarter in 10 minutes",
+     "min": 15,
+     "d": "Each lead states their score and the one thing they learned. No justification, one sentence each. The pattern across teams is the input for this quarter."
+    },
+    {
+     "t": "Objectives",
+     "min": 40,
+     "d": "Per team, 1 to 3 objectives that answer 'what changes for the customer or the business if we succeed?'. Each must link to a company objective. Objectives that are projects go to the parking lot."
+    },
+    {
+     "t": "Key results",
+     "min": 60,
+     "d": "Two to four KRs per objective, each a number with a current value and a target. Test each: if all KRs hit, is the objective clearly achieved? If yes, done. If not, a KR is missing."
+    },
+    {
+     "t": "Break",
+     "min": 10,
+     "d": "Off the board."
+    },
+    {
+     "t": "Cross-team check",
+     "min": 35,
+     "d": "Read every team's KRs aloud. Flag any KR that depends on another team's work. Both leads agree on it or one of them drops it. Flag KRs that contradict each other."
+    },
+    {
+     "t": "Confidence and cadence",
+     "min": 20,
+     "d": "Each KR gets a confidence score out of 10. Anything at 9 or 10 is a sandbag; anything at 3 is a wish. Fix the weekly check-in slot before leaving."
+    }
+   ],
+   "pitfalls": [
+    "KRs that are tasks ('ship the new checkout'). Ask 'what number moves when it ships?' and write that instead.",
+    "Twelve KRs for one team means no focus. Cap at 3 objectives and 4 KRs each, and expect people to hit 70 percent.",
+    "Skipping the cross-team check leaves two teams with KRs that need the same engineers. This step is where the workshop pays for itself."
+   ],
+   "next": "The OKR grid goes into the shared tracker with a weekly confidence update. KRs are the input for Now / Next / Later and RICE scoring; the mid-quarter review and the retro at the end close the loop.",
+   "source": "John Doerr, Measure What Matters"
+  },
+  "fr": {
+   "prep": [
+    "Le lead de chaque équipe plus la personne qui porte les objectifs d'entreprise. Huit à douze personnes ; au-delà, découpe par département.",
+    "Envoie les objectifs d'entreprise du trimestre une semaine avant. Des OKR d'équipe sans OKR d'entreprise, ce sont des to-do lists avec des notes.",
+    "Demande à chaque lead d'apporter un brouillon des OKR de son équipe, avec les résultats du trimestre passé. Colle les brouillons sur le board avant la séance.",
+    "Prépare la grille : une ligne par objectif, des colonnes pour les KR et les initiatives. Garde un parking séparé pour 'les initiatives arrivées déguisées en objectifs'."
+   ],
+   "agenda": [
+    {
+     "t": "Le trimestre passé en 10 minutes",
+     "min": 15,
+     "d": "Chaque lead donne son score et la seule chose qu'il a apprise. Pas de justification, une phrase chacun. Le motif commun entre équipes est l'entrée de ce trimestre."
+    },
+    {
+     "t": "Objectifs",
+     "min": 40,
+     "d": "Par équipe, 1 à 3 objectifs qui répondent à 'qu'est-ce qui change pour le client ou l'entreprise si on réussit ?'. Chacun doit se relier à un objectif d'entreprise. Les objectifs qui sont des projets partent au parking."
+    },
+    {
+     "t": "Résultats clés",
+     "min": 60,
+     "d": "Deux à quatre KR par objectif, chacun un chiffre avec valeur actuelle et cible. Teste chacun : si tous les KR sont atteints, l'objectif est-il clairement atteint ? Si oui, fini. Sinon, il manque un KR."
+    },
+    {
+     "t": "Pause",
+     "min": 10,
+     "d": "Loin du board."
+    },
+    {
+     "t": "Vérification inter-équipes",
+     "min": 35,
+     "d": "Lis les KR de chaque équipe à voix haute. Signale tout KR qui dépend du travail d'une autre équipe. Les deux leads se mettent d'accord ou l'un des deux le retire. Signale les KR qui se contredisent."
+    },
+    {
+     "t": "Confiance et cadence",
+     "min": 20,
+     "d": "Chaque KR reçoit une note de confiance sur 10. À 9 ou 10, c'est du sandbagging ; à 3, c'est un vœu. Fixe le créneau du point hebdo avant de sortir."
+    }
+   ],
+   "pitfalls": [
+    "Des KR qui sont des tâches ('livrer le nouveau checkout'). Demande 'quel chiffre bouge quand c'est livré ?' et écris ça à la place.",
+    "Douze KR pour une équipe, c'est zéro focus. Plafonne à 3 objectifs et 4 KR chacun, et attends-toi à 70 pour cent d'atteinte.",
+    "Sauter la vérification inter-équipes laisse deux équipes avec des KR qui réclament les mêmes devs. C'est l'étape où l'atelier se rentabilise."
+   ],
+   "next": "La grille OKR part dans le tracker partagé avec une mise à jour hebdo de la confiance. Les KR sont l'entrée du Now / Next / Later et du scoring RICE ; la revue de mi-trimestre et la rétro de fin ferment la boucle.",
+   "source": "John Doerr, Measure What Matters"
+  }
+ },
+ "horizons": {
+  "en": {
+   "prep": [
+    "Leadership and product leads, six to eight people. Finance must be in the room or have validated the current spend split beforehand.",
+    "List every initiative currently funded or staffed, with its headcount or budget. Twenty to forty stickies, prepared before the session.",
+    "Compute the current split of spend across the three horizons as best you can. The number will shock someone; that is the point.",
+    "Send the three-horizon definitions with one example from your own industry per horizon two days before."
+   ],
+   "agenda": [
+    {
+     "t": "Define the horizons for us",
+     "min": 15,
+     "d": "H1: what pays salaries today. H2: what will pay them in 2 to 3 years, already started. H3: bets with a 5-year payoff. Agree the definitions in your own words before placing anything."
+    },
+    {
+     "t": "Place the portfolio",
+     "min": 35,
+     "d": "One initiative at a time into a column. Disagreements settle on one question: 'when does this pay back?'. Write the headcount on each sticky."
+    },
+    {
+     "t": "Read the split",
+     "min": 15,
+     "d": "Sum the headcount per column. Compare with the target split the group believes in (often around 70/20/10). Name the gap out loud."
+    },
+    {
+     "t": "Rebalance",
+     "min": 35,
+     "d": "What moves? Which H1 initiatives are protecting revenue that is not at risk? Which H3 bets have no owner? Decide 3 to 5 moves with headcount attached."
+    },
+    {
+     "t": "Owners and review",
+     "min": 20,
+     "d": "Each horizon gets a named owner who reports on it quarterly. The H3 owner gets a kill-or-continue date for each bet."
+    }
+   ],
+   "pitfalls": [
+    "Calling everything H2 to avoid the conversation. Force the payback question; anything paying in the next 12 months is H1.",
+    "An empty H3 column means the company has no future beyond its current product. Do not leave without at least two bets, even small.",
+    "Rebalancing on paper without moving people. A move that does not change someone's calendar next month did not happen."
+   ],
+   "next": "The split and the moves go into the annual plan and the next Business Model Canvas review. H1 initiatives get RICE-scored; H3 bets get an Experiment board each with a kill date.",
+   "source": "Baghai, Coley & White, McKinsey"
+  },
+  "fr": {
+   "prep": [
+    "Direction et leads produit, six à huit personnes. La finance doit être dans la salle ou avoir validé la répartition actuelle des dépenses avant.",
+    "Liste chaque initiative financée ou staffée aujourd'hui, avec son effectif ou son budget. Vingt à quarante stickies, préparés avant la séance.",
+    "Calcule au mieux la répartition actuelle des dépenses entre les trois horizons. Le chiffre va choquer quelqu'un ; c'est le but.",
+    "Envoie deux jours avant la définition des trois horizons avec un exemple de ton secteur par horizon."
+   ],
+   "agenda": [
+    {
+     "t": "Définir les horizons pour nous",
+     "min": 15,
+     "d": "H1 : ce qui paie les salaires aujourd'hui. H2 : ce qui les paiera dans 2 à 3 ans, déjà lancé. H3 : des paris à 5 ans. Mettez-vous d'accord sur les définitions avec vos mots avant de placer quoi que ce soit."
+    },
+    {
+     "t": "Placer le portefeuille",
+     "min": 35,
+     "d": "Une initiative à la fois dans une colonne. Les désaccords se règlent sur une question : 'quand est-ce que ça rapporte ?'. Écris l'effectif sur chaque sticky."
+    },
+    {
+     "t": "Lire la répartition",
+     "min": 15,
+     "d": "Additionne les effectifs par colonne. Compare avec la répartition cible en laquelle le groupe croit (souvent autour de 70/20/10). Nomme l'écart à voix haute."
+    },
+    {
+     "t": "Rééquilibrer",
+     "min": 35,
+     "d": "Qu'est-ce qui bouge ? Quelles initiatives H1 protègent des revenus qui ne sont pas menacés ? Quels paris H3 n'ont pas de responsable ? Décide 3 à 5 mouvements avec les effectifs attachés."
+    },
+    {
+     "t": "Responsables et revue",
+     "min": 20,
+     "d": "Chaque horizon reçoit un responsable nommé qui en rend compte chaque trimestre. Le responsable H3 fixe une date 'on arrête ou on continue' pour chaque pari."
+    }
+   ],
+   "pitfalls": [
+    "Tout classer en H2 pour éviter la conversation. Impose la question du retour ; tout ce qui rapporte dans les 12 mois est H1.",
+    "Une colonne H3 vide veut dire que l'entreprise n'a pas d'avenir au-delà de son produit actuel. Ne sors pas sans au moins deux paris, même petits.",
+    "Rééquilibrer sur le papier sans déplacer des gens. Un mouvement qui ne change pas l'agenda de quelqu'un le mois prochain n'a pas eu lieu."
+   ],
+   "next": "La répartition et les mouvements entrent dans le plan annuel et dans la prochaine revue du Business Model Canvas. Les initiatives H1 passent au scoring RICE ; chaque pari H3 reçoit un Experiment board avec une date d'arrêt.",
+   "source": "Baghai, Coley & White, McKinsey"
+  }
+ },
+ "prfaq": {
+  "en": {
+   "prep": [
+    "The PM writes alone before the session: a full draft of the press release and at least ten FAQ questions. The four hours are for review, not writing.",
+    "Send the draft 48 hours before to the leads who will review it, with the instruction to read it fully and write comments in the document, not in email.",
+    "Pick a reviewer who does not know the project. Their confusion is the most useful signal you will get.",
+    "Print or pin one PR/FAQ you consider excellent so the bar is visible."
+   ],
+   "agenda": [
+    {
+     "t": "Silent reading",
+     "min": 30,
+     "d": "Everyone reads the whole document in silence, including those who read it before. Comments go in the margin. Nobody speaks."
+    },
+    {
+     "t": "Headline and first paragraph",
+     "min": 30,
+     "d": "Would a customer stop scrolling on this headline? Does the first paragraph say who, what, and why it matters, with no adjectives? Rewrite live until yes."
+    },
+    {
+     "t": "Problem and solution",
+     "min": 45,
+     "d": "Is the problem stated in the customer's terms with a number? Does the solution describe what the customer does, not what we build? The customer quote must sound like a real person."
+    },
+    {
+     "t": "Break",
+     "min": 15,
+     "d": "Off the document."
+    },
+    {
+     "t": "The FAQ hunt",
+     "min": 60,
+     "d": "Go through internal FAQs: cost, risks, dependencies, what we will not do, why now. Each reviewer adds the one question they would ask if they were funding it. Unanswered questions stay in the document, marked open."
+    },
+    {
+     "t": "Decide",
+     "min": 40,
+     "d": "Three outcomes only: approved to move to a PRD, rewrite and re-review in a week, or stopped. The decider says which and names the top reason in the document."
+    },
+    {
+     "t": "Log the decision",
+     "min": 20,
+     "d": "The PM writes the decision and open questions at the top of the document, with the date. Send the link the same day."
+    }
+   ],
+   "pitfalls": [
+    "Skipping the silent reading because 'everyone read it'. Half did not. Thirty minutes of silence saves two hours of arguing about a paragraph nobody read.",
+    "A press release full of 'seamless', 'powerful', 'innovative'. Delete every adjective and see if the story still stands.",
+    "Treating 'stopped' as failure. A project killed at PR/FAQ stage costs four hours. The same project killed at launch costs a quarter."
+   ],
+   "next": "An approved PR/FAQ becomes the first page of the PRD and the source for the Launch plan. A rewrite comes back in a week; a stop is archived with its reason so nobody reopens it in six months without new information.",
+   "source": "Amazon, Working Backwards"
+  },
+  "fr": {
+   "prep": [
+    "Le PM écrit seul avant la séance : un brouillon complet du communiqué et au moins dix questions de FAQ. Les quatre heures servent à relire, pas à écrire.",
+    "Envoie le brouillon 48 heures avant aux leads qui relisent, avec la consigne de le lire en entier et de commenter dans le document, pas par email.",
+    "Choisis un relecteur qui ne connaît pas le projet. Sa confusion est le signal le plus utile que tu auras.",
+    "Imprime ou épingle un PR/FAQ que tu juges excellent pour que la barre soit visible."
+   ],
+   "agenda": [
+    {
+     "t": "Lecture silencieuse",
+     "min": 30,
+     "d": "Tout le monde lit le document en entier, en silence, y compris ceux qui l'ont déjà lu. Les commentaires vont en marge. Personne ne parle."
+    },
+    {
+     "t": "Titre et premier paragraphe",
+     "min": 30,
+     "d": "Un client s'arrêterait-il sur ce titre ? Le premier paragraphe dit-il qui, quoi, et pourquoi ça compte, sans adjectif ? Réécris en direct jusqu'à ce que oui."
+    },
+    {
+     "t": "Problème et solution",
+     "min": 45,
+     "d": "Le problème est-il dit avec les mots du client et un chiffre ? La solution décrit-elle ce que le client fait, pas ce qu'on construit ? La citation client doit sonner comme une vraie personne."
+    },
+    {
+     "t": "Pause",
+     "min": 15,
+     "d": "Loin du document."
+    },
+    {
+     "t": "La chasse aux questions",
+     "min": 60,
+     "d": "Passe les FAQ internes : coût, risques, dépendances, ce qu'on ne fera pas, pourquoi maintenant. Chaque relecteur ajoute la question qu'il poserait s'il finançait. Les questions sans réponse restent dans le document, marquées ouvertes."
+    },
+    {
+     "t": "Décider",
+     "min": 40,
+     "d": "Trois issues seulement : approuvé pour passer au PRD, à réécrire et relire dans une semaine, ou arrêté. Le décideur dit laquelle et écrit la raison principale dans le document."
+    },
+    {
+     "t": "Consigner la décision",
+     "min": 20,
+     "d": "Le PM écrit la décision et les questions ouvertes en haut du document, avec la date. Le lien part le jour même."
+    }
+   ],
+   "pitfalls": [
+    "Sauter la lecture silencieuse parce que 'tout le monde l'a lu'. La moitié ne l'a pas fait. Trente minutes de silence épargnent deux heures de débat sur un paragraphe que personne n'a lu.",
+    "Un communiqué plein de 'fluide', 'puissant', 'innovant'. Supprime chaque adjectif et regarde si l'histoire tient encore.",
+    "Considérer 'arrêté' comme un échec. Un projet tué au stade PR/FAQ coûte quatre heures. Le même projet tué au lancement coûte un trimestre."
+   ],
+   "next": "Un PR/FAQ approuvé devient la première page du PRD et la source du Plan de lancement. Une réécriture revient dans une semaine ; un arrêt est archivé avec sa raison pour que personne ne le rouvre dans six mois sans information nouvelle.",
+   "source": "Amazon, Working Backwards"
+  }
+ },
+ "icebreaker": {
+  "en": {
+   "prep": [
+    "Pick one question, not three. A check-in that takes fifteen minutes has eaten the warm-up it was meant to create.",
+    "Write the question on the board before anyone arrives, so people can think while they settle.",
+    "Decide the order in advance and say it out loud. Volunteering favours the confident.",
+    "Go first yourself, and answer briefly. Whatever you do sets the length for everyone after you."
+   ],
+   "agenda": [
+    {
+     "t": "The question",
+     "min": 2,
+     "d": "Read the question and answer it yourself, in two sentences. You are demonstrating the format, not performing."
+    },
+    {
+     "t": "Round",
+     "min": 10,
+     "d": "Each person answers in turn. No comments between answers, no follow-up questions. The point is that every voice is heard once, not that a conversation starts."
+    },
+    {
+     "t": "What I need here",
+     "min": 8,
+     "d": "Second, shorter round: what each person needs from the session to consider it worth their morning. Write them on stickies, keep them visible all day."
+    },
+    {
+     "t": "Close the opener",
+     "min": 5,
+     "d": "Name out loud any need that this session will not meet, and say where it goes instead. Unmet expectations poison the rest of the workshop quietly."
+    }
+   ],
+   "pitfalls": [
+    "Fun for its own sake. A game with no link to the work signals that the next two hours are not serious either. Pick a question that touches the topic.",
+    "Letting the round become a discussion. The first person to be interrupted is the last quiet person who speaks. Hold the no-comment rule for the whole round.",
+    "Skipping it because the group knows each other. Familiar teams have fixed speaking orders, and the opener is what breaks them for the day."
+   ],
+   "next": "Keep the needs stickies visible and revisit them in the last five minutes. If several people named the same need that the agenda ignores, you have just found your next workshop.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Choisis une seule question, pas trois. Un tour de check-in qui dure quinze minutes a mangé l'échauffement qu'il devait créer.",
+    "Écris la question au tableau avant que les gens arrivent, pour qu'ils puissent y penser en s'installant.",
+    "Décide de l'ordre à l'avance et annonce-le. Le volontariat avantage ceux qui sont déjà à l'aise.",
+    "Commence toi-même, et réponds court. Ta longueur fixe celle de tous les suivants."
+   ],
+   "agenda": [
+    {
+     "t": "La question",
+     "min": 2,
+     "d": "Lis la question et réponds toi-même, en deux phrases. Tu montres le format, tu ne fais pas un numéro."
+    },
+    {
+     "t": "Le tour",
+     "min": 10,
+     "d": "Chacun répond à son tour. Pas de commentaire entre les réponses, pas de question de relance. Le but est que chaque voix soit entendue une fois, pas qu'une conversation démarre."
+    },
+    {
+     "t": "Ce dont j'ai besoin ici",
+     "min": 8,
+     "d": "Deuxième tour, plus court : ce dont chacun a besoin pour que la session vaille sa matinée. Sur des post-it, visibles toute la journée."
+    },
+    {
+     "t": "Fermer l'ouverture",
+     "min": 5,
+     "d": "Nomme à voix haute les besoins que cette session ne couvrira pas, et dis où ils vont. Une attente déçue empoisonne la suite en silence."
+    }
+   ],
+   "pitfalls": [
+    "Le jeu pour le jeu. Un brise-glace sans lien avec le sujet annonce que les deux heures qui suivent ne sont pas sérieuses non plus. Prends une question qui touche au thème.",
+    "Laisser le tour devenir une discussion. La première personne interrompue est la dernière personne discrète qui parlera. Tiens la règle du silence sur tout le tour.",
+    "Le sauter parce que le groupe se connaît. Les équipes habituées ont un ordre de parole figé, et c'est précisément ce que l'ouverture casse pour la journée."
+   ],
+   "next": "Garde les post-it de besoins visibles et reviens dessus dans les cinq dernières minutes. Si plusieurs personnes ont nommé le même besoin que l'ordre du jour ignore, tu viens de trouver ton prochain atelier.",
+   "source": ""
+  }
+ },
+ "teamcanvas": {
+  "en": {
+   "prep": [
+    "Run it without the manager in the room if the team reports to one. Roles and needs are not said honestly in front of the person who writes the reviews.",
+    "Book two hours in one block. Split across two sessions, the second half never happens.",
+    "Print the canvas big enough that two people can write on it at the same time.",
+    "Warn the team that personal goals will be asked for, so nobody is ambushed."
+   ],
+   "agenda": [
+    {
+     "t": "Purpose",
+     "min": 15,
+     "d": "Why does this team exist, in one sentence that is not the company mission. If two people write different sentences, that is the finding."
+    },
+    {
+     "t": "People and roles",
+     "min": 20,
+     "d": "Each person writes their own role as they actually practise it, not their job title. Then everyone reads the others and flags overlaps and gaps."
+    },
+    {
+     "t": "Common and personal goals",
+     "min": 25,
+     "d": "Team goals for the next quarter, then what each person personally wants out of it. The second column is the one that predicts who stays."
+    },
+    {
+     "t": "Values and rules",
+     "min": 25,
+     "d": "Three values maximum, each turned into an observable rule. 'Transparency' is not a rule. 'Decisions get written in the channel the same day' is one."
+    },
+    {
+     "t": "Needs and expectations",
+     "min": 20,
+     "d": "What each person needs from the team to do their job. This is where the real blockers surface, usually about decisions and information."
+    },
+    {
+     "t": "Commit",
+     "min": 15,
+     "d": "Read the canvas aloud. Each person names one rule they will personally hold, and the team picks a date to revisit it."
+    }
+   ],
+   "pitfalls": [
+    "Values that nobody could break. If you cannot imagine behaviour that violates the value, it is decoration. Rewrite it until it forbids something.",
+    "Skipping personal goals to save time. They are the half of the canvas a team charter does not have, and the reason to run this instead.",
+    "Treating it as permanent. A team canvas is true for a quarter. Date it, and expect the roles block to be wrong first."
+   ],
+   "next": "Put the canvas where the team works, not in a drive. If the rules block turns out to be the hard part, the Team charter goes deeper on working agreements alone.",
+   "source": "https://theteamcanvas.com/"
+  },
+  "fr": {
+   "prep": [
+    "Anime-le sans le manager dans la salle si l'équipe lui reporte. Les rôles et les besoins ne se disent pas honnêtement devant celui qui écrit les évaluations.",
+    "Bloque deux heures d'un seul tenant. Coupé en deux sessions, la seconde moitié n'a jamais lieu.",
+    "Imprime le canvas assez grand pour que deux personnes puissent écrire dessus en même temps.",
+    "Préviens l'équipe que les objectifs personnels seront demandés, pour que personne ne soit pris au dépourvu."
+   ],
+   "agenda": [
+    {
+     "t": "Raison d'être",
+     "min": 15,
+     "d": "Pourquoi cette équipe existe, en une phrase qui n'est pas la mission de l'entreprise. Si deux personnes écrivent des phrases différentes, c'est ça le résultat."
+    },
+    {
+     "t": "Personnes et rôles",
+     "min": 20,
+     "d": "Chacun écrit son rôle tel qu'il le pratique vraiment, pas son intitulé de poste. Puis tout le monde lit les autres et signale les recouvrements et les trous."
+    },
+    {
+     "t": "Objectifs communs et personnels",
+     "min": 25,
+     "d": "Les objectifs d'équipe du trimestre, puis ce que chacun veut en tirer personnellement. C'est la seconde colonne qui prédit qui reste."
+    },
+    {
+     "t": "Valeurs et règles",
+     "min": 25,
+     "d": "Trois valeurs maximum, chacune traduite en règle observable. « Transparence » n'est pas une règle. « Les décisions sont écrites dans le canal le jour même » en est une."
+    },
+    {
+     "t": "Besoins et attentes",
+     "min": 20,
+     "d": "Ce dont chacun a besoin de l'équipe pour faire son travail. C'est là que sortent les vrais blocages, en général sur les décisions et l'information."
+    },
+    {
+     "t": "S'engager",
+     "min": 15,
+     "d": "Lis le canvas à voix haute. Chacun nomme une règle qu'il tiendra personnellement, et l'équipe fixe une date pour y revenir."
+    }
+   ],
+   "pitfalls": [
+    "Des valeurs que personne ne pourrait enfreindre. Si tu n'imagines pas un comportement qui viole la valeur, c'est de la décoration. Réécris-la jusqu'à ce qu'elle interdise quelque chose.",
+    "Sauter les objectifs personnels pour gagner du temps. C'est la moitié du canvas qu'une charte d'équipe n'a pas, et la raison de faire celui-ci plutôt que l'autre.",
+    "Le traiter comme définitif. Un team canvas est vrai pour un trimestre. Date-le, et attends-toi à ce que le bloc des rôles soit faux en premier."
+   ],
+   "next": "Mets le canvas là où l'équipe travaille, pas dans un drive. Si c'est le bloc des règles qui coince, la charte d'équipe creuse les accords de fonctionnement à elle seule.",
+   "source": "https://theteamcanvas.com/"
+  }
+ },
+ "pitch": {
+  "en": {
+   "prep": [
+    "Bring the positioning map or the value proposition canvas if you have one. Writing a pitch from nothing produces adjectives.",
+    "Collect three real sentences customers used to describe the product. They beat anything the team will invent.",
+    "Have the actual competitor names ready. 'Unlike other solutions' is the line that kills a pitch.",
+    "Set a hard limit: one sentence, read in one breath. Print it as a rule on the wall."
+   ],
+   "agenda": [
+    {
+     "t": "Fill the blanks alone",
+     "min": 15,
+     "d": "Each person fills the six blocks on their own sheet, in silence. Working as a group first averages everyone into the same vague sentence."
+    },
+    {
+     "t": "Read them all",
+     "min": 20,
+     "d": "Each person reads their sentence out loud without defending it. Note where the versions disagree: the category and the alternative are where teams split."
+    },
+    {
+     "t": "Fight over the category",
+     "min": 20,
+     "d": "Decide what the product is a kind of. This choice sets who you are compared against and what people expect. It is the hardest block and the one worth the time."
+    },
+    {
+     "t": "Assemble and cut",
+     "min": 20,
+     "d": "Build one sentence from the best blocks. Then remove every word that would still be true of a competitor."
+    },
+    {
+     "t": "Read it in one breath",
+     "min": 10,
+     "d": "Someone who was not in the writing reads it aloud. If they run out of air or stumble, it is still too long."
+    }
+   ],
+   "pitfalls": [
+    "Benefits that any competitor could claim. 'Saves time' is not a benefit, it is a category requirement. Keep cutting until only you could say the sentence.",
+    "Naming the alternative as 'doing nothing' when it is actually a spreadsheet, or a person. Name the real thing people use today.",
+    "Writing it for investors when the audience is customers. Decide which pitch you are writing before you start, they are not the same sentence."
+   ],
+   "next": "Put the sentence in the product space and use it as a test: any roadmap item that does not serve the key benefit needs an explicit reason. If the category block was contested, run the Positioning map.",
+   "source": "https://www.aprildunford.com/obviously-awesome"
+  },
+  "fr": {
+   "prep": [
+    "Apporte la carte de positionnement ou le value proposition canvas si tu en as un. Écrire un pitch depuis rien produit des adjectifs.",
+    "Récolte trois phrases réelles utilisées par des clients pour décrire le produit. Elles battent tout ce que l'équipe inventera.",
+    "Prépare les vrais noms de concurrents. « Contrairement aux autres solutions » est la ligne qui tue un pitch.",
+    "Pose une limite ferme : une phrase, lue en une respiration. Affiche-la comme règle au mur."
+   ],
+   "agenda": [
+    {
+     "t": "Remplir seul",
+     "min": 15,
+     "d": "Chacun remplit les six blocs sur sa propre feuille, en silence. Commencer en groupe moyenne tout le monde vers la même phrase vague."
+    },
+    {
+     "t": "Tout lire",
+     "min": 20,
+     "d": "Chacun lit sa phrase à voix haute sans la défendre. Note où les versions divergent : c'est sur la catégorie et l'alternative que les équipes se séparent."
+    },
+    {
+     "t": "Se battre sur la catégorie",
+     "min": 20,
+     "d": "Décide de quoi le produit est une sorte. Ce choix fixe à qui on te compare et ce qu'on attend de toi. C'est le bloc le plus dur et celui qui mérite le temps."
+    },
+    {
+     "t": "Assembler et couper",
+     "min": 20,
+     "d": "Construis une phrase avec les meilleurs blocs. Puis retire chaque mot qui resterait vrai chez un concurrent."
+    },
+    {
+     "t": "Lire en une respiration",
+     "min": 10,
+     "d": "Quelqu'un qui n'a pas participé à l'écriture la lit à voix haute. S'il manque d'air ou bute, c'est encore trop long."
+    }
+   ],
+   "pitfalls": [
+    "Des bénéfices que n'importe quel concurrent pourrait revendiquer. « Fait gagner du temps » n'est pas un bénéfice, c'est un prérequis de catégorie. Coupe jusqu'à ce que toi seul puisses dire la phrase.",
+    "Nommer l'alternative « ne rien faire » alors que c'est en réalité un tableur, ou une personne. Nomme ce que les gens utilisent vraiment aujourd'hui.",
+    "L'écrire pour des investisseurs quand le public est le client. Décide quel pitch tu écris avant de commencer, ce ne sont pas les mêmes phrases."
+   ],
+   "next": "Mets la phrase dans l'espace produit et sers-t'en comme test : tout item de roadmap qui ne sert pas le bénéfice clé doit avoir une raison explicite. Si le bloc catégorie a été disputé, enchaîne sur la carte de positionnement.",
+   "source": "https://www.aprildunford.com/obviously-awesome"
+  }
+ },
+ "remember": {
+  "en": {
+   "prep": [
+    "Pick the date out loud before the session, and make it specific: 'the Tuesday after the trade show', not 'next year'. Vague futures produce vague answers.",
+    "Invite customers if you can. The team playing customers is a fallback, and it shows.",
+    "Prepare the tense rule and repeat it: everything is said in the past. 'We will be able to' is the sentence to catch.",
+    "Have the current metrics on hand so claims about the future can be compared to today."
+   ],
+   "agenda": [
+    {
+     "t": "Set the date",
+     "min": 10,
+     "d": "Name the future date and describe the world around it briefly. Everyone writes the date at the top of their sheet."
+    },
+    {
+     "t": "What happened",
+     "min": 25,
+     "d": "Each person writes, in the past tense, what the product did for them between now and that date. Correct anyone who slips into the future tense, every time."
+    },
+    {
+     "t": "Tell a colleague",
+     "min": 20,
+     "d": "Second pass: what did you tell a colleague about it? This forces the answer into a sentence someone would actually repeat, which strips out the features nobody cares about."
+    },
+    {
+     "t": "Work backwards",
+     "min": 25,
+     "d": "For each outcome, walk back to what had to be true for it to happen. This is where the roadmap items appear, and they appear as consequences rather than wishes."
+    },
+    {
+     "t": "Keep the outcomes",
+     "min": 10,
+     "d": "Rank the outcomes by how much the group wants them, not by feasibility. Feasibility is the next session's job."
+    }
+   ],
+   "pitfalls": [
+    "Letting the future tense back in. The whole mechanism rests on the past tense: it turns a wish list into a story, and stories expose what was missing.",
+    "Accepting feature names as outcomes. 'We had the mobile app' is a feature. 'I stopped doing the paperwork in the van at 7pm' is an outcome. Ask what it let them stop doing.",
+    "Setting the date too far out. Beyond a year, people describe a fantasy. Six to twelve months keeps it close enough to be accountable."
+   ],
+   "next": "The outcomes feed Impact mapping or the Product Vision Board directly. If the walk-back produced a lot of assumptions, run Assumption mapping before committing to any of it.",
+   "source": "https://www.lukehohmann.com/innovation-games/remember-the-future"
+  },
+  "fr": {
+   "prep": [
+    "Choisis la date à voix haute avant la session, et rends-la précise : « le mardi après le salon », pas « l'année prochaine ». Un futur vague produit des réponses vagues.",
+    "Invite des clients si tu peux. L'équipe qui joue le client est une solution de repli, et ça se voit.",
+    "Prépare la règle du temps et répète-la : tout se dit au passé. « On pourra » est la phrase à attraper.",
+    "Aie les métriques actuelles sous la main, pour comparer les affirmations sur le futur à aujourd'hui."
+   ],
+   "agenda": [
+    {
+     "t": "Fixer la date",
+     "min": 10,
+     "d": "Nomme la date future et décris brièvement le monde autour. Chacun écrit la date en haut de sa feuille."
+    },
+    {
+     "t": "Ce qui s'est passé",
+     "min": 25,
+     "d": "Chacun écrit, au passé, ce que le produit a fait pour lui d'ici cette date. Corrige à chaque fois quelqu'un qui repasse au futur."
+    },
+    {
+     "t": "Ce que tu as dit à un collègue",
+     "min": 20,
+     "d": "Deuxième passe : qu'en as-tu dit à un collègue ? Ça force la réponse dans une phrase que quelqu'un répéterait vraiment, ce qui élimine les features dont personne ne parle."
+    },
+    {
+     "t": "Remonter le fil",
+     "min": 25,
+     "d": "Pour chaque résultat, remonte à ce qui devait être vrai pour qu'il arrive. C'est là qu'apparaissent les items de roadmap, et ils apparaissent comme des conséquences plutôt que des souhaits."
+    },
+    {
+     "t": "Garder les résultats",
+     "min": 10,
+     "d": "Classe les résultats par envie du groupe, pas par faisabilité. La faisabilité est le travail de la session suivante."
+    }
+   ],
+   "pitfalls": [
+    "Laisser le futur revenir. Tout le mécanisme tient au passé : il transforme une liste de souhaits en récit, et le récit révèle ce qui manquait.",
+    "Accepter des noms de features comme résultats. « On avait l'appli mobile » est une feature. « J'ai arrêté de faire la paperasse dans la camionnette à 19 h » est un résultat. Demande ce que ça leur a permis d'arrêter.",
+    "Mettre la date trop loin. Au-delà d'un an, les gens décrivent un fantasme. Six à douze mois reste assez proche pour engager."
+   ],
+   "next": "Les résultats alimentent directement l'impact mapping ou le Product Vision Board. Si la remontée a produit beaucoup d'hypothèses, passe par l'assumption mapping avant de t'engager sur quoi que ce soit.",
+   "source": "https://www.lukehohmann.com/innovation-games/remember-the-future"
+  }
+ }
 }
