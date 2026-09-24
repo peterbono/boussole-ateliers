@@ -1656,5 +1656,93 @@
    "next": "La frise alimente directement une story map ou un service blueprint. Les points chauds constituent le meilleur backlog de découverte que tu obtiendras en une session.",
    "source": "https://www.eventstorming.com/"
   }
+ },
+ "altworlds": {
+  "en": {
+   "prep": [
+    "Pick the problem before the room fills, in one narrow sentence. \"Get a technician to log their first intervention\" works. \"Improve onboarding\" does not.",
+    "Choose the worlds yourself, do not crowdsource them live. Four is enough: a brand the team admires, a rival with nothing to lose, a world far from your industry, and one that is frankly absurd.",
+    "Write each world at the top of its column beforehand, with one line on what that world is famous for. That line is what makes the borrowing possible.",
+    "Say out loud that feasibility is off the table for the next hour. People who refuse workshops usually refuse being judged, not being creative."
+   ],
+   "agenda": [
+    {
+     "t": "The problem, once",
+     "min": 5,
+     "d": "You read the sentence, you do not explain it. Any clarification comes from a question, not from a speech."
+    },
+    {
+     "t": "Our world today",
+     "min": 10,
+     "d": "Everyone writes what we would do with our current reflexes. Getting the obvious out early is what frees the rest of the hour."
+    },
+    {
+     "t": "Three foreign worlds",
+     "min": 30,
+     "d": "Ten minutes per world, alone then shared. The prompt is always the same: how would they solve this, with their means and their nerve?"
+    },
+    {
+     "t": "Worth stealing",
+     "min": 10,
+     "d": "Each person picks one idea from a world that is not ours and writes what would have to be true for us to do it."
+    },
+    {
+     "t": "Back to our world",
+     "min": 5,
+     "d": "You keep three, you name an owner for each, and you stop. Sorting them is another workshop."
+    }
+   ],
+   "pitfalls": [
+    "Do not let the group argue feasibility inside a world. The question is what that world would do, not whether we could.",
+    "A world nobody in the room knows produces nothing. Drop it live and take another one, it costs thirty seconds.",
+    "If a world only yields variants of what you already do, it sits too close to yours. Go further out, the absurd column exists for that.",
+    "Ending on the foreign ideas leaves the group amused and empty-handed. The \"worth stealing\" column is the one that makes the session count."
+   ],
+   "next": "The kept ideas go into a convergence: Dot voting if there are many, How might we if they are still too vague to build on. Nothing here is a decision yet.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Choisis le problème avant que la salle se remplisse, en une phrase étroite. « Faire qu'un technicien saisisse sa première intervention » marche. « Améliorer l'onboarding » non.",
+    "Choisis les mondes toi-même, ne les fais pas proposer en séance. Quatre suffisent : une marque que l'équipe admire, un concurrent qui n'a rien à perdre, un monde loin de votre métier, et un franchement absurde.",
+    "Écris chaque monde en tête de colonne à l'avance, avec une ligne sur ce pour quoi ce monde est connu. C'est cette ligne qui rend l'emprunt possible.",
+    "Dis à voix haute que la faisabilité est hors sujet pendant une heure. Les gens qui refusent les ateliers refusent d'être jugés, pas d'être créatifs."
+   ],
+   "agenda": [
+    {
+     "t": "Le problème, une fois",
+     "min": 5,
+     "d": "Tu lis la phrase, tu ne l'expliques pas. Toute précision vient d'une question, pas d'un discours."
+    },
+    {
+     "t": "Notre monde aujourd'hui",
+     "min": 10,
+     "d": "Chacun écrit ce qu'on ferait avec nos réflexes actuels. Sortir l'évidence tôt, c'est ce qui libère le reste de l'heure."
+    },
+    {
+     "t": "Trois mondes étrangers",
+     "min": 30,
+     "d": "Dix minutes par monde, seul puis en commun. La consigne ne change jamais : comment eux régleraient ça, avec leurs moyens et leur culot ?"
+    },
+    {
+     "t": "Bon à voler",
+     "min": 10,
+     "d": "Chacun prend une idée d'un monde qui n'est pas le nôtre et écrit ce qui devrait être vrai pour qu'on la fasse."
+    },
+    {
+     "t": "Retour chez nous",
+     "min": 5,
+     "d": "On en garde trois, on nomme un porteur pour chacune, et on s'arrête. Les trier, c'est un autre atelier."
+    }
+   ],
+   "pitfalls": [
+    "Ne laisse pas le groupe débattre faisabilité à l'intérieur d'un monde. La question est ce que ce monde ferait, pas si nous le pourrions.",
+    "Un monde que personne dans la salle ne connaît ne produit rien. Abandonne-le en séance et prends-en un autre, ça coûte trente secondes.",
+    "Si un monde ne donne que des variantes de ce que vous faites déjà, c'est qu'il est trop proche du vôtre. Va plus loin, la colonne absurde est là pour ça.",
+    "Finir sur les idées étrangères laisse le groupe amusé et les mains vides. C'est la colonne « bon à voler » qui rend la séance utile."
+   ],
+   "next": "Les idées gardées partent en convergence : Dot voting si elles sont nombreuses, How might we si elles restent trop floues pour être construites. Rien ici n'est encore une décision.",
+   "source": ""
+  }
  }
 }

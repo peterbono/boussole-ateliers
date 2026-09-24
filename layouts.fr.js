@@ -43,11 +43,13 @@ const LAYOUTS_FR = {
   affinity:     {kind:'columns', cols:[{t:'Thème A',n:5},{t:'Thème B',n:4},{t:'Thème C',n:6},{t:'Thème D',n:3}]},
   crazy8:       {kind:'grid', rows:['',''], cols:['1','2','3','4'], cells:'empty'},
   brainwriting: {kind:'grid', rows:['Tour 1','Tour 2','Tour 3','Tour 4','Tour 5','Tour 6'], cols:['Idée 1','Idée 2','Idée 3'], cells:'stickies'},
+  altworlds: {kind:'columns', cols:[{t:'Notre monde aujourd\'hui', n:3},{t:'Une marque admirée', n:4},{t:'Un concurrent sans règles', n:4},{t:'Un enfant de cinq ans', n:4},{t:'Bon à voler', n:3}]},
   dotvote:      {kind:'columns', cols:[{t:'Option A',n:2,dots:3},{t:'Option B',n:2,dots:5},{t:'Option C',n:2,dots:1},{t:'Option D',n:2,dots:2}]},
   sprint:       {kind:'flow', steps:['Lundi · Cartographier','Mardi · Esquisser','Mercredi · Décider','Jeudi · Prototyper','Vendredi · Tester']},
   experiments:  {kind:'grid', rows:['Expérience 1','Expérience 2','Expérience 3'], cols:['Hypothèse','Test','Métrique','Critère de succès','Résultat','Apprentissage'], cells:'stickies'},
   // Priorisation
   'impact-effort': {kind:'quadrant', x:['Effort faible','Effort fort'], y:['Impact faible','Impact fort'], cells:['Quick wins','Gros projets','Remplissage','À éviter']},
+  radar: {kind:'radar', rings:['Maintenant','Trimestre prochain','Cette année','Hors radar'], sectors:['Produit','Clients','Tech','Équipe']},
   rice:         {kind:'grid', rows:['Initiative A','Initiative B','Initiative C','Initiative D'], cols:['Reach','Impact','Confidence','Effort','Score'], cells:'letters'},
   moscow:       {kind:'columns', cols:[{t:'Must',n:4},{t:'Should',n:3},{t:'Could',n:3},{t:'Won\'t',n:2}]},
   storymap:     {kind:'grid', rows:['Backbone','Release 1','Release 2','Release 3'], cols:['Étape 1','Étape 2','Étape 3','Étape 4','Étape 5','Étape 6'], cells:'stickies'},

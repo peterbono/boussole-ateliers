@@ -1664,5 +1664,83 @@
    ],
    "takeaway": "Trois des cinq lignes de Done n'existent qu'à cause de l'incident de mars. Écrire le bloc « volontairement hors liste » a empêché la liste de passer à vingt lignes au trimestre suivant."
   }
+ },
+ "radar": {
+  "en": {
+   "context": "Fieldnote quarterly kickoff. Sales, support and the 3 builders each carry a different mental list of what is coming. Karim runs a 60 minute radar to put the four horizons on one target.",
+   "blocks": [
+    {
+     "t": "Now",
+     "items": [
+      "Voice note drafts the report",
+      "No signal in boiler rooms",
+      "Churn risk at onboarding"
+     ]
+    },
+    {
+     "t": "Next quarter",
+     "items": [
+      "Invoicing export for the office",
+      "Second dispatcher seat per account",
+      "Hiring a support lead"
+     ]
+    },
+    {
+     "t": "This year",
+     "items": [
+      "Parts catalogue with supplier prices",
+      "Android tablets in the vans",
+      "First 50-technician account"
+     ]
+    },
+    {
+     "t": "Off the radar",
+     "items": [
+      "Customer-facing booking portal",
+      "Native smartwatch app",
+      "Expanding outside HVAC"
+     ]
+    }
+   ],
+   "takeaway": "The tablet rollout moved from Now to This year once sales saw the support load behind it. Two items nobody could place went Off the radar on purpose, which ended a recurring argument in standup."
+  },
+  "fr": {
+   "context": "Lancement de trimestre chez Fieldnote. Le commercial, le support et les 3 builders portent chacun une liste mentale differente. Karim anime un radar de 60 minutes pour poser les quatre horizons sur une meme cible.",
+   "blocks": [
+    {
+     "t": "Maintenant",
+     "items": [
+      "Note vocale qui redige",
+      "Pas de reseau en chaufferie",
+      "Risque de churn a l'onboarding"
+     ]
+    },
+    {
+     "t": "Trimestre prochain",
+     "items": [
+      "Export de facturation pour le bureau",
+      "Deuxieme siege dispatcher par compte",
+      "Recrutement d'un lead support"
+     ]
+    },
+    {
+     "t": "Cette année",
+     "items": [
+      "Catalogue de pieces avec prix fournisseurs",
+      "Tablettes Android dans les camions",
+      "Premier compte a 50 techniciens"
+     ]
+    },
+    {
+     "t": "Hors radar",
+     "items": [
+      "Portail de reservation pour les clients finaux",
+      "Application montre connectee",
+      "Sortir du chauffage et de la clim"
+     ]
+    }
+   ],
+   "takeaway": "Le deploiement des tablettes est passe de Maintenant a Cette annee quand le commercial a vu la charge support derriere. Deux sujets que personne ne savait placer sont partis Hors radar volontairement, ce qui a clos une dispute recurrente en daily."
+  }
  }
 }

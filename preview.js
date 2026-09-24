@@ -44,6 +44,43 @@
     });
     return out;
   };
+  // Cible concentrique : chaque anneau est un horizon, chaque secteur un domaine.
+  // Plus un sujet est pres du centre, plus il est proche.
+  R.radar = ({rings, sectors}) => {
+    const cx = W / 2, cy = H / 2 + 4, rMax = Math.min(W, H) / 2 - P - 6;
+    let out = '';
+    // anneaux du plus large au plus etroit, pour que les traits restent visibles
+    for(let i = rings.length; i > 0; i--){
+      const r = rMax * i / rings.length;
+      out += `<circle cx="${cx}" cy="${cy}" r="${r.toFixed(1)}" fill="${i % 2 ? 'var(--pv-fill)' : 'var(--pv-bg)'}" stroke="var(--pv-line)" stroke-width="1"/>`;
+    }
+    // separateurs de secteurs
+    sectors.forEach((_, i) => {
+      const a = (i / sectors.length) * Math.PI * 2 - Math.PI / 2;
+      out += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * rMax).toFixed(1)}" y2="${(cy + Math.sin(a) * rMax).toFixed(1)}" stroke="var(--pv-line)" stroke-width="1"/>`;
+    });
+    // un sticky par secteur et par anneau, place au milieu de sa case
+    const r0 = rnd(7);
+    sectors.forEach((_, si) => {
+      const a = ((si + 0.5) / sectors.length) * Math.PI * 2 - Math.PI / 2;
+      rings.forEach((_, ri) => {
+        if(r0() > 0.72) return;
+        const r = rMax * (ri + 0.5) / rings.length;
+        const px = cx + Math.cos(a) * r, py = cy + Math.sin(a) * r;
+        out += sticky(px - 4, py - 4, 8, si + ri);
+      });
+    });
+    // etiquettes des secteurs, posees hors de la cible
+    sectors.forEach((t, i) => {
+      const a = ((i + 0.5) / sectors.length) * Math.PI * 2 - Math.PI / 2;
+      const px = cx + Math.cos(a) * (rMax + 9), py = cy + Math.sin(a) * (rMax + 9);
+      const anchor = Math.cos(a) > 0.25 ? 'start' : Math.cos(a) < -0.25 ? 'end' : 'middle';
+      out += label(px, py + 3, fit(t, 60), {anchor, size: 7.5});
+    });
+    // le premier anneau est nomme en haut, c'est lui qui porte le sens
+    out += label(cx, cy - rMax - 3, fit(rings[0], 70), {anchor: 'middle', size: 7.5, fill: 'var(--pv-accent)'});
+    return out;
+  };
   R.quadrant = ({x, y, cells, footer}) => {
     const fh = footer ? 26 : 0, ax = x[0] || x[1] ? 12 : 0, ay = y[0] || y[1] ? 12 : 0;
     const gx = P + ay, gy = P, gw = W - 2*P - ay, gh = H - 2*P - ax - fh, hw = gw/2, hh = gh/2;
@@ -155,6 +192,61 @@
   FR.columns = ({cols}, ex) => {
     const gap = 14, cw = (FW - 2*FP - gap*(cols.length - 1)) / cols.length; let out = '';
     cols.forEach((c, i) => { const x = FP + i*(cw + gap); out += fBox(x, FP, cw, FH - 2*FP) + fLabel(x + 12, FP + 26, c.t) + `<line x1="${x}" y1="${FP + 38}" x2="${x + cw}" y2="${FP + 38}" stroke="var(--pv-line)" stroke-width="1.5"/>` + fStickies(x + 4, FP + 46, cw - 8, FH - 2*FP - 52, byLabel(ex, c.t), i + 1); });
+    return out;
+  };
+  // L'exemple rempli garde la cible mais pose les items par anneau, en arc,
+  // plutot qu'au centre de chaque case : un anneau porte souvent plusieurs sujets.
+  FR.radar = ({rings, sectors}, ex) => {
+    const cx = FW / 2, cy = FH / 2, rMax = Math.min(FW, FH) / 2 - FP - 10;
+    let out = '';
+    for(let i = rings.length; i > 0; i--){
+      const r = rMax * i / rings.length;
+      out += `<circle cx="${cx}" cy="${cy}" r="${r.toFixed(1)}" fill="${i % 2 ? 'var(--pv-fill)' : 'var(--pv-bg)'}" stroke="var(--pv-line)" stroke-width="1.5"/>`;
+    }
+    sectors.forEach((_, i) => {
+      const a = (i / sectors.length) * Math.PI * 2 - Math.PI / 2;
+      out += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * rMax).toFixed(1)}" y2="${(cy + Math.sin(a) * rMax).toFixed(1)}" stroke="var(--pv-line)" stroke-width="1.5"/>`;
+    });
+    // Un anneau interieur est trop court pour porter des stickies pleine largeur :
+    // on retrecit la note et on repousse le rayon jusqu'a ce que l'arc les separe.
+    // On place chaque note sur l'arc de son anneau, puis on la fait tourner
+    // par petits pas tant qu'elle chevauche une note deja posee.
+    const placed = [];
+    const hits = (x, y, w, h) => placed.some(b => x < b.x + b.w + 10 && x + w + 10 > b.x && y < b.y + b.h + 8 && y + h + 8 > b.y);
+    rings.forEach((ring, ri) => {
+      const items = byLabel(ex, ring);
+      if(!items.length) return;
+      const sw = ri === 0 ? 84 : 112, sh = 54;
+      const mid = rMax * (ri + 0.5) / rings.length;
+      const need = items.length * (sw + 16) / (Math.PI * 2);
+      const r = Math.max(mid, need);
+      items.forEach((it, k) => {
+        const a0 = ((k + 0.5) / items.length) * Math.PI * 2 - Math.PI / 2 + ri * 0.6;
+        let px = cx + Math.cos(a0) * r, py = cy + Math.sin(a0) * r;
+        for(let step = 1; step <= 60 && hits(px - sw / 2, py - 22, sw, sh); step++){
+          const a = a0 + (step % 2 ? 1 : -1) * Math.ceil(step / 2) * 0.13;
+          // un anneau interieur peut etre trop court pour tout le monde :
+          // apres un tour complet on s'autorise a pousser la note vers l'exterieur
+          const rr = r + Math.floor(step / 12) * 16;
+          px = cx + Math.cos(a) * rr; py = cy + Math.sin(a) * rr;
+        }
+        placed.push({x: px - sw / 2, y: py - 22, w: sw, h: sh});
+        out += fStickies(px - sw / 2, py - 26, sw, 84, [it], ri + k);
+      });
+    });
+    sectors.forEach((t, i) => {
+      const a = ((i + 0.5) / sectors.length) * Math.PI * 2 - Math.PI / 2;
+      const px = cx + Math.cos(a) * (rMax + 16), py = cy + Math.sin(a) * (rMax + 16);
+      const an = Math.cos(a) > 0.25 ? 'start' : Math.cos(a) < -0.25 ? 'end' : 'middle';
+      out += fLabel(px, py + 5, t, {anchor: an, size: 13});
+    });
+    // Le nom de chaque horizon, pose sur l'axe vertical, avec un fond pour rester lisible.
+    rings.forEach((ring, ri) => {
+      const r = rMax * (ri + 1) / rings.length - 9;
+      const w = ring.length * 6.6 + 14;
+      out += `<rect x="${(cx - w / 2).toFixed(1)}" y="${(cy - r - 11).toFixed(1)}" width="${w.toFixed(1)}" height="16" rx="8" fill="var(--pv-bg)" stroke="var(--pv-line)"/>`
+           + fLabel(cx, cy - r + 1, ring, {anchor: 'middle', size: 11, fill: ri ? 'var(--pv-muted)' : 'var(--pv-accent)'});
+    });
     return out;
   };
   FR.quadrant = ({x, y, cells, footer}, ex) => {

@@ -1860,5 +1860,93 @@
    "next": "Affiche les deux listes près du board, et sers-toi du Ready comme filtre en affinage. Reviens dessus en rétro dès que la même dispute revient deux fois.",
    "source": "https://scrumguides.org/scrum-guide.html"
   }
+ },
+ "radar": {
+  "en": {
+   "prep": [
+    "Name the rings before the session and make the first one narrow: \"Now\" should mean the next two weeks, not \"soon\". A vague ring absorbs everything.",
+    "Cap the centre out loud: the innermost ring holds five items, no more. The constraint is the whole method; without it the target becomes a list.",
+    "Draw the sectors from where the work actually comes, not from the org chart. Product, Customers, Tech, Team works; Squad A, Squad B does not.",
+    "Ask each participant to bring their own items on stickies, written before the session. What people write alone differs from what they dare say in the room."
+   ],
+   "agenda": [
+    {
+     "t": "Everything on the table",
+     "min": 15,
+     "d": "Each person puts their stickies in their sector, anywhere in the ring they think fits. No discussion yet, only placing."
+    },
+    {
+     "t": "Read the target",
+     "min": 10,
+     "d": "You read it out loud, sector by sector, without commenting. The group discovers how crowded the centre already is."
+    },
+    {
+     "t": "Enforce the centre",
+     "min": 20,
+     "d": "The centre is over its cap. Every item that stays has to push another one out, out loud, with a reason. This is the part that produces the decision."
+    },
+    {
+     "t": "The outer ring",
+     "min": 10,
+     "d": "Go through what sits on the edge and ask, for each, whether it should leave the radar entirely. Saying no now is cheaper than saying it in three months."
+    },
+    {
+     "t": "Owners and revisit",
+     "min": 5,
+     "d": "Everything in the centre gets a name, and you set the date you will redraw the target. A radar nobody redraws is a snapshot, not a tool."
+    }
+   ],
+   "pitfalls": [
+    "Without a cap on the centre the exercise produces a pretty picture and no trade-off. The cap is not a detail, it is the method.",
+    "Do not let people place their own item and defend it in the same breath. Place everything first, argue second, or the loudest voice sets the centre.",
+    "Sectors copied from the org chart turn the target into a territory map, and each team pushes its own items toward the middle.",
+    "\"Off the radar\" that never gets used means nothing was decided. If the outer ring is empty at the end, run the centre pass again."
+   ],
+   "next": "The centre becomes the input of Now / Next / Later or of a roadmap. Set a date to redraw the target, otherwise it ages in a week.",
+   "source": ""
+  },
+  "fr": {
+   "prep": [
+    "Nomme les anneaux avant la séance et rends le premier étroit : « Maintenant » doit vouloir dire les deux prochaines semaines, pas « bientôt ». Un anneau vague absorbe tout.",
+    "Annonce la limite du centre à voix haute : l'anneau central contient cinq sujets, pas un de plus. La contrainte est toute la méthode ; sans elle la cible devient une liste.",
+    "Trace les secteurs à partir de là d'où vient le travail, pas de l'organigramme. Produit, Clients, Tech, Équipe fonctionne ; Squad A, Squad B non.",
+    "Demande à chacun d'arriver avec ses sujets déjà écrits sur des post-its. Ce qu'on écrit seul n'est pas ce qu'on ose dire dans la salle."
+   ],
+   "agenda": [
+    {
+     "t": "Tout sur la table",
+     "min": 15,
+     "d": "Chacun pose ses post-its dans son secteur, à la distance du centre qui lui semble juste. Pas de discussion, seulement du placement."
+    },
+    {
+     "t": "Lire la cible",
+     "min": 10,
+     "d": "Tu la lis à voix haute, secteur par secteur, sans commenter. Le groupe découvre à quel point le centre est déjà encombré."
+    },
+    {
+     "t": "Faire respecter le centre",
+     "min": 20,
+     "d": "Le centre dépasse sa limite. Chaque sujet qui reste doit en pousser un autre dehors, à voix haute, avec une raison. C'est là que se prend la décision."
+    },
+    {
+     "t": "L'anneau extérieur",
+     "min": 10,
+     "d": "Passe en revue ce qui est au bord et demande, pour chacun, s'il ne devrait pas sortir du radar. Dire non maintenant coûte moins cher que dans trois mois."
+    },
+    {
+     "t": "Porteurs et prochaine cible",
+     "min": 5,
+     "d": "Tout ce qui est au centre reçoit un nom, et vous fixez la date où vous redessinerez la cible. Un radar qu'on ne redessine pas est une photo, pas un outil."
+    }
+   ],
+   "pitfalls": [
+    "Sans limite au centre, l'exercice produit une jolie image et aucun arbitrage. La limite n'est pas un détail, c'est la méthode.",
+    "Ne laisse pas quelqu'un poser son sujet et le défendre dans la foulée. On place tout, puis on argumente, sinon c'est la voix la plus forte qui fixe le centre.",
+    "Des secteurs copiés sur l'organigramme transforment la cible en carte de territoires, et chaque équipe pousse ses sujets vers le milieu.",
+    "Un « hors radar » jamais utilisé signifie que rien n'a été décidé. Si l'anneau extérieur est vide à la fin, refais une passe sur le centre."
+   ],
+   "next": "Le centre devient l'entrée d'un Now / Next / Later ou d'une roadmap. Fixe la date de la prochaine cible, sinon elle vieillit en une semaine.",
+   "source": ""
+  }
  }
 }

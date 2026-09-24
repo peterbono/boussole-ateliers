@@ -23,6 +23,8 @@ const SOURCES = {
   impact:       'https://www.impactmapping.org/',
   rice:         'https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/',
   crazy8:       'https://designsprintkit.withgoogle.com/methodology/phase3-sketch/crazy-8s',
+  altworlds:    'https://www.luma-institute.com/alternative-worlds/',
+  radar:        'https://www.luma-institute.com/whats-on-your-radar/',
   sprint:       'https://www.thesprintbook.com/',
   storymap:     'https://www.jpattonassociates.com/story-mapping/',
   affinity:     'https://en.wikipedia.org/wiki/Affinity_diagram',

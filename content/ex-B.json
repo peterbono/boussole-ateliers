@@ -1648,5 +1648,105 @@
    ],
    "takeaway": "La règle des pièces en texte libre avait été écrite il y a des années par commodité. Sur le mur, elle s'est révélée être l'endroit où partent les 6 % de pièces facturables perdues, et personne dans la salle n'avait relié les deux."
   }
+ },
+ "altworlds": {
+  "en": {
+   "context": "Fieldnote, week 9. Bookings are flat and the team keeps redesigning the same job form. Ana runs Alternative Worlds with 5 people to break the loop before the next sprint.",
+   "blocks": [
+    {
+     "t": "Our world today",
+     "items": [
+      "A technician fills a job form at 7pm",
+      "Every field is required, nothing is guessed",
+      "The office retypes half of it on Monday"
+     ]
+    },
+    {
+     "t": "A brand you admire",
+     "items": [
+      "Shazam: one tap, no form at all",
+      "The app listens, the user says nothing",
+      "Result appears before you explain it",
+      "Being wrong costs one more tap"
+     ]
+    },
+    {
+     "t": "A rival with no rules",
+     "items": [
+      "Bills from the photos, ignores the form",
+      "Reads the boiler plate, fills the model",
+      "Charges the office, free for technicians",
+      "Ships without asking the boss"
+     ]
+    },
+    {
+     "t": "A five-year-old",
+     "items": [
+      "Why do you write what the van already knows",
+      "Just take a picture of it",
+      "Talk to it, it writes for you",
+      "Make the truck say when it is done"
+     ]
+    },
+    {
+     "t": "Worth stealing",
+     "items": [
+      "Voice note in, draft report out",
+      "Photo first, fields filled after",
+      "Nothing is required until invoicing"
+     ]
+    }
+   ],
+   "takeaway": "Two steals went to the next sprint: a voice note that drafts the report, and photo first with fields filled behind it. The team stopped redesigning the form and started removing it."
+  },
+  "fr": {
+   "context": "Fieldnote, semaine 9. Les prises de rendez-vous stagnent et l'equipe redessine encore le meme formulaire d'intervention. Ana anime Mondes alternatifs avec 5 personnes pour sortir de la boucle avant le prochain sprint.",
+   "blocks": [
+    {
+     "t": "Notre monde aujourd'hui",
+     "items": [
+      "Le technicien remplit sa fiche a 19h",
+      "Tous les champs sont obligatoires",
+      "Le bureau en retape la moitie le lundi"
+     ]
+    },
+    {
+     "t": "Une marque admirée",
+     "items": [
+      "Shazam : un appui, aucun formulaire",
+      "L'app ecoute, l'utilisateur ne dit rien",
+      "Le resultat arrive avant l'explication",
+      "Se tromper coute un appui de plus"
+     ]
+    },
+    {
+     "t": "Un concurrent sans règles",
+     "items": [
+      "Facture depuis les photos, zero fiche",
+      "Lit la plaque de la chaudiere",
+      "Fait payer le bureau, gratuit pour le tech",
+      "Livre sans demander au patron"
+     ]
+    },
+    {
+     "t": "Un enfant de cinq ans",
+     "items": [
+      "Pourquoi ecrire ce que le camion sait deja",
+      "Prends une photo, c'est tout",
+      "Parle-lui, il ecrit a ta place",
+      "Le camion dit quand c'est fini"
+     ]
+    },
+    {
+     "t": "Bon à voler",
+     "items": [
+      "Note vocale en entree, rapport en sortie",
+      "La photo d'abord, les champs apres",
+      "Rien d'obligatoire avant la facture"
+     ]
+    }
+   ],
+   "takeaway": "Deux vols sont partis dans le sprint suivant : la note vocale qui redige le rapport, et la photo d'abord avec les champs remplis derriere. L'equipe a arrete de redessiner le formulaire pour commencer a le supprimer."
+  }
  }
 }
