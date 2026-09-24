@@ -77,7 +77,7 @@ button{font:inherit;cursor:pointer}
    Axe continu en heures de facilitation. Sa longueur est figee sur le total
    standard : comprimer un atelier ne redessine pas l'echelle, ca decale les
    suivants vers la gauche et ca ouvre du temps libre a la fin. */
-.tl{position:relative;min-width:560px}
+.tl{position:relative;padding-right:14px}
 .tl-axis{position:relative;height:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
 .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
 .tl-tick span{position:absolute;left:4px;top:2px;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
@@ -308,9 +308,9 @@ function render(){
   const total = slots.reduce((s, l) => s + l.w, 0), ref = T.reduce((s, t) => s + t.dur, 0);
   const step = axis <= 8 ? 1 : axis <= 16 ? 2 : 4;
   let ticks = '';
-  for(let h = 0; h <= axis + 0.001; h += step) ticks += '<i class="tl-tick" style="left:' + (h / axis * 100).toFixed(3) + '%"><span>' + (h ? fmtDur(h) : '0') + '</span></i>';
+  for(let h = 0; h < axis - 0.001; h += step) ticks += '<i class="tl-tick" style="left:' + (h / axis * 100).toFixed(3) + '%"><span>' + (h ? fmtDur(h) : '0') + '</span></i>';
   let grid = '';
-  for(let h = 0; h <= axis + 0.001; h += step) grid += '<i style="left:' + (h / axis * 100).toFixed(3) + '%"></i>';
+  for(let h = 0; h < axis - 0.001; h += step) grid += '<i style="left:' + (h / axis * 100).toFixed(3) + '%"></i>';
 
   let frise = '<div class="tl' + (dirty ? ' tl--draft' : '') + '" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
   PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
