@@ -69,7 +69,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
 .tl-tick span{position:absolute;left:4px;top:2px;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
 .tl-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
-.tl-row{position:relative;height:58px;transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
+.tl-row{position:relative;height:calc(58px + var(--caps, 0) * 17px);transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
 .tl-grid{position:absolute;inset:0;pointer-events:none}
 .tl-grid i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line);opacity:.65}
 .tl-bar{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
@@ -78,7 +78,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
 .tl-cell--tight .tl-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
 .tl-cell--hard .tl-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-.tl-row--warn{height:100px}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
 .tl-ghost{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* plancher : la ou l'agenda ne tient plus */
@@ -92,14 +91,21 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-free{position:absolute;top:0;bottom:0;visibility:visible;left:calc(var(--x) * 100%);right:0;border-radius:8px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px);display:flex;align-items:center;justify-content:center;pointer-events:none}
 .tl-free span{position:absolute;right:6px;white-space:nowrap;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg);padding:2px 8px;border-radius:6px}
 .tl-freerow{position:relative;height:32px;margin-top:10px}
+.tl-cap{position:absolute;top:54px;left:calc(var(--x) * 100%);margin-top:calc(var(--lane, 0) * 17px);white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
+.tl-cell--narrow .tl-cap{opacity:1}
+.tl-cell--narrow .tl-bar b{display:none}
+.tl-cell--narrow .tl-bar small{font-size:11px}
 .tl-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
 .tl-bar:hover .tl-segs,.tl-cell:focus-within .tl-segs,.tl-cell.dragging .tl-segs{opacity:1}
 .tl-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .tl-segs i.seg-cut{opacity:.5}
 .tl-segs i.seg-floor{background:var(--warn-line);opacity:1}
 .tl-cell--under .tl-bar{background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px);box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-.tl-warn{position:absolute;top:58px;left:calc(var(--x) * 100%);display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;font-size:11.5px;color:var(--warn-text);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:8px;padding:4px 6px 4px 9px}
-.tl-warn .btn{padding:3px 8px;font-size:11.5px}
+.warn-list{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.warn-list li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:7px 8px 7px 12px;border:1px solid var(--warn-line);background:var(--warn-soft);border-radius:10px;font-size:12.5px;color:var(--warn-text)}
+.warn-list b{font-weight:600}
+.warn-list span{margin-right:auto}
+.warn-list .btn{padding:3px 9px;font-size:12px}
 .tl-row{overflow:visible}
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
 .edit-bar--done{background:none}
@@ -241,7 +247,6 @@ const axisHours = () => Math.max(T.reduce((s, t) => s + t.dur, 0), layout().redu
 function render(){
   const slots = layout(), axis = axisHours();
   const total = slots.reduce((s, l) => s + l.w, 0), ref = T.reduce((s, t) => s + t.dur, 0);
-  const touched = Object.keys(durOv).length > 0;
   const step = axis <= 8 ? 1 : axis <= 16 ? 2 : 4;
   let ticks = '';
   for(let h = 0; h <= axis + 0.001; h += step) ticks += '<i class="tl-tick" style="left:' + (h / axis * 100).toFixed(3) + '%"><span>' + (h ? fmtDur(h) : '0') + '</span></i>';
@@ -250,8 +255,7 @@ function render(){
 
   let frise = '<div class="tl' + (dirty ? ' tl--draft' : '') + '" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
   PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
-    const warnRow = slots.some(s2 => s2.t.phase === p.id && tooShort(s2.t));
-    frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row' + (warnRow ? ' tl-row--warn' : '') + '" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
+    frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
     slots.filter(s => s.t.phase === p.id).forEach(s => {
       const t = s.t, r = rat(t);
       const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + recDur(t)) / axis;
@@ -259,9 +263,9 @@ function render(){
       frise += '<div class="tl-cell' + (dirty ? ' tl-cell--' + band(r) : '') + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
         + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (dirty && r < 0.999 ? 1 : 0) + '"></div>'
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small><span class="tl-segs">' + segsHtml(t, s.w) + '</span></button>'
+        + '<span class="tl-cap" style="--x:' + x.toFixed(5) + '">' + esc(t.name) + '</span>'
         + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
         + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
-        + (short ? '<div class="tl-warn" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '"><span>' + esc(t.breaks) + '</span><button type="button" class="btn" data-drop="' + t.id + '">' + esc(U.drop) + '</button></div>' : '')
         + '</div>';
     });
     frise += '</div>';
@@ -269,6 +273,9 @@ function render(){
   if(dirty) frise += '<div class="tl-freerow"><div class="tl-free" style="--x:' + (total / axis).toFixed(5) + ';visibility:' + (axis - total > 0.01 ? 'visible' : 'hidden') + '"><span>' + esc(U.freed(fmtDur(Math.max(0, axis - total)))) + '</span></div></div>';
   frise += '</div>';
 
+  const warns = dirty ? slots.filter(s2 => tooShort(s2.t)) : [];
+  const warnList = warns.length ? '<ul class="warn-list">' + warns.map(s2 => '<li><b>' + esc(s2.t.name) + '</b><span>' + esc(s2.t.breaks) + '</span>'
+    + '<button type="button" class="btn" data-drop="' + s2.t.id + '">' + esc(U.drop) + '</button></li>').join('') + '</ul>' : '';
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
     return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
@@ -277,13 +284,15 @@ function render(){
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
 
-  document.getElementById('card').innerHTML =
+  const cardHtml =
     '<div class="plan-wrap">' + frise + '</div>'
+    + warnList
     + editBar(total, ref)
     + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
-    + (touched ? '<p class="plan-adjusted"><span>' + U.planned + ' <b>' + fmtDur(total) + '</b> · ' + U.refTime + ' ' + fmtDur(ref) + '</span><button type="button" class="btn" data-reset>' + U.reset + '</button></p>' : '')
     + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
+  document.getElementById('card').innerHTML = cardHtml;
+  captions();
 }
 
 function editBar(total, ref){
@@ -301,6 +310,30 @@ function editBar(total, ref){
     + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
     + '</div>';
   return '';
+}
+/* Une barre tres courte n'a plus la place d'ecrire son nom. On le sort alors
+   sous la barre, et si deux etiquettes voisines se marchent dessus, la seconde
+   descend d'un cran. La bande s'ouvre juste de ce qu'il faut. */
+function captions(){
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const cells = [...row.querySelectorAll('.tl-cell')].sort((a, b) =>
+      a.querySelector('.tl-bar').getBoundingClientRect().left - b.querySelector('.tl-bar').getBoundingClientRect().left);
+    const lanes = [];
+    cells.forEach(cell => {
+      const bar = cell.querySelector('.tl-bar'), cap = cell.querySelector('.tl-cap');
+      const need = cap.scrollWidth + 22;
+      const narrow = bar.clientWidth < need;
+      cell.classList.toggle('tl-cell--narrow', narrow);
+      if(!narrow){ cap.style.removeProperty('--lane'); return; }
+      const left = bar.getBoundingClientRect().left, right = left + cap.scrollWidth + 10;
+      let lane = 0;
+      while(lanes[lane] != null && left < lanes[lane]) lane++;
+      lanes[lane] = right;
+      cap.style.setProperty('--lane', lane);
+    });
+    const used = lanes.length;
+    row.style.setProperty('--caps', used);
+  });
 }
 /* ---------- le geste : on tire, les suivants glissent ---------- */
 let drag = null;
@@ -335,6 +368,11 @@ function live(id, hours){
     }
     cum += w; total = cum;
   });
+  document.querySelectorAll('.tl-cap').forEach(cap => {
+    const cell = cap.closest('.tl-cell'), bar = cell.querySelector('.tl-bar');
+    cap.style.setProperty('--x', bar.style.getPropertyValue('--x'));
+  });
+  captions();
   const free = document.querySelector('.tl-free');
   if(free){
     const gain = Math.max(0, axis - total);
