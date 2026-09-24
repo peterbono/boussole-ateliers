@@ -369,7 +369,7 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table td:last-child,.plan-table th:last-child{padding-right:0}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
-.gantt{display:flex;flex-direction:column;min-width:520px}
+.gantt{display:flex;flex-direction:column;min-width:520px;padding-right:16px}
 .g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
 .g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .g-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;letter-spacing:.01em;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
@@ -534,6 +534,8 @@ body.resizing{touch-action:none;user-select:none}
 .dur-ctl{display:inline-flex;align-items:center;gap:7px}
 /* le total du pied de tableau se cale sous les valeurs, pas sous le bouton moins */
 .dur-spacer{width:22px;flex:none}
+/* le total se cale comme une valeur mais ne s'edite pas : ni survol, ni curseur texte */
+.dur-ctl .dur-total{min-width:52px;text-align:center;font-weight:600;padding:1px 2px 2px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
 .dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline;text-align:center;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
@@ -1280,7 +1282,7 @@ function planHtml(pick, total){
     <div class="plan-wrap">${ganttHtml(slots)}</div>
     ${warnList}
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><colgroup><col style="width:9%"><col style="width:27%"><col style="width:19%"><col style="width:21%"><col style="width:24%"></colgroup><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
-    <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="dur-cell"><span class="dur-ctl"><span class="dur-spacer"></span><b class="dur-val mono">${fmtDur(total)}</b></span></td><td colspan="2"></td></tr></tfoot></table></div>
+    <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="dur-cell"><span class="dur-ctl"><span class="dur-spacer"></span><b class="dur-total mono">${fmtDur(total)}</b></span></td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
 }
