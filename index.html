@@ -374,7 +374,19 @@ body:has(dialog[open]){overflow:hidden}
 .g-bar b{font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .g-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.8}
 .g-bar:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-@media print{.g-bar{box-shadow:none}}
+.g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:64px;transition:width .12s ease}
+.g-cell.dragging{transition:none}
+.g-cell .g-bar{width:100%}
+.g-cell--tight .g-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
+.g-cell--hard .g-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
+.g-grip{position:absolute;top:0;right:-5px;width:12px;height:100%;cursor:ew-resize;border-radius:0 8px 8px 0;touch-action:none}
+.g-grip::after{content:"";position:absolute;top:50%;right:4px;width:3px;height:18px;margin-top:-9px;border-radius:2px;background:currentColor;opacity:.32}
+.g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
+.g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.g-tip{position:fixed;z-index:60;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:260px;box-shadow:var(--shadow)}
+.g-tip.warn{background:var(--warn-text)}
+.gantt-hint{margin:8px 0 0;font-size:12px;color:var(--ink-3)}
+@media print{.g-bar{box-shadow:none}.g-grip,.gantt-hint{display:none}}
 .howto{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .howto h3{font-size:16px}
 .howto h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
@@ -757,6 +769,13 @@ function edur(t){
   return t.dur >= 7 ? Math.max(3.5, Math.round(t.dur * f / 3.5) * 3.5) : snap(t.dur * 60 * f) / 60;
 }
 const rat = t => edur(t) / t.dur;
+/* Le plancher d'un atelier n'est pas un pourcentage arbitraire : c'est la somme
+   des planchers de ses etapes. En dessous, l'agenda ne tient plus. */
+function minDur(t){
+  const c = RUN && RUN[t.id] && RUN[t.id][lang];
+  if(c && c.agenda) return c.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / 60;
+  return t.dur * 0.5;
+}
 const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
 function saveTime(){ store.set('pace', pace); store.set('paceCustom', paceCustom); store.set('durs', durOv); store.set('budget', budget); }
 /* Comprimer tout au meme facteur raboterait aussi l'etape qui produit la
@@ -789,19 +808,22 @@ function scaleAgenda(agenda, targetMin){
     take(mid.length ? mid : out.slice());
     take(out);
   }
+  // L'ecart d'arrondi se rattrape vers le haut seulement : vers le bas, le
+  // plancher a deja ete atteint et forcer ferait afficher des etapes d'une minute.
   const diff = targetMin - out.reduce((s, a) => s + a.min, 0);
-  if(diff){ const big = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); big.min = Math.max(1, big.min + diff); }
+  if(diff > 0){ const big = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); big.min += diff; }
   out.forEach(a => { a.cut = a.min < a.ref; });
   return out;
 }
 /* Une pastille rouge muette n'aide personne : on nomme l'etape la plus rabotee. */
-function riskLine(t){
-  const u = UI(), r = rat(t);
+const riskLine = t => riskLineFor(t, edur(t));
+function riskLineFor(t, hours){
+  const u = UI(), r = hours / t.dur;
   if(Math.abs(r - 1) < 0.001) return '';
   const pct = Math.round(Math.abs(1 - r) * 100), sign = r < 1 ? '-' : '+';
   const c = RUN && RUN[t.id] && RUN[t.id][lang];
   if(!c || !c.agenda || r > 1) return sign + pct + '%';
-  const sc = scaleAgenda(c.agenda, Math.round(edur(t) * 60));
+  const sc = scaleAgenda(c.agenda, Math.round(hours * 60));
   const worst = sc.reduce((m, a) => (a.ref - a.min) > (m.ref - m.min) ? a : m, sc[0]);
   return worst.ref === worst.min ? sign + pct + '%' : sign + pct + '% · ' + u.cutStep(worst.t, worst.min);
 }
@@ -1065,6 +1087,70 @@ function renderResult(){
   document.getElementById('result').innerHTML = html;
 }
 
+/* ---------- redimensionner un atelier a la souris ----------
+   La barre porte une duree, donc on doit pouvoir la tirer. Le geste est borne :
+   jamais sous 40% de la reference, et des 70% une bulle dit ce qui se perd. */
+let gdrag = null;
+function gTip(text, warn, x, y){
+  let el = document.getElementById('g-tip');
+  if(!el){ el = document.createElement('div'); el.id = 'g-tip'; document.body.appendChild(el); }
+  el.className = 'g-tip' + (warn ? ' warn' : '');
+  el.textContent = text;
+  el.style.left = Math.min(window.innerWidth - 270, Math.max(8, x + 14)) + 'px';
+  el.style.top = Math.max(8, y - 44) + 'px';
+}
+function gTipHide(){ const el = document.getElementById('g-tip'); if(el) el.remove(); }
+function gLive(id, hours){
+  const t = byId(T, id), cell = document.querySelector(`[data-cell="${id}"]`);
+  if(!cell) return;
+  const g = cell.closest('.gantt'), cap = +g.dataset.cap;
+  const span = (cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1];
+  cell.style.setProperty('--frac', Math.max(0.16, Math.min(1, hours / (cap * span))).toFixed(4));
+  const small = cell.querySelector('small'); if(small) small.textContent = fmtDur(hours);
+  const r = hours / t.dur;
+  cell.classList.remove('g-cell--ok', 'g-cell--tight', 'g-cell--hard');
+  cell.classList.add('g-cell--' + band(r));
+}
+function gCommit(id, hours){ durOv[id] = Math.round(hours * 60) / 60; saveTime(); renderResult(); }
+document.addEventListener('pointerdown', e => {
+  const grip = e.target.closest('[data-grip]'); if(!grip) return;
+  const t = byId(T, grip.dataset.grip), cell = grip.closest('.g-cell');
+  const g = cell.closest('.gantt'), row = cell.parentElement;
+  const n = +g.dataset.n, gap = 6;
+  const colPx = (row.clientWidth - gap * (n - 1)) / n;
+  gdrag = {id:t.id, t, startX:e.clientX, startDur:edur(t), cap:+g.dataset.cap, colPx, cell, cur:edur(t)};
+  cell.classList.add('dragging');
+  grip.setPointerCapture(e.pointerId);
+  e.preventDefault();
+});
+document.addEventListener('pointermove', e => {
+  if(!gdrag) return;
+  const t = gdrag.t;
+  const dh = ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
+  const step = stepFor(t);
+  const raw = gdrag.startDur + dh;
+  const lo = minDur(t);
+  const val = Math.max(lo, Math.min(t.dur * 2, Math.round(raw / step) * step));
+  gdrag.cur = val;
+  gLive(t.id, val);
+  const r = val / t.dur, u = UI();
+  const line = r < 0.999 ? riskLineFor(t, val) : '';
+  const atFloor = Math.abs(val - lo) < 0.001 && val < t.dur;
+  gTip(fmtDur(val) + (atFloor ? ' · ' + u.floorHit : line ? ' · ' + line : ''), r < 0.7, e.clientX, e.clientY);
+});
+document.addEventListener('pointerup', () => {
+  if(!gdrag) return;
+  const d = gdrag; gdrag = null; gTipHide();
+  d.cell.classList.remove('dragging');
+  if(Math.abs(d.cur - d.startDur) > 0.001) gCommit(d.id, d.cur); else renderResult();
+});
+document.addEventListener('keydown', e => {
+  const grip = e.target.closest && e.target.closest('[data-grip]');
+  if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+  const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
+  e.preventDefault();
+  gCommit(t.id, Math.max(minDur(t), Math.min(t.dur * 2, edur(t) + step)));
+});
 /* ---------- plan (roadmap partageable) ---------- */
 function planSlots(pick){
   // demi : une session ; semaine : un atelier par jour ; programme : ~1 atelier par semaine, les longs (design sprint, PI) prennent 2 semaines
@@ -1082,18 +1168,28 @@ function planSlots(pick){
 function ganttHtml(slots){
   const u = UI();
   const n = slots.reduce((m, s) => Math.max(m, s.start + s.span), 0);
+  // La largeur d'une barre doit vouloir dire quelque chose : une colonne vaut
+  // une capacite en heures, la barre en occupe la fraction qu'elle consomme.
+  // Une semaine de programme a une capacite reelle, six heures de facilitation.
+  // Ailleurs, une colonne est un creneau : on cale la pleine largeur sur le plus
+  // long atelier du plan, pour que les barres se comparent entre elles.
+  const cap = ans.horizon === 'programme' ? 6 : Math.max(1, ...slots.map(s => edur(s.x.t)));
   const cols = Array.from({length:n}, (_, i) => ans.horizon === 'demi' ? `${u.slotSession} ${i + 1}` : ans.horizon === 'semaine' ? u.slotDay(i + 1) : u.slotWeek(i + 1));
   const phases = PHASES.filter(p => slots.some(s => s.x.t.phase === p.id));
-  let html = `<div class="gantt" style="--n:${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
+  let html = `<div class="gantt" style="--n:${n}" data-cap="${cap}" data-n="${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
   phases.forEach(p => {
     html += `<div class="g-phase" style="--h:var(${p.h})">${esc(L.phases[p.id])}</div><div class="g-row" style="--h:var(${p.h})">`;
     slots.filter(s => s.x.t.phase === p.id).forEach(s => {
-      const x = tx(s.x.t);
-      html += `<button type="button" class="g-bar" style="grid-column:${s.start + 1} / span ${s.span}" data-open="${s.x.t.id}" title="${esc(x.name)} · ${fmtDur(edur(s.x.t))}"><b>${esc(x.name)}</b><small>${fmtDur(edur(s.x.t))}</small></button>`;
+      const t = s.x.t, x = tx(t), r = rat(t);
+      const frac = Math.max(0.16, Math.min(1, edur(t) / (cap * s.span)));
+      html += `<div class="g-cell g-cell--${band(r)}" style="grid-column:${s.start + 1} / span ${s.span};--frac:${frac.toFixed(4)}" data-cell="${t.id}">
+        <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(edur(t))}"><b>${esc(x.name)}</b><small>${fmtDur(edur(t))}</small></button>
+        <span class="g-grip" data-grip="${t.id}" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(edur(t)))}" title="${esc(u.dragHint)}"></span>
+      </div>`;
     });
     html += `</div>`;
   });
-  return html + `</div>`;
+  return html + `</div><p class="gantt-hint">${esc(u.dragHint)}</p>`;
 }
 function planHtml(pick, total){
   const u = UI();
@@ -1152,7 +1248,7 @@ document.getElementById('result').addEventListener('click', e => {
     const t = byId(T, du.dataset.dur), st = stepFor(t);
     // un atelier ne descend pas sous 40% de sa reference : en dessous ce n'est
     // plus une compression, c'est un autre atelier
-    const next = Math.min(t.dur * 2, Math.max(t.dur * 0.4, edur(t) + (+du.dataset.d) * st));
+    const next = Math.min(t.dur * 2, Math.max(minDur(t), edur(t) + (+du.dataset.d) * st));
     durOv[t.id] = Math.round(next * 60) / 60;
     saveTime(); renderResult(); return;
   }
