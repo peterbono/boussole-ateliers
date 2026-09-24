@@ -444,6 +444,30 @@ dialog.zoom::backdrop{background:transparent}
 .next-card p{margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
 .next-card .dep-group{margin:0}
 .src{font-size:13px;margin:10px 0 0}
+/* ---------- budget et durees ajustees ---------- */
+.budget{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 16px;background:var(--surface)}
+.budget-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.budget-row .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.budget-in{display:inline-flex;align-items:center;gap:7px}
+.budget-in input{width:78px;padding:5px 8px;border:1px solid var(--line-strong);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:13px}
+.budget-read{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin:10px 0 0;font-size:13px}
+.budget-read .muted{color:var(--ink-3)}
+.gap{font-variant-numeric:tabular-nums;font-weight:600}
+.gap--over{color:var(--warn-text)}
+.gap--under{color:var(--ink-2)}
+.budget-warn{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:var(--warn-soft);border:1px solid var(--warn-line);color:var(--warn-text);font-size:13px;line-height:1.45}
+.budget-warn svg{width:16px;height:16px;flex:none;margin-top:2px}
+.budget-hint{margin:8px 0 0;font-size:12.5px;color:var(--ink-3)}
+.dur-cell{white-space:nowrap}
+.dur-ctl{display:inline-flex;align-items:center;gap:2px}
+.dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
+.dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
+.dur-ctl b{min-width:52px;text-align:center;font-weight:600}
+.risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
+.risk--tight{color:#9a6a2a}
+.risk--hard{color:var(--warn-text);font-weight:600}
+.total.adj{color:var(--ink-3);font-weight:400}
+.tl-head .cut{color:#9a6a2a}
 /* Le lien de source n'est pas une action : il garde le gris de sa ligne,
    le souligne suffit a dire qu'il est cliquable. */
 .src a{color:inherit}
@@ -702,7 +726,85 @@ let lib = {phase:'all', stage:'all', q:'', mode: store.get('libMode', 'cards')};
 const byId = (arr, id) => arr.find(x => x.id === id);
 const phaseIdx = id => PHASES.findIndex(p => p.id === id);
 const stageIdx = id => STAGES.findIndex(s => s.id === id);
-const fmtDur = h => h >= 7 ? (Math.round(h/7) + ' ' + UI().days) : (h < 1 ? Math.round(h*60) + ' ' + UI().min : (h % 1 ? (lang === 'fr' ? h.toFixed(1).replace('.', ',') : h.toFixed(1)) : h) + ' ' + UI().hours);
+// Une journee ne s'affiche en jours que si le total en est vraiment une :
+// depuis que les durees s'ajustent, arrondir 10 h en « 1 j » ferait mentir le plan.
+const fmtHours = h => (h % 1 ? (lang === 'fr' ? h.toFixed(1).replace('.', ',') : h.toFixed(1)) : h) + ' ' + UI().hours;
+const fmtDur = h => {
+  const d = h / 7;
+  if(h >= 7 && Math.abs(h - Math.round(d) * 7) < 0.25) return Math.round(d) + ' ' + UI().days;
+  if(h >= 7) return fmtHours(Math.round(h * 2) / 2);
+  return h < 1 ? Math.round(h * 60) + ' ' + UI().min : fmtHours(h);
+};
+
+/* ---------- rythme, budget et durees ajustees ----------
+   Le catalogue porte une duree de reference par atelier. Le facilitateur, lui,
+   a un creneau. Un facteur global donne le rythme, une valeur posee sur un
+   atelier prend le dessus, et tous les totaux de l'application s'y accordent.
+   La reference, elle, ne bouge jamais : c'est a elle qu'on compare. */
+const PACE = {fast:0.75, std:1, calm:1.3};
+const STEPM = 5;
+let pace = store.get('pace', 'std');
+let paceCustom = store.get('paceCustom', null);
+let durOv = store.get('durs', {});
+let budget = store.get('budget', null);
+const snap = m => Math.max(STEPM, Math.round(m / STEPM) * STEPM);
+const factor = () => paceCustom != null ? paceCustom : (PACE[pace] != null ? PACE[pace] : 1);
+const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
+function edur(t){
+  if(durOv[t.id] != null) return durOv[t.id];
+  const f = factor();
+  if(f === 1) return t.dur;
+  return t.dur >= 7 ? Math.max(3.5, Math.round(t.dur * f / 3.5) * 3.5) : snap(t.dur * 60 * f) / 60;
+}
+const rat = t => edur(t) / t.dur;
+const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
+function saveTime(){ store.set('pace', pace); store.set('paceCustom', paceCustom); store.set('durs', durOv); store.set('budget', budget); }
+/* Comprimer tout au meme facteur raboterait aussi l'etape qui produit la
+   decision, et c'est elle qui fait l'atelier. La premiere et la derniere sont
+   protegees : le milieu absorbe, et on n'entame les protegees qu'a bout de
+   course. Chaque etape a un plancher, moitie de sa reference et jamais moins
+   de cinq minutes. */
+function scaleAgenda(agenda, targetMin){
+  const ref = agenda.reduce((s, a) => s + a.min, 0);
+  const out = agenda.map(a => ({t:a.t, d:a.d, min:a.min, ref:a.min}));
+  if(!targetMin || !ref || Math.abs(targetMin - ref) < 1){ out.forEach(a => { a.cut = false; }); return out; }
+  if(targetMin > ref){
+    const k = targetMin / ref;
+    out.forEach(a => { a.min = Math.max(1, Math.round(a.min * k)); });
+  } else {
+    const floor = a => Math.max(STEPM, Math.round(a.ref / 2));
+    const sum = () => out.reduce((s, a) => s + a.min, 0);
+    const take = pool => {
+      const cap = pool.reduce((s, a) => s + Math.max(0, a.min - floor(a)), 0);
+      const need = sum() - targetMin;
+      if(cap <= 0 || need <= 0) return;
+      const want = Math.min(need, cap);
+      pool.forEach(a => { const c = Math.max(0, a.min - floor(a)); if(!c) return; a.min = Math.max(floor(a), a.min - Math.round(want * c / cap)); });
+    };
+    // protegees : la premiere etape pose le contexte, la derniere ferme, et la
+    // plus longue est presque toujours celle qui produit le resultat. Heuristique
+    // de position, a remplacer par un marquage dans le contenu si ca s'installe.
+    let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
+    const mid = out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big);
+    take(mid.length ? mid : out.slice());
+    take(out);
+  }
+  const diff = targetMin - out.reduce((s, a) => s + a.min, 0);
+  if(diff){ const big = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); big.min = Math.max(1, big.min + diff); }
+  out.forEach(a => { a.cut = a.min < a.ref; });
+  return out;
+}
+/* Une pastille rouge muette n'aide personne : on nomme l'etape la plus rabotee. */
+function riskLine(t){
+  const u = UI(), r = rat(t);
+  if(Math.abs(r - 1) < 0.001) return '';
+  const pct = Math.round(Math.abs(1 - r) * 100), sign = r < 1 ? '-' : '+';
+  const c = RUN && RUN[t.id] && RUN[t.id][lang];
+  if(!c || !c.agenda || r > 1) return sign + pct + '%';
+  const sc = scaleAgenda(c.agenda, Math.round(edur(t) * 60));
+  const worst = sc.reduce((m, a) => (a.ref - a.min) > (m.ref - m.min) ? a : m, sc[0]);
+  return worst.ref === worst.min ? sign + pct + '%' : sign + pct + '% · ' + u.cutStep(worst.t, worst.min);
+}
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:UI().preview(tx(t).name)});
 const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
@@ -902,7 +1004,7 @@ briefForm.addEventListener('submit', async e => {
 /* ---------- parcours ---------- */
 function metaHtml(t){
   const x = tx(t), u = UI();
-  return `<dl class="meta"><div><dt>${esc(u.dur)}</dt><dd>${fmtDur(t.dur)}</dd></div><div><dt>${esc(u.who)}</dt><dd>${esc(x.who)}</dd></div><div><dt>${esc(u.out)}</dt><dd>${esc(x.out)}</dd></div></dl>`;
+  return `<dl class="meta"><div><dt>${esc(u.dur)}</dt><dd>${fmtDur(edur(t))}</dd></div><div><dt>${esc(u.who)}</dt><dd>${esc(x.who)}</dd></div><div><dt>${esc(u.out)}</dt><dd>${esc(x.out)}</dd></div></dl>`;
 }
 function stepCard(t, n, reasons){
   const ph = byId(PHASES, t.phase), x = tx(t);
@@ -925,7 +1027,8 @@ function stepCard(t, n, reasons){
 function renderResult(){
   const {pick, scored, prereqs} = recommend(ans);
   const u = UI(), st = L.stages[ans.stage], tr = L.triggers[ans.trigger];
-  const total = pick.reduce((s, x) => s + x.t.dur, 0);
+  lastPick = pick;
+  const total = pick.reduce((s, x) => s + edur(x.t), 0);
   let html = '';
   if(ans.brief && ans.brief.reason){
     const b = ans.brief, names = ids => ids.map(id => byId(T, id)).filter(Boolean).map(t => `<span class="wchip static">${esc(tx(t).name)}</span>`).join('');
@@ -945,6 +1048,7 @@ function renderResult(){
     </div>`;
   if(view === 'plan'){
     html += planHtml(pick, total);
+    setTimeout(ensureRisk, 0);
   } else {
     html += '<div class="steps">';
     pick.forEach((x, i) => { html += stepCard(x.t, i + 1, x.reasons); });
@@ -969,7 +1073,7 @@ function planSlots(pick){
   if(ans.horizon === 'semaine') return pick.map((x, i) => ({label:u.slotDay(i + 1), x, start:i, span:1}));
   // programme : on remplit chaque semaine jusqu'à ~6 h de facilitation ; un atelier de 2 jours ou plus occupe 2 semaines seul
   let week = 0, used = 0; return pick.map(x => {
-    const d = x.t.dur;
+    const d = edur(x.t);
     if(d >= 14){ if(used > 0){ week++; used = 0; } const slot = {label:u.slotWeek(week + 1), x, start:week, span:2}; week += 2; used = 0; return slot; }
     if(used > 0 && used + d > 6){ week++; used = 0; }
     const slot = {label:u.slotWeek(week + 1), x, start:week, span:1}; used += d; return slot;
@@ -985,7 +1089,7 @@ function ganttHtml(slots){
     html += `<div class="g-phase" style="--h:var(${p.h})">${esc(L.phases[p.id])}</div><div class="g-row" style="--h:var(${p.h})">`;
     slots.filter(s => s.x.t.phase === p.id).forEach(s => {
       const x = tx(s.x.t);
-      html += `<button type="button" class="g-bar" style="grid-column:${s.start + 1} / span ${s.span}" data-open="${s.x.t.id}" title="${esc(x.name)} · ${fmtDur(s.x.t.dur)}"><b>${esc(x.name)}</b><small>${fmtDur(s.x.t.dur)}</small></button>`;
+      html += `<button type="button" class="g-bar" style="grid-column:${s.start + 1} / span ${s.span}" data-open="${s.x.t.id}" title="${esc(x.name)} · ${fmtDur(edur(s.x.t))}"><b>${esc(x.name)}</b><small>${fmtDur(edur(s.x.t))}</small></button>`;
     });
     html += `</div>`;
   });
@@ -993,17 +1097,78 @@ function ganttHtml(slots){
 }
 function planHtml(pick, total){
   const u = UI();
-  const rows = planSlots(pick).map((s, i) => { const x = tx(s.x.t); return `<tr><td class="mono">${esc(s.label)}</td><td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[s.x.t.phase])}</span></td><td class="mono">${fmtDur(s.x.t.dur)}</td><td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`; }).join('');
+  const ref = pick.reduce((s, x) => s + x.t.dur, 0);
+  const rows = planSlots(pick).map((s, i) => {
+    const t = s.x.t, x = tx(t), r = rat(t), risk = riskLine(t);
+    return `<tr><td class="mono">${esc(s.label)}</td>
+      <td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[t.phase])}</span></td>
+      <td class="dur-cell">
+        <span class="dur-ctl"><button type="button" data-dur="${t.id}" data-d="-1" aria-label="${esc(u.less)}">−</button><b class="mono">${fmtDur(edur(t))}</b><button type="button" data-dur="${t.id}" data-d="1" aria-label="${esc(u.more2)}">+</button></span>
+        ${risk ? `<small class="risk risk--${band(r)}">${esc(risk)}</small>` : `<small class="risk">${esc(u.refTime)}</small>`}
+      </td>
+      <td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`;
+  }).join('');
+  const touched = Object.keys(durOv).length || paceCustom != null || pace !== 'std';
+  const gap = budget != null ? Math.round((total - budget) * 60) : null;
   return `<section class="plan">
+    <div class="budget">
+      <div class="budget-row">
+        <span class="k">${esc(u.pace)}</span>
+        <span class="seg small" id="pace-seg">${[['fast', u.paceFast], ['std', u.paceStd], ['calm', u.paceCalm]].map(([k, n]) => `<button type="button" data-pace="${k}" aria-pressed="${paceCustom == null && pace === k}">${esc(n)}</button>`).join('')}</span>
+        <label class="budget-in"><span class="k">${esc(u.budget)}</span><input type="number" id="budget-in" min="0.5" step="0.5" value="${budget != null ? budget : ''}" placeholder="${(Math.round(ref * 2) / 2)}"><span class="k">${esc(u.hours)}</span></label>
+        ${budget != null ? `<button type="button" class="btn small" data-fit>${esc(u.fitBudget)}</button>` : ''}
+        ${touched ? `<button type="button" class="btn small" data-reset-time>${esc(u.resetDur)}</button>` : ''}
+      </div>
+      <p class="budget-read">
+        <b>${esc(u.planned)} ${esc(fmtDur(total))}</b>
+        <span class="muted">${esc(u.refTime)} ${esc(fmtDur(ref))}</span>
+        ${gap != null && gap !== 0 ? `<span class="gap gap--${gap > 0 ? 'over' : 'under'}">${gap > 0 ? esc(u.over) : esc(u.under)} ${esc(Math.abs(gap) >= 60 ? fmtDur(Math.abs(gap) / 60) : Math.abs(gap) + ' ' + u.minutes)}</span>` : ''}
+      </p>
+      ${total < ref * 0.7 ? `<p class="budget-warn">${ICON.warn}<span>${esc(u.squeezeWarn)}</span></p>` : ''}
+      <p class="budget-hint">${esc(u.dropFirst)}</p>
+    </div>
     <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
 }
+/* Le detail du risque vient des agendas : on les charge une fois, puis on
+   redessine pour remplacer le pourcentage sec par l'etape sacrifiee. */
+let lastPick = null;
+let riskLoaded = false;
+function ensureRisk(){
+  if(riskLoaded || view !== 'plan') return;
+  riskLoaded = true;
+  loadRun().then(() => renderResult());
+}
 document.getElementById('result').addEventListener('click', e => {
   if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; saveAns(); renderQuestions(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
+  const pc = e.target.closest('[data-pace]');
+  if(pc){ pace = pc.dataset.pace; paceCustom = null; durOv = {}; saveTime(); renderResult(); return; }
+  const du = e.target.closest('[data-dur]');
+  if(du){
+    const t = byId(T, du.dataset.dur), st = stepFor(t);
+    // un atelier ne descend pas sous 40% de sa reference : en dessous ce n'est
+    // plus une compression, c'est un autre atelier
+    const next = Math.min(t.dur * 2, Math.max(t.dur * 0.4, edur(t) + (+du.dataset.d) * st));
+    durOv[t.id] = Math.round(next * 60) / 60;
+    saveTime(); renderResult(); return;
+  }
+  if(e.target.closest('[data-fit]')){
+    const pick = lastPick || [];
+    const ref = pick.reduce((s2, x) => s2 + x.t.dur, 0);
+    if(ref && budget != null){ paceCustom = Math.max(0.4, Math.min(2, budget / ref)); durOv = {}; saveTime(); renderResult(); }
+    return;
+  }
+  if(e.target.closest('[data-reset-time]')){ pace = 'std'; paceCustom = null; durOv = {}; budget = null; saveTime(); renderResult(); return; }
+});
+document.getElementById('result').addEventListener('change', e => {
+  const b = e.target.closest('#budget-in'); if(!b) return;
+  const v = parseFloat(b.value);
+  budget = isNaN(v) || v <= 0 ? null : v;
+  saveTime(); renderResult();
 });
 
 /* ---------- bibliothèque ---------- */
@@ -1015,7 +1180,7 @@ function tcard(t, si){
     <h3>${esc(x.name)}</h3>
     <p>${esc(x.desc)}</p>
     ${stageTags(t)}
-    <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(t.dur)} · ${esc(x.who)}</p>
+    <p class="mono" style="font-size:12px;color:var(--ink-3)">${fmtDur(edur(t))} · ${esc(x.who)}</p>
     ${actionsHtml(t, true)}
   </div>`;
 }
@@ -1081,16 +1246,19 @@ const prepState = {
 function howToHtml(t){
   const u = UI(), c = RUN && RUN[t.id] && RUN[t.id][lang]; if(!c) return '';
   const ph = byId(PHASES, t.phase), done = prepState.get(t.id);
-  const bar = c.agenda.map((a, i) => `<span style="flex:${a.min};--i:${i}" title="${esc(a.t)} · ${a.min} ${esc(u.minutes)}"></span>`).join('');
+  // l'agenda affiche s'accorde a la duree retenue pour cet atelier
+  const ag = scaleAgenda(c.agenda, Math.round(edur(t) * 60));
+  const agRef = c.agenda.reduce((s2, a) => s2 + a.min, 0);
+  const bar = ag.map((a, i) => `<span style="flex:${a.min};--i:${i}" title="${esc(a.t)} · ${a.min} ${esc(u.minutes)}"></span>`).join('');
   return `
     <section class="prep" id="sec-prep" style="--h:var(${ph.h})">
       <h3>${esc(u.prep)}</h3>
       <ul class="checklist">${c.prep.map((p, i) => `<li><label><input type="checkbox" data-prep="${t.id}" data-i="${i}" ${done[i] ? 'checked' : ''}><span>${esc(p)}</span></label></li>`).join('')}</ul>
     </section>
     <section class="agenda-sec" id="sec-agenda" style="--h:var(${ph.h})">
-      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(t.dur)}</span><button type="button" class="btn small run-btn" data-run="${t.id}">${ICON.play}${esc(u.run)}</button></h3>
+      <h3>${esc(u.agenda)} <span class="mono total">${fmtDur(edur(t))}</span>${Math.round(edur(t) * 60) !== agRef ? `<span class="mono total adj">${esc(u.refTime)} ${agRef} ${esc(u.minutes)}</span>` : ''}<button type="button" class="btn small run-btn" data-run="${t.id}">${ICON.play}${esc(u.run)}</button></h3>
       <div class="timebar" aria-hidden="true">${bar}</div>
-      <ol class="timeline">${c.agenda.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
+      <ol class="timeline">${ag.map((a, i) => `<li style="--i:${i}"><div class="tl-dot">${i + 1}</div><div class="tl-body"><div class="tl-head"><b>${esc(a.t)}</b><span class="mono${a.cut ? ' cut' : ''}" title="${a.cut ? esc(u.refTime) + ' ' + a.ref + ' ' + esc(u.minutes) : ''}">${a.min} ${esc(u.minutes)}</span></div><p>${esc(a.d)}</p></div></li>`).join('')}</ol>
     </section>
     <section class="pitfalls-sec" id="sec-pitfalls">
       <h3>${esc(u.pitfalls)}</h3>
