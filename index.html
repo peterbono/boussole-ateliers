@@ -375,7 +375,7 @@ body:has(dialog[open]){overflow:hidden}
 .g-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;letter-spacing:.01em;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
 .g-row{min-height:46px;padding:6px 0 6px;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
 .g-bar{display:flex;flex-direction:column;justify-content:center;gap:1px;min-height:40px;padding:5px 9px;border-radius:8px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));border:1px solid hsl(var(--h) 40% calc(var(--chip-l) - 10%));font-size:12px;line-height:1.2;overflow:hidden;transition:transform .12s,box-shadow .12s}
-.g-bar b{font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.g-bar b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .g-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.8}
 .g-bar:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
 .g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:64px;transition:width .12s ease}
@@ -471,7 +471,7 @@ dialog.zoom::backdrop{background:transparent}
 .g-cell .g-bar{width:100%;position:relative}
 .g-cell--under .g-bar{box-shadow:inset 0 0 0 1.5px var(--alert-line);background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px)}
 .g-cell--narrow .g-bar{padding:0 5px}
-.g-cell--narrow .g-bar b{font-size:11px}
+.g-cell--narrow .g-bar b{display:none}
 .g-cell--narrow .g-bar small,.g-cell--narrow .g-segs{display:none}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
 .g-ghost{position:absolute;inset:0 auto 0 0;width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
@@ -479,31 +479,34 @@ dialog.zoom::backdrop{background:transparent}
 .g-floor{position:absolute;top:0;bottom:0;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
 .g-bar:hover ~ .g-floor,.g-cell:focus-within .g-floor,.g-cell.dragging .g-floor{opacity:.9}
 body.resizing{touch-action:none;user-select:none}
+.g-grip--start{right:auto;left:0;margin:0 0 0 -6px}
 .g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-6px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
-.g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3}
+.g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s}
 .g-row:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
 .g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
-.g-cell--narrow .g-grip{width:18px;margin-right:-5px}
+.g-cell--narrow .g-grip{width:12px;margin-right:-4px}
+.g-cell--narrow .g-grip--start{display:none}
+.g-bar{cursor:grab}
+.g-cell.moving .g-bar{cursor:grabbing;opacity:.75}
 .g-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
 .g-bar:hover .g-segs,.g-cell:focus-within .g-segs,.g-cell.dragging .g-segs{opacity:1}
 .g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .g-segs i.seg-cut{opacity:.5}
 .g-segs i.seg-floor{background:var(--alert-line);opacity:1}
-.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));display:none;pointer-events:none}
+.g-cap{cursor:grab;position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));display:none;z-index:3}
 .g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
 .g-cell--narrow .g-cap{display:block}
 /* a droite de la barre quand la place le permet, dessous sinon */
 .g-cell--capright .g-cap{top:50%;left:100%;transform:translateY(-50%);margin:0 0 0 8px}
-/* le nom est ecrit a cote : dans la barre il ne resterait que des bouts de lettres */
-.g-cell--capright .g-bar b{display:none}
+
 
 /* barre d'actions du brouillon */
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .edit-bar--done{background:none}
-.edit-count{flex:1 1 0;min-width:0;font-size:13px;color:var(--ink-2)}
+.edit-count{flex:1 1 0;min-width:0;font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* le groupe reste solidaire : il passe a la ligne entier plutot que de se
    couper en deux, et se replie sur lui-meme quand l'ecran est trop etroit */
-.freed{display:inline-block;margin-left:10px;font-size:12px;font-weight:600;color:var(--ink-2);padding:3px 9px;border-radius:7px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px),var(--surface)}
+.freed{font-weight:600;color:var(--ink)}
 .edit-acts{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;flex:0 1 auto}
 .edit-bar .btn[disabled]{opacity:.35;pointer-events:none}
 .btn.icon{padding:6px;width:32px;height:32px;justify-content:center}
@@ -738,7 +741,7 @@ const track = (name, data) => { try{ window.va && window.va('event', {name, data
 
 /* ---------- état ---------- */
 const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine', pin:[], skip:[], brief:null};
-let urlDurs = null;
+let urlDurs = null, urlSlots = null;
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 (function readUrl(){
   const p = new URLSearchParams(location.search), ok = (arr, v) => arr.some(x => x.id === v);
@@ -759,6 +762,14 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
       if(okT(id) && +min > 0) d[id] = Math.round(+min) / 60;
     });
     urlDurs = d;
+  }
+  if(p.has('slots')){
+    const sl = {};
+    p.get('slots').split(',').forEach(pair => {
+      const [id, col] = pair.split(':');
+      if(okT(id) && +col >= 0) sl[id] = +col;
+    });
+    urlSlots = sl;
   }
 })();
 let view = store.get('view', 'steps');
@@ -809,6 +820,8 @@ function syncUrl(){
   // « id:minutes », pour qu'un plan partage arrive avec ses durees
   const durs = Object.keys(durOv).map(k => k + ':' + Math.round(durOv[k] * 60)).join(',');
   if(durs) url.searchParams.set('durs', durs); else url.searchParams.delete('durs');
+  const sl = Object.keys(slotOv).map(k => k + ':' + slotOv[k]).join(',');
+  if(sl) url.searchParams.set('slots', sl); else url.searchParams.delete('slots');
   if(view === 'plan') url.searchParams.set('view', 'plan'); else url.searchParams.delete('view');
   if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
   url.searchParams.delete('open');
@@ -841,6 +854,9 @@ const fmtDur = h => {
 const STEPM = 5;
 // le lien fait autorite, sinon on reprend ce que le navigateur avait garde
 let durOv = urlDurs || store.get('durs', {});
+// colonne choisie a la main pour un atelier : la sequence proposee reste le
+// defaut, mais le facilitateur peut deplacer une barre sur la frise
+let slotOv = urlSlots || store.get('slots', {});
 let dirty = false, past = [], future = [];
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
 const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
@@ -855,9 +871,9 @@ function recDur(t){
 }
 const hardDur = () => STEPM / 60;
 const tooShort = t => edur(t) < recDur(t) - 0.001;
-function saveDur(){ store.set('durs', durOv); syncUrl(); }
-const snapDur = () => ({d: Object.assign({}, durOv), skip: ans.skip.slice()});
-function restoreDur(st){ durOv = Object.assign({}, st.d); ans.skip = st.skip.slice(); }
+function saveDur(){ store.set('durs', durOv); store.set('slots', slotOv); syncUrl(); }
+const snapDur = () => ({d: Object.assign({}, durOv), s: Object.assign({}, slotOv), skip: ans.skip.slice()});
+function restoreDur(st){ durOv = Object.assign({}, st.d); slotOv = Object.assign({}, st.s || {}); ans.skip = st.skip.slice(); }
 function changeDur(fn){ past.push(snapDur()); future = []; fn(); dirty = true; saveDur(); saveAns(); renderQuestions(); renderResult(); }
 function undoDur(){ if(!past.length) return; future.push(snapDur()); restoreDur(past.pop()); saveDur(); saveAns(); renderQuestions(); renderResult(); }
 function redoDur(){ if(!future.length) return; past.push(snapDur()); restoreDur(future.pop()); dirty = true; saveDur(); saveAns(); renderQuestions(); renderResult(); }
@@ -1059,6 +1075,9 @@ function renderQuestions(){
 document.querySelector('.side').addEventListener('click', e => {
   const b = e.target.closest('[data-q][data-id]'); if(!b) return;
   const acc = b.classList.contains('step-dot') ? null : b.closest('details');
+  // une colonne ne veut pas dire la meme chose d'un horizon a l'autre : les
+  // positions posees a la main ne survivent pas au changement d'horizon
+  if(b.dataset.q === 'horizon' && b.dataset.id !== ans.horizon){ slotOv = {}; store.set('slots', slotOv); }
   ans[b.dataset.q] = b.dataset.id;
   saveAns(); renderQuestions(); renderResult();
   if(acc) acc.open = false;
@@ -1178,15 +1197,22 @@ function renderResult(){
 function planSlots(pick){
   // demi : une session ; semaine : un atelier par jour ; programme : ~1 atelier par semaine, les longs (design sprint, PI) prennent 2 semaines
   const u = UI();
-  if(ans.horizon === 'demi') return pick.map((x, i) => ({label:u.slotSession, x, start:i, span:1}));
-  if(ans.horizon === 'semaine') return pick.map((x, i) => ({label:u.slotDay(i + 1), x, start:i, span:1}));
+  // une position posee a la main gagne sur la sequence proposee
+  const place = (slots, label) => slots.map(s => {
+    const c = slotOv[s.x.t.id];
+    if(c == null) return s;
+    return Object.assign({}, s, {start: c, label: label(c)});
+  }).sort((a, b) => a.start - b.start);
+  if(ans.horizon === 'demi') return place(pick.map((x, i) => ({label:u.slotSession, x, start:i, span:1})), () => u.slotSession);
+  if(ans.horizon === 'semaine') return place(pick.map((x, i) => ({label:u.slotDay(i + 1), x, start:i, span:1})), c => u.slotDay(c + 1));
   // programme : on remplit chaque semaine jusqu'à ~6 h de facilitation ; un atelier de 2 jours ou plus occupe 2 semaines seul
-  let week = 0, used = 0; return pick.map(x => {
+  let week = 0, used = 0; const base = pick.map(x => {
     const d = edur(x.t);
     if(d >= 14){ if(used > 0){ week++; used = 0; } const slot = {label:u.slotWeek(week + 1), x, start:week, span:2}; week += 2; used = 0; return slot; }
     if(used > 0 && used + d > 6){ week++; used = 0; }
     const slot = {label:u.slotWeek(week + 1), x, start:week, span:1}; used += d; return slot;
   });
+  return place(base, c => u.slotWeek(c + 1));
 }
 function ganttHtml(slots){
   const u = UI();
@@ -1210,7 +1236,8 @@ function ganttHtml(slots){
         <div class="g-ghost" style="--go:${dirty && d < t.dur - 0.001 ? 1 : 0}"></div>
         <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(d)}"><b>${esc(x.name)}</b><small>${fmtDur(d)}</small><span class="g-segs">${segsHtml(t, d)}</span></button>
         <div class="g-floor"></div>
-        <span class="g-grip" data-grip="${t.id}" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}" title="${esc(u.dragHint)}"></span>
+        <span class="g-grip g-grip--start" data-grip="${t.id}" data-edge="start" aria-hidden="true"></span>
+        <span class="g-grip" data-grip="${t.id}" data-edge="end" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}" title="${esc(u.dragHint)}"></span>
         <span class="g-cap"><b>${esc(x.name)}</b><i class="mono">${fmtDur(d)}</i></span>
       </div>`;
     });
@@ -1302,7 +1329,7 @@ function planHtml(pick, total){
 function editBar(total, ref){
   const u = UI(), n = Object.keys(durOv).length;
   if(dirty) return `<div class="edit-bar">
-    <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}${ref - total > 0.01 ? `<span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
+    <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}${ref - total > 0.01 ? ` · <span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
     <span class="edit-acts">
       <button type="button" class="btn icon" data-undo title="${esc(u.undoLbl)}" aria-label="${esc(u.undoLbl)}"${past.length ? '' : ' disabled'}>${ICON.undo}</button>
       <button type="button" class="btn icon" data-redo title="${esc(u.redoLbl)}" aria-label="${esc(u.redoLbl)}"${future.length ? '' : ' disabled'}>${ICON.redo}</button>
@@ -1311,7 +1338,7 @@ function editBar(total, ref){
     </span>
   </div>`;
   if(n) return `<div class="edit-bar edit-bar--done">
-    <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}${ref - total > 0.01 ? `<span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
+    <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}${ref - total > 0.01 ? ` · <span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
     <span class="edit-acts">
       <button type="button" class="btn" data-edit>${esc(u.editAgain)}</button>
       <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
@@ -1403,16 +1430,21 @@ function gLive(t, hours){
   ganttCaptions();
 }
 document.addEventListener('pointerdown', e => {
-  const grip = e.target.closest('[data-grip]'); if(!grip) return;
-  const t = byId(T, grip.dataset.grip), cell = grip.closest('.g-cell'), row = cell.parentElement;
+  const grip = e.target.closest('[data-grip]'), bar = e.target.closest('.g-bar') || e.target.closest('.g-cap');
+  if(!grip && !bar) return;
+  const cell = (grip || bar).closest('.g-cell'), row = cell.parentElement;
+  const t = byId(T, cell.dataset.cell);
   const g = cell.closest('.gantt'), n = +g.dataset.n, gap = 6;
   const colPx = (row.clientWidth - gap * (n - 1)) / n;
-  gdrag = {t, startX: e.clientX, startDur: edur(t), cap: +g.dataset.cap, colPx, cell, cur: edur(t)};
-  cell.classList.add('dragging');
+  const mode = grip ? (grip.dataset.edge === 'start' ? 'start' : 'end') : 'move';
+  const startCol = Math.round((cell.getBoundingClientRect().left - row.getBoundingClientRect().left) / (colPx + gap));
+  gdrag = {t, mode, startX: e.clientX, startDur: edur(t), cap: +g.dataset.cap, colPx, gap, cell, row,
+           cur: edur(t), startCol, col: startCol, moved: false};
+  cell.classList.add(mode === 'move' ? 'moving' : 'dragging');
   // au doigt, le navigateur prend la main pour faire defiler des le second
-  // mouvement : on lui retire le geste tant qu'on redimensionne
+  // mouvement : on lui retire le geste tant qu'on manipule la barre
   document.body.classList.add('resizing');
-  grip.setPointerCapture(e.pointerId);
+  (grip || bar).setPointerCapture(e.pointerId);
   e.preventDefault();
 });
 document.addEventListener('touchmove', e => { if(gdrag) e.preventDefault(); }, {passive: false});
@@ -1420,7 +1452,22 @@ document.addEventListener('pointercancel', () => { if(gdrag){ document.body.clas
 document.addEventListener('pointermove', e => {
   if(!gdrag) return;
   const u = UI(), t = gdrag.t, step = stepFor(t), reco = recDur(t);
-  let raw = gdrag.startDur + ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
+  if(gdrag.mode === 'move'){
+    // deplacer : la barre saute de colonne en colonne, comme un clip qu'on glisse
+    const dx = e.clientX - gdrag.startX;
+    if(Math.abs(dx) > 3) gdrag.moved = true;
+    const col = Math.max(0, gdrag.startCol + Math.round(dx / (gdrag.colPx + gdrag.gap)));
+    if(col !== gdrag.col){
+      gdrag.col = col;
+      const span = (gdrag.cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1];
+      gdrag.cell.style.gridColumn = (col + 1) + ' / span ' + span;
+    }
+    gTip('<b>' + esc(colLabel(col)) + '</b>', false, gdrag.cell.querySelector('.g-bar'));
+    return;
+  }
+  // bord gauche : tirer vers la gauche allonge, miroir du bord droit
+  const sign = gdrag.mode === 'start' ? -1 : 1;
+  let raw = gdrag.startDur + sign * ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
   // le seuil conseille accroche : il faut insister pour passer dessous
   const stickH = (30 / gdrag.colPx) * gdrag.cap;
   if(raw < reco && raw > reco - stickH) raw = reco;
@@ -1437,10 +1484,16 @@ document.addEventListener('pointerup', () => {
   if(!gdrag) return;
   const d = gdrag; gdrag = null; lastDragEnd = Date.now(); gTipHide();
   document.body.classList.remove('resizing');
-  d.cell.classList.remove('dragging');
+  d.cell.classList.remove('dragging'); d.cell.classList.remove('moving');
+  if(d.mode === 'move'){
+    if(d.moved && d.col !== d.startCol) changeDur(() => { slotOv[d.t.id] = d.col; });
+    else renderResult();
+    return;
+  }
   if(Math.abs(d.cur - d.startDur) > 0.001) changeDur(() => { durOv[d.t.id] = Math.round(d.cur * 60) / 60; });
   else renderResult();
 });
+const colLabel = c => ans.horizon === 'demi' ? UI().slotSession + ' ' + (c + 1) : ans.horizon === 'semaine' ? UI().slotDay(c + 1) : UI().slotWeek(c + 1);
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape') closeCtxMenu();
   const grip = e.target.closest && e.target.closest('[data-grip]');
@@ -1465,9 +1518,9 @@ function openCtxMenu(x, y, id){
   el.style.top = Math.max(8, Math.min(window.innerHeight - h - 8, y)) + 'px';
 }
 document.addEventListener('contextmenu', e => {
-  const bar = e.target.closest('.g-bar'); if(!bar) return;
+  const cell = e.target.closest('.g-cell'); if(!cell) return;
   e.preventDefault();
-  openCtxMenu(e.clientX, e.clientY, bar.closest('.g-cell').dataset.cell);
+  openCtxMenu(e.clientX, e.clientY, cell.dataset.cell);
 });
 document.addEventListener('click', e => {
   if(!e.target.closest('#ctx-menu')) closeCtxMenu();
