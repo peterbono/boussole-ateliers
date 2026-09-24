@@ -83,7 +83,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-ghost{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* plancher : la ou l'agenda ne tient plus */
 .tl-floor{position:absolute;top:2px;bottom:2px;left:calc(var(--fx) * 100%);width:2px;background:var(--warn-line);opacity:0;transition:opacity .12s;pointer-events:none}
-.tl-bar:hover ~ .tl-floor,.tl-cell:focus-within .tl-floor,.tl-cell.dragging .tl-floor{opacity:.9}
+.tl--draft .tl-bar:hover ~ .tl-floor,.tl--draft .tl-cell:focus-within .tl-floor,.tl-cell.dragging .tl-floor{opacity:.9}
 .tl-grip{position:absolute;top:7px;height:44px;left:calc((var(--x) + var(--w)) * 100%);width:14px;margin-left:-7px;cursor:ew-resize;border-radius:4px;touch-action:none;z-index:2}
 .tl-grip::after{content:"";position:absolute;top:50%;left:50%;width:3px;height:18px;margin:-9px 0 0 -1.5px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.35}
 .tl-row:hover .tl-grip::after,.tl-grip:focus-visible::after{opacity:.8}
@@ -101,6 +101,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-warn{position:absolute;top:58px;left:calc(var(--x) * 100%);display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;font-size:11.5px;color:var(--warn-text);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:8px;padding:4px 6px 4px 9px}
 .tl-warn .btn{padding:3px 8px;font-size:11.5px}
 .tl-row{overflow:visible}
+.edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
+.edit-bar--done{background:none}
+.edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
+.edit-bar .btn[disabled]{opacity:.4;pointer-events:none}
 /* ---------- decor de l'explo ---------- */
 body{padding:32px 24px 80px}
 .wrap{max-width:1040px;margin:0 auto}
@@ -143,9 +147,25 @@ const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', st
   hint:'Tirez le bord droit d\u2019une barre. Les flèches du clavier marchent aussi.' };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const byId = (a, id) => a.find(x => x.id === id);
+/* Le plan a deux etats : un brouillon ou l'on taille, et un plan valide que
+   l'on peut montrer. Les avertissements et les hachures appartiennent au
+   brouillon ; valider les fait disparaitre sans rien changer aux durees. */
+const ALL = T.slice(), ORDER = T.map(t => t.id);
 let durOv = {};
-const dropped = [];
-const ORDER = T.map(t => t.id);
+let dropped = [];
+let dirty = false;
+let past = [], future = [];
+const snap = () => ({d:Object.assign({}, durOv), ids:T.map(t => t.id)});
+function restore(st){
+  durOv = Object.assign({}, st.d);
+  T.length = 0; st.ids.forEach(id => T.push(ALL.find(t => t.id === id)));
+  dropped = ALL.filter(t => !st.ids.includes(t.id));
+}
+function change(fn){ past.push(snap()); future = []; fn(); dirty = true; render(); }
+// on reste en brouillon tant qu'on n'a pas valide : sinon annuler jusqu'au
+// depart ferait disparaitre le bouton Retablir
+function undo(){ if(!past.length) return; future.push(snap()); restore(past.pop()); render(); }
+function redo(){ if(!future.length) return; past.push(snap()); restore(future.pop()); dirty = true; render(); }
 
 const STEPM = 5;
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
@@ -228,16 +248,16 @@ function render(){
   let grid = '';
   for(let h = 0; h <= axis + 0.001; h += step) grid += '<i style="left:' + (h / axis * 100).toFixed(3) + '%"></i>';
 
-  let frise = '<div class="tl" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
+  let frise = '<div class="tl' + (dirty ? ' tl--draft' : '') + '" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
   PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
     const warnRow = slots.some(s2 => s2.t.phase === p.id && tooShort(s2.t));
     frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row' + (warnRow ? ' tl-row--warn' : '') + '" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
     slots.filter(s => s.t.phase === p.id).forEach(s => {
       const t = s.t, r = rat(t);
       const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + recDur(t)) / axis;
-      const short = tooShort(t);
-      frise += '<div class="tl-cell tl-cell--' + band(r) + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
-        + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (r < 0.999 ? 1 : 0) + '"></div>'
+      const short = dirty && tooShort(t);
+      frise += '<div class="tl-cell' + (dirty ? ' tl-cell--' + band(r) : '') + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
+        + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (dirty && r < 0.999 ? 1 : 0) + '"></div>'
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small><span class="tl-segs">' + segsHtml(t, s.w) + '</span></button>'
         + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
         + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
@@ -246,25 +266,42 @@ function render(){
     });
     frise += '</div>';
   });
-  frise += '<div class="tl-freerow"><div class="tl-free" style="--x:' + (total / axis).toFixed(5) + ';visibility:' + (axis - total > 0.01 ? 'visible' : 'hidden') + '"><span>' + esc(U.freed(fmtDur(Math.max(0, axis - total)))) + '</span></div></div>';
+  if(dirty) frise += '<div class="tl-freerow"><div class="tl-free" style="--x:' + (total / axis).toFixed(5) + ';visibility:' + (axis - total > 0.01 ? 'visible' : 'hidden') + '"><span>' + esc(U.freed(fmtDur(Math.max(0, axis - total)))) + '</span></div></div>';
   frise += '</div>';
 
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
     return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
       + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button><b class="mono">' + fmtDur(s.w) + '</b><button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
-      + (risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '<small class="risk">' + esc(U.refTime) + '</small>') + '</td>'
+      + (dirty && risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '') + '</td>'
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
 
   document.getElementById('card').innerHTML =
     '<div class="plan-wrap">' + frise + '</div>'
+    + editBar(total, ref)
     + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
     + (touched ? '<p class="plan-adjusted"><span>' + U.planned + ' <b>' + fmtDur(total) + '</b> · ' + U.refTime + ' ' + fmtDur(ref) + '</span><button type="button" class="btn" data-reset>' + U.reset + '</button></p>' : '')
     + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
 }
 
+function editBar(total, ref){
+  const n = Object.keys(durOv).length + dropped.length;
+  if(dirty) return '<div class="edit-bar">'
+    + '<span class="edit-count">' + (n ? (n > 1 ? n + ' ateliers modifiés' : n + ' atelier modifié') + ' · ' + U.planned.toLowerCase() + ' ' + fmtDur(total) + ' pour ' + fmtDur(ref) + ' ' + U.refTime : 'Aucun changement') + '</span>'
+    + '<button type="button" class="btn" data-undo' + (past.length ? '' : ' disabled') + '>Annuler</button>'
+    + '<button type="button" class="btn" data-redo' + (future.length ? '' : ' disabled') + '>Rétablir</button>'
+    + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
+    + '<button type="button" class="btn primary" data-commit>Valider les changements</button>'
+    + '</div>';
+  if(n) return '<div class="edit-bar edit-bar--done">'
+    + '<span class="edit-count">Plan ajusté · ' + fmtDur(total) + ' pour ' + fmtDur(ref) + ' ' + U.refTime + '</span>'
+    + '<button type="button" class="btn" data-edit>Modifier</button>'
+    + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
+    + '</div>';
+  return '';
+}
 /* ---------- le geste : on tire, les suivants glissent ---------- */
 let drag = null;
 function tip(text, warn, x, y){
@@ -306,7 +343,7 @@ function live(id, hours){
     free.querySelector('span').textContent = U.freed(fmtDur(gain));
   }
 }
-const commit = (id, hours) => { durOv[id] = Math.round(hours * 60) / 60; render(); };
+const commit = (id, hours) => change(() => { durOv[id] = Math.round(hours * 60) / 60; });
 document.addEventListener('pointerdown', e => {
   const grip = e.target.closest('[data-grip]'); if(!grip) return;
   const t = byId(T, grip.dataset.grip), tl = grip.closest('.tl'), row = grip.closest('.tl-row');
@@ -341,6 +378,7 @@ document.addEventListener('pointerup', () => {
   if(Math.abs(d.cur - d.startDur) > 0.001) commit(d.t.id, d.cur); else render();
 });
 document.addEventListener('keydown', e => {
+  if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z'){ e.preventDefault(); return e.shiftKey ? redo() : undo(); }
   const grip = e.target.closest && e.target.closest('[data-grip]');
   if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
   const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
@@ -352,9 +390,13 @@ document.addEventListener('click', e => {
   if(du){ const t = byId(T, du.dataset.dur), st = stepFor(t);
     commit(t.id, Math.min(t.dur * 2, Math.max(hardDur(t), edur(t) + (+du.dataset.d) * st))); return; }
   const dp = e.target.closest('[data-drop]');
-  if(dp){ const i = T.findIndex(x => x.id === dp.dataset.drop); if(i >= 0){ dropped.push(T[i]); delete durOv[T[i].id]; T.splice(i, 1); render(); } return; }
-  if(e.target.closest('[data-restore]')){ T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); render(); return; }
-  if(e.target.closest('[data-reset]')){ durOv = {}; T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); render(); }
+  if(dp) return change(() => { const i = T.findIndex(x => x.id === dp.dataset.drop); if(i >= 0){ dropped.push(T[i]); delete durOv[T[i].id]; T.splice(i, 1); } });
+  if(e.target.closest('[data-restore]')) return change(() => { T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); });
+  if(e.target.closest('[data-undo]')) return undo();
+  if(e.target.closest('[data-redo]')) return redo();
+  if(e.target.closest('[data-edit]')){ dirty = true; render(); return; }
+  if(e.target.closest('[data-commit]')){ dirty = false; past = []; future = []; render(); return; }
+  if(e.target.closest('[data-reset]')) return change(() => { durOv = {}; T.length = 0; ALL.forEach(t => T.push(t)); dropped = []; });
 });
 render();
 </script>
