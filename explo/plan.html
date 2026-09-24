@@ -127,9 +127,20 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
 .edit-bar .btn[disabled]{opacity:.4;pointer-events:none}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;max-width:520px;padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;box-shadow:var(--shadow)}
-.ctx{position:fixed;z-index:90;min-width:190px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px;box-shadow:var(--shadow)}
-.ctx button{display:block;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:7px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer}
-.ctx button:hover{background:var(--surface-2)}
+.detail{position:fixed;z-index:90;width:290px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;box-shadow:0 18px 44px -18px rgba(15,20,40,.4)}
+.detail-head{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.detail-head b{font-size:13.5px}
+.detail-head span{font-size:12px;color:var(--ink-3)}
+.detail-steps{list-style:none;margin:0 0 2px;padding:0}
+.detail-steps li{display:flex;align-items:baseline;gap:8px;padding:4px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.detail-steps span{margin-right:auto}
+.detail-steps i{font-style:normal;font-size:11px;color:var(--ink-3);text-decoration:line-through}
+.detail-steps .at-floor b{color:var(--alert-text)}
+.detail-warn{margin:10px 0 0;padding:7px 10px;border-radius:9px;background:var(--alert-soft);border:1px solid var(--alert-line);color:var(--alert-text);font-size:12px;line-height:1.4}
+.detail-acts{display:flex;flex-direction:column;margin-top:8px}
+.detail-acts button{text-align:left;border:0;background:none;padding:7px 8px;border-radius:7px;font:inherit;font-size:12.5px;color:var(--ink);cursor:pointer}
+.detail-acts button:hover{background:var(--surface-2)}
+.detail-acts .danger{color:var(--alert-text)}
 /* ---------- decor de l'explo ---------- */
 body{padding:32px 24px 80px}
 .wrap{max-width:1040px;margin:0 auto}
@@ -417,15 +428,35 @@ function openPanel(id){
   openPanel.t = setTimeout(() => el.remove(), 2600);
 }
 const closePanel = () => { const e = document.getElementById('toast'); if(e) e.remove(); };
+/* Le clic droit ne duplique plus le clic gauche : il ouvre le detail de ce que
+   la compression a fait, etape par etape. C'est la marche suivante de la
+   divulgation progressive, reservee a qui va la chercher. */
 function menu(x, y, id){
   closeMenu();
+  const t = byId(T, id), hours = edur(t);
+  const ag = scaleAgenda(t.agenda, Math.round(hours * 60));
+  const floor = a => Math.max(STEPM, Math.round(a.ref / 2));
+  const rows = ag.map(a => {
+    const at = a.cut && a.min <= floor(a);
+    return '<li' + (at ? ' class="at-floor"' : '') + '><span>' + esc(a.t) + '</span>'
+      + (a.cut ? '<i class="mono">' + a.ref + '</i>' : '')
+      + '<b class="mono">' + a.min + ' min</b></li>';
+  }).join('');
   const el = document.createElement('div');
-  el.className = 'ctx'; el.id = 'ctx';
-  el.style.left = Math.min(window.innerWidth - 210, x) + 'px';
-  el.style.top = y + 'px';
-  el.innerHTML = '<button type="button" data-open="' + id + '">Ouvrir la fiche</button>'
-    + '<button type="button" data-drop="' + id + '">Retirer du plan</button>';
+  el.className = 'detail'; el.id = 'ctx';
+  el.innerHTML = '<div class="detail-head"><b>' + esc(t.name) + '</b><span>' + esc(fmtDur(hours))
+      + (hours < t.dur ? ' · ' + esc(U.refTime) + ' ' + esc(fmtDur(t.dur)) : '') + '</span></div>'
+    + '<ul class="detail-steps">' + rows + '</ul>'
+    + (hours < recDur(t) ? '<p class="detail-warn">' + esc(t.breaks) + '</p>' : '')
+    + '<div class="detail-acts">'
+      + (hours !== t.dur ? '<button type="button" data-restore-dur="' + t.id + '">Remettre ' + esc(fmtDur(t.dur)) + '</button>' : '')
+      + '<button type="button" data-open="' + t.id + '">Ouvrir la fiche</button>'
+      + '<button type="button" class="danger" data-drop="' + t.id + '">Retirer du plan</button>'
+    + '</div>';
   document.body.appendChild(el);
+  const w = el.offsetWidth, h = el.offsetHeight;
+  el.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, x)) + 'px';
+  el.style.top = Math.max(8, Math.min(window.innerHeight - h - 8, y)) + 'px';
 }
 const closeMenu = () => { const e = document.getElementById('ctx'); if(e) e.remove(); };
 document.addEventListener('contextmenu', e => {
@@ -433,6 +464,7 @@ document.addEventListener('contextmenu', e => {
   e.preventDefault();
   menu(e.clientX, e.clientY, bar.closest('.tl-cell').dataset.cell);
 });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
 /* ---------- le geste : on tire, les suivants glissent ---------- */
 let drag = null;
 function tip(text, warn, x, y){
@@ -537,6 +569,8 @@ document.addEventListener('click', e => {
   // un relachement de poignee ne doit pas ouvrir la fiche par ricochet
   const barClick = e.target.closest('.tl-bar');
   if(barClick) return Date.now() - lastDragEnd < 300 ? null : openPanel(barClick.closest('.tl-cell').dataset.cell);
+  const rd = e.target.closest('[data-restore-dur]');
+  if(rd){ closeMenu(); return change(() => { delete durOv[rd.dataset.restoreDur]; }); }
   const dp = e.target.closest('[data-drop]');
   if(dp){ closePanel(); closeMenu(); }
   if(dp) return change(() => { const i = T.findIndex(x => x.id === dp.dataset.drop); if(i >= 0){ dropped.push(T[i]); delete durOv[T[i].id]; T.splice(i, 1); } });
