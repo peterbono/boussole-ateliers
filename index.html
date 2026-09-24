@@ -385,7 +385,10 @@ body:has(dialog[open]){overflow:hidden}
 .agenda li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;margin:6px 0}
 .agenda .amin{font-size:12px;color:var(--ink-3);padding-top:2px;white-space:nowrap}
 .agenda b{color:var(--ink);font-weight:600}
-.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+/* Le filet separe deux sections : il lui faut le meme air au-dessus qu'en
+   dessous. Avec 4px de marge haute pour 14px de padding, il collait au bloc
+   precedent. */
+.deps,.prep,.agenda-sec,.pitfalls-sec,.next-sec{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
 .pv-seg{margin-bottom:10px}
 .zoom-btn{display:block;width:100%;cursor:zoom-in;border-radius:10px}
 .zoom-btn svg{display:block;width:100%;height:auto}
