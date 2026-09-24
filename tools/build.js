@@ -61,8 +61,14 @@ function head(lang, title, desc, url, extra = '', og = '/og/default.png'){
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}"><link rel="canonical" href="${SITE}${url}">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:type" content="article"><meta property="og:url" content="${SITE}${url}"><meta property="og:site_name" content="${esc(I18N[lang].title)}"><meta property="og:image" content="${SITE}${og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${SITE}${og}">
-${extra}${FONTS}<style>${CSS}${PAGE_CSS}</style><script defer src="/_vercel/insights/script.js"></script></head><body>`;
+${extra}${FONTS}<style>${CSS}${PAGE_CSS}</style><script defer src="/_vercel/insights/script.js"></script>${CLARITY}</head><body>`;
 }
+const CLARITY = `<script>/* Microsoft Clarity : enregistrements de session et cartes de chaleur.
+   Charge depuis www.clarity.ms, autorise dans la CSP de vercel.json. */
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","ynbk2lc3dc");</script>`;
+
 function workshopPage(lang, t){
   const L = I18N[lang], u = L.ui, x = L.templates[t.id], ph = PHASES.find(p => p.id === t.phase), run = RUN[t.id] && RUN[t.id][lang];
   const url = pageUrl(lang, t.id), alt = lang === 'en' ? 'fr' : 'en', altUrl = pageUrl(alt, t.id);
