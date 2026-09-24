@@ -56,7 +56,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .dur-ctl{display:inline-flex;align-items:center;gap:2px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
-.dur-ctl b{min-width:52px;text-align:center;font-weight:600}
+.dur-val{min-width:58px;text-align:center;font-weight:600;border:1px solid transparent;border-radius:6px;background:none;color:inherit;font-size:inherit;padding:2px 4px;cursor:text}
+.dur-val:hover{border-color:var(--line-strong);background:var(--bg)}
+.dur-in{width:74px;text-align:center;font-weight:600;font-size:13.5px;padding:2px 4px;border:1px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--ink)}
 .risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
 .risk--tight{color:#9a6a2a}
 .risk--hard{color:var(--warn-text);font-weight:600}
@@ -301,7 +303,9 @@ function render(){
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
     return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
-      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button><b class="mono">' + fmtDur(s.w) + '</b><button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
+      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button>'
+      + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
+      + '<button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
       + (dirty && risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '') + '</td>'
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
@@ -359,6 +363,37 @@ function captions(){
     const used = lanes.length;
     row.style.setProperty('--caps', used);
   });
+}
+/* Saisie libre d'une duree. On accepte ce qu'un facilitateur ecrit vraiment :
+   90, 90 min, 1h30, 1 h 30, 1:30, 1,5 h. */
+function parseDur(str){
+  const v = String(str).toLowerCase().replace(',', '.').trim();
+  let m = v.match(/^(\d+(?:\.\d+)?)\s*h\s*(\d{1,2})?$/);
+  if(m) return (+m[1]) + (m[2] ? +m[2] / 60 : 0);
+  m = v.match(/^(\d+)\s*[:h]\s*(\d{1,2})$/);
+  if(m) return (+m[1]) + (+m[2]) / 60;
+  m = v.match(/^(\d+(?:\.\d+)?)\s*(?:min|m)?$/);
+  // un nombre nu est en minutes, un nombre a virgule est en heures : « 90 »
+  // vaut une heure et demie, « 1,5 » aussi, et « 3 » vaut trois minutes
+  if(m){ const n = +m[1]; return /\./.test(v) ? n : n / 60; }
+  return null;
+}
+function typeDur(btn){
+  const t = byId(T, btn.dataset.type);
+  const inp = document.createElement('input');
+  inp.className = 'dur-in mono'; inp.value = btn.textContent.trim(); inp.setAttribute('aria-label', 'Durée de ' + t.name);
+  btn.replaceWith(inp); inp.focus(); inp.select();
+  const done = ok => {
+    if(done.fired) return; done.fired = true;
+    const val = ok ? parseDur(inp.value) : null;
+    if(val == null || !isFinite(val) || val <= 0) return render();
+    commit(t.id, Math.max(STEPM / 60, Math.min(t.dur * 2, Math.round(val * 60) / 60)));
+  };
+  inp.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); done(true); }
+    if(e.key === 'Escape'){ e.preventDefault(); done(false); }
+  });
+  inp.addEventListener('blur', () => done(true));
 }
 /* ---------- ouverture de la fiche ----------
    Le produit a deja son panneau d'atelier, avec ses onglets et son agenda. Le
@@ -482,6 +517,8 @@ document.addEventListener('keydown', e => {
   commit(t.id, Math.max(hardDur(), Math.min(t.dur * 2, edur(t) + step)));
 });
 document.addEventListener('click', e => {
+  const ty = e.target.closest('[data-type]');
+  if(ty) return typeDur(ty);
   const du = e.target.closest('[data-dur]');
   if(du){ const t = byId(T, du.dataset.dur), st = stepFor(t);
     commit(t.id, Math.min(t.dur * 2, Math.max(hardDur(), edur(t) + (+du.dataset.d) * st))); return; }
