@@ -67,7 +67,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
 .tl-tick span{position:absolute;left:4px;top:2px;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
 .tl-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
-.tl-row{position:relative;height:54px;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
+.tl-row{position:relative;height:54px;transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
 .tl-grid{position:absolute;inset:0;pointer-events:none}
 .tl-grid i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line);opacity:.65}
 .tl-bar{position:absolute;top:7px;height:40px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
@@ -76,6 +76,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
 .tl-cell--tight .tl-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
 .tl-cell--hard .tl-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
+.tl-row--warn{height:96px}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
 .tl-ghost{position:absolute;top:7px;height:40px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* plancher : la ou l'agenda ne tient plus */
@@ -89,6 +90,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-free{position:absolute;top:0;bottom:0;visibility:visible;left:calc(var(--x) * 100%);right:0;border-radius:8px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px);display:flex;align-items:center;justify-content:center;pointer-events:none}
 .tl-free span{position:absolute;right:6px;white-space:nowrap;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg);padding:2px 8px;border-radius:6px}
 .tl-freerow{position:relative;height:32px;margin-top:10px}
+.tl-cell--under .tl-bar{background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px);box-shadow:inset 0 0 0 1.5px var(--warn-line)}
+.tl-warn{position:absolute;top:54px;left:calc(var(--x) * 100%);display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;font-size:11.5px;color:var(--warn-text);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:8px;padding:4px 6px 4px 9px}
+.tl-warn .btn{padding:3px 8px;font-size:11.5px}
+.tl-row{overflow:visible}
 /* ---------- decor de l'explo ---------- */
 body{padding:32px 24px 80px}
 .wrap{max-width:1040px;margin:0 auto}
@@ -122,21 +127,36 @@ const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', st
   planned:'Prévu', refTime:'standard', reset:'Remettre les durées', min:'min', hours:'h', days:'j',
   workshops:n => n > 1 ? 'ateliers' : 'atelier',
   cut:(n, m) => n + ' tombe à ' + m + ' min',
-  floor:'minimum que l\u2019agenda supporte',
+  reco:h => 'en dessous de ' + h + ' conseill\u00e9es, l\u2019atelier ne rend plus ce qu\u2019il promet',
+  under:'trop court pour tenir sa promesse',
+  drop:'Retirer du plan',
+  dropped:n => n + ' retiré du plan',
   freed:h => h + ' libérées',
   hint:'Tirez le bord droit d\u2019une barre. Les flèches du clavier marchent aussi.' };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const byId = (a, id) => a.find(x => x.id === id);
 let durOv = {};
+const dropped = [];
+const ORDER = T.map(t => t.id);
 
 const STEPM = 5;
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
 const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
 const rat = t => edur(t) / t.dur;
 const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
-const minDur = t => t.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / 60;
-const fmtHours = h => (h % 1 ? h.toFixed(1).replace('.', ',') : h) + ' ' + U.hours;
-const fmtDur = h => h < 1 ? Math.round(h * 60) + ' ' + U.min : fmtHours(Math.round(h * 60) / 60 % 1 ? Math.round(h * 10) / 10 : h);
+const tooShort = t => edur(t) < recDur(t) - 0.001;
+/* Duree minimale conseillee : la somme des planchers d'etapes. En dessous,
+   l'atelier n'a plus de quoi produire son resultat. On previent, on n'interdit
+   pas : l'utilisateur reste maitre de son creneau, et s'il descend vraiment
+   bas, on lui propose plutot de retirer l'atelier. */
+const recDur = t => Math.ceil(t.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / STEPM) * STEPM / 60;
+const hardDur = t => Math.max(0.25, t.dur * 0.2);
+/* « 1 h 20 » plutot que « 1,3 h » : un facilitateur lit un creneau, pas un decimal */
+const fmtDur = h => {
+  const m = Math.round(h * 60), H = Math.floor(m / 60), M = m % 60;
+  if(m < 60) return m + ' ' + U.min;
+  return M ? H + ' ' + U.hours + ' ' + String(M).padStart(2, '0') : H + ' ' + U.hours;
+};
 
 function scaleAgenda(agenda, targetMin){
   const ref = agenda.reduce((s, a) => s + a.min, 0);
@@ -190,15 +210,19 @@ function render(){
 
   let frise = '<div class="tl" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
   PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
-    frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
+    const warnRow = slots.some(s2 => s2.t.phase === p.id && tooShort(s2.t));
+    frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row' + (warnRow ? ' tl-row--warn' : '') + '" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
     slots.filter(s => s.t.phase === p.id).forEach(s => {
       const t = s.t, r = rat(t);
-      const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + minDur(t)) / axis;
-      frise += '<div class="tl-cell tl-cell--' + band(r) + '" data-cell="' + t.id + '">'
+      const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + recDur(t)) / axis;
+      const short = tooShort(t);
+      frise += '<div class="tl-cell tl-cell--' + band(r) + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
         + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (r < 0.999 ? 1 : 0) + '"></div>'
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small></button>'
         + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
-        + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span></div>';
+        + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
+        + (short ? '<div class="tl-warn" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '"><span>' + esc(U.under) + '</span><button type="button" class="btn" data-drop="' + t.id + '">' + esc(U.drop) + '</button></div>' : '')
+        + '</div>';
     });
     frise += '</div>';
   });
@@ -215,6 +239,7 @@ function render(){
 
   document.getElementById('card').innerHTML =
     '<div class="plan-wrap">' + frise + '</div>'
+    + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
     + (touched ? '<p class="plan-adjusted"><span>' + U.planned + ' <b>' + fmtDur(total) + '</b> · ' + U.refTime + ' ' + fmtDur(ref) + '</span><button type="button" class="btn" data-reset>' + U.reset + '</button></p>' : '')
     + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
@@ -245,7 +270,7 @@ function live(id, hours){
       grip.style.setProperty('--x', x.toFixed(5)); grip.style.setProperty('--w', (w / axis).toFixed(5));
       ghost.style.setProperty('--x', x.toFixed(5)); ghost.style.setProperty('--gw', (t.dur / axis).toFixed(5));
       ghost.style.setProperty('--go', w < t.dur - 0.001 ? 1 : 0);
-      floor.style.setProperty('--fx', ((cum + minDur(t)) / axis).toFixed(5));
+      floor.style.setProperty('--fx', ((cum + recDur(t)) / axis).toFixed(5));
       cell.classList.remove('tl-cell--ok', 'tl-cell--tight', 'tl-cell--hard');
       cell.classList.add('tl-cell--' + band(w / t.dur));
       if(t.id !== id) cell.classList.add('sliding');
@@ -270,13 +295,20 @@ document.addEventListener('pointerdown', e => {
 });
 document.addEventListener('pointermove', e => {
   if(!drag) return;
-  const t = drag.t, step = stepFor(t), lo = minDur(t);
-  const dh = ((e.clientX - drag.startX) / drag.px) * drag.axis;
-  const val = Math.max(lo, Math.min(t.dur * 2, Math.round((drag.startDur + dh) / step) * step));
+  const t = drag.t, step = stepFor(t), reco = recDur(t), hard = hardDur(t);
+  let dh = ((e.clientX - drag.startX) / drag.px) * drag.axis;
+  let raw = drag.startDur + dh;
+  // le seuil conseille accroche : il faut insister d'environ 30 pixels pour passer
+  // dessous, pour qu'on ne franchisse jamais la limite par accident
+  const stickPx = 30, stickH = (stickPx / drag.px) * drag.axis;
+  if(raw < reco && raw > reco - stickH) raw = reco;
+  else if(raw <= reco - stickH) raw += stickH;
+  const val = Math.max(hard, Math.min(t.dur * 2, Math.round(raw / step) * step));
   drag.cur = val; live(t.id, val);
-  const r = val / t.dur, atFloor = Math.abs(val - lo) < 0.001 && val < t.dur;
+  const r = val / t.dur;
   const line = r < 0.999 ? riskFor(t, val) : '';
-  tip(fmtDur(val) + (atFloor ? ' · ' + U.floor : line ? ' · ' + line : ''), r < 0.7, e.clientX, e.clientY);
+  const tooShort = val < reco - 0.001;
+  tip(fmtDur(val) + ' · ' + (tooShort ? U.reco(fmtDur(reco)) : line || ''), tooShort || r < 0.7, e.clientX, e.clientY);
 });
 document.addEventListener('pointerup', () => {
   if(!drag) return;
@@ -288,13 +320,16 @@ document.addEventListener('keydown', e => {
   if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
   const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
   e.preventDefault();
-  commit(t.id, Math.max(minDur(t), Math.min(t.dur * 2, edur(t) + step)));
+  commit(t.id, Math.max(hardDur(t), Math.min(t.dur * 2, edur(t) + step)));
 });
 document.addEventListener('click', e => {
   const du = e.target.closest('[data-dur]');
   if(du){ const t = byId(T, du.dataset.dur), st = stepFor(t);
-    commit(t.id, Math.min(t.dur * 2, Math.max(minDur(t), edur(t) + (+du.dataset.d) * st))); return; }
-  if(e.target.closest('[data-reset]')){ durOv = {}; render(); }
+    commit(t.id, Math.min(t.dur * 2, Math.max(hardDur(t), edur(t) + (+du.dataset.d) * st))); return; }
+  const dp = e.target.closest('[data-drop]');
+  if(dp){ const i = T.findIndex(x => x.id === dp.dataset.drop); if(i >= 0){ dropped.push(T[i]); delete durOv[T[i].id]; T.splice(i, 1); render(); } return; }
+  if(e.target.closest('[data-restore]')){ T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); render(); return; }
+  if(e.target.closest('[data-reset]')){ durOv = {}; T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); render(); }
 });
 render();
 </script>
