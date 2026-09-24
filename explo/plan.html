@@ -342,7 +342,8 @@ function captions(){
       const bar = cell.querySelector('.tl-bar'), cap = cell.querySelector('.tl-cap');
       // on mesure le nom seul : la duree qui l'accompagne dans l'etiquette
       // ne doit pas faire basculer une barre large en mode etroit
-      const need = cap.querySelector('b').scrollWidth + 22;
+      // scrollWidth vaut zero sur un element inline : on mesure la boite
+      const need = cap.querySelector('b').getBoundingClientRect().width + 22;
       const narrow = bar.clientWidth < need;
       cell.classList.toggle('tl-cell--narrow', narrow);
       if(!narrow){ cap.style.removeProperty('--lane'); return; }
