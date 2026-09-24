@@ -381,6 +381,7 @@ body:has(dialog[open]){overflow:hidden}
 .g-cell .g-bar{width:100%}
 .g-cell--tight .g-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
 .g-cell--hard .g-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
+body.resizing{touch-action:none;user-select:none}
 .g-grip{position:absolute;top:0;right:-5px;width:12px;height:100%;cursor:ew-resize;border-radius:0 8px 8px 0;touch-action:none}
 .g-grip::after{content:"";position:absolute;top:50%;right:4px;width:3px;height:18px;margin-top:-9px;border-radius:2px;background:currentColor;opacity:.32}
 .g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
@@ -388,7 +389,7 @@ body:has(dialog[open]){overflow:hidden}
 .g-tip{position:fixed;z-index:60;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:260px;box-shadow:var(--shadow)}
 .g-tip.warn{background:var(--warn-text)}
 .gantt-hint{margin:8px 0 0;font-size:12px;color:var(--ink-3)}
-@media print{.g-bar{box-shadow:none}.g-grip,.gantt-hint{display:none}}
+@media print{.g-bar{box-shadow:none}.g-grip,.g-floor,.g-ghost,.edit-bar,.warn-list,.dur-ctl button{display:none!important}}
 .howto{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .howto h3{font-size:16px}
 .howto h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:8px 0 0}
@@ -469,8 +470,9 @@ dialog.zoom::backdrop{background:transparent}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
 .g-ghost{position:absolute;inset:0 auto 0 0;width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* repere de la duree conseillee, montre seulement quand on vise cette barre */
-.g-floor{position:absolute;top:-3px;bottom:-3px;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
+.g-floor{position:absolute;top:0;bottom:0;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
 .g-bar:hover ~ .g-floor,.g-cell:focus-within .g-floor,.g-cell.dragging .g-floor{opacity:.9}
+body.resizing{touch-action:none;user-select:none}
 .g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-16px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
 .g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3}
 .g-row:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
@@ -481,14 +483,17 @@ dialog.zoom::backdrop{background:transparent}
 .g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .g-segs i.seg-cut{opacity:.5}
 .g-segs i.seg-floor{background:var(--alert-line);opacity:1}
-.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px);white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
+.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
 .g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
 .g-cell--narrow .g-cap{opacity:1}
-.g-row{padding-bottom:calc(6px + var(--caps, 0) * 17px)}
+
 /* barre d'actions du brouillon */
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .edit-bar--done{background:none}
-.edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
+.edit-count{flex:1 1 auto;min-width:0;font-size:13px;color:var(--ink-2)}
+/* le groupe reste solidaire : il passe a la ligne entier plutot que de se
+   couper en deux, et se replie sur lui-meme quand l'ecran est trop etroit */
+.edit-acts{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;flex:0 1 auto}
 .edit-bar .btn[disabled]{opacity:.35;pointer-events:none}
 .btn.icon{padding:6px;width:32px;height:32px;justify-content:center}
 .btn.icon svg{width:18px;height:18px;color:var(--ink-2)}
@@ -739,7 +744,6 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
     urlDurs = d;
   }
 })();
-if(urlDurs) durOv = urlDurs;
 let view = store.get('view', 'steps');
 if(new URLSearchParams(location.search).get('view') === 'plan') view = 'plan';
 let diag = store.get('diag', {open:false, a:[null,null,null,null,null,null]});
@@ -818,7 +822,8 @@ const fmtDur = h => {
    le tableau. Le plan vit alors en brouillon, avec ses avertissements, jusqu'a
    ce qu'il soit valide : un plan valide se lit comme un document. */
 const STEPM = 5;
-let durOv = store.get('durs', {});
+// le lien fait autorite, sinon on reprend ce que le navigateur avait garde
+let durOv = urlDurs || store.get('durs', {});
 let dirty = false, past = [], future = [];
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
 const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
@@ -1135,7 +1140,7 @@ function renderResult(){
     </div>`;
   if(view === 'plan'){
     html += planHtml(pick, total);
-    setTimeout(ensureRisk, 0);
+    setTimeout(() => { ganttCaptions(); ensureRisk(); }, 0);
   } else {
     html += '<div class="steps">';
     pick.forEach((x, i) => { html += stepCard(x.t, i + 1, x.reasons); });
@@ -1227,7 +1232,7 @@ function ganttCaptions(){
       lanes[lane] = right;
       cap.style.setProperty('--lane', lane);
     });
-    row.style.setProperty('--caps', lanes.length);
+    row.style.paddingBottom = lanes.length ? (lanes.length * 17 + 12) + 'px' : '';
   });
 }
 function planHtml(pick, total){
@@ -1264,15 +1269,19 @@ function editBar(total, ref){
   const u = UI(), n = Object.keys(durOv).length;
   if(dirty) return `<div class="edit-bar">
     <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}</span>
-    <button type="button" class="btn icon" data-undo title="${esc(u.undoLbl)}" aria-label="${esc(u.undoLbl)}"${past.length ? '' : ' disabled'}>${ICON.undo}</button>
-    <button type="button" class="btn icon" data-redo title="${esc(u.redoLbl)}" aria-label="${esc(u.redoLbl)}"${future.length ? '' : ' disabled'}>${ICON.redo}</button>
-    <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
-    <button type="button" class="btn primary" data-commit>${esc(u.commitPlan)}</button>
+    <span class="edit-acts">
+      <button type="button" class="btn icon" data-undo title="${esc(u.undoLbl)}" aria-label="${esc(u.undoLbl)}"${past.length ? '' : ' disabled'}>${ICON.undo}</button>
+      <button type="button" class="btn icon" data-redo title="${esc(u.redoLbl)}" aria-label="${esc(u.redoLbl)}"${future.length ? '' : ' disabled'}>${ICON.redo}</button>
+      <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
+      <button type="button" class="btn primary" data-commit>${esc(u.commitPlan)}</button>
+    </span>
   </div>`;
   if(n) return `<div class="edit-bar edit-bar--done">
     <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}</span>
-    <button type="button" class="btn" data-edit>${esc(u.editAgain)}</button>
-    <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
+    <span class="edit-acts">
+      <button type="button" class="btn" data-edit>${esc(u.editAgain)}</button>
+      <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
+    </span>
   </div>`;
   return '';
 }
@@ -1366,9 +1375,14 @@ document.addEventListener('pointerdown', e => {
   const colPx = (row.clientWidth - gap * (n - 1)) / n;
   gdrag = {t, startX: e.clientX, startDur: edur(t), cap: +g.dataset.cap, colPx, cell, cur: edur(t)};
   cell.classList.add('dragging');
+  // au doigt, le navigateur prend la main pour faire defiler des le second
+  // mouvement : on lui retire le geste tant qu'on redimensionne
+  document.body.classList.add('resizing');
   grip.setPointerCapture(e.pointerId);
   e.preventDefault();
 });
+document.addEventListener('touchmove', e => { if(gdrag) e.preventDefault(); }, {passive: false});
+document.addEventListener('pointercancel', () => { if(gdrag){ document.body.classList.remove('resizing'); gdrag.cell.classList.remove('dragging'); gdrag = null; gTipHide(); renderResult(); } });
 document.addEventListener('pointermove', e => {
   if(!gdrag) return;
   const u = UI(), t = gdrag.t, step = stepFor(t), reco = recDur(t);
@@ -1388,6 +1402,7 @@ document.addEventListener('pointermove', e => {
 document.addEventListener('pointerup', () => {
   if(!gdrag) return;
   const d = gdrag; gdrag = null; lastDragEnd = Date.now(); gTipHide();
+  document.body.classList.remove('resizing');
   d.cell.classList.remove('dragging');
   if(Math.abs(d.cur - d.startDur) > 0.001) changeDur(() => { durOv[d.t.id] = Math.round(d.cur * 60) / 60; });
   else renderResult();
