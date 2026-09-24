@@ -170,6 +170,48 @@ K.flow = (sec, L, ox, oy) => {
   });
 };
 
+// Cible concentrique : un anneau par horizon, un secteur par domaine.
+// Les rayons ne sont pas alignes sur les axes des qu'il y a autre chose que
+// 4 secteurs, d'ou la matrice posee a la main plutot qu'une rotation.
+K.radar = (sec, L, ox, oy) => {
+  const p = 64, cx = ox + CW / 2, cy = oy + CH / 2, rMax = (CH - 2 * p) / 2 - 24, BAND = hex('F4F6FA');
+  for (let i = L.rings.length; i > 0; i--) {
+    const r = rMax * i / L.rings.length;
+    const e = figma.createEllipse(); sec.appendChild(e);
+    e.resize(r * 2, r * 2); e.x = cx - r; e.y = cy - r;
+    e.fills = solid(i % 2 ? BAND : FILL); e.strokes = solid(LINE); e.strokeWeight = 3;
+  }
+  const ray = (ang) => {
+    const w = 3, r = rect(sec, 0, 0, w, rMax, LINE, null, 0);
+    const th = ang + Math.PI / 2, c = Math.cos(th), si = Math.sin(th);
+    r.relativeTransform = [[c, -si, cx - c * w / 2], [si, c, cy - si * w / 2]];
+  };
+  L.sectors.forEach((_, i) => ray((i / L.sectors.length) * Math.PI * 2 - Math.PI / 2));
+  // quelques notes deja posees, une case sur deux, pour montrer comment on remplit
+  L.sectors.forEach((_, si) => {
+    const a = ((si + 0.5) / L.sectors.length) * Math.PI * 2 - Math.PI / 2;
+    L.rings.forEach((_, ri) => {
+      // l'anneau exterieur reste libre : c'est la que sont poses les noms de secteur
+      if (!ri || ri > L.rings.length - 2 || (si + ri) % 2) return;
+      const r = rMax * (ri + 0.5) / L.rings.length;
+      sticky(sec, cx + Math.cos(a) * r - 120, cy + Math.sin(a) * r - 120, si + ri);
+    });
+  });
+  L.sectors.forEach((t, i) => {
+    const a = ((i + 0.5) / L.sectors.length) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + Math.cos(a) * (rMax + 96), y = cy + Math.sin(a) * (rMax + 96);
+    const anchor = Math.cos(a) > 0.25 ? 'start' : Math.cos(a) < -0.25 ? 'end' : 'middle';
+    text(sec, x, y - 18, t, 32, 'Bold', { anchor });
+  });
+  // le nom de l'horizon est pose sur l'axe vertical, sur un fond qui masque le rayon
+  L.rings.forEach((t, i) => {
+    const r = rMax * (i + 1) / L.rings.length - 30;
+    const w = t.length * 17 + 40;
+    rect(sec, cx - w / 2, cy - r - 26, w, 52, FILL, LINE, 26);
+    text(sec, cx, cy - r - 14, t, 28, 'Bold', { anchor: 'middle', color: i ? MUTED : ACCENT });
+  });
+};
+
 async function build(item) {
   const sec = figma.createSection(); sec.name = item.name; sec.resize(${SEC_W}, ${SEC_H}); sec.x = item.x; sec.y = item.y;
   sec.fills = solid(hex(item.fill));
