@@ -470,9 +470,7 @@ body.resizing{touch-action:none;user-select:none}
 .g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s}
 .g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
 .g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
-.g-grip.g-grip--start{right:auto;left:0;margin:0 0 0 -6px;justify-content:flex-start;padding:0 0 0 5px}
 .g-cell--narrow .g-grip{width:12px;margin-right:-4px}
-.g-cell--narrow .g-grip--start{display:none}
 .g-bar{cursor:grab}
 .g-cell.moving .g-bar{cursor:grabbing;opacity:.75}
 .g-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
@@ -1238,7 +1236,6 @@ function ganttHtml(slots){
         <div class="g-ghost" style="--go:${dirty && d < t.dur - 0.001 ? 1 : 0}"></div>
         <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(d)}"><b>${esc(x.name)}</b><small>${fmtDur(d)}</small><span class="g-segs">${segsHtml(t, d)}</span></button>
         <div class="g-floor"></div>
-        <span class="g-grip g-grip--start" data-grip="${t.id}" data-edge="start" aria-hidden="true"></span>
         <span class="g-grip" data-grip="${t.id}" data-edge="end" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}"></span>
         <span class="g-cap"><b>${esc(x.name)}</b><i class="mono">${fmtDur(d)}</i></span>
       </div>`;
@@ -1436,7 +1433,7 @@ document.addEventListener('pointerdown', e => {
   const t = byId(T, cell.dataset.cell);
   const g = cell.closest('.gantt'), n = +g.dataset.n, gap = 6;
   const colPx = (row.clientWidth - gap * (n - 1)) / n;
-  const mode = grip ? (grip.dataset.edge === 'start' ? 'start' : 'end') : 'move';
+  const mode = grip ? 'end' : 'move';
   const startCol = Math.round((cell.getBoundingClientRect().left - row.getBoundingClientRect().left) / (colPx + gap));
   gdrag = {t, mode, startX: e.clientX, startDur: edur(t), cap: +g.dataset.cap, colPx, gap, cell, row,
            cur: edur(t), startCol, col: startCol, moved: false};
@@ -1465,9 +1462,7 @@ document.addEventListener('pointermove', e => {
     gTip('<b>' + esc(colLabel(col)) + '</b>', false, gdrag.cell.querySelector('.g-bar'));
     return;
   }
-  // bord gauche : tirer vers la gauche allonge, miroir du bord droit
-  const sign = gdrag.mode === 'start' ? -1 : 1;
-  let raw = gdrag.startDur + sign * ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
+  let raw = gdrag.startDur + ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
   // le seuil conseille accroche : il faut insister pour passer dessous
   const stickH = (30 / gdrag.colPx) * gdrag.cap;
   if(raw < reco && raw > reco - stickH) raw = reco;
