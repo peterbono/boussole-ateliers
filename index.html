@@ -1282,13 +1282,15 @@ function ganttCaptions(){
       const br = bar.getBoundingClientRect();
       const next = cells[i + 1] ? cells[i + 1].querySelector('.g-bar').getBoundingClientRect().left : rowRight;
       if(cap.offsetWidth + 16 <= next - br.right){ cell.classList.add('g-cell--capright'); return; }
+      // une etiquette de fin de ligne doit rentrer dans la bande : on la recale
+      // a gauche, puis on lui cherche un niveau ou elle ne heurte personne
+      const w = cap.offsetWidth;
+      const left = Math.min(br.left, rowRight - w);
       let lane = 0;
-      while(lanes[lane] != null && br.left < lanes[lane]) lane++;
-      lanes[lane] = br.left + cap.offsetWidth + 10;
+      while(lanes[lane] != null && left < lanes[lane]) lane++;
+      lanes[lane] = left + w + 10;
       cap.style.setProperty('--lane', lane);
-      // une etiquette posee sous une barre de fin de ligne depassait la bande
-      const over = br.left + cap.offsetWidth - rowRight;
-      cap.style.marginLeft = over > 0 ? -Math.ceil(over) + 'px' : '';
+      cap.style.marginLeft = left < br.left ? Math.round(left - br.left) + 'px' : '';
     });
     row.style.paddingBottom = lanes.length ? (lanes.length * 17 + 12) + 'px' : '';
   });
