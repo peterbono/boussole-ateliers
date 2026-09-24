@@ -176,7 +176,8 @@ const PHASES = [
   {id:'strategie', name:'Stratégie & vision', h:'--h-strategie'},
   {id:'prio', name:'Priorisation & planification', h:'--h-prio'},
 ];
-const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', start:'Début', what:'Atelier',
+const U = { dur:'Durée', who:'Participants', out:'Livrable', total:'Total', when:'Quand', what:'Atelier',
+  day:n => 'Jour ' + n,
   planned:'Prévu', refTime:'standard', reset:'Remettre les durées', min:'min', hours:'h', days:'j',
   workshops:n => n > 1 ? 'ateliers' : 'atelier',
   cut:(n, m) => n + ' tombe à ' + m + ' min',
@@ -330,7 +331,7 @@ function render(){
   const warnList = warns.length ? '<ul class="warn-list">' + warns.map(s2 => '<li><b>' + esc(s2.t.name) + '</b><span>' + esc(s2.t.breaks) + '</span></li>').join('') + '</ul>' : '';
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
-    return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
+    return '<tr><td class="mono">' + esc(U.day(Math.floor(s.x / 7) + 1)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
       + (dirty
         ? '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button>'
           + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
@@ -345,7 +346,7 @@ function render(){
     + '<div class="plan-wrap">' + frise + '</div>'
     + warnList
     + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
-    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
+    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.when + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
   document.getElementById('card').innerHTML = cardHtml;
   captions();
