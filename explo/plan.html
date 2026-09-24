@@ -67,22 +67,22 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
 .tl-tick span{position:absolute;left:4px;top:2px;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
 .tl-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
-.tl-row{position:relative;height:62px;transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
+.tl-row{position:relative;height:58px;transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
 .tl-grid{position:absolute;inset:0;pointer-events:none}
 .tl-grid i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line);opacity:.65}
-.tl-bar{position:absolute;top:7px;height:48px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
+.tl-bar{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
 .tl-cell.dragging .tl-bar,.tl-cell.sliding .tl-bar{transition:none}
-.tl-bar b{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bar b{position:relative;z-index:1;font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
 .tl-cell--tight .tl-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
 .tl-cell--hard .tl-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-.tl-row--warn{height:104px}
+.tl-row--warn{height:100px}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
-.tl-ghost{position:absolute;top:7px;height:48px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
+.tl-ghost{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* plancher : la ou l'agenda ne tient plus */
 .tl-floor{position:absolute;top:2px;bottom:2px;left:calc(var(--fx) * 100%);width:2px;background:var(--warn-line);opacity:0;transition:opacity .12s;pointer-events:none}
-.tl-row:hover .tl-floor,.tl-cell.dragging .tl-floor{opacity:.9}
-.tl-grip{position:absolute;top:7px;height:48px;left:calc((var(--x) + var(--w)) * 100%);width:14px;margin-left:-7px;cursor:ew-resize;border-radius:4px;touch-action:none;z-index:2}
+.tl-bar:hover ~ .tl-floor,.tl-cell:focus-within .tl-floor,.tl-cell.dragging .tl-floor{opacity:.9}
+.tl-grip{position:absolute;top:7px;height:44px;left:calc((var(--x) + var(--w)) * 100%);width:14px;margin-left:-7px;cursor:ew-resize;border-radius:4px;touch-action:none;z-index:2}
 .tl-grip::after{content:"";position:absolute;top:50%;left:50%;width:3px;height:18px;margin:-9px 0 0 -1.5px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.35}
 .tl-row:hover .tl-grip::after,.tl-grip:focus-visible::after{opacity:.8}
 .tl-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
@@ -90,12 +90,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-free{position:absolute;top:0;bottom:0;visibility:visible;left:calc(var(--x) * 100%);right:0;border-radius:8px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px);display:flex;align-items:center;justify-content:center;pointer-events:none}
 .tl-free span{position:absolute;right:6px;white-space:nowrap;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg);padding:2px 8px;border-radius:6px}
 .tl-freerow{position:relative;height:32px;margin-top:10px}
-.tl-segs{display:flex;gap:1px;height:4px;margin-top:3px;border-radius:2px;overflow:hidden}
+.tl-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
+.tl-bar:hover .tl-segs,.tl-cell:focus-within .tl-segs,.tl-cell.dragging .tl-segs{opacity:1}
 .tl-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .tl-segs i.seg-cut{opacity:.5}
 .tl-segs i.seg-floor{background:var(--warn-line);opacity:1}
 .tl-cell--under .tl-bar{background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px);box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-.tl-warn{position:absolute;top:62px;left:calc(var(--x) * 100%);display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;font-size:11.5px;color:var(--warn-text);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:8px;padding:4px 6px 4px 9px}
+.tl-warn{position:absolute;top:58px;left:calc(var(--x) * 100%);display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;font-size:11.5px;color:var(--warn-text);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:8px;padding:4px 6px 4px 9px}
 .tl-warn .btn{padding:3px 8px;font-size:11.5px}
 .tl-row{overflow:visible}
 /* ---------- decor de l'explo ---------- */
