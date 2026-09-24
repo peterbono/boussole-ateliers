@@ -53,12 +53,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .plan-adjusted{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
 .plan-adjusted b{color:var(--ink)}
 .dur-cell{white-space:nowrap}
-.dur-ctl{display:inline-flex;align-items:center;gap:2px}
+.dur-ctl{display:inline-flex;align-items:center;gap:7px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
-.dur-val{min-width:58px;text-align:center;font-weight:600;border:1px solid transparent;border-radius:6px;background:none;color:inherit;font-size:inherit;padding:2px 4px;cursor:text}
-.dur-val:hover{border-color:var(--line-strong);background:var(--bg)}
-.dur-in{width:74px;text-align:center;font-weight:600;font-size:13.5px;padding:2px 4px;border:1px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--ink)}
+/* Les boutons sont des boutons, la valeur est un texte que l'on edite : elle
+   garde un souligne pointille plutot que le cadre des boutons. */
+.dur-val{min-width:52px;text-align:center;font-weight:600;border:0;border-bottom:1px dashed var(--line-strong);border-radius:0;background:none;color:inherit;font-size:inherit;padding:1px 2px 2px;cursor:text}
+.dur-val:hover{border-bottom-color:var(--ink-3);color:var(--ink)}
+.dur-val:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dur-in{width:70px;text-align:center;font-weight:600;font-size:13.5px;padding:1px 2px 2px;border:0;border-bottom:2px solid var(--accent);border-radius:0;background:none;color:var(--ink);outline:none}
 .risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
 .risk--alert{color:var(--alert-text);font-weight:600}
 :root{
