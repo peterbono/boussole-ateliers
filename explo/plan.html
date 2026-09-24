@@ -135,7 +135,7 @@ const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', st
   workshops:n => n > 1 ? 'ateliers' : 'atelier',
   cut:(n, m) => n + ' tombe à ' + m + ' min',
   atFloor:n => n + (n > 1 ? ' étapes réduites au minimum' : ' étape réduite au minimum'),
-  reco:h => 'en dessous de ' + h + ' conseill\u00e9es, l\u2019atelier ne rend plus ce qu\u2019il promet',
+  reco:h => 'sous la dur\u00e9e conseill\u00e9e de ' + h,
   under:'trop court pour tenir sa promesse',
   drop:'Retirer du plan',
   dropped:n => n + ' retiré du plan',
@@ -329,9 +329,11 @@ document.addEventListener('pointermove', e => {
   const r = val / t.dur;
   const line = r < 0.999 ? riskFor(t, val) : '';
   const tooShort = val < reco - 0.001;
-  const hurts = floorCount(t, val) > 0 || tooShort;
-  tip('<b>' + esc(fmtDur(val) + ' · ' + (tooShort ? U.reco(fmtDur(reco)) : line || '')) + '</b>'
-    + (hurts ? '<em>' + esc(t.breaks) + '</em>' : ''), tooShort || r < 0.7, e.clientX, e.clientY);
+  // La couleur de la bulle repond a une seule regle, sinon elle ne veut rien dire :
+  // sombre tant qu'on reste dans le conseille, ambre des qu'on passe dessous.
+  const hurts = floorCount(t, val) > 0;
+  tip('<b>' + esc(fmtDur(val) + (tooShort ? ' · ' + U.reco(fmtDur(reco)) : line ? ' · ' + line : '')) + '</b>'
+    + (tooShort || hurts ? '<em>' + esc(t.breaks) + '</em>' : ''), tooShort, e.clientX, e.clientY);
 });
 document.addEventListener('pointerup', () => {
   if(!drag) return;
