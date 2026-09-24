@@ -147,6 +147,11 @@ button{font:inherit;cursor:pointer}
 .detail-acts button{text-align:left;border:0;background:none;padding:7px 8px;border-radius:7px;font:inherit;font-size:12.5px;color:var(--ink);cursor:pointer}
 .detail-acts button:hover{background:var(--surface-2)}
 .detail-acts .danger{color:var(--alert-text)}
+/* Hors edition, le plan se lit comme un document : les boutons n'apparaissent
+   qu'au survol de la ligne, et les toucher fait entrer en edition. */
+.plan-table:not(.editing) .dur-ctl button[data-dur]{opacity:0;transition:opacity .12s}
+.plan-table:not(.editing) tr:hover .dur-ctl button[data-dur],
+.plan-table:not(.editing) .dur-ctl button[data-dur]:focus-visible{opacity:1}
 /* ---------- decor de l'explo ---------- */
 body{padding:32px 24px 80px}
 .wrap{max-width:1040px;margin:0 auto}
@@ -332,11 +337,9 @@ function render(){
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
     return '<tr><td class="mono">' + esc(U.day(Math.floor(s.x / 7) + 1)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
-      + (dirty
-        ? '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button>'
-          + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
-          + '<button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
-        : '<td class="dur-cell"><b class="mono">' + fmtDur(s.w) + '</b>')
+      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1" aria-label="5 minutes de moins">−</button>'
+        + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
+        + '<button type="button" data-dur="' + t.id + '" data-d="1" aria-label="5 minutes de plus">+</button></span>'
       + (dirty && risk ? '<small class="risk' + (tooShort(t) ? ' risk--alert' : '') + '">' + esc(risk) + '</small>' : '') + '</td>'
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
@@ -346,7 +349,7 @@ function render(){
     + '<div class="plan-wrap">' + frise + '</div>'
     + warnList
     + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
-    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.when + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
+    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table' + (dirty ? ' editing' : '') + '"><thead><tr><th>' + U.when + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
   document.getElementById('card').innerHTML = cardHtml;
   captions();
