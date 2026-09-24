@@ -39,7 +39,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
 .btn svg{width:14px;height:14px;flex:none}
 .btn.small{padding:5px 9px;font-size:12px}
-@media print{.totop{display:none!important}}
 .plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
 .plan-wrap{overflow-x:auto}
 .plan-table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
@@ -47,28 +46,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
-.gantt{display:flex;flex-direction:column;min-width:520px}
-.g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
-.g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.g-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;letter-spacing:.01em;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
-.g-row{min-height:46px;padding:6px 0 6px;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
-.g-bar{display:flex;flex-direction:column;justify-content:center;gap:1px;min-height:40px;padding:5px 9px;border-radius:8px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));border:1px solid hsl(var(--h) 40% calc(var(--chip-l) - 10%));font-size:12px;line-height:1.2;overflow:hidden;transition:transform .12s,box-shadow .12s}
-.g-bar b{font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.g-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.8}
-.g-bar:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:64px;transition:width .12s ease}
-.g-cell.dragging{transition:none}
-.g-cell .g-bar{width:100%}
-.g-cell--tight .g-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
-.g-cell--hard .g-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-.g-grip{position:absolute;top:0;right:-5px;width:12px;height:100%;cursor:ew-resize;border-radius:0 8px 8px 0;touch-action:none}
-.g-grip::after{content:"";position:absolute;top:50%;right:4px;width:3px;height:18px;margin-top:-9px;border-radius:2px;background:currentColor;opacity:.32}
-.g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
-.g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .g-tip{position:fixed;z-index:60;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:260px;box-shadow:var(--shadow)}
 .g-tip.warn{background:var(--warn-text)}
-.gantt-hint{margin:8px 0 0;font-size:12px;color:var(--ink-3)}
-@media print{.g-bar{box-shadow:none}.g-grip,.gantt-hint{display:none}}
 .plan-adjusted{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
 .plan-adjusted b{color:var(--ink)}
 .dur-cell{white-space:nowrap}
@@ -79,330 +58,171 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
 .risk--tight{color:#9a6a2a}
 .risk--hard{color:var(--warn-text);font-weight:600}
-@media print{
-  body{background:#fff;color:#000}
-  .hdr,.side,.result-bar,.aside,.steps,.lang{display:none!important}
-  .wrap{max-width:none;padding:0}
-  .plan{border:0;box-shadow:none;padding:0}
-  .plan-table{min-width:0}
-}
-/* propre a l'explo : de quoi poser la carte au milieu d'une page vide */
+/* ---------- la frise ----------
+   Axe continu en heures de facilitation. Sa longueur est figee sur le total
+   standard : comprimer un atelier ne redessine pas l'echelle, ca decale les
+   suivants vers la gauche et ca ouvre du temps libre a la fin. */
+.tl{position:relative;min-width:560px}
+.tl-axis{position:relative;height:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
+.tl-tick span{position:absolute;left:4px;top:2px;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
+.tl-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
+.tl-row{position:relative;height:54px;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
+.tl-grid{position:absolute;inset:0;pointer-events:none}
+.tl-grid i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line);opacity:.65}
+.tl-bar{position:absolute;top:7px;height:40px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
+.tl-cell.dragging .tl-bar,.tl-cell.sliding .tl-bar{transition:none}
+.tl-bar b{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
+.tl-cell--tight .tl-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
+.tl-cell--hard .tl-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
+/* fantome de la duree standard, visible des que l'atelier est comprime */
+.tl-ghost{position:absolute;top:7px;height:40px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
+/* plancher : la ou l'agenda ne tient plus */
+.tl-floor{position:absolute;top:2px;bottom:2px;left:calc(var(--fx) * 100%);width:2px;background:var(--warn-line);opacity:0;transition:opacity .12s;pointer-events:none}
+.tl-row:hover .tl-floor,.tl-cell.dragging .tl-floor{opacity:.9}
+.tl-grip{position:absolute;top:7px;height:40px;left:calc((var(--x) + var(--w)) * 100%);width:14px;margin-left:-7px;cursor:ew-resize;border-radius:4px;touch-action:none;z-index:2}
+.tl-grip::after{content:"";position:absolute;top:50%;left:50%;width:3px;height:18px;margin:-9px 0 0 -1.5px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.35}
+.tl-row:hover .tl-grip::after,.tl-grip:focus-visible::after{opacity:.8}
+.tl-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+/* le temps libere par la compression, en bout de frise */
+.tl-free{position:absolute;top:0;bottom:0;visibility:visible;left:calc(var(--x) * 100%);right:0;border-radius:8px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.tl-free span{position:absolute;right:6px;white-space:nowrap;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg);padding:2px 8px;border-radius:6px}
+.tl-freerow{position:relative;height:32px;margin-top:10px}
+/* ---------- decor de l'explo ---------- */
 body{padding:32px 24px 80px}
 .wrap{max-width:1040px;margin:0 auto}
 .explo-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin:0 0 18px}
 .explo-head h1{font-size:20px;margin:0}
 .explo-head p{margin:0;color:var(--ink-3);font-size:13px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
-.summary-line{margin:0 0 16px}
-.summary-line small{display:block;color:var(--ink-2);font-size:13.5px;font-weight:600;margin-bottom:6px}
-.summary-line h2{margin:0;font-size:30px;font-weight:700;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
-.horizon{display:inline-flex;gap:4px;padding:3px;border-radius:10px;background:var(--surface-2);margin-left:auto}
-.horizon button{border:0;background:none;padding:6px 12px;border-radius:8px;font:inherit;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
-.horizon button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .plan-table{width:100%;border-collapse:collapse;font-size:13.5px}
 .plan-table th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:0 10px 8px 0;border-bottom:1px solid var(--line)}
 .plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .plan-wrap{overflow-x:auto}
+.hint{margin:10px 0 0;font-size:12px;color:var(--ink-3)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="explo-head">
     <h1>Carte Plan, isolée</h1>
-    <p>Données factices. Tirez le bord droit d'une barre, ou les flèches du clavier.</p>
-    <span class="horizon" id="horizon">
-      <button type="button" data-h="demi" aria-pressed="false">Une session</button>
-      <button type="button" data-h="semaine" aria-pressed="true">Une semaine</button>
-      <button type="button" data-h="programme" aria-pressed="false">Un programme</button>
-    </span>
+    <p>Données factices. Tirez le bord droit d'une barre : les suivantes se décalent, le temps libéré apparaît au bout.</p>
   </div>
   <div class="card" id="card"></div>
 </div>
 <script>
-const T = [
- {
-  "id": "kickoff",
-  "name": "Kick-off canvas",
-  "phase": "cadrage",
-  "dur": 2,
-  "who": "PM, tech lead, design, sponsor",
-  "out": "Project charter signed off",
-  "agenda": [
-   {
-    "t": "Frame the why",
-    "min": 15
-   },
-   {
-    "t": "Goal and success",
-    "min": 25
-   },
-   {
-    "t": "Scope and out of scope",
-    "min": 30
-   },
-   {
-    "t": "Risks and roles",
-    "min": 25
-   },
-   {
-    "t": "Milestones",
-    "min": 15
-   },
-   {
-    "t": "Read it back",
-    "min": 10
-   }
-  ]
- },
- {
-  "id": "teamcanvas",
-  "name": "Team canvas",
-  "phase": "cadrage",
-  "dur": 2,
-  "who": "The whole team",
-  "out": "Shared working agreement",
-  "agenda": [
-   {
-    "t": "Purpose",
-    "min": 15
-   },
-   {
-    "t": "People and roles",
-    "min": 20
-   },
-   {
-    "t": "Common and personal goals",
-    "min": 30
-   },
-   {
-    "t": "Values and rules",
-    "min": 30
-   },
-   {
-    "t": "Needs",
-    "min": 15
-   },
-   {
-    "t": "Commit",
-    "min": 10
-   }
-  ]
- },
- {
-  "id": "impact",
-  "name": "Impact mapping",
-  "phase": "strategie",
-  "dur": 3,
-  "who": "PM, design, tech lead",
-  "out": "Goal mapped to deliverables",
-  "agenda": [
-   {
-    "t": "The goal",
-    "min": 20
-   },
-   {
-    "t": "Actors",
-    "min": 30
-   },
-   {
-    "t": "Impacts",
-    "min": 40
-   },
-   {
-    "t": "Deliverables",
-    "min": 50
-   },
-   {
-    "t": "Prune",
-    "min": 25
-   },
-   {
-    "t": "Pick one path",
-    "min": 15
-   }
-  ]
- },
- {
-  "id": "pitch",
-  "name": "Elevator pitch",
-  "phase": "strategie",
-  "dur": 1,
-  "who": "PM, marketing",
-  "out": "One sentence everyone repeats",
-  "agenda": [
-   {
-    "t": "Fill the blanks alone",
-    "min": 15
-   },
-   {
-    "t": "Read them out",
-    "min": 15
-   },
-   {
-    "t": "Merge",
-    "min": 20
-   },
-   {
-    "t": "Say it in one breath",
-    "min": 10
-   }
-  ]
- },
- {
-  "id": "nnl",
-  "name": "Now / Next / Later",
-  "phase": "prio",
-  "dur": 1.5,
-  "who": "PM, team, stakeholders",
-  "out": "A roadmap without dates",
-  "agenda": [
-   {
-    "t": "Dump the list",
-    "min": 15
-   },
-   {
-    "t": "Sort into three",
-    "min": 25
-   },
-   {
-    "t": "Cap the Now",
-    "min": 25
-   },
-   {
-    "t": "Name the owners",
-    "min": 15
-   },
-   {
-    "t": "Agree the revisit date",
-    "min": 10
-   }
-  ]
- }
-];
+const T = [{"id":"kickoff","name":"Kick-off canvas","phase":"cadrage","dur":2,"who":"PM, tech lead, design, sponsor","out":"Cadrage signé","agenda":[{"t":"Poser le pourquoi","min":15},{"t":"But et succès","min":25},{"t":"Périmètre","min":30},{"t":"Risques et rôles","min":25},{"t":"Jalons","min":15},{"t":"Relire à voix haute","min":10}]},{"id":"teamcanvas","name":"Team canvas","phase":"cadrage","dur":2,"who":"Toute l’équipe","out":"Règles de travail partagées","agenda":[{"t":"Raison d’être","min":15},{"t":"Rôles","min":20},{"t":"Objectifs","min":30},{"t":"Valeurs et règles","min":30},{"t":"Besoins","min":15},{"t":"S’engager","min":10}]},{"id":"impact","name":"Impact mapping","phase":"strategie","dur":3,"who":"PM, design, tech lead","out":"But relié aux livrables","agenda":[{"t":"Le but","min":20},{"t":"Acteurs","min":30},{"t":"Impacts","min":40},{"t":"Livrables","min":50},{"t":"Élaguer","min":25},{"t":"Choisir un chemin","min":15}]},{"id":"pitch","name":"Elevator pitch","phase":"strategie","dur":1,"who":"PM, marketing","out":"Une phrase que tous répètent","agenda":[{"t":"Remplir seul","min":15},{"t":"Lire à voix haute","min":15},{"t":"Fusionner","min":20},{"t":"Le dire d’un souffle","min":10}]},{"id":"nnl","name":"Now / Next / Later","phase":"prio","dur":1.5,"who":"PM, équipe, parties prenantes","out":"Une feuille de route sans dates","agenda":[{"t":"Vider la liste","min":15},{"t":"Trier en trois","min":25},{"t":"Plafonner le Now","min":25},{"t":"Nommer les responsables","min":15},{"t":"Fixer la revue","min":10}]}];
 const PHASES = [
   {id:'cadrage', name:'Cadrage & kick-off', h:'--h-cadrage'},
   {id:'strategie', name:'Stratégie & vision', h:'--h-strategie'},
   {id:'prio', name:'Priorisation & planification', h:'--h-prio'},
 ];
-const UIX = { slotSession:'Session', slotDay:n => 'Jour ' + n, slotWeek:n => 'Semaine ' + n,
-  slotWhen:'Quand', slotWhat:'Atelier', dur:'Durée', who:'Participants', out:'Résultat', total:'Total',
-  planned:'Prévu', refTime:'standard', resetDur:'Remettre les durées', minutes:'min', min:'min', hours:'h', days:'j',
+const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', start:'Début', what:'Atelier',
+  planned:'Prévu', refTime:'standard', reset:'Remettre les durées', min:'min', hours:'h', days:'j',
   workshops:n => n > 1 ? 'ateliers' : 'atelier',
-  cutStep:(n, m) => n + ' tombe à ' + m + ' min',
-  floorHit:'minimum que l\u2019agenda supporte',
-  dragHint:'Tirez le bord droit d\u2019une barre pour changer une durée. Les flèches du clavier marchent aussi.' };
+  cut:(n, m) => n + ' tombe à ' + m + ' min',
+  floor:'minimum que l\u2019agenda supporte',
+  freed:h => h + ' libérées',
+  hint:'Tirez le bord droit d\u2019une barre. Les flèches du clavier marchent aussi.' };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const byId = (arr, id) => arr.find(x => x.id === id);
-let horizon = 'semaine';
+const byId = (a, id) => a.find(x => x.id === id);
 let durOv = {};
 
-/* ---------- le modele, copie du produit ---------- */
 const STEPM = 5;
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
 const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
 const rat = t => edur(t) / t.dur;
 const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
-function minDur(t){ return t.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / 60; }
-const fmtHours = h => (h % 1 ? h.toFixed(1).replace('.', ',') : h) + ' ' + UIX.hours;
-const fmtDur = h => {
-  const d = h / 7;
-  if(h >= 7 && Math.abs(h - Math.round(d) * 7) < 0.25) return Math.round(d) + ' ' + UIX.days;
-  if(h >= 7) return fmtHours(Math.round(h * 2) / 2);
-  return h < 1 ? Math.round(h * 60) + ' ' + UIX.min : fmtHours(h);
-};
+const minDur = t => t.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / 60;
+const fmtHours = h => (h % 1 ? h.toFixed(1).replace('.', ',') : h) + ' ' + U.hours;
+const fmtDur = h => h < 1 ? Math.round(h * 60) + ' ' + U.min : fmtHours(Math.round(h * 60) / 60 % 1 ? Math.round(h * 10) / 10 : h);
+
 function scaleAgenda(agenda, targetMin){
   const ref = agenda.reduce((s, a) => s + a.min, 0);
   const out = agenda.map(a => ({t:a.t, min:a.min, ref:a.min}));
-  if(!targetMin || !ref || Math.abs(targetMin - ref) < 1){ out.forEach(a => { a.cut = false; }); return out; }
-  if(targetMin > ref){
-    const k = targetMin / ref;
-    out.forEach(a => { a.min = Math.max(1, Math.round(a.min * k)); });
-  } else {
+  if(!targetMin || Math.abs(targetMin - ref) < 1){ out.forEach(a => { a.cut = false; }); return out; }
+  if(targetMin > ref){ const k = targetMin / ref; out.forEach(a => { a.min = Math.max(1, Math.round(a.min * k)); }); }
+  else {
     const floor = a => Math.max(STEPM, Math.round(a.ref / 2));
     const sum = () => out.reduce((s, a) => s + a.min, 0);
     const take = pool => {
-      const cap = pool.reduce((s, a) => s + Math.max(0, a.min - floor(a)), 0);
-      const need = sum() - targetMin;
+      const cap = pool.reduce((s, a) => s + Math.max(0, a.min - floor(a)), 0), need = sum() - targetMin;
       if(cap <= 0 || need <= 0) return;
       const want = Math.min(need, cap);
       pool.forEach(a => { const c = Math.max(0, a.min - floor(a)); if(!c) return; a.min = Math.max(floor(a), a.min - Math.round(want * c / cap)); });
     };
     let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
-    const mid = out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big);
-    take(mid.length ? mid : out.slice());
+    take(out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big));
     take(out);
   }
   const diff = targetMin - out.reduce((s, a) => s + a.min, 0);
-  if(diff > 0){ const b2 = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); b2.min += diff; }
+  if(diff > 0){ const b = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); b.min += diff; }
   out.forEach(a => { a.cut = a.min < a.ref; });
   return out;
 }
-function riskLineFor(t, hours){
+function riskFor(t, hours){
   const r = hours / t.dur;
   if(Math.abs(r - 1) < 0.001) return '';
   const pct = Math.round(Math.abs(1 - r) * 100), sign = r < 1 ? '-' : '+';
   if(r > 1) return sign + pct + '%';
   const sc = scaleAgenda(t.agenda, Math.round(hours * 60));
-  const worst = sc.reduce((m, a) => (a.ref - a.min) > (m.ref - m.min) ? a : m, sc[0]);
-  return worst.ref === worst.min ? sign + pct + '%' : sign + pct + '% · ' + UIX.cutStep(worst.t, worst.min);
+  const w = sc.reduce((m, a) => (a.ref - a.min) > (m.ref - m.min) ? a : m, sc[0]);
+  return w.ref === w.min ? sign + pct + '%' : sign + pct + '% · ' + U.cut(w.t, w.min);
 }
-const riskLine = t => riskLineFor(t, edur(t));
 
-/* ---------- la carte ---------- */
-function planSlots(){
-  if(horizon === 'demi') return T.map((t, i) => ({label:UIX.slotSession, t, start:i, span:1}));
-  if(horizon === 'semaine') return T.map((t, i) => ({label:UIX.slotDay(i + 1), t, start:i, span:1}));
-  let week = 0, used = 0;
-  return T.map(t => {
-    const d = edur(t);
-    if(used > 0 && used + d > 6){ week++; used = 0; }
-    const slot = {label:UIX.slotWeek(week + 1), t, start:week, span:1};
-    used += d; return slot;
-  });
+/* positions : chaque atelier commence ou le precedent finit */
+function layout(){
+  let cum = 0;
+  return T.map(t => { const x = cum, w = edur(t); cum += w; return {t, x, w}; });
 }
-function ganttHtml(slots){
-  const n = slots.reduce((m, s) => Math.max(m, s.start + s.span), 0);
-  const cap = horizon === 'programme' ? 6 : Math.max(1, ...slots.map(s => edur(s.t)));
-  const cols = Array.from({length:n}, (_, i) => horizon === 'demi' ? UIX.slotSession + ' ' + (i + 1) : horizon === 'semaine' ? UIX.slotDay(i + 1) : UIX.slotWeek(i + 1));
-  const phases = PHASES.filter(p => slots.some(s => s.t.phase === p.id));
-  let html = '<div class="gantt" style="--n:' + n + '" data-cap="' + cap + '" data-n="' + n + '"><div class="g-head">' + cols.map(c => '<span>' + esc(c) + '</span>').join('') + '</div>';
-  phases.forEach(p => {
-    html += '<div class="g-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="g-row" style="--h:var(' + p.h + ')">';
+const axisHours = () => Math.max(T.reduce((s, t) => s + t.dur, 0), layout().reduce((s, l) => Math.max(s, l.x + l.w), 0));
+
+function render(){
+  const slots = layout(), axis = axisHours();
+  const total = slots.reduce((s, l) => s + l.w, 0), ref = T.reduce((s, t) => s + t.dur, 0);
+  const touched = Object.keys(durOv).length > 0;
+  const step = axis <= 8 ? 1 : axis <= 16 ? 2 : 4;
+  let ticks = '';
+  for(let h = 0; h <= axis + 0.001; h += step) ticks += '<i class="tl-tick" style="left:' + (h / axis * 100).toFixed(3) + '%"><span>' + (h ? fmtDur(h) : '0') + '</span></i>';
+  let grid = '';
+  for(let h = 0; h <= axis + 0.001; h += step) grid += '<i style="left:' + (h / axis * 100).toFixed(3) + '%"></i>';
+
+  let frise = '<div class="tl" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
+  PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
+    frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
     slots.filter(s => s.t.phase === p.id).forEach(s => {
       const t = s.t, r = rat(t);
-      const frac = Math.max(0.16, Math.min(1, edur(t) / (cap * s.span)));
-      html += '<div class="g-cell g-cell--' + band(r) + '" style="grid-column:' + (s.start + 1) + ' / span ' + s.span + ';--frac:' + frac.toFixed(4) + '" data-cell="' + t.id + '">'
-        + '<button type="button" class="g-bar" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(edur(t)) + '</small></button>'
-        + '<span class="g-grip" data-grip="' + t.id + '" role="slider" tabindex="0" aria-valuetext="' + esc(fmtDur(edur(t))) + '" title="' + esc(UIX.dragHint) + '"></span></div>';
+      const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + minDur(t)) / axis;
+      frise += '<div class="tl-cell tl-cell--' + band(r) + '" data-cell="' + t.id + '">'
+        + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (r < 0.999 ? 1 : 0) + '"></div>'
+        + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small></button>'
+        + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
+        + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span></div>';
     });
-    html += '</div>';
+    frise += '</div>';
   });
-  return html + '</div><p class="gantt-hint">' + esc(UIX.dragHint) + '</p>';
-}
-function render(){
-  const slots = planSlots();
-  const total = T.reduce((s, t) => s + edur(t), 0);
-  const ref = T.reduce((s, t) => s + t.dur, 0);
-  const touched = Object.keys(durOv).length > 0;
+  frise += '<div class="tl-freerow"><div class="tl-free" style="--x:' + (total / axis).toFixed(5) + ';visibility:' + (axis - total > 0.01 ? 'visible' : 'hidden') + '"><span>' + esc(U.freed(fmtDur(Math.max(0, axis - total)))) + '</span></div></div>';
+  frise += '</div><p class="hint">' + esc(U.hint) + '</p>';
+
   const rows = slots.map((s, i) => {
-    const t = s.t, r = rat(t), risk = riskLine(t);
-    return '<tr><td class="mono">' + esc(s.label) + '</td>'
-      + '<td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
-      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button><b class="mono">' + fmtDur(edur(t)) + '</b><button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
-      + (risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '<small class="risk">' + esc(UIX.refTime) + '</small>') + '</td>'
+    const t = s.t, r = rat(t), risk = riskFor(t, s.w);
+    return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
+      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button><b class="mono">' + fmtDur(s.w) + '</b><button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
+      + (risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '<small class="risk">' + esc(U.refTime) + '</small>') + '</td>'
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
+
   document.getElementById('card').innerHTML =
-    '<div class="summary-line"><small>Post-PMF · lancement de projet</small><h2>' + T.length + ' ' + UIX.workshops(T.length) + ' · ' + fmtDur(total) + '</h2></div>'
-    + '<div class="plan-wrap">' + ganttHtml(slots) + '</div>'
-    + (touched ? '<p class="plan-adjusted"><span>' + UIX.planned + ' <b>' + fmtDur(total) + '</b> · ' + UIX.refTime + ' ' + fmtDur(ref) + '</span><button type="button" class="btn" data-reset>' + UIX.resetDur + '</button></p>' : '')
-    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + UIX.slotWhen + '</th><th>' + UIX.slotWhat + '</th><th>' + UIX.dur + '</th><th>' + UIX.who + '</th><th>' + UIX.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
-    + '<tfoot><tr><td></td><td>' + UIX.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
+    '<div class="plan-wrap">' + frise + '</div>'
+    + (touched ? '<p class="plan-adjusted"><span>' + U.planned + ' <b>' + fmtDur(total) + '</b> · ' + U.refTime + ' ' + fmtDur(ref) + '</span><button type="button" class="btn" data-reset>' + U.reset + '</button></p>' : '')
+    + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
+    + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
 }
 
-/* ---------- le geste ---------- */
-let gdrag = null;
-function gTip(text, warn, x, y){
+/* ---------- le geste : on tire, les suivants glissent ---------- */
+let drag = null;
+function tip(text, warn, x, y){
   let el = document.getElementById('g-tip');
   if(!el){ el = document.createElement('div'); el.id = 'g-tip'; document.body.appendChild(el); }
   el.className = 'g-tip' + (warn ? ' warn' : '');
@@ -410,38 +230,57 @@ function gTip(text, warn, x, y){
   el.style.left = Math.min(window.innerWidth - 270, Math.max(8, x + 14)) + 'px';
   el.style.top = Math.max(8, y - 44) + 'px';
 }
-const gTipHide = () => { const el = document.getElementById('g-tip'); if(el) el.remove(); };
-function gLive(id, hours){
-  const t = byId(T, id), cell = document.querySelector('[data-cell="' + id + '"]');
-  if(!cell) return;
-  const g = cell.closest('.gantt'), cap = +g.dataset.cap;
-  const span = (cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1];
-  cell.style.setProperty('--frac', Math.max(0.16, Math.min(1, hours / (cap * span))).toFixed(4));
-  const small = cell.querySelector('small'); if(small) small.textContent = fmtDur(hours);
-  cell.classList.remove('g-cell--ok', 'g-cell--tight', 'g-cell--hard');
-  cell.classList.add('g-cell--' + band(hours / t.dur));
+const tipHide = () => { const el = document.getElementById('g-tip'); if(el) el.remove(); };
+function live(id, hours){
+  const axis = +document.querySelector('.tl').dataset.axis;
+  let cum = 0, total = 0;
+  T.forEach(t => {
+    const w = t.id === id ? hours : edur(t);
+    const cell = document.querySelector('[data-cell="' + t.id + '"]');
+    if(cell){
+      const bar = cell.querySelector('.tl-bar'), ghost = cell.querySelector('.tl-ghost'), grip = cell.querySelector('.tl-grip'), floor = cell.querySelector('.tl-floor');
+      const x = cum / axis;
+      bar.style.setProperty('--x', x.toFixed(5)); bar.style.setProperty('--w', (w / axis).toFixed(5));
+      const sm = bar.querySelector('small'); if(sm) sm.textContent = fmtDur(w);
+      grip.style.setProperty('--x', x.toFixed(5)); grip.style.setProperty('--w', (w / axis).toFixed(5));
+      ghost.style.setProperty('--x', x.toFixed(5)); ghost.style.setProperty('--gw', (t.dur / axis).toFixed(5));
+      ghost.style.setProperty('--go', w < t.dur - 0.001 ? 1 : 0);
+      floor.style.setProperty('--fx', ((cum + minDur(t)) / axis).toFixed(5));
+      cell.classList.remove('tl-cell--ok', 'tl-cell--tight', 'tl-cell--hard');
+      cell.classList.add('tl-cell--' + band(w / t.dur));
+      if(t.id !== id) cell.classList.add('sliding');
+    }
+    cum += w; total = cum;
+  });
+  const free = document.querySelector('.tl-free');
+  if(free){
+    const gain = Math.max(0, axis - total);
+    free.style.setProperty('--x', (total / axis).toFixed(5));
+    free.style.visibility = gain > 0.01 ? 'visible' : 'hidden';
+    free.querySelector('span').textContent = U.freed(fmtDur(gain));
+  }
 }
 const commit = (id, hours) => { durOv[id] = Math.round(hours * 60) / 60; render(); };
 document.addEventListener('pointerdown', e => {
   const grip = e.target.closest('[data-grip]'); if(!grip) return;
-  const t = byId(T, grip.dataset.grip), cell = grip.closest('.g-cell'), g = cell.closest('.gantt'), row = cell.parentElement;
-  const n = +g.dataset.n, colPx = (row.clientWidth - 6 * (n - 1)) / n;
-  gdrag = {t, startX:e.clientX, startDur:edur(t), cap:+g.dataset.cap, colPx, cell, cur:edur(t)};
-  cell.classList.add('dragging'); grip.setPointerCapture(e.pointerId); e.preventDefault();
+  const t = byId(T, grip.dataset.grip), tl = grip.closest('.tl'), row = grip.closest('.tl-row');
+  drag = {t, startX:e.clientX, startDur:edur(t), axis:+tl.dataset.axis, px:row.clientWidth, cell:grip.closest('.tl-cell'), cur:edur(t)};
+  drag.cell.classList.add('dragging');
+  grip.setPointerCapture(e.pointerId); e.preventDefault();
 });
 document.addEventListener('pointermove', e => {
-  if(!gdrag) return;
-  const t = gdrag.t, step = stepFor(t), lo = minDur(t);
-  const dh = ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
-  const val = Math.max(lo, Math.min(t.dur * 2, Math.round((gdrag.startDur + dh) / step) * step));
-  gdrag.cur = val; gLive(t.id, val);
+  if(!drag) return;
+  const t = drag.t, step = stepFor(t), lo = minDur(t);
+  const dh = ((e.clientX - drag.startX) / drag.px) * drag.axis;
+  const val = Math.max(lo, Math.min(t.dur * 2, Math.round((drag.startDur + dh) / step) * step));
+  drag.cur = val; live(t.id, val);
   const r = val / t.dur, atFloor = Math.abs(val - lo) < 0.001 && val < t.dur;
-  const line = r < 0.999 ? riskLineFor(t, val) : '';
-  gTip(fmtDur(val) + (atFloor ? ' · ' + UIX.floorHit : line ? ' · ' + line : ''), r < 0.7, e.clientX, e.clientY);
+  const line = r < 0.999 ? riskFor(t, val) : '';
+  tip(fmtDur(val) + (atFloor ? ' · ' + U.floor : line ? ' · ' + line : ''), r < 0.7, e.clientX, e.clientY);
 });
 document.addEventListener('pointerup', () => {
-  if(!gdrag) return;
-  const d = gdrag; gdrag = null; gTipHide(); d.cell.classList.remove('dragging');
+  if(!drag) return;
+  const d = drag; drag = null; tipHide(); d.cell.classList.remove('dragging');
   if(Math.abs(d.cur - d.startDur) > 0.001) commit(d.t.id, d.cur); else render();
 });
 document.addEventListener('keydown', e => {
@@ -455,9 +294,7 @@ document.addEventListener('click', e => {
   const du = e.target.closest('[data-dur]');
   if(du){ const t = byId(T, du.dataset.dur), st = stepFor(t);
     commit(t.id, Math.min(t.dur * 2, Math.max(minDur(t), edur(t) + (+du.dataset.d) * st))); return; }
-  if(e.target.closest('[data-reset]')){ durOv = {}; render(); return; }
-  const hz = e.target.closest('[data-h]');
-  if(hz){ horizon = hz.dataset.h; [...document.querySelectorAll('[data-h]')].forEach(b => b.setAttribute('aria-pressed', b === hz)); render(); }
+  if(e.target.closest('[data-reset]')){ durOv = {}; render(); }
 });
 render();
 </script>
