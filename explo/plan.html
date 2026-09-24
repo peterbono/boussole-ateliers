@@ -84,8 +84,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-cell.dragging .tl-bar,.tl-cell.sliding .tl-bar{transition:none}
 .tl-bar b{position:relative;z-index:1;font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
-.tl-cell--tight .tl-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
-.tl-cell--hard .tl-bar{box-shadow:inset 0 0 0 1.5px var(--alert-line)}
 /* fantome de la duree standard, visible des que l'atelier est comprime */
 .tl-ghost{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* plancher : la ou l'agenda ne tient plus */
@@ -303,7 +301,7 @@ function render(){
       const t = s.t, r = rat(t);
       const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + recDur(t)) / axis;
       const short = dirty && tooShort(t);
-      frise += '<div class="tl-cell' + (dirty ? ' tl-cell--' + band(r) : '') + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
+      frise += '<div class="tl-cell' + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
         + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (dirty && r < 0.999 ? 1 : 0) + '"></div>'
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small><span class="tl-segs">' + segsHtml(t, s.w) + '</span></button>'
         + '<span class="tl-cap" style="--x:' + x.toFixed(5) + '"><b>' + esc(t.name) + '</b><i>' + fmtDur(s.w) + '</i></span>'
