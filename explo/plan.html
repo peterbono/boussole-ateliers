@@ -72,7 +72,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-row{position:relative;height:calc(58px + var(--caps, 0) * 17px);transition:height .12s ease;border-radius:0 0 8px 8px;background:hsl(var(--h) 50% calc(var(--chip-l) + 6%) / .45)}
 .tl-grid{position:absolute;inset:0;pointer-events:none}
 .tl-grid i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line);opacity:.65}
-.tl-bar{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:54px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
+.tl-bar{position:absolute;top:7px;height:44px;left:calc(var(--x) * 100%);width:calc(var(--w) * 100%);min-width:10px;border-radius:8px;border:0;padding:5px 9px;text-align:left;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l));cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;transition:left .12s ease,width .12s ease}
 .tl-cell.dragging .tl-bar,.tl-cell.sliding .tl-bar{transition:none}
 .tl-bar b{position:relative;z-index:1;font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tl-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.85}
@@ -94,7 +94,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .tl-cap{position:absolute;top:54px;left:calc(var(--x) * 100%);margin-top:calc(var(--lane, 0) * 17px);white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
 .tl-cell--narrow .tl-cap{opacity:1}
 .tl-cell--narrow .tl-bar b{display:none}
-.tl-cell--narrow .tl-bar small{font-size:11px}
+.tl-cell--narrow .tl-bar{padding:0}
+/* deux barres minuscules ont leurs bords a quelques pixels : on retrecit la
+   poignee pour qu'elle ne recouvre pas la voisine */
+.tl-cell--narrow .tl-grip{width:8px;margin-left:-4px}
+.tl-cell--narrow .tl-bar small,.tl-cell--narrow .tl-segs{display:none}
+.tl-cap b{font-weight:600}
+.tl-cap i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;opacity:.75;margin-left:5px}
 .tl-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
 .tl-bar:hover .tl-segs,.tl-cell:focus-within .tl-segs,.tl-cell.dragging .tl-segs{opacity:1}
 .tl-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
@@ -269,16 +275,16 @@ function render(){
   let frise = '<div class="tl' + (dirty ? ' tl--draft' : '') + '" data-axis="' + axis + '"><div class="tl-axis">' + ticks + '</div>';
   PHASES.filter(p => slots.some(s => s.t.phase === p.id)).forEach(p => {
     frise += '<div class="tl-phase" style="--h:var(' + p.h + ')">' + esc(p.name) + '</div><div class="tl-row" style="--h:var(' + p.h + ')"><div class="tl-grid">' + grid + '</div>';
-    slots.filter(s => s.t.phase === p.id).forEach(s => {
+    slots.filter(s => s.t.phase === p.id).forEach((s, i) => {
       const t = s.t, r = rat(t);
       const x = s.x / axis, w = s.w / axis, gw = t.dur / axis, fx = (s.x + recDur(t)) / axis;
       const short = dirty && tooShort(t);
       frise += '<div class="tl-cell' + (dirty ? ' tl-cell--' + band(r) : '') + (short ? ' tl-cell--under' : '') + '" data-cell="' + t.id + '">'
         + '<div class="tl-ghost" style="--x:' + x.toFixed(5) + ';--gw:' + gw.toFixed(5) + ';--go:' + (dirty && r < 0.999 ? 1 : 0) + '"></div>'
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small><span class="tl-segs">' + segsHtml(t, s.w) + '</span></button>'
-        + '<span class="tl-cap" style="--x:' + x.toFixed(5) + '">' + esc(t.name) + '</span>'
+        + '<span class="tl-cap" style="--x:' + x.toFixed(5) + '"><b>' + esc(t.name) + '</b><i>' + fmtDur(s.w) + '</i></span>'
         + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
-        + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
+        + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="z-index:' + (60 - i) + ';--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
         + '</div>';
     });
     frise += '</div>';
@@ -334,11 +340,13 @@ function captions(){
     const lanes = [];
     cells.forEach(cell => {
       const bar = cell.querySelector('.tl-bar'), cap = cell.querySelector('.tl-cap');
-      const need = cap.scrollWidth + 22;
+      // on mesure le nom seul : la duree qui l'accompagne dans l'etiquette
+      // ne doit pas faire basculer une barre large en mode etroit
+      const need = cap.querySelector('b').scrollWidth + 22;
       const narrow = bar.clientWidth < need;
       cell.classList.toggle('tl-cell--narrow', narrow);
       if(!narrow){ cap.style.removeProperty('--lane'); return; }
-      const left = bar.getBoundingClientRect().left, right = left + cap.scrollWidth + 10;
+      const left = bar.getBoundingClientRect().left, right = left + cap.offsetWidth + 10;
       let lane = 0;
       while(lanes[lane] != null && left < lanes[lane]) lane++;
       lanes[lane] = right;
@@ -384,6 +392,8 @@ function live(id, hours){
   document.querySelectorAll('.tl-cap').forEach(cap => {
     const cell = cap.closest('.tl-cell'), bar = cell.querySelector('.tl-bar');
     cap.style.setProperty('--x', bar.style.getPropertyValue('--x'));
+    const d = bar.querySelector('small'), it = cap.querySelector('i');
+    if(d && it) it.textContent = d.textContent;
   });
   captions();
   const free = document.querySelector('.tl-free');
