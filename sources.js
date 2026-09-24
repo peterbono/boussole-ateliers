@@ -9,6 +9,7 @@ const SOURCES = {
   lean:         'https://leanstack.com/lean-canvas',
   daci:         'https://www.atlassian.com/team-playbook/plays/daci',
   health:       'https://www.atlassian.com/team-playbook/health-monitor',
+  starfish:     'https://www.thekua.com/rant/2006/03/the-retrospective-starfish/',
   horizons:     'https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/enduring-ideas-the-three-horizons-of-growth',
   brainwriting: 'https://en.wikipedia.org/wiki/6-3-5_Brainwriting',
   jtbd:         'https://jobs-to-be-done.com/',

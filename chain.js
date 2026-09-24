@@ -63,6 +63,7 @@ const CHAIN = {
   'retro-ssc':    {helps:['sprintplan']},
   'retro-4l':     {helps:['launch','sprintplan']},
   'retro-sailboat':{helps:['okr']},
+  starfish:       {helps:['sprintplan']},
   health:         {helps:['charter']},
   postmortem:     {helps:['launch']},
   metrics:        {needs:['nsm'], helps:['launch']},

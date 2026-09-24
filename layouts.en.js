@@ -75,6 +75,7 @@ const LAYOUTS_EN = {
   sync:         {kind:'columns', cols:[{t:'Agenda',n:3},{t:'Decisions',n:2},{t:'Actions',n:3},{t:'Blockers',n:1}]},
   // Measure
   'retro-ssc':  {kind:'columns', cols:[{t:'Start',n:3},{t:'Stop',n:3},{t:'Continue',n:4}]},
+  starfish:     {kind:'columns', cols:[{t:'Stop doing',n:3},{t:'Less of',n:3},{t:'Keep doing',n:4},{t:'More of',n:3},{t:'Start doing',n:3}]},
   'retro-4l':   {kind:'columns', cols:[{t:'Liked',n:3},{t:'Learned',n:3},{t:'Lacked',n:2},{t:'Longed for',n:2}]},
   'retro-sailboat': {kind:'quadrant', x:['',''], y:['',''], cells:['Wind (what pushes us)','Island (goal)','Anchors (what slows us)','Rocks (risks)']},
   health:       {kind:'grid', rows:['Leadership','Value delivered','Speed','Dependencies','Quality','Learning','Autonomy','Fun'], cols:['Green','Yellow','Red','Trend'], cells:'dots'},

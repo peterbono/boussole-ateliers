@@ -1654,5 +1654,101 @@
    ],
    "takeaway": "La squad a gardé l'itération 5 à moitié vide exprès, après trois trimestres à reporter du travail. La baisse de capacité d'août a été écrite avant qu'un seul item soit placé, d'où la demi-feature en itération 3."
   }
+ },
+ "starfish": {
+  "en": {
+   "context": "Field app squad at Fieldnote, retro number 9. The team keeps running Start / Stop / Continue and keeps producing the same three actions, so Karim swaps the format for one session.",
+   "blocks": [
+    {
+     "t": "Stop doing",
+     "items": [
+      "Estimating offline sync stories without Tom in the room",
+      "Scope added by direct message after the sprint has started",
+      "Fixing the same upload bug in two places"
+     ]
+    },
+    {
+     "t": "Less of",
+     "items": [
+      "Unplanned pairing that depends on who is free",
+      "Smoke tests on the simulator",
+      "Tickets written the morning of planning"
+     ]
+    },
+    {
+     "t": "Keep doing",
+     "items": [
+      "Written sprint goal on the board",
+      "Demo on a real van phone",
+      "15-minute standups, no exceptions",
+      "One technician in the beta group"
+     ]
+    },
+    {
+     "t": "More of",
+     "items": [
+      "Field visits, we did one in three months",
+      "Beta technicians in the sprint review",
+      "Time on the sync engine before it bites us"
+     ]
+    },
+    {
+     "t": "Start doing",
+     "items": [
+      "A release checklist read out loud",
+      "Rotating who owns the sync engine",
+      "Writing the incident note the same day"
+     ]
+    }
+   ],
+   "takeaway": "The two changes came from the middle columns, which the three-column format had been burying in Continue: pairing booked at planning rather than improvised, two slots a sprint, and field visits set at one per person per month. Three actions with owners, checked at retro 10."
+  },
+  "fr": {
+   "context": "Squad application terrain chez Fieldnote, rétro numéro 9. L'équipe enchaîne les Start / Stop / Continue et ressort les mêmes trois actions, alors Karim change de format pour une séance.",
+   "blocks": [
+    {
+     "t": "Arrêter",
+     "items": [
+      "Estimer les sujets de synchro hors ligne sans Tom",
+      "Ajouter du scope en message privé après le début du sprint",
+      "Corriger le même bug d'upload à deux endroits"
+     ]
+    },
+    {
+     "t": "Faire moins",
+     "items": [
+      "Le binôme improvisé selon qui est libre",
+      "Les tests de fumée sur simulateur",
+      "Les tickets écrits le matin du planning"
+     ]
+    },
+    {
+     "t": "Garder",
+     "items": [
+      "L'objectif de sprint écrit au tableau",
+      "La démo sur un vrai téléphone de camion",
+      "Le point quotidien de 15 minutes, sans exception",
+      "Un technicien dans le groupe bêta"
+     ]
+    },
+    {
+     "t": "Faire plus",
+     "items": [
+      "Les visites terrain, une seule en trois mois",
+      "Les techniciens bêta en revue de sprint",
+      "Du temps sur le moteur de synchro avant qu'il ne morde"
+     ]
+    },
+    {
+     "t": "Commencer",
+     "items": [
+      "Une checklist de mise en production lue à voix haute",
+      "Faire tourner la responsabilité du moteur de synchro",
+      "Écrire la note d'incident le jour même"
+     ]
+    }
+   ],
+   "takeaway": "Les deux changements viennent des colonnes du milieu, que le format à trois cases enterrait dans Continuer : le binôme réservé au planning plutôt qu'improvisé, deux créneaux par sprint, et les visites terrain fixées à une par personne et par mois. Trois actions avec responsable, vérifiées à la rétro 10."
+  }
  }
 }

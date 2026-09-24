@@ -75,6 +75,7 @@ const LAYOUTS_FR = {
   sync:         {kind:'columns', cols:[{t:'Ordre du jour',n:3},{t:'Décisions',n:2},{t:'Actions',n:3},{t:'Bloquants',n:1}]},
   // Mesure
   'retro-ssc':  {kind:'columns', cols:[{t:'Start',n:3},{t:'Stop',n:3},{t:'Continue',n:4}]},
+  starfish:     {kind:'columns', cols:[{t:'Arrêter',n:3},{t:'Faire moins',n:3},{t:'Garder',n:4},{t:'Faire plus',n:3},{t:'Commencer',n:3}]},
   'retro-4l':   {kind:'columns', cols:[{t:'Liked',n:3},{t:'Learned',n:3},{t:'Lacked',n:2},{t:'Longed for',n:2}]},
   'retro-sailboat': {kind:'quadrant', x:['',''], y:['',''], cells:['Vent (ce qui pousse)','Île (objectif)','Ancres (ce qui freine)','Rochers (risques)']},
   health:       {kind:'grid', rows:['Leadership','Valeur livrée','Vélocité','Dépendances','Qualité','Apprentissage','Autonomie','Moral'], cols:['Vert','Jaune','Rouge','Tendance'], cells:'dots'},

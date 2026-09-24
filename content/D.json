@@ -1568,5 +1568,113 @@
    "next": "Les dépendances vont sur le program board, les risques au ROAM. Reviens sur le board à chaque frontière d'itération : un team board qu'on ne touche plus est un plan dont personne ne se sert.",
    "source": "https://scaledagileframework.com/pi-planning/"
   }
+ },
+ "starfish": {
+  "en": {
+   "prep": [
+    "The delivery team only, and a team that has already run a few retros. A first retro is better served by Start / Stop / Continue: five columns dilute a group that has not got the habit yet.",
+    "Five columns, left to right, in that order: Stop doing, Less of, Keep doing, More of, Start doing. The order is the point, it reads as a dial from less to more.",
+    "Post last retro's three actions on the board before people arrive, marked done or not done.",
+    "One sticky colour per person, not per column. You want to see who is silent."
+   ],
+   "agenda": [
+    {
+     "t": "Last actions",
+     "min": 5,
+     "d": "Read the three actions from last time. Done or not. If one was missed twice, drop it out loud and say why."
+    },
+    {
+     "t": "Silent writing",
+     "min": 12,
+     "d": "Everyone writes in the five columns, in silence. At least one sticky in Less of and one in More of, those are the two columns people skip."
+    },
+    {
+     "t": "Read and cluster",
+     "min": 15,
+     "d": "Each person reads their own stickies in one breath, no debate. Cluster duplicates as you go."
+    },
+    {
+     "t": "Vote",
+     "min": 5,
+     "d": "Three dots each, on the four action columns. Keep doing is not voted on, it is the thank-you column."
+    },
+    {
+     "t": "Set the dial",
+     "min": 15,
+     "d": "For each top cluster in Less of and More of, make it a quantity. 'More field visits' becomes 'one per person per month'. A dose without a number is a wish, and it comes back at the next retro unchanged."
+    },
+    {
+     "t": "Three actions",
+     "min": 18,
+     "d": "The three highest clusters become three actions, each with an owner and a date before the next retro. Write them in the team channel during the session."
+    },
+    {
+     "t": "One word",
+     "min": 5,
+     "d": "One word each on how the retro itself felt. If 'long' comes up twice, go back to three columns next time."
+    }
+   ],
+   "pitfalls": [
+    "Do not turn a Keep doing sticky into an action. That column exists so the team notices what it would miss, not to create work.",
+    "Do not accept 'more of' or 'less of' without a number, a frequency or a threshold. Undosed, it is indistinguishable from Continue, which is exactly the problem this format solves.",
+    "If everything lands in Start doing, the team is avoiding what it already has. Close that column and run the middle three again.",
+    "Five columns and three actions, not five actions. The extra columns buy precision, not volume."
+   ],
+   "next": "The three actions open the next retro. If the same Less of comes back three retros running, it is not a team habit, it is a constraint from outside: escalate it or run a Team Health Monitor.",
+   "source": "The starfish was described by Patrick Kua in 2006, as a scattergram that pushes a team to produce action items instead of saying something was not good."
+  },
+  "fr": {
+   "prep": [
+    "L'équipe de delivery uniquement, et une équipe qui a déjà quelques rétros derrière elle. Pour une première, Start / Stop / Continue vaut mieux : cinq colonnes diluent un groupe qui n'a pas encore l'habitude.",
+    "Cinq colonnes, de gauche à droite, dans cet ordre : Arrêter, Faire moins, Garder, Faire plus, Commencer. L'ordre est le sujet, il se lit comme un curseur.",
+    "Affichez les trois actions de la rétro précédente avant l'arrivée, faites ou non faites.",
+    "Une couleur de post-it par personne, pas par colonne. On veut voir qui se tait."
+   ],
+   "agenda": [
+    {
+     "t": "Actions précédentes",
+     "min": 5,
+     "d": "Relisez les trois actions de la dernière fois. Faites ou non. Si l'une est passée à la trappe deux fois, abandonnez-la à voix haute en disant pourquoi."
+    },
+    {
+     "t": "Écriture silencieuse",
+     "min": 12,
+     "d": "Chacun écrit dans les cinq colonnes, en silence. Au moins un post-it dans Faire moins et un dans Faire plus, ce sont les deux colonnes que les gens sautent."
+    },
+    {
+     "t": "Lecture et regroupement",
+     "min": 15,
+     "d": "Chacun lit ses propres post-its d'une traite, sans débat. On regroupe les doublons au fil de l'eau."
+    },
+    {
+     "t": "Vote",
+     "min": 5,
+     "d": "Trois gommettes chacun, sur les quatre colonnes d'action. Garder ne se vote pas, c'est la colonne des remerciements."
+    },
+    {
+     "t": "Régler le curseur",
+     "min": 15,
+     "d": "Pour chaque groupe en tête dans Faire moins et Faire plus, transformez-le en quantité. « Plus de visites terrain » devient « une par personne et par mois ». Une dose sans chiffre est un souhait, et elle revient identique à la rétro suivante."
+    },
+    {
+     "t": "Trois actions",
+     "min": 18,
+     "d": "Les trois groupes les plus votés deviennent trois actions, chacune avec un responsable et une date avant la prochaine rétro. Écrivez-les dans le canal de l'équipe pendant la séance."
+    },
+    {
+     "t": "Un mot",
+     "min": 5,
+     "d": "Un mot par personne sur la rétro elle-même. Si « longue » revient deux fois, repassez à trois colonnes la prochaine fois."
+    }
+   ],
+   "pitfalls": [
+    "Ne transformez pas un post-it Garder en action. Cette colonne sert à voir ce qui manquerait, pas à créer du travail.",
+    "N'acceptez pas un « faire plus » ou un « faire moins » sans chiffre, fréquence ou seuil. Sans dose, c'est un Continuer déguisé, exactement le problème que ce format résout.",
+    "Si tout atterrit dans Commencer, l'équipe évite ce qu'elle a déjà. Fermez cette colonne et refaites les trois du milieu.",
+    "Cinq colonnes et trois actions, pas cinq actions. Les colonnes supplémentaires achètent de la précision, pas du volume."
+   ],
+   "next": "Les trois actions ouvrent la rétro suivante. Si le même Faire moins revient trois rétros de suite, ce n'est pas une habitude d'équipe mais une contrainte venue d'ailleurs : faites-la remonter ou passez au Team Health Monitor.",
+   "source": "Le starfish a été décrit par Patrick Kua en 2006, comme un nuage de points qui pousse l'équipe à produire des actions au lieu de dire que quelque chose s'est mal passé."
+  }
  }
 }
