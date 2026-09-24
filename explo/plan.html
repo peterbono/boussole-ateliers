@@ -317,14 +317,14 @@ function render(){
 function editBar(total, ref){
   const n = Object.keys(durOv).length + dropped.length;
   if(dirty) return '<div class="edit-bar">'
-    + '<span class="edit-count">' + (n ? (n > 1 ? n + ' ateliers modifiés' : n + ' atelier modifié') + ' · ' + U.planned.toLowerCase() + ' ' + fmtDur(total) + ' pour ' + fmtDur(ref) + ' ' + U.refTime : 'Aucun changement') + '</span>'
+    + '<span class="edit-count">' + (n ? (n > 1 ? n + ' ateliers modifiés' : n + ' atelier modifié') + ' · ' + fmtDur(total) + ' au lieu de ' + fmtDur(ref) : 'Aucun changement') + '</span>'
     + '<button type="button" class="btn" data-undo' + (past.length ? '' : ' disabled') + '>Annuler</button>'
     + '<button type="button" class="btn" data-redo' + (future.length ? '' : ' disabled') + '>Rétablir</button>'
     + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
     + '<button type="button" class="btn primary" data-commit>Valider les changements</button>'
     + '</div>';
   if(n) return '<div class="edit-bar edit-bar--done">'
-    + '<span class="edit-count">Plan ajusté · ' + fmtDur(total) + ' pour ' + fmtDur(ref) + ' ' + U.refTime + '</span>'
+    + '<span class="edit-count">Plan ajusté · ' + fmtDur(total) + ' au lieu de ' + fmtDur(ref) + '</span>'
     + '<button type="button" class="btn" data-edit>Modifier</button>'
     + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
     + '</div>';
