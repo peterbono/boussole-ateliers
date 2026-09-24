@@ -45,6 +45,7 @@
     "Skipping the read-back to save time costs you the sign-off. Fifteen minutes now beats three weeks of 'that is not what I meant'."
    ],
    "next": "The charter goes to the top of the project space and gets quoted in every steering meeting. If the problem is still fuzzy, run the Problem statement canvas next; if the team is new, the Team charter.",
+   "breaks": "Out of scope gets skipped. Unwritten, it comes back in a meeting three weeks later.",
    "source": ""
   },
   "fr": {
@@ -92,6 +93,7 @@
     "Sauter la relecture pour gagner du temps te coûte la signature. Quinze minutes maintenant valent mieux que trois semaines de 'ce n'est pas ce que je voulais dire'."
    ],
    "next": "La charte s'épingle en haut de l'espace projet et se cite à chaque comité. Si le problème reste flou, enchaîne avec le Problem statement canvas ; si l'équipe est nouvelle, avec le Team charter.",
+   "breaks": "Le hors-périmètre passe à la trappe. Non écrit, il revient en réunion trois semaines plus tard.",
    "source": ""
   }
  },
@@ -136,6 +138,7 @@
     "Do not end with an empty Assume column. Three assumptions minimum, and each one becomes an item for the research plan."
    ],
    "next": "The statement becomes the first line of the PRD and the brief for research. The Assume column feeds Assumption mapping directly, then the Research plan.",
+   "breaks": "The Know versus assume sort goes. Beliefs travel into the PRD with nobody testing them.",
    "source": ""
   },
   "fr": {
@@ -178,6 +181,7 @@
     "Ne termine pas avec une colonne Supposé vide. Trois hypothèses minimum, chacune devient une ligne du plan de recherche."
    ],
    "next": "L'énoncé devient la première ligne du PRD et le brief de la research. La colonne Supposé alimente directement l'Assumption mapping, puis le Plan de recherche.",
+   "breaks": "Le tri Su ou supposé saute. Les croyances partent dans le PRD sans que personne les ait testées.",
    "source": ""
   }
  },
@@ -221,6 +225,7 @@
     "The map is a snapshot. Put a 30-minute revisit in the calendar after the first milestone, or it will be wrong within a month."
    ],
    "next": "The four treatments turn into calendar entries and a distribution list, owned by the PM. High-power skeptics get a 1:1 before the kick-off, and the map decides who is invited to the Pre-mortem.",
+   "breaks": "Deciding the treatments goes. The map stays a drawing and the high-power skeptic discovers the project in a steering meeting.",
    "source": ""
   },
   "fr": {
@@ -262,6 +267,7 @@
     "La carte est un instantané. Mets 30 minutes de révision au calendrier après le premier jalon, sinon elle sera fausse dans un mois."
    ],
    "next": "Les quatre traitements deviennent des entrées de calendrier et une liste de diffusion, tenues par le PM. Les sceptiques à fort pouvoir ont un 1:1 avant le kick-off, et la carte décide qui est invité au Pre-mortem.",
+   "breaks": "Le choix des traitements saute. La carte reste un dessin et le sceptique à fort pouvoir découvre le projet en comité.",
    "source": ""
   }
  },
@@ -311,6 +317,7 @@
     "A charter without a review date becomes a poster. Six weeks, then quarterly."
    ],
    "next": "The charter is pinned in the team channel and read to every new joiner in their first week. Its rituals get scheduled the same day; the Team Health Monitor six weeks later checks whether they hold.",
+   "breaks": "Turning values into behaviors goes. Six weeks later the charter is a poster nobody quotes.",
    "source": ""
   },
   "fr": {
@@ -358,6 +365,7 @@
     "Une charte sans date de révision devient un poster. Six semaines, puis chaque trimestre."
    ],
    "next": "La charte s'épingle dans le canal de l'équipe et se lit à chaque nouveau dans sa première semaine. Ses rituels sont planifiés le jour même ; le Team Health Monitor six semaines plus tard vérifie qu'ils tiennent.",
+   "breaks": "La traduction des valeurs en comportements saute. Six semaines plus tard, la charte est un poster que personne ne cite.",
    "source": ""
   }
  },
@@ -407,6 +415,7 @@
     "Do not polish. If the canvas takes more than two hours, you are writing a business plan. Ship v1 and rewrite it after ten interviews."
    ],
    "next": "The canvas lives in the founders' shared doc and gets rewritten every four to six weeks. The two riskiest assumptions go straight into Assumption mapping or an Experiment board.",
+   "breaks": "The riskiest assumption vote goes. The canvas stays a document and no test starts in the six weeks after.",
    "source": "Ash Maurya, Running Lean"
   },
   "fr": {
@@ -454,6 +463,7 @@
     "Ne peaufine pas. Si le canvas prend plus de deux heures, tu écris un business plan. Sors la v1 et réécris-la après dix entretiens."
    ],
    "next": "Le canvas vit dans le doc partagé des fondateurs et se réécrit toutes les quatre à six semaines. Les deux hypothèses les plus risquées partent directement dans l'Assumption mapping ou un Experiment board.",
+   "breaks": "Le vote sur les hypothèses risquées saute. Le canvas reste un document et aucun test ne démarre dans les six semaines.",
    "source": "Ash Maurya, Running Lean"
   }
  },
@@ -503,6 +513,7 @@
     "A canvas with no amounts on Revenue and Costs cannot support a decision. Rough numbers written in are better than precise numbers in someone's head."
    ],
    "next": "The canvas becomes the reference for leadership planning and the input for Three Horizons or OKRs. Red-dotted blocks become questions for the next Metrics review or a Positioning map.",
+   "breaks": "The red dots on the weakest blocks go. The canvas describes what exists and no block gets an owner.",
    "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
   },
   "fr": {
@@ -550,6 +561,7 @@
     "Un canvas sans montants sur Revenus et Coûts ne permet aucune décision. Des chiffres approximatifs écrits valent mieux que des chiffres précis dans la tête de quelqu'un."
    ],
    "next": "Le canvas devient la référence des plans de direction et l'entrée des Three Horizons ou des OKR. Les blocs à gommette rouge deviennent des questions pour la prochaine Revue métriques ou une Carte de positionnement.",
+   "breaks": "Les gommettes rouges sur les blocs fragiles sautent. Le canvas décrit l'existant et aucun bloc ne reçoit de responsable.",
    "source": "Alexander Osterwalder & Yves Pigneur, Strategyzer"
   }
  },
@@ -594,6 +606,7 @@
     "Fit is not a feeling. Count the matches on the top 3 pains and gains; below two out of three on each, you do not have fit yet."
    ],
    "next": "Matched pairs become the messaging for the Positioning map and the landing page. Red gaps become Assumption mapping items; orphan features go to the Impact/effort matrix for a keep-or-cut call.",
+   "breaks": "The fit check goes. You leave with two filled sides and nobody has counted the matches.",
    "source": "Alexander Osterwalder, Strategyzer"
   },
   "fr": {
@@ -636,6 +649,7 @@
     "Le fit n'est pas une impression. Compte les correspondances sur le top 3 des douleurs et des gains ; sous deux sur trois de chaque côté, tu n'as pas encore le fit."
    ],
    "next": "Les paires vertes deviennent le message de la Carte de positionnement et de la landing page. Les rouges deviennent des lignes d'Assumption mapping ; les fonctionnalités orphelines passent en Matrice impact/effort pour trancher garder ou couper.",
+   "breaks": "La vérification du fit saute. Vous sortez avec deux côtés remplis et personne n'a compté les correspondances.",
    "source": "Alexander Osterwalder, Strategyzer"
   }
  },
@@ -685,6 +699,7 @@
     "Voting to consensus gives you a sentence nobody hates and nobody remembers. Let the leader make the final call, in the room."
    ],
    "next": "The vision opens the roadmap, the OKR session and every onboarding. Business goals feed the North Star Metric work; the Product block becomes the filter for Now / Next / Later.",
+   "breaks": "Target group and needs gets skipped. The vision is written on nothing and lands as a slogan nobody repeats.",
    "source": "Roman Pichler"
   },
   "fr": {
@@ -732,6 +747,7 @@
     "Voter jusqu'au consensus donne une phrase que personne ne déteste et que personne ne retient. Laisse le dirigeant trancher, dans la salle."
    ],
    "next": "La vision ouvre la roadmap, la séance OKR et chaque onboarding. Les objectifs business nourrissent le travail sur la North Star Metric ; le bloc Produit devient le filtre du Now / Next / Later.",
+   "breaks": "Cible et besoins passe à la trappe. La vision se rédige à vide et sort en slogan que personne ne répète.",
    "source": "Roman Pichler"
   }
  },
@@ -781,6 +797,7 @@
     "Do not keep every branch alive. A map with twelve open branches is a backlog with arrows. Pick one, ship, remeasure, then open the next."
    ],
    "next": "The chosen branch becomes the scope of the User story map or the next PRD. Backlog items in the 'no impact' box are archived with the map as justification. Remeasure the goal metric after each release and prune the tree.",
+   "breaks": "The Impacts column gets skipped. The map turns into a backlog with arrows and the metric does not move after the release.",
    "source": "Gojko Adzic"
   },
   "fr": {
@@ -828,6 +845,7 @@
     "Ne garde pas toutes les branches vivantes. Une carte avec douze branches ouvertes est un backlog avec des flèches. Choisis-en une, livre, remesure, puis ouvre la suivante."
    ],
    "next": "La branche choisie devient le périmètre du User story map ou du prochain PRD. Les items du backlog dans la boîte 'sans impact' sont archivés avec la carte comme justification. Remesure la métrique après chaque release et élague l'arbre.",
+   "breaks": "Les Impacts passent à la trappe. La carte devient un backlog fléché et la métrique ne bouge pas après la release.",
    "source": "Gojko Adzic"
   }
  },
@@ -867,6 +885,7 @@
     "Do not let the design-skilled group win because their box looks nicer. Judge the words, cover the drawings if needed."
    ],
    "next": "The merged box becomes the brief for the landing page, the sales deck and the Positioning map. The three selling points are the test for every roadmap item: does it strengthen one of them?",
+   "breaks": "Pitching the boxes goes. The merge happens without the recurring words and the landing page stays in internal language.",
    "source": "Luke Hohmann, Innovation Games"
   },
   "fr": {
@@ -904,6 +923,7 @@
     "Ne laisse pas gagner le groupe qui dessine bien parce que sa boîte est plus jolie. Juge les mots, couvre les dessins s'il le faut."
    ],
    "next": "La boîte fusionnée devient le brief de la landing page, du deck commercial et de la Carte de positionnement. Les trois arguments sont le test de chaque item de roadmap : est-ce qu'il renforce l'un des trois ?",
+   "breaks": "Le pitch des boîtes saute. La fusion se fait sans les mots récurrents et la landing page reste en langage interne.",
    "source": "Luke Hohmann, Innovation Games"
   }
  },
@@ -948,6 +968,7 @@
     "A map with no arrow is a diagnosis without a decision. Always draw where you go next and what you stop claiming."
    ],
    "next": "The message goes to the landing page, the first sales deck slide and the Product Box. The arrow becomes a strategic theme in Now / Next / Later; revisit the map every six months or after a competitor launch.",
+   "breaks": "The 18-month arrow goes. The map photographs the market and sales keep using the old pitch.",
    "source": "April Dunford, Obviously Awesome"
   },
   "fr": {
@@ -990,6 +1011,7 @@
     "Une carte sans flèche est un diagnostic sans décision. Trace toujours où tu vas et ce que tu arrêtes de revendiquer."
    ],
    "next": "Le message part sur la landing page, la première slide du deck commercial et la Product Box. La flèche devient un thème stratégique du Now / Next / Later ; revois la carte tous les six mois ou après un lancement concurrent.",
+   "breaks": "La flèche à 18 mois saute. La carte photographie le marché et les ventes gardent l'ancien argumentaire.",
    "source": "April Dunford, Obviously Awesome"
   }
  },
@@ -1039,6 +1061,7 @@
     "Ending without pulling the current numbers. A metric nobody has measured yet is a project, not a metric; assign it before leaving."
    ],
    "next": "The tree is reviewed monthly in the leadership meeting and the input metrics become the KRs of the next OKR session. Each team's input metric shows up on their Sprint planning board.",
+   "breaks": "The per-team input metrics go. The North Star sits on a slide and no team owns a number.",
    "source": "Amplitude, The North Star Playbook"
   },
   "fr": {
@@ -1086,6 +1109,7 @@
     "Finir sans sortir les chiffres actuels. Une métrique que personne n'a encore mesurée est un projet, pas une métrique ; attribue-le avant de sortir."
    ],
    "next": "L'arbre est revu chaque mois en réunion de direction et les métriques d'entrée deviennent les KR de la prochaine séance OKR. La métrique d'entrée de chaque équipe apparaît sur son board de Sprint planning.",
+   "breaks": "Les métriques d'entrée par équipe sautent. La North Star reste sur une slide et aucune équipe ne possède un chiffre.",
    "source": "Amplitude, The North Star Playbook"
   }
  },
@@ -1135,6 +1159,7 @@
     "Skipping the cross-team check leaves two teams with KRs that need the same engineers. This step is where the workshop pays for itself."
    ],
    "next": "The OKR grid goes into the shared tracker with a weekly confidence update. KRs are the input for Now / Next / Later and RICE scoring; the mid-quarter review and the retro at the end close the loop.",
+   "breaks": "The cross-team check goes. In week six two teams find out their KRs need the same engineers.",
    "source": "John Doerr, Measure What Matters"
   },
   "fr": {
@@ -1182,6 +1207,7 @@
     "Sauter la vérification inter-équipes laisse deux équipes avec des KR qui réclament les mêmes devs. C'est l'étape où l'atelier se rentabilise."
    ],
    "next": "La grille OKR part dans le tracker partagé avec une mise à jour hebdo de la confiance. Les KR sont l'entrée du Now / Next / Later et du scoring RICE ; la revue de mi-trimestre et la rétro de fin ferment la boucle.",
+   "breaks": "La vérification inter-équipes saute. Deux équipes découvrent en semaine six qu'elles comptent sur les mêmes devs.",
    "source": "John Doerr, Measure What Matters"
   }
  },
@@ -1226,6 +1252,7 @@
     "Rebalancing on paper without moving people. A move that does not change someone's calendar next month did not happen."
    ],
    "next": "The split and the moves go into the annual plan and the next Business Model Canvas review. H1 initiatives get RICE-scored; H3 bets get an Experiment board each with a kill date.",
+   "breaks": "Rebalancing goes. The gap gets named, no headcount moves and next quarter shows the same split.",
    "source": "Baghai, Coley & White, McKinsey"
   },
   "fr": {
@@ -1268,6 +1295,7 @@
     "Rééquilibrer sur le papier sans déplacer des gens. Un mouvement qui ne change pas l'agenda de quelqu'un le mois prochain n'a pas eu lieu."
    ],
    "next": "La répartition et les mouvements entrent dans le plan annuel et dans la prochaine revue du Business Model Canvas. Les initiatives H1 passent au scoring RICE ; chaque pari H3 reçoit un Experiment board avec une date d'arrêt.",
+   "breaks": "Le rééquilibrage saute. L'écart est constaté, aucun effectif ne bouge et le trimestre suivant donne la même répartition.",
    "source": "Baghai, Coley & White, McKinsey"
   }
  },
@@ -1322,6 +1350,7 @@
     "Treating 'stopped' as failure. A project killed at PR/FAQ stage costs four hours. The same project killed at launch costs a quarter."
    ],
    "next": "An approved PR/FAQ becomes the first page of the PRD and the source for the Launch plan. A rewrite comes back in a week; a stop is archived with its reason so nobody reopens it in six months without new information.",
+   "breaks": "The FAQ hunt goes. The project moves to a PRD and the unwritten costs surface during build.",
    "source": "Amazon, Working Backwards"
   },
   "fr": {
@@ -1374,6 +1403,7 @@
     "Considérer 'arrêté' comme un échec. Un projet tué au stade PR/FAQ coûte quatre heures. Le même projet tué au lancement coûte un trimestre."
    ],
    "next": "Un PR/FAQ approuvé devient la première page du PRD et la source du Plan de lancement. Une réécriture revient dans une semaine ; un arrêt est archivé avec sa raison pour que personne ne le rouvre dans six mois sans information nouvelle.",
+   "breaks": "La chasse aux questions saute. Le projet part en PRD et les coûts non écrits ressortent en développement.",
    "source": "Amazon, Working Backwards"
   }
  },
@@ -1413,6 +1443,7 @@
     "Skipping it because the group knows each other. Familiar teams have fixed speaking orders, and the opener is what breaks them for the day."
    ],
    "next": "Keep the needs stickies visible and revisit them in the last five minutes. If several people named the same need that the agenda ignores, you have just found your next workshop.",
+   "breaks": "The needs round goes. Expectations stay unsaid and turn into quiet withdrawal by the afternoon.",
    "source": ""
   },
   "fr": {
@@ -1450,6 +1481,7 @@
     "Le sauter parce que le groupe se connaît. Les équipes habituées ont un ordre de parole figé, et c'est précisément ce que l'ouverture casse pour la journée."
    ],
    "next": "Garde les post-it de besoins visibles et reviens dessus dans les cinq dernières minutes. Si plusieurs personnes ont nommé le même besoin que l'ordre du jour ignore, tu viens de trouver ton prochain atelier.",
+   "breaks": "Le tour des besoins saute. Les attentes restent tues et se transforment en retrait silencieux l'après-midi.",
    "source": ""
   }
  },
@@ -1499,6 +1531,7 @@
     "Treating it as permanent. A team canvas is true for a quarter. Date it, and expect the roles block to be wrong first."
    ],
    "next": "Put the canvas where the team works, not in a drive. If the rules block turns out to be the hard part, the Team charter goes deeper on working agreements alone.",
+   "breaks": "Personal goals go. The canvas turns back into a team charter and a resignation lands as a surprise.",
    "source": "https://theteamcanvas.com/"
   },
   "fr": {
@@ -1546,6 +1579,7 @@
     "Le traiter comme définitif. Un team canvas est vrai pour un trimestre. Date-le, et attends-toi à ce que le bloc des rôles soit faux en premier."
    ],
    "next": "Mets le canvas là où l'équipe travaille, pas dans un drive. Si c'est le bloc des règles qui coince, la charte d'équipe creuse les accords de fonctionnement à elle seule.",
+   "breaks": "Les objectifs personnels sautent. Le canvas redevient une charte, et le départ de quelqu'un surprend tout le monde.",
    "source": "https://theteamcanvas.com/"
   }
  },
@@ -1590,6 +1624,7 @@
     "Writing it for investors when the audience is customers. Decide which pitch you are writing before you start, they are not the same sentence."
    ],
    "next": "Put the sentence in the product space and use it as a test: any roadmap item that does not serve the key benefit needs an explicit reason. If the category block was contested, run the Positioning map.",
+   "breaks": "The fight over the category goes. The sentence stays vague and each team compares the product to something else.",
    "source": "https://www.aprildunford.com/obviously-awesome"
   },
   "fr": {
@@ -1632,6 +1667,7 @@
     "L'écrire pour des investisseurs quand le public est le client. Décide quel pitch tu écris avant de commencer, ce ne sont pas les mêmes phrases."
    ],
    "next": "Mets la phrase dans l'espace produit et sers-t'en comme test : tout item de roadmap qui ne sert pas le bénéfice clé doit avoir une raison explicite. Si le bloc catégorie a été disputé, enchaîne sur la carte de positionnement.",
+   "breaks": "La bagarre sur la catégorie saute. La phrase sort vague et chaque service compare le produit à autre chose.",
    "source": "https://www.aprildunford.com/obviously-awesome"
   }
  },
@@ -1676,6 +1712,7 @@
     "Setting the date too far out. Beyond a year, people describe a fantasy. Six to twelve months keeps it close enough to be accountable."
    ],
    "next": "The outcomes feed Impact mapping or the Product Vision Board directly. If the walk-back produced a lot of assumptions, run Assumption mapping before committing to any of it.",
+   "breaks": "Working backwards goes. You are left with past-tense stories and no roadmap item to place the week after.",
    "source": "https://www.lukehohmann.com/innovation-games/remember-the-future"
   },
   "fr": {
@@ -1718,6 +1755,7 @@
     "Mettre la date trop loin. Au-delà d'un an, les gens décrivent un fantasme. Six à douze mois reste assez proche pour engager."
    ],
    "next": "Les résultats alimentent directement l'impact mapping ou le Product Vision Board. Si la remontée a produit beaucoup d'hypothèses, passe par l'assumption mapping avant de t'engager sur quoi que ce soit.",
+   "breaks": "La remontée du fil saute. Il reste des récits au passé et aucun item de roadmap à poser la semaine suivante.",
    "source": "https://www.lukehohmann.com/innovation-games/remember-the-future"
   }
  }

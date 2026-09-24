@@ -39,6 +39,7 @@
     "Do not let people put their own name as R and A on every row. Ask who does the work when they are on holiday."
    ],
    "next": "The matrix goes into the team charter or the project wiki. Every new activity is added on the spot. When decisions still stall, run a DACI on the specific decision rather than reopening the whole matrix.",
+   "breaks": "The row by row walk gets cut short. Rows with two As survive, and at the first call nobody decides.",
    "source": ""
   },
   "fr": {
@@ -80,6 +81,7 @@
     "Ne laisse pas quelqu'un se mettre R et A sur toutes les lignes. Demande qui fait le travail quand il est en vacances."
    ],
    "next": "La matrice rejoint le team charter ou le wiki projet. Toute nouvelle activité y est ajoutée sur le moment. Si des décisions bloquent encore, fais un DACI sur la décision précise plutôt que de rouvrir toute la matrice.",
+   "breaks": "Le parcours ligne par ligne s'écourte. Les lignes à deux A passent, et au premier arbitrage personne ne tranche.",
    "source": ""
   }
  },
@@ -123,6 +125,7 @@
     "Record the reasoning, not just the outcome. In six months nobody remembers why, and the decision gets reopened."
    ],
    "next": "The document is linked from the project page and becomes the reference when the decision is questioned. Recurring stuck decisions across the team are a signal to run a RACI on the underlying process.",
+   "breaks": "Listing the options goes, only the recommendation stays. Six months on, the decision is reopened with no reasoning written.",
    "source": "Atlassian Team Playbook"
   },
   "fr": {
@@ -164,6 +167,7 @@
     "Trace le raisonnement, pas seulement le résultat. Dans six mois personne ne se souvient du pourquoi, et la décision est rouverte."
    ],
    "next": "Le document est lié depuis la page projet et devient la référence quand la décision est remise en cause. Des décisions qui bloquent à répétition dans l'équipe sont le signal de faire un RACI sur le process sous-jacent.",
+   "breaks": "La liste des options saute, il ne reste que la recommandation. Six mois après, la décision est rouverte sans raison écrite.",
    "source": "Atlassian Team Playbook"
   }
  },
@@ -207,6 +211,7 @@
     "Do not try to resolve every red cell in the room. Two hours is for mapping. Resolution happens in the 48-hour follow-up."
    ],
    "next": "The grid becomes the dependency row of the program board, or a standing item in the weekly sync. Revisit it every sprint: dependencies that keep reappearing point to a team boundary that needs to move.",
+   "breaks": "Finding the crossings gets skipped. Two teams end up waiting on each other and find out mid sprint.",
    "source": ""
   },
   "fr": {
@@ -248,6 +253,7 @@
     "N'essaie pas de résoudre toutes les cases rouges dans la pièce. Deux heures servent à cartographier. La résolution se fait dans les 48 heures qui suivent."
    ],
    "next": "La grille devient la ligne Dépendances du program board, ou un point fixe de la synchro hebdo. Revois-la à chaque sprint : les dépendances qui reviennent sans cesse désignent une frontière d'équipe à déplacer.",
+   "breaks": "La recherche des croisements saute. Deux équipes s'attendent mutuellement et le découvrent en plein sprint.",
    "source": ""
   }
  },
@@ -297,6 +303,7 @@
     "Do not skip the confidence vote because it is late. A plan the team does not believe in is not a plan, and you will pay for it in sprint 3."
    ],
    "next": "PI objectives and the program board are the contract for the increment. The RTE keeps the board alive in the weekly sync; the Inspect & Adapt at the end of the PI closes the loop.",
+   "breaks": "The second draft round goes. Dependencies get settled by proxy and the plan breaks in sprint 3.",
    "source": "Scaled Agile"
   },
   "fr": {
@@ -344,6 +351,7 @@
     "Ne saute pas le vote de confiance parce qu'il est tard. Un plan auquel l'équipe ne croit pas n'est pas un plan, et tu le paieras au sprint 3."
    ],
    "next": "Les objectifs de PI et le program board sont le contrat de l'incrément. Le RTE fait vivre le board dans la synchro hebdo ; l'Inspect & Adapt de fin de PI ferme la boucle.",
+   "breaks": "Le deuxième brouillon saute. Les dépendances se règlent par intermédiaire et le plan casse au sprint 3.",
    "source": "Scaled Agile"
   }
  },
@@ -387,6 +395,7 @@
     "Do not keep zombie features on the board. If nobody can say who needs it, remove it and note it in the delta."
    ],
    "next": "The board feeds the weekly sync and the Inspect & Adapt. Features that slip twice in a row become a topic for the dependency map or the next PI Planning.",
+   "breaks": "The capacity check goes. A sprint over 100 percent stays on the board and shows up when it slips.",
    "source": "Scaled Agile"
   },
   "fr": {
@@ -428,6 +437,7 @@
     "Ne garde pas de features zombies sur le board. Si personne ne sait qui en a besoin, retire-la et note-le dans le delta."
    ],
    "next": "Le board alimente la synchro hebdo et l'Inspect & Adapt. Les features qui glissent deux fois de suite deviennent un sujet pour la carte des dépendances ou le prochain PI Planning.",
+   "breaks": "La vérification de capacité saute. Un sprint à plus de 100 pour cent reste au board et se voit quand il glisse.",
    "source": "Scaled Agile"
   }
  },
@@ -471,6 +481,7 @@
     "Do not leave with 12 mitigations. Five with owners beat twelve without."
    ],
    "next": "The top 5 risks and their mitigations go into the kick-off canvas or the project risk log. Review them at the first milestone: which ones happened anyway?",
+   "breaks": "Clustering and the dot vote go. Forty causes on the wall, no top 5, and nothing to review at the first milestone.",
    "source": "Gary Klein"
   },
   "fr": {
@@ -512,6 +523,7 @@
     "Ne repars pas avec 12 parades. Cinq avec des responsables valent mieux que douze sans."
    ],
    "next": "Le top 5 des risques et leurs parades vont dans le kick-off canvas ou le registre des risques. Revois-les au premier jalon : lesquels sont arrivés quand même ?",
+   "breaks": "Le regroupement et le vote sautent. Quarante causes au mur, aucun top 5, et rien à revoir au premier jalon.",
    "source": "Gary Klein"
   }
  },
@@ -555,6 +567,7 @@
     "Do not leave without numbers on the metrics. 'We will watch adoption' is not a metric."
    ],
    "next": "The dated checklist becomes the launch project, tracked in the weekly stakeholder sync. One week after launch, run the metrics review against the three numbers agreed here.",
+   "breaks": "The dated sequence goes. Support learns about the feature on launch day and the tickets land unanswered.",
    "source": ""
   },
   "fr": {
@@ -596,6 +609,7 @@
     "Ne repars pas sans chiffres sur les métriques. 'On surveillera l'adoption' n'est pas une métrique."
    ],
    "next": "La checklist datée devient le projet de lancement, suivi dans la synchro stakeholders hebdo. Une semaine après le lancement, fais la revue métriques contre les trois chiffres fixés ici.",
+   "breaks": "La séquence datée saute. Le support découvre la feature le jour J et les tickets tombent sans réponse.",
    "source": ""
   }
  },
@@ -639,6 +653,7 @@
     "Do not send the notes the next day. Notes posted after the meeting get read; notes posted the next day get filed."
    ],
    "next": "The running page is the memory of the product's decisions. When a decision gets reopened, link the block where it was made. When the same blocker appears 3 times, run a stakeholder map to check who is missing from the room.",
+   "breaks": "The Decisions block goes and the meeting becomes status. The decision comes back three weeks later, unwritten.",
    "source": ""
   },
   "fr": {
@@ -680,6 +695,7 @@
     "N'envoie pas le compte-rendu le lendemain. Un compte-rendu posté juste après la réunion est lu ; posté le lendemain, il est classé."
    ],
    "next": "La page continue est la mémoire des décisions du produit. Quand une décision est rouverte, renvoie au bloc où elle a été prise. Quand le même bloquant revient 3 fois, fais une stakeholder map pour vérifier qui manque dans la pièce.",
+   "breaks": "Le bloc Décisions saute et la réunion devient un statut. La décision revient trois semaines après, sans trace.",
    "source": ""
   }
  },
@@ -728,6 +744,7 @@
     "Do not let the loudest person read first. Start with whoever spoke least in the last sprint."
    ],
    "next": "The three actions live in the team channel and open the next retro. If the same Stop appears three retros in a row, it is not a team problem: escalate it or run a Team Health Monitor.",
+   "breaks": "The three actions get rushed at the end. Nothing is posted in the channel and the same Stop comes back next retro.",
    "source": ""
   },
   "fr": {
@@ -774,6 +791,7 @@
     "Ne laisse pas la personne la plus bruyante lire en premier. Commence par celle qui a le moins parlé pendant le sprint."
    ],
    "next": "Les trois actions vivent dans le canal de l'équipe et ouvrent la prochaine rétro. Si le même Stop revient trois rétros de suite, ce n'est pas un problème d'équipe : escalade-le ou fais un Team Health Monitor.",
+   "breaks": "Les trois actions se bouclent en fin de temps. Rien n'est posté dans le canal et le même Stop revient la fois suivante.",
    "source": ""
   }
  },
@@ -817,6 +835,7 @@
     "Do not let Longed for become a wish list for management. Filter it: what could the team itself build or ask for this quarter?"
    ],
    "next": "Learnings go into the team wiki or the onboarding doc, not the retro board. Actions open the next retro. After an incident, pair this with a blameless post-mortem for the timeline and root causes.",
+   "breaks": "Learned drops to the end of the session. The learnings stay on the board and never reach the team wiki.",
    "source": ""
   },
   "fr": {
@@ -858,6 +877,7 @@
     "Ne laisse pas Longed for devenir une liste de souhaits pour le management. Filtre : qu'est-ce que l'équipe elle-même pourrait construire ou demander ce trimestre ?"
    ],
    "next": "Les apprentissages vont dans le wiki de l'équipe ou le doc d'onboarding, pas sur le board de rétro. Les actions ouvrent la prochaine rétro. Après un incident, complète avec un post-mortem sans blâme pour la chronologie et les causes racines.",
+   "breaks": "La colonne Learned passe en dernier. Les apprentissages restent sur le board et n'arrivent jamais au wiki d'équipe.",
    "source": ""
   }
  },
@@ -906,6 +926,7 @@
     "Do not reuse the same drawing every sprint. After three times the metaphor is dead; switch to Start Stop Continue for a while."
    ],
    "next": "Actions open the next retro like any other format. Anchors marked external go to the stakeholder sync or the dependency map. If the island sentence changed during the retro, tell the PM: the team's goal drifted.",
+   "breaks": "Sorting anchors into ours and theirs goes. External anchors stay on the board and nobody escalates them.",
    "source": ""
   },
   "fr": {
@@ -952,6 +973,7 @@
     "Ne réutilise pas le même dessin à chaque sprint. Après trois fois la métaphore est morte ; repasse en Start Stop Continue un moment."
    ],
    "next": "Les actions ouvrent la prochaine rétro comme pour tout format. Les ancres marquées externes vont à la synchro stakeholders ou à la carte des dépendances. Si la phrase de l'île a changé pendant la rétro, préviens le PM : l'objectif de l'équipe a dérivé.",
+   "breaks": "Le tri des ancres internes et externes saute. Les ancres externes restent au board et personne ne les fait remonter.",
    "source": ""
   }
  },
@@ -995,6 +1017,7 @@
     "Do not leave with three actions. This format works because it produces one, and the next check tells you if it worked."
    ],
    "next": "The result goes to the manager as a photo of the grid, no commentary. Rerun every 4 to 6 weeks and compare trends. A red on Dependencies calls for a dependency map; a red on Value delivered calls for an OKR or impact mapping session, not another retro.",
+   "breaks": "Discussing the splits goes. Reds get counted but never explained, and the next check shows the same colors.",
    "source": "Atlassian Team Playbook"
   },
   "fr": {
@@ -1036,6 +1059,7 @@
     "Ne repars pas avec trois actions. Ce format marche parce qu'il en produit une, et le prochain check te dit si elle a marché."
    ],
    "next": "Le résultat part au manager sous forme de photo de la grille, sans commentaire. Refais-le toutes les 4 à 6 semaines et compare les tendances. Un rouge sur Dépendances appelle une carte des dépendances ; un rouge sur Valeur livrée appelle une session OKR ou impact mapping, pas une rétro de plus.",
+   "breaks": "La discussion des écarts saute. Les rouges sont comptés mais pas expliqués, et le check suivant affiche les mêmes.",
    "source": "Atlassian Team Playbook"
   }
  },
@@ -1079,6 +1103,7 @@
     "Do not keep the report private. A post-mortem nobody outside the team reads teaches nobody outside the team."
    ],
    "next": "The report is published and the actions tracked like any backlog item, with a check at 30 days. Recurring causes across post-mortems belong in the Inspect & Adapt or on the leadership OKRs.",
+   "breaks": "The whys stop at the first one. The cause stays a human error and the same incident returns a month later.",
    "source": ""
   },
   "fr": {
@@ -1120,6 +1145,7 @@
     "Ne garde pas le rapport privé. Un post-mortem que personne hors de l'équipe ne lit n'apprend rien à personne hors de l'équipe."
    ],
    "next": "Le rapport est publié et les actions suivies comme n'importe quel élément de backlog, avec un point à 30 jours. Les causes qui reviennent d'un post-mortem à l'autre relèvent de l'Inspect & Adapt ou des OKR de la direction.",
+   "breaks": "Les pourquoi s'arrêtent au premier. La cause reste une erreur humaine et le même incident revient un mois après.",
    "source": ""
   }
  },
@@ -1163,6 +1189,7 @@
     "Do not leave with a hypothesis and no number. 'Improve activation' is not a commitment; 'activation from 32 to 38 percent for organic signups' is."
    ],
    "next": "The chosen hypothesis goes onto the experiment board and the number becomes an input metric on the North Star tree. Rerun the review monthly; change the target step only when the current one has moved.",
+   "breaks": "Cutting the leak by segment goes. The team works on an average and the experiment moves no number.",
    "source": "Dave McClure"
   },
   "fr": {
@@ -1204,6 +1231,7 @@
     "Ne repars pas avec une hypothèse sans chiffre. 'Améliorer l'activation' n'est pas un engagement ; 'activation de 32 à 38 pour cent sur les inscriptions organiques' en est un."
    ],
    "next": "L'hypothèse choisie va sur l'experiment board et le chiffre devient une métrique d'entrée de l'arbre North Star. Refais la revue chaque mois ; ne change d'étape cible que quand l'actuelle a bougé.",
+   "breaks": "Le découpage par segment saute. L'équipe travaille sur une moyenne et l'expérience ne bouge aucun chiffre.",
    "source": "Dave McClure"
   }
  },
@@ -1252,6 +1280,7 @@
     "Do not accept actions without a backlog item. An improvement that is not in the next PI is a good intention."
    ],
    "next": "The improvement items enter the next PI Planning as features with capacity reserved. The RTE tracks them on the program board like any other feature and reports on them at the next Inspect & Adapt.",
+   "breaks": "Root cause analysis goes. The actions target symptoms and the same problems come back at the next PI.",
    "source": "Scaled Agile"
   },
   "fr": {
@@ -1298,6 +1327,7 @@
     "N'accepte pas d'actions sans élément de backlog. Une amélioration qui n'est pas dans le prochain PI est une bonne intention."
    ],
    "next": "Les éléments d'amélioration entrent au prochain PI Planning comme features avec de la capacité réservée. Le RTE les suit sur le program board comme n'importe quelle feature et en rend compte au prochain Inspect & Adapt.",
+   "breaks": "L'analyse des causes racines saute. Les actions visent des symptômes et les mêmes problèmes reviennent au PI suivant.",
    "source": "Scaled Agile"
   }
  },
@@ -1342,6 +1372,7 @@
     "Fixing five queues at once. You will never know which change worked, and the team will be exhausted before the next measure."
    ],
    "next": "Re-measure the lead time after one cycle with the change in place. If the biggest queue is a cross-team dependency, the dependency map is the next session.",
+   "breaks": "Measuring wait time goes. Only working time is left, and the conclusion becomes that the team is slow.",
    "source": "https://www.lean.org/lexicon-terms/value-stream-mapping/"
   },
   "fr": {
@@ -1384,6 +1415,7 @@
     "Corriger cinq files d'un coup. Tu ne sauras jamais quel changement a marché, et l'équipe sera épuisée avant la mesure suivante."
    ],
    "next": "Remesure le délai après un cycle avec le changement en place. Si la plus grosse file est une dépendance entre équipes, la carte des dépendances est la session suivante.",
+   "breaks": "La mesure des temps d'attente saute. Il ne reste que le temps de travail, et la conclusion devient que l'équipe est lente.",
    "source": "https://www.lean.org/lexicon-terms/value-stream-mapping/"
   }
  },
@@ -1428,6 +1460,7 @@
     "Never looking at the board again. A ROAM board that is not reviewed mid-cycle was a ritual, not a risk process."
    ],
    "next": "Review the Owned column halfway through the increment. Risks that became real feed the pre-mortem of the next planning session.",
+   "breaks": "The pass on the Accepted column goes. The business finds out what it accepted the day the risk lands.",
    "source": "https://scaledagileframework.com/pi-planning/"
   },
   "fr": {
@@ -1470,6 +1503,7 @@
     "Ne jamais rouvrir le board. Un ROAM board qu'on ne revoit pas en cours de cycle était un rituel, pas un processus de risques."
    ],
    "next": "Revois la colonne « pris en charge » à mi-parcours. Les risques devenus réels alimentent le pre-mortem de la planification suivante.",
+   "breaks": "La revue de la colonne Accepté saute. Le métier découvre ce qu'il a accepté le jour où le risque arrive.",
    "source": "https://scaledagileframework.com/pi-planning/"
   }
  },
@@ -1519,6 +1553,7 @@
     "Hiding a dependency to avoid a difficult conversation in the room. It comes back later, with less time and more people watching."
    ],
    "next": "The dependencies go on the program board, the risks go to ROAM. Revisit the board at each iteration boundary: an untouched team board is a plan nobody is using.",
+   "breaks": "Writing the objectives goes. What is left is a list of items nobody outside the team can call met or missed.",
    "source": "https://scaledagileframework.com/pi-planning/"
   },
   "fr": {
@@ -1566,6 +1601,7 @@
     "Cacher une dépendance pour éviter une conversation difficile dans la salle. Elle revient plus tard, avec moins de temps et plus de spectateurs."
    ],
    "next": "Les dépendances vont sur le program board, les risques au ROAM. Reviens sur le board à chaque frontière d'itération : un team board qu'on ne touche plus est un plan dont personne ne se sert.",
+   "breaks": "L'écriture des objectifs saute. Reste une liste d'items dont personne, hors équipe, ne sait dire si elle est atteinte.",
    "source": "https://scaledagileframework.com/pi-planning/"
   }
  },
@@ -1621,6 +1657,7 @@
     "Five columns and three actions, not five actions. The extra columns buy precision, not volume."
    ],
    "next": "The three actions open the next retro. If the same Less of comes back three retros running, it is not a team habit, it is a constraint from outside: escalate it or run a Team Health Monitor.",
+   "breaks": "Setting the dial goes. The more of items leave without a number and come back unchanged at the next retro.",
    "source": "The starfish was described by Patrick Kua in 2006, as a scattergram that pushes a team to produce action items instead of saying something was not good."
   },
   "fr": {
@@ -1674,6 +1711,7 @@
     "Cinq colonnes et trois actions, pas cinq actions. Les colonnes supplémentaires achètent de la précision, pas du volume."
    ],
    "next": "Les trois actions ouvrent la rétro suivante. Si le même Faire moins revient trois rétros de suite, ce n'est pas une habitude d'équipe mais une contrainte venue d'ailleurs : faites-la remonter ou passez au Team Health Monitor.",
+   "breaks": "Le réglage du curseur saute. Les « faire plus » repartent sans chiffre et reviennent identiques à la rétro suivante.",
    "source": "Le starfish a été décrit par Patrick Kua en 2006, comme un nuage de points qui pousse l'équipe à produire des actions au lieu de dire que quelque chose s'est mal passé."
   }
  }

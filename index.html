@@ -25,6 +25,8 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document
   --accent:#1F4FE0; --accent-ink:#FFFFFF; --accent-soft:#E4EAFC;
   --chip-l:90%; --chip-s:75%; --chip-text-l:28%;
   --shadow:0 1px 2px rgba(20,30,60,.06), 0 8px 24px -12px rgba(20,30,60,.18);
+  /* Les phases occupent tout le registre pastel : une alerte doit en sortir. */
+  --alert-line:#F0B3AA; --alert-text:#B04C3E; --alert-soft:#FFF6F4;
   --h-cadrage:258; --h-strategie:222; --h-research:168; --h-ideation:46; --h-prio:22; --h-conception:335; --h-alignement:92; --h-mesure:200;
   --pv-bg:#FFFFFF; --pv-fill:#F6F7FA; --pv-line:#C9D0DC; --pv-ink:#1A2236; --pv-muted:#6B7590; --pv-accent:#1F4FE0; --pv-accent-soft:#E4EAFC; --pv-warn-soft:#FCE4DA;
   --warn-soft:#FFF1E6; --warn-line:#F5C9A8; --warn-text:#8A3B12;
@@ -457,16 +459,72 @@ dialog.zoom::backdrop{background:transparent}
 .next-card .dep-group{margin:0}
 .src{font-size:13px;margin:10px 0 0}
 /* ---------- durees ajustees ---------- */
+.g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:10px;transition:width .12s ease}
+.g-cell.dragging{transition:none}
+.g-cell .g-bar{width:100%;position:relative}
+.g-cell--under .g-bar{box-shadow:inset 0 0 0 1.5px var(--alert-line);background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px)}
+.g-cell--narrow .g-bar{padding:0 5px}
+.g-cell--narrow .g-bar b{font-size:11px}
+.g-cell--narrow .g-bar small,.g-cell--narrow .g-segs{display:none}
+/* fantome de la duree standard, visible des que l'atelier est comprime */
+.g-ghost{position:absolute;inset:0 auto 0 0;width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
+/* repere de la duree conseillee, montre seulement quand on vise cette barre */
+.g-floor{position:absolute;top:-3px;bottom:-3px;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
+.g-bar:hover ~ .g-floor,.g-cell:focus-within .g-floor,.g-cell.dragging .g-floor{opacity:.9}
+.g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-16px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
+.g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3}
+.g-row:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
+.g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
+.g-cell--narrow .g-grip{width:20px;margin-right:-10px}
+.g-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
+.g-bar:hover .g-segs,.g-cell:focus-within .g-segs,.g-cell.dragging .g-segs{opacity:1}
+.g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
+.g-segs i.seg-cut{opacity:.5}
+.g-segs i.seg-floor{background:var(--alert-line);opacity:1}
+.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px);white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
+.g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
+.g-cell--narrow .g-cap{opacity:1}
+.g-row{padding-bottom:calc(6px + var(--caps, 0) * 17px)}
+/* barre d'actions du brouillon */
+.edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.edit-bar--done{background:none}
+.edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
+.edit-bar .btn[disabled]{opacity:.35;pointer-events:none}
+.btn.icon{padding:6px;width:32px;height:32px;justify-content:center}
+.btn.icon svg{width:18px;height:18px;color:var(--ink-2)}
+.btn.icon:hover svg{color:var(--ink)}
+/* alertes : une ligne par atelier passe sous sa duree conseillee */
+.warn-list{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.warn-list li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:7px 12px;border:1px solid var(--alert-line);background:var(--alert-soft);border-radius:10px;font-size:12.5px;color:var(--alert-text)}
+.warn-list li::before{content:"△";font-size:12px;line-height:1;color:var(--alert-line)}
+.warn-list b{font-weight:600}
+.warn-list span{margin-right:auto}
+/* menu du clic droit */
+.ctx-menu{position:fixed;z-index:90;min-width:190px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;box-shadow:0 18px 44px -18px rgba(15,20,40,.4);display:flex;flex-direction:column}
+.ctx-menu button{text-align:left;border:0;background:none;padding:7px 10px;border-radius:7px;font:inherit;font-size:12.5px;color:var(--ink);cursor:pointer}
+.ctx-menu button:hover{background:var(--surface-2)}
+.ctx-menu .danger{color:var(--alert-text)}
+.sheet-foot{display:flex;justify-content:flex-end;margin-top:14px}
+.btn.danger{color:var(--alert-text);border-color:var(--alert-line);background:var(--alert-soft)}
+/* bulle du geste, calee sur la barre */
+.g-tip{position:fixed;z-index:95;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:280px;box-shadow:var(--shadow)}
+.g-tip.warn{background:var(--alert-text)}
+.g-tip b{display:block;font-weight:600}
+.g-tip em{display:block;margin-top:4px;font-style:normal;opacity:.85}
 .plan-adjusted{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
 .plan-adjusted b{color:var(--ink)}
 .dur-cell{white-space:nowrap}
-.dur-ctl{display:inline-flex;align-items:center;gap:2px}
+.dur-ctl{display:inline-flex;align-items:center;gap:7px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
-.dur-ctl b{min-width:52px;text-align:center;font-weight:600}
+.dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline;text-align:center;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
+.dur-ctl .dur-val:hover{border-bottom-color:var(--ink-3);background:none}
+.dur-in{width:70px;text-align:center;font-weight:600;font-size:13.5px;padding:1px 2px 2px;border:0;border-bottom:2px solid var(--accent);background:none;color:var(--ink);outline:none}
+.plan-table:not(.editing) .dur-ctl button[data-dur]{opacity:0;transition:opacity .12s}
+.plan-table:not(.editing) tr:hover .dur-ctl button[data-dur],
+.plan-table:not(.editing) .dur-ctl button[data-dur]:focus-visible{opacity:1}
 .risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
-.risk--tight{color:#9a6a2a}
-.risk--hard{color:var(--warn-text);font-weight:600}
+.risk--alert{color:var(--alert-text);font-weight:600}
 .total.adj{color:var(--ink-3);font-weight:400}
 .tl-head .cut{color:#9a6a2a}
 /* Le lien de source n'est pas une action : il garde le gris de sa ligne,
@@ -657,6 +715,7 @@ const track = (name, data) => { try{ window.va && window.va('event', {name, data
 
 /* ---------- état ---------- */
 const DEFAULT = {stage:'postpmf', team:'s', trigger:'backlog', goals:['prio','align'], horizon:'semaine', pin:[], skip:[], brief:null};
+let urlDurs = null;
 let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
 (function readUrl(){
   const p = new URLSearchParams(location.search), ok = (arr, v) => arr.some(x => x.id === v);
@@ -669,7 +728,17 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
   if(p.has('pin')) ans.pin = p.get('pin').split(',').filter(okT);
   if(p.has('skip')) ans.skip = p.get('skip').split(',').filter(okT);
   if(!Array.isArray(ans.pin)) ans.pin = []; if(!Array.isArray(ans.skip)) ans.skip = [];
+  // durees ajustees : le lien fait autorite sur ce que garde le navigateur
+  if(p.has('durs')){
+    const d = {};
+    p.get('durs').split(',').forEach(pair => {
+      const [id, min] = pair.split(':');
+      if(okT(id) && +min > 0) d[id] = Math.round(+min) / 60;
+    });
+    urlDurs = d;
+  }
 })();
+if(urlDurs) durOv = urlDurs;
 let view = store.get('view', 'steps');
 if(new URLSearchParams(location.search).get('view') === 'plan') view = 'plan';
 let diag = store.get('diag', {open:false, a:[null,null,null,null,null,null]});
@@ -715,6 +784,9 @@ function syncUrl(){
   url.searchParams.set('goals', ans.goals.join(','));
   if(ans.pin.length) url.searchParams.set('pin', ans.pin.join(',')); else url.searchParams.delete('pin');
   if(ans.skip.length) url.searchParams.set('skip', ans.skip.join(',')); else url.searchParams.delete('skip');
+  // « id:minutes », pour qu'un plan partage arrive avec ses durees
+  const durs = Object.keys(durOv).map(k => k + ':' + Math.round(durOv[k] * 60)).join(',');
+  if(durs) url.searchParams.set('durs', durs); else url.searchParams.delete('durs');
   if(view === 'plan') url.searchParams.set('view', 'plan'); else url.searchParams.delete('view');
   if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
   url.searchParams.delete('open');
@@ -729,41 +801,50 @@ const phaseIdx = id => PHASES.findIndex(p => p.id === id);
 const stageIdx = id => STAGES.findIndex(s => s.id === id);
 // Une journee ne s'affiche en jours que si le total en est vraiment une :
 // depuis que les durees s'ajustent, arrondir 10 h en « 1 j » ferait mentir le plan.
-const fmtHours = h => (h % 1 ? (lang === 'fr' ? h.toFixed(1).replace('.', ',') : h.toFixed(1)) : h) + ' ' + UI().hours;
+// « 1 h 30 » plutot que « 1,5 h » : un facilitateur lit un creneau, pas un
+// decimal. Les jours restent, mais seulement pour une vraie journee pleine.
 const fmtDur = h => {
-  const d = h / 7;
+  const m = Math.round(h * 60), H = Math.floor(m / 60), M = m % 60, d = h / 7;
   if(h >= 7 && Math.abs(h - Math.round(d) * 7) < 0.25) return Math.round(d) + ' ' + UI().days;
-  if(h >= 7) return fmtHours(Math.round(h * 2) / 2);
-  return h < 1 ? Math.round(h * 60) + ' ' + UI().min : fmtHours(h);
+  if(m < 60) return m + ' ' + UI().min;
+  return M ? H + ' ' + UI().hours + ' ' + String(M).padStart(2, '0') : H + ' ' + UI().hours;
 };
+
 
 /* ---------- durees ajustees ----------
    Le catalogue porte une duree de reference par atelier, qui ne bouge jamais.
-   Le facilitateur peut en poser une autre, atelier par atelier, en tirant la
-   barre du plan ; tous les totaux de l'application suivent, et la reference
-   reste affichee, c'est a elle qu'on compare. */
+   Le facilitateur peut en poser une autre, en tirant la barre du plan ou depuis
+   le tableau. Le plan vit alors en brouillon, avec ses avertissements, jusqu'a
+   ce qu'il soit valide : un plan valide se lit comme un document. */
 const STEPM = 5;
 let durOv = store.get('durs', {});
+let dirty = false, past = [], future = [];
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
 const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
 const rat = t => edur(t) / t.dur;
-/* Le plancher d'un atelier n'est pas un pourcentage arbitraire : c'est la somme
-   des planchers de ses etapes. En dessous, l'agenda ne tient plus. */
-function minDur(t){
-  const c = RUN && RUN[t.id] && RUN[t.id][lang];
-  if(c && c.agenda) return c.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / 60;
-  return t.dur * 0.5;
+const content = t => (RUN && RUN[t.id] && RUN[t.id][lang]) || null;
+/* Duree minimale conseillee : la somme des planchers de ses etapes. En dessous,
+   l'atelier ne rend plus ce qu'il promet. On previent, on n'interdit pas. */
+function recDur(t){
+  const c = content(t);
+  if(!c || !c.agenda) return t.dur * 0.5;
+  return Math.ceil(c.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / STEPM) * STEPM / 60;
 }
-const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
-function saveTime(){ store.set('durs', durOv); }
+const hardDur = () => STEPM / 60;
+const tooShort = t => edur(t) < recDur(t) - 0.001;
+function saveDur(){ store.set('durs', durOv); syncUrl(); }
+const snapDur = () => ({d: Object.assign({}, durOv), skip: ans.skip.slice()});
+function restoreDur(st){ durOv = Object.assign({}, st.d); ans.skip = st.skip.slice(); }
+function changeDur(fn){ past.push(snapDur()); future = []; fn(); dirty = true; saveDur(); saveAns(); renderQuestions(); renderResult(); }
+function undoDur(){ if(!past.length) return; future.push(snapDur()); restoreDur(past.pop()); saveDur(); saveAns(); renderQuestions(); renderResult(); }
+function redoDur(){ if(!future.length) return; past.push(snapDur()); restoreDur(future.pop()); dirty = true; saveDur(); saveAns(); renderQuestions(); renderResult(); }
 /* Comprimer tout au meme facteur raboterait aussi l'etape qui produit la
-   decision, et c'est elle qui fait l'atelier. La premiere et la derniere sont
-   protegees : le milieu absorbe, et on n'entame les protegees qu'a bout de
-   course. Chaque etape a un plancher, moitie de sa reference et jamais moins
-   de cinq minutes. */
+   decision. La premiere, la derniere et la plus longue sont protegees, le milieu
+   absorbe, avec un plancher a la moitie de la reference et jamais moins de cinq
+   minutes. Sous la somme des planchers, tout retrecit au prorata. */
 function scaleAgenda(agenda, targetMin){
   const ref = agenda.reduce((s, a) => s + a.min, 0);
-  const out = agenda.map(a => ({t:a.t, d:a.d, min:a.min, ref:a.min}));
+  const out = agenda.map(a => ({t: a.t, d: a.d, min: a.min, ref: a.min}));
   if(!targetMin || !ref || Math.abs(targetMin - ref) < 1){ out.forEach(a => { a.cut = false; }); return out; }
   if(targetMin > ref){
     const k = targetMin / ref;
@@ -772,43 +853,48 @@ function scaleAgenda(agenda, targetMin){
     const floor = a => Math.max(STEPM, Math.round(a.ref / 2));
     const sum = () => out.reduce((s, a) => s + a.min, 0);
     const take = pool => {
-      const cap = pool.reduce((s, a) => s + Math.max(0, a.min - floor(a)), 0);
-      const need = sum() - targetMin;
+      const cap = pool.reduce((s, a) => s + Math.max(0, a.min - floor(a)), 0), need = sum() - targetMin;
       if(cap <= 0 || need <= 0) return;
       const want = Math.min(need, cap);
       pool.forEach(a => { const c = Math.max(0, a.min - floor(a)); if(!c) return; a.min = Math.max(floor(a), a.min - Math.round(want * c / cap)); });
     };
-    // protegees : la premiere etape pose le contexte, la derniere ferme, et la
-    // plus longue est presque toujours celle qui produit le resultat. Heuristique
-    // de position, a remplacer par un marquage dans le contenu si ca s'installe.
-    let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
-    const mid = out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big);
-    take(mid.length ? mid : out.slice());
-    take(out);
+    if(targetMin < out.reduce((s, a) => s + floor(a), 0)){
+      const k = targetMin / ref;
+      out.forEach(a => { a.min = Math.max(1, Math.round(a.ref * k)); });
+    } else {
+      let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
+      take(out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big));
+      take(out);
+    }
   }
-  // L'ecart d'arrondi se rattrape vers le haut seulement : vers le bas, le
-  // plancher a deja ete atteint et forcer ferait afficher des etapes d'une minute.
   const diff = targetMin - out.reduce((s, a) => s + a.min, 0);
-  if(diff > 0){ const big = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); big.min += diff; }
+  if(diff > 0){ const b = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); b.min += diff; }
   out.forEach(a => { a.cut = a.min < a.ref; });
   return out;
 }
-/* Une pastille rouge muette n'aide personne : on nomme l'etape la plus rabotee. */
-const riskLine = t => riskLineFor(t, edur(t));
+/* Nommer une etape suppose que le lecteur ait l'agenda en tete : on compte
+   celles qui touchent leur plancher, et la barre montre lesquelles. */
 function riskLineFor(t, hours){
   const u = UI(), r = hours / t.dur;
   if(Math.abs(r - 1) < 0.001) return '';
   const pct = Math.round(Math.abs(1 - r) * 100), sign = r < 1 ? '-' : '+';
-  const c = RUN && RUN[t.id] && RUN[t.id][lang];
+  const c = content(t);
   if(!c || !c.agenda || r > 1) return sign + pct + '%';
+  const floorSum = c.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0);
+  if(Math.round(hours * 60) < floorSum) return sign + pct + '% · ' + u.broken;
   const sc = scaleAgenda(c.agenda, Math.round(hours * 60));
-  const worst = sc.reduce((m, a) => (a.ref - a.min) > (m.ref - m.min) ? a : m, sc[0]);
-  return worst.ref === worst.min ? sign + pct + '%' : sign + pct + '% · ' + u.cutStep(worst.t, worst.min);
+  const n = sc.filter(a => a.cut && a.min <= Math.max(STEPM, Math.round(a.ref / 2))).length;
+  return n ? sign + pct + '% · ' + u.atFloor(n) : sign + pct + '%';
 }
+const riskLine = t => riskLineFor(t, edur(t));
+const inPlan = t => !!(lastPick && lastPick.some(x => x.t.id === t.id));
+const breaksOf = t => { const c = content(t); return c && c.breaks ? c.breaks : ''; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pv = t => Preview.renderPreview(LAYOUTS[t.id], {class:'pv', title:UI().preview(tx(t).name)});
 const figjamUrl = t => FIGJAM.file && FIGJAM.nodes[t.id] ? `https://www.figma.com/board/${FIGJAM.file}/${encodeURIComponent(FIGJAM.name)}?node-id=${encodeURIComponent(FIGJAM.nodes[t.id].replace(':', '-'))}` : '';
 const ICON = {
+  undo: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 6.5H12a4 4 0 0 1 0 8H7"/><path d="M10 3.5 6.5 6.5 10 9.5"/></svg>',
+  redo: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 6.5H8a4 4 0 0 0 0 8h5"/><path d="M10 3.5 13.5 6.5 10 9.5"/></svg>',
   figjam:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>',
   x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
   warn:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14 13H2z"/><path d="M8 6.5v3M8 11.5v.2"/></svg>',
@@ -1065,70 +1151,6 @@ function renderResult(){
   document.getElementById('result').innerHTML = html;
 }
 
-/* ---------- redimensionner un atelier a la souris ----------
-   La barre porte une duree, donc on doit pouvoir la tirer. Le geste est borne :
-   jamais sous 40% de la reference, et des 70% une bulle dit ce qui se perd. */
-let gdrag = null;
-function gTip(text, warn, x, y){
-  let el = document.getElementById('g-tip');
-  if(!el){ el = document.createElement('div'); el.id = 'g-tip'; document.body.appendChild(el); }
-  el.className = 'g-tip' + (warn ? ' warn' : '');
-  el.textContent = text;
-  el.style.left = Math.min(window.innerWidth - 270, Math.max(8, x + 14)) + 'px';
-  el.style.top = Math.max(8, y - 44) + 'px';
-}
-function gTipHide(){ const el = document.getElementById('g-tip'); if(el) el.remove(); }
-function gLive(id, hours){
-  const t = byId(T, id), cell = document.querySelector(`[data-cell="${id}"]`);
-  if(!cell) return;
-  const g = cell.closest('.gantt'), cap = +g.dataset.cap;
-  const span = (cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1];
-  cell.style.setProperty('--frac', Math.max(0.16, Math.min(1, hours / (cap * span))).toFixed(4));
-  const small = cell.querySelector('small'); if(small) small.textContent = fmtDur(hours);
-  const r = hours / t.dur;
-  cell.classList.remove('g-cell--ok', 'g-cell--tight', 'g-cell--hard');
-  cell.classList.add('g-cell--' + band(r));
-}
-function gCommit(id, hours){ durOv[id] = Math.round(hours * 60) / 60; saveTime(); renderResult(); }
-document.addEventListener('pointerdown', e => {
-  const grip = e.target.closest('[data-grip]'); if(!grip) return;
-  const t = byId(T, grip.dataset.grip), cell = grip.closest('.g-cell');
-  const g = cell.closest('.gantt'), row = cell.parentElement;
-  const n = +g.dataset.n, gap = 6;
-  const colPx = (row.clientWidth - gap * (n - 1)) / n;
-  gdrag = {id:t.id, t, startX:e.clientX, startDur:edur(t), cap:+g.dataset.cap, colPx, cell, cur:edur(t)};
-  cell.classList.add('dragging');
-  grip.setPointerCapture(e.pointerId);
-  e.preventDefault();
-});
-document.addEventListener('pointermove', e => {
-  if(!gdrag) return;
-  const t = gdrag.t;
-  const dh = ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
-  const step = stepFor(t);
-  const raw = gdrag.startDur + dh;
-  const lo = minDur(t);
-  const val = Math.max(lo, Math.min(t.dur * 2, Math.round(raw / step) * step));
-  gdrag.cur = val;
-  gLive(t.id, val);
-  const r = val / t.dur, u = UI();
-  const line = r < 0.999 ? riskLineFor(t, val) : '';
-  const atFloor = Math.abs(val - lo) < 0.001 && val < t.dur;
-  gTip(fmtDur(val) + (atFloor ? ' · ' + u.floorHit : line ? ' · ' + line : ''), r < 0.7, e.clientX, e.clientY);
-});
-document.addEventListener('pointerup', () => {
-  if(!gdrag) return;
-  const d = gdrag; gdrag = null; gTipHide();
-  d.cell.classList.remove('dragging');
-  if(Math.abs(d.cur - d.startDur) > 0.001) gCommit(d.id, d.cur); else renderResult();
-});
-document.addEventListener('keydown', e => {
-  const grip = e.target.closest && e.target.closest('[data-grip]');
-  if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
-  const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
-  e.preventDefault();
-  gCommit(t.id, Math.max(minDur(t), Math.min(t.dur * 2, edur(t) + step)));
-});
 /* ---------- plan (roadmap partageable) ---------- */
 function planSlots(pick){
   // demi : une session ; semaine : un atelier par jour ; programme : ~1 atelier par semaine, les longs (design sprint, PI) prennent 2 semaines
@@ -1146,50 +1168,112 @@ function planSlots(pick){
 function ganttHtml(slots){
   const u = UI();
   const n = slots.reduce((m, s) => Math.max(m, s.start + s.span), 0);
-  // La largeur d'une barre doit vouloir dire quelque chose : une colonne vaut
-  // une capacite en heures, la barre en occupe la fraction qu'elle consomme.
   // Une semaine de programme a une capacite reelle, six heures de facilitation.
-  // Ailleurs, une colonne est un creneau : on cale la pleine largeur sur le plus
-  // long atelier du plan, pour que les barres se comparent entre elles.
+  // Ailleurs, une colonne est un creneau : la pleine largeur revient au plus long
+  // atelier du plan, pour que les barres se comparent entre elles.
   const cap = ans.horizon === 'programme' ? 6 : Math.max(1, ...slots.map(s => edur(s.x.t)));
   const cols = Array.from({length:n}, (_, i) => ans.horizon === 'demi' ? `${u.slotSession} ${i + 1}` : ans.horizon === 'semaine' ? u.slotDay(i + 1) : u.slotWeek(i + 1));
   const phases = PHASES.filter(p => slots.some(s => s.x.t.phase === p.id));
-  let html = `<div class="gantt" style="--n:${n}" data-cap="${cap}" data-n="${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
+  let html = `<div class="gantt${dirty ? ' gantt--draft' : ''}" style="--n:${n}" data-cap="${cap}" data-n="${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
   phases.forEach(p => {
     html += `<div class="g-phase" style="--h:var(${p.h})">${esc(L.phases[p.id])}</div><div class="g-row" style="--h:var(${p.h})">`;
     slots.filter(s => s.x.t.phase === p.id).forEach(s => {
-      const t = s.x.t, x = tx(t), r = rat(t);
-      const frac = Math.max(0.16, Math.min(1, edur(t) / (cap * s.span)));
-      html += `<div class="g-cell g-cell--${band(r)}" style="grid-column:${s.start + 1} / span ${s.span};--frac:${frac.toFixed(4)}" data-cell="${t.id}">
-        <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(edur(t))}"><b>${esc(x.name)}</b><small>${fmtDur(edur(t))}</small></button>
-        <span class="g-grip" data-grip="${t.id}" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(edur(t)))}" title="${esc(u.dragHint)}"></span>
+      const t = s.x.t, x = tx(t), d = edur(t), span = cap * s.span;
+      const frac = Math.max(0.03, Math.min(1, d / span));
+      const gw = Math.max(0.03, Math.min(1, t.dur / span));
+      const fx = Math.max(0.03, Math.min(1, recDur(t) / span));
+      const short = dirty && tooShort(t);
+      html += `<div class="g-cell${short ? ' g-cell--under' : ''}" style="grid-column:${s.start + 1} / span ${s.span};--frac:${frac.toFixed(4)};--gw:${(gw / frac).toFixed(4)};--fx:${(fx / frac).toFixed(4)}" data-cell="${t.id}">
+        <div class="g-ghost" style="--go:${dirty && d < t.dur - 0.001 ? 1 : 0}"></div>
+        <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(d)}"><b>${esc(x.name)}</b><small>${fmtDur(d)}</small><span class="g-segs">${segsHtml(t, d)}</span></button>
+        <div class="g-floor"></div>
+        <span class="g-grip" data-grip="${t.id}" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}" title="${esc(u.dragHint)}"></span>
+        <span class="g-cap"><b>${esc(x.name)}</b><i class="mono">${fmtDur(d)}</i></span>
       </div>`;
     });
     html += `</div>`;
   });
-  return html + `</div><p class="gantt-hint">${esc(u.dragHint)}</p>`;
+  return html + `</div>`;
+}
+/* L'agenda de l'atelier, en segments proportionnels : on voit lesquels se
+   resserrent en tirant, sans avoir a connaitre la fiche. */
+function segsHtml(t, hours){
+  const c = content(t);
+  if(!c || !c.agenda) return '';
+  const sc = scaleAgenda(c.agenda, Math.round(hours * 60));
+  return sc.map(a => {
+    const floor = Math.max(STEPM, Math.round(a.ref / 2));
+    const cls = a.cut && a.min <= floor ? 'seg-floor' : a.cut ? 'seg-cut' : '';
+    return `<i style="flex:${a.min}"${cls ? ` class="${cls}"` : ''} title="${esc(a.t + ' · ' + a.min + ' min' + (a.cut ? ' (' + UI().refTime + ' ' + a.ref + ')' : ''))}"></i>`;
+  }).join('');
+}
+/* Une barre trop courte n'a plus la place d'ecrire son nom : il passe dessous,
+   et deux etiquettes voisines se repartissent sur plusieurs niveaux. */
+function ganttCaptions(){
+  document.querySelectorAll('.g-row').forEach(row => {
+    const cells = [...row.querySelectorAll('.g-cell')].sort((a, b) =>
+      a.querySelector('.g-bar').getBoundingClientRect().left - b.querySelector('.g-bar').getBoundingClientRect().left);
+    const lanes = [];
+    cells.forEach(cell => {
+      const bar = cell.querySelector('.g-bar'), cap = cell.querySelector('.g-cap');
+      const need = cap.querySelector('b').getBoundingClientRect().width + 22;
+      const narrow = bar.clientWidth < need;
+      cell.classList.toggle('g-cell--narrow', narrow);
+      if(!narrow){ cap.style.removeProperty('--lane'); return; }
+      const left = bar.getBoundingClientRect().left, right = left + cap.offsetWidth + 10;
+      let lane = 0;
+      while(lanes[lane] != null && left < lanes[lane]) lane++;
+      lanes[lane] = right;
+      cap.style.setProperty('--lane', lane);
+    });
+    row.style.setProperty('--caps', lanes.length);
+  });
 }
 function planHtml(pick, total){
   const u = UI();
   const ref = pick.reduce((s, x) => s + x.t.dur, 0);
-  const rows = planSlots(pick).map((s, i) => {
-    const t = s.x.t, x = tx(t), r = rat(t), risk = riskLine(t);
+  const slots = planSlots(pick);
+  const rows = slots.map((s, i) => {
+    const t = s.x.t, x = tx(t), risk = riskLine(t);
     return `<tr><td class="mono">${esc(s.label)}</td>
       <td><b>${i + 1}. ${esc(x.name)}</b><br><span class="muted">${esc(L.phases[t.phase])}</span></td>
       <td class="dur-cell">
-        <span class="dur-ctl"><button type="button" data-dur="${t.id}" data-d="-1" aria-label="${esc(u.less)}">−</button><b class="mono">${fmtDur(edur(t))}</b><button type="button" data-dur="${t.id}" data-d="1" aria-label="${esc(u.more2)}">+</button></span>
-        ${risk ? `<small class="risk risk--${band(r)}">${esc(risk)}</small>` : `<small class="risk">${esc(u.refTime)}</small>`}
+        <span class="dur-ctl"><button type="button" data-dur="${t.id}" data-d="-1" aria-label="${esc(u.lessMin)}">−</button><button type="button" class="dur-val mono" data-type="${t.id}" title="${esc(u.typeDur)}">${fmtDur(edur(t))}</button><button type="button" data-dur="${t.id}" data-d="1" aria-label="${esc(u.moreMin)}">+</button></span>
+        ${dirty && risk ? `<small class="risk${tooShort(t) ? ' risk--alert' : ''}">${esc(risk)}</small>` : ''}
       </td>
       <td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`;
   }).join('');
-  const touched = Object.keys(durOv).length > 0;
+  const warns = dirty ? slots.filter(s => tooShort(s.x.t)) : [];
+  const warnList = warns.length ? `<ul class="warn-list">${warns.map(s => {
+    const t = s.x.t, b = breaksOf(t);
+    return `<li><b>${esc(tx(t).name)}</b>${b ? `<span>${esc(b)}</span>` : '<span></span>'}</li>`;
+  }).join('')}</ul>` : '';
   return `<section class="plan">
-    <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
-    ${touched ? `<p class="plan-adjusted"><span>${esc(u.planned)} <b>${esc(fmtDur(total))}</b> · ${esc(u.refTime)} ${esc(fmtDur(ref))}</span><button type="button" class="btn small" data-reset-time>${esc(u.resetDur)}</button></p>` : ''}
-    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
+    ${editBar(total, ref)}
+    <div class="plan-wrap">${ganttHtml(slots)}</div>
+    ${warnList}
+    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
+}
+/* Le plan vit en brouillon le temps qu'on le taille, puis il se valide : les
+   avertissements et les commandes appartiennent au brouillon. */
+function editBar(total, ref){
+  const u = UI(), n = Object.keys(durOv).length;
+  if(dirty) return `<div class="edit-bar">
+    <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}</span>
+    <button type="button" class="btn icon" data-undo title="${esc(u.undoLbl)}" aria-label="${esc(u.undoLbl)}"${past.length ? '' : ' disabled'}>${ICON.undo}</button>
+    <button type="button" class="btn icon" data-redo title="${esc(u.redoLbl)}" aria-label="${esc(u.redoLbl)}"${future.length ? '' : ' disabled'}>${ICON.redo}</button>
+    <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
+    <button type="button" class="btn primary" data-commit>${esc(u.commitPlan)}</button>
+  </div>`;
+  if(n) return `<div class="edit-bar edit-bar--done">
+    <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}</span>
+    <button type="button" class="btn" data-edit>${esc(u.editAgain)}</button>
+    <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
+  </div>`;
+  return '';
 }
 /* Le detail du risque vient des agendas : on les charge une fois, puis on
    redessine pour remplacer le pourcentage sec par l'etape sacrifiee. */
@@ -1203,18 +1287,147 @@ function ensureRisk(){
 document.getElementById('result').addEventListener('click', e => {
   if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; saveAns(); renderQuestions(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
+  const ty = e.target.closest('[data-type]'); if(ty) return typeDur(ty);
   const du = e.target.closest('[data-dur]');
   if(du){
     const t = byId(T, du.dataset.dur), st = stepFor(t);
-    // un atelier ne descend pas sous 40% de sa reference : en dessous ce n'est
-    // plus une compression, c'est un autre atelier
-    const next = Math.min(t.dur * 2, Math.max(minDur(t), edur(t) + (+du.dataset.d) * st));
-    durOv[t.id] = Math.round(next * 60) / 60;
-    saveTime(); renderResult(); return;
+    return changeDur(() => { durOv[t.id] = Math.round(Math.min(t.dur * 2, Math.max(hardDur(), edur(t) + (+du.dataset.d) * st)) * 60) / 60; });
   }
-  if(e.target.closest('[data-reset-time]')){ durOv = {}; saveTime(); renderResult(); return; }
+  if(e.target.closest('[data-undo]')) return undoDur();
+  if(e.target.closest('[data-redo]')) return redoDur();
+  if(e.target.closest('[data-edit]')){ dirty = true; renderResult(); return; }
+  if(e.target.closest('[data-commit]')){ dirty = false; past = []; future = []; renderResult(); return; }
+  if(e.target.closest('[data-reset-time]')) return changeDur(() => { durOv = {}; });
 });
-
+/* ---------- regler la duree d'un atelier ----------
+   Trois chemins : tirer la barre, les boutons du tableau, la saisie au clavier.
+   Tous passent par changeDur, donc tous font entrer le plan en brouillon. */
+function parseDur(str){
+  const v = String(str).toLowerCase().replace(',', '.').trim();
+  let m = v.match(/^(\d+(?:\.\d+)?)\s*h\s*(\d{1,2})?$/);
+  if(m) return (+m[1]) + (m[2] ? +m[2] / 60 : 0);
+  m = v.match(/^(\d+)\s*[:h]\s*(\d{1,2})$/);
+  if(m) return (+m[1]) + (+m[2]) / 60;
+  m = v.match(/^(\d+(?:\.\d+)?)\s*(?:min|m)?$/);
+  // un nombre nu se lit en minutes, un nombre a virgule en heures
+  if(m){ const n = +m[1]; return /\./.test(v) ? n : n / 60; }
+  return null;
+}
+function typeDur(btn){
+  const t = byId(T, btn.dataset.type);
+  const inp = document.createElement('input');
+  inp.className = 'dur-in mono'; inp.value = btn.textContent.trim();
+  inp.setAttribute('aria-label', UI().dur + ' · ' + tx(t).name);
+  btn.replaceWith(inp); inp.focus(); inp.select();
+  const done = ok => {
+    if(done.fired) return; done.fired = true;
+    const val = ok ? parseDur(inp.value) : null;
+    if(val == null || !isFinite(val) || val <= 0) return renderResult();
+    changeDur(() => { durOv[t.id] = Math.max(hardDur(), Math.min(t.dur * 2, Math.round(val * 60) / 60)); });
+  };
+  inp.addEventListener('keydown', ev => {
+    if(ev.key === 'Enter'){ ev.preventDefault(); done(true); }
+    if(ev.key === 'Escape'){ ev.preventDefault(); done(false); }
+  });
+  inp.addEventListener('blur', () => done(true));
+}
+let gdrag = null, lastDragEnd = 0;
+function gTip(html, warn, bar){
+  let el = document.getElementById('g-tip');
+  if(!el){ el = document.createElement('div'); el.id = 'g-tip'; el.className = 'g-tip'; document.body.appendChild(el); }
+  el.className = 'g-tip' + (warn ? ' warn' : '');
+  el.innerHTML = html;
+  const r = bar.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
+  el.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.right - w / 2)) + 'px';
+  el.style.top = (r.top - h - 10 >= 8 ? r.top - h - 10 : r.bottom + 10) + 'px';
+}
+const gTipHide = () => { const el = document.getElementById('g-tip'); if(el) el.remove(); };
+function gLive(t, hours){
+  const cell = document.querySelector(`[data-cell="${t.id}"]`);
+  if(!cell) return;
+  const g = cell.closest('.gantt'), cap = +g.dataset.cap;
+  const span = cap * (+(cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1]);
+  const frac = Math.max(0.03, Math.min(1, hours / span));
+  cell.style.setProperty('--frac', frac.toFixed(4));
+  cell.style.setProperty('--gw', (Math.max(0.03, Math.min(1, t.dur / span)) / frac).toFixed(4));
+  cell.style.setProperty('--fx', (Math.max(0.03, Math.min(1, recDur(t) / span)) / frac).toFixed(4));
+  const sm = cell.querySelector('.g-bar small'); if(sm) sm.textContent = fmtDur(hours);
+  const cp = cell.querySelector('.g-cap i'); if(cp) cp.textContent = fmtDur(hours);
+  const sg = cell.querySelector('.g-segs'); if(sg) sg.innerHTML = segsHtml(t, hours);
+  const gh = cell.querySelector('.g-ghost'); if(gh) gh.style.setProperty('--go', hours < t.dur - 0.001 ? 1 : 0);
+  cell.classList.toggle('g-cell--under', hours < recDur(t) - 0.001);
+  ganttCaptions();
+}
+document.addEventListener('pointerdown', e => {
+  const grip = e.target.closest('[data-grip]'); if(!grip) return;
+  const t = byId(T, grip.dataset.grip), cell = grip.closest('.g-cell'), row = cell.parentElement;
+  const g = cell.closest('.gantt'), n = +g.dataset.n, gap = 6;
+  const colPx = (row.clientWidth - gap * (n - 1)) / n;
+  gdrag = {t, startX: e.clientX, startDur: edur(t), cap: +g.dataset.cap, colPx, cell, cur: edur(t)};
+  cell.classList.add('dragging');
+  grip.setPointerCapture(e.pointerId);
+  e.preventDefault();
+});
+document.addEventListener('pointermove', e => {
+  if(!gdrag) return;
+  const u = UI(), t = gdrag.t, step = stepFor(t), reco = recDur(t);
+  let raw = gdrag.startDur + ((e.clientX - gdrag.startX) / gdrag.colPx) * gdrag.cap;
+  // le seuil conseille accroche : il faut insister pour passer dessous
+  const stickH = (30 / gdrag.colPx) * gdrag.cap;
+  if(raw < reco && raw > reco - stickH) raw = reco;
+  else if(raw <= reco - stickH) raw += stickH;
+  const val = Math.max(hardDur(), Math.min(t.dur * 2, Math.round(raw / step) * step));
+  gdrag.cur = val;
+  gLive(t, val);
+  const short = val < reco - 0.001, line = riskLineFor(t, val), b = breaksOf(t);
+  const hurts = short || /·/.test(line);
+  gTip('<b>' + esc(fmtDur(val) + (short ? ' · ' + u.reco(fmtDur(reco)) : line ? ' · ' + line : '')) + '</b>'
+    + (hurts && b ? '<em>' + esc(b) + '</em>' : ''), short, gdrag.cell.querySelector('.g-bar'));
+});
+document.addEventListener('pointerup', () => {
+  if(!gdrag) return;
+  const d = gdrag; gdrag = null; lastDragEnd = Date.now(); gTipHide();
+  d.cell.classList.remove('dragging');
+  if(Math.abs(d.cur - d.startDur) > 0.001) changeDur(() => { durOv[d.t.id] = Math.round(d.cur * 60) / 60; });
+  else renderResult();
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeCtxMenu();
+  const grip = e.target.closest && e.target.closest('[data-grip]');
+  if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+  const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
+  e.preventDefault();
+  changeDur(() => { durOv[t.id] = Math.max(hardDur(), Math.min(t.dur * 2, edur(t) + step)); });
+});
+/* ---------- menu du clic droit ---------- */
+function closeCtxMenu(){ const e = document.getElementById('ctx-menu'); if(e) e.remove(); }
+function openCtxMenu(x, y, id){
+  closeCtxMenu();
+  const u = UI(), t = byId(T, id), moved = Math.abs(edur(t) - t.dur) > 0.001;
+  const el = document.createElement('div');
+  el.className = 'ctx-menu'; el.id = 'ctx-menu';
+  el.innerHTML = `<button type="button" data-open="${id}">${esc(u.openSheet)}</button>`
+    + (moved ? `<button type="button" data-restore-dur="${id}">${esc(u.resetDur)}</button>` : '')
+    + `<button type="button" class="danger" data-drop-plan="${id}">${esc(u.dropPlan)}</button>`;
+  document.body.appendChild(el);
+  const w = el.offsetWidth, h = el.offsetHeight;
+  el.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, x)) + 'px';
+  el.style.top = Math.max(8, Math.min(window.innerHeight - h - 8, y)) + 'px';
+}
+document.addEventListener('contextmenu', e => {
+  const bar = e.target.closest('.g-bar'); if(!bar) return;
+  e.preventDefault();
+  openCtxMenu(e.clientX, e.clientY, bar.closest('.g-cell').dataset.cell);
+});
+document.addEventListener('click', e => {
+  if(!e.target.closest('#ctx-menu')) closeCtxMenu();
+  const rd = e.target.closest('[data-restore-dur]');
+  if(rd){ closeCtxMenu(); return changeDur(() => { delete durOv[rd.dataset.restoreDur]; }); }
+  const dp = e.target.closest('[data-drop-plan]');
+  if(dp){ closeCtxMenu(); if(dlg.open) dlg.close(); const id = dp.dataset.dropPlan;
+    return changeDur(() => { if(!ans.skip.includes(id)) ans.skip.push(id); delete durOv[id]; });
+  }
+});
 
 /* ---------- bibliothèque ---------- */
 function tcard(t, si){
@@ -1313,6 +1526,7 @@ function howToHtml(t){
       <h3>${esc(u.nextStep)}</h3>
       <div class="next-card"><p>${esc(c.next)}</p>${feedsHtml(t)}</div>
       ${c.source ? `<p class="muted src">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(c.source)}</a>` : esc(c.source)}</p>` : ''}
+      ${inPlan(t) ? `<div class="sheet-foot"><button type="button" class="btn danger" data-drop-plan="${t.id}">${esc(u.dropSheet)}</button></div>` : ''}
     </section>`;
 }
 function wchip(q, kind){

@@ -39,6 +39,7 @@
     "Refuse to place an item in the middle of the board. Force a quadrant: the center is where undecided things go to die."
    ],
    "next": "The quick wins go straight into the next sprint, the big bets get a RICE score or a one-page PRD before anyone commits. Re-run the matrix each quarter, not each week.",
+   "breaks": "Resolving the gaps gets cut. The numbered quick wins get argued over again in the first sprint that takes them.",
    "source": ""
   },
   "fr": {
@@ -80,6 +81,7 @@
     "Refuse de placer un sujet au centre du board. Force un quadrant : le centre, c'est là où meurent les sujets indécis."
    ],
    "next": "Les quick wins partent directement dans le prochain sprint, les gros paris reçoivent un score RICE ou un PRD d'une page avant tout engagement. Refais la matrice chaque trimestre, pas chaque semaine.",
+   "breaks": "Le traitement des écarts saute. Les quick wins numérotés sont recontestés au premier sprint qui les prend.",
    "source": ""
   }
  },
@@ -128,6 +130,7 @@
     "Score in one session and stop. RICE is a conversation starter, not a spreadsheet you polish for a week."
    ],
    "next": "The top 5 feed the roadmap or the Now column of a Now / Next / Later. Anything scored with low Confidence goes to an experiment board before it gets built.",
+   "breaks": "The Confidence pass goes. The top 5 reaches the roadmap on scores nobody can back with a piece of evidence.",
    "source": "Intercom"
   },
   "fr": {
@@ -174,6 +177,7 @@
     "Score en une session et arrête. RICE est un déclencheur de conversation, pas un tableur que tu peaufines pendant une semaine."
    ],
    "next": "Le top 5 alimente la roadmap ou la colonne Now d'un Now / Next / Later. Tout ce qui a été scoré avec une confiance faible passe par un experiment board avant d'être construit.",
+   "breaks": "La passe Confiance saute. Le top 5 part en roadmap avec des scores que personne ne sait appuyer sur une preuve.",
    "source": "Intercom"
   }
  },
@@ -222,6 +226,7 @@
     "Do not leave Won't empty. An empty Won't column means nobody made a decision."
    ],
    "next": "The Must list becomes the release scope in the story map or the sprint backlog. Should and Could go to the Next column of the roadmap. Revisit after the first demo, not before.",
+   "breaks": "Capping the Musts goes. They pass 60 % of capacity and the release ships with no room left for surprises.",
    "source": "Dai Clegg"
   },
   "fr": {
@@ -268,6 +273,7 @@
     "Ne laisse pas Won't vide. Une colonne Won't vide veut dire que personne n'a pris de décision."
    ],
    "next": "La liste Must devient le périmètre de la version dans le story map ou le backlog de sprint. Should et Could vont dans la colonne Next de la roadmap. Revois le tout après la première démo, pas avant.",
+   "breaks": "Le plafonnement des Must saute. Ils dépassent 60 % de la capacité et la version part sans marge pour les surprises.",
    "source": "Dai Clegg"
   }
  },
@@ -321,6 +327,7 @@
     "Keep the backbone under 12 activities. More than that and you are mapping a company, not a product."
    ],
    "next": "Slice 1 becomes the sprint backlog, in column order. The map stays on the wall and gets updated after each release. Pair it with a user flow to design the screens of slice 1.",
+   "breaks": "Release slicing goes. The map stays complete and no slice cuts across the columns of the backbone.",
    "source": "Jeff Patton"
   },
   "fr": {
@@ -372,6 +379,7 @@
     "Garde le backbone sous 12 activités. Au-delà, tu cartographies une entreprise, pas un produit."
    ],
    "next": "La tranche 1 devient le backlog de sprint, dans l'ordre des colonnes. La carte reste au mur et se met à jour après chaque release. Associe-la à un user flow pour concevoir les écrans de la tranche 1.",
+   "breaks": "Le découpage des releases saute. La carte reste complète et aucune tranche ne traverse les colonnes du backbone.",
    "source": "Jeff Patton"
   }
  },
@@ -420,6 +428,7 @@
     "Do not let the parking lot disappear. Send it with the roadmap so people see what was explicitly not chosen."
    ],
    "next": "The current quarter column feeds sprint planning. The roadmap is shared with stakeholders as an image with the confidence levels visible, and reviewed at the end of each quarter, right after the metrics review.",
+   "breaks": "Setting the confidence levels goes. The roadmap circulates as an image and every row reads as a promised date.",
    "source": ""
   },
   "fr": {
@@ -466,6 +475,7 @@
     "Ne laisse pas le parking disparaître. Envoie-le avec la roadmap pour que les gens voient ce qui n'a explicitement pas été choisi."
    ],
    "next": "La colonne du trimestre en cours alimente le sprint planning. La roadmap est partagée aux parties prenantes en image avec les niveaux de confiance visibles, et revue à la fin de chaque trimestre, juste après la revue métriques.",
+   "breaks": "La pose des niveaux de confiance saute. La roadmap circule en image et chaque ligne se lit comme une date promise.",
    "source": ""
   }
  },
@@ -514,6 +524,7 @@
     "Do not order Later. Ordering it creates fake precision about things you have not researched."
    ],
    "next": "Now feeds sprint planning directly. Next items get their discovery started (assumption mapping or research plan) so they are ready when a slot opens. Re-read the board every two weeks in the team sync.",
+   "breaks": "The cap on Now goes. The column grows to ten items, turns back into a backlog and commits nobody.",
    "source": ""
   },
   "fr": {
@@ -560,6 +571,7 @@
     "N'ordonne pas Later. L'ordonner crée une fausse précision sur des sujets que tu n'as pas étudiés."
    ],
    "next": "Now alimente directement le sprint planning. Les items de Next lancent leur discovery (assumption mapping ou plan de recherche) pour être prêts quand une place se libère. Relis le board toutes les deux semaines en synchro d'équipe.",
+   "breaks": "Le plafond du Now saute. La colonne passe à dix items, redevient un backlog et n'engage plus personne.",
    "source": ""
   }
  },
@@ -608,6 +620,7 @@
     "Do not hide behind the number. If the winning option feels wrong to the decision owner, the criteria were wrong: say it and fix them, do not adjust scores."
    ],
    "next": "The decision paragraph goes into a DACI or the project channel with the matrix as an attachment. If the chosen option is a build, it gets a one-page PRD next.",
+   "breaks": "Comparing the score gaps goes. The decision paragraph rests on scores nobody ever had to defend out loud.",
    "source": ""
   },
   "fr": {
@@ -654,6 +667,7 @@
     "Ne te cache pas derrière le chiffre. Si l'option gagnante semble fausse au décideur, les critères étaient faux : dis-le et corrige-les, n'ajuste pas les notes."
    ],
    "next": "Le paragraphe de décision va dans un DACI ou le canal du projet avec la matrice en pièce jointe. Si l'option retenue est une construction, elle reçoit ensuite un PRD d'une page.",
+   "breaks": "La comparaison des écarts saute. Le paragraphe de décision repose sur des notes que personne n'a eu à défendre.",
    "source": ""
   }
  },
@@ -707,6 +721,7 @@
     "Do not re-score between plannings to fix an order somebody dislikes. The cost of delay changes only when the market or the date changes."
    ],
    "next": "The ordered list is the program backlog that goes into PI Planning. Enablers ranked high go to the architects first so teams can plan around them. Re-score at the next PI boundary, not before.",
+   "breaks": "Risk reduction scoring goes. Enablers sink to the bottom of the program backlog and never reach the architects.",
    "source": "Donald Reinertsen / SAFe"
   },
   "fr": {
@@ -758,6 +773,7 @@
     "Ne renote pas entre deux plannings pour corriger un ordre qui déplaît. Le coût du délai ne change que si le marché ou la date change."
    ],
    "next": "La liste ordonnée est le backlog programme qui entre en PI Planning. Les enablers bien classés vont d'abord aux architectes pour que les équipes planifient autour. Renote à la frontière du PI suivant, pas avant.",
+   "breaks": "La note de réduction de risque saute. Les enablers tombent en bas du backlog programme et n'atteignent pas les architectes.",
    "source": "Donald Reinertsen / SAFe"
   }
  },
@@ -806,6 +822,7 @@
     "Do not write the sprint goal after pulling the stories. A goal written to fit the list is a summary, not a goal."
    ],
    "next": "The sprint board goes live with the goal pinned on top. Mid-sprint, the goal is the tie-breaker for any scope question. At the end, the retro asks whether the goal was met, not how many points were done.",
+   "breaks": "Breaking stories down goes. Oversized stories sit in progress all week and the sprint goal falls on the last day.",
    "source": "Scrum Guide"
   },
   "fr": {
@@ -852,6 +869,7 @@
     "N'écris pas l'objectif du sprint après avoir tiré les stories. Un objectif écrit pour coller à la liste est un résumé, pas un objectif."
    ],
    "next": "Le board de sprint démarre avec l'objectif épinglé en haut. En milieu de sprint, l'objectif tranche toute question de périmètre. À la fin, la rétro demande si l'objectif est atteint, pas combien de points ont été faits.",
+   "breaks": "Le découpage saute. Les grosses stories restent en cours toute la semaine et l'objectif tombe le dernier jour.",
    "source": "Scrum Guide"
   }
  },
@@ -900,6 +918,7 @@
     "Do not go deeper than three levels. If you need a fourth, the second level is wrong."
    ],
    "next": "The target tree and the redirect list go to the tech lead for the migration plan. The designer uses the tree as the skeleton for low-fidelity wireframes of the top-level pages.",
+   "breaks": "The card sort goes. The target tree copies the current one and the migration renames pages without regrouping any.",
    "source": ""
   },
   "fr": {
@@ -946,6 +965,7 @@
     "Ne descends pas sous trois niveaux. Si tu as besoin d'un quatrième, le deuxième niveau est faux."
    ],
    "next": "L'arbre cible et la liste de redirections vont au tech lead pour le plan de migration. Le designer utilise l'arbre comme squelette des wireframes basse fidélité des pages de premier niveau.",
+   "breaks": "Le tri de cartes saute. L'arbre cible recopie l'arbre actuel et la migration renomme des pages sans rien regrouper.",
    "source": ""
   }
  },
@@ -999,6 +1019,7 @@
     "Do not wireframe a screen nobody can describe in one sentence. Go back to the flow instead."
    ],
    "next": "The numbered wireframes go to visual design and into the sprint as the definition of each story. Test them with three users before high fidelity if the flow is new; skip the test if it is a redesign of a known step.",
+   "breaks": "The content pass goes. Screens reach visual design full of placeholder text and the labels get settled mid sprint.",
    "source": ""
   },
   "fr": {
@@ -1050,6 +1071,7 @@
     "Ne wireframe pas un écran que personne ne peut décrire en une phrase. Retourne au flow à la place."
    ],
    "next": "Les wireframes numérotés partent en design visuel et dans le sprint comme définition de chaque story. Teste-les avec trois utilisateurs avant la haute fidélité si le flow est nouveau ; saute le test si c'est la refonte d'une étape connue.",
+   "breaks": "La passe contenu saute. Les écrans partent en design visuel avec du faux texte et les libellés se décident en sprint.",
    "source": ""
   }
  },
@@ -1098,6 +1120,7 @@
     "Do not describe screens in the flow. A rectangle says what the screen is for, wireframes say what is on it."
    ],
    "next": "The flow becomes the screen list for the wireframes and the acceptance criteria for the story. Every diamond turns into a test case. Pin the flow next to the story map slice it belongs to.",
+   "breaks": "Errors and empty states go. The flow covers the happy path only and the missing screens surface during QA.",
    "source": ""
   },
   "fr": {
@@ -1144,6 +1167,7 @@
     "Ne décris pas les écrans dans le flow. Un rectangle dit à quoi sert l'écran, les wireframes disent ce qu'il y a dessus."
    ],
    "next": "Le flow devient la liste des écrans pour les wireframes et les critères d'acceptation de la story. Chaque losange devient un cas de test. Épingle le flow à côté de la tranche de story map à laquelle il appartient.",
+   "breaks": "Les erreurs et états vides sautent. Le flow ne couvre que le chemin nominal et les écrans manquants sortent en recette.",
    "source": ""
   }
  },
@@ -1192,6 +1216,7 @@
     "Do not end at 'they use the product'. Frame 8 is what is different in their life, or the story has no point."
    ],
    "next": "The storyboard goes in front of three to five users as a desirability test before anything is built: 'is this you, would you want this?' Their answers feed the assumption map. If the story holds, it becomes the brief for the Crazy 8's or the design sprint.",
+   "breaks": "Merging the pairs goes. Two competing storyboards go into the desirability test and no single story comes out.",
    "source": ""
   },
   "fr": {
@@ -1238,6 +1263,7 @@
     "Ne termine pas sur 'elle utilise le produit'. Le cadre 8, c'est ce qui a changé dans sa vie, sinon l'histoire n'a pas de sens."
    ],
    "next": "Le storyboard passe devant trois à cinq utilisateurs comme test de désirabilité avant de construire quoi que ce soit : 'c'est toi ça, tu voudrais ça ?' Leurs réponses alimentent l'assumption map. Si l'histoire tient, elle devient le brief des Crazy 8's ou du design sprint.",
+   "breaks": "La fusion des binômes saute. Deux storyboards concurrents passent en test et aucune histoire unique n'en ressort.",
    "source": ""
   }
  },
@@ -1286,6 +1312,7 @@
     "Do not leave Out of scope empty. It is the block that protects the team during the sprint."
    ],
    "next": "The signed PRD is the reference for the user flow and the wireframes. Open questions go into the team channel with their dates. Any scope change after signing is a new paragraph in the PRD with a date, never a hallway agreement.",
+   "breaks": "Out of scope gets skipped. Nothing is written down and the topic comes back in a meeting weeks after signing.",
    "source": ""
   },
   "fr": {
@@ -1332,6 +1359,7 @@
     "Ne laisse pas Hors périmètre vide. C'est le bloc qui protège l'équipe pendant le sprint."
    ],
    "next": "Le PRD signé est la référence pour le user flow et les wireframes. Les questions ouvertes vont dans le canal de l'équipe avec leurs dates. Tout changement de périmètre après signature est un nouveau paragraphe daté dans le PRD, jamais un accord de couloir.",
+   "breaks": "Le hors-périmètre saute. Rien n'est écrit et le sujet revient en réunion trois semaines après la signature.",
    "source": ""
   }
  },
@@ -1376,6 +1404,7 @@
     "Turning points into days. The moment a point equals a day, the team starts estimating to please the calendar."
    ],
    "next": "Items that split twice go back to refinement or get sliced. If the team keeps arguing about the unit rather than the item, T-shirt sizing is the honest version for a while.",
+   "breaks": "The outliers stop explaining. The team keeps an average and what the highest card knew surfaces during the build.",
    "source": "https://en.wikipedia.org/wiki/Planning_poker"
   },
   "fr": {
@@ -1418,6 +1447,7 @@
     "Transformer les points en jours. À la seconde où un point vaut un jour, l'équipe estime pour faire plaisir au calendrier."
    ],
    "next": "Les items qui se séparent deux fois repartent en affinage ou se font découper. Si l'équipe se dispute sur l'unité plutôt que sur l'item, le t-shirt sizing est la version honnête pendant un temps.",
+   "breaks": "L'explication des extrêmes saute. La salle garde une moyenne et ce que savait la carte haute ressort au développement.",
    "source": "https://en.wikipedia.org/wiki/Planning_poker"
   }
  },
@@ -1462,6 +1492,7 @@
     "Sizing items the team has no idea about. Those belong in 'too big to size', which is a real answer and the most useful column on the board."
    ],
    "next": "The S column feeds the next sprint, the XL column feeds refinement. When the team wants finer resolution on a small batch, Planning poker is the step up.",
+   "breaks": "Emptying the XL column goes. The XL cards stay whole and come back to refinement unchanged the next sprint.",
    "source": "https://www.agilealliance.org/glossary/estimation/"
   },
   "fr": {
@@ -1504,6 +1535,7 @@
     "Estimer des items dont l'équipe n'a aucune idée. Ceux-là vont en « trop gros pour être estimé », qui est une vraie réponse et la colonne la plus utile du board."
    ],
    "next": "La colonne S alimente le prochain sprint, la colonne XL alimente l'affinage. Quand l'équipe veut plus de finesse sur un petit lot, le planning poker est le cran au-dessus.",
+   "breaks": "Le vidage de la colonne XL saute. Les XL restent entiers et reviennent en affinage tels quels le sprint suivant.",
    "source": "https://www.agilealliance.org/glossary/estimation/"
   }
  },
@@ -1548,6 +1580,7 @@
     "Treating the result as a roadmap. It is a signal of relative desire from the people in the room, not a plan and not a commitment."
    ],
    "next": "Feed the ranking into Impact/effort or RICE, where cost and reach get a say. The coalitions that formed tell you which customer segments share a problem.",
+   "breaks": "Open negotiation goes. Only individual totals remain, no coalition, and nothing records who gave up what.",
    "source": "https://www.lukehohmann.com/innovation-games/buy-a-feature"
   },
   "fr": {
@@ -1590,6 +1623,7 @@
     "Prendre le résultat pour une roadmap. C'est un signal de désir relatif chez les gens présents, pas un plan et pas un engagement."
    ],
    "next": "Fais entrer le classement dans l'impact/effort ou le RICE, où le coût et la portée ont voix au chapitre. Les coalitions formées te disent quels segments partagent un problème.",
+   "breaks": "La négociation ouverte saute. Il reste des totaux individuels, aucune coalition, et rien sur qui a renoncé à quoi.",
    "source": "https://www.lukehohmann.com/innovation-games/buy-a-feature"
   }
  },
@@ -1634,6 +1668,7 @@
     "Letting an item in because the sprint needs filling. That item is the one that will be carried over."
    ],
    "next": "Ready items go to sizing (Planning poker or T-shirt) then sprint planning. If the same questions keep blocking items, the gap is upstream: research or a story map.",
+   "breaks": "Asking until it is boring goes. The unanswered questions stay unwritten and the item stalls in the middle of a sprint.",
    "source": "https://scrumguides.org/scrum-guide.html"
   },
   "fr": {
@@ -1676,6 +1711,7 @@
     "Laisser entrer un item parce qu'il faut remplir le sprint. C'est celui-là qui sera reporté."
    ],
    "next": "Les items prêts passent à l'estimation (planning poker ou t-shirt) puis au sprint planning. Si les mêmes questions bloquent toujours, le manque est en amont : de la recherche ou une story map.",
+   "breaks": "Le questionnement jusqu'à l'ennui saute. Les questions sans réponse restent non écrites et l'item bloque en plein sprint.",
    "source": "https://scrumguides.org/scrum-guide.html"
   }
  },
@@ -1725,6 +1761,7 @@
     "One giant story everyone agrees with. Agreement usually means it is too vague to disagree with yet."
    ],
    "next": "Stories go to refinement and sizing. If several stories keep colliding, they belong on a story map before they belong in a sprint.",
+   "breaks": "Writing the criteria together goes. Product writes them alone and they get renegotiated on demo day.",
    "source": "https://www.agilealliance.org/glossary/invest/"
   },
   "fr": {
@@ -1772,6 +1809,7 @@
     "Une seule grosse story sur laquelle tout le monde est d'accord. L'accord signifie en général qu'elle est encore trop vague pour qu'on puisse la contredire."
    ],
    "next": "Les stories partent en affinage puis en estimation. Si plusieurs stories se télescopent sans arrêt, leur place est sur une story map avant d'être dans un sprint.",
+   "breaks": "L'écriture des critères à deux saute. Le produit les écrit seul et ils se renégocient le jour de la démo.",
    "source": "https://www.agilealliance.org/glossary/invest/"
   }
  },
@@ -1816,6 +1854,7 @@
     "Never revisiting it. A Definition of Done that has not changed in a year describes a team that no longer exists."
    ],
    "next": "Post both lists where the board is, and use the Ready list as the gate in refinement. Revisit it at a retro when the same argument comes back twice.",
+   "breaks": "Cutting the list in half goes. The Done list runs to twenty lines and nobody reads it before shipping.",
    "source": "https://scrumguides.org/scrum-guide.html"
   },
   "fr": {
@@ -1858,6 +1897,7 @@
     "Ne jamais y revenir. Une Definition of Done inchangée depuis un an décrit une équipe qui n'existe plus."
    ],
    "next": "Affiche les deux listes près du board, et sers-toi du Ready comme filtre en affinage. Reviens dessus en rétro dès que la même dispute revient deux fois.",
+   "breaks": "La coupe de la liste en deux saute. Le Done fait vingt lignes et plus personne ne le relit avant de livrer.",
    "source": "https://scrumguides.org/scrum-guide.html"
   }
  },
@@ -1903,6 +1943,7 @@
     "\"Off the radar\" that never gets used means nothing was decided. If the outer ring is empty at the end, run the centre pass again."
    ],
    "next": "The centre becomes the input of Now / Next / Later or of a roadmap. Set a date to redraw the target, otherwise it ages in a week.",
+   "breaks": "Enforcing the centre goes. The inner ring keeps everything, the outer ring stays empty and nothing gets decided.",
    "source": ""
   },
   "fr": {
@@ -1946,6 +1987,7 @@
     "Un « hors radar » jamais utilisé signifie que rien n'a été décidé. Si l'anneau extérieur est vide à la fin, refais une passe sur le centre."
    ],
    "next": "Le centre devient l'entrée d'un Now / Next / Later ou d'une roadmap. Fixe la date de la prochaine cible, sinon elle vieillit en une semaine.",
+   "breaks": "Le respect du centre saute. L'anneau central garde tout, l'anneau extérieur reste vide et rien n'a été arbitré.",
    "source": ""
   }
  }

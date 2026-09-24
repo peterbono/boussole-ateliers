@@ -45,6 +45,7 @@
     "Never let two personas share the same goals and frustrations. Merge them, or you will build the same feature twice."
    ],
    "next": "The primary persona goes on the wall of the team room and at the top of every PRD. It feeds the customer journey map and the How Might We session. Revisit it after each research round.",
+   "breaks": "The challenge round goes. The persona hits the wall with blocks that rest on opinion alone.",
    "source": "Alan Cooper"
   },
   "fr": {
@@ -92,6 +93,7 @@
     "Deux personas avec les mêmes objectifs et frustrations, ça n'existe pas. Fusionne-les, sinon tu construis deux fois la même feature."
    ],
    "next": "Le persona principal va sur le mur de l'équipe et en tête de chaque PRD. Il nourrit la customer journey map et la session How Might We. Révise-le après chaque vague de recherche.",
+   "breaks": "Le challenge des binômes saute. Le persona part au mur avec des blocs qui ne tiennent que sur des opinions.",
    "source": "Alan Cooper"
   }
  },
@@ -141,6 +143,7 @@
     "Resist the urge to list 15 jobs. Three sharp jobs drive a roadmap; fifteen vague ones drive nothing."
    ],
    "next": "The top job statement and its forces go into the Value Proposition Canvas and the Opportunity Solution Tree. Sales gets the pushes and anxieties for its pitch. Redo the exercise when you enter a new segment.",
+   "breaks": "Writing the job statements goes. Four forces stay on the wall and the roadmap keeps talking features.",
    "source": "Clayton Christensen / Bob Moesta"
   },
   "fr": {
@@ -188,6 +191,7 @@
     "Résiste à la liste de 15 jobs. Trois jobs nets pilotent une roadmap ; quinze jobs flous ne pilotent rien."
    ],
    "next": "Le job principal et ses forces alimentent le Value Proposition Canvas et l'Opportunity Solution Tree. Les ventes récupèrent les push et anxiétés pour leur pitch. Refais l'exercice à chaque nouveau segment.",
+   "breaks": "L'écriture des job statements saute. Il reste quatre forces sur un mur et la roadmap continue de parler features.",
    "source": "Clayton Christensen / Bob Moesta"
   }
  },
@@ -237,6 +241,7 @@
     "Do not let the loudest person dictate 'feels'. Silent writing first, then posting, always."
    ],
    "next": "The pains and gains feed the Value Proposition Canvas or the How Might We questions. The question-marked stickies become the script of your next interviews. Keep the map next to the persona it belongs to.",
+   "breaks": "Playing the material goes. The map gets filled from memory and later passes for research.",
    "source": "Dave Gray, XPLANE"
   },
   "fr": {
@@ -284,6 +289,7 @@
     "Ne laisse pas la personne la plus bavarde dicter 'ressent'. Écriture silencieuse d'abord, puis affichage, toujours."
    ],
    "next": "Les douleurs et gains alimentent le Value Proposition Canvas ou les questions How Might We. Les stickies avec point d'interrogation deviennent le script de tes prochains entretiens. Garde la carte à côté du persona concerné.",
+   "breaks": "La lecture du matériau saute. La carte se remplit de mémoire et passe ensuite pour de la recherche.",
    "source": "Dave Gray, XPLANE"
   }
  },
@@ -338,6 +344,7 @@
     "Emotions without evidence turn the session into a debate. Bring numbers and quotes, or mark guesses as guesses."
    ],
    "next": "The top pains become How Might We questions or opportunities in the Opportunity Solution Tree. The map with owners goes to the roadmap discussion. Print it and leave it on the wall until it is out of date.",
+   "breaks": "Evidence under the emotion curve goes. Every dip gets re-argued on opinion at the next meeting.",
    "source": ""
   },
   "fr": {
@@ -390,6 +397,7 @@
     "Des émotions sans preuve transforment la session en débat. Apporte chiffres et citations, ou marque les suppositions comme telles."
    ],
    "next": "Les frictions principales deviennent des questions How Might We ou des opportunités dans l'Opportunity Solution Tree. La carte avec ses responsables part en discussion de roadmap. Imprime-la et laisse-la au mur jusqu'à ce qu'elle soit périmée.",
+   "breaks": "Les preuves sous la courbe d'émotion sautent. Chaque creux se rediscute à l'opinion dès la réunion suivante.",
    "source": ""
   }
  },
@@ -439,6 +447,7 @@
     "Do not recruit from your fan base or your team's friends. Screen for the situation, not the enthusiasm."
    ],
    "next": "The guide goes to whoever runs the interviews; notes come back within 24 hours of each session. After 5 to 8 interviews, run an affinity map to synthesize, then update the assumption map.",
+   "breaks": "The interview guide goes. Everyone improvises and the eight sessions no longer synthesize together.",
    "source": ""
   },
   "fr": {
@@ -486,6 +495,7 @@
     "Ne recrute pas dans ta base de fans ni chez les amis de l'équipe. Sélectionne sur la situation, pas sur l'enthousiasme."
    ],
    "next": "Le guide part chez celui qui mène les entretiens ; les notes reviennent sous 24 heures après chaque session. Après 5 à 8 entretiens, fais une affinity map pour synthétiser, puis mets à jour l'assumption map.",
+   "breaks": "Le guide d'entretien saute. Chacun improvise et les huit entretiens ne se synthétisent plus ensemble.",
    "source": ""
   }
  },
@@ -535,6 +545,7 @@
     "A test that takes six weeks is not a test, it is the project. Shrink it until it fits in two weeks."
    ],
    "next": "The top assumptions become the rows of the experiment board and the questions of the research plan. Bring the grid back after each test and move the stickies: evidence up, or importance down.",
+   "breaks": "Sharpening the assumptions goes. You test 'users will like it', which nothing can ever disprove.",
    "source": "David Bland"
   },
   "fr": {
@@ -582,6 +593,7 @@
     "Un test qui prend six semaines n'est pas un test, c'est le projet. Réduis-le jusqu'à ce qu'il tienne en deux semaines."
    ],
    "next": "Les hypothèses du haut deviennent les lignes de l'experiment board et les questions du plan de recherche. Ressors la grille après chaque test et déplace les stickies : preuve vers le haut, ou importance vers le bas.",
+   "breaks": "L'affûtage des hypothèses saute. On teste 'les utilisateurs vont aimer', qui ne se prouve jamais faux.",
    "source": "David Bland"
   }
  },
@@ -631,6 +643,7 @@
     "An outcome the team cannot influence within a quarter ('grow revenue') makes the tree useless. Pick the leading metric the team really moves."
    ],
    "next": "The tree lives in the team's space and is updated weekly during discovery. The experiments go to the experiment board. Show the tree, not a slide, when leadership asks why you build what you build.",
+   "breaks": "Structuring parents and children goes. The tree stays a flat list and the target gets picked on gut feel.",
    "source": "Teresa Torres"
   },
   "fr": {
@@ -678,6 +691,7 @@
     "Un résultat que l'équipe ne peut pas influencer en un trimestre ('faire croître le revenu') rend l'arbre inutile. Prends la métrique amont que l'équipe bouge vraiment."
    ],
    "next": "L'arbre vit dans l'espace de l'équipe et se met à jour chaque semaine pendant la discovery. Les expériences partent dans l'experiment board. Montre l'arbre, pas une slide, quand la direction demande pourquoi tu construis ce que tu construis.",
+   "breaks": "La structuration en parents et enfants saute. L'arbre reste une liste plate et la cible se choisit au ressenti.",
    "source": "Teresa Torres"
   }
  },
@@ -727,6 +741,7 @@
     "Half a day is the minimum. Splitting it across two short meetings loses the cross-function conversation that is the whole point."
    ],
    "next": "The bottlenecks list goes to the operations lead and the product lead together. Product fixes enter the prioritization matrix; process fixes go to the team charter or a dedicated ops sprint. Refresh the blueprint after any org change.",
+   "breaks": "Spotting the bottlenecks goes. A full wall remains with no 24-hour wait circled and nothing to hand ops.",
    "source": "G. Lynn Shostack"
   },
   "fr": {
@@ -774,6 +789,7 @@
     "Une demi-journée est le minimum. Découper en deux réunions courtes perd la conversation inter-fonctions qui est tout l'intérêt."
    ],
    "next": "La liste des goulots va au responsable des opérations et au responsable produit ensemble. Les corrections produit entrent dans la matrice de priorisation ; les corrections de process vont dans le team charter ou un sprint ops dédié. Rafraîchis le blueprint à chaque changement d'organisation.",
+   "breaks": "Le repérage des goulots saute. Il reste une fresque complète et aucune attente de plus de 24 h entourée.",
    "source": "G. Lynn Shostack"
   }
  },
@@ -818,6 +834,7 @@
     "Delighters decay into basics within a couple of years. Do not treat today's classification as permanent."
    ],
    "next": "The classified list feeds the RICE scoring or the roadmap: basics first, then the strategic choice. Share the surprises with sales and marketing; they change the pitch. Rerun on a new segment or every 12 months.",
+   "breaks": "The per-segment pass goes. One classification covers every plan and packaging gets decided blind.",
    "source": "Noriaki Kano"
   },
   "fr": {
@@ -860,6 +877,7 @@
     "Les attractifs deviennent des basiques en deux ou trois ans. Ne traite pas la classification d'aujourd'hui comme définitive."
    ],
    "next": "La liste classée alimente le scoring RICE ou la roadmap : les basiques d'abord, puis le choix stratégique. Partage les surprises avec les ventes et le marketing ; elles changent le pitch. Refais l'exercice sur un nouveau segment ou tous les 12 mois.",
+   "breaks": "La relecture par segment saute. Une seule classification couvre toutes les offres et le packaging se décide à l'aveugle.",
    "source": "Noriaki Kano"
   }
  },
@@ -909,6 +927,7 @@
     "Ten HMWs is the ceiling. With thirty, ideation spreads thin and nothing gets prototyped."
    ],
    "next": "The selected HMWs open the ideation session: Crazy 8's, brainwriting, or a design sprint. Keep the full list, the ones not selected are next quarter's raw material.",
+   "breaks": "The altitude sort goes. Ideation opens on questions too broad and the ideas come back interchangeable.",
    "source": "Procter & Gamble / IDEO"
   },
   "fr": {
@@ -956,6 +975,7 @@
     "Dix HMW, c'est le plafond. Avec trente, l'idéation s'éparpille et rien n'est prototypé."
    ],
    "next": "Les HMW retenues ouvrent la session d'idéation : Crazy 8's, brainwriting ou design sprint. Garde la liste complète, les non retenues sont la matière brute du trimestre prochain.",
+   "breaks": "Le tri par altitude saute. L'idéation démarre sur des questions trop larges et rend des idées interchangeables.",
    "source": "Procter & Gamble / IDEO"
   }
  },
@@ -1005,6 +1025,7 @@
     "A mind map is a starting point, not a deliverable. If it ends up in a slide deck as is, the session failed."
    ],
    "next": "The selected threads become research questions, HMW questions, or assumptions to map. The map itself is archived; nobody needs to read it again.",
+   "breaks": "The rotation goes. Each branch stays in its author's head and the blind spots never show.",
    "source": "Tony Buzan"
   },
   "fr": {
@@ -1052,6 +1073,7 @@
     "Une mind map est un point de départ, pas un livrable. Si elle finit telle quelle dans un deck, la session a raté."
    ],
    "next": "Les fils retenus deviennent des questions de recherche, des HMW ou des hypothèses à cartographier. La carte elle-même est archivée ; personne n'a besoin de la relire.",
+   "breaks": "La rotation saute. Chaque branche reste dans la tête de son auteur et les angles morts ne se voient pas.",
    "source": "Tony Buzan"
   }
  },
@@ -1101,6 +1123,7 @@
     "Do not name groups with a single word. Single words hide disagreement about what the group means."
    ],
    "next": "The insight sheet feeds the How Might We session, the opportunity level of the OST, and updates the assumption map. Share it with the whole team within 48 hours, while the interviews are fresh.",
+   "breaks": "Naming groups as sentences goes. Headers stay single words and nobody recalls what they covered.",
    "source": "Jiro Kawakita (KJ method)"
   },
   "fr": {
@@ -1148,6 +1171,7 @@
     "Ne nomme pas les groupes d'un seul mot. Un mot seul cache le désaccord sur ce que le groupe veut dire."
    ],
    "next": "La fiche d'insights alimente la session How Might We, le niveau opportunités de l'OST, et met à jour l'assumption map. Partage-la à toute l'équipe sous 48 heures, tant que les entretiens sont frais.",
+   "breaks": "Le nommage en phrases saute. Les groupes gardent un titre d'un mot et personne ne sait plus ce qu'il couvrait.",
    "source": "Jiro Kawakita (méthode KJ)"
   }
  },
@@ -1197,6 +1221,7 @@
     "Do not run it without a decider. Eight sketches and no decision is an afternoon lost."
    ],
    "next": "The chosen sketch goes to wireframes or a prototype within the week. Keep the other sketches in a shared folder; they resurface when the first prototype fails a test.",
+   "breaks": "Redrawing the strongest box goes. Dots then land on the most readable scribble, not on the idea.",
    "source": "Jake Knapp, GV"
   },
   "fr": {
@@ -1244,6 +1269,7 @@
     "Ne le fais pas sans décideur. Huit croquis et pas de décision, c'est un après-midi perdu."
    ],
    "next": "Le croquis retenu part en wireframes ou en prototype dans la semaine. Garde les autres croquis dans un dossier partagé ; ils ressortent quand le premier prototype rate un test.",
+   "breaks": "La mise au propre de la meilleure case saute. On vote sur des gribouillis et la gommette suit le plus lisible.",
    "source": "Jake Knapp, GV"
   }
  },
@@ -1283,6 +1309,7 @@
     "Do not use a vague prompt. 'Improve retention' gives 108 platitudes. 'Get a team to invite a second member in the first session' gives ideas."
    ],
    "next": "The shortlist goes through dot voting or the impact / effort matrix in the next session. Photograph every sheet; the unselected ideas are useful later.",
+   "breaks": "Rounds get dropped. The sheets stay close to the first idea and the shortlist surprises nobody.",
    "source": "Bernd Rohrbach"
   },
   "fr": {
@@ -1320,6 +1347,7 @@
     "Pas de sujet vague. 'Améliorer la rétention' donne 108 platitudes. 'Amener une équipe à inviter un deuxième membre dès la première session' donne des idées."
    ],
    "next": "La présélection passe au dot voting ou à la matrice impact / effort à la session suivante. Photographie chaque feuille ; les idées non retenues servent plus tard.",
+   "breaks": "Des tours de rotation sautent. Les feuilles restent près de la première idée et la shortlist ne surprend personne.",
    "source": "Bernd Rohrbach"
   }
  },
@@ -1359,6 +1387,7 @@
     "Do not treat the count as the decision. Say clearly who decides, or the group thinks it was a democracy and resents the outcome."
    ],
    "next": "The selected options go to the impact / effort matrix, a prototype, or the experiment board. Write the result on the board with the criterion used, so nobody rewrites history next week.",
+   "breaks": "Reading the options goes. Each person votes on their own reading and the pick reopens a week later.",
    "source": ""
   },
   "fr": {
@@ -1396,6 +1425,7 @@
     "Ne prends pas le décompte pour la décision. Dis clairement qui décide, sinon le groupe croit à une démocratie et en veut au résultat."
    ],
    "next": "Les options retenues passent à la matrice impact / effort, en prototype ou dans l'experiment board. Écris le résultat sur le board avec le critère utilisé, pour que personne ne réécrive l'histoire la semaine suivante.",
+   "breaks": "La lecture des options saute. Chacun vote sur sa propre interprétation et le choix se rouvre la semaine suivante.",
    "source": ""
   }
  },
@@ -1440,6 +1470,7 @@
     "Do not skip Friday or replace it with a team review. Five real users is the entire point; the rest of the week is preparation for it."
    ],
    "next": "Friday's patterns go into a one-page report to leadership within 48 hours: what was tested, what held, what failed, the decision. A go leads to a real build; an iterate means a second, shorter sprint on the failed part.",
+   "breaks": "Monday goes, map and expert interviews. Thursday prototypes a target picked in a meeting and Friday tests the wrong step.",
    "source": "Jake Knapp, GV"
   },
   "fr": {
@@ -1482,6 +1513,7 @@
     "Ne saute pas le vendredi et ne le remplace pas par une revue d'équipe. Cinq vrais utilisateurs, c'est tout l'intérêt ; le reste de la semaine ne fait que le préparer."
    ],
    "next": "Les patterns du vendredi vont dans un rapport d'une page à la direction sous 48 heures : ce qui a été testé, ce qui a tenu, ce qui a raté, la décision. Un go mène à une vraie construction ; un itérer déclenche un second sprint plus court sur la partie ratée.",
+   "breaks": "Lundi saute, la carte et les experts. Jeudi prototype une cible choisie en réunion et vendredi teste la mauvaise étape.",
    "source": "Jake Knapp, GV"
   }
  },
@@ -1526,6 +1558,7 @@
     "Do not delete failed rows. The learning column of a failed experiment is worth more than the result column of a successful one."
    ],
    "next": "Each row is reviewed at the agreed date; result and learning are filled in the same meeting. Validated hypotheses move to the story map or the roadmap; killed ones update the assumption map and the OST.",
+   "breaks": "The success threshold goes. The number gets set after the data and every result reads as a win.",
    "source": "Eric Ries / Ash Maurya"
   },
   "fr": {
@@ -1568,6 +1601,7 @@
     "Ne supprime pas les lignes ratées. La colonne apprentissage d'une expérience ratée vaut plus que la colonne résultat d'une réussie."
    ],
    "next": "Chaque ligne est revue à la date convenue ; résultat et apprentissage sont remplis dans la même réunion. Les hypothèses validées passent dans la story map ou la roadmap ; les tuées mettent à jour l'assumption map et l'OST.",
+   "breaks": "Le seuil de validation saute. Le chiffre se fixe après coup et chaque résultat se relit comme un succès.",
    "source": "Eric Ries / Ash Maurya"
   }
  },
@@ -1612,6 +1646,7 @@
     "Resolving hot spots on the spot. A pink sticky is worth more than a rushed decision made by whoever spoke loudest. Park it and move."
    ],
    "next": "The timeline feeds a story map or a service blueprint directly. The hot spots are the best backlog of discovery work you will get in one session.",
+   "breaks": "Policies go. Product decisions stay hidden inside technical behaviour and resurface as a bug ticket.",
    "source": "https://www.eventstorming.com/"
   },
   "fr": {
@@ -1654,6 +1689,7 @@
     "Résoudre les points chauds sur le moment. Un post-it rose vaut mieux qu'une décision bâclée prise par celui qui a parlé le plus fort. Mets-le de côté et avance."
    ],
    "next": "La frise alimente directement une story map ou un service blueprint. Les points chauds constituent le meilleur backlog de découverte que tu obtiendras en une session.",
+   "breaks": "Les politiques sautent. Les décisions produit restent planquées dans du technique et ressortent en ticket de bug.",
    "source": "https://www.eventstorming.com/"
   }
  },
@@ -1699,6 +1735,7 @@
     "Ending on the foreign ideas leaves the group amused and empty-handed. The \"worth stealing\" column is the one that makes the session count."
    ],
    "next": "The kept ideas go into a convergence: Dot voting if there are many, How might we if they are still too vague to build on. Nothing here is a decision yet.",
+   "breaks": "The worth stealing column goes. The room leaves amused and nothing from those worlds lands at home.",
    "source": ""
   },
   "fr": {
@@ -1742,6 +1779,7 @@
     "Finir sur les idées étrangères laisse le groupe amusé et les mains vides. C'est la colonne « bon à voler » qui rend la séance utile."
    ],
    "next": "Les idées gardées partent en convergence : Dot voting si elles sont nombreuses, How might we si elles restent trop floues pour être construites. Rien ici n'est encore une décision.",
+   "breaks": "La colonne ce qui mérite d'être volé saute. La salle sort amusée et rien de ces mondes n'atterrit chez nous.",
    "source": ""
   }
  }
