@@ -45,6 +45,7 @@ const PAGE_CSS = `
 .page .cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}
 .page section{margin-top:26px}
 .page h2{font-size:20px;font-weight:700;margin-bottom:10px}
+.page .src-line a{color:inherit}
 .page h3.k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;margin:14px 0 6px}
 .page ul,.page ol{margin:0;padding-left:20px;color:var(--ink-2)}
 .page li{margin:4px 0}
@@ -105,7 +106,7 @@ function workshopPage(lang, t){
 <h3 class="k">${esc(u.agenda)}</h3><ol class="agenda">${run.agenda.map(a => `<li><span class="mono amin">${a.min} ${esc(u.minutes)}</span><div><b>${esc(a.t)}</b><br>${esc(a.d)}</div></li>`).join('')}</ol>
 <h3 class="k">${esc(u.pitfalls)}</h3><ul>${run.pitfalls.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
 <h3 class="k">${esc(u.nextStep)}</h3><p style="color:var(--ink-2)">${esc(run.next)}</p>
-${run.source ? `<p class="muted" style="font-size:13px">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(run.source)}</a>` : esc(run.source)}</p>` : ''}</section>`;
+${run.source ? `<p class="muted src-line" style="font-size:13px">${esc(u.source)} : ${SOURCES[t.id] ? `<a href="${SOURCES[t.id]}" target="_blank" rel="noopener">${esc(run.source)}</a>` : esc(run.source)}</p>` : ''}</section>`;
   }
   if(related.length) html += `<section><h2>${lang === 'en' ? 'Related workshops' : 'Ateliers liés'}</h2><div class="related">${related.map(r => `<a href="${pageUrl(lang, r.q.id)}">${esc(L.templates[r.q.id].name)}<small>${esc(r.k)} · ${esc(L.phases[r.q.phase])}</small></a>`).join('')}</div></section>`;
   html += `<div class="foot"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(u.backToApp)}</a><a href="${base[lang]}">${esc(u.allWorkshops)}</a><a href="${altUrl}">${alt === 'fr' ? 'Version française' : 'English version'}</a></div>
