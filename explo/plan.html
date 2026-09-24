@@ -145,6 +145,7 @@ const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', st
   workshops:n => n > 1 ? 'ateliers' : 'atelier',
   cut:(n, m) => n + ' tombe à ' + m + ' min',
   atFloor:n => n + (n > 1 ? ' étapes réduites au minimum' : ' étape réduite au minimum'),
+  broken:'plus aucune étape ne tient',
   reco:h => 'sous la dur\u00e9e conseill\u00e9e de ' + h,
   under:'trop court pour tenir sa promesse',
   drop:'Retirer du plan',
@@ -184,7 +185,10 @@ const tooShort = t => edur(t) < recDur(t) - 0.001;
    pas : l'utilisateur reste maitre de son creneau, et s'il descend vraiment
    bas, on lui propose plutot de retirer l'atelier. */
 const recDur = t => Math.ceil(t.agenda.reduce((s, a) => s + Math.max(STEPM, Math.round(a.min / 2)), 0) / STEPM) * STEPM / 60;
-const hardDur = t => Math.max(0.25, t.dur * 0.2);
+// Une seule limite compte, la duree conseillee, et elle se franchit. En dessous
+// on laisse descendre jusqu'au pas de reglage : a ce stade c'est au facilitateur
+// de juger, et retirer l'atelier reste a un clic.
+const hardDur = () => STEPM / 60;
 /* « 1 h 20 » plutot que « 1,3 h » : un facilitateur lit un creneau, pas un decimal */
 const fmtDur = h => {
   const m = Math.round(h * 60), H = Math.floor(m / 60), M = m % 60;
@@ -206,9 +210,16 @@ function scaleAgenda(agenda, targetMin){
       const want = Math.min(need, cap);
       pool.forEach(a => { const c = Math.max(0, a.min - floor(a)); if(!c) return; a.min = Math.max(floor(a), a.min - Math.round(want * c / cap)); });
     };
-    let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
-    take(out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big));
-    take(out);
+    const floorSum = out.reduce((s2, a) => s2 + floor(a), 0);
+    if(targetMin < floorSum){
+      // en dessous des planchers, plus rien a proteger : tout retrecit au prorata
+      const k = targetMin / ref;
+      out.forEach(a => { a.min = Math.max(1, Math.round(a.ref * k)); });
+    } else {
+      let big = 0; out.forEach((a, i) => { if(a.ref > out[big].ref) big = i; });
+      take(out.filter((a, i) => i !== 0 && i !== out.length - 1 && i !== big));
+      take(out);
+    }
   }
   const diff = targetMin - out.reduce((s, a) => s + a.min, 0);
   if(diff > 0){ const b = out.reduce((m, a) => a.min > m.min ? a : m, out[0]); b.min += diff; }
@@ -233,6 +244,8 @@ function riskFor(t, hours){
   if(Math.abs(r - 1) < 0.001) return '';
   const pct = Math.round(Math.abs(1 - r) * 100), sign = r < 1 ? '-' : '+';
   if(r > 1) return sign + pct + '%';
+  const floorSum = t.agenda.reduce((s2, a) => s2 + Math.max(STEPM, Math.round(a.min / 2)), 0);
+  if(Math.round(hours * 60) < floorSum) return sign + pct + '% · ' + U.broken;
   const n = floorCount(t, hours);
   return n ? sign + pct + '% · ' + U.atFloor(n) : sign + pct + '%';
 }
@@ -391,7 +404,7 @@ document.addEventListener('pointerdown', e => {
 });
 document.addEventListener('pointermove', e => {
   if(!drag) return;
-  const t = drag.t, step = stepFor(t), reco = recDur(t), hard = hardDur(t);
+  const t = drag.t, step = stepFor(t), reco = recDur(t), hard = hardDur();
   let dh = ((e.clientX - drag.startX) / drag.px) * drag.axis;
   let raw = drag.startDur + dh;
   // le seuil conseille accroche : il faut insister d'environ 30 pixels pour passer
@@ -421,12 +434,12 @@ document.addEventListener('keydown', e => {
   if(!grip || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
   const t = byId(T, grip.dataset.grip), step = stepFor(t) * (e.key === 'ArrowRight' ? 1 : -1);
   e.preventDefault();
-  commit(t.id, Math.max(hardDur(t), Math.min(t.dur * 2, edur(t) + step)));
+  commit(t.id, Math.max(hardDur(), Math.min(t.dur * 2, edur(t) + step)));
 });
 document.addEventListener('click', e => {
   const du = e.target.closest('[data-dur]');
   if(du){ const t = byId(T, du.dataset.dur), st = stepFor(t);
-    commit(t.id, Math.min(t.dur * 2, Math.max(hardDur(t), edur(t) + (+du.dataset.d) * st))); return; }
+    commit(t.id, Math.min(t.dur * 2, Math.max(hardDur(), edur(t) + (+du.dataset.d) * st))); return; }
   const dp = e.target.closest('[data-drop]');
   if(dp) return change(() => { const i = T.findIndex(x => x.id === dp.dataset.drop); if(i >= 0){ dropped.push(T[i]); delete durOv[T[i].id]; T.splice(i, 1); } });
   if(e.target.closest('[data-restore]')) return change(() => { T.push(...dropped.splice(0)); T.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)); });
