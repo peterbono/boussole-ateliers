@@ -127,7 +127,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
 .edit-bar .btn[disabled]{opacity:.4;pointer-events:none}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;max-width:520px;padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;box-shadow:var(--shadow)}
-.detail{position:fixed;z-index:90;width:290px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;box-shadow:0 18px 44px -18px rgba(15,20,40,.4)}
+.detail{position:fixed;z-index:90;min-width:190px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;box-shadow:0 18px 44px -18px rgba(15,20,40,.4)}
 .detail-head{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
 .detail-head b{font-size:13.5px}
 .detail-head span{font-size:12px;color:var(--ink-3)}
@@ -428,30 +428,17 @@ function openPanel(id){
   openPanel.t = setTimeout(() => el.remove(), 2600);
 }
 const closePanel = () => { const e = document.getElementById('toast'); if(e) e.remove(); };
-/* Le clic droit ne duplique plus le clic gauche : il ouvre le detail de ce que
-   la compression a fait, etape par etape. C'est la marche suivante de la
-   divulgation progressive, reservee a qui va la chercher. */
+/* Clic droit : deux actions, rien de plus. Le detail de la compression se lit
+   deja dans la rangee de segments et dans la fiche. */
 function menu(x, y, id){
   closeMenu();
-  const t = byId(T, id), hours = edur(t);
-  const ag = scaleAgenda(t.agenda, Math.round(hours * 60));
-  const floor = a => Math.max(STEPM, Math.round(a.ref / 2));
-  const rows = ag.map(a => {
-    const at = a.cut && a.min <= floor(a);
-    return '<li' + (at ? ' class="at-floor"' : '') + '><span>' + esc(a.t) + '</span>'
-      + (a.cut ? '<i class="mono">' + a.ref + '</i>' : '')
-      + '<b class="mono">' + a.min + ' min</b></li>';
-  }).join('');
+  const t = byId(T, id), moved = Math.abs(edur(t) - t.dur) > 0.001;
   const el = document.createElement('div');
   el.className = 'detail'; el.id = 'ctx';
-  el.innerHTML = '<div class="detail-head"><b>' + esc(t.name) + '</b><span>' + esc(fmtDur(hours))
-      + (hours < t.dur ? ' · ' + esc(U.refTime) + ' ' + esc(fmtDur(t.dur)) : '') + '</span></div>'
-    + '<ul class="detail-steps">' + rows + '</ul>'
-    + (hours < recDur(t) ? '<p class="detail-warn">' + esc(t.breaks) + '</p>' : '')
-    + '<div class="detail-acts">'
-      + (hours !== t.dur ? '<button type="button" data-restore-dur="' + t.id + '">Remettre ' + esc(fmtDur(t.dur)) + '</button>' : '')
-      + '<button type="button" data-open="' + t.id + '">Ouvrir la fiche</button>'
-      + '<button type="button" class="danger" data-drop="' + t.id + '">Retirer du plan</button>'
+  el.innerHTML = '<div class="detail-acts">'
+    + '<button type="button" data-open="' + id + '">Ouvrir la fiche</button>'
+    + (moved ? '<button type="button" data-restore-dur="' + id + '">Réinitialiser la durée</button>' : '')
+    + '<button type="button" class="danger" data-drop="' + id + '">Supprimer du plan</button>'
     + '</div>';
   document.body.appendChild(el);
   const w = el.offsetWidth, h = el.offsetHeight;
