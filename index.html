@@ -378,19 +378,6 @@ body:has(dialog[open]){overflow:hidden}
 .g-bar b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .g-bar small{font-family:"IBM Plex Mono",monospace;font-size:10.5px;opacity:.8}
 .g-bar:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:64px;transition:width .12s ease}
-.g-cell.dragging{transition:none}
-.g-cell .g-bar{width:100%}
-.g-cell--tight .g-bar{box-shadow:inset 0 0 0 1.5px #d79a4e}
-.g-cell--hard .g-bar{box-shadow:inset 0 0 0 1.5px var(--warn-line)}
-body.resizing{touch-action:none;user-select:none}
-.g-grip{position:absolute;top:0;right:-5px;width:12px;height:100%;cursor:ew-resize;border-radius:0 8px 8px 0;touch-action:none}
-.g-grip::after{content:"";position:absolute;top:50%;right:4px;width:3px;height:18px;margin-top:-9px;border-radius:2px;background:currentColor;opacity:.32}
-.g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
-.g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.g-tip{position:fixed;z-index:60;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:260px;box-shadow:var(--shadow)}
-.g-tip.warn{background:var(--warn-text)}
-.gantt-hint{margin:8px 0 0;font-size:12px;color:var(--ink-3)}
 @media print{.g-bar{box-shadow:none}.g-grip,.g-floor,.g-ghost,.edit-bar,.warn-list,.dur-ctl button{display:none!important}}
 .howto{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .howto h3{font-size:16px}
@@ -462,7 +449,7 @@ dialog.zoom::backdrop{background:transparent}
 .next-card .dep-group{margin:0}
 .src{font-size:13px;margin:10px 0 0}
 /* ---------- durees ajustees ---------- */
-.g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:10px;transition:width .12s ease}
+.g-cell{position:relative;grid-row:1;margin-left:calc(var(--off, 0) * 100%);width:calc(var(--frac) * 100%);min-width:10px;transition:width .12s ease,margin-left .12s ease}
 /* Hors brouillon, le plan est un document : une barre ne descend jamais sous la
    largeur de son nom, quitte a ne plus etre exactement proportionnelle. En
    brouillon, l'inverse : la proportion prime, c'est elle qu'on manipule. */
@@ -477,13 +464,13 @@ dialog.zoom::backdrop{background:transparent}
 .g-ghost{position:absolute;inset:0 auto 0 0;width:calc(var(--gw) * 100%);border:1px dashed var(--line-strong);border-radius:8px;pointer-events:none;opacity:var(--go,0);transition:opacity .12s}
 /* repere de la duree conseillee, montre seulement quand on vise cette barre */
 .g-floor{position:absolute;top:0;bottom:0;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
-.g-bar:hover ~ .g-floor,.g-cell:focus-within .g-floor,.g-cell.dragging .g-floor{opacity:.9}
+.g-cell.dragging .g-floor{opacity:.9}
 body.resizing{touch-action:none;user-select:none}
-.g-grip--start{right:auto;left:0;margin:0 0 0 -6px}
-.g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-6px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
+.g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-6px;cursor:ew-resize;touch-action:none;z-index:2;display:flex;align-items:center;justify-content:flex-end;padding-right:5px}
 .g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s}
-.g-row:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
+.g-cell:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
 .g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
+.g-grip.g-grip--start{right:auto;left:0;margin:0 0 0 -6px;justify-content:flex-start;padding:0 0 0 5px}
 .g-cell--narrow .g-grip{width:12px;margin-right:-4px}
 .g-cell--narrow .g-grip--start{display:none}
 .g-bar{cursor:grab}
@@ -1197,12 +1184,21 @@ function renderResult(){
 function planSlots(pick){
   // demi : une session ; semaine : un atelier par jour ; programme : ~1 atelier par semaine, les longs (design sprint, PI) prennent 2 semaines
   const u = UI();
-  // une position posee a la main gagne sur la sequence proposee
-  const place = (slots, label) => slots.map(s => {
-    const c = slotOv[s.x.t.id];
-    if(c == null) return s;
-    return Object.assign({}, s, {start: c, label: label(c)});
-  }).sort((a, b) => a.start - b.start);
+  // une position posee a la main gagne sur la sequence proposee, puis chaque
+  // atelier prend la suite du precedent dans sa colonne : deux ateliers ne se
+  // chevauchent jamais, le second commence ou le premier s'arrete
+  const place = (slots, label) => {
+    const out = slots.map(s => {
+      const c = slotOv[s.x.t.id];
+      return c == null ? s : Object.assign({}, s, {start: c, label: label(c)});
+    }).sort((a, b) => a.start - b.start);
+    const used = {};
+    out.forEach(s => {
+      s.off = used[s.start] || 0;
+      used[s.start] = s.off + edur(s.x.t);
+    });
+    return out;
+  };
   if(ans.horizon === 'demi') return place(pick.map((x, i) => ({label:u.slotSession, x, start:i, span:1})), () => u.slotSession);
   if(ans.horizon === 'semaine') return place(pick.map((x, i) => ({label:u.slotDay(i + 1), x, start:i, span:1})), c => u.slotDay(c + 1));
   // programme : on remplit chaque semaine jusqu'à ~6 h de facilitation ; un atelier de 2 jours ou plus occupe 2 semaines seul
@@ -1220,7 +1216,12 @@ function ganttHtml(slots){
   // Une semaine de programme a une capacite reelle, six heures de facilitation.
   // Ailleurs, une colonne est un creneau : la pleine largeur revient au plus long
   // atelier du plan, pour que les barres se comparent entre elles.
-  const cap = ans.horizon === 'programme' ? 6 : Math.max(1, ...slots.map(s => edur(s.x.t)));
+  // la capacite d'une colonne, c'est ce qu'elle porte reellement : plusieurs
+  // ateliers peuvent partager un creneau, leurs durees s'additionnent
+  const perCol = {};
+  slots.forEach(s => { perCol[s.start] = (perCol[s.start] || 0) + edur(s.x.t) / s.span; });
+  const busiest = Math.max(1, ...Object.values(perCol));
+  const cap = ans.horizon === 'programme' ? Math.max(6, busiest) : busiest;
   const cols = Array.from({length:n}, (_, i) => ans.horizon === 'demi' ? `${u.slotSession} ${i + 1}` : ans.horizon === 'semaine' ? u.slotDay(i + 1) : u.slotWeek(i + 1));
   const phases = PHASES.filter(p => slots.some(s => s.x.t.phase === p.id));
   let html = `<div class="gantt${dirty ? ' gantt--draft' : ''}" style="--n:${n}" data-cap="${cap}" data-n="${n}"><div class="g-head">${cols.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
@@ -1232,12 +1233,13 @@ function ganttHtml(slots){
       const gw = Math.max(0.03, Math.min(1, t.dur / span));
       const fx = Math.max(0.03, Math.min(1, recDur(t) / span));
       const short = dirty && tooShort(t);
-      html += `<div class="g-cell${short ? ' g-cell--under' : ''}" style="grid-column:${s.start + 1} / span ${s.span};--frac:${frac.toFixed(4)};--gw:${(gw / frac).toFixed(4)};--fx:${(fx / frac).toFixed(4)}" data-cell="${t.id}">
+      const off = Math.max(0, Math.min(0.97, (s.off || 0) / span));
+      html += `<div class="g-cell${short ? ' g-cell--under' : ''}" style="grid-column:${s.start + 1} / span ${s.span};--off:${off.toFixed(4)};--frac:${frac.toFixed(4)};--gw:${(gw / frac).toFixed(4)};--fx:${(fx / frac).toFixed(4)}" data-cell="${t.id}">
         <div class="g-ghost" style="--go:${dirty && d < t.dur - 0.001 ? 1 : 0}"></div>
         <button type="button" class="g-bar" data-open="${t.id}" title="${esc(x.name)} · ${fmtDur(d)}"><b>${esc(x.name)}</b><small>${fmtDur(d)}</small><span class="g-segs">${segsHtml(t, d)}</span></button>
         <div class="g-floor"></div>
         <span class="g-grip g-grip--start" data-grip="${t.id}" data-edge="start" aria-hidden="true"></span>
-        <span class="g-grip" data-grip="${t.id}" data-edge="end" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}" title="${esc(u.dragHint)}"></span>
+        <span class="g-grip" data-grip="${t.id}" data-edge="end" role="slider" tabindex="0" aria-label="${esc(x.name)} · ${esc(u.dur)}" aria-valuetext="${esc(fmtDur(d))}"></span>
         <span class="g-cap"><b>${esc(x.name)}</b><i class="mono">${fmtDur(d)}</i></span>
       </div>`;
     });
@@ -1254,7 +1256,7 @@ function segsHtml(t, hours){
   return sc.map(a => {
     const floor = Math.max(STEPM, Math.round(a.ref / 2));
     const cls = a.cut && a.min <= floor ? 'seg-floor' : a.cut ? 'seg-cut' : '';
-    return `<i style="flex:${a.min}"${cls ? ` class="${cls}"` : ''} title="${esc(a.t + ' · ' + a.min + ' min' + (a.cut ? ' (' + UI().refTime + ' ' + a.ref + ')' : ''))}"></i>`;
+    return `<i style="flex:${a.min}"${cls ? ` class="${cls}"` : ''}></i>`;
   }).join('');
 }
 /* Une barre trop courte n'a plus la place d'ecrire son nom : il passe dessous,
@@ -1264,17 +1266,12 @@ function ganttCaptions(){
     const cells = [...row.querySelectorAll('.g-cell')].sort((a, b) =>
       a.querySelector('.g-bar').getBoundingClientRect().left - b.querySelector('.g-bar').getBoundingClientRect().left);
     const lanes = [], rowRight = row.getBoundingClientRect().right;
-    // Hors brouillon, une barre s'elargit jusqu'a contenir son nom, sans jamais
-    // depasser sa colonne : max-content en CSS deborderait le conteneur.
-    const draft = !!row.closest('.gantt--draft');
-    const n = +row.closest('.gantt').dataset.n || 1;
-    const colPx = (row.clientWidth - 6 * (n - 1)) / n;
+    // Une barre reste strictement proportionnelle a sa duree : l'elargir pour
+    // loger son nom decalait la suivante et les faisait se chevaucher. Le nom
+    // sort de la barre, c'est lui qui s'adapte.
     cells.forEach((cell, i) => {
       const bar = cell.querySelector('.g-bar'), cap = cell.querySelector('.g-cap');
-      const span = +((cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1]);
-      const area = colPx * span + 6 * (span - 1);
-      const need = bar.querySelector('b').scrollWidth + 22;
-      cell.style.minWidth = draft ? '' : Math.min(need, area) + 'px';
+
       // une barre est etroite quand son nom deborde vraiment, pas quand il
       // frole le bord : sinon on affichait une etiquette en double
       const lbl = bar.querySelector('b');
@@ -1292,6 +1289,9 @@ function ganttCaptions(){
       while(lanes[lane] != null && br.left < lanes[lane]) lane++;
       lanes[lane] = br.left + cap.offsetWidth + 10;
       cap.style.setProperty('--lane', lane);
+      // une etiquette posee sous une barre de fin de ligne depassait la bande
+      const over = br.left + cap.offsetWidth - rowRight;
+      cap.style.marginLeft = over > 0 ? -Math.ceil(over) + 'px' : '';
     });
     row.style.paddingBottom = lanes.length ? (lanes.length * 17 + 12) + 'px' : '';
   });
