@@ -362,9 +362,11 @@ body:has(dialog[open]){overflow:hidden}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
 .plan-wrap{overflow-x:auto}
-.plan-table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+.plan-table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px;table-layout:fixed}
 .plan-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-weight:500;padding:0 10px 8px 0;border-bottom:1px solid var(--line)}
-.plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.plan-table td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.plan-table th{padding-right:14px}
+.plan-table td:last-child,.plan-table th:last-child{padding-right:0}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
 .gantt{display:flex;flex-direction:column;min-width:520px}
@@ -498,9 +500,10 @@ body.resizing{touch-action:none;user-select:none}
 /* barre d'actions du brouillon */
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .edit-bar--done{background:none}
-.edit-count{flex:1 1 auto;min-width:0;font-size:13px;color:var(--ink-2)}
+.edit-count{flex:1 1 0;min-width:0;font-size:13px;color:var(--ink-2)}
 /* le groupe reste solidaire : il passe a la ligne entier plutot que de se
    couper en deux, et se replie sur lui-meme quand l'ecran est trop etroit */
+.freed{display:inline-block;margin-left:10px;font-size:12px;font-weight:600;color:var(--ink-2);padding:3px 9px;border-radius:7px;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px),var(--surface)}
 .edit-acts{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;flex:0 1 auto}
 .edit-bar .btn[disabled]{opacity:.35;pointer-events:none}
 .btn.icon{padding:6px;width:32px;height:32px;justify-content:center}
@@ -529,6 +532,8 @@ body.resizing{touch-action:none;user-select:none}
 .plan-adjusted b{color:var(--ink)}
 .dur-cell{white-space:nowrap}
 .dur-ctl{display:inline-flex;align-items:center;gap:7px}
+/* le total du pied de tableau se cale sous les valeurs, pas sous le bouton moins */
+.dur-spacer{width:22px;flex:none}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
 .dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline;text-align:center;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
@@ -1274,8 +1279,8 @@ function planHtml(pick, total){
     ${editBar(total, ref)}
     <div class="plan-wrap">${ganttHtml(slots)}</div>
     ${warnList}
-    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
-    <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
+    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><colgroup><col style="width:9%"><col style="width:27%"><col style="width:19%"><col style="width:21%"><col style="width:24%"></colgroup><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="dur-cell"><span class="dur-ctl"><span class="dur-spacer"></span><b class="dur-val mono">${fmtDur(total)}</b></span></td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
 }
@@ -1284,7 +1289,7 @@ function planHtml(pick, total){
 function editBar(total, ref){
   const u = UI(), n = Object.keys(durOv).length;
   if(dirty) return `<div class="edit-bar">
-    <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}</span>
+    <span class="edit-count">${n ? esc(u.changed(n)) + ' · ' + esc(u.insteadOf(fmtDur(total), fmtDur(ref))) : esc(u.noChange)}${ref - total > 0.01 ? `<span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
     <span class="edit-acts">
       <button type="button" class="btn icon" data-undo title="${esc(u.undoLbl)}" aria-label="${esc(u.undoLbl)}"${past.length ? '' : ' disabled'}>${ICON.undo}</button>
       <button type="button" class="btn icon" data-redo title="${esc(u.redoLbl)}" aria-label="${esc(u.redoLbl)}"${future.length ? '' : ' disabled'}>${ICON.redo}</button>
@@ -1293,7 +1298,7 @@ function editBar(total, ref){
     </span>
   </div>`;
   if(n) return `<div class="edit-bar edit-bar--done">
-    <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}</span>
+    <span class="edit-count">${esc(u.adjusted)} · ${esc(u.insteadOf(fmtDur(total), fmtDur(ref)))}${ref - total > 0.01 ? `<span class="freed">${esc(u.freed(fmtDur(ref - total)))}</span>` : ''}</span>
     <span class="edit-acts">
       <button type="button" class="btn" data-edit>${esc(u.editAgain)}</button>
       <button type="button" class="btn" data-reset-time>${esc(u.resetAll)}</button>
