@@ -46,6 +46,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .plan-table td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
+.g-tip b{display:block;font-weight:600}
+.g-tip em{display:block;margin-top:4px;font-style:normal;opacity:.85}
 .g-tip{position:fixed;z-index:60;pointer-events:none;padding:7px 10px;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;max-width:260px;box-shadow:var(--shadow)}
 .g-tip.warn{background:var(--warn-text)}
 .plan-adjusted{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
@@ -122,7 +124,7 @@ body{padding:32px 24px 80px}
   <div class="card" id="card"></div>
 </div>
 <script>
-const T = [{"id":"kickoff","name":"Kick-off canvas","phase":"cadrage","dur":2,"who":"PM, tech lead, design, sponsor","out":"Cadrage signé","agenda":[{"t":"Poser le pourquoi","min":15},{"t":"But et succès","min":25},{"t":"Périmètre","min":30},{"t":"Risques et rôles","min":25},{"t":"Jalons","min":15},{"t":"Relire à voix haute","min":10}]},{"id":"teamcanvas","name":"Team canvas","phase":"cadrage","dur":2,"who":"Toute l’équipe","out":"Règles de travail partagées","agenda":[{"t":"Raison d’être","min":15},{"t":"Rôles","min":20},{"t":"Objectifs","min":30},{"t":"Valeurs et règles","min":30},{"t":"Besoins","min":15},{"t":"S’engager","min":10}]},{"id":"impact","name":"Impact mapping","phase":"strategie","dur":3,"who":"PM, design, tech lead","out":"But relié aux livrables","agenda":[{"t":"Le but","min":20},{"t":"Acteurs","min":30},{"t":"Impacts","min":40},{"t":"Livrables","min":50},{"t":"Élaguer","min":25},{"t":"Choisir un chemin","min":15}]},{"id":"pitch","name":"Elevator pitch","phase":"strategie","dur":1,"who":"PM, marketing","out":"Une phrase que tous répètent","agenda":[{"t":"Remplir seul","min":15},{"t":"Lire à voix haute","min":15},{"t":"Fusionner","min":20},{"t":"Le dire d’un souffle","min":10}]},{"id":"nnl","name":"Now / Next / Later","phase":"prio","dur":1.5,"who":"PM, équipe, parties prenantes","out":"Une feuille de route sans dates","agenda":[{"t":"Vider la liste","min":15},{"t":"Trier en trois","min":25},{"t":"Plafonner le Now","min":25},{"t":"Nommer les responsables","min":15},{"t":"Fixer la revue","min":10}]}];
+const T = [{"id": "kickoff", "name": "Kick-off canvas", "phase": "cadrage", "dur": 2, "who": "PM, tech lead, design, sponsor", "out": "Cadrage signé", "agenda": [{"t": "Poser le pourquoi", "min": 15}, {"t": "But et succès", "min": 25}, {"t": "Périmètre", "min": 30}, {"t": "Risques et rôles", "min": 25}, {"t": "Jalons", "min": 15}, {"t": "Relire à voix haute", "min": 10}], "breaks": "Le hors-périmètre passe à la trappe. Non écrit, il revient en réunion trois semaines plus tard."}, {"id": "teamcanvas", "name": "Team canvas", "phase": "cadrage", "dur": 2, "who": "Toute l’équipe", "out": "Règles de travail partagées", "agenda": [{"t": "Raison d’être", "min": 15}, {"t": "Rôles", "min": 20}, {"t": "Objectifs", "min": 30}, {"t": "Valeurs et règles", "min": 30}, {"t": "Besoins", "min": 15}, {"t": "S’engager", "min": 10}], "breaks": "Les règles de travail sautent. La séance produit de bonnes intentions et aucun changement d’habitude."}, {"id": "impact", "name": "Impact mapping", "phase": "strategie", "dur": 3, "who": "PM, design, tech lead", "out": "But relié aux livrables", "agenda": [{"t": "Le but", "min": 20}, {"t": "Acteurs", "min": 30}, {"t": "Impacts", "min": 40}, {"t": "Livrables", "min": 50}, {"t": "Élaguer", "min": 25}, {"t": "Choisir un chemin", "min": 15}], "breaks": "L’élagage saute. Vous sortez avec une carte complète et aucun chemin choisi."}, {"id": "pitch", "name": "Elevator pitch", "phase": "strategie", "dur": 1, "who": "PM, marketing", "out": "Une phrase que tous répètent", "agenda": [{"t": "Remplir seul", "min": 15}, {"t": "Lire à voix haute", "min": 15}, {"t": "Fusionner", "min": 20}, {"t": "Le dire d’un souffle", "min": 10}], "breaks": "La fusion des propositions saute. Chacun repart avec sa version, le pitch n’existe nulle part."}, {"id": "nnl", "name": "Now / Next / Later", "phase": "prio", "dur": 1.5, "who": "PM, équipe, parties prenantes", "out": "Une feuille de route sans dates", "agenda": [{"t": "Vider la liste", "min": 15}, {"t": "Trier en trois", "min": 25}, {"t": "Plafonner le Now", "min": 25}, {"t": "Nommer les responsables", "min": 15}, {"t": "Fixer la revue", "min": 10}], "breaks": "Le plafond du Now saute. La colonne redevient un backlog et rien n’est arbitré."}];
 const PHASES = [
   {id:'cadrage', name:'Cadrage & kick-off', h:'--h-cadrage'},
   {id:'strategie', name:'Stratégie & vision', h:'--h-strategie'},
@@ -239,7 +241,7 @@ function render(){
         + '<button type="button" class="tl-bar" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" title="' + esc(t.name) + '"><b>' + esc(t.name) + '</b><small>' + fmtDur(s.w) + '</small><span class="tl-segs">' + segsHtml(t, s.w) + '</span></button>'
         + '<div class="tl-floor" style="--fx:' + fx.toFixed(5) + '"></div>'
         + '<span class="tl-grip" data-grip="' + t.id + '" role="slider" tabindex="0" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '" aria-valuetext="' + esc(fmtDur(s.w)) + '"></span>'
-        + (short ? '<div class="tl-warn" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '"><span>' + esc(U.under) + '</span><button type="button" class="btn" data-drop="' + t.id + '">' + esc(U.drop) + '</button></div>' : '')
+        + (short ? '<div class="tl-warn" style="--x:' + x.toFixed(5) + ';--w:' + w.toFixed(5) + '"><span>' + esc(t.breaks) + '</span><button type="button" class="btn" data-drop="' + t.id + '">' + esc(U.drop) + '</button></div>' : '')
         + '</div>';
     });
     frise += '</div>';
@@ -269,7 +271,7 @@ function tip(text, warn, x, y){
   let el = document.getElementById('g-tip');
   if(!el){ el = document.createElement('div'); el.id = 'g-tip'; document.body.appendChild(el); }
   el.className = 'g-tip' + (warn ? ' warn' : '');
-  el.textContent = text;
+  el.innerHTML = text;
   el.style.left = Math.min(window.innerWidth - 270, Math.max(8, x + 14)) + 'px';
   el.style.top = Math.max(8, y - 44) + 'px';
 }
@@ -327,7 +329,9 @@ document.addEventListener('pointermove', e => {
   const r = val / t.dur;
   const line = r < 0.999 ? riskFor(t, val) : '';
   const tooShort = val < reco - 0.001;
-  tip(fmtDur(val) + ' · ' + (tooShort ? U.reco(fmtDur(reco)) : line || ''), tooShort || r < 0.7, e.clientX, e.clientY);
+  const hurts = floorCount(t, val) > 0 || tooShort;
+  tip('<b>' + esc(fmtDur(val) + ' · ' + (tooShort ? U.reco(fmtDur(reco)) : line || '')) + '</b>'
+    + (hurts ? '<em>' + esc(t.breaks) + '</em>' : ''), tooShort || r < 0.7, e.clientX, e.clientY);
 });
 document.addEventListener('pointerup', () => {
   if(!drag) return;
