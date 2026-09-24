@@ -478,11 +478,11 @@ body.resizing{touch-action:none;user-select:none}
 .g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .g-segs i.seg-cut{opacity:.5}
 .g-segs i.seg-floor{background:var(--alert-line);opacity:1}
-.g-cap{cursor:grab;position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));display:none;z-index:3}
+.g-cap{cursor:grab;position:absolute;top:50%;left:100%;margin:calc(var(--lane, 0) * 32px) 0 0 8px;transform:translateY(-50%);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));display:none;z-index:3}
 .g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
 .g-cell--narrow .g-cap{display:block}
 /* a droite de la barre quand la place le permet, dessous sinon */
-.g-cell--capright .g-cap{top:50%;left:100%;transform:translateY(-50%);margin:0 0 0 8px}
+
 
 
 /* barre d'actions du brouillon */
@@ -1259,42 +1259,37 @@ function segsHtml(t, hours){
 /* Une barre trop courte n'a plus la place d'ecrire son nom : il passe dessous,
    et deux etiquettes voisines se repartissent sur plusieurs niveaux. */
 function ganttCaptions(){
+  // Regle simple : le nom se lit a droite de sa barre. S'il ne tient pas la
+  // (barre suivante ou bord de la bande), il descend d'une ligne, comme Notion.
   document.querySelectorAll('.g-row').forEach(row => {
     const cells = [...row.querySelectorAll('.g-cell')].sort((a, b) =>
       a.querySelector('.g-bar').getBoundingClientRect().left - b.querySelector('.g-bar').getBoundingClientRect().left);
-    const lanes = [], rowRight = row.getBoundingClientRect().right;
-    // Une barre reste strictement proportionnelle a sa duree : l'elargir pour
-    // loger son nom decalait la suivante et les faisait se chevaucher. Le nom
-    // sort de la barre, c'est lui qui s'adapte.
+    const rb = row.getBoundingClientRect();
+    const bars = cells.map(c => c.querySelector('.g-bar').getBoundingClientRect());
+    const lanes = [];           // bord droit deja occupe, ligne par ligne
     cells.forEach((cell, i) => {
       const bar = cell.querySelector('.g-bar'), cap = cell.querySelector('.g-cap');
-
-      // une barre est etroite quand son nom deborde vraiment, pas quand il
-      // frole le bord : sinon on affichait une etiquette en double
       const lbl = bar.querySelector('b');
       const narrow = lbl.scrollWidth > lbl.clientWidth + 1;
       cell.classList.toggle('g-cell--narrow', narrow);
-      cell.classList.remove('g-cell--capright');
       cap.style.removeProperty('--lane');
+      cap.style.marginLeft = '';
       if(!narrow) return;
-      // d'abord a droite de la barre, comme un titre de clip ; on n'ecrit
-      // dessous que si la place manque jusqu'a la barre suivante ou au bord
-      const br = bar.getBoundingClientRect();
-      const next = cells[i + 1] ? cells[i + 1].querySelector('.g-bar').getBoundingClientRect().left : rowRight;
-      if(cap.offsetWidth + 16 <= next - br.right){ cell.classList.add('g-cell--capright'); return; }
-      // une etiquette de fin de ligne doit rentrer dans la bande : on la recale
-      // a gauche, puis on lui cherche un niveau ou elle ne heurte personne
-      const w = cap.offsetWidth;
-      const left = Math.min(br.left, rowRight - w);
-      let lane = 0;
-      while(lanes[lane] != null && left < lanes[lane]) lane++;
-      lanes[lane] = left + w + 10;
+      const br = bars[i], w = cap.offsetWidth;
+      let left = br.right + 8, right = left + w;
+      // la ligne 0 est a hauteur des barres : on n'y reste que si le nom ne
+      // touche ni la barre suivante ni le bord de la bande.
+      const libre = right <= rb.right && !bars.some((o, j) => j !== i && o.left < right + 6 && o.right > left - 6);
+      let lane = libre ? 0 : 1;
+      if(!libre && right > rb.right){ left = rb.right - w; right = rb.right; }
+      while(lanes[lane] != null && lanes[lane] > left - 6) lane++;
+      lanes[lane] = right;
+      if(left !== br.right + 8) cap.style.marginLeft = Math.round(left - br.right) + 'px';
       cap.style.setProperty('--lane', lane);
-      cap.style.marginLeft = left < br.left ? Math.round(left - br.left) + 'px' : '';
     });
-    row.style.paddingBottom = lanes.length ? (lanes.length * 17 + 12) + 'px' : '';
-  });
-}
+    const last = lanes.length - 1;
+    row.style.paddingBottom = last > 0 ? (last * 32 + 2) + 'px' : '';
+  });}
 function planHtml(pick, total){
   const u = UI();
   const ref = pick.reduce((s, x) => s + x.t.dur, 0);
