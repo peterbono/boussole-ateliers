@@ -461,6 +461,10 @@ dialog.zoom::backdrop{background:transparent}
 .src{font-size:13px;margin:10px 0 0}
 /* ---------- durees ajustees ---------- */
 .g-cell{position:relative;width:calc(var(--frac) * 100%);min-width:10px;transition:width .12s ease}
+/* Hors brouillon, le plan est un document : une barre ne descend jamais sous la
+   largeur de son nom, quitte a ne plus etre exactement proportionnelle. En
+   brouillon, l'inverse : la proportion prime, c'est elle qu'on manipule. */
+.gantt:not(.gantt--draft) .g-cell{min-width:max-content;max-width:100%}
 .g-cell.dragging{transition:none}
 .g-cell .g-bar{width:100%;position:relative}
 .g-cell--under .g-bar{box-shadow:inset 0 0 0 1.5px var(--alert-line);background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px)}
@@ -486,6 +490,10 @@ body.resizing{touch-action:none;user-select:none}
 .g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
 .g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
 .g-cell--narrow .g-cap{opacity:1}
+/* a droite de la barre quand la place le permet, dessous sinon */
+.g-cell--capright .g-cap{top:50%;left:100%;transform:translateY(-50%);margin:0 0 0 8px}
+/* le nom est ecrit a cote : dans la barre il ne resterait que des bouts de lettres */
+.g-cell--capright .g-bar b{display:none}
 
 /* barre d'actions du brouillon */
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
@@ -1219,17 +1227,25 @@ function ganttCaptions(){
   document.querySelectorAll('.g-row').forEach(row => {
     const cells = [...row.querySelectorAll('.g-cell')].sort((a, b) =>
       a.querySelector('.g-bar').getBoundingClientRect().left - b.querySelector('.g-bar').getBoundingClientRect().left);
-    const lanes = [];
-    cells.forEach(cell => {
+    const lanes = [], rowRight = row.getBoundingClientRect().right;
+    cells.forEach((cell, i) => {
       const bar = cell.querySelector('.g-bar'), cap = cell.querySelector('.g-cap');
-      const need = cap.querySelector('b').getBoundingClientRect().width + 22;
-      const narrow = bar.clientWidth < need;
+      // une barre est etroite quand son nom deborde vraiment, pas quand il
+      // frole le bord : sinon on affichait une etiquette en double
+      const lbl = bar.querySelector('b');
+      const narrow = lbl.scrollWidth > lbl.clientWidth + 1;
       cell.classList.toggle('g-cell--narrow', narrow);
-      if(!narrow){ cap.style.removeProperty('--lane'); return; }
-      const left = bar.getBoundingClientRect().left, right = left + cap.offsetWidth + 10;
+      cell.classList.remove('g-cell--capright');
+      cap.style.removeProperty('--lane');
+      if(!narrow) return;
+      // d'abord a droite de la barre, comme un titre de clip ; on n'ecrit
+      // dessous que si la place manque jusqu'a la barre suivante ou au bord
+      const br = bar.getBoundingClientRect();
+      const next = cells[i + 1] ? cells[i + 1].querySelector('.g-bar').getBoundingClientRect().left : rowRight;
+      if(cap.offsetWidth + 16 <= next - br.right){ cell.classList.add('g-cell--capright'); return; }
       let lane = 0;
-      while(lanes[lane] != null && left < lanes[lane]) lane++;
-      lanes[lane] = right;
+      while(lanes[lane] != null && br.left < lanes[lane]) lane++;
+      lanes[lane] = br.left + cap.offsetWidth + 10;
       cap.style.setProperty('--lane', lane);
     });
     row.style.paddingBottom = lanes.length ? (lanes.length * 17 + 12) + 'px' : '';
