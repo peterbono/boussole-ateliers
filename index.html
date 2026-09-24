@@ -456,20 +456,9 @@ dialog.zoom::backdrop{background:transparent}
 .next-card p{margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
 .next-card .dep-group{margin:0}
 .src{font-size:13px;margin:10px 0 0}
-/* ---------- budget et durees ajustees ---------- */
-.budget{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 16px;background:var(--surface)}
-.budget-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
-.budget-row .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
-.budget-in{display:inline-flex;align-items:center;gap:7px}
-.budget-in input{width:78px;padding:5px 8px;border:1px solid var(--line-strong);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:13px}
-.budget-read{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin:10px 0 0;font-size:13px}
-.budget-read .muted{color:var(--ink-3)}
-.gap{font-variant-numeric:tabular-nums;font-weight:600}
-.gap--over{color:var(--warn-text)}
-.gap--under{color:var(--ink-2)}
-.budget-warn{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:var(--warn-soft);border:1px solid var(--warn-line);color:var(--warn-text);font-size:13px;line-height:1.45}
-.budget-warn svg{width:16px;height:16px;flex:none;margin-top:2px}
-.budget-hint{margin:8px 0 0;font-size:12.5px;color:var(--ink-3)}
+/* ---------- durees ajustees ---------- */
+.plan-adjusted{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
+.plan-adjusted b{color:var(--ink)}
 .dur-cell{white-space:nowrap}
 .dur-ctl{display:inline-flex;align-items:center;gap:2px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
@@ -748,26 +737,15 @@ const fmtDur = h => {
   return h < 1 ? Math.round(h * 60) + ' ' + UI().min : fmtHours(h);
 };
 
-/* ---------- rythme, budget et durees ajustees ----------
-   Le catalogue porte une duree de reference par atelier. Le facilitateur, lui,
-   a un creneau. Un facteur global donne le rythme, une valeur posee sur un
-   atelier prend le dessus, et tous les totaux de l'application s'y accordent.
-   La reference, elle, ne bouge jamais : c'est a elle qu'on compare. */
-const PACE = {fast:0.75, std:1, calm:1.3};
+/* ---------- durees ajustees ----------
+   Le catalogue porte une duree de reference par atelier, qui ne bouge jamais.
+   Le facilitateur peut en poser une autre, atelier par atelier, en tirant la
+   barre du plan ; tous les totaux de l'application suivent, et la reference
+   reste affichee, c'est a elle qu'on compare. */
 const STEPM = 5;
-let pace = store.get('pace', 'std');
-let paceCustom = store.get('paceCustom', null);
 let durOv = store.get('durs', {});
-let budget = store.get('budget', null);
-const snap = m => Math.max(STEPM, Math.round(m / STEPM) * STEPM);
-const factor = () => paceCustom != null ? paceCustom : (PACE[pace] != null ? PACE[pace] : 1);
 const stepFor = t => t.dur >= 7 ? 3.5 : STEPM / 60;
-function edur(t){
-  if(durOv[t.id] != null) return durOv[t.id];
-  const f = factor();
-  if(f === 1) return t.dur;
-  return t.dur >= 7 ? Math.max(3.5, Math.round(t.dur * f / 3.5) * 3.5) : snap(t.dur * 60 * f) / 60;
-}
+const edur = t => durOv[t.id] != null ? durOv[t.id] : t.dur;
 const rat = t => edur(t) / t.dur;
 /* Le plancher d'un atelier n'est pas un pourcentage arbitraire : c'est la somme
    des planchers de ses etapes. En dessous, l'agenda ne tient plus. */
@@ -777,7 +755,7 @@ function minDur(t){
   return t.dur * 0.5;
 }
 const band = r => r >= 0.9 ? 'ok' : r >= 0.7 ? 'tight' : 'hard';
-function saveTime(){ store.set('pace', pace); store.set('paceCustom', paceCustom); store.set('durs', durOv); store.set('budget', budget); }
+function saveTime(){ store.set('durs', durOv); }
 /* Comprimer tout au meme facteur raboterait aussi l'etape qui produit la
    decision, et c'est elle qui fait l'atelier. La premiere et la derniere sont
    protegees : le milieu absorbe, et on n'entame les protegees qu'a bout de
@@ -1204,26 +1182,10 @@ function planHtml(pick, total){
       </td>
       <td>${esc(x.who)}</td><td>${esc(x.out)}</td></tr>`;
   }).join('');
-  const touched = Object.keys(durOv).length || paceCustom != null || pace !== 'std';
-  const gap = budget != null ? Math.round((total - budget) * 60) : null;
+  const touched = Object.keys(durOv).length > 0;
   return `<section class="plan">
-    <div class="budget">
-      <div class="budget-row">
-        <span class="k">${esc(u.pace)}</span>
-        <span class="seg small" id="pace-seg">${[['fast', u.paceFast], ['std', u.paceStd], ['calm', u.paceCalm]].map(([k, n]) => `<button type="button" data-pace="${k}" aria-pressed="${paceCustom == null && pace === k}">${esc(n)}</button>`).join('')}</span>
-        <label class="budget-in"><span class="k">${esc(u.budget)}</span><input type="number" id="budget-in" min="0.5" step="0.5" value="${budget != null ? budget : ''}" placeholder="${(Math.round(ref * 2) / 2)}"><span class="k">${esc(u.hours)}</span></label>
-        ${budget != null ? `<button type="button" class="btn small" data-fit>${esc(u.fitBudget)}</button>` : ''}
-        ${touched ? `<button type="button" class="btn small" data-reset-time>${esc(u.resetDur)}</button>` : ''}
-      </div>
-      <p class="budget-read">
-        <b>${esc(u.planned)} ${esc(fmtDur(total))}</b>
-        <span class="muted">${esc(u.refTime)} ${esc(fmtDur(ref))}</span>
-        ${gap != null && gap !== 0 ? `<span class="gap gap--${gap > 0 ? 'over' : 'under'}">${gap > 0 ? esc(u.over) : esc(u.under)} ${esc(Math.abs(gap) >= 60 ? fmtDur(Math.abs(gap) / 60) : Math.abs(gap) + ' ' + u.minutes)}</span>` : ''}
-      </p>
-      ${total < ref * 0.7 ? `<p class="budget-warn">${ICON.warn}<span>${esc(u.squeezeWarn)}</span></p>` : ''}
-      <p class="budget-hint">${esc(u.dropFirst)}</p>
-    </div>
     <div class="plan-wrap">${ganttHtml(planSlots(pick))}</div>
+    ${touched ? `<p class="plan-adjusted"><span>${esc(u.planned)} <b>${esc(fmtDur(total))}</b> · ${esc(u.refTime)} ${esc(fmtDur(ref))}</span><button type="button" class="btn small" data-reset-time>${esc(u.resetDur)}</button></p>` : ''}
     <div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="mono">${fmtDur(total)}</td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
@@ -1241,8 +1203,6 @@ function ensureRisk(){
 document.getElementById('result').addEventListener('click', e => {
   if(e.target.closest('#brief-clear')){ ans.brief = null; ans.pin = []; ans.skip = []; saveAns(); renderQuestions(); renderResult(); return; }
   const v = e.target.closest('[data-view]'); if(v){ view = v.dataset.view; store.set('view', view); syncUrl(); renderResult(); return; }
-  const pc = e.target.closest('[data-pace]');
-  if(pc){ pace = pc.dataset.pace; paceCustom = null; durOv = {}; saveTime(); renderResult(); return; }
   const du = e.target.closest('[data-dur]');
   if(du){
     const t = byId(T, du.dataset.dur), st = stepFor(t);
@@ -1252,20 +1212,9 @@ document.getElementById('result').addEventListener('click', e => {
     durOv[t.id] = Math.round(next * 60) / 60;
     saveTime(); renderResult(); return;
   }
-  if(e.target.closest('[data-fit]')){
-    const pick = lastPick || [];
-    const ref = pick.reduce((s2, x) => s2 + x.t.dur, 0);
-    if(ref && budget != null){ paceCustom = Math.max(0.4, Math.min(2, budget / ref)); durOv = {}; saveTime(); renderResult(); }
-    return;
-  }
-  if(e.target.closest('[data-reset-time]')){ pace = 'std'; paceCustom = null; durOv = {}; budget = null; saveTime(); renderResult(); return; }
+  if(e.target.closest('[data-reset-time]')){ durOv = {}; saveTime(); renderResult(); return; }
 });
-document.getElementById('result').addEventListener('change', e => {
-  const b = e.target.closest('#budget-in'); if(!b) return;
-  const v = parseFloat(b.value);
-  budget = isNaN(v) || v <= 0 ? null : v;
-  saveTime(); renderResult();
-});
+
 
 /* ---------- bibliothèque ---------- */
 function tcard(t, si){
