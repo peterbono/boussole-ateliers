@@ -125,7 +125,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
 .edit-bar--done{background:none}
 .edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
-.edit-bar .btn[disabled]{opacity:.4;pointer-events:none}
+.edit-bar .btn[disabled]{opacity:.35;pointer-events:none}
+.btn.icon{padding:6px;width:32px;height:32px;justify-content:center}
+.btn.icon svg{width:18px;height:18px;color:var(--ink-2)}
+.btn.icon:hover svg{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;max-width:520px;padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;box-shadow:var(--shadow)}
 .detail{position:fixed;z-index:90;min-width:190px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;box-shadow:0 18px 44px -18px rgba(15,20,40,.4)}
 .detail-head{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
@@ -182,6 +185,10 @@ const U = { dur:'Durée', who:'Participants', out:'Résultat', total:'Total', st
   dropped:n => n + ' retiré du plan',
   freed:h => h + ' libérées',
   hint:'Tirez le bord droit d\u2019une barre. Les flèches du clavier marchent aussi.' };
+const ICON = {
+  undo: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 6.5H12a4 4 0 0 1 0 8H7"/><path d="M10 3.5 6.5 6.5 10 9.5"/></svg>',
+  redo: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 6.5H8a4 4 0 0 0 0 8h5"/><path d="M10 3.5 13.5 6.5 10 9.5"/></svg>',
+};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const byId = (a, id) => a.find(x => x.id === id);
 /* Le plan a deux etats : un brouillon ou l'on taille, et un plan valide que
@@ -345,8 +352,8 @@ function editBar(total, ref){
   const n = Object.keys(durOv).length + dropped.length;
   if(dirty) return '<div class="edit-bar">'
     + '<span class="edit-count">' + (n ? (n > 1 ? n + ' ateliers modifiés' : n + ' atelier modifié') + ' · ' + fmtDur(total) + ' au lieu de ' + fmtDur(ref) : 'Aucun changement') + '</span>'
-    + '<button type="button" class="btn" data-undo' + (past.length ? '' : ' disabled') + '>Annuler</button>'
-    + '<button type="button" class="btn" data-redo' + (future.length ? '' : ' disabled') + '>Rétablir</button>'
+    + '<button type="button" class="btn icon" data-undo title="Annuler" aria-label="Annuler"' + (past.length ? '' : ' disabled') + '>' + ICON.undo + '</button>'
+    + '<button type="button" class="btn icon" data-redo title="Rétablir" aria-label="Rétablir"' + (future.length ? '' : ' disabled') + '>' + ICON.redo + '</button>'
     + '<button type="button" class="btn" data-reset>Tout remettre par défaut</button>'
     + '<button type="button" class="btn primary" data-commit>Valider les changements</button>'
     + '</div>';
