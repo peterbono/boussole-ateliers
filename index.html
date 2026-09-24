@@ -369,7 +369,7 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table td:last-child,.plan-table th:last-child{padding-right:0}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
-.gantt{display:flex;flex-direction:column;min-width:520px;padding-right:16px}
+.gantt{display:flex;flex-direction:column;min-width:520px;padding-right:8px}
 .g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
 .g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .g-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;letter-spacing:.01em;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
@@ -479,11 +479,11 @@ dialog.zoom::backdrop{background:transparent}
 .g-floor{position:absolute;top:0;bottom:0;left:calc(var(--fx) * 100%);width:2px;background:var(--alert-line);opacity:0;transition:opacity .12s;pointer-events:none}
 .g-bar:hover ~ .g-floor,.g-cell:focus-within .g-floor,.g-cell.dragging .g-floor{opacity:.9}
 body.resizing{touch-action:none;user-select:none}
-.g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-16px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
+.g-grip{position:absolute;top:0;right:0;width:32px;height:100%;margin-right:-6px;cursor:ew-resize;touch-action:none;z-index:2;display:grid;place-items:center}
 .g-grip::after{content:"";width:3px;height:18px;border-radius:2px;background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3}
 .g-row:hover .g-grip::after,.g-grip:focus-visible::after{opacity:.75}
 .g-grip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
-.g-cell--narrow .g-grip{width:20px;margin-right:-10px}
+.g-cell--narrow .g-grip{width:18px;margin-right:-5px}
 .g-segs{position:absolute;left:9px;right:9px;bottom:5px;display:flex;gap:1px;height:4px;border-radius:2px;overflow:hidden;opacity:0;transition:opacity .12s}
 .g-bar:hover .g-segs,.g-cell:focus-within .g-segs,.g-cell.dragging .g-segs{opacity:1}
 .g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
@@ -534,13 +534,15 @@ body.resizing{touch-action:none;user-select:none}
 .dur-ctl{display:inline-flex;align-items:center;gap:7px}
 /* le total du pied de tableau se cale sous les valeurs, pas sous le bouton moins */
 .dur-spacer{width:22px;flex:none}
+/* l'entete se cale sur les valeurs, decalees par le bouton moins */
+.plan-table th.dur-h{padding-left:29px}
 /* le total se cale comme une valeur mais ne s'edite pas : ni survol, ni curseur texte */
-.dur-ctl .dur-total{min-width:52px;text-align:center;font-weight:600;padding:1px 2px 2px}
+.dur-ctl .dur-total{min-width:52px;text-align:left;font-weight:600;padding:1px 2px 2px}
 .dur-ctl button{width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink-2);border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
-.dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline;text-align:center;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
+.dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline-block;text-align:left;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
 .dur-ctl .dur-val:hover{border-bottom-color:var(--ink-3);background:none}
-.dur-in{width:70px;text-align:center;font-weight:600;font-size:13.5px;padding:1px 2px 2px;border:0;border-bottom:2px solid var(--accent);background:none;color:var(--ink);outline:none}
+.dur-in{width:70px;text-align:left;font-weight:600;font-size:13.5px;padding:1px 2px 2px;border:0;border-bottom:2px solid var(--accent);background:none;color:var(--ink);outline:none}
 .plan-table:not(.editing) .dur-ctl button[data-dur]{opacity:0;transition:opacity .12s}
 .plan-table:not(.editing) tr:hover .dur-ctl button[data-dur],
 .plan-table:not(.editing) .dur-ctl button[data-dur]:focus-visible{opacity:1}
@@ -1281,7 +1283,7 @@ function planHtml(pick, total){
     ${editBar(total, ref)}
     <div class="plan-wrap">${ganttHtml(slots)}</div>
     ${warnList}
-    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><colgroup><col style="width:9%"><col style="width:27%"><col style="width:19%"><col style="width:21%"><col style="width:24%"></colgroup><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
+    <div class="plan-wrap" style="margin-top:18px"><table class="plan-table${dirty ? ' editing' : ''}"><colgroup><col style="width:9%"><col style="width:27%"><col style="width:19%"><col style="width:21%"><col style="width:24%"></colgroup><thead><tr><th>${esc(u.slotWhen)}</th><th>${esc(u.slotWhat)}</th><th class="dur-h">${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th></tr></thead><tbody>${rows}</tbody>
     <tfoot><tr><td></td><td>${esc(u.total)}</td><td class="dur-cell"><span class="dur-ctl"><span class="dur-spacer"></span><b class="dur-total mono">${fmtDur(total)}</b></span></td><td colspan="2"></td></tr></tfoot></table></div>
     <div class="who"><h4 class="k">${esc(u.whoAvailable)}</h4><div class="wchips">${[...new Set(pick.map(x => tx(x.t).who))].map(w => `<span class="wchip static">${esc(w)}</span>`).join('')}</div></div>
   </section>`;
@@ -1515,7 +1517,7 @@ function renderLibrary(){
   list.sort((a, b) => phaseIdx(a.phase) - phaseIdx(b.phase) || (si >= 0 ? b.fit[si] - a.fit[si] : 0));
   document.getElementById('count').textContent = list.length + ' / ' + T.length;
   if(lib.mode === 'list'){
-    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:19%"><col style="width:16%"><col style="width:14%"><col style="width:6%"><col style="width:13%"><col style="width:17%"><col style="width:15%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th>${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
+    document.getElementById('list-table').innerHTML = list.length ? `<colgroup><col style="width:19%"><col style="width:16%"><col style="width:14%"><col style="width:6%"><col style="width:13%"><col style="width:17%"><col style="width:15%"></colgroup><thead><tr><th>${esc(u.slotWhat)}</th><th>${esc(u.filterPhase)}</th><th>${esc(u.filterStage)}</th><th class="dur-h">${esc(u.dur)}</th><th>${esc(u.who)}</th><th>${esc(u.out)}</th><th></th></tr></thead><tbody>${list.map(t => listRow(t, si)).join('')}</tbody>` : `<tbody><tr><td colspan="7"><div class="empty">${esc(u.empty)}</div></td></tr></tbody>`;
     return;
   }
   document.getElementById('library').innerHTML = list.map(t => tcard(t, si)).join('') || `<div class="empty">${esc(u.empty)}</div>`;
