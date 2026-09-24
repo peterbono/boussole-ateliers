@@ -227,7 +227,7 @@ function render(){
     frise += '</div>';
   });
   frise += '<div class="tl-freerow"><div class="tl-free" style="--x:' + (total / axis).toFixed(5) + ';visibility:' + (axis - total > 0.01 ? 'visible' : 'hidden') + '"><span>' + esc(U.freed(fmtDur(Math.max(0, axis - total)))) + '</span></div></div>';
-  frise += '</div><p class="hint">' + esc(U.hint) + '</p>';
+  frise += '</div>';
 
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
