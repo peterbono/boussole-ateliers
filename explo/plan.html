@@ -115,7 +115,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .warn-list span{margin-right:auto}
 .warn-list .btn{padding:3px 9px;font-size:12px}
 .tl-row{overflow:visible}
-.edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
+.edit-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
 .edit-bar--done{background:none}
 .edit-count{margin-right:auto;font-size:13px;color:var(--ink-2)}
 .edit-bar .btn[disabled]{opacity:.4;pointer-events:none}
@@ -303,17 +303,19 @@ function render(){
   const rows = slots.map((s, i) => {
     const t = s.t, r = rat(t), risk = riskFor(t, s.w);
     return '<tr><td class="mono">' + esc(fmtDur(s.x)) + '</td><td><b>' + (i + 1) + '. ' + esc(t.name) + '</b></td>'
-      + '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button>'
-      + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
-      + '<button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
+      + (dirty
+        ? '<td class="dur-cell"><span class="dur-ctl"><button type="button" data-dur="' + t.id + '" data-d="-1">−</button>'
+          + '<button type="button" class="dur-val mono" data-type="' + t.id + '" title="Saisir une durée">' + fmtDur(s.w) + '</button>'
+          + '<button type="button" data-dur="' + t.id + '" data-d="1">+</button></span>'
+        : '<td class="dur-cell"><b class="mono">' + fmtDur(s.w) + '</b>')
       + (dirty && risk ? '<small class="risk risk--' + band(r) + '">' + esc(risk) + '</small>' : '') + '</td>'
       + '<td>' + esc(t.who) + '</td><td>' + esc(t.out) + '</td></tr>';
   }).join('');
 
   const cardHtml =
-    '<div class="plan-wrap">' + frise + '</div>'
+    editBar(total, ref)
+    + '<div class="plan-wrap">' + frise + '</div>'
     + warnList
-    + editBar(total, ref)
     + (dropped.length ? '<p class="plan-adjusted"><span>' + dropped.map(t => esc(U.dropped(t.name))).join(' · ') + '</span><button type="button" class="btn" data-restore>Remettre</button></p>' : '')
     + '<div class="plan-wrap" style="margin-top:18px"><table class="plan-table"><thead><tr><th>' + U.start + '</th><th>' + U.what + '</th><th>' + U.dur + '</th><th>' + U.who + '</th><th>' + U.out + '</th></tr></thead><tbody>' + rows + '</tbody>'
     + '<tfoot><tr><td></td><td>' + U.total + '</td><td class="mono">' + fmtDur(total) + '</td><td colspan="2"></td></tr></tfoot></table></div>';
