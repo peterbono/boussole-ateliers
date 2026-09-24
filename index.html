@@ -369,7 +369,7 @@ body:has(dialog[open]){overflow:hidden}
 .plan-table td:last-child,.plan-table th:last-child{padding-right:0}
 .plan-table tfoot td{border:0;font-weight:600}
 .plan-table .mono{font-size:12.5px;white-space:nowrap}
-.gantt{display:flex;flex-direction:column;min-width:520px;padding-right:8px}
+.gantt{display:flex;flex-direction:column;min-width:520px;padding-right:12px}
 .g-head,.g-row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px;align-items:start}
 .g-head span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .g-phase{margin-top:8px;padding:6px 12px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:600;letter-spacing:.01em;background:hsl(var(--h) var(--chip-s) var(--chip-l));color:hsl(var(--h) 45% var(--chip-text-l))}
@@ -466,7 +466,7 @@ dialog.zoom::backdrop{background:transparent}
 /* Hors brouillon, le plan est un document : une barre ne descend jamais sous la
    largeur de son nom, quitte a ne plus etre exactement proportionnelle. En
    brouillon, l'inverse : la proportion prime, c'est elle qu'on manipule. */
-.gantt:not(.gantt--draft) .g-cell{min-width:max-content;max-width:100%}
+
 .g-cell.dragging{transition:none}
 .g-cell .g-bar{width:100%;position:relative}
 .g-cell--under .g-bar{box-shadow:inset 0 0 0 1.5px var(--alert-line);background:repeating-linear-gradient(135deg,hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)),hsl(var(--h) var(--chip-s) calc(var(--chip-l) + 2%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 6px,hsl(var(--h) var(--chip-s) calc(var(--chip-l) - 4%)) 12px)}
@@ -489,9 +489,9 @@ body.resizing{touch-action:none;user-select:none}
 .g-segs i{background:hsl(var(--h) 45% var(--chip-text-l));opacity:.3;border-radius:1px;min-width:1px}
 .g-segs i.seg-cut{opacity:.5}
 .g-segs i.seg-floor{background:var(--alert-line);opacity:1}
-.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));opacity:0;transition:opacity .12s;pointer-events:none}
+.g-cap{position:absolute;top:100%;left:0;margin-top:calc(var(--lane, 0) * 17px - 2px);line-height:15px;white-space:nowrap;font-size:11.5px;font-weight:600;color:hsl(var(--h) 45% var(--chip-text-l));display:none;pointer-events:none}
 .g-cap i{font-style:normal;font-size:10.5px;opacity:.75;margin-left:5px}
-.g-cell--narrow .g-cap{opacity:1}
+.g-cell--narrow .g-cap{display:block}
 /* a droite de la barre quand la place le permet, dessous sinon */
 .g-cell--capright .g-cap{top:50%;left:100%;transform:translateY(-50%);margin:0 0 0 8px}
 /* le nom est ecrit a cote : dans la barre il ne resterait que des bouts de lettres */
@@ -1237,8 +1237,17 @@ function ganttCaptions(){
     const cells = [...row.querySelectorAll('.g-cell')].sort((a, b) =>
       a.querySelector('.g-bar').getBoundingClientRect().left - b.querySelector('.g-bar').getBoundingClientRect().left);
     const lanes = [], rowRight = row.getBoundingClientRect().right;
+    // Hors brouillon, une barre s'elargit jusqu'a contenir son nom, sans jamais
+    // depasser sa colonne : max-content en CSS deborderait le conteneur.
+    const draft = !!row.closest('.gantt--draft');
+    const n = +row.closest('.gantt').dataset.n || 1;
+    const colPx = (row.clientWidth - 6 * (n - 1)) / n;
     cells.forEach((cell, i) => {
       const bar = cell.querySelector('.g-bar'), cap = cell.querySelector('.g-cap');
+      const span = +((cell.style.gridColumn.match(/span (\d+)/) || [0, 1])[1]);
+      const area = colPx * span + 6 * (span - 1);
+      const need = bar.querySelector('b').scrollWidth + 22;
+      cell.style.minWidth = draft ? '' : Math.min(need, area) + 'px';
       // une barre est etroite quand son nom deborde vraiment, pas quand il
       // frole le bord : sinon on affichait une etiquette en double
       const lbl = bar.querySelector('b');
