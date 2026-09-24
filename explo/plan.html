@@ -58,9 +58,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
 .dur-ctl button:hover{color:var(--ink);border-color:var(--ink-3)}
 /* Les boutons sont des boutons, la valeur est un texte que l'on edite : elle
    garde un souligne pointille plutot que le cadre des boutons. */
-.dur-val{min-width:52px;text-align:center;font-weight:600;border:0;border-bottom:1px dashed var(--line-strong);border-radius:0;background:none;color:inherit;font-size:inherit;padding:1px 2px 2px;cursor:text}
-.dur-val:hover{border-bottom-color:var(--ink-3);color:var(--ink)}
-.dur-val:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* .dur-ctl button du produit est plus specifique que .dur-val : il faut donc
+   viser aussi fort pour que la valeur cesse de porter le cadre des boutons. */
+.dur-ctl .dur-val{width:auto;height:auto;min-width:52px;display:inline;text-align:center;font-weight:600;border:0;border-bottom:1px dashed transparent;border-radius:0;background:none;color:var(--ink);font-size:inherit;padding:1px 2px 2px;cursor:text}
+.dur-ctl .dur-val:hover{border-bottom-color:var(--ink-3);background:none}
+.dur-ctl .dur-val:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .dur-in{width:70px;text-align:center;font-weight:600;font-size:13.5px;padding:1px 2px 2px;border:0;border-bottom:2px solid var(--accent);border-radius:0;background:none;color:var(--ink);outline:none}
 .risk{display:block;margin-top:3px;font-size:11.5px;color:var(--ink-3);white-space:normal}
 .risk--alert{color:var(--alert-text);font-weight:600}
@@ -70,6 +72,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",sy
      ne pas dependre de la seule couleur. */
   --alert-line:#F0B3AA; --alert-text:#B04C3E; --alert-soft:#FFF6F4;
 }
+button{font:inherit;cursor:pointer}
 /* ---------- la frise ----------
    Axe continu en heures de facilitation. Sa longueur est figee sur le total
    standard : comprimer un atelier ne redessine pas l'echelle, ca decale les
