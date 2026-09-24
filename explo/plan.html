@@ -464,13 +464,17 @@ document.addEventListener('contextmenu', e => {
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
 /* ---------- le geste : on tire, les suivants glissent ---------- */
 let drag = null;
-function tip(text, warn, x, y){
+/* La bulle se cale sur la barre, pas sur le curseur : collee au pointeur elle
+   masquait la main au moment ou l'on vise. Au-dessus par defaut, en dessous
+   s'il n'y a pas la place. */
+function tip(text, warn, bar){
   let el = document.getElementById('g-tip');
   if(!el){ el = document.createElement('div'); el.id = 'g-tip'; document.body.appendChild(el); }
   el.className = 'g-tip' + (warn ? ' warn' : '');
   el.innerHTML = text;
-  el.style.left = Math.min(window.innerWidth - 270, Math.max(8, x + 14)) + 'px';
-  el.style.top = Math.max(8, y - 44) + 'px';
+  const r = bar.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
+  el.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.right - w / 2)) + 'px';
+  el.style.top = (r.top - h - 10 >= 8 ? r.top - h - 10 : r.bottom + 10) + 'px';
 }
 const tipHide = () => { const el = document.getElementById('g-tip'); if(el) el.remove(); };
 function live(id, hours){
@@ -537,7 +541,7 @@ document.addEventListener('pointermove', e => {
   // sombre tant qu'on reste dans le conseille, ambre des qu'on passe dessous.
   const hurts = floorCount(t, val) > 0;
   tip('<b>' + esc(fmtDur(val) + (tooShort ? ' · ' + U.reco(fmtDur(reco)) : line ? ' · ' + line : '')) + '</b>'
-    + (tooShort || hurts ? '<em>' + esc(t.breaks) + '</em>' : ''), tooShort, e.clientX, e.clientY);
+    + (tooShort || hurts ? '<em>' + esc(t.breaks) + '</em>' : ''), tooShort, drag.cell.querySelector('.tl-bar'));
 });
 let lastDragEnd = 0;
 document.addEventListener('pointerup', () => {
