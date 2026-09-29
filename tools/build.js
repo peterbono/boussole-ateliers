@@ -65,8 +65,12 @@ function head(lang, title, desc, url, extra = '', og = '/og/default.png'){
 ${extra}${FONTS}<style>${CSS}${PAGE_CSS}</style><script defer src="/_vercel/insights/script.js"></script>${CLARITY}</head><body>`;
 }
 const CLARITY = `<script>/* Microsoft Clarity : enregistrements de session et cartes de chaleur.
-   Charge depuis www.clarity.ms, autorise dans la CSP de vercel.json. */
-(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+   Charge depuis www.clarity.ms, autorise dans la CSP de vercel.json.
+   Uniquement sur les hotes de production : les previews et le local
+   faussaient la mesure (deux tiers des sessions venaient de nos recettes). */
+(function(c,l,a,r,i,t,y){
+if(!/^(workshop-compass\\.vercel\\.app|compass\\.floriangouloubi\\.com)$/.test(l.location.hostname)) return;
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","ynbk2lc3dc");</script>`;
 
