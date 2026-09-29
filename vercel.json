@@ -57,10 +57,21 @@
       "has": [
         {
           "type": "host",
+          "value": "workshop-compass.vercel.app"
+        }
+      ],
+      "destination": "https://compass.floriangouloubi.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
           "value": "boussole-ateliers.vercel.app"
         }
       ],
-      "destination": "https://workshop-compass.vercel.app/$1",
+      "destination": "https://compass.floriangouloubi.com/$1",
       "permanent": true
     }
   ]

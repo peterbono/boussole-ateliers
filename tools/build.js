@@ -8,7 +8,7 @@ const { SOURCES } = require(path.join(root, 'sources.js'));
 const I18N = { en: require(path.join(root, 'i18n/en.js')).I18N, fr: require(path.join(root, 'i18n/fr.js')).I18N };
 const LAYOUTS = { en: require(path.join(root, 'layouts.en.js')).LAYOUTS, fr: require(path.join(root, 'layouts.fr.js')).LAYOUTS };
 const { Preview } = require(path.join(root, 'preview.js'));
-const SITE = process.env.SITE_URL || 'https://workshop-compass.vercel.app';
+const SITE = process.env.SITE_URL || 'https://compass.floriangouloubi.com';
 
 // 1. contenu d'animation : fusion des fichiers content/*.json → content/run.json
 const RUN = {};
