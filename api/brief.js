@@ -52,7 +52,7 @@ module.exports = async function handler(req, res){
   if(len > 8000){ res.status(413).json({error:'too_large'}); return; }
   // seules les pages du site peuvent appeler l'API depuis un navigateur
   const origin = req.headers.origin;
-  if(origin && !/^https:\/\/(workshop-compass\.vercel\.app|boussole-ateliers\.vercel\.app|[a-z0-9-]+-peterbonos-projects\.vercel\.app)$/.test(origin) && !/^http:\/\/localhost(:\d+)?$/.test(origin)){ res.status(403).json({error:'origin'}); return; }
+  if(origin && !/^https:\/\/(compass\.floriangouloubi\.com|workshop-compass\.vercel\.app|boussole-ateliers\.vercel\.app|[a-z0-9-]+-peterbonos-projects\.vercel\.app)$/.test(origin) && !/^http:\/\/localhost(:\d+)?$/.test(origin)){ res.status(403).json({error:'origin'}); return; }
   let body;
   try{ body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {}); }
   catch(e){ res.status(400).json({error:'json'}); return; }
