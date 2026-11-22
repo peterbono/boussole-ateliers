@@ -153,10 +153,10 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 
 .brief{margin-top:20px;border-radius:14px;background:var(--surface);border:1px solid var(--line);transition:box-shadow .15s,border-color .15s}
 .brief:focus-within{border-color:var(--line-strong);box-shadow:var(--shadow)}
-.brief summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 14px;border-radius:14px}
-.brief summary::-webkit-details-marker{display:none}
-.brief summary:hover{background:var(--surface-2)}
-.brief[open] summary{border-radius:14px 14px 0 0;border-bottom:1px solid var(--line)}
+.brief > summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 14px;border-radius:14px}
+.brief > summary::-webkit-details-marker{display:none}
+.brief > summary:hover{background:var(--surface-2)}
+.brief[open] > summary{border-radius:14px 14px 0 0;border-bottom:1px solid var(--line)}
 .brief .spark{width:16px;height:16px;color:var(--accent);flex:none}
 .brief-title{font-size:14px;font-weight:600;color:var(--ink)}
 .brief-sub{font-size:13px;color:var(--ink-3);flex:1 1 auto;min-width:0}
@@ -177,6 +177,23 @@ svg.pv{display:block;width:100%;height:auto;border-radius:6px}
 .send:hover{filter:brightness(1.08)}
 .send:active{transform:translateY(1px)}
 .send:disabled{opacity:.4;cursor:not-allowed;filter:none}
+.ai-pick{position:relative}
+.ai-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:30;width:300px;max-width:calc(100vw - 32px);padding:8px;border-radius:12px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;text-align:left}
+.ai-k{margin:2px 8px 6px;font-size:12.5px;line-height:1.4;color:var(--ink-3)}
+.ai-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:7px;font-size:14px;color:var(--ink);text-decoration:none;width:100%;box-sizing:border-box}
+.ai-item b{font-weight:600}
+.ai-item span{font-size:12.5px;color:var(--ink-3)}
+.ai-item svg{width:14px;height:14px;color:var(--ink-3)}
+.ai-item:hover,.ai-item:focus-visible{background:var(--surface-2)}
+.ai-mcp{margin-top:4px;padding-top:6px;border-top:1px solid var(--line)}
+.ai-mcp summary{cursor:pointer;padding:8px 10px;border-radius:7px;font-size:13px;color:var(--ink-2)}
+.ai-mcp summary:hover{background:var(--surface-2)}
+.ai-mcp p{margin:6px 10px;font-size:12.5px;line-height:1.45;color:var(--ink-3)}
+.ai-mcp .ai-steps b{color:var(--ink-2);font-weight:600}
+.ai-url{display:flex;align-items:center;gap:6px;margin:6px 10px;padding:4px 4px 4px 8px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line)}
+.ai-url code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-2)}
+.ai-url button{flex:none;padding:4px 8px;border-radius:5px;font-size:12px;font-weight:600;color:var(--accent)}
+.ai-url button:hover{background:var(--accent-soft)}
 .readout{display:flex;flex-direction:column;gap:10px;padding:14px 16px;border-radius:14px;background:var(--accent-soft);border:1px solid var(--line);margin-bottom:16px;font-size:14px}
 .readout-head{display:flex;align-items:center;gap:8px}
 .readout .spark{width:16px;height:16px;color:var(--accent);flex:none}
@@ -517,7 +534,7 @@ dialog.run::backdrop{background:var(--bg)}
   .summary h2{font-size:clamp(26px,7.5vw,32px);letter-spacing:-.02em;line-height:1.1}
   .summary{display:block}
   .summary > div{width:100%}
-  .brief summary{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:14px 16px}
+  .brief > summary{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:14px 16px}
   .brief .spark{grid-row:1}
   .brief-title{grid-row:1}
   .brief .chev{grid-row:1}
@@ -558,7 +575,19 @@ dialog.run::backdrop{background:var(--bg)}
         <textarea id="brief-text" rows="3" aria-label="Brief"></textarea>
         <div class="brief-foot">
           <div class="brief-try"><span data-ui="brief.try"></span><button type="button" class="try" data-try="0"></button><button type="button" class="try" data-try="1"></button><button type="button" class="try" data-try="2"></button></div>
-          <div class="brief-side"><span class="brief-msg" id="brief-msg"></span><button class="send" type="submit" id="brief-go" disabled><span data-ui="brief.button"></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg></button></div>
+          <div class="brief-side"><span class="brief-msg" id="brief-msg"></span><div class="ai-pick"><button class="send" type="submit" id="brief-go" aria-haspopup="true" aria-expanded="false" aria-controls="ai-menu" disabled><span data-ui="brief.button"></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg></button>
+            <div class="ai-menu" id="ai-menu" hidden>
+              <p class="ai-k" data-ui="brief.menuHint"></p>
+              <a class="ai-item" data-ai="claude" target="_blank" rel="noopener"><b>Claude</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+              <a class="ai-item" data-ai="chatgpt" target="_blank" rel="noopener"><b>ChatGPT</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+              <button type="button" class="ai-item" data-ai="copy"><b data-ui="brief.copy"></b><span data-ui="brief.copyHint"></span></button>
+              <details class="ai-mcp"><summary data-ui="brief.mcp"></summary>
+                <p data-ui="brief.mcpWhy"></p>
+                <div class="ai-url"><code>https://compass.floriangouloubi.com/mcp</code><button type="button" data-ai="url" data-ui="brief.copyUrl"></button></div>
+                <p class="ai-steps"><b>Claude</b> <span data-ui="brief.mcpClaude"></span></p>
+                <p class="ai-steps"><b>ChatGPT</b> <span data-ui="brief.mcpGpt"></span></p>
+              </details>
+            </div></div></div>
         </div>
       </form>
     </details>
@@ -614,6 +643,7 @@ dialog.run::backdrop{background:var(--bg)}
 <script src="layouts.en.js"></script>
 <script src="layouts.fr.js"></script>
 <script src="chain.js"></script>
+<script src="engine.js"></script>
 <script src="sources.js"></script>
 <script src="preview.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -647,6 +677,8 @@ let ans = Object.assign({}, DEFAULT, store.get('answers', {}));
   const okT = v => T.some(t => t.id === v);
   if(p.has('pin')) ans.pin = p.get('pin').split(',').filter(okT);
   if(p.has('skip')) ans.skip = p.get('skip').split(',').filter(okT);
+  // lecture laissée par l'IA de la personne (lien renvoyé par le serveur MCP ou par le prompt) : affichée échappée, jamais interprétée
+  if(p.get('reason')) ans.brief = {reason: p.get('reason').replace(/\s+/g, ' ').trim().slice(0, 300)};
   if(!Array.isArray(ans.pin)) ans.pin = []; if(!Array.isArray(ans.skip)) ans.skip = [];
 })();
 let view = store.get('view', 'steps');
@@ -696,7 +728,7 @@ function syncUrl(){
   if(ans.skip.length) url.searchParams.set('skip', ans.skip.join(',')); else url.searchParams.delete('skip');
   if(view === 'plan') url.searchParams.set('view', 'plan'); else url.searchParams.delete('view');
   if(lang !== 'en') url.searchParams.set('lang', lang); else url.searchParams.delete('lang');
-  url.searchParams.delete('open');
+  url.searchParams.delete('open'); url.searchParams.delete('reason');
   history.replaceState(null, '', url);
   return url.href;
 }
@@ -728,52 +760,8 @@ function actionsHtml(t, small){
 }
 
 /* ---------- moteur ---------- */
-// ordre du parcours : un atelier vient après ses prérequis présents dans le plan (needs, et au moins un membre de chaque groupe anyOf représenté) ; départage par phase puis score
-function orderByDeps(pick){
-  const inPlan = new Set(pick.map(x => x.t.id));
-  const blockers = x => {
-    const c = CHAIN[x.t.id] || {}, b = [];
-    (c.needs || []).forEach(id => { if(inPlan.has(id)) b.push([id]); });
-    (c.anyOf || []).forEach(g => { const present = g.filter(id => inPlan.has(id)); if(present.length) b.push(present); });
-    return b; // liste de groupes : chaque groupe doit avoir au moins un membre déjà placé
-  };
-  const out = [], placed = new Set(); let rest = pick.slice();
-  while(rest.length){
-    const ready = rest.filter(x => blockers(x).every(g => g.some(id => placed.has(id))));
-    const pool = ready.length ? ready : rest; // cycle improbable : on débloque par phase
-    pool.sort((x, y) => phaseIdx(x.t.phase) - phaseIdx(y.t.phase) || y.s - x.s);
-    const next = pool[0]; out.push(next); placed.add(next.t.id); rest = rest.filter(x => x !== next);
-  }
-  return out;
-}
 function recommend(a){
-  const si = stageIdx(a.stage);
-  const team = byId(TEAMS, a.team).size;
-  const cap = byId(HORIZONS, a.horizon).cap;
-  const scored = T.map(t => {
-    const fit = t.fit[si];
-    if((a.skip || []).includes(t.id)) return null;
-    const pinned = (a.pin || []).includes(t.id);
-    if(fit === 0 && !pinned) return null;
-    if(t.minTeam && team < t.minTeam && !pinned) return null;
-    let s = Math.max(fit, pinned ? 3 : 0) * 3 + (pinned ? 10 : 0);
-    const gm = t.goals.filter(g => a.goals.includes(g)).length;
-    s += Math.min(gm, 2) * 2;
-    if(t.triggers.includes(a.trigger)) s += 3;
-    if(a.horizon === 'demi' && t.dur > 4) s -= 6;
-    if(a.horizon === 'semaine' && t.dur > 8) s -= 3;
-    return {t, s, fit};
-  }).filter(Boolean);
-  scored.sort((x, y) => y.s - x.s || phaseIdx(x.t.phase) - phaseIdx(y.t.phase));
-  const min = a.horizon === 'programme' ? 8 : 9;
-  let pick = [];
-  if(a.horizon === 'programme'){
-    PHASES.forEach(p => { const best = scored.find(x => x.t.phase === p.id && x.s >= min); if(best) pick.push(best); });
-    scored.forEach(x => { if(pick.length < cap && !pick.includes(x) && x.s >= min) pick.push(x); });
-  } else pick = scored.filter(x => x.s >= min).slice(0, cap);
-  if(pick.length === 0) pick = scored.slice(0, Math.min(cap, 3));
-  scored.forEach(x => { if((a.pin || []).includes(x.t.id) && !pick.includes(x)) pick.push(x); });
-  pick = orderByDeps(pick);
+  const {pick, scored, si, team} = Engine.planCore(a);
   // raisons par étape + chaînage
   const ids = pick.map(x => x.t.id), u = UI(), st = L.stages[a.stage].short;
   pick.forEach((x, i) => {
@@ -883,25 +871,46 @@ const briefBox = document.getElementById('brief-box'); briefBox.open = store.get
 briefBox.addEventListener('toggle', () => store.set('briefOpen', briefBox.open));
 briefText.addEventListener('input', () => store.set('briefText', briefText.value));
 function briefStatic(){ const b = UI().brief; briefText.placeholder = b.placeholder; document.querySelectorAll('[data-try]').forEach((el, i) => { el.textContent = b.exampleLabels[i]; }); briefSync(); }
-briefForm.addEventListener('submit', async e => {
+// Le brief est lu par l'IA de la personne (Claude, ChatGPT, autre), jamais par un modèle payé ici.
+// Avec le connecteur MCP (/mcp), son IA appelle le moteur ; sans, le prompt porte les valeurs permises et lui demande de renvoyer le lien rempli.
+const aiMenu = document.getElementById('ai-menu');
+function briefPrompt(text){
+  const b = UI().brief, list = (o, f) => Object.keys(o).map(k => `${k} (${f(o[k])})`).join(', ');
+  return b.prompt(text, {
+    stage: list(L.stages, v => v.name), team: list(L.teams, v => v), trigger: list(L.triggers, v => v.name),
+    goals: list(L.goals, v => v), horizon: list(L.horizons, v => v),
+    link: `${location.origin}/?${lang === 'en' ? '' : 'lang=' + lang + '&'}stage=…&team=…&trigger=…&goals=…,…&horizon=…&reason=…`,
+  });
+}
+function menuOpen(open){
+  aiMenu.hidden = !open; briefGo.setAttribute('aria-expanded', open);
+  if(!open) return;
+  const q = encodeURIComponent(briefPrompt(briefText.value.trim()));
+  aiMenu.querySelector('[data-ai="claude"]').href = 'https://claude.ai/new?q=' + q;
+  aiMenu.querySelector('[data-ai="chatgpt"]').href = 'https://chatgpt.com/?q=' + q;
+  aiMenu.querySelector('.ai-item').focus();
+}
+async function copy(text, el){
+  try{ await navigator.clipboard.writeText(text); }catch(e){ return false; }
+  const was = el.innerHTML; el.textContent = UI().brief.copied; setTimeout(() => { el.innerHTML = was; }, 1600); return true;
+}
+briefForm.addEventListener('submit', e => {
   e.preventDefault(); const b = UI().brief, text = briefText.value.trim();
   briefMsg.className = 'brief-msg';
   if(text.length < 20){ briefMsg.textContent = b.short; briefMsg.classList.add('err'); return; }
-  briefGo.disabled = true; briefMsg.textContent = b.loading;
-  track('brief_submit', {chars:text.length});
-  try{
-    const r = await fetch('/api/brief', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({brief:text, lang})});
-    if(r.status === 429){ briefMsg.textContent = b.limit; briefMsg.classList.add('err'); return; }
-    if(r.status === 503){ briefMsg.textContent = b.off; briefMsg.classList.add('err'); return; }
-    if(!r.ok) throw new Error(r.status);
-    const out = await r.json();
-    ans.stage = out.stage; ans.team = out.team; ans.trigger = out.trigger; ans.goals = out.goals; ans.horizon = out.horizon;
-    ans.pin = out.pin || []; ans.skip = out.skip || []; ans.brief = {reason: out.reason};
-    saveAns(); renderQuestions(); renderResult(); playFill(); briefMsg.textContent = ''; track('brief', {stage:out.stage, trigger:out.trigger});
-    if(window.innerWidth < 860) document.getElementById('result').scrollIntoView({behavior:'smooth'});
-  }catch(err){ briefMsg.textContent = b.error; briefMsg.classList.add('err'); }
-  finally{ briefSync(); }
+  briefMsg.textContent = ''; menuOpen(aiMenu.hidden);
 });
+aiMenu.addEventListener('click', async e => {
+  const it = e.target.closest('[data-ai]'); if(!it) return;
+  const k = it.dataset.ai, text = briefText.value.trim();
+  if(k === 'copy'){ await copy(briefPrompt(text), it); track('brief_ai', {to:'copy', chars:text.length}); return; }
+  if(k === 'url'){ await copy(it.previousElementSibling.textContent, it); track('brief_ai', {to:'mcp_url'}); return; }
+  track('brief_ai', {to:k, chars:text.length}); setTimeout(() => menuOpen(false), 50);
+});
+aiMenu.querySelector('.ai-mcp').addEventListener('toggle', e => { if(e.target.open) track('brief_ai', {to:'mcp_open'}); });
+document.addEventListener('click', e => { if(!aiMenu.hidden && !e.target.closest('.ai-pick')) menuOpen(false); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && !aiMenu.hidden){ menuOpen(false); briefGo.focus(); } });
+if(ans.brief && ans.brief.reason && new URLSearchParams(location.search).get('reason')){ track('brief_return', {stage:ans.stage, trigger:ans.trigger}); requestAnimationFrame(() => { if(typeof playFill === 'function') playFill(); }); }
 
 /* ---------- parcours ---------- */
 function metaHtml(t){

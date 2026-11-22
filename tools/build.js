@@ -20,7 +20,7 @@ if(fs.existsSync(contentDir)) for(const f of fs.readdirSync(contentDir)){
 
 // 2. dist : copie de l'app
 fs.rmSync(dist, {recursive:true, force:true}); fs.mkdirSync(dist, {recursive:true});
-for(const f of ['index.html','data.js','chain.js','sources.js','preview.js','layouts.en.js','layouts.fr.js','favicon.svg','favicon.ico','apple-touch-icon.png','icon-192.png','icon-512.png','site.webmanifest']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
+for(const f of ['index.html','data.js','chain.js','engine.js','sources.js','preview.js','layouts.en.js','layouts.fr.js','favicon.svg','favicon.ico','apple-touch-icon.png','icon-192.png','icon-512.png','site.webmanifest']) fs.copyFileSync(path.join(root, f), path.join(dist, f));
 if(fs.existsSync(path.join(root, 'og'))) fs.cpSync(path.join(root, 'og'), path.join(dist, 'og'), {recursive:true});
 fs.mkdirSync(path.join(dist, 'i18n')); for(const f of ['en.js','fr.js']) fs.copyFileSync(path.join(root, 'i18n', f), path.join(dist, 'i18n', f));
 const EX = {};

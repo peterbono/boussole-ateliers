@@ -21,18 +21,17 @@ Live: https://workshop-compass.vercel.app
 3. Add its layout to `layouts.en.js` and `layouts.fr.js`.
 4. Regenerate its FigJam section with `tools/figjam-gen.js` and add the node id to `FIGJAM.nodes`.
 
-## AI brief (optional)
+## AI brief: the visitor's own AI (no model call on our side)
 
-`api/brief.js` is a Vercel function that reads a free-text situation with Claude (`claude-haiku-4-5` by default) and maps it onto the form answers, plus workshops to pin or skip. The plan is still computed by the client-side engine. It needs `ANTHROPIC_API_KEY` in the Vercel project env; without it the site works and the brief box says the feature is paused.
+The brief box never calls a model on our side. "Guide me" opens Claude (`claude.ai/new?q=`) or ChatGPT (`chatgpt.com/?q=`) with a prompt holding the brief and the allowed ids, or copies that prompt for any other AI. The AI answers with a filled site link (`?stage=…&team=…&trigger=…&goals=…&horizon=…&reason=…`); the page reads `reason` and shows it above the plan.
 
-Guards: 1 500 characters max, `BRIEF_DAILY_LIMIT` per IP per day (default 5), `BRIEF_GLOBAL_DAILY` for everyone (default 400, about 0.5 $ a day at Haiku prices), `BRIEF_ENABLED=false` to switch it off. Counters are per function instance (best effort); set a monthly spend limit on the Anthropic key as the hard cap. Each call logs a one-line JSON (stage, trigger, goals, token usage, no text) to the Vercel logs.
+`api/mcp.js` (served at `/mcp`, rewrite in `vercel.json`) is a stateless MCP server (Streamable HTTP, JSON responses, no auth, read-only). Tools: `get_compass_options` (allowed values + workshop catalog, EN/FR) and `build_workshop_plan` (runs `engine.js`, the same engine as the page, and returns the ordered plan + the site link). Add `https://compass.floriangouloubi.com/mcp` as a custom connector in Claude or ChatGPT (developer mode). Each plan logs one JSON line (answers, no text) to the Vercel logs.
 
 ## Security
 
 - No account, no database, no cookie: the only state is `localStorage` in the visitor's browser and the parameters in the URL.
 - Static pages and assets are served by Vercel with CSP, `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` and `Cross-Origin-Opener-Policy`. The CSP allows inline scripts and styles (the app ships one inline script and uses `style` attributes for phase hues), so it hardens resource loading and framing rather than inline injection; every string rendered by the app goes through an HTML escape first.
-- `/api/brief` accepts POST only, rejects bodies over 8 kB, rejects browser calls from other origins, truncates the brief to 1 500 characters, wraps it in a `<brief>` tag with an instruction to treat it as data, and constrains the model's answer to a JSON schema whose enums only contain known ids. The key lives in the Vercel env, never in the client.
-- Rate limits: per IP (platform headers, not client-supplied) and global per day, plus the monthly spend cap on the Anthropic key as the real ceiling.
+- `/mcp` holds no secret and calls no model: it validates every id against the catalog, caps `reason` at 300 characters, and the page renders `reason` through the HTML escape.
 
 ## Deploy
 

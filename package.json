@@ -3,8 +3,5 @@
   "private": true,
   "scripts": {
     "build": "node tools/build.js"
-  },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.127.0"
   }
 }
