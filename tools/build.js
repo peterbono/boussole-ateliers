@@ -130,10 +130,29 @@ function indexPage(lang){
   html += `<div class="foot"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(u.backToApp)}</a></div></div></body></html>`;
   return html;
 }
+// page « Compass dans ton IA » : comment brancher le serveur MCP (/mcp) sur Claude, ChatGPT ou un autre client
+const CONNECT_URL = { en:'/connect/', fr:'/fr/connecter/' };
+const MCP_URL = SITE + '/mcp', MCP_CMD = 'claude mcp add --transport http workshop-compass ' + MCP_URL;
+function connectPage(lang){
+  const L = I18N[lang], c = L.ui.connect, alt = lang === 'en' ? 'fr' : 'en', url = CONNECT_URL[lang];
+  const field = v => `<div class="mcp-url"><code>${esc(v)}</code><button type="button" class="btn primary" data-copy="${esc(v)}">${esc(c.copy)}</button></div>`;
+  const step = x => x === '#url' ? field(MCP_URL) : x === '#cmd' ? field(MCP_CMD) : esc(x).replace(/\[([^\]]+)\]\((https:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  let html = head(lang, `${c.title} · ${L.title}`, c.lead, url, `<link rel="alternate" hreflang="${alt}" href="${SITE}${CONNECT_URL[alt]}">`);
+  html += `<style>.mcp-url{display:flex;align-items:center;gap:8px;margin:8px 0 2px;padding:5px 5px 5px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2)}.mcp-url code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}.clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}.client{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.client h2{font-size:17px;margin:0 0 8px}.client ol{padding-left:18px;font-size:14.5px}.client a{color:var(--accent)}.try{margin:8px 0 0;padding:14px 16px;border-left:3px solid var(--accent);background:var(--surface);border-radius:0 10px 10px 0;color:var(--ink-2);font-size:15px;max-width:65ch}</style>
+<div class="page"><nav class="crumbs"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(L.title)}</a> › <span>${esc(c.title)}</span><span style="margin-left:auto"><a href="${CONNECT_URL[alt]}">${alt.toUpperCase()}</a></span></nav>
+<h1>${esc(c.title)}</h1><p class="lead">${esc(c.lead)}</p>
+<div class="clients">${Object.values(c.clients).map(cl => `<div class="client"><h2>${esc(cl.name)}</h2><ol>${cl.steps.map(st => `<li>${st.map(step).join(' ')}</li>`).join('')}</ol></div>`).join('')}</div>
+<section><h2>${esc(c.askStep.replace(/\s*:$/, ''))}</h2><p class="try">${esc(c.ask(c.askExample))}</p></section>
+<section><h2>${esc(c.whatTitle)}</h2><ul>${c.what.map(x => `<li>${esc(x)}</li>`).join('')}</ul></section>
+<div class="foot"><a href="/${lang === 'fr' ? '?lang=fr' : ''}">${esc(L.ui.backToApp)}</a><a href="${base[lang]}">${esc(L.ui.allWorkshops)}</a><a href="${CONNECT_URL[alt]}">${alt === 'fr' ? 'Version française' : 'English version'}</a></div></div>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;var t=b.textContent;navigator.clipboard.writeText(b.dataset.copy).then(function(){b.textContent=${JSON.stringify(c.copied)};setTimeout(function(){b.textContent=t},1600)});});</script></body></html>`;
+  return html;
+}
 const urls = [];
 for(const lang of ['en','fr']){
   const dir = path.join(dist, base[lang]); fs.mkdirSync(dir, {recursive:true});
   fs.writeFileSync(path.join(dir, 'index.html'), indexPage(lang)); urls.push(base[lang]);
+  { const d = path.join(dist, CONNECT_URL[lang]); fs.mkdirSync(d, {recursive:true}); fs.writeFileSync(path.join(d, 'index.html'), connectPage(lang)); urls.push(CONNECT_URL[lang]); }
   for(const t of T){ const d = path.join(dir, t.id); fs.mkdirSync(d, {recursive:true}); fs.writeFileSync(path.join(d, 'index.html'), workshopPage(lang, t)); urls.push(pageUrl(lang, t.id)); }
 }
 
