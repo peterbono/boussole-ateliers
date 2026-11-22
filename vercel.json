@@ -74,5 +74,11 @@
       "destination": "https://compass.floriangouloubi.com/$1",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/mcp",
+      "destination": "/api/mcp"
+    }
   ]
 }
