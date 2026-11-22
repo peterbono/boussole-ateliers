@@ -8,7 +8,7 @@ const I18N = { en: require('../i18n/en.js').I18N, fr: require('../i18n/fr.js').I
 const SITE = process.env.SITE_URL || 'https://compass.floriangouloubi.com';
 const VERSIONS = ['2025-11-25', '2025-06-18', '2025-03-26', '2024-11-05'];
 const SERVER = { name: 'workshop-compass', title: 'Workshop Compass', version: '1.0.0' };
-const INSTRUCTIONS = `Workshop Compass turns a product team's situation into a sequence of workshops (75 templates, each with a FigJam board).
+const INSTRUCTIONS = `Workshop Compass turns a product team's situation into a sequence of workshops (${T.length} templates, each with a FigJam board).
 1. Call get_compass_options once to read the allowed values and the workshop catalog.
 2. From what the person told you, choose stage, team, trigger, 1 to 3 goals and horizon. Ask one short question only if the stage or the time available is truly unclear; otherwise take the most common reading and say so.
 3. Call build_workshop_plan. Present the plan in order with the reason for each step, then give the person the plan link: it opens the same plan on the site, where they can adjust it.
